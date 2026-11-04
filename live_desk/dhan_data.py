@@ -1,0 +1,123 @@
+"""Read-only Dhan data access for real Kotak Neo trading signals.
+
+No order methods exist. All Dhan credentials are environment-only.
+"""
+from __future__ import annotations
+import base64, hashlib, hmac, math, os, threading, time
+from datetime import datetime
+from urllib.parse import urlencode
+from zoneinfo import ZoneInfo
+import requests
+
+IST = ZoneInfo("Asia/Kolkata")
+AUTH_ROOT = "https://auth.dhan.co"
+API_ROOT = "https://api.dhan.co/v2"
+
+def totp_now(secret:str, *, at:float|None=None)->str:
+    s = secret.strip().replace(" ","").upper()
+    key = base64.b32decode(s + "="*((8-len(s)%8)%8))
+    counter = int((time.time() if at is None else at)//30)
+    result = hmac.new(key,counter.to_bytes(8,"big"),hashlib.sha1).digest()
+    offset = result[-1] & 15
+    return f"{(int.from_bytes(result[offset:offset+4],'big')&0x7fffffff)%1000000:06d}"
+
+class DhanDataClient:
+    def __init__(self,client_id:str,pin:str,totp_secret:str,*,session=None):
+        if not all((client_id,pin,totp_secret)):
+            raise ValueError("Dhan market-data credentials missing")
+        self.client_id,self.pin,self.totp_secret=client_id,pin,totp_secret
+        self.session=session or requests.Session()
+        self.token=""
+        self.lock=threading.RLock()
+        self.quote_lock=threading.Lock()
+        self.history_lock=threading.Lock()
+        self._quote_last=0.0
+        self._history_last=0.0
+
+    @classmethod
+    def from_environment(cls):
+        return cls(os.getenv("DHAN_CLIENT_ID",""),
+                   os.getenv("DHAN_PIN",""),
+                   os.getenv("DHAN_TOTP_SECRET",""))
+
+    def login(self):
+        response=self.session.post(AUTH_ROOT+"/app/generateAccessToken",
+            params={"dhanClientId":self.client_id,"pin":self.pin,
+                    "totp":totp_now(self.totp_secret)},timeout=20)
+        response.raise_for_status()
+        data=response.json()
+        token=data.get("accessToken") if isinstance(data,dict) else None
+        if not token or str(data.get("dhanClientId"))!=self.client_id:
+            raise RuntimeError("Dhan authentication rejected")
+        with self.lock:self.token=str(token)
+        return self.profile()
+
+    def _request(self,method:str,url:str,*,json_body=None):
+        with self.lock:token=self.token
+        if not token:raise RuntimeError("Dhan token unavailable")
+        response=self.session.request(method,url,headers={
+            "access-token":token,"client-id":self.client_id,
+            "Accept":"application/json"},json=json_body,timeout=25)
+        if response.status_code in (401,403):
+            with self.lock:self.token=""
+            raise RuntimeError("Dhan token expired or denied")
+        response.raise_for_status()
+        return response.json()
+
+    def profile(self):
+        data=self._request("GET",API_ROOT+"/profile")
+        if str(data.get("dhanClientId"))!=self.client_id:
+            raise RuntimeError("Dhan profile belongs to different client")
+        return {"authenticated":True}
+
+    def get_ohlc(self,securities:dict[str,str])->dict[str,dict]:
+        if not securities:return {}
+        with self.quote_lock:
+            delay=1.05-(time.monotonic()-self._quote_last)
+            if delay>0:time.sleep(delay)
+            self._quote_last=time.monotonic()
+            data=self._request("POST",API_ROOT+"/marketfeed/ohlc",
+                json_body={"NSE_EQ":[int(x) for x in securities.values()]})
+        book=data.get("data",{}).get("NSE_EQ",{})
+        reverse={str(sid):symbol for symbol,sid in securities.items()}
+        output={}
+        for sid,item in book.items():
+            symbol=reverse.get(str(sid))
+            if symbol is None or not isinstance(item,dict):continue
+            try:
+                ohlc=item["ohlc"]
+                values={k:float(ohlc[k]) for k in ("open","high","low","close")}
+                values["ltp"]=float(item["last_price"])
+                if all(math.isfinite(v) and v>0 for v in values.values()):
+                    output[symbol]=values
+            except (ValueError,TypeError,KeyError):continue
+        return output
+
+    def get_intraday(self,security_id:str,start:datetime,end:datetime,*,interval:str="1",
+                     exchange_segment:str="NSE_EQ",instrument:str="EQUITY")->dict:
+        if interval not in {"1","5","15","25","60"}:raise ValueError("Unsupported candle interval")
+        if start.utcoffset() is None or end.utcoffset() is None or end<=start:
+            raise ValueError("Invalid candle request")
+        with self.history_lock:
+            delay=.22-(time.monotonic()-self._history_last)
+            if delay>0:time.sleep(delay)
+            self._history_last=time.monotonic()
+            data=self._request("POST",API_ROOT+"/charts/intraday",json_body={
+                "securityId":str(security_id),"exchangeSegment":exchange_segment,
+                "instrument":instrument,"interval":interval,"oi":False,
+                "fromDate":start.astimezone(IST).strftime("%Y-%m-%d %H:%M:%S"),
+                "toDate":end.astimezone(IST).strftime("%Y-%m-%d %H:%M:%S")})
+        keys=("timestamp","open","high","low","close")
+        if any(not isinstance(data.get(k),list) for k in keys):
+            raise RuntimeError("Dhan returned incomplete candles")
+        if len({len(data[k]) for k in keys})!=1:
+            raise RuntimeError("Dhan returned misaligned candles")
+        if len(data.get("volume",[]))!=len(data["timestamp"]):
+            data["volume"]=[0]*len(data["timestamp"])
+        return data
+
+    def websocket_url(self):
+        with self.lock:token=self.token
+        if not token:raise RuntimeError("Dhan data token unavailable")
+        return "wss://api-feed.dhan.co/?"+urlencode({
+            "version":"2","token":token,"clientId":self.client_id,"authType":"2"})
