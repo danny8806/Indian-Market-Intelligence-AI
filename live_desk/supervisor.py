@@ -168,7 +168,7 @@ class LiveSupervisor:
         ticker.start()
 
     def _broker_cash(self):
-        response=self.broker.limits(segment="CASH",exchange="NSE",product="MIS")
+        response=self.broker.limits()  # kotakneoapi v3: all segments, no arguments
         if not isinstance(response,dict) or str(response.get("stat","")).lower()!="ok":
             raise RuntimeError("Kotak cash/margin limits unavailable")
         amount=Decimal(str(response.get("Net","NaN")))
