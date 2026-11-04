@@ -230,6 +230,8 @@ class DashboardFailureCases(unittest.TestCase):
         stale['session_date'] = old
         stale['news_cutoff_at'] = old + 'T09:00:00+05:30'
         stale['generated_at'] = old + 'T09:01:00+05:30'
+        stale['signals'][0]['first_available_at'] = old + 'T08:00:00+05:30'
+        stale['signals'][0]['sources'][0]['published_at'] = old + 'T08:00:00+05:30'
         with self.assertRaisesRegex(ValueError, 'Stale session'):
             reader.research_watchlist(stale, now=self.now)
 
