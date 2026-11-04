@@ -133,6 +133,28 @@ class NewsDeskTests(unittest.TestCase):
         self.assertEqual(len(paper.store.rows()),1)
         self.assertEqual(self.client.get("/api/trades").json()["total"],1)
 
+    def test_short_paper_stop_uses_adverse_move(self):
+        self.report["signals"][0]["side"] = "SHORT"
+        self.receive()
+        paper = self.app.state.news_engine
+        paper.mapping = {"TESTA": "12345"}
+        paper.mapping_date = "2026-11-04"
+        paper.auth.snapshot = lambda: {"state": "AUTHENTICATED"}
+        paper.store.toggle()
+        self.clock[0] = datetime(2026,11,4,9,16,tzinfo=IST)
+        paper.on_tick({"symbol":"TESTA","ltp":100.0,
+                       "timestamp":self.clock[0],"source":"TEST"})
+        paper.attempt_paper_entries()
+        t=paper.store.rows()[0]
+        self.assertEqual((t["side"],t["stop_price"]),("SHORT",102.0))
+        self.clock[0] = datetime(2026,11,4,9,17,tzinfo=IST)
+        paper.on_tick({"symbol":"TESTA","ltp":102.4,
+                       "timestamp":self.clock[0],"source":"TEST"})
+        t=paper.store.rows()[0]
+        self.assertEqual(t["status"],"CLOSED")
+        self.assertEqual(t["exit_reason"],"PAPER_STOP_LTP")
+        self.assertAlmostEqual(t["gross_pnl"],-2400.0,places=3)
+
     def test_stale_tick_rejected_no_fill(self):
         self.receive()
         paper=self.app.state.news_engine
