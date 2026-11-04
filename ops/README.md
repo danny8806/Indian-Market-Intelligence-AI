@@ -86,6 +86,10 @@ The live-only app accepts direct research reports using an authenticated POST /a
 
 The deployment runs with real-money orders disabled and with the Dhan opening-candle timestamp convention unset until verified against a real exchange response. It does **not** place orders or authenticate a real Kotak account during the smoke check. Broker-native protective stops and crash recovery must be independently verified before enabling unattended real-money operation.
 
+## Retire the old paper dashboard after the new service is verified
+
+The user has requested replacement of the old dashboard. Once the separate live service is running and its private access has been checked on the VPS, run `bash /home/jadhavdnyaneshwar701/kotak-news-live/current/ops/retire_old_dashboard.sh` there. The script verifies the new container is healthy and disarmed, checks its unauthenticated API protection, confirms the old container belongs to the expected Compose project, then runs `docker compose down` for **only** `sniper-paper-desk`. It rechecks the new service and attempts to restart the old project if cutover verification fails. It does not remove old data, images, environment files or volumes. The new app remains on `127.0.0.1:8010`; use the private SSH tunnel or configured HTTPS hostname for access. This script cannot make the old HTTP port 8004 into a secure live trading URL.
+
 A passing GitHub code test is not proof of a successful VPS deployment. Inspect the deployment Actions log and the VPS health endpoint for actual server status.
 
 ## One-time secure SSH bootstrap from your Windows computer

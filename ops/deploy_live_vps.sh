@@ -36,7 +36,7 @@ tar --exclude='__pycache__' --exclude='*.pyc' --exclude='.env' --exclude='.env.*
     -czf "$WORK/live.tgz" \
     bridge scripts live_desk \
     requirements-bridge.txt requirements-live-test.txt requirements-live.txt \
-    ops/activate_live_vps.sh
+    ops/activate_live_vps.sh ops/retire_old_dashboard.sh
 REMOTE="${USER_NAME}@${HOST}"
 REMOTE_TAR="/tmp/kotak-news-live-${SHA}.tgz"
 echo "Uploading live-only release to the separate $BASE/release directory..."

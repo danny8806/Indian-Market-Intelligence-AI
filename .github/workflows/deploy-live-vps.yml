@@ -42,6 +42,7 @@ jobs:
           node --check live_desk/static/app.js
           bash -n ops/deploy_live_vps.sh
           bash -n ops/activate_live_vps.sh
+          bash -n ops/retire_old_dashboard.sh
       - name: Deploy separate live-only service over pinned SSH (orders OFF)
         env:
           VPS_HOST: ${{ secrets.VPS_HOST }}
