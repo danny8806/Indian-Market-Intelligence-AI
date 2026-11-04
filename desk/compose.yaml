@@ -1,4 +1,5 @@
 # Deploy behind HTTPS and a reverse proxy. Loopback prevents public access over plaintext.
+# Host 8005 avoids replacing the existing Sniper VPS service on 8004.
 services:
   news-paper-desk:
     build:
@@ -10,7 +11,7 @@ services:
       SIGNAL_BRIDGE_TOKEN: ${SIGNAL_BRIDGE_TOKEN:?Set a strong secret in your private .env}
       DASHBOARD_PASSWORD: ${DASHBOARD_PASSWORD:?Set your dashboard password}
       DASHBOARD_SESSION_SECRET: ${DASHBOARD_SESSION_SECRET:?Use a 32+ character random secret}
-      DASHBOARD_COOKIE_SECURE: "true"
+      DASHBOARD_COOKIE_SECURE: ${DASHBOARD_COOKIE_SECURE:-true}
       PAPER_DESK_DB: /data/news_paper.sqlite3
       DESK_HOST: 0.0.0.0
       DESK_PORT: 8004
@@ -23,7 +24,7 @@ services:
       DESK_ENTRY_CUTOFF_IST: "09:20"
       DESK_EXIT_TIME_IST: "15:25"
     ports:
-      - "127.0.0.1:8004:8004"
+      - "127.0.0.1:${DESK_PUBLIC_PORT:-8005}:8004"
     volumes:
       - news-paper-data:/data
     healthcheck:
