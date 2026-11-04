@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0c1118">
+  <base href="/">
+  <title>News Signal · Paper Desk</title>
+  <link rel="stylesheet" href="static/styles.css?v=interactive-1">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand-mark">S</div>
+      <div class="sidebar-label">WORKSPACE</div>
+      <div class="side-nav">
+        <button class="nav-item active" title="Dashboard" aria-label="Dashboard" data-target="dashboardTop"><span>▦</span><b>Dashboard</b></button>
+        <button class="nav-item" title="Watchlist" aria-label="Watchlist" data-target="watchlistPanel"><span>☷</span><b>Watchlist</b></button>
+        <button class="nav-item" title="Paper book" aria-label="Paper book" data-target="paperBookPanel"><span>▤</span><b>Paper book</b></button>
+        <button class="nav-item" title="Activity" aria-label="Activity" data-target="activityPanel"><span>◷</span><b>Activity</b></button>
+        <button class="nav-item" title="Performance" aria-label="Performance" data-target="performancePanel"><span>↗</span><b>Performance</b></button>
+        <button class="nav-item" title="Trade history" aria-label="Trade history" data-target="tradeHistoryPanel"><span>≡</span><b>Trade log</b></button>
+        <button class="nav-item" title="Strategy rules" aria-label="Strategy rules" data-target="strategyPanel"><span>⚙</span><b>Strategy</b></button>
+      </div>
+      <div class="sidebar-bottom"><span class="mini-led"></span><span>DHAN PAPER ENGINE</span></div>
+    </aside>
+
+    <main class="main-area">
+      <header id="dashboardTop" class="topbar">
+        <div class="brand-lockup">
+          <div class="brand-title">NEWS SIGNALS <span>· PAPER DESK</span></div>
+          <div class="brand-subtitle">Next-session direction · simulated execution only</div>
+        </div>
+        <div class="topbar-right">
+          <div class="mode-chip"><span class="mode-dot"></span>DEMO / PAPER</div>
+          <div class="market-chip"><span id="connectionDot" class="status-dot amber"></span><span id="connectionText">Waiting for verified news signals</span></div>
+          <div class="market-chip" id="dhanAuthChip" title="Dhan data token status"><span id="dhanAuthText">DHAN: NOT_STARTED</span></div>
+          <div id="storageChip" class="market-chip storage-chip" title="Paper ledger status"><span id="storageDot" class="status-dot amber"></span><span id="storageText">Ledger loading</span></div>
+          <div class="market-chip"><span class="exchange-mark">NSE</span><span id="marketText">Checking market</span></div>
+          <button id="logoutButton" class="login-action" type="button">Sign out</button>
+          <div id="clockText" class="clock-text">--:--:-- IST</div>
+        </div>
+      </header>
+
+      <section class="metrics-grid">
+        <article class="metric-card"><div class="metric-label">PAPER CAPITAL</div><div id="capitalMetric" class="metric-value">₹10,00,000</div><div class="metric-foot">₹1 lakh allocated per stock</div></article>
+        <article class="metric-card"><div class="metric-label">TODAY P&amp;L</div><div id="dayPnlMetric" class="metric-value positive">₹0.00</div><div id="pnlBreakdown" class="metric-foot">Realized ₹0 · Open ₹0</div></article>
+        <article class="metric-card"><div class="metric-label">OPEN EXPOSURE</div><div id="exposureMetric" class="metric-value">₹0 / ₹10L</div><div class="meter"><span id="exposureMeter"></span></div></article>
+        <article class="metric-card"><div class="metric-label">OPEN POSITIONS</div><div id="positionsMetric" class="metric-value">0 / 10</div><div class="metric-foot"><span id="tradesMetric">0 trades today</span><span id="paperState" class="paper-state">ENTRIES ON</span></div></article>
+      </section>
+
+      <section id="portfolioPanel" class="panel portfolio-panel">
+        <div class="panel-heading"><div><h2>Verified news-selected portfolio</h2><p>Daily ranked LONG and SHORT research candidates · no prediction models</p></div><span id="portfolioRuntimeState" class="safe-chip">RUNTIME NOT READY</span></div>
+        <div class="table-scroll"><table class="positions-table"><thead><tr><th>STOCK</th><th>SIDE / RANK</th><th>STOP</th><th class="num">CAPITAL</th><th>NEWS SIGNAL</th></tr></thead><tbody id="portfolioConfigBody"><tr><td colspan="5" class="empty-row">Loading selected portfolio…</td></tr></tbody></table></div>
+      </section>
+
+      <section class="workspace-grid">
+        <article id="watchlistPanel" class="panel scanner-panel">
+          <div class="panel-heading scanner-heading">
+            <div><h2>AI News Watchlist</h2><p id="scannerCaption">Verified 9 AM news candidates · live Dhan prices</p></div>
+            <div class="table-tools">
+              <label class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="Search symbol" autocomplete="off"></label>
+              <select id="signalFilter" aria-label="Filter signals"><option value="ALL">All signals</option><option value="BUY">BUY</option><option value="SELL">SELL</option><option value="WAIT">WAIT</option></select>
+              <select id="forecastFilter" aria-label="Filter news direction"><option value="ALL">All forecasts</option><option value="UP">Forecast UP</option><option value="DOWN">Forecast DOWN</option></select>
+              <select id="positionFilter" aria-label="Filter position status"><option value="ALL">All positions</option><option value="OPEN">Open positions</option><option value="FLAT">No open position</option></select>
+              <select id="scannerSort" aria-label="Sort scanner"><option value="symbol">Symbol A–Z</option><option value="change_desc">Day change ↓</option><option value="change_asc">Day change ↑</option><option value="ltp_desc">Price ↓</option><option value="pnl_desc">P&amp;L ↓</option></select>
+              <button id="pauseButton" class="small-button">Pause entries</button>
+            </div>
+          </div>
+          <div class="table-scroll">
+            <table class="scanner-table">
+              <thead><tr><th>#</th><th>SYMBOL</th><th class="num">LTP (₹)</th><th class="num">DAY %</th><th>NEWS DIRECTION</th><th>POSITION</th><th class="num">ENTRY (₹)</th><th class="num">P&amp;L (₹)</th><th>STATE</th></tr></thead>
+              <tbody id="scannerBody"><tr><td colspan="9" class="empty-row">Waiting for market data…</td></tr></tbody>
+            </table>
+          </div>
+          <div class="scanner-foot"><span><i class="legend-dot green"></i> BUY / profitable</span><span><i class="legend-dot red"></i> SELL / loss</span><span><i class="legend-dot amber"></i> Waiting / signal only</span><span id="historyStatus" class="history-status">History backfill pending</span></div>
+        </article>
+
+        <article class="panel chart-panel">
+          <div class="chart-heading">
+            <div><div id="chartSymbol" class="chart-symbol">SBIN <span>· NSE · 15m</span></div><div class="chart-subline"><span id="chartPrice">—</span><span id="chartChange" class="muted">—</span></div></div>
+            <span id="chartSignal" class="signal-chip wait">WAIT</span>
+          </div>
+          <div class="chart-tools"><span>15 MIN</span><div class="chart-range-controls" role="group" aria-label="Candles shown"><button type="button" data-candle-range="30">30</button><button type="button" data-candle-range="60" class="active">60</button><button type="button" data-candle-range="120">120</button><button type="button" data-candle-range="ALL">All</button></div><button id="crosshairToggle" class="chart-tool-button active" type="button" aria-pressed="true">Crosshair</button><span id="chartRangeCaption" class="chart-range-caption">60 candles</span><span id="chartFeedState" class="chart-live historical"><i class="mini-led"></i> HISTORY</span><span class="chart-spacer"></span><span id="chartVolume">VOL —</span></div>
+          <div class="chart-canvas-wrap"><canvas id="candleChart" aria-label="15 minute candlestick chart with OHLC hover details" tabindex="0"></canvas><div id="chartEmpty" class="chart-empty">Dhan 15-minute candles will appear after history sync.</div><div id="candleTooltip" class="chart-tooltip" role="status" aria-live="polite"></div></div>
+          <div class="position-detail">
+            <div class="detail-title"><b id="positionTitle">SBIN · No paper position</b><span id="autoExit">Auto exit 15:00 IST</span></div>
+            <div class="detail-grid">
+              <div><small>SIDE</small><b id="detailSide">—</b></div>
+              <div><small>QTY</small><b id="detailQty">—</b></div>
+              <div><small>ENTRY</small><b id="detailEntry">—</b></div>
+              <div><small>LIVE P&amp;L</small><b id="detailPnl">—</b></div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="bottom-grid">
+        <article id="activityPanel" class="panel lower-panel">
+          <div class="lower-heading"><div><h3>Today's news signals &amp; paper activity</h3><p>Verified news, simulated entries and exits</p></div><span class="panel-kicker">IST</span></div>
+          <div class="activity-list" id="activityList"><div class="empty-row">No signals recorded today.</div></div>
+        </article>
+        <article id="paperBookPanel" class="panel lower-panel positions-panel">
+          <div class="lower-heading"><div><h3>Paper positions</h3><p>Open paper trades · live mark-to-market</p></div><div class="pnl-mini"><span>OPEN P&amp;L</span><b id="openPnlMini">₹0.00</b></div></div>
+          <div class="table-scroll lower-table-scroll"><table class="positions-table"><thead><tr><th>SYMBOL</th><th>SIDE</th><th class="num">QTY</th><th class="num">ENTRY</th><th class="num">LTP</th><th class="num">GROSS P&amp;L</th></tr></thead><tbody id="positionsBody"><tr><td colspan="6" class="empty-row">No open paper positions</td></tr></tbody></table></div>
+          <div class="realized-row"><span>Realized today</span><b id="realizedPnl">₹0.00</b><span class="cost-note">Simulated entry at session open · fees and slippage are not modeled</span></div>
+          <div class="trade-history-heading"><span>RECENT CLOSED TRADES</span><span id="closedTradeCount">0</span></div>
+          <div class="table-scroll lower-table-scroll"><table class="positions-table"><thead><tr><th>SYMBOL</th><th>SIDE</th><th class="num">QTY</th><th class="num">ENTRY</th><th class="num">EXIT</th><th class="num">GROSS P&amp;L</th></tr></thead><tbody id="closedTradesBody"><tr><td colspan="6" class="empty-row">No closed paper trades</td></tr></tbody></table></div>
+        </article>
+        <article id="strategyPanel" class="panel lower-panel rules-panel">
+          <div class="lower-heading"><div><h3>Strategy &amp; session</h3><p>Paper-only execution rules</p></div><span class="safe-chip">NO LIVE ORDERS</span></div>
+          <div class="rule-list">
+            <div><span class="rule-index">01</span><span><b>News-based LONG / SHORT</b><small>Signals published against a fixed 09:00 IST research cutoff.</small></span></div>
+            <div><span class="rule-index">02</span><span><b>₹1L per stock · ₹10L total</b><small>Whole shares, rounded down at the 09:15 open.</small></span></div>
+            <div><span class="rule-index">03</span><span><b>News signal and protective stop</b><small>Default 2% paper stop-loss, adjustable by configuration.</small></span></div>
+            <div><span class="rule-index">04</span><span><b>Live stop checks</b><small>Dhan ticker prices monitor stops; REST LTP checks back up open positions if the WebSocket drops.</small></span></div>
+            <div><span class="rule-index">05</span><span><b>15:00 session exit</b><small>Latest live Dhan price; candle history is not required.</small></span></div>
+          </div>
+        </article>
+      </section>
+
+      <section id="performancePanel" class="panel analytics-panel">
+        <div class="panel-heading analytics-heading"><div><h2>Performance &amp; returns</h2><p>Closed-trade results from the persistent paper ledger</p></div><span class="panel-kicker">₹10L STARTING CAPITAL</span></div>
+        <div class="analytics-grid">
+          <article class="analytics-card"><span>REALIZED GROSS P&amp;L</span><b id="perfReturn">₹0.00</b><small id="perfReturnPct">0.00% of starting capital</small><button class="card-action" type="button" data-history-outcome="">Review all trades ↗</button></article>
+          <article class="analytics-card"><span>WIN RATE</span><b id="perfWinRate">0.00%</b><small id="perfTradeSplit">0 wins · 0 losses · 0 flat</small><button class="card-action" type="button" data-history-outcome="WIN">Review winning trades ↗</button></article>
+          <article class="analytics-card"><span>GROSS PROFIT FACTOR</span><b id="perfProfitFactor">—</b><small>Gross wins ÷ gross losses</small><button class="card-action" type="button" data-history-outcome="">Compare all trades ↗</button></article>
+          <article class="analytics-card"><span>MAX CLOSED DRAWDOWN</span><b id="perfDrawdown">₹0.00</b><small id="perfDrawdownPct">Daily realized equity peak-to-trough</small><button class="card-action" type="button" data-history-outcome="LOSS">Review losing trades ↗</button></article>
+          <article class="analytics-card"><span>GROSS PROFIT / LOSS</span><b id="perfGross">₹0.00 / ₹0.00</b><small>Transaction costs not modeled</small><div class="card-actions"><button class="card-action" type="button" data-history-outcome="WIN">Winners</button><button class="card-action" type="button" data-history-outcome="LOSS">Losers</button></div></article>
+          <article class="analytics-card"><span>ESTIMATED FEES</span><b id="perfFees">Not modeled</b><small>Not modeled in this paper ledger</small><span class="card-action muted-action">Unavailable in paper ledger</span></article>
+          <article class="analytics-card"><span>AVERAGE WIN / LOSS</span><b id="perfAvgWinLoss">₹0.00 / ₹0.00</b><small>Gross per winning / losing trade</small><div class="card-actions"><button class="card-action" type="button" data-history-outcome="WIN">Avg win trades</button><button class="card-action" type="button" data-history-outcome="LOSS">Avg loss trades</button></div></article>
+          <article class="analytics-card"><span>OPEN MARK-TO-MARKET</span><b id="perfOpenPnl">₹0.00</b><small id="perfEquityReturn">Return including open P&amp;L: 0.00%</small><button class="card-action" type="button" data-scroll-target="paperBookPanel">View open positions ↗</button></article>
+        </div>
+        <div class="analytics-lower">
+          <div class="equity-card"><div class="subpanel-heading equity-heading"><b>Realized equity curve</b><span id="equityRange">No closed days</span></div><div class="equity-range-tools"><label>From <input id="equityStart" type="date" aria-label="Equity curve start date"></label><label>To <input id="equityEnd" type="date" aria-label="Equity curve end date"></label><div class="equity-presets" role="group" aria-label="Equity curve quick ranges"><button type="button" data-equity-sessions="30">30D</button><button type="button" data-equity-sessions="90">90D</button><button type="button" data-equity-sessions="180">180D</button><button type="button" data-equity-sessions="ALL" class="active">All</button></div><button id="equityReset" class="small-button secondary-button" type="button">Reset</button></div><div class="equity-chart-wrap"><canvas id="equityChart" aria-label="Daily realized paper equity curve with hover values"></canvas><div id="equityEmpty" class="chart-empty">Close paper trades to build the equity curve.</div><div id="equityTooltip" class="chart-tooltip" role="status" aria-live="polite"></div></div><p class="chart-caption">Starting balance ₹10,00,000 · daily closes · open P&amp;L excluded from curve</p></div>
+          <div class="symbol-performance"><div class="subpanel-heading"><b>Returns by symbol</b><span>GROSS P&amp;L</span></div><div class="table-scroll"><table class="positions-table"><thead><tr><th>SYMBOL</th><th class="num">TRADES</th><th class="num">WIN RATE</th><th class="num">GROSS P&amp;L</th></tr></thead><tbody id="symbolPerformanceBody"><tr><td colspan="4" class="empty-row">No closed trades yet</td></tr></tbody></table></div></div>
+        </div>
+      </section>
+
+      <section id="tradeHistoryPanel" class="panel analytics-panel history-panel">
+        <div class="panel-heading analytics-heading"><div><h2>Complete trade history</h2><p>Search and review every saved paper trade, including entry/exit, gross P&amp;L, and exit reason</p></div><span id="tradeHistoryCount" class="panel-kicker">0 TRADES</span></div>
+        <form id="tradeFilters" class="history-filters">
+          <select id="tradeSymbolFilter" aria-label="Filter trade symbol"><option value="">All symbols</option></select>
+          <select id="tradeSideFilter" aria-label="Filter trade side"><option value="">Long and short</option><option value="LONG">Long</option><option value="SHORT">Short</option></select>
+          <select id="tradeOutcomeFilter" aria-label="Filter trade result"><option value="">All outcomes</option><option value="WIN">Winners</option><option value="LOSS">Losers</option></select>
+          <label>From <input id="tradeStartFilter" type="date"></label><label>To <input id="tradeEndFilter" type="date"></label>
+          <button class="small-button" type="submit">Apply filters</button><button class="small-button secondary-button" id="clearTradeFilters" type="button">Reset</button>
+        </form>
+        <div class="table-scroll history-table-scroll"><table class="positions-table history-table"><thead><tr><th>SYMBOL</th><th>SIDE</th><th>ENTRY TIME</th><th>EXIT TIME</th><th class="num">QTY</th><th class="num">ENTRY</th><th class="num">EXIT</th><th class="num">GROSS</th><th class="num">FEES</th><th class="num">GROSS / RETURN</th><th>EXIT REASON</th></tr></thead><tbody id="tradeHistoryBody"><tr><td colspan="11" class="empty-row">Loading trade history…</td></tr></tbody></table></div>
+        <div class="history-pagination"><span id="tradePageStatus">—</span><div><button id="tradePrev" class="small-button" type="button">← Previous</button><button id="tradeNext" class="small-button" type="button">Next →</button></div></div>
+      </section>
+
+      <footer class="footer-bar"><div><span id="footerLed" class="status-dot amber"></span><span id="footerStatus">Portfolio model runtime not ready</span><span class="footer-sep">·</span><span>10-stock mixed-model portfolio</span><span class="footer-sep">·</span><b>Paper execution only</b></div><div class="footer-right">Selected portfolio · Sniper Paper Desk</div></footer>
+    </main>
+  </div>
+  <script src="static/app.js?v=interactive-2"></script>
+</body>
+</html>
