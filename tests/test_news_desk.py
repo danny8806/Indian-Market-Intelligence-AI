@@ -75,7 +75,7 @@ class NewsDeskTests(unittest.TestCase):
 
     def test_dashboard_auth_and_source_asset_present(self):
         self.assertEqual(self.client.get("/api/state").status_code,401)
-        self.assertEqual(self.client.get("/").status_code,303)
+        self.assertEqual(self.client.get("/",follow_redirects=False).status_code,303)
         self.assertEqual(self.client.get("/static/app.js").status_code,200)
         self.login()
         self.assertEqual(self.client.get("/").status_code,200)
