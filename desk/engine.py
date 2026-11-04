@@ -73,11 +73,18 @@ class PaperLedger:
 
     @contextmanager
     def connect(self):
-        with sqlite3.connect(self.path,timeout=20) as db:
+        db = sqlite3.connect(self.path, timeout=20)
+        try:
             db.row_factory = sqlite3.Row
             db.execute("PRAGMA busy_timeout=20000")
             db.execute("PRAGMA journal_mode=WAL")
             yield db
+            db.commit()
+        except Exception:
+            db.rollback()
+            raise
+        finally:
+            db.close()
 
     def paper_enabled(self):
         with self.lock, self.connect() as db:
