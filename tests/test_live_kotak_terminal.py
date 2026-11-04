@@ -41,7 +41,8 @@ class FakeBroker:
         return {"stat":"Ok","data":[]}
     def trade_report(self):
         return {"stat":"Ok","data":[]}
-    def limits(self, **kwargs):
+    def limits(self):
+        # Official kotakneoapi v3 signature, no legacy filter arguments.
         return {"stat":"Ok","Net":"1500000"}
     def place_order(self, **kwargs):
         self.order_calls+=1
@@ -136,6 +137,16 @@ class LiveTerminalTests(unittest.TestCase):
         result=parse_positions(self.broker,{})
         self.assertEqual(result[0]["side"],"LONG")
         self.assertIsNone(result[0]["gross_mark_to_market"])
+
+    def test_old_dhan_quote_never_generates_live_mtm(self):
+        self.supervisor.session_date=TODAY.date().isoformat()
+        self.supervisor.broker=self.broker
+        self.supervisor.quote_data={"TESTA":{
+            "ltp":125,"tick_at":"2026-11-04T09:00:00+05:30"}}
+        self.supervisor.refresh_broker()
+        self.assertEqual(len(self.supervisor.broker_positions),1)
+        self.assertIsNone(self.supervisor.broker_positions[0]["gross_mark_to_market"])
+        self.assertEqual(self.broker.order_calls,0)
 
     def test_broker_status_includes_real_books_only(self):
         self.supervisor.cycle()
