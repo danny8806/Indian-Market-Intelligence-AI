@@ -1,0 +1,24 @@
+# This binds only to localhost for safety. Put a TLS reverse proxy in front
+# of the service before accepting connections from external cloud clients.
+services:
+  signal-bridge:
+    build:
+      context: ..
+      dockerfile: bridge/Dockerfile
+    restart: unless-stopped
+    environment:
+      SIGNAL_DATABASE_URL: sqlite:////data/signals.sqlite3
+      SIGNAL_BRIDGE_TOKEN: ${SIGNAL_BRIDGE_TOKEN:?Set a random 32+ character secret in your shell or .env file}
+      SIGNAL_BRIDGE_HOST: 0.0.0.0
+      SIGNAL_BRIDGE_PORT: 8000
+    ports:
+      - "127.0.0.1:8000:8000"
+    volumes:
+      - signal-bridge-db:/data
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/api/v1/health',timeout=3)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+volumes:
+  signal-bridge-db:
