@@ -3,10 +3,10 @@
   "status": "UNAVAILABLE",
   "market": "NSE",
   "timezone": "Asia/Kolkata",
-  "session_date": null,
-  "news_cutoff_at": null,
-  "generated_at": null,
+  "session_date": "2026-11-04",
+  "news_cutoff_at": "2026-11-04T09:00:00+05:30",
+  "generated_at": "2026-11-04T09:00:57.696Z",
   "execution_enabled": false,
   "signals": [],
-  "reason": "Awaiting first source-verified scheduled report. Not a trade signal."
+  "reason": "Integration smoke test: no source-verified research report was generated for this test file."
 }
