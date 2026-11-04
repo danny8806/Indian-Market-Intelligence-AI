@@ -1,5 +1,8 @@
 # Indian Market Intelligence AI — Signal Feed
 
+> **Direct API integration available:** Use [bridge/README.md](bridge/README.md) to send complete research-signal JSON over authenticated HTTPS directly to your dashboard's FastAPI receiver. GitHub is only a source-code host in this mode; no signal-file polling is needed. The bridge receiver/sender and CI tests are implemented, but no public deployment or automatic ChatGPT-to-API delivery has yet been verified.
+
+
 Machine-readable daily **research watchlist**, published for use by a dashboard. This project **does not place orders**.
 
 ## Feed
