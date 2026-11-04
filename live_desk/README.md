@@ -70,7 +70,7 @@ LIVE_ARM_TOTP_SECRET=
 5. The API and UI share one server and database. The browser requires dashboard login. Signal ingestion requires a different token.
 6. Run `docker compose -f live_desk/compose.yaml up -d --build` to start the loopback-bound container. It is purposely not publicly exposed.
 
-For a cloud VPS: deploy behind HTTPS, use a managed secret store, persistent encrypted database and backups, stable clock, restricted network access, alerts, independent broker position reconciliation, and a single active supervisor process. Set `DASHBOARD_COOKIE_SECURE=true` in production. Never put Kotak MPIN/TOTP seeds into GitHub code, CI logs, ChatGPT or the browser.
+For a cloud VPS: deploy behind HTTPS, use a managed secret store, persistent encrypted database and backups, stable clock, restricted network access, alerts, independent broker position reconciliation, and a single active supervisor process. Set `DASHBOARD_COOKIE_SECURE=true` in production and configure `DASHBOARD_PUBLIC_ORIGIN=https://your-domain.example` to validate cross-site request origin through a TLS reverse proxy. Never put Kotak MPIN/TOTP seeds into GitHub code, CI logs, ChatGPT or the browser.
 
 ## Default safety locks
 
