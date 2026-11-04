@@ -178,8 +178,17 @@ class LiveSupervisor:
 
     def refresh_broker(self):
         if self.broker is None:return
+        now=self.now()
         with self.lock:
-            current_quotes=dict(self.quote_data)
+            # Never calculate brokerage MTM from stale Dhan prices.
+            current_quotes={}
+            for symbol,q in self.quote_data.items():
+                ts=q.get("tick_at")
+                if not ts:continue
+                try:age=now-datetime.fromisoformat(ts).astimezone(IST)
+                except (ValueError,TypeError):continue
+                if timedelta(0)<=age<=PRICE_EXPIRY:
+                    current_quotes[symbol]=dict(q)
         position=broker_view.positions(self.broker,current_quotes)
         orders=broker_view.orders(self.broker)
         fills=broker_view.fills(self.broker)
