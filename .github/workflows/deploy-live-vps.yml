@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'ops/**'
+      - 'tests/test_vps_bootstrap.py'
       - 'live_desk/**'
       - 'bridge/**'
       - 'scripts/validate_signals.py'
@@ -37,6 +38,7 @@ jobs:
       - name: Check Python, browser JavaScript, deployment shell
         run: |
           python -m compileall -q live_desk bridge scripts
+          python -m py_compile ops/bootstrap_deploy_access.py
           node --check live_desk/static/app.js
           bash -n ops/deploy_live_vps.sh
           bash -n ops/activate_live_vps.sh
