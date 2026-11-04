@@ -33,6 +33,9 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Run signal safety regression tests
+        run: python -m unittest discover -s tests -v
+
       - name: Validate input and prepare latest signal
         env:
           TZ: Asia/Kolkata
