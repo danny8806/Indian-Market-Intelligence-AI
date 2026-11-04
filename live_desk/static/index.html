@@ -21,7 +21,7 @@
 <section class="panel"><div class="heading"><b>Live execution & risk gate</b><span id="gate" class="pill red">DISARMED</span></div>
 <div class="detail"><div><b>Execution policy</b><p class="muted" id="policy">9:15 one-minute opening range • fresh tick breakout • daily caps</p></div>
 <div><b>Connection diagnostics</b><p id="diagnostics" class="meta">Waiting for Dhan and Kotak Neo authentication</p></div>
-<div class="alert">This dashboard is for actual-money Kotak Neo orders. The research JSON is NOT an order command. No paper mode exists. Operator arming is locked until prerequisites and broker checks pass. Never arm with unverified risk settings.</div>
+<div class="alert">This dashboard is for actual-money Kotak Neo orders. The research JSON is NOT an order command. Only real Kotak Neo positions and order reports are supported. Operator arming is locked until prerequisites and broker checks pass. Never arm with unverified risk settings.</div>
 <div class="control"><button id="arm" class="primary" disabled>Arm real-money orders</button><button id="disarm" class="danger">Disarm new entries</button></div>
 <div class="status" id="armNotice">Real-money order submission is disabled by default.</div></div></section>
 </div>
@@ -31,6 +31,6 @@
 <section class="panel"><div class="heading"><b>Real executed fills</b><span class="meta" id="fillCount">—</span></div>
 <div class="table-scroll"><table><thead><tr><th>Fill ID</th><th>Symbol</th><th class="right-align">Qty</th><th class="right-align">Fill price</th><th>Time</th></tr></thead><tbody id="fillBody"><tr><td colspan="5" class="empty">No broker fills received</td></tr></tbody></table></div></section></div>
 <section class="panel"><div class="heading"><b>Live audit & errors</b><span class="meta" id="updated">—</span></div><div class="detail"><p class="meta" id="errors">No status received.</p><p class="meta" id="intentInfo">Orders from the durable intent ledger will appear only after broker reporting.</p></div></section>
-<div class="foot">LIVE ONLY · No paper engine, backtest fills, or synthetic positions. Kotak broker reports are authoritative. Private credentials must stay on the server.</div></main>
+<div class="foot">LIVE ONLY · No model-based or synthetic positions. Only broker-reported executions. Kotak broker reports are authoritative. Private credentials must stay on the server.</div></main>
 <div class="modal-bg" id="armModal"><div class="modal" role="dialog" aria-modal="true" aria-label="Authorize live orders"><h2>Authorize real-money orders</h2><p class="muted">This operation can submit actual Kotak Neo orders to your account. Confirm session limits and broker connectivity first.</p><form id="armForm"><label for="authorization">Type the exact authorization phrase</label><input id="authorization" autocomplete="off" required placeholder="I AUTHORIZE LIVE KOTAK ORDERS"/><label for="otp">Operator TOTP (6 digits)</label><input id="otp" type="password" inputmode="numeric" autocomplete="one-time-code" maxlength="6" minlength="6" required/><div class="modal-actions"><button type="button" id="cancelArm">Cancel</button><button type="submit" class="danger">Authorize real orders</button></div><p id="armError" class="negative" role="alert"></p></form></div></div>
 <script src="/static/app.js" defer></script></body></html>
