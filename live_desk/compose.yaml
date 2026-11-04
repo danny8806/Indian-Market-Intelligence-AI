@@ -12,6 +12,7 @@ services:
       DASHBOARD_PASSWORD: ${DASHBOARD_PASSWORD:?Set a strong dashboard password}
       DASHBOARD_SESSION_SECRET: ${DASHBOARD_SESSION_SECRET:?Set random 32+ char session secret}
       DASHBOARD_COOKIE_SECURE: "true"
+      DASHBOARD_PUBLIC_ORIGIN: ${DASHBOARD_PUBLIC_ORIGIN:-}
       LIVE_HOST: 0.0.0.0
       LIVE_PORT: "8010"
       LIVE_ORDERS_ALLOWED: "NO"
