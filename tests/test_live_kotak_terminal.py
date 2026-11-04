@@ -140,6 +140,18 @@ class LiveTerminalTests(unittest.TestCase):
         self.assertIsNone(self.supervisor.runtime)
         self.assertEqual(self.broker.order_calls,0)
 
+    def test_missing_kotak_configuration_is_quiet_and_disarmed(self):
+        keys=("KOTAK_NEO_CONSUMER_KEY","KOTAK_NEO_MOBILE_NUMBER","KOTAK_NEO_UCC",
+              "KOTAK_NEO_MPIN","KOTAK_NEO_TOTP_SECRET")
+        with patch.dict(os.environ,{key:"" for key in keys}):
+            desk=LiveSupervisor(self.bridge.state.engine,
+                ledger_path=Path(self.tmp.name)/"unconfigured-orders.db",clock=self.clock)
+            desk.cycle()
+        self.assertEqual(desk.status,"NEEDS_KOTAK_CREDENTIALS")
+        self.assertIsNone(desk.error)
+        self.assertIsNone(desk.broker)
+        self.assertFalse(desk.armed)
+
     def test_operator_disarm_clears_entry_gate(self):
         self.supervisor.armed=True
         self.supervisor.disarm("Test")

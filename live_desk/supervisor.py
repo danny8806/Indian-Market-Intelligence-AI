@@ -40,6 +40,7 @@ class LiveSupervisor:
                                                        "/data/live_kotak_orders.sqlite3")))
         self.dhan_factory=dhan_factory or DhanDataClient.from_environment
         self.kotak_factory=kotak_factory or (lambda:login_kotak(KotakCredentials.from_environment()))
+        self.kotak_from_environment=kotak_factory is None
         self.master_fetch=master_fetch or fetch_dhan_symbols
         self.ticker_factory=ticker_factory or LiveTicker
         self.allowed=os.getenv("LIVE_ORDERS_ALLOWED","").strip()=="YES"
@@ -356,7 +357,16 @@ class LiveSupervisor:
         if now.weekday()>=5:return
         # Monitor the actual Kotak brokerage account even when news is missing.
         # No signals must NEVER be interpreted as fabricated positions.
-        if self.broker is None:self.broker=self.kotak_factory()
+        if self.broker is None:
+            if self.kotak_from_environment:
+                try:
+                    KotakCredentials.from_environment()
+                except ValueError:
+                    with self.lock:
+                        self.status="NEEDS_KOTAK_CREDENTIALS"
+                        self.error=None
+                    return
+            self.broker=self.kotak_factory()
         if self.last_book_at is None or now-self.last_book_at>=BOOK_REFRESH:
             self.refresh_broker()
         has_report=self._load_report()
