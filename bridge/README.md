@@ -59,11 +59,11 @@ A local development-only command can use `--url http://127.0.0.1:8000/api/v1/sig
 
 ### Dashboard reader
 
-Use `GET /api/v1/signals/latest` with a server-side Bearer token, check `status`, `session_date`, `report.execution_enabled=false`, and verify the report before displaying signals. Never put the secret into the browser: your backend should proxy a sanitized view to the UI. Your real trading engine must remain disconnected.
+Use `GET /api/v1/signals/latest` with a server-side Bearer token, check `status`, `session_date`, `report.execution_enabled=false`, and verify the report before displaying signals. Never put the secret into the browser: the live desk proxies a sanitized view to the UI and independently gates any order path.
 
 ## Important limitation: ChatGPT scheduled tasks
 
-The existing ChatGPT 09:00 task is configured to research and *attempt GitHub publication*. That route can remain as a fallback, but it is **not** required to use this API. For **direct** delivery, an authorized sender must actually POST the report to a deployed, reachable bridge URL. This repository provides both sender and receiver, **not a direct HTTP capability inside the ChatGPT product scheduler**. Whether that scheduler can call your arbitrary API is unverified and may require a separate connected integration or a producer service using the OpenAI API. Do not claim automatic AI->API delivery until a real scheduled run receives an `ACCEPTED` acknowledgment.
+The old ChatGPT 09:00 task was configured to attempt GitHub publication. The live desk does not consume that path. For **direct** delivery, an authorized sender must actually POST the report to a deployed, reachable bridge URL. This repository provides both sender and receiver, **not a direct HTTP capability inside the ChatGPT product scheduler**. Whether that scheduler can call your arbitrary API is unverified and may require a separate connected integration or a producer service using the OpenAI API. Do not claim automatic AI->API delivery until a real scheduled run receives an `ACCEPTED` acknowledgment. See [CHATGPT_TASK_PROMPT.md](CHATGPT_TASK_PROMPT.md) for a prompt and delivery acceptance checklist.
 
 If there is no verified report, deliver `UNAVAILABLE` or `NO_TRADE` with an empty signals array. Under no circumstances invent stock picks or treat unavailable data as trades.
 

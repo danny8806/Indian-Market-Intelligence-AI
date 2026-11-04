@@ -1,4 +1,17 @@
-# Indian Market Intelligence AI — Signal Feed
+# Indian Market Intelligence AI — Live Kotak Desk
+
+The production `live_desk` reads daily research reports from its own authenticated
+`POST /api/v1/signals/incoming` receiver and persistent signal database. GitHub
+is used for source and deployment only; the legacy `signals/` files and
+`publish-signals.yml` workflow are not the live desk's daily transport. A
+ChatGPT scheduled task has not yet been verified to POST to this API, and the
+VPS deployment is still pending authorized SSH access. Real order submission
+remains disabled in the committed Compose configuration.
+
+See [live_desk/README.md](live_desk/README.md) and [ops/README.md](ops/README.md)
+for the live application and deployment procedure. The signal-feed description
+below documents the older research feed and must not be interpreted as proof
+of delivery to the live desk.
 
 ## Live Kotak Neo Dashboard (no simulated execution)
 

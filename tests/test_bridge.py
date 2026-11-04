@@ -1,4 +1,5 @@
 import tempfile
+import json
 import unittest
 from datetime import datetime
 from pathlib import Path
@@ -45,6 +46,21 @@ class BridgeTests(unittest.TestCase):
         self.report["session_date"] = "2026-11-03"
         self.assertEqual(self.client.post("/api/v1/signals/incoming", json=self.report,
                                           headers=self.headers).status_code, 422)
+
+    def test_duplicate_json_key_rejected_before_persistence(self):
+        raw = json.dumps(self.report).replace('"status": "NO_TRADE",',
+            '"status": "READY", "status": "NO_TRADE",', 1)
+        response = self.client.post("/api/v1/signals/incoming", content=raw,
+                                    headers={**self.headers, "Content-Type": "application/json"})
+        self.assertEqual(response.status_code, 422)
+        self.assertFalse(self.client.get("/api/v1/signals/status",
+                                         headers=self.headers).json()["received"])
+
+    def test_non_json_media_type_rejected(self):
+        response = self.client.post("/api/v1/signals/incoming",
+                                    content=json.dumps(self.report),
+                                    headers={**self.headers, "Content-Type": "text/plain"})
+        self.assertEqual(response.status_code, 415)
 
 
 if __name__ == "__main__":

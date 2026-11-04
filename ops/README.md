@@ -78,6 +78,8 @@ Expected: the health JSON says LIVE_ONLY and orders_armed false. The unauthentic
 
 Port 8010 binds only to the server loopback interface. Create a **dedicated HTTPS subdomain** and proxy its root path to 127.0.0.1:8010, using a real TLS certificate and a known public origin. See the Nginx template in this folder. Never reuse the existing plaintext port 8004 browser login for real broker controls. Do not change company Nginx routes without approval.
 
+For initial private verification without a hostname, forward the loopback port with an authorized SSH tunnel and set `DASHBOARD_PUBLIC_ORIGIN=http://127.0.0.1:8010` plus `DASHBOARD_COOKIE_SECURE=false` in the private server environment file. Access only `http://127.0.0.1:8010` through the tunnel. Set the cookie flag back to `true` and the origin to the final HTTPS hostname before any public routing; the Compose default remains secure.
+
 ## Signal delivery and trading readiness
 
 The live-only app accepts direct research reports using an authenticated POST /api/v1/signals/incoming. The producer must actually POST the exact existing JSON v1.0 document; ChatGPT scheduled tasks are not proven to post to an arbitrary API. No delivery means no new live entries.

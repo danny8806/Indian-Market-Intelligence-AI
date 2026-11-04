@@ -32,6 +32,15 @@ reports = Table(
 )
 
 
+def reject_duplicate_keys(pairs):
+    result = {}
+    for key, value in pairs:
+        if key in result:
+            raise ValueError(f"Duplicate JSON key: {key}")
+        result[key] = value
+    return result
+
+
 def create_app(*, database_url: str | None = None, bearer_token: str | None = None,
                now_provider=None) -> FastAPI:
     database_url = database_url or os.environ.get("SIGNAL_DATABASE_URL")
@@ -57,11 +66,13 @@ def create_app(*, database_url: str | None = None, bearer_token: str | None = No
     async def incoming(request: Request, idempotency_key: str | None = Header(default=None)):
         if not idempotency_key or len(idempotency_key) > 128:
             raise HTTPException(status_code=400, detail="Idempotency-Key header is required (max 128 characters)")
+        if request.headers.get("content-type", "").split(";", 1)[0].strip().lower() != "application/json":
+            raise HTTPException(status_code=415, detail="Content-Type must be application/json")
         body = await request.body()
         if len(body) > 256_000:
             raise HTTPException(status_code=413, detail="Signal report exceeds size limit")
         try:
-            payload = json.loads(body)
+            payload = json.loads(body, object_pairs_hook=reject_duplicate_keys)
             current = clock().astimezone(IST)
             validate(payload, expected_date=current.date().isoformat())
             if payload["session_date"] is None:

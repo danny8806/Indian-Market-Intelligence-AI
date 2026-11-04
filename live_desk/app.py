@@ -40,13 +40,18 @@ def create_live_app(*,database_url=None,bearer_token=None,dashboard_password=Non
         if not logged_in(request.cookies.get(COOKIE)):
             raise HTTPException(status_code=401,detail="Sign in to live dashboard")
 
+    def origin_allowed(headers, scheme):
+        origin=headers.get("origin","").rstrip("/")
+        configured=os.getenv("DASHBOARD_PUBLIC_ORIGIN","").strip().rstrip("/")
+        if scheme == "ws":scheme = "http"
+        elif scheme == "wss":scheme = "https"
+        permitted={configured} if configured else {
+            f"{scheme}://{headers.get('host','')}"}
+        return bool(origin) and origin in permitted
+
     def check_origin(request:Request):
         # Origin is required for every state-changing browser request.
-        origin=request.headers.get("origin","")
-        configured=os.getenv("DASHBOARD_PUBLIC_ORIGIN","").strip().rstrip("/")
-        permitted={configured} if configured else {
-            f"{request.url.scheme}://{request.headers.get('host','')}"}
-        if not origin or origin.rstrip("/") not in permitted:
+        if not origin_allowed(request.headers, request.url.scheme):
             raise HTTPException(status_code=403,detail="Invalid action origin")
 
     @app.on_event("startup")
@@ -148,6 +153,9 @@ def create_live_app(*,database_url=None,bearer_token=None,dashboard_password=Non
     async def realtime(websocket:WebSocket):
         if not logged_in(websocket.cookies.get(COOKIE)):
             await websocket.close(code=4401)
+            return
+        if not origin_allowed(websocket.headers, websocket.url.scheme):
+            await websocket.close(code=4403)
             return
         await websocket.accept()
         try:

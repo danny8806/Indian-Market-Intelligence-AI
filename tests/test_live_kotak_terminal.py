@@ -14,6 +14,7 @@ from unittest.mock import patch
 from zoneinfo import ZoneInfo
 
 from fastapi.testclient import TestClient
+from starlette.websockets import WebSocketDisconnect
 from bridge.app import create_app
 from live_desk.app import create_live_app
 from live_desk.broker_view import positions as parse_positions
@@ -121,6 +122,18 @@ class LiveTerminalTests(unittest.TestCase):
         r=self.client.post("/api/live/disarm",headers={"Origin":"https://evil.example"})
         self.assertEqual(r.status_code,403)
         self.assertFalse(self.supervisor.armed)
+
+    def test_websocket_rejects_cross_origin_even_with_login_cookie(self):
+        self.login()
+        with self.assertRaises(WebSocketDisconnect) as caught:
+            with self.client.websocket_connect("/ws", headers={"Origin":"https://evil.example"}):
+                pass
+        self.assertEqual(caught.exception.code, 4403)
+
+    def test_websocket_accepts_same_origin_after_login(self):
+        self.login()
+        with self.client.websocket_connect("/ws", headers={"Origin":"http://testserver"}) as ws:
+            self.assertEqual(ws.receive_json()["mode"], "LIVE_KOTAK_NEO_ONLY")
 
     def test_missing_news_never_triggers_kotak_order(self):
         self.supervisor.cycle()
