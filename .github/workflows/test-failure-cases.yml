@@ -7,6 +7,8 @@ on:
       - 'tests/**'
       - 'scripts/**'
       - 'dashboard/**'
+      - 'bridge/**'
+      - 'requirements-bridge.txt'
       - '.github/workflows/test-failure-cases.yml'
   pull_request:
     paths:
