@@ -43,8 +43,10 @@ def create_live_app(*,database_url=None,bearer_token=None,dashboard_password=Non
     def check_origin(request:Request):
         # Origin is required for every state-changing browser request.
         origin=request.headers.get("origin","")
-        if not origin or origin.rstrip("/") not in {
-            f"{request.url.scheme}://{request.headers.get('host','')}"}:
+        configured=os.getenv("DASHBOARD_PUBLIC_ORIGIN","").strip().rstrip("/")
+        permitted={configured} if configured else {
+            f"{request.url.scheme}://{request.headers.get('host','')}"}
+        if not origin or origin.rstrip("/") not in permitted:
             raise HTTPException(status_code=403,detail="Invalid action origin")
 
     @app.on_event("startup")
