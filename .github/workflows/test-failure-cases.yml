@@ -70,6 +70,50 @@ jobs:
               raise AssertionError("Unauthenticated signal access was allowed")
           print("Real HTTP server boot: PASSED; unauthenticated signal read: 401 (PASSED)")
           PY
+      - name: Build deployable paper desk Docker image
+        run: docker build -f desk/Dockerfile -t verified-news-paper-desk:ci .
+      - name: Start actual paper dashboard HTTP server (no credentials or market feed)
+        shell: bash
+        env:
+          SIGNAL_DATABASE_URL: sqlite:////tmp/news-desk-ci-signal.db
+          PAPER_DESK_DB: /tmp/news-desk-ci-ledger.db
+          SIGNAL_BRIDGE_TOKEN: ci-bridge-token-research-only-over-32-chars
+          DASHBOARD_PASSWORD: ci-dashboard-test-password
+          DASHBOARD_SESSION_SECRET: ci-session-secret-significantly-over-32-characters
+          DASHBOARD_COOKIE_SECURE: "false"
+          DESK_HOST: 127.0.0.1
+          DESK_PORT: "8004"
+        run: |
+          python -m desk.app > /tmp/news-desk-startup.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          python - <<'PY'
+          import time
+          from urllib.request import urlopen
+          from urllib.error import URLError, HTTPError
+          base="http://127.0.0.1:8004"
+          for _ in range(30):
+              try:
+                  with urlopen(base+"/health",timeout=2) as r:
+                      assert r.status == 200
+                      assert r.read().find(b'"paper_only":true') >= 0
+                  break
+              except (URLError, ConnectionError):
+                  time.sleep(.3)
+          else:
+              raise RuntimeError("News paper dashboard did not start")
+          try:
+              urlopen(base+"/api/state",timeout=2)
+          except HTTPError as exc:
+              assert exc.code == 401, exc.code
+          else:
+              raise AssertionError("Dashboard data leaked without login")
+          with urlopen(base+"/login",timeout=2) as r:
+              assert r.status == 200
+          with urlopen(base+"/static/app.js",timeout=2) as r:
+              assert r.status == 200
+          print("Desk startup, 401 auth, login page, static assets: PASSED")
+          PY
       - name: Check fictional demo format (not eligible for publishing)
         run: python scripts/validate_signals.py --allow-sample examples/signals.sample.json
       - name: Check current JSON format
