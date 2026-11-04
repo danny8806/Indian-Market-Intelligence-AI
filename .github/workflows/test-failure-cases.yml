@@ -34,6 +34,36 @@ jobs:
         run: python -m pip install -r requirements-bridge.txt
       - name: Execute isolated failure-injection and validation suite
         run: python -m unittest discover -s tests -v
+      - name: Boot real HTTP bridge and verify fail-closed authentication
+        shell: bash
+        run: |
+          export SIGNAL_DATABASE_URL="sqlite:////tmp/bridge-http-smoke-${{ github.run_id }}.db"
+          export SIGNAL_BRIDGE_TOKEN="$(python -c 'import secrets; print(secrets.token_urlsafe(48))')"
+          python -m bridge.app > /tmp/bridge-http-smoke.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          python - <<'PY'
+          import time
+          from urllib.error import HTTPError, URLError
+          from urllib.request import urlopen
+          health = "http://127.0.0.1:8000/api/v1/health"
+          for attempt in range(20):
+              try:
+                  with urlopen(health, timeout=2) as resp:
+                      assert resp.status == 200
+                  break
+              except (URLError, ConnectionError):
+                  time.sleep(0.5)
+          else:
+              raise RuntimeError("Live FastAPI process failed to boot")
+          try:
+              urlopen("http://127.0.0.1:8000/api/v1/signals/latest", timeout=2)
+          except HTTPError as exc:
+              assert exc.code == 401, f"Expected 401; got {exc.code}"
+          else:
+              raise AssertionError("Unauthenticated signal access was allowed")
+          print("Real HTTP server boot: PASSED; unauthenticated signal read: 401 (PASSED)")
+          PY
       - name: Check fictional demo format (not eligible for publishing)
         run: python scripts/validate_signals.py --allow-sample examples/signals.sample.json
       - name: Check current JSON format
