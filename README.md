@@ -1,5 +1,14 @@
 # Indian Market Intelligence AI — Signal Feed
 
+## Live Kotak Neo Dashboard (no simulated execution)
+
+The new [**live-only Kotak Neo trading dashboard**](live_desk/README.md) consumes this repository's exact v1.0 news-signal contract through the authenticated **direct HTTPS API bridge**, uses read-only Dhan market data for fresh market prices, and shows actual Kotak Neo broker orders, positions and reported fills. There is no local stock-prediction model, no paper trading engine and no synthetic order P&L in the live package.
+
+**Important:** This source-code integration is not a deployed trading service. The committed Docker configuration keeps `LIVE_ORDERS_ALLOWED=NO`. Real-money execution must not be enabled until Kotak/Dhan account credentials, current NSE instrument mappings, Dhan 09:15 bar timestamps, risk controls, broker order reconciliation, network loss behavior, cloud hosting and authorized signal delivery are verified end-to-end.
+
+Use `python -m live_desk.app` after installing `requirements-live.txt` and configuring a private environment; see [live_desk/README.md](live_desk/README.md). The existing signal validation and research workflow remain independent of broker execution.
+
+
 > **Direct API integration available:** Use [bridge/README.md](bridge/README.md) to send complete research-signal JSON over authenticated HTTPS directly to your dashboard's FastAPI receiver. GitHub is only a source-code host in this mode; no signal-file polling is needed. The bridge receiver/sender and CI tests are implemented, but no public deployment or automatic ChatGPT-to-API delivery has yet been verified.
 
 
