@@ -6,12 +6,14 @@ on:
     paths:
       - 'live_desk/**'
       - 'tests/test_live_kotak_terminal.py'
+      - 'tests/test_live_market_timestamp.py'
       - 'requirements-live*.txt'
       - '.github/workflows/test-live-kotak.yml'
   pull_request:
     paths:
       - 'live_desk/**'
       - 'tests/test_live_kotak_terminal.py'
+      - 'tests/test_live_market_timestamp.py'
       - 'requirements-live*.txt'
       - '.github/workflows/test-live-kotak.yml'
   workflow_dispatch:
