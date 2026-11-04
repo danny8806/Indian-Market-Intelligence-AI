@@ -1,0 +1,36 @@
+name: Signal pipeline failure and safety tests
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tests/**'
+      - 'scripts/**'
+      - 'dashboard/**'
+      - '.github/workflows/test-failure-cases.yml'
+  pull_request:
+    paths:
+      - 'tests/**'
+      - 'scripts/**'
+      - 'dashboard/**'
+      - '.github/workflows/test-failure-cases.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Execute isolated failure-injection and validation suite
+        run: python -m unittest discover -s tests -v
+      - name: Check fictional demo format (not eligible for publishing)
+        run: python scripts/validate_signals.py --allow-sample examples/signals.sample.json
+      - name: Check current JSON format
+        run: python scripts/validate_signals.py signals/latest.json
