@@ -1,0 +1,35 @@
+# Deploy behind HTTPS and a reverse proxy. Loopback prevents public access over plaintext.
+services:
+  news-paper-desk:
+    build:
+      context: ..
+      dockerfile: desk/Dockerfile
+    restart: unless-stopped
+    environment:
+      SIGNAL_DATABASE_URL: sqlite:////data/signal_reports.sqlite3
+      SIGNAL_BRIDGE_TOKEN: ${SIGNAL_BRIDGE_TOKEN:?Set a strong secret in your private .env}
+      DASHBOARD_PASSWORD: ${DASHBOARD_PASSWORD:?Set your dashboard password}
+      DASHBOARD_SESSION_SECRET: ${DASHBOARD_SESSION_SECRET:?Use a 32+ character random secret}
+      DASHBOARD_COOKIE_SECURE: "true"
+      PAPER_DESK_DB: /data/news_paper.sqlite3
+      DESK_HOST: 0.0.0.0
+      DESK_PORT: 8004
+      DHAN_CLIENT_ID: ${DHAN_CLIENT_ID:-}
+      DHAN_PIN: ${DHAN_PIN:-}
+      DHAN_TOTP_SECRET: ${DHAN_TOTP_SECRET:-}
+      DESK_STARTING_CAPITAL_INR: "1000000"
+      DESK_CAPITAL_PER_STOCK_INR: "100000"
+      DESK_STOP_LOSS_PCT: "2.0"
+      DESK_ENTRY_CUTOFF_IST: "09:20"
+      DESK_EXIT_TIME_IST: "15:25"
+    ports:
+      - "127.0.0.1:8004:8004"
+    volumes:
+      - news-paper-data:/data
+    healthcheck:
+      test: ["CMD","python","-c","import urllib.request; urllib.request.urlopen('http://127.0.0.1:8004/health',timeout=4)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+volumes:
+  news-paper-data:
