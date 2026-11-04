@@ -41,10 +41,10 @@ jobs:
           bash -n ops/deploy_live_vps.sh ops/activate_live_vps.sh
       - name: Deploy separate live-only service over pinned SSH (orders OFF)
         env:
-          VPS_HOST: ${{ secrets.VPS_HOST }
-          VPS_USER: ${{ secrets.VPS_USER }
-          VPS_SSH_PRIVATE_KEY: ${{ secrets.VPS_SSH_PRIVATE_KEY }
-          VPS_SSH_KNOWN_HOSTS: ${{ secrets.VPS_SSH_KNOWN_HOSTS }
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+          VPS_SSH_PRIVATE_KEY: ${{ secrets.VPS_SSH_PRIVATE_KEY }}
+          VPS_SSH_KNOWN_HOSTS: ${{ secrets.VPS_SSH_KNOWN_HOSTS }}
         run: |
           bash ops/deploy_live_vps.sh
           echo 'LIVE-ONLY MONITORING DEPLOYMENT: VPS local health and auth checks passed.' >> "$GITHUB_STEP_SUMMARY"
