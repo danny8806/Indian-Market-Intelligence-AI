@@ -85,3 +85,31 @@ The live-only app accepts direct research reports using an authenticated POST /a
 The deployment runs with real-money orders disabled and with the Dhan opening-candle timestamp convention unset until verified against a real exchange response. It does **not** place orders or authenticate a real Kotak account during the smoke check. Broker-native protective stops and crash recovery must be independently verified before enabling unattended real-money operation.
 
 A passing GitHub code test is not proof of a successful VPS deployment. Inspect the deployment Actions log and the VPS health endpoint for actual server status.
+
+## One-time secure SSH bootstrap from your Windows computer
+
+An audit of the user's older public MCX repository identified scripts with hardcoded historical VPS passwords. **Assume that old VPS password is compromised and rotate it through your hosting provider's trusted console before continuing.** Removing it from a repository's current files alone does not erase Git history.
+
+The new [bootstrap_deploy_access.py](bootstrap_deploy_access.py) utility allows an authorized operator to convert their **new private VPS password (or existing private local environment file)** into a separate ED25519 GitHub Actions deployment key. This is a local workstation step; it does not expose the password to GitHub.
+
+1. On your Windows computer, install Python, GitHub CLI (gh), and run `gh auth login` with permission to manage this repository's Actions secrets.
+2. Install Python dependencies locally: `python -m pip install paramiko cryptography`.
+3. Using your **hosting provider's VPS console** (not an unverified public key scan), obtain and independently confirm the server's ED25519 host fingerprint by running:
+
+~~~bash
+ssh-keygen -lf /etc/ssh/ssh_host_ed25519_key.pub -E sha256
+~~~
+
+4. From the freshly checked out Indian-Market-Intelligence-AI repository on **your PC**, run:
+
+~~~powershell
+python ops/bootstrap_deploy_access.py --trusted-host-fingerprint 'SHA256:REPLACE_WITH_VERIFIED_SERVER_FINGERPRINT'
+~~~
+
+The script uses the private local `VPS_PASS` environment variable if configured, or reads it from the older **local and ignored** `~/Desktop/MCX-TRADER-LIVE/mcx-trader.env`; otherwise it securely prompts for the password without echoing it. It verifies the actual VPS SSH host key **before** password login, generates a separate deployment ED25519 key locally, installs only the public half on the VPS, verifies the key login, and writes the private key and pinned host-key string directly to GitHub Actions Secrets through your authenticated `gh` CLI.
+
+**No VPS password, broker MPIN, key bytes, or token should be pasted into ChatGPT or committed.** Do not copy the old root password from the public MCX repository: it must be rotated first. The local script itself is never executed on a GitHub runner.
+
+5. Complete the server's private `config/live.env` file according to Step 1, then rerun the GitHub deployment workflow. The VPS remains private on localhost port 8010 and live orders remain OFF.
+
+If the VPS host-key fingerprint differs from the trusted provider console value, stop and investigate rather than disabling strict SSH host verification.
