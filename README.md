@@ -31,7 +31,7 @@ No dependencies except Python 3.11+ standard library. This prints a JSON researc
 ### Manual test
 Publish the fictional sample through the publisher with a real intended session date only in a test branch; **never** copy fictional stocks into the live incoming directory. For a validation-only test:
 ```python
-python scripts/validate_signals.py examples/signals.sample.json
+python scripts/validate_signals.py --allow-sample examples/signals.sample.json
 ```
 
 ### External publisher
