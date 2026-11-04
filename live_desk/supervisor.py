@@ -327,8 +327,11 @@ class LiveSupervisor:
             return
         if not self.last_book_at or now-self.last_book_at>BOOK_REFRESH:
             raise RuntimeError("Broker position book stale; cannot safely submit exit orders")
-        entries={r["symbol"]:r for r in self.ledger.snapshot(now.date())
-                 if r["phase"]=="ENTRY" and r["state"] in ("FILLED","PARTIAL_CANCELLED")}
+        intent_rows=self.ledger.snapshot(now.date())
+        existing_exits={r["symbol"] for r in intent_rows if r["phase"]=="EXIT"}
+        entries={r["symbol"]:r for r in intent_rows
+                 if r["phase"]=="ENTRY" and r["state"] in ("FILLED","PARTIAL_CANCELLED")
+                 and r["symbol"] not in existing_exits}
         positions={p["symbol"]:p for p in self.broker_positions}
         for symbol,entry in entries.items():
             position=positions.get(symbol)
