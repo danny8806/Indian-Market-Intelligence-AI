@@ -50,6 +50,7 @@ class LiveSupervisor:
             raise ValueError("Live stop and loss limits must be positive")
         self.lock=threading.RLock()
         self.armed=False
+        self.session_authorized=False
         self.status="NEEDS_SETUP"
         self.error=None
         self.report=None
@@ -90,6 +91,7 @@ class LiveSupervisor:
     def _new_day(self,day):
         with self.lock:
             self.armed=False
+            self.session_authorized=False
             if self.runtime:self.runtime.enabled=False
             if self.ticker:self.ticker.stop()
             self.ticker=None
@@ -232,7 +234,11 @@ class LiveSupervisor:
             self._monitor_adverse_move(symbol,value,now)
 
     def _monitor_adverse_move(self,symbol,price,now):
-        if not self.allowed or not self.runtime or self.broker is None:return
+        if not self.allowed or not self.session_authorized or not self.runtime or self.broker is None:
+            return
+        if self.last_book_at is None or now-self.last_book_at>BOOK_REFRESH:
+            self.disarm("Broker position data stale; cannot safely manage stop")
+            return
         with self.lock:
             rows=list(self.broker_positions)
         for position in rows:
@@ -242,6 +248,10 @@ class LiveSupervisor:
                          if x["symbol"]==symbol and x["phase"]=="ENTRY"
                          and x["state"]=="FILLED" and x.get("average_fill_price")),None)
             if intent is None:continue
+            expected=intent["filled_quantity"] if intent["side"]=="BUY" else -intent["filled_quantity"]
+            if int(position["net_quantity"])!=expected:
+                self.disarm("Kotak position differs from filled entry; human reconciliation required")
+                continue
             avg=Decimal(str(intent["average_fill_price"]))
             if avg<=0:continue
             level=avg*(1-self.stop_pct/100) if intent["side"]=="BUY" else avg*(1+self.stop_pct/100)
@@ -271,6 +281,16 @@ class LiveSupervisor:
             return False
         if self.error:return False
         if self.runtime.errors:return False
+        # Fail closed if broker book shows a daily loss at or past the cap,
+        # or if the market mark for any nonflat position is unavailable.
+        pnl=Decimal("0")
+        for position in self.broker_positions:
+            if int(position["net_quantity"])!=0 and position["gross_mark_to_market"] is None:
+                return False
+            value=position["gross_mark_to_market"]
+            if value is not None:
+                pnl+=Decimal(str(value))
+        if pnl<=-self.loss_cap:return False
         return True
 
     def ready(self):
@@ -288,6 +308,7 @@ class LiveSupervisor:
             if any(x["state"] in unresolved for x in self.ledger.snapshot(now.date())):
                 raise RuntimeError("Unreconciled Kotak intent exists")
             self.armed=True
+            self.session_authorized=True
             self.runtime.enabled=True
             self.status="LIVE_ARMED"
         return {"armed":True,"day":now.date().isoformat()}
@@ -299,21 +320,43 @@ class LiveSupervisor:
             self.status="DISARMED"
         LOG.warning("%s",reason)
 
+    def _manage_authorized_exits(self,now):
+        """Only broker-confirmed positions entered by an authorized session can exit."""
+        if (not self.allowed or not self.session_authorized or not self.runtime or
+            now.time()<self.policy.exit_time or now.weekday()>=5):
+            return
+        if not self.last_book_at or now-self.last_book_at>BOOK_REFRESH:
+            raise RuntimeError("Broker position book stale; cannot safely submit exit orders")
+        entries={r["symbol"]:r for r in self.ledger.snapshot(now.date())
+                 if r["phase"]=="ENTRY" and r["state"] in ("FILLED","PARTIAL_CANCELLED")}
+        positions={p["symbol"]:p for p in self.broker_positions}
+        for symbol,entry in entries.items():
+            position=positions.get(symbol)
+            expected=entry["filled_quantity"] if entry["side"]=="BUY" else -entry["filled_quantity"]
+            if position is None or int(position["net_quantity"])!=expected:
+                raise RuntimeError("Kotak position reconciliation failed; exit blocked")
+        self.runtime.exit_due(now)
+
     def cycle(self):
         now=self.now()
         if self.session_date!=now.date().isoformat():
             self._new_day(now.date().isoformat())
-        if not self._load_report():
-            self.disarm("No qualified current-session signals")
-            return
         if now.weekday()>=5:return
-        self._authenticate()
-        self._build_runtime()
+        # Monitor the actual Kotak brokerage account even when news is missing.
+        # No signals must NEVER be interpreted as fabricated positions.
+        if self.broker is None:self.broker=self.kotak_factory()
         if self.last_book_at is None or now-self.last_book_at>=BOOK_REFRESH:
             self.refresh_broker()
-        self.poll_ohlc()
-        if self.runtime:
-            self.runtime.exit_due(now)
+        has_report=self._load_report()
+        if has_report:
+            if self.dhan is None:
+                self.dhan=self.dhan_factory()
+                self.dhan.login()
+            self._build_runtime()
+            self.poll_ohlc()
+        else:
+            self.disarm("No qualified current-session signals")
+        self._manage_authorized_exits(now)
         if self.armed and not self.ready():
             self.disarm("Broker or market data health degraded")
         # Entries cannot be recreated after restart without manual arming.
@@ -359,7 +402,9 @@ class LiveSupervisor:
                 "signal_status":self.report["status"] if self.report else "UNAVAILABLE",
                 "signals":signals,
                 "research_cutoff_at":self.report.get("news_cutoff_at") if self.report else None,
-                "report_hash":self.report_sha,"armed":self.armed,"orders_permitted_by_server":self.allowed,
+                "report_hash":self.report_sha,"armed":self.armed,
+                "session_authorized":self.session_authorized,
+                "orders_permitted_by_server":self.allowed,
                 "market_feed":ticker,"broker_connected":self.broker is not None and self.last_book_at is not None,
                 "broker_books_updated_at":self.last_book_at.isoformat() if self.last_book_at else None,
                 "available_cash":self.available_cash,
