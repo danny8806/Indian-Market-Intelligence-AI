@@ -89,8 +89,10 @@ class PaperLedger:
             value = not self.paper_enabled()
             db.execute("INSERT INTO settings VALUES('paper_enabled',?) ON CONFLICT(key) DO UPDATE SET value=excluded.value",
                        ("true" if value else "false",))
-            self.event("SYSTEM", "Paper entries resumed" if value else "Paper entries paused")
-            return value
+        # Commit first: a nested write using a separate SQLite connection would
+        # otherwise block on this transaction's own write lock.
+        self.event("SYSTEM", "Paper entries resumed" if value else "Paper entries paused")
+        return value
 
     def event(self, kind, message, symbol=None, price=None):
         with self.lock, self.connect() as db:
