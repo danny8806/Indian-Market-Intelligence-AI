@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0",
+  "status": "UNAVAILABLE",
+  "market": "NSE",
+  "timezone": "Asia/Kolkata",
+  "session_date": null,
+  "news_cutoff_at": null,
+  "generated_at": null,
+  "execution_enabled": false,
+  "signals": [],
+  "reason": "Awaiting first source-verified scheduled report. Not a trade signal."
+}
