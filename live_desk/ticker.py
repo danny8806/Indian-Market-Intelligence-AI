@@ -80,8 +80,15 @@ class LiveTicker:
                         if tick["segment_code"]!=1:return
                         retry=1
                         now=datetime.now(IST)
-                        tick.update(symbol=symbol,timestamp=now)
-                        self._set(last_tick=now.isoformat(),state="CONNECTED")
+                        # Dhan ticker packet carries the exchange's Last Trade Time.
+                        # NEVER replace it with local receipt time: doing so could
+                        # turn delayed or illiquid prices into executable "fresh" ticks.
+                        exchange_at=datetime.fromisoformat(tick["exchange_timestamp"])
+                        tick.update(symbol=symbol,timestamp=exchange_at,
+                                    received_at=now)
+                        self._set(last_tick=now.isoformat(),
+                                  last_exchange_trade_at=exchange_at.isoformat(),
+                                  state="CONNECTED")
                         try:self.on_tick(tick)
                         except Exception as exc:
                             self._set(error=f"Tick callback failed ({type(exc).__name__})")
