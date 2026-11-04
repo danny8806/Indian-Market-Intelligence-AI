@@ -84,7 +84,8 @@ function render(s){
  text("mtm",money(mtm));$("mtm").className="value "+(mtm===null?"":mtm>=0?"positive":"negative");
  text("count",signals.length);
  text("risk",s.readiness?"READY":"BLOCKED");$("risk").className="value "+(s.readiness?"positive":"negative");
- text("riskReason",s.readiness?"Risk, broker and feed checks passed":"No new orders until verification");
+ text("riskReason",s.readiness?"Risk, broker and feed checks passed":
+    "No new orders: "+safeText(s.supervisor_status||"verification required"));
  text("policy","09:15 one-minute opening-range breakout · cutoff "+safeText(s.strategy?.entry_cutoff)+
    " · exit "+safeText(s.strategy?.exit_time)+" · "+safeText(s.strategy?.max_long)+" LONG / "+
    safeText(s.strategy?.max_short)+" SHORT · ₹"+fmt(s.strategy?.allocation_per_position,0)+

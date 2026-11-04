@@ -148,6 +148,7 @@ class LiveTerminalTests(unittest.TestCase):
                 ledger_path=Path(self.tmp.name)/"unconfigured-orders.db",clock=self.clock)
             desk.cycle()
         self.assertEqual(desk.status,"NEEDS_KOTAK_CREDENTIALS")
+        self.assertEqual(desk.snapshot()["supervisor_status"],"NEEDS_KOTAK_CREDENTIALS")
         self.assertIsNone(desk.error)
         self.assertIsNone(desk.broker)
         self.assertFalse(desk.armed)

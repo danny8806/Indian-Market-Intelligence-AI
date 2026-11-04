@@ -420,6 +420,7 @@ class LiveSupervisor:
             monitoring=self._health_check_locked(now)
             result={
                 "mode":"LIVE_KOTAK_NEO_ONLY","server_time":now.isoformat(),
+                "supervisor_status":self.status,
                 "session_date":now.date().isoformat(),
                 "signal_status":self.report["status"] if self.report else "UNAVAILABLE",
                 "signals":signals,
