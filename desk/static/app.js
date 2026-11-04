@@ -31,7 +31,7 @@ function render(data) {
   dayPnl.textContent = rupee(metrics.day_pnl);
   dayPnl.className = `metric-value ${clsPnl(metrics.day_pnl)}`;
   byId('pnlBreakdown').textContent = `Realized ${rupee(metrics.realized_today)} · Open ${rupee(metrics.open_pnl)}`;
-  byId('exposureMetric').textContent = `${rupee(metrics.deployed, 0)} / ₹10L`;
+  byId('exposureMetric').textContent = `${rupee(metrics.deployed, 0)} / ${rupee(metrics.max_notional, 0)}`;
   byId('exposureMeter').style.width = `${Math.min(100, (metrics.deployed || 0) / (metrics.max_notional || 1) * 100)}%`;
   byId('positionsMetric').textContent = `${metrics.open_count || 0} / ${metrics.max_positions || 10}`;
   byId('tradesMetric').textContent = `${metrics.trade_count || 0} trades today`;
@@ -44,6 +44,7 @@ function render(data) {
   renderStorage(data.storage || {});
   renderScanner(symbols);
   renderChart(selected);
+  renderNewsEvidence(selected, data);
   renderActivity(data.activity || [], data.server_time);
   renderPositions(symbols, metrics, data.closed_trades || []);
   renderPerformance(data.performance || {});
@@ -64,6 +65,50 @@ function render(data) {
   byId('pauseButton').title = data.strategy?.runtime_ready ? '' : 'Verified news signals or market data are unavailable.';
   byId('clockText').textContent = `${tickTime(data.server_time)}:${new Date(data.server_time).toLocaleString('en-IN', { timeZone: 'Asia/Kolkata', second: '2-digit', hour12: false }).split(':').pop()} IST`;
   renderMarketStatus(data.server_time, selected?.last_tick);
+}
+
+function renderNewsEvidence(item, data) {
+  const target = byId('newsEvidence');
+  if (!target) return;
+  target.replaceChildren();
+  const heading = document.createElement('div');
+  heading.className = 'detail-title';
+  const b = document.createElement('b');
+  b.textContent = item ? item.symbol + ' · VERIFIED NEWS SOURCE' : 'NEWS SOURCE STATUS';
+  heading.append(b); target.append(heading);
+  const status = document.createElement('p');
+  status.className = 'muted';
+  status.textContent = 'Report: ' + (data?.signal_status || 'UNAVAILABLE') +
+    ' · cutoff ' + (data?.signal_cutoff || '—') +
+    ' · generated ' + (data?.signal_generated_at || '—');
+  target.append(status);
+  if (!item) {
+    const missing = document.createElement('p');
+    missing.textContent = 'No validated research candidates for today. Paper entries remain blocked.';
+    target.append(missing); return;
+  }
+  const summary = document.createElement('p');
+  summary.textContent = item.news_summary || item.signal_note || 'No explanation available';
+  target.append(summary);
+  if (item.signal_note && item.signal_note !== item.news_summary) {
+    const why = document.createElement('p');
+    why.textContent = item.signal_note; target.append(why);
+  }
+  const refs = document.createElement('div');
+  refs.className = 'news-source-links';
+  for (const ref of item.sources || []) {
+    try {
+      const u = new URL(ref.url);
+      if (u.protocol !== 'https:') continue;
+      const a = document.createElement('a');
+      a.href = u.href;
+      a.rel = 'noopener noreferrer';
+      a.target = '_blank';
+      a.textContent = (ref.title || u.hostname) + ' · ' + (ref.published_at || 'timestamp unavailable');
+      refs.append(a);
+    } catch (_) {}
+  }
+  target.append(refs);
 }
 
 function renderPortfolio(strategy) {
@@ -91,7 +136,7 @@ function renderStorage(storage) {
 function renderConnection(connection) {
   const status = state.data?.strategy?.runtime_ready ? (connection.status || 'Unknown') : 'Signal feed not ready';
   const ok = status === 'Connected';
-  const bad = ['Error', 'Needs login', 'Needs setup', 'History unavailable'].includes(status);
+  const bad = ['Error', 'Needs login', 'Needs setup', 'Live history unavailable'].includes(status);
   const dotClass = ok ? '' : bad ? ' red' : ' amber';
   byId('connectionDot').className = `status-dot${dotClass}`;
   byId('footerLed').className = `status-dot${dotClass}`;
@@ -203,7 +248,7 @@ function renderChart(item) {
   const position = item.position;
   const mark = item.mark;
   byId('positionTitle').textContent = `${escapeHtml(item.label)} · ${position ? 'Paper position' : 'No paper position'}`;
-  byId('autoExit').textContent = position ? 'Stop or EOD exit 15:00 IST' : item.entered_today ? 'Daily entry used' : 'EOD exit 15:00 IST';
+  byId('autoExit').textContent = position ? 'Stop or EOD exit 15:25 IST' : item.entered_today ? 'Daily entry used' : 'EOD exit 15:25 IST';
   byId('detailSide').textContent = position?.side || '—';
   byId('detailSide').className = position ? (position.side === 'LONG' ? 'positive' : 'negative') : '';
   byId('detailQty').textContent = position ? Number(position.quantity).toLocaleString('en-IN') : '—';
@@ -518,8 +563,8 @@ function renderTradeHistory(result) {
   else body.innerHTML = trades.map((trade) => {
     const expanded = state.expandedTradeId === trade.id;
     const detailRow = expanded ? `<tr class="trade-detail-row"><td colspan="11"><div class="trade-detail-grid">
-      <div><small>MODEL SIGNAL DATE</small><b>${trade.signal_date || '—'}</b></div><div><small>FORECAST</small><b>${trade.direction || trade.side || '—'}</b></div>
-      <div><small>STOP PRICE</small><b>${trade.stop_price == null ? 'No stop · 15:00 exit' : rupee(trade.stop_price)}</b></div>
+      <div><small>NEWS SESSION DATE</small><b>${trade.signal_date || '—'}</b></div><div><small>DIRECTION</small><b>${trade.direction || trade.side || '—'}</b></div>
+      <div><small>STOP PRICE</small><b>${trade.stop_price == null ? 'No stop · configured EOD' : rupee(trade.stop_price)}</b></div>
       <div><small>POSITION VALUE</small><b>${rupee(trade.notional || Number(trade.entry_price) * Number(trade.quantity), 0)}</b></div>
       <div><small>EXIT TYPE</small><b>${trade.exit_reason || (trade.status === 'OPEN' ? 'OPEN' : '—')}</b></div><div><small>TRADE STATUS</small><b>${trade.status || 'CLOSED'}</b></div>
     </div></td></tr>` : '';
