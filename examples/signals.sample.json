@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0",
+  "status": "READY",
+  "market": "NSE",
+  "timezone": "Asia/Kolkata",
+  "session_date": "2026-11-03",
+  "news_cutoff_at": "2026-11-03T09:00:00+05:30",
+  "generated_at": "2026-11-03T09:01:00+05:30",
+  "execution_enabled": false,
+  "sample": true,
+  "signals": [
+    {
+      "symbol": "EXAMPLE1",
+      "side": "LONG",
+      "rank": 1,
+      "reason": "Fictional positive earnings surprise used solely for schema demonstration.",
+      "news_summary": "Hypothetical company announces stronger quarterly results in an invented example.",
+      "first_available_at": "2026-11-02T18:00:00+05:30",
+      "sources": [
+        {
+          "url": "https://example.com/not-a-real-filing",
+          "title": "Illustrative fictional announcement",
+          "published_at": "2026-11-02T18:00:00+05:30"
+        }
+      ],
+      "confidence": null
+    },
+    {
+      "symbol": "EXAMPLE2",
+      "side": "SHORT",
+      "rank": 1,
+      "reason": "Fictional regulatory setback used solely for schema demonstration.",
+      "news_summary": "Hypothetical company has an invented negative regulatory announcement.",
+      "first_available_at": "2026-11-02T19:00:00+05:30",
+      "sources": [
+        {
+          "url": "https://example.com/fictional-event",
+          "title": "Illustrative fictional regulatory filing",
+          "published_at": "2026-11-02T19:00:00+05:30"
+        }
+      ],
+      "confidence": null
+    }
+  ],
+  "reason": "SAMPLE ONLY; blocked from publication by validator."
+}
