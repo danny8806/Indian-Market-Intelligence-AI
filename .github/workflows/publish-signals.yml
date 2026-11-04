@@ -1,0 +1,53 @@
+name: Publish verified research watchlist
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'signals/incoming/*.json'
+  schedule:
+    # 09:10 Asia/Kolkata, weekdays (03:40 UTC).
+    - cron: '40 3 * * 1-5'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: research-signal-publisher
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Validate input and prepare latest signal
+        env:
+          TZ: Asia/Kolkata
+        run: |
+          python scripts/publish_signals.py --session-date "$(TZ=Asia/Kolkata date +%F)"
+          python scripts/validate_signals.py signals/latest.json
+
+      - name: Commit published JSON only
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add signals/latest.json signals/archive/
+          if git diff --cached --quiet; then
+            echo "No changes to publish"
+          else
+            git commit -m "Publish verified research watchlist (or unavailable status)"
+            git push origin HEAD:main
+          fi
