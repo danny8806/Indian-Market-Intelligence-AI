@@ -1,0 +1,56 @@
+name: One-time research learning bootstrap — 2026-11-05
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/bootstrap-learning-2026-11-05.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: research-learning-bootstrap
+  cancel-in-progress: false
+
+jobs:
+  audit-and-check-training:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install research dependencies
+        run: pip install -r requirements-learning.txt
+      - name: Test calculation and training gates
+        run: python -m unittest discover -s tests -p test_learning.py -v
+      - name: Audit real November 5 premarket selections
+        run: python -m learning.feedback --session-date 2026-11-05
+      - name: Persist observed data and errors, never invented prices
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add learning/data/
+          if ! git diff --cached --quiet; then
+            git commit -m 'Record 2026-11-05 research outcomes or missing-data evidence'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+      - name: Attempt challenger training only if required sample exists
+        run: python -m learning.train
+      - name: Retain diagnostics and isolated experimental weights
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bootstrap-learning-${{ github.run_id }}
+          path: |
+            learning/data/reports/2026-11-05.json
+            learning/out/
+          if-no-files-found: ignore
+          retention-days: 30
