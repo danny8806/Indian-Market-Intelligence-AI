@@ -1,0 +1,65 @@
+name: Research learning audit (no trading)
+
+on:
+  workflow_dispatch:
+    inputs:
+      session_date:
+        description: 'YYYY-MM-DD to audit (empty = today IST)'
+        required: false
+        type: string
+  schedule:
+    # Approximately 18:10 IST, Mon-Fri, after the NSE cash market closes (12:40 UTC).
+    - cron: '40 12 * * 1-5'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: research-learning-audit
+  cancel-in-progress: false
+
+jobs:
+  score-and-train:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install research dependencies
+        run: pip install -r requirements-learning.txt
+      - name: Validate calculation code
+        run: python -m unittest discover -s tests -p 'test_learning.py' -v
+      - name: Audit only if frozen morning signal exists
+        env:
+          TARGET_DATE: ${{ inputs.session_date }}
+        run: |
+          if [ -n "$TARGET_DATE" ]; then
+            python -m learning.feedback --session-date "$TARGET_DATE"
+          else
+            python -m learning.feedback
+          fi
+      - name: Save audit rows and evidence (not models)
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add learning/data/
+          if ! git diff --cached --quiet; then
+            git commit -m 'Record daily research signal outcomes (no trading)'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+      - name: Train isolated challenger if sample sufficient
+        run: python -m learning.train
+      - name: Archive experimental model and metrics
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: learning-challenger-${{ github.run_id }}
+          path: learning/out/
+          if-no-files-found: ignore
+          retention-days: 30
