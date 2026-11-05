@@ -1,0 +1,218 @@
+{
+  "schema_version": "1.0",
+  "status": "READY",
+  "market": "NSE",
+  "timezone": "Asia/Kolkata",
+  "session_date": "2026-11-05",
+  "news_cutoff_at": "2026-11-05T09:00:00+05:30",
+  "generated_at": "2026-11-05T08:58:30+05:30",
+  "execution_enabled": false,
+  "reason": "Pre-market research from 2026-11-04 15:00 IST through verified sources available before 2026-11-05 09:00 IST. Rankings are qualitative open-to-close hypotheses, not calibrated probabilities. Direct BSE PDF links may require exchange-site access; publication times independently cross-checked against exchange-filing mirrors. Liquidity, cash intraday short permissions and broker product eligibility require real-time verification; no orders authorized.",
+  "signals": [
+    {
+      "symbol": "NYKAA",
+      "side": "LONG",
+      "rank": 1,
+      "reason": "Q2 consolidated PAT rose 206.7% YoY to Rs 101.2 crore on 28.1% revenue growth; operating margin improved from 2.4% to 4.9%, supporting a possible positive open-to-close continuation. Risks: very high valuation, inventory-led negative H1 operating cash flow, a large gap-up could reverse.",
+      "news_summary": "Q2 FY27 revenue Rs 3,006 crore (+28.1% YoY), PAT Rs 101.2 crore (+206.7%); operating profit +187.2% YoY. Separately announced an up-to-Rs 33 crore controlling stake in Simply Nam Beauty.",
+      "first_available_at": "2026-11-04T16:01:00+05:30",
+      "sources": [
+        {
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/a4b6ba17-773d-415a-b330-6eb3004848d1.pdf",
+          "title": "FSN E-Commerce Ventures Q2 FY27 consolidated financial results (BSE filing)",
+          "published_at": "2026-11-04T16:01:00+05:30"
+        },
+        {
+          "url": "https://alfafinder.com/filings/fsn-e-commerce-ventures/2026-11-04-financial-results-wk2pjv6x/",
+          "title": "FSN E-Commerce Ventures Q2 FY27 results: PAT Rs 101.2 crore (+206.7%)",
+          "published_at": "2026-11-04T16:01:00+05:30"
+        }
+      ],
+      "confidence": null
+    },
+    {
+      "symbol": "LENSKART",
+      "side": "LONG",
+      "rank": 2,
+      "reason": "Post-close results show robust growth in revenue and PAT, with retail expansion and higher eye-test volumes. Risk: the filing includes acquisition-adjusted pro-forma comparatives with different growth rates; a large opening gap and valuation could cause intraday profit-taking.",
+      "news_summary": "Q2 FY27 consolidated statutory revenue Rs 2,845.03 crore versus Rs 2,096.14 crore a year ago (+35.7%); PAT Rs 232.45 crore versus Rs 103.45 crore (+124.7%). Acquisition-adjusted pro-forma revenue growth is about 32.5% and PAT growth about 106.1%, not the same comparison basis.",
+      "first_available_at": "2026-11-04T15:34:00+05:30",
+      "sources": [
+        {
+          "url": "https://nsearchives.nseindia.com/corporate/LENSKART_04112026153338_Outcome_Intimation_-_BM_dated_04112026.pdf",
+          "title": "Lenskart board outcome and Q2 FY27 financial statements, NSE",
+          "published_at": "2026-11-04T15:34:00+05:30"
+        },
+        {
+          "url": "https://www.alfafinder.com/filings/lenskart-solutions/type/financial-results/",
+          "title": "Lenskart Q2 FY27 results exchange-announcement listing",
+          "published_at": "2026-11-04T15:34:00+05:30"
+        }
+      ],
+      "confidence": null
+    },
+    {
+      "symbol": "BSE",
+      "side": "LONG",
+      "rank": 3,
+      "reason": "BSE Ltd reported 45% YoY profit growth and said index-options premium turnover recovered strongly in October. Potential follow-through after an after-hours report; risks include a 24% QoQ derivatives premium-turnover drop, a roughly 7% QoQ profit decline and exchange regulatory changes.",
+      "news_summary": "BSE Ltd Q2 consolidated PAT about Rs 809 crore versus Rs 558 crore a year ago (+45%); derivatives average daily premium turnover +50% YoY but -24% QoQ; management reported record October activity.",
+      "first_available_at": "2026-11-04T18:10:00+05:30",
+      "sources": [
+        {
+          "url": "https://www.reuters.com/world/india/indias-bse-posts-higher-second-quarter-profit-2026-11-04/",
+          "title": "Reuters: India's BSE posts jump in second-quarter profit, signals derivatives recovery",
+          "published_at": "2026-11-04T18:10:00+05:30"
+        }
+      ],
+      "confidence": null
+    },
+    {
+      "symbol": "PHYSICS",
+      "side": "LONG",
+      "rank": 4,
+      "reason": "Physicswallah Q2 PAT more than doubled with record revenue, potentially drawing momentum buying. Risks: 18.2% revenue growth trails the stated 30% FY27 ambition, an unresolved NEET shortfall, and an IPO-proceeds deviation report (funds reported restored) may temper the reaction.",
+      "news_summary": "Physicswallah Ltd Q2 FY27 revenue Rs 1,242 crore (+18.2% YoY) and consolidated PAT Rs 143.6 crore (+106.0%). NSE also published an IPO monitoring report at 19:24 IST flagging deviation from offer objects; funds were reportedly restored on October 30.",
+      "first_available_at": "2026-11-04T17:16:00+05:30",
+      "sources": [
+        {
+          "url": "https://nsearchives.nseindia.com/corporate/NEAPSPW_04112026171411_Intimationsd.pdf",
+          "title": "Physicswallah Q2 FY27 board outcome and financial results, NSE",
+          "published_at": "2026-11-04T17:16:00+05:30"
+        },
+        {
+          "url": "https://alfafinder.com/filings/physicswallah/",
+          "title": "Physicswallah NSE filing timeline: Q2 results and IPO monitoring report",
+          "published_at": "2026-11-04T19:24:00+05:30"
+        }
+      ],
+      "confidence": null
+    },
+    {
+      "symbol": "APOLLOHOSP",
+      "side": "LONG",
+      "rank": 5,
+      "reason": "Strong revenue and hospital earnings growth supports a constructive reaction, with comparatively deep large-cap liquidity. Risk: reported profit definitions vary (total group PAT versus profit attributable), demerger execution and a gap-up could limit open-to-close upside.",
+      "news_summary": "Apollo Hospitals Enterprise Q2 FY27 revenue about Rs 7,615 crore (+23% YoY); consolidated group PAT about Rs 659.5 crore (+33.5%) per results summary, while investor presentation reports PAT of about Rs 630 crore under a different attribution/definition; EBITDA about Rs 1,191 crore (+29%).",
+      "first_available_at": "2026-11-04T17:49:00+05:30",
+      "sources": [
+        {
+          "url": "https://nsearchives.nseindia.com/corporate/APOLLOHOSP_04112026174756_SE_Communication_04112026_s.pdf",
+          "title": "Apollo Hospitals Enterprise Q2 FY27 results, NSE filing",
+          "published_at": "2026-11-04T17:49:00+05:30"
+        },
+        {
+          "url": "https://www.alfafinder.com/filings/apollo-hospitals-enterprise/",
+          "title": "Apollo Hospitals Q2 results and investor presentation filing timeline",
+          "published_at": "2026-11-04T17:49:00+05:30"
+        }
+      ],
+      "confidence": null
+    },
+    {
+      "symbol": "PIIND",
+      "side": "SHORT",
+      "rank": 1,
+      "reason": "Q2 PAT dropped 70.1% YoY and 50% QoQ, operating profit fell about 72% and operating margin compressed sharply, giving the strongest fundamental downside catalyst. Risks: prior weakness may already be priced in and a broad-market risk-on rally could spark a rebound.",
+      "news_summary": "PI Industries Q2 FY27 consolidated revenue Rs 1,701.8 crore (-9.1% YoY); PAT Rs 122.2 crore (-70.1%); operating margin 10.4% versus 26.9% a year earlier; agchem exports -18% in the investor presentation.",
+      "first_available_at": "2026-11-04T19:38:00+05:30",
+      "sources": [
+        {
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/8b392507-6551-45d6-8410-645b6365fe85.pdf",
+          "title": "PI Industries Q2 FY27 consolidated results, BSE filing",
+          "published_at": "2026-11-04T19:38:00+05:30"
+        },
+        {
+          "url": "https://www.alfafinder.com/filings/pi-industries/2026-11-04-financial-results-p4y5hjor/",
+          "title": "PI Industries Q2 FY27 results: PAT down 70.1%",
+          "published_at": "2026-11-04T19:39:00+05:30"
+        }
+      ],
+      "confidence": null
+    },
+    {
+      "symbol": "AFCONS",
+      "side": "SHORT",
+      "rank": 2,
+      "reason": "Revenue and PAT fell substantially with weaker operating margins and negative H1 operating cash flow, creating downside continuation risk. Risks: large order book, recently won orders and positive QoQ PAT may support dip-buying; a media report contradicts the consolidated YoY PAT direction, so use filing-basis figures.",
+      "news_summary": "Afcons Infrastructure Q2 FY27 consolidated revenue Rs 2,635.2 crore (-11.8% YoY), PAT Rs 41.1 crore (-60.9% YoY); EBITDA about Rs 316 crore with margin 10.9% versus 12.9% last year; order book about Rs 43,837 crore.",
+      "first_available_at": "2026-11-04T19:17:00+05:30",
+      "sources": [
+        {
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/9980b894-9c95-4456-b04a-40c4e16ccbe0.pdf",
+          "title": "Afcons Infrastructure Q2 FY27 results, BSE filing",
+          "published_at": "2026-11-04T19:17:00+05:30"
+        },
+        {
+          "url": "https://www.alfafinder.com/filings/afcons-infrastructure/2026-11-04-financial-results-55sjwgpo/",
+          "title": "Afcons Q2 FY27 consolidated results: PAT down 60.9%",
+          "published_at": "2026-11-04T19:17:00+05:30"
+        }
+      ],
+      "confidence": null
+    },
+    {
+      "symbol": "CUMMINSIND",
+      "side": "SHORT",
+      "rank": 3,
+      "reason": "Late-night results showed PAT -18.5% and operating profit -30.1% despite revenue growth, with margin contracting from 25.0% to 18.6%; this could weigh on the next cash session. Risks: strong industrial franchise, high liquidity and broad-market strength can reverse an initial selloff.",
+      "news_summary": "Cummins India Q2 FY27 consolidated revenue Rs 3,301.2 crore (+4.1% YoY), PAT Rs 507.2 crore (-18.5% YoY), operating profit -30.1% YoY and margin 18.6% versus 25.0%.",
+      "first_available_at": "2026-11-04T22:34:00+05:30",
+      "sources": [
+        {
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/b5408001-8839-412b-ab28-f76524b27805.pdf",
+          "title": "Cummins India Q2 FY27 consolidated results, BSE filing",
+          "published_at": "2026-11-04T22:34:00+05:30"
+        },
+        {
+          "url": "https://www.alfafinder.com/filings/cummins-india/2026-11-04-financial-results-hw6nrom4/",
+          "title": "Cummins India Q2 FY27 results: PAT down 18.5%",
+          "published_at": "2026-11-04T22:34:00+05:30"
+        }
+      ],
+      "confidence": null
+    },
+    {
+      "symbol": "DABUR",
+      "side": "SHORT",
+      "rank": 4,
+      "reason": "Unexpected Global CEO Mohit Malhotra departure could create a management-transition discount despite positive results. This is a lower-conviction event-driven short, not an earnings deterioration call. Risks: company already named a continuity plan, Q2 sales and PAT rose around 12%, and dividend supports sentiment.",
+      "news_summary": "Dabur announced that Global CEO and whole-time director Mohit Malhotra will depart effective November 13, 2026, and Herjit Singh Bhalla becomes whole-time director from November 14; Q2 revenue about Rs 3,563 crore (+11.7%) and PAT about Rs 499 crore (+12.1%), plus Rs 3.50 interim dividend.",
+      "first_available_at": "2026-11-04T16:52:00+05:30",
+      "sources": [
+        {
+          "url": "https://nsearchives.nseindia.com/corporate/DABURA_04112026165214_ChangeinManagement.pdf",
+          "title": "Dabur India board outcome: Global CEO resignation and leadership appointments, NSE",
+          "published_at": "2026-11-04T16:52:00+05:30"
+        },
+        {
+          "url": "https://www.alfafinder.com/filings/dabur-india/",
+          "title": "Dabur results, management-change and dividend filing timeline",
+          "published_at": "2026-11-04T16:52:00+05:30"
+        }
+      ],
+      "confidence": null
+    },
+    {
+      "symbol": "RITES",
+      "side": "SHORT",
+      "rank": 5,
+      "reason": "Q2 consolidated PAT -11%, operating profit -7% and operating margin fell from 25.3% to 22.5%; proposed NICC joint venture will not materialise. Lower-conviction short because Rs 1.90 dividend and recently disclosed roughly Rs 400 crore Sri Lanka L1 order may outweigh weak earnings.",
+      "news_summary": "RITES Q2 FY27 consolidated revenue Rs 556.8 crore (+1.5% YoY), PAT Rs 97.1 crore (-11% YoY), operating margin 22.5% versus 25.3%; 4 Nov board outcome says proposed NICC JV is not materialising; Rs 1.90/share interim dividend declared.",
+      "first_available_at": "2026-11-04T16:39:00+05:30",
+      "sources": [
+        {
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/7103d72c-3e76-49fe-9c34-0aaa86ec4f02.pdf",
+          "title": "RITES Q2 FY27 board outcome and financial results, BSE",
+          "published_at": "2026-11-04T16:39:00+05:30"
+        },
+        {
+          "url": "https://bazaarwatch.com/announcement/283844/rites-ltd-board-of-directors-of-the-company-in-their-meeting-held-on-04-11-2026-has-took-note-that-t",
+          "title": "RITES: NICC joint venture proposal not materialising (BSE announcement reproduction)",
+          "published_at": "2026-11-04T17:42:00+05:30"
+        }
+      ],
+      "confidence": null
+    }
+  ]
+}
