@@ -37,7 +37,7 @@ A signal-producing service must POST the JSON to the deployed HTTPS endpoint usi
 - No duplicate entry order per symbol per session.
 - Ledger persists each order intent before sending it to Kotak and reconciles with real order/trade reports.
 - Orders are market-order MIS using official `nse_cm` symbol mapping. Broker confirmation—not a Dhan tick—sets filled quantities and prices.
-- Daily gross loss gate (default ₹10,000) blocks new entries. Positions follow the configured 15:15 IST square-off; there is no implicit 2% tick stop. This is not a broker-native protective stop, so a feed outage, software crash or exchange gap can leave a real position exposed. Verify exit and recovery behavior before enabling unattended real-money trading.
+- There is no stop-loss or daily-loss cutoff. Positions follow the configured 15:15 IST square-off. This is not a broker-native protective stop, so a feed outage, software crash or exchange gap can leave a real position exposed. Verify exit and recovery behavior before enabling unattended real-money trading.
 
 These are engineering defaults inherited from the source project's live logic, not independently verified profitable trading rules.
 

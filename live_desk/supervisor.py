@@ -45,9 +45,6 @@ class LiveSupervisor:
         self.ticker_factory=ticker_factory or LiveTicker
         self.allowed=os.getenv("LIVE_ORDERS_ALLOWED","").strip()=="YES"
         self.arm_secret=os.getenv("LIVE_ARM_TOTP_SECRET","")
-        self.loss_cap=Decimal(os.getenv("LIVE_MAX_DAILY_GROSS_LOSS_INR","10000"))
-        if self.loss_cap<=0:
-            raise ValueError("Live loss limit must be positive")
         self.lock=threading.RLock()
         self.armed=False
         self.session_authorized=False
@@ -259,16 +256,6 @@ class LiveSupervisor:
             return False
         if self.error:return False
         if self.runtime.errors:return False
-        # Fail closed if broker book shows a daily loss at or past the cap,
-        # or if the market mark for any nonflat position is unavailable.
-        pnl=Decimal("0")
-        for position in self.broker_positions:
-            if int(position["net_quantity"])!=0 and position["gross_mark_to_market"] is None:
-                return False
-            value=position["gross_mark_to_market"]
-            if value is not None:
-                pnl+=Decimal(str(value))
-        if pnl<=-self.loss_cap:return False
         return True
 
     def ready(self):

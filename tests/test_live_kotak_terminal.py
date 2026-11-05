@@ -164,6 +164,9 @@ class LiveTerminalTests(unittest.TestCase):
         self.assertEqual(result[0]["side"],"LONG")
         self.assertIsNone(result[0]["gross_mark_to_market"])
 
+    def test_live_policy_has_no_implicit_daily_loss_limit(self):
+        self.assertFalse(hasattr(self.supervisor,"loss_cap"))
+
     def test_old_dhan_quote_never_generates_live_mtm(self):
         self.supervisor.session_date=TODAY.date().isoformat()
         self.supervisor.broker=self.broker
@@ -233,6 +236,16 @@ class KotakOrderSafetyTests(unittest.TestCase):
         self.assertEqual(candidate_entry(**args),990)
         self.assertIsNone(candidate_entry(**{**args,"open_long":5}))
         self.assertIsNone(candidate_entry(**{**args,"tick_at":TODAY.replace(hour=10)}))
+
+    def test_direct_cross_requires_price_to_move_through_orb_edge(self):
+        base=dict(orb_high=Decimal("100"),orb_low=Decimal("95"),tick_at=TODAY,
+            policy=self.policy,open_long=0,open_short=0,reserved_gross=Decimal(0))
+        long={**base,"side":"LONG"}
+        self.assertIsNone(candidate_entry(**{**long,"previous_price":Decimal("99"),"price":Decimal("100")}))
+        self.assertIsNotNone(candidate_entry(**{**long,"previous_price":Decimal("100"),"price":Decimal("100.01")}))
+        short={**base,"side":"SHORT"}
+        self.assertIsNone(candidate_entry(**{**short,"previous_price":Decimal("96"),"price":Decimal("95")}))
+        self.assertIsNotNone(candidate_entry(**{**short,"previous_price":Decimal("95"),"price":Decimal("94.99")}))
 
     def test_durable_intent_rejects_duplicate_entry(self):
         args=dict(session_date=TODAY.date(),symbol="TESTA",side="BUY",
