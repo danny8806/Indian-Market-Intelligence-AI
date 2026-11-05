@@ -10,7 +10,6 @@ import json
 from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
-import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
 MIN_DAYS = 40
@@ -20,6 +19,7 @@ MIN_TRADES = 160
 def train(csv_path: Path, output: Path) -> dict:
     if not csv_path.exists():
         return {"status": "INSUFFICIENT_DATA", "reason": "No scored morning trades yet."}
+    import pandas as pd  # Optional training dependency; not needed for general signal tests.
     frame = pd.read_csv(csv_path, dtype={"symbol": str})
     if frame.empty:
         return {"status": "INSUFFICIENT_DATA", "reason": "Empty history."}
