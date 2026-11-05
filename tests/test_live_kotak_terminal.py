@@ -247,6 +247,47 @@ class KotakOrderSafetyTests(unittest.TestCase):
         self.assertIsNone(candidate_entry(**{**short,"previous_price":Decimal("96"),"price":Decimal("95")}))
         self.assertIsNotNone(candidate_entry(**{**short,"previous_price":Decimal("95"),"price":Decimal("94.99")}))
 
+    def test_ten_symbol_entry_fill_eod_exit_and_restart_are_idempotent(self):
+        from unittest.mock import patch
+        symbols=[f"LONG{i}" for i in range(1,6)]+[f"SHORT{i}" for i in range(1,6)]
+        signals=[{"symbol":s,"side":"LONG" if s.startswith("LONG") else "SHORT"} for s in symbols]
+        ids={s:str(i+1) for i,s in enumerate(symbols)}
+        instruments={s:KotakInstrument(s,s+"-EQ",str(i+100)) for i,s in enumerate(symbols)}
+        ranges={s:(Decimal("100"),Decimal("95")) for s in symbols}
+        runtime=LiveRuntime(session_date=date(2026,11,4),signals=signals,dhan_ids=ids,
+            kotak_instruments=instruments,opening_ranges=ranges,policy=self.policy,
+            ledger=self.ledger,broker=FakeBroker(),enabled=True,clock=lambda:TODAY)
+        def submit(_broker,instrument,side,quantity,tag):
+            return {"broker_order_id":"OID-"+tag,"tag":tag,"requires_reconciliation":True}
+        def reconcile(_broker,tag):
+            row=next(x for x in self.ledger.snapshot(TODAY.date()) if x["tag"]==tag)
+            return {"tag":tag,"broker_order_id":"OID-"+tag,"status":"filled",
+                "ordered_quantity":row["quantity"],"filled_quantity":row["quantity"],
+                "average_fill_price":row["reference_price"],"trading_symbol":row["symbol"]+"-EQ"}
+        with patch("live_desk.runtime.place_kotak_order",side_effect=submit), \
+             patch("live_desk.runtime.reconcile_kotak_tag",side_effect=reconcile):
+            for symbol in symbols:
+                side=next(x["side"] for x in signals if x["symbol"]==symbol)
+                edge=Decimal("100") if side=="LONG" else Decimal("95")
+                cross=Decimal("100.01") if side=="LONG" else Decimal("94.99")
+                runtime.on_tick({"symbol":symbol,"ltp":str(edge),"timestamp":TODAY})
+                result=runtime.on_tick({"symbol":symbol,"ltp":str(cross),"timestamp":TODAY})
+                self.assertIsNotNone(result)
+            entries=[x for x in self.ledger.snapshot(TODAY.date()) if x["phase"]=="ENTRY"]
+            self.assertEqual(len(entries),10)
+            self.assertTrue(all(x["state"]=="FILLED" for x in entries))
+            exit_at=TODAY.replace(hour=15,minute=15)
+            exits=runtime.exit_due(exit_at)
+            self.assertEqual(len(exits),10)
+            restarted=LiveRuntime(session_date=date(2026,11,4),signals=signals,dhan_ids=ids,
+                kotak_instruments=instruments,opening_ranges=ranges,policy=self.policy,
+                ledger=LiveLedger(Path(self.tmp.name)/"live.db"),broker=FakeBroker(),
+                enabled=False,clock=lambda:exit_at)
+            self.assertEqual(restarted.exit_due(exit_at),[])
+            rows=restarted.ledger.snapshot(TODAY.date())
+            self.assertEqual(sum(x["phase"]=="EXIT" for x in rows),10)
+            self.assertTrue(all(x["state"]=="FILLED" for x in rows))
+
     def test_durable_intent_rejects_duplicate_entry(self):
         args=dict(session_date=TODAY.date(),symbol="TESTA",side="BUY",
                   quantity=10,reference_price=Decimal("100"),at=TODAY,
