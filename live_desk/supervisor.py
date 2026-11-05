@@ -46,9 +46,8 @@ class LiveSupervisor:
         self.allowed=os.getenv("LIVE_ORDERS_ALLOWED","").strip()=="YES"
         self.arm_secret=os.getenv("LIVE_ARM_TOTP_SECRET","")
         self.loss_cap=Decimal(os.getenv("LIVE_MAX_DAILY_GROSS_LOSS_INR","10000"))
-        self.stop_pct=Decimal(os.getenv("LIVE_TICK_STOP_PCT","2.0"))
-        if self.loss_cap<=0 or not Decimal("0")<self.stop_pct<=Decimal("5"):
-            raise ValueError("Live stop and loss limits must be positive")
+        if self.loss_cap<=0:
+            raise ValueError("Live loss limit must be positive")
         self.lock=threading.RLock()
         self.armed=False
         self.session_authorized=False
@@ -240,39 +239,8 @@ class LiveSupervisor:
         if runtime and ready:
             # Real orders can be submitted only by the separately armed runtime.
             runtime.on_tick(tick)
-        if runtime:
-            self._monitor_adverse_move(symbol,value,now)
-
-    def _monitor_adverse_move(self,symbol,price,now):
-        if not self.allowed or not self.session_authorized or not self.runtime or self.broker is None:
-            return
-        if self.last_book_at is None or now-self.last_book_at>BOOK_REFRESH:
-            self.disarm("Broker position data stale; cannot safely manage stop")
-            return
-        with self.lock:
-            rows=list(self.broker_positions)
-        for position in rows:
-            if position["symbol"]!=symbol or position["net_quantity"]==0:
-                continue
-            intent=next((x for x in self.ledger.snapshot(now.date())
-                         if x["symbol"]==symbol and x["phase"]=="ENTRY"
-                         and x["state"]=="FILLED" and x.get("average_fill_price")),None)
-            if intent is None:continue
-            expected=intent["filled_quantity"] if intent["side"]=="BUY" else -intent["filled_quantity"]
-            if int(position["net_quantity"])!=expected:
-                self.disarm("Kotak position differs from filled entry; human reconciliation required")
-                continue
-            avg=Decimal(str(intent["average_fill_price"]))
-            if avg<=0:continue
-            level=avg*(1-self.stop_pct/100) if intent["side"]=="BUY" else avg*(1+self.stop_pct/100)
-            hit=price<=level if intent["side"]=="BUY" else price>=level
-            if not hit:continue
-            with self.runtime.lock:
-                exit_intent=self.ledger.reserve_exit(session_date=now.date(),symbol=symbol,at=now)
-                if exit_intent:
-                    # Tick-based exit: there is no broker-native protective stop.
-                    self.runtime._submit_and_reconcile(exit_intent,now)
-                    self.disarm("Loss threshold exit; check broker confirmation")
+        # Position exits follow the configured 15:15 IST square-off policy.
+        # Loss limits disarm new entries; they do not create an implicit stop.
 
     def _health_check_locked(self,now):
         if not self.allowed or not self.report or self.report["status"]!="READY":
@@ -437,7 +405,7 @@ class LiveSupervisor:
                             "allocation_per_position":str(self.policy.per_position),
                             "gross_cap":str(self.policy.gross_cap),
                             "max_long":self.policy.max_long,"max_short":self.policy.max_short,
-                            "tick_stop_pct":str(self.stop_pct)},
+                            "tick_stop_pct":None},
                 "positions":positions,"orders":orders[-70:],"fills":fills[-70:],
                 "intents":self.ledger.snapshot(now.date()),
                 "error":self.error,"runtime_errors":self.runtime.errors[-10:] if self.runtime else [],

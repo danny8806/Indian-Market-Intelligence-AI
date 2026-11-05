@@ -89,7 +89,7 @@ function render(s){
  text("policy","09:15 one-minute opening-range breakout · cutoff "+safeText(s.strategy?.entry_cutoff)+
    " · exit "+safeText(s.strategy?.exit_time)+" · "+safeText(s.strategy?.max_long)+" LONG / "+
    safeText(s.strategy?.max_short)+" SHORT · ₹"+fmt(s.strategy?.allocation_per_position,0)+
-   " per position · "+safeText(s.strategy?.tick_stop_pct)+"% tick stop");
+   " per position · scheduled 15:15 IST exit");
  const feed=s.market_feed?.state||"NOT_STARTED";
  text("diagnostics","Dhan: "+feed+" · Kotak: "+(brokerReady?"connected":"disconnected")+
    " · Last broker refresh: "+stamp(s.broker_books_updated_at)+" IST");
