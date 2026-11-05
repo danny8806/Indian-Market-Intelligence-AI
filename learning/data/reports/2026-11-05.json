@@ -1,0 +1,12 @@
+{
+  "daily_equal_weight_return_pct": 0.68661,
+  "data_status": "COMPLETE_YAHOO_ONLY",
+  "date": "2026-11-05",
+  "errors": {},
+  "losses": 5,
+  "note": "Research audit only. Open-price execution is hypothetical. No live orders.",
+  "priced": 10,
+  "signals_expected": 10,
+  "source": "Yahoo Finance unadjusted daily OHLC (not NSE-verified)",
+  "wins": 5
+}
