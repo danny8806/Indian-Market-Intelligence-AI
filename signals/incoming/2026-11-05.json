@@ -5,7 +5,7 @@
   "timezone": "Asia/Kolkata",
   "session_date": "2026-11-05",
   "news_cutoff_at": "2026-11-05T09:00:00+05:30",
-  "generated_at": "2026-11-05T08:58:30+05:30",
+  "generated_at": "2026-11-05T09:00:09.617+05:30",
   "execution_enabled": false,
   "reason": "Pre-market research from 2026-11-04 15:00 IST through verified sources available before 2026-11-05 09:00 IST. Rankings are qualitative open-to-close hypotheses, not calibrated probabilities. Direct BSE PDF links may require exchange-site access; publication times independently cross-checked against exchange-filing mirrors. Liquidity, cash intraday short permissions and broker product eligibility require real-time verification; no orders authorized.",
   "signals": [
