@@ -22,6 +22,7 @@ Updated: 5 November 2026 (Asia/Kolkata). This is the current plan for this repos
 | VPS | `kotak-news-live-kotak-live-news-1` healthy on loopback `127.0.0.1:8010`; `/health` 200 and `/ready` 503 on 5 November | Monitoring deployment running, trading not ready |
 | Old dashboard | No listener on port 8004 on 5 November | Down |
 | ChatGPT schedule | Visible ChatGPT account's Scheduled page showed no active stock task in the preceding check | Task/account association and delivery action unverified |
+| Today's research file | `origin/main` gained `signals/incoming/2026-11-05.json` with `READY`; this is the legacy GitHub route and does not prove a ChatGPT task delivered it | Not consumed by live desk; VPS signal database has zero report rows |
 | Public HTTPS bridge | `neo.deltacapitals.systems` has no A record; app binds loopback | Not reachable from ChatGPT cloud |
 | Live orders | Committed Compose sets `LIVE_ORDERS_ALLOWED=NO`; dashboard is disarmed | Disabled |
 
