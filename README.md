@@ -1,12 +1,14 @@
 # Indian Market Intelligence AI — Live Kotak Desk
 
+**Current plan:** [ChatGPT schedule to live Kotak desk](docs/plan/00-current-live-plan.md). It records the verified implementation and remaining work as of 5 November 2026. The sections below describing GitHub signal files are retained as legacy research-feed documentation and do not define the live desk's delivery path.
+
 The production `live_desk` reads daily research reports from its own authenticated
 `POST /api/v1/signals/incoming` receiver and persistent signal database. GitHub
 is used for source and deployment only; the legacy `signals/` files and
 `publish-signals.yml` workflow are not the live desk's daily transport. A
-ChatGPT scheduled task has not yet been verified to POST to this API, and the
-VPS deployment is still pending authorized SSH access. Real order submission
-remains disabled in the committed Compose configuration.
+ChatGPT scheduled task has not yet been verified to POST to this API. The VPS
+monitoring deployment is running privately on loopback; it is not trading-ready.
+Real order submission remains disabled in the committed Compose configuration.
 
 See [live_desk/README.md](live_desk/README.md) and [ops/README.md](ops/README.md)
 for the live application and deployment procedure. The signal-feed description
@@ -17,7 +19,7 @@ of delivery to the live desk.
 
 The new [**live-only Kotak Neo trading dashboard**](live_desk/README.md) consumes this repository's exact v1.0 news-signal contract through the authenticated **direct HTTPS API bridge**, uses read-only Dhan market data for fresh market prices, and shows actual Kotak Neo broker orders, positions and reported fills. There is no local stock-prediction model, no paper trading engine and no synthetic order P&L in the live package.
 
-**Important:** This source-code integration is not a deployed trading service. The committed Docker configuration keeps `LIVE_ORDERS_ALLOWED=NO`. Real-money execution must not be enabled until Kotak/Dhan account credentials, current NSE instrument mappings, Dhan 09:15 bar timestamps, risk controls, broker order reconciliation, network loss behavior, cloud hosting and authorized signal delivery are verified end-to-end.
+**Important:** The monitoring service is deployed privately, but it is not a trading-ready service. The committed Docker configuration keeps `LIVE_ORDERS_ALLOWED=NO`. Real-money execution requires Kotak/Dhan account credentials, current NSE instrument mappings, Dhan 09:15 bar timestamps, risk controls, broker order reconciliation, network loss behavior, public HTTPS delivery and a verified ChatGPT task.
 
 Use `python -m live_desk.app` after installing `requirements-live.txt` and configuring a private environment; see [live_desk/README.md](live_desk/README.md). The existing signal validation and research workflow remain independent of broker execution.
 
