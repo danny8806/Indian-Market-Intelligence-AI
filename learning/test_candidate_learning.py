@@ -21,6 +21,7 @@ def frozen():
         "cutoff_exclusive": "2026-11-09T09:00:00+05:30",
         "as_of": "2026-11-09T08:58:00+05:30",
         "data_mode": "FROZEN_PREMARKET",
+        "training_eligible": True,
         "universe_status": "OFFICIAL_FETCH:https://www.niftyindices.com/official.csv",
         "company_count": 2, "execution_enabled": False,
         "candidates": [
