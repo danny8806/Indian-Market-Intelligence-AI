@@ -24,6 +24,7 @@ from zoneinfo import ZoneInfo
 
 import requests
 from bs4 import BeautifulSoup
+from news_collector.matching import match_issuers
 
 IST = ZoneInfo("Asia/Kolkata")
 ROOT = Path(__file__).resolve().parent
@@ -170,25 +171,8 @@ def get_universe(cache_path: Path) -> tuple[dict[str, str], str]:
 
 
 def universe_match(title: str, summary: str, universe: dict[str, str]) -> list[str]:
-    """Exact company-name or explicitly labeled ticker matching; no fuzzy guessing."""
-    if not universe:
-        return []
-    text = f"{title} {summary}"
-    norm = norm_name(text)
-    title_norm = norm_name(title)
-    exact = {norm_name(company): ticker for ticker, company in universe.items()
-             if len(norm_name(company)) >= 5}
-    names = set()
-    if title_norm in exact:
-        names.add(exact[title_norm])
-    for company_name, ticker in exact.items():
-        if len(company_name) >= 8 and re.search(r"(?<!\w)" + re.escape(company_name) + r"(?!\w)", norm):
-            names.add(ticker)
-    for symbol in re.findall(r"\b(?:NSE|NSE SYMBOL)\s*:\s*([A-Z0-9&._-]{2,32})\b", text):
-        if symbol in universe:
-            names.add(symbol)
-    # BSE RSS title is often "Company ltd (123456)"; company-name match above applies.
-    return sorted(names)
+    """Conservative alias-aware match for public headlines."""
+    return match_issuers(title, summary, universe)
 
 
 def rss_items(raw: bytes, source: dict) -> list[dict]:
@@ -307,8 +291,8 @@ def build_record(item: dict, source: dict, universe: dict[str, str],
     timestamp = parse_timestamp(item.get("raw_time", ""), exchange=source["provider"])
     # Exchange filings belong to the company named in the filing title;
     # third-party mentions in its description must not become issuer signals.
-    match_summary = "" if source["provider"] in {"NSE", "BSE"} else item.get("summary", "")
-    symbols = universe_match(headline, match_summary, universe)
+    symbols = match_issuers(headline, item.get("summary", ""), universe,
+                            official_filing=source["provider"] in {"NSE", "BSE"})
     status = ("UNVERIFIED_TIMESTAMP" if timestamp is None
               else "OUT_OF_WINDOW" if not start <= timestamp < end
               else "IN_WINDOW")
@@ -355,7 +339,8 @@ def run(session: str, output_dir: Path, *, config: Path = ROOT / "sources.json",
     if universe:
         for key in list(events):
             if set(events[key].get("providers", [])) & {"NSE", "BSE"}:
-                issuer_symbols = universe_match(events[key]["headline"], "", universe)
+                issuer_symbols = match_issuers(events[key]["headline"], "", universe,
+                                              official_filing=True)
                 if issuer_symbols:
                     events[key]["symbols"] = issuer_symbols
                 else:
