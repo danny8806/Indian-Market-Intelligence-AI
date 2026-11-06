@@ -342,6 +342,16 @@ def run(session: str, output_dir: Path, *, config: Path = ROOT / "sources.json",
     target = output_dir / session
     events = read_jsonl(target / "events.jsonl")
     pending = read_jsonl(target / "undated_candidates.jsonl")
+    # Revalidate persisted issuer matches when rules change; never leave stale
+    # secondary-company mentions attached to exchange filings.
+    if universe:
+        for key in list(events):
+            if set(events[key].get("providers", [])) & {"NSE", "BSE"}:
+                issuer_symbols = universe_match(events[key]["headline"], "", universe)
+                if issuer_symbols:
+                    events[key]["symbols"] = issuer_symbols
+                else:
+                    del events[key]
     summaries = []
     with ThreadPoolExecutor(max_workers=max(1, min(workers, 6))) as pool:
         results = pool.map(fetch_one, cfg)
