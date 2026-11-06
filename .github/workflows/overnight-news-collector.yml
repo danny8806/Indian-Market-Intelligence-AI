@@ -2,9 +2,11 @@ name: NIFTY 500 overnight news collector (research only)
 
 on:
   push:
-    branches: [feature/free-news-sources-smoke-20261106]
+    branches: [main]
     paths:
-      - 'news_collector/**'
+      - 'news_collector/*.py'
+      - 'news_collector/*.json'
+      - 'news_collector/requirements.txt'
       - '.github/workflows/overnight-news-collector.yml'
   workflow_dispatch:
     inputs:
