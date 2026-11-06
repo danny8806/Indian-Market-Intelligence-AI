@@ -55,6 +55,16 @@ jobs:
           else
             python -m news_collector.engine
           fi
+      - name: Extract bounded text from public NSE/BSE PDFs and flag potential source gaps
+        shell: bash
+        env:
+          SESSION_DATE: ${{ inputs.session_date }}
+        run: |
+          if [ -n "$SESSION_DATE" ]; then
+            python -m news_collector.enrich --session-date "$SESSION_DATE" --max-docs 20
+          else
+            python -m news_collector.enrich --max-docs 20
+          fi
       - name: Commit reproducible research evidence only
         shell: bash
         run: |
@@ -74,6 +84,9 @@ jobs:
         if: always()
         with:
           name: research-news-coverage-${{ github.run_id }}
-          path: news_collector/data/*/coverage.json
+          path: |
+            news_collector/data/*/coverage.json
+            news_collector/data/*/source_gap_audit.json
+            news_collector/data/*/enrichment_summary.json
           if-no-files-found: ignore
           retention-days: 14
