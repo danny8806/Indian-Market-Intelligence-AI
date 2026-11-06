@@ -1,0 +1,44 @@
+name: NIFTY 500 all-market mover coverage audit tests
+
+on:
+  push:
+    branches: [feature/missed-movers-and-news-learning-audit-20261107]
+    paths:
+      - 'learning/**'
+      - '.github/workflows/mover-news-audit-ci.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: mover-coverage-tests-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install only research libraries
+        run: |
+          python -m pip install -r news_collector/requirements.txt
+          python -m pip install -r requirements-learning.txt
+      - name: Run standalone mover audit regression tests
+        run: python -m unittest discover -s learning -p test_mover_audit.py -v
+      - name: Run existing frozen candidate training tests
+        run: python -m unittest discover -s learning -p test_candidate_learning.py -v
+      - name: Run live official NSE 6 Nov after-market mover audit
+        run: python -m learning.mover_audit --session-date 2026-11-06
+      - name: Archive offline or live market-only report for audit
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nifty500-market-mover-audit-${{ github.run_id }}
+          path: learning/data/mover_reports/2026-11-06.json
+          if-no-files-found: ignore
+          retention-days: 14
