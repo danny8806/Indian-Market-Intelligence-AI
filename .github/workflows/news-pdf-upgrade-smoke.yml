@@ -1,0 +1,43 @@
+name: Filing PDF & source-gap upgrade smoke (read-only)
+
+on:
+  push:
+    branches: [feature/filing-pdf-enrichment-and-source-reconciliation-20261106]
+    paths:
+      - 'news_collector/**'
+      - '.github/workflows/news-pdf-upgrade-smoke.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pdf-upgrade-smoke-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install no-cost extraction libraries
+        run: python -m pip install -r news_collector/requirements.txt
+      - name: Run original and new deterministic tests
+        run: python -m unittest discover -s news_collector -p 'test_*.py' -v
+      - name: Fetch up to 4 official public PDFs from existing archive
+        run: python -m news_collector.enrich --session-date 2026-11-09 --max-docs 4 --workers 2
+      - name: Keep enriched results as diagnostic artifacts, not trade signals
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pdf-upgrade-research-${{ github.run_id }}
+          path: |
+            news_collector/data/2026-11-09/pdf_extraction.jsonl
+            news_collector/data/2026-11-09/enrichment_summary.json
+            news_collector/data/2026-11-09/source_gap_audit.json
+          if-no-files-found: ignore
+          retention-days: 7
