@@ -1,5 +1,5 @@
 {
-  "checked_at_utc": "2026-11-06T17:08:22.606254+00:00",
+  "checked_at_utc": "2026-11-06T17:10:12.095411+00:00",
   "run_context": "GitHub Actions ubuntu-latest; read-only, unauthenticated endpoints",
   "date_note": "Source connectivity smoke test, NOT 3pm-9am complete crawl or timestamp verification",
   "sources": [
@@ -10,24 +10,47 @@
       "http": 200,
       "final_url": "https://nsearchives.nseindia.com/content/RSS/Online_announcements.xml",
       "content_type": "application/xml",
-      "bytes": 1054549,
+      "bytes": 1054932,
+      "first_item_fields": {
+        "title": "Mufin Green Finance Limited",
+        "link": "https://nsearchives.nseindia.com/corporate/xbrl/SAIIM_22219_WebXMLFile_20261106_223833720.xml",
+        "description": "Mufin Green Finance Limited has informed the Exchange about Schedule of Analysts or Institutional Investors Meet |SUBJECT: Analyst/Investor Meet Para A-XBRL",
+        "pubDate": "06-Nov-2026 22:38:35"
+      },
       "status": "RSS_OK",
-      "items": 2659,
+      "items": 2660,
       "sample_titles": [
+        "Mufin Green Finance Limited",
         "Mohini Health & Hygiene Limited",
         "FSN E-Commerce Ventures Limited",
-        "Poonawalla Fincorp Limited",
-        "Gland Pharma Limited"
+        "Poonawalla Fincorp Limited"
       ],
       "window_overnight_items": 0,
-      "missing_or_invalid_date": 2659
+      "missing_or_invalid_date": 2660
     },
     {
       "source": "NSE financial results RSS",
       "type": "rss",
       "url": "https://nsearchives.nseindia.com/content/RSS/Financial_Results.xml",
-      "status": "NETWORK_OR_PARSE_ERROR",
-      "error": "TimeoutError: The read operation timed out"
+      "http": 200,
+      "final_url": "https://nsearchives.nseindia.com/content/RSS/Financial_Results.xml",
+      "content_type": "application/xml",
+      "bytes": 2084,
+      "first_item_fields": {
+        "title": "Gammon India Limited",
+        "link": "https://www.nseindia.com/companies-listing/corporate-filings-financial-results",
+        "description": "RELATING TO:First Quarter |AUDITED/UNAUDITED:Unaudited |CUMULATIVE/NON-CUMULATIVE:Non-Cumulative |CONSOLIDATED/NON-CONSOLIDATED:Non-Consolidated |IND AS/ NON IN",
+        "pubDate": "03-Nov-2026 10:29:23"
+      },
+      "status": "RSS_OK",
+      "items": 3,
+      "sample_titles": [
+        "Gammon India Limited",
+        "Gammon India Limited",
+        "Gammon India Limited"
+      ],
+      "window_overnight_items": 0,
+      "missing_or_invalid_date": 3
     },
     {
       "source": "NSE board meetings RSS",
@@ -36,24 +59,48 @@
       "http": 200,
       "final_url": "https://nsearchives.nseindia.com/content/RSS/Board_Meetings.xml",
       "content_type": "application/xml",
-      "bytes": 55649,
+      "bytes": 139752,
+      "first_item_fields": {
+        "title": "Falcon Technoprojects India Limited",
+        "link": "https://nsearchives.nseindia.com/corporate/xbrl/PRIOR_INTIMATION_22870_WebXMLFile_20261106_213726341.xml",
+        "description": "FALCON TECHNOPROJECTS INDIA LIMITED has informed the Exchange about Board Meeting to be held on 13-Nov-2026 to inter-alia consider and approve the Unaudited Fin",
+        "pubDate": "06-Nov-2026 21:37:28"
+      },
       "status": "RSS_OK",
-      "items": 166,
+      "items": 425,
       "sample_titles": [
-        "Khaitan Chemicals & Fertilizers Limited",
-        "Uma Exports Limited",
-        "Indo Tech Transformers Limited",
-        "Bafna Pharmaceuticals Limited"
+        "Falcon Technoprojects India Limited",
+        "Falcon Technoprojects India Limited",
+        "SML Mahindra Limited",
+        "SML Mahindra Limited"
       ],
       "window_overnight_items": 0,
-      "missing_or_invalid_date": 166
+      "missing_or_invalid_date": 425
     },
     {
       "source": "NSE corporate actions RSS",
       "type": "rss",
       "url": "https://nsearchives.nseindia.com/content/RSS/Corporate_action.xml",
-      "status": "NETWORK_OR_PARSE_ERROR",
-      "error": "TimeoutError: The read operation timed out"
+      "http": 200,
+      "final_url": "https://nsearchives.nseindia.com/content/RSS/Corporate_action.xml",
+      "content_type": "application/xml",
+      "bytes": 21654,
+      "first_item_fields": {
+        "title": "Computer Age Management Services Limited - Ex-Date: 13-Nov-2026",
+        "link": "https://www.nseindia.com/companies-listing/corporate-filings-actions",
+        "description": "SERIES:EQ |PURPOSE:INTERIM DIVIDEND - RS 3.25 PER SHARE |FACE VALUE:2 |RECORD DATE:13-Nov-2026 |BOOK CLOSURE START DATE:- |BOOK CLOSURE END DATE:-",
+        "pubDate": "06-Nov-2026 06:11:32"
+      },
+      "status": "RSS_OK",
+      "items": 55,
+      "sample_titles": [
+        "Computer Age Management Services Limited - Ex-Date: 13-Nov-2026",
+        "NBCC (INDIA) LIMITED - Ex-Date: 11-Nov-2026",
+        "Chambal Fertilizers & Chemicals Limited - Ex-Date: 11-Nov-2026",
+        "Container Corporation of India Limited - Ex-Date: 11-Nov-2026"
+      ],
+      "window_overnight_items": 0,
+      "missing_or_invalid_date": 55
     },
     {
       "source": "BSE announcements RSS",
@@ -62,17 +109,12 @@
       "http": 200,
       "final_url": "https://www.bseindia.com/data/xml/announcements.xml",
       "content_type": "application/rss+xml",
-      "bytes": 4630569,
-      "status": "RSS_OK",
-      "items": 12905,
-      "sample_titles": [
-        "Birla Corporation Ltd (500335)",
-        "Birla Corporation Ltd (732571)",
-        "Gland Pharma Ltd (543245)",
-        "SUSTAINABLE ENERGY INFRA TRUST (976953)"
-      ],
+      "bytes": 515,
+      "status": "RSS_EMPTY",
+      "items": 0,
+      "sample_titles": [],
       "window_overnight_items": 0,
-      "missing_or_invalid_date": 12905
+      "missing_or_invalid_date": 0
     },
     {
       "source": "SEBI RSS",
@@ -82,6 +124,12 @@
       "final_url": "https://www.sebi.gov.in/sebirss.xml",
       "content_type": "text/xml",
       "bytes": 16155,
+      "first_item_fields": {
+        "title": "Commencement of SEBI (Settlement of Administrative and Civil Proceedings) Regulations, 2026",
+        "description": "Commencement of SEBI (Settlement of Administrative and Civil Proceedings) Regulations, 2026",
+        "link": "https://www.sebi.gov.in/media-and-notifications/press-releases/nov-2026/commencement-of-sebi-settlement-of-administrative-and-civil-proceedings-regulations-2026",
+        "pubDate": "06 Nov, 2026 +0530"
+      },
       "status": "RSS_OK",
       "items": 30,
       "sample_titles": [
@@ -101,6 +149,12 @@
       "final_url": "https://pulse.zerodha.com/feed.php?n=100",
       "content_type": "text/xml;charset=UTF-8",
       "bytes": 53699,
+      "first_item_fields": {
+        "title": "Foreign Investors Change Course After A Rs 90,000 Crore Sell-Off. What's Driving The U-Turn?",
+        "link": "https://www.ndtvprofit.com/markets/foreign-investors-change-course-after-a-rs-90-000-crore-sell-off-whats-driving-the-u-turn-12294316#publisher=newsstand",
+        "description": "Foreign investors have bought over Rs 45,000 crore in November after a Rs 90,000 crore sell-off in September and October. Improving earnings and easing global p",
+        "pubDate": "Fri, 06 Nov 2026 21:55:29 +0530"
+      },
       "status": "RSS_OK",
       "items": 100,
       "sample_titles": [
@@ -144,6 +198,13 @@
       "final_url": "https://economictimes.indiatimes.com/rssfeedsdefault.cms",
       "content_type": "text/xml;charset=UTF-8",
       "bytes": 58111,
+      "first_item_fields": {
+        "title": "Kalyan, Titan, other Jewellery stocks rally up to 5% on Dhanteras 2026. How is yellow metal placed this festive season?",
+        "description": "Jewellery stocks rallied ahead of Dhanteras 2026 as investors anticipated stronger precious metal demand. Meanwhile, brokerages see opportunities in gold and si",
+        "link": "https://economictimes.indiatimes.com/markets/stocks/news/kalyan-titan-other-jewellery-stocks-rally-up-to-5-on-dhanteras-2026-how-is-yellow-metal-placed-this-fes",
+        "guid": "https://economictimes.indiatimes.com/markets/stocks/news/kalyan-titan-other-jewellery-stocks-rally-up-to-5-on-dhanteras-2026-how-is-yellow-metal-placed-this-fes",
+        "pubDate": "Fri, 06 Nov 2026 12:20:53 +0530"
+      },
       "status": "RSS_OK",
       "items": 76,
       "sample_titles": [
@@ -163,6 +224,20 @@
       "final_url": "https://www.business-standard.com/rss/latest.rss",
       "content_type": "application/rss+xml",
       "bytes": 301874,
+      "first_item_fields": {
+        "title": "Amid Karnataka Congress tensions, a leadership test for DK Shivakumar",
+        "link": "https://www.business-standard.com/opinion/columns/amid-karnataka-congress-tensions-a-leadership-test-for-dk-shivakumar-126110602014_1.html",
+        "guid": "https://www.business-standard.com/opinion/columns/amid-karnataka-congress-tensions-a-leadership-test-for-dk-shivakumar-126110602014_1.html",
+        "description": "The strongest Congress government in Karnataka in 37 years looks to be its weakest",
+        "content": "",
+        "pubDate": "Fri, 06 Nov 2026 22:26:14 +0530",
+        "lastModification": "Fri, 06 Nov 2026 22:27:18 +0530",
+        "premium": "true",
+        "creator": "Aditi Phadnis",
+        "keywords": "BS Opinion, Congress, D K Shivakumar, Leadership",
+        "publisher": "Business Standard",
+        "category": "Opinion"
+      },
       "status": "RSS_OK",
       "items": 169,
       "sample_titles": [
@@ -181,7 +256,20 @@
       "http": 200,
       "final_url": "https://www.business-standard.com/rss/markets-106.rss",
       "content_type": "application/rss+xml",
-      "bytes": 55299,
+      "bytes": 55295,
+      "first_item_fields": {
+        "title": "This Samvat, can large companies learn to think like entrepreneurs?",
+        "link": "https://www.business-standard.com/companies/news/this-samvat-can-large-companies-learn-to-think-like-entrepreneurs-126110601936_1.html",
+        "guid": "https://www.business-standard.com/companies/news/this-samvat-can-large-companies-learn-to-think-like-entrepreneurs-126110601936_1.html",
+        "description": "As the new Samvat begins, large companies must embrace entrepreneurial thinking, foster innovation and build the agility to respond to uncertainty rather than r",
+        "content": "",
+        "pubDate": "Fri, 06 Nov 2026 21:22:24 +0530",
+        "lastModification": "Fri, 06 Nov 2026 21:25:24 +0530",
+        "keywords": "Samvat 2083, entrepreneurial thinking, corporate innovation, business leadership, CEOs, business strategy, innovation management, jugaad, startups, corporate bu",
+        "publisher": "Business Standard",
+        "category": "News",
+        "section": "Companies"
+      },
       "status": "RSS_OK",
       "items": 35,
       "sample_titles": [
@@ -201,6 +289,13 @@
       "final_url": "https://www.moneycontrol.com/rss/latestnews.xml",
       "content_type": "application/xml",
       "bytes": 15347,
+      "first_item_fields": {
+        "title": "Buy HDFC Bank; target of Rs 1,850: ICICI Securities",
+        "link": "https://www.moneycontrol.com/news/recommendations/buy-hdfc-bank-targetrs-1850-icici-securities_17531671.html",
+        "description": "<img src=\"https://www.moneycontrol.com/news_image_files/2024/200x200/B/Buy-378x213_200.jpg\" alt=\"Buy HDFC Bank; target of Rs 1,850: ICICI Securities\" title=\"Buy",
+        "pubDate": "Tue, 23 Apr 2024 13:41:02 +0530",
+        "guid": "https://www.moneycontrol.com/news/recommendations/buy-hdfc-bank-targetrs-1850-icici-securities_17531671.html"
+      },
       "status": "RSS_OK",
       "items": 15,
       "sample_titles": [
@@ -220,6 +315,15 @@
       "final_url": "https://www.thehindubusinessline.com/feeder/default.rss",
       "content_type": "application/xml",
       "bytes": 47045,
+      "first_item_fields": {
+        "title": "Ethanol blending: OMCs raise questions on Karnataka’s testing methodology",
+        "description": "IOCL, BPCL and HPCL acknowledged Karnataka’s government press release alleging petrol at some outlets contains 26–31% ethanol",
+        "link": "https://www.thehindubusinessline.com/news/ethanol-blending-omcs-raise-questions-on-karnatakas-testing-methodology/article71675739.ece",
+        "guid": "article-71675739",
+        "category": "News",
+        "pubDate": "Fri, 06 Nov 2026 22:11:44 +0530",
+        "content": ""
+      },
       "status": "RSS_OK",
       "items": 60,
       "sample_titles": [
@@ -239,6 +343,15 @@
       "final_url": "https://feeds.feedburner.com/ndtvnews-latest",
       "content_type": "text/xml; charset=utf-8",
       "bytes": 135519,
+      "first_item_fields": {
+        "guid": "https://www.ndtv.com/world-news/sailor-killed-after-missile-attack-on-oil-tanker-in-persian-gulf-12294472#publisher=newsstand",
+        "title": "Sailor Killed After Missile Attack On Oil Tanker In Persian Gulf",
+        "link": "https://www.ndtv.com/world-news/sailor-killed-after-missile-attack-on-oil-tanker-in-persian-gulf-12294472#publisher=newsstand",
+        "pubDate": "Fri, 06 Nov 2026 22:28:23 +0530",
+        "content": "",
+        "description": "The Marshall Islands-flagged tanker Velos Sapphire was originally sailing to the Bahrain port of Sitra empty of cargo when the attack happened early on Thursday",
+        "encoded": "The Marshall Islands-flagged tanker Velos Sapphire was originally sailing to the Bahrain port of Sitra empty of cargo when the attack happened early on Thursday"
+      },
       "status": "RSS_OK",
       "items": 100,
       "sample_titles": [
@@ -266,6 +379,14 @@
       "final_url": "https://news.google.com/rss/search?q=India+NSE+BSE+results+orders+when%3A1d&hl=en-IN&gl=IN&ceid=IN%3Aen",
       "content_type": "application/xml; charset=utf-8",
       "bytes": 21759,
+      "first_item_fields": {
+        "title": "Diwali 2026 stock market holiday: NSE, BSE open on Sunday but closed this day - Muhurat trading date, time | Samvat 2083 - TradingView",
+        "link": "https://news.google.com/rss/articles/CBMi_wFBVV95cUxNRzQ4d3QzRTBZYTZ2TEtmZFZVb3lBU05haGtLdlNvQnJoQ2otUmdNNlEzNEZuTlA2LUMwZTMyTF8taXZkZjVCUDRBVFBUSkFsWGZxMm9HRzN",
+        "guid": "CBMi_wFBVV95cUxNRzQ4d3QzRTBZYTZ2TEtmZFZVb3lBU05haGtLdlNvQnJoQ2otUmdNNlEzNEZuTlA2LUMwZTMyTF8taXZkZjVCUDRBVFBUSkFsWGZxMm9HRzNHbFVud19DV2pEbXdUMWZnLUxDTW03eTBlamhW",
+        "pubDate": "Fri, 06 Nov 2026 16:03:35 GMT",
+        "description": "<a href=\"https://news.google.com/rss/articles/CBMi_wFBVV95cUxNRzQ4d3QzRTBZYTZ2TEtmZFZVb3lBU05haGtLdlNvQnJoQ2otUmdNNlEzNEZuTlA2LUMwZTMyTF8taXZkZjVCUDRBVFBUSkFsWG",
+        "source": "TradingView"
+      },
       "status": "RSS_OK",
       "items": 11,
       "sample_titles": [
@@ -292,7 +413,7 @@
       "http": 200,
       "final_url": "https://pulse.zerodha.com/",
       "content_type": "text/html; charset=UTF-8",
-      "bytes": 381747,
+      "bytes": 381732,
       "status": "HTML_OK",
       "heading_elements": 250
     },
@@ -310,7 +431,7 @@
       "http": 200,
       "final_url": "https://www.business-standard.com/markets/bse-announcement",
       "content_type": "text/html; charset=utf-8",
-      "bytes": 229259,
+      "bytes": 227411,
       "status": "HTML_OK",
       "heading_elements": 0
     },
@@ -359,7 +480,7 @@
       "http": 200,
       "final_url": "https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx",
       "content_type": "text/html; charset=utf-8",
-      "bytes": 160727,
+      "bytes": 160733,
       "status": "HTML_OK",
       "heading_elements": 41
     },
@@ -397,7 +518,7 @@
       "http": 200,
       "final_url": "https://www.business-standard.com/markets",
       "content_type": "text/html; charset=utf-8",
-      "bytes": 305007,
+      "bytes": 303989,
       "status": "HTML_OK",
       "heading_elements": 1
     },
@@ -427,7 +548,7 @@
       "http": 200,
       "final_url": "https://economictimes.indiatimes.com/markets",
       "content_type": "text/html",
-      "bytes": 1087924,
+      "bytes": 1085160,
       "status": "HTML_OK",
       "heading_elements": 38
     },
@@ -449,18 +570,19 @@
       "http": 200,
       "final_url": "https://www.thehindubusinessline.com/markets/",
       "content_type": "text/html; charset=UTF-8",
-      "bytes": 211230,
+      "bytes": 214995,
       "status": "HTML_OK",
       "heading_elements": 58
     }
   ],
   "status_counts": {
-    "RSS_OK": 12,
-    "NETWORK_OR_PARSE_ERROR": 3,
+    "RSS_OK": 13,
+    "RSS_EMPTY": 1,
     "HTTP_404": 4,
     "HTTP_403": 4,
     "HTTP_429": 1,
     "HTML_OK": 11,
+    "NETWORK_OR_PARSE_ERROR": 1,
     "HTTP_401": 1
   }
 }
