@@ -1,0 +1,169 @@
+{
+  "schema_version": "learning-audit/1.0",
+  "session_date": "2026-11-06",
+  "timezone": "Asia/Kolkata",
+  "generated_at": "2026-11-06T16:30:20+05:30",
+  "status": "PARTIAL_NO_VERIFIED_SIGNALS",
+  "market_session": {
+    "traded": true,
+    "official_nse_holiday_check": "https://www.nseindia.com/resources/exchange-communication-holidays",
+    "market_evidence": "https://www.nseindia.com/",
+    "end_of_day_context": "https://www.reuters.com/world/india/indian-stocks-set-pullback-after-sharp-rally-oil-slide-foreign-inflows-2026-11-06/"
+  },
+  "news_window": {
+    "start": "2026-11-05T15:00:00+05:30",
+    "end": "2026-11-06T09:00:00+05:30"
+  },
+  "original_signal_id": "4b5028dc-a750-832a-a927-cc5c4dd844ab",
+  "original_signal_source": "ChatGPT automation: NIFTY 500 Deep News — Double Check, recorded completed run",
+  "original_report_generated_at": "2026-11-06T09:05:57+05:30",
+  "original_report_status": "UNAVAILABLE",
+  "original_report_source_hash": null,
+  "original_report_frozen": false,
+  "original_report_note": "Original completed 09:00 automation result retrieved, not a frozen immutable GitHub snapshot. It explicitly reported 0 LONG and 0 SHORT approved signals; the discussed bullish/bearish candidates were investigation priorities only. No GitHub signals/incoming/2026-11-06.json or signals/archive/2026-11-06.json was present when checked.",
+  "signals_expected": 0,
+  "per_trade": [],
+  "wins": null,
+  "losses": null,
+  "long_average_return_pct": null,
+  "short_average_return_pct": null,
+  "combined_equal_weight_return_pct": null,
+  "portfolio_return_status": "NOT_APPLICABLE_NO_READY_SIGNALS",
+  "price_verification": {
+    "selected_tickers": 0,
+    "verified_ohlc": 0,
+    "corporate_action_checks": "NOT_APPLICABLE_NO_SELECTED_TICKERS",
+    "note": "No selected securities to price. Intraday snapshots for omitted candidates are not end-of-day OHLC and are not counted as trade outcomes."
+  },
+  "review_passes": [
+    {
+      "name": "A - filing discovery",
+      "status": "PARTIAL",
+      "method": "Official NSE PDF filings and issuer-authored attachments indexed by exchange mirrors, checked against 05 Nov 15:00–06 Nov 09:00 IST window",
+      "sources": [
+        "https://nsearchives.nseindia.com/corporate/THERMAXNSE_05112026180056_SEIntimationBMOutcome.pdf",
+        "https://nsearchives.nseindia.com/corporate/SAILIFE_06112026001244_Stx_Press_Release_05112026_Signed.pdf",
+        "https://www.nseindia.com/static/products-services/indices-nifty500-index"
+      ],
+      "limitation": "Official NIFTY 500 constituent CSV could not be downloaded/parsed; BSE direct PDF links sometimes returned HTTP 403. Not a 500-company exhaustive scan."
+    },
+    {
+      "name": "B - independent rediscovery",
+      "status": "PARTIAL",
+      "method": "Requeried premarket news and earnings through independent press and alternative filing indexes, compared with original morning investigation list",
+      "sources": [
+        "https://www.financialexpress.com/market/stocks-to-watch-on-nov-6-bharti-airtel-titan-lic-ongc-and-more-4378063/",
+        "https://economictimes.indiatimes.com/markets/stocks/news/stocks-in-news-bharti-airtel-lic-titan-ongc-bharti-hexacom-glenmark-pharma-and-astral/articleshow/135584151.cms",
+        "https://www.alfafinder.com/filings/thermax/",
+        "https://www.alfafinder.com/filings/sai-life-science/"
+      ],
+      "limitation": "Press reports and filing indexes are discovery tools, not independently verified official exchange dissemination logs. Full universe coverage not demonstrated."
+    }
+  ],
+  "overlooked_candidate_review": [
+    {
+      "symbol": "THERMAX",
+      "side": "REVIEW_ONLY",
+      "classification": "POTENTIAL_FETCH_MISS",
+      "published_at": "2026-11-05T18:02:00+05:30",
+      "first_available_at": "2026-11-05T18:02:00+05:30",
+      "timestamp_confidence": "EXCHANGE_INDEX_REPORTED",
+      "source_urls": [
+        "https://nsearchives.nseindia.com/corporate/THERMAXNSE_05112026180056_SEIntimationBMOutcome.pdf",
+        "https://nsearchives.nseindia.com/corporate/THERMAXNSE_05112026181951_SEintimationInvestorPrez.pdf",
+        "https://www.alfafinder.com/filings/thermax/"
+      ],
+      "primary_filing_verified": true,
+      "material_facts": "Q2 revenue ₹2,755.87 crore (+11.4% YoY), PAT ₹113.11 crore (-5.3% YoY); order booking ₹3,259 crore (-8% YoY), order balance ₹14,250 crore (+16%). Company cited product mix/input costs and ₹15 crore impairment. Original morning investigation did not name THERMAX.",
+      "counterevidence": "Strong order balance, revenue growth and segment improvement; broad global AI-infrastructure selloff was a concurrent market driver. No analyst consensus independently verified.",
+      "price_note": "A third-party NIFTY 500 heatmap reported a -17.78% intraday change at 14:31 IST, NOT verified closing return, and NOT proof that the filing caused the move.",
+      "lesson": "Test dual-threshold bearish flags for shrinking profit margin and order bookings despite rising revenue; independently tag sector shocks; preserve complete filing-candidate universe."
+    },
+    {
+      "symbol": "SAILIFE",
+      "side": "REVIEW_ONLY",
+      "classification": "POTENTIAL_FETCH_MISS",
+      "published_at": "2026-11-05T22:48:00+05:30",
+      "first_available_at": "2026-11-05T22:48:00+05:30",
+      "timestamp_confidence": "BSE_FILING_INDEX_REPORTED",
+      "source_urls": [
+        "https://www.alfafinder.com/filings/sai-life-science/2026-11-05-financial-results-demyvd3x/",
+        "https://nsearchives.nseindia.com/corporate/SAILIFE_06112026001244_Stx_Press_Release_05112026_Signed.pdf",
+        "https://nsearchives.nseindia.com/corporate/SAILIFE_06112026001507_Stx_Investor_Presentation_05112026_Signed.pdf"
+      ],
+      "primary_filing_verified": true,
+      "material_facts": "Q2 revenue ₹659 crore (+23% YoY), EBITDA ₹187 crore (+20%), PAT ₹98 crore (+17%); company forecast stronger H2, but Q2 EBITDA margin eased from 29% to 28%. Original morning investigation did not name SAILIFE.",
+      "counterevidence": "Margin compressed, substantial H1 capex ₹621 crore, valuation/consensus unverified.",
+      "price_note": "A third-party NIFTY 500 heatmap reported +13.50% intraday at 14:31 IST, NOT verified closing return; not a hypothetical selected long.",
+      "lesson": "Expand late-night earnings fetch and independently search issuer press releases posted after midnight before 09:00 cutoff."
+    },
+    {
+      "symbol": "LICI",
+      "side": "REVIEW_ONLY",
+      "classification": "COVERAGE_GAP_NOT_APPROVED",
+      "published_at": "2026-11-05T17:27:00+05:30",
+      "first_available_at": "2026-11-05T17:27:00+05:30",
+      "timestamp_confidence": "BSE_FILING_MIRROR_REPORTED_EARLIEST",
+      "source_urls": [
+        "https://www.bazaarwatch.com/announcement/290494/life-insurance-corporation-of-india-outcome-of-board-meeting",
+        "https://trendlyne.com/latest-news/BSE-Announcements/829878/LICI/life-insurance-corporation-of-india/",
+        "https://www.bazaarwatch.com/announcement/291392/life-insurance-corporation-of-india-general-updates"
+      ],
+      "primary_filing_verified": "ISSUER_DOCUMENT_TEXT_MIRRORED_DIRECT_EXCHANGE_PDF_NOT_VERIFIED",
+      "material_facts": "LIC Q2 standalone profit approximately ₹12,076 crore (+20% YoY), but first-year premium reportedly fell 3.7%; filing also included a later correction to an AUM unit in its press release. Not named in morning investigation.",
+      "counterevidence": "Lower first-year premium and sequential profit decline; direct official PDF and market expectations not independently checked.",
+      "price_note": "No complete verified 06 Nov OHLC used.",
+      "lesson": "Cross-check both original and corrected issuer releases and business-quality metrics; require unit-validation before ranking."
+    },
+    {
+      "symbol": "BHARTIHEXA",
+      "side": "REVIEW_ONLY",
+      "classification": "COVERAGE_GAP_NOT_APPROVED",
+      "published_at": "2026-11-05T16:23:00+05:30",
+      "first_available_at": null,
+      "timestamp_confidence": "CONFLICTING_MIRROR_TIMESTAMPS_16_23_VS_16_37",
+      "source_urls": [
+        "https://bazaarwatch.com/announcement/290102/bharti-hexacom-ltd-financial-results-for-the-second-quarter-q2-and-six-months-ended-september-30-202",
+        "https://trendlyne.com/latest-news/BSE-Announcements/2170198/BHARTIHEXA/bharti-hexacom-ltd/"
+      ],
+      "primary_filing_verified": "ISSUER_DOCUMENT_TEXT_MIRRORED_DIRECT_BSE_PDF_HTTP_403",
+      "material_facts": "Company filing table is in ₹ millions: Q2 revenue ₹25,818 million = ₹2,581.8 crore; net profit ₹5,661 million = ₹566.1 crore. A mirror's AI summary incorrectly presented ₹25,818 crore, a 10x unit error. Original morning investigation did not name BHARTIHEXA.",
+      "counterevidence": "Publication timing inconsistent across filing indexes; direct original PDF inaccessible, consensus not checked.",
+      "price_note": "No complete verified 06 Nov OHLC used.",
+      "lesson": "Add mandatory financial-unit normalization and two-source timestamp reconciliation; do not infer news significance from raw currency magnitudes."
+    }
+  ],
+  "omitted_movers_without_verified_premarket_filing": [
+    {
+      "symbol": "TDPOWERSYS",
+      "note": "Large intraday decline reported, but no specific qualifying issuer filing independently established in this audit. Global AI/data-center sector selloff is a plausible cross-market driver, not proof of a company-specific premarket event.",
+      "source_url": "https://economictimes.indiatimes.com/markets/stocks/news/ai-selloff-hits-india-too-td-power-hfcl-sterlite-other-power-capex-linked-stocks-crash-up-to-15/articleshow/135594845.cms"
+    }
+  ],
+  "mistake_category_by_selected_signal": [],
+  "session_level_lessons": [
+    "A morning UNAVAILABLE research report must be scored as missing prediction coverage, not a losing or winning strategy.",
+    "Add official constituent-list snapshot ingestion, with membership and EQ-series validation before signal generation.",
+    "Keep two independent overnight discovery passes, especially for 18:00–00:30 late filings.",
+    "Verify all financial units (₹ million vs ₹ crore) against the primary filing before making claims.",
+    "For each news event, separate issuer catalyst from global/sector shock; validate actual opening execution and end-of-day OHLC before training.",
+    "Keep original prediction snapshot immutable; do not turn discovered hindsight candidates into selected trades."
+  ],
+  "training": {
+    "actual_dataset_rows_before_run": 10,
+    "actual_dataset_distinct_sessions_before_run": 1,
+    "minimum_sessions": 40,
+    "minimum_rows": 160,
+    "challenger_training_attempted": false,
+    "weights_updated": false,
+    "model_promoted": false,
+    "reason": "No new selected trades today and historical dataset far below configured minimum. No eligible point-in-time candidate pool."
+  },
+  "execution": {
+    "live_orders_placed": 0,
+    "paper_orders_placed": 0,
+    "broker_endpoints_accessed": false
+  },
+  "saved_to": "GitHub research repository learning/data/reports/2026-11-06.json",
+  "saved_to_live_research_database": false
+}
