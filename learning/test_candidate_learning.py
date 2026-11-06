@@ -8,6 +8,7 @@ from zoneinfo import ZoneInfo
 
 from learning.candidate_outcomes import audit, load_snapshot, price_csv_reader
 from learning.train_candidates import train
+from learning.nse_bhavcopy import parse_bhavcopy
 
 IST = ZoneInfo("Asia/Kolkata")
 DAY = date(2026, 11, 9)
@@ -98,6 +99,19 @@ class CandidateOutcomeTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as td:
             self.assertEqual(train(Path(td) / "missing.csv",
                                    Path(td) / "out")["status"], "INSUFFICIENT_DATA")
+
+    def test_nse_bhavcopy_validates_dates_and_prices(self):
+        head = "SYMBOL,SERIES,DATE1,PREV_CLOSE,OPEN_PRICE,HIGH_PRICE,LOW_PRICE,CLOSE_PRICE,TTL_TRD_QNTY"
+        rows = ["EQSYM{:04d},EQ,09-Nov-2026,100,102,110,99,105,10000".format(i)
+                for i in range(310)]
+        data = (head + "\n" + "\n".join(rows) + "\n").encode()
+        parsed = parse_bhavcopy(data, DAY)
+        self.assertEqual(len(parsed), 310)
+        self.assertEqual(parsed["EQSYM0000"]["OPEN_PRICE"], 102.0)
+        with self.assertRaisesRegex(ValueError, "date mismatch"):
+            parse_bhavcopy(data, date(2026, 11, 6))
+        with self.assertRaisesRegex(ValueError, "schema incomplete"):
+            parse_bhavcopy(b"SYMBOL,DATE1\nTITAN,09-Nov-2026\n", DAY)
 
     def test_csv_loader_requires_fields(self):
         with tempfile.TemporaryDirectory() as td:
