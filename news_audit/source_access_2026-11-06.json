@@ -1,5 +1,5 @@
 {
-  "checked_at_utc": "2026-11-06T17:12:05.533469+00:00",
+  "checked_at_utc": "2026-11-06T17:13:05.359459+00:00",
   "run_context": "GitHub Actions ubuntu-latest; read-only, unauthenticated endpoints",
   "date_note": "Source connectivity smoke test, NOT 3pm-9am complete crawl or timestamp verification",
   "sources": [
@@ -10,20 +10,20 @@
       "http": 200,
       "final_url": "https://nsearchives.nseindia.com/content/RSS/Online_announcements.xml",
       "content_type": "application/xml",
-      "bytes": 1055300,
+      "bytes": 1056350,
       "first_item_fields": {
-        "title": "Birla Corporation Limited",
-        "link": "https://nsearchives.nseindia.com/corporate/BIRLACORP1_06112026223901_Transcript_earningscall_021126.pdf",
-        "description": "Birla Corporation Limited has informed the Exchange about Transcript |SUBJECT: Analysts/Institutional Investor Meet/Con. Call Updates",
-        "pubDate": "06-Nov-2026 22:39:39"
+        "title": "Britannia Industries Limited",
+        "link": "https://nsearchives.nseindia.com/corporate/BRITANNIA1_06112026223958_Intimation.pdf",
+        "description": "Pursuant to Regulation 30 read with Clause 7 of Para A of Part A of Schedule III of the SEBI Listing Regulations, 2015 and our letters dated 6 August 2026 and 6",
+        "pubDate": "06-Nov-2026 22:41:30"
       },
       "status": "RSS_OK",
-      "items": 2661,
+      "items": 2663,
       "sample_titles": [
+        "Britannia Industries Limited",
         "Birla Corporation Limited",
-        "Mufin Green Finance Limited",
-        "Mohini Health & Hygiene Limited",
-        "FSN E-Commerce Ventures Limited"
+        "Birla Corporation Limited",
+        "Mufin Green Finance Limited"
       ],
       "window_overnight_items": 194,
       "missing_or_invalid_date": 2
@@ -56,15 +56,51 @@
       "source": "NSE board meetings RSS",
       "type": "rss",
       "url": "https://nsearchives.nseindia.com/content/RSS/Board_Meetings.xml",
-      "status": "NETWORK_OR_PARSE_ERROR",
-      "error": "TimeoutError: The read operation timed out"
+      "http": 200,
+      "final_url": "https://nsearchives.nseindia.com/content/RSS/Board_Meetings.xml",
+      "content_type": "application/xml",
+      "bytes": 137447,
+      "first_item_fields": {
+        "title": "Vasa Retail and Overseas Ltd",
+        "link": "https://nsearchives.nseindia.com/corporate/VASA_06112026204917_Board_Meeting_Intimation_result_September_2026.pdf",
+        "description": "To consider and approve the financial results for the period ended September 30, 2026 |Meeting Date: 12-Nov-2026",
+        "pubDate": "06-Nov-2026 20:50:32"
+      },
+      "status": "RSS_OK",
+      "items": 419,
+      "sample_titles": [
+        "Vasa Retail and Overseas Ltd",
+        "Vasa Retail and Overseas Ltd",
+        "ICSA (India) Limited",
+        "Zetwerk Manufacturing Businesses Limited"
+      ],
+      "window_overnight_items": 0,
+      "missing_or_invalid_date": 0
     },
     {
       "source": "NSE corporate actions RSS",
       "type": "rss",
       "url": "https://nsearchives.nseindia.com/content/RSS/Corporate_action.xml",
-      "status": "NETWORK_OR_PARSE_ERROR",
-      "error": "TimeoutError: The read operation timed out"
+      "http": 200,
+      "final_url": "https://nsearchives.nseindia.com/content/RSS/Corporate_action.xml",
+      "content_type": "application/xml",
+      "bytes": 21654,
+      "first_item_fields": {
+        "title": "Computer Age Management Services Limited - Ex-Date: 13-Nov-2026",
+        "link": "https://www.nseindia.com/companies-listing/corporate-filings-actions",
+        "description": "SERIES:EQ |PURPOSE:INTERIM DIVIDEND - RS 3.25 PER SHARE |FACE VALUE:2 |RECORD DATE:13-Nov-2026 |BOOK CLOSURE START DATE:- |BOOK CLOSURE END DATE:-",
+        "pubDate": "06-Nov-2026 06:11:32"
+      },
+      "status": "RSS_OK",
+      "items": 55,
+      "sample_titles": [
+        "Computer Age Management Services Limited - Ex-Date: 13-Nov-2026",
+        "NBCC (INDIA) LIMITED - Ex-Date: 11-Nov-2026",
+        "Chambal Fertilizers & Chemicals Limited - Ex-Date: 11-Nov-2026",
+        "Container Corporation of India Limited - Ex-Date: 11-Nov-2026"
+      ],
+      "window_overnight_items": 55,
+      "missing_or_invalid_date": 0
     },
     {
       "source": "BSE announcements RSS",
@@ -73,24 +109,12 @@
       "http": 200,
       "final_url": "https://www.bseindia.com/data/xml/announcements.xml",
       "content_type": "application/rss+xml",
-      "bytes": 4631942,
-      "first_item_fields": {
-        "title": "Ace Software Exports ltd (890230)",
-        "link": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/03c12d66-5f50-4c3e-a1c6-50fefefe49a0.pdf",
-        "scripcode": "890230",
-        "description": "The Board of Directors of the Company has considered and approved issuance of 452146 fully paid up equity shares by way of preferential issue on a Private Place",
-        "pubDate": "06-Nov-2026 22:39:19"
-      },
-      "status": "RSS_OK",
-      "items": 12908,
-      "sample_titles": [
-        "Ace Software Exports ltd (890230)",
-        "ACE Software Exports Ltd (531525)",
-        "Purple Wave Infocom Ltd (544627)",
-        "Birla Corporation Ltd (500335)"
-      ],
+      "bytes": 515,
+      "status": "RSS_EMPTY",
+      "items": 0,
+      "sample_titles": [],
       "window_overnight_items": 0,
-      "missing_or_invalid_date": 12908
+      "missing_or_invalid_date": 0
     },
     {
       "source": "SEBI RSS",
@@ -389,7 +413,7 @@
       "http": 200,
       "final_url": "https://pulse.zerodha.com/",
       "content_type": "text/html; charset=UTF-8",
-      "bytes": 381717,
+      "bytes": 381715,
       "status": "HTML_OK",
       "heading_elements": 250
     },
@@ -456,7 +480,7 @@
       "http": 200,
       "final_url": "https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx",
       "content_type": "text/html; charset=utf-8",
-      "bytes": 160727,
+      "bytes": 159174,
       "status": "HTML_OK",
       "heading_elements": 41
     },
@@ -524,7 +548,7 @@
       "http": 200,
       "final_url": "https://economictimes.indiatimes.com/markets",
       "content_type": "text/html",
-      "bytes": 1084685,
+      "bytes": 1084736,
       "status": "HTML_OK",
       "heading_elements": 38
     },
@@ -552,12 +576,13 @@
     }
   ],
   "status_counts": {
-    "RSS_OK": 12,
-    "NETWORK_OR_PARSE_ERROR": 3,
+    "RSS_OK": 13,
+    "RSS_EMPTY": 1,
     "HTTP_404": 4,
     "HTTP_403": 4,
     "HTTP_429": 1,
     "HTML_OK": 11,
+    "NETWORK_OR_PARSE_ERROR": 1,
     "HTTP_401": 1
   }
 }
