@@ -17,7 +17,7 @@ from datetime import date, datetime, time
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
-from learning.feedback import evaluate, yahoo_bars
+from learning.feedback import evaluate
 from news_collector.candidates import SCHEMA as SNAPSHOT_SCHEMA, aware
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -146,7 +146,7 @@ def price_csv_reader(csv_path: Path):
 
 
 def audit(session: date, *, root: Path = ROOT,
-          price_reader=None, price_source: str = "Yahoo Finance unadjusted OHLC (NOT NSE-verified)",
+          price_reader=None, price_source: str = "NSE EOD Full Bhavcopy; corporate actions NOT verified",
           as_of: datetime | None = None) -> dict:
     now = (as_of or datetime.now(IST)).astimezone(IST)
     path = root / "news_collector/data" / session.isoformat() / "candidate_snapshot.json"
@@ -163,7 +163,12 @@ def audit(session: date, *, root: Path = ROOT,
             snapshot, digest = load_snapshot(path, session)
             report["candidate_count"] = len(snapshot["candidates"])
             report["snapshot_sha256"] = digest
-            loader = price_reader or yahoo_bars
+            loader = price_reader
+            if loader is None:
+                from learning.nse_bhavcopy import session_reader
+                loader, official_url = session_reader(session)
+                price_source = f"NSE_EOD_OFFICIAL_CSV:{official_url}; corporate actions NOT verified"
+                report["price_source"] = price_source
             rows = []
             for candidate in snapshot["candidates"]:
                 try:
@@ -196,8 +201,8 @@ def main() -> None:
                    help="Optional supplied unadjusted OHLCV CSV with prior close day bars.")
     args = p.parse_args()
     reader = price_csv_reader(args.prices_csv) if args.prices_csv else None
-    source = "USER_SUPPLIED_CSV_NOT_EXCHANGE_VERIFIED" if reader else \
-             "Yahoo Finance unadjusted OHLC (NOT NSE-verified)"
+    source = ("USER_SUPPLIED_CSV_NOT_EXCHANGE_VERIFIED" if reader
+              else "NSE EOD Full Bhavcopy; corporate actions NOT verified")
     print(json.dumps(audit(date.fromisoformat(args.session_date),
                            price_reader=reader, price_source=source), indent=2))
 
