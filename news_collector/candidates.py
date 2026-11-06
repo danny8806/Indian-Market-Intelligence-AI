@@ -206,13 +206,13 @@ def run(session: str, *, data_root: Path = ROOT / "data",
         if not last_poll or not (0 <= (now - last_poll).total_seconds() <= 15 * 60):
             return {"session": session, "status": "FREEZE_REJECTED_STALE_COLLECTOR",
                     "as_of": now.isoformat(), "last_poll_at": payload.get("collector_last_poll_at")}
+        if payload["company_count"] == 0 or not payload["universe_status"].startswith("OFFICIAL_FETCH:"):
+            return {"session": session, "status": "FREEZE_REJECTED_NO_VERIFIED_UNIVERSE_OR_CANDIDATES",
+                    "as_of": now.isoformat(), "company_count": payload["company_count"]}
         if (not 450 <= len(payload.get("frozen_universe_membership") or {}) <= 550
                 or not payload.get("frozen_universe_membership_sha256")):
             return {"session": session, "status": "FREEZE_REJECTED_UNVERIFIED_CONSTITUENT_MEMBERSHIP",
                     "as_of": now.isoformat()}
-        if payload["company_count"] == 0 or not payload["universe_status"].startswith("OFFICIAL_FETCH:"):
-            return {"session": session, "status": "FREEZE_REJECTED_NO_VERIFIED_UNIVERSE_OR_CANDIDATES",
-                    "as_of": now.isoformat(), "company_count": payload["company_count"]}
         payload["data_mode"] = "FROZEN_PREMARKET"
         payload["training_eligible"] = True
         result = write_atomic(folder / "candidate_snapshot.json", payload, only_if_absent=True)
