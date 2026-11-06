@@ -10,6 +10,7 @@ import hashlib
 import io
 import json
 import re
+from collections import Counter
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
 from pathlib import Path
