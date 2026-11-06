@@ -93,6 +93,14 @@ class CollectorUnitTests(unittest.TestCase):
         self.assertEqual(len(rows), 1)
         self.assertEqual(len(next(iter(rows.values()))["sources"]), 2)
 
+    def test_exchange_only_primary_issuer_not_mentioned_issuer(self):
+        begin, end = window_for("2026-11-06")
+        item = sample_item()
+        item["summary"] = "Thermax Limited filing mentions Titan Company Limited"
+        state, row = build_record(item, sample_source(), UNIVERSE, begin, end, begin)
+        self.assertEqual(state, "IN_WINDOW")
+        self.assertEqual(row["symbols"], ["THERMAX"])
+
     def test_undated_never_promoted(self):
         begin, end = window_for("2026-11-06")
         state, event = build_record(sample_item(when=""), sample_source(), UNIVERSE, begin, end, begin)
