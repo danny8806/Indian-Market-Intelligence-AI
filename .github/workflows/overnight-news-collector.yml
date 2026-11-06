@@ -28,7 +28,7 @@ permissions:
 
 concurrency:
   group: overnight-news-collector-${{ github.ref }}
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   fetch-research-news:
