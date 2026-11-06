@@ -134,6 +134,7 @@ def build_snapshot(session: str, *, data_root: Path = ROOT / "data",
         "news_window_start": start.isoformat(),
         "data_mode": "FROZEN_PREMARKET" if now < cutoff else "POST_CUTOFF_RESEARCH_PREVIEW_NOT_TRAINABLE",
         "universe_status": coverage.get("universe_status", "UNKNOWN"),
+        "collector_last_poll_at": coverage.get("generated_at"),
         "source_failures_last_poll": coverage.get("sources_failed"),
         "company_count": len(rows), "documents_with_eligible_text": len(docs),
         "candidates": rows,
@@ -146,6 +147,7 @@ def build_snapshot(session: str, *, data_root: Path = ROOT / "data",
             "Figures are reported assertions; table period alignment and consensus surprises are NOT verified.",
             "Priority is an evidence discovery score, not a learned probability or trading direction.",
             "Preview created after cutoff is unsuitable for historical model evaluation.",
+            "Premarket frozen snapshot includes collector_last_poll_at; intervening minutes may contain uncollected news.",
         ],
     }
 
@@ -185,6 +187,10 @@ def run(session: str, *, data_root: Path = ROOT / "data",
                 and now < cutoff):
             return {"session": session, "status": "FREEZE_REJECTED_OUTSIDE_PREMARKET_WINDOW",
                     "as_of": now.isoformat(), "company_count": payload["company_count"]}
+        last_poll = aware(payload.get("collector_last_poll_at"))
+        if not last_poll or not (0 <= (now - last_poll).total_seconds() <= 15 * 60):
+            return {"session": session, "status": "FREEZE_REJECTED_STALE_COLLECTOR",
+                    "as_of": now.isoformat(), "last_poll_at": payload.get("collector_last_poll_at")}
         if payload["company_count"] == 0 or not payload["universe_status"].startswith("OFFICIAL_FETCH:"):
             return {"session": session, "status": "FREEZE_REJECTED_NO_VERIFIED_UNIVERSE_OR_CANDIDATES",
                     "as_of": now.isoformat(), "company_count": payload["company_count"]}
