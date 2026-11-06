@@ -44,12 +44,25 @@ jobs:
             day="$(TZ=Asia/Kolkata date +%F)"
           fi
           python -m learning.candidate_outcomes --session-date "$day"
+      - name: Compare all official NSE NIFTY 500 movers to frozen news coverage
+        shell: bash
+        env:
+          SESSION_DATE: ${{ inputs.session_date }}
+        run: |
+          day="$SESSION_DATE"
+          if [ -z "$day" ]; then
+            day="$(TZ=Asia/Kolkata date +%F)"
+          fi
+          python -m learning.mover_audit --session-date "$day"
       - name: Record immutable research observation evidence only
         shell: bash
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add learning/data/candidate_reports/
+          if [ -d learning/data/mover_reports ]; then
+            git add learning/data/mover_reports/
+          fi
           if [ -f learning/data/candidate_outcomes.csv ]; then
             git add learning/data/candidate_outcomes.csv
           fi
@@ -68,5 +81,6 @@ jobs:
           path: |
             learning/out_candidates/
             learning/data/candidate_reports/
+            learning/data/mover_reports/
           if-no-files-found: ignore
           retention-days: 21
