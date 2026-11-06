@@ -49,6 +49,7 @@ def load_snapshot(path: Path, session: date) -> tuple[dict, str]:
     if (data.get("schema_version") != SNAPSHOT_SCHEMA
             or data.get("session_date") != session.isoformat()
             or data.get("data_mode") != "FROZEN_PREMARKET"
+            or data.get("training_eligible") is not True
             or data.get("execution_enabled") is not False or not first or not cutoff
             or first >= cutoff or first.date() != session
             or first.time() < time(8, 50)
