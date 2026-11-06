@@ -1,6 +1,6 @@
 {
   "session": "2026-11-09",
-  "generated_at": "2026-11-06T23:23:11.352230+05:30",
+  "generated_at": "2026-11-06T23:42:04.404963+05:30",
   "window_start_inclusive": "2026-11-06T15:00:00+05:30",
   "window_end_exclusive": "2026-11-09T09:00:00+05:30",
   "universe_status": "OFFICIAL_FETCH:https://www.niftyindices.com/IndexConstituent/ind_nifty500list.csv",
@@ -9,11 +9,11 @@
   "sources_configured": 43,
   "sources_with_items": 25,
   "sources_failed": 10,
-  "in_window_raw_items": 3550,
-  "nifty500_matched_raw_items": 804,
-  "stored_unique_matched_urls": 648,
-  "stored_undated_candidate_urls": 57,
-  "distinct_matched_symbols": 162,
+  "in_window_raw_items": 3568,
+  "nifty500_matched_raw_items": 808,
+  "stored_unique_matched_urls": 650,
+  "stored_undated_candidate_urls": 58,
+  "distinct_matched_symbols": 163,
   "cross_source_symbol_presence_NOT_event_level_reconciliation": {
     "exchange_only": [
       "AARTIIND",
@@ -147,6 +147,7 @@
       "VOGL",
       "VTL",
       "ZEEL",
+      "ZENTEC",
       "ZYDUSLIFE"
     ],
     "media_only": [
@@ -192,13 +193,13 @@
       "provider": "NSE",
       "url": "https://nsearchives.nseindia.com/content/RSS/Online_announcements.xml",
       "status": "OK",
-      "fetched_items": 2244,
-      "verified_in_window": 1461,
-      "nifty500_matched": 368,
+      "fetched_items": 2250,
+      "verified_in_window": 1467,
+      "nifty500_matched": 370,
       "undated_items": 2,
       "out_of_window": 781,
-      "bytes": 1065862,
-      "elapsed_seconds": 0.52
+      "bytes": 1068384,
+      "elapsed_seconds": 0.49
     },
     {
       "source": "NSE financial results RSS",
@@ -213,7 +214,7 @@
       "undated_items": 0,
       "out_of_window": 3,
       "bytes": 2084,
-      "elapsed_seconds": 0.4
+      "elapsed_seconds": 0.27
     },
     {
       "source": "NSE board meetings RSS",
@@ -228,7 +229,7 @@
       "undated_items": 0,
       "out_of_window": 141,
       "bytes": 137447,
-      "elapsed_seconds": 0.79
+      "elapsed_seconds": 0.3
     },
     {
       "source": "NSE corporate actions RSS",
@@ -243,7 +244,7 @@
       "undated_items": 0,
       "out_of_window": 55,
       "bytes": 21654,
-      "elapsed_seconds": 0.61
+      "elapsed_seconds": 0.29
     },
     {
       "source": "BSE announcements RSS",
@@ -258,7 +259,7 @@
       "undated_items": 0,
       "out_of_window": 0,
       "bytes": 515,
-      "elapsed_seconds": 15.43
+      "elapsed_seconds": 0.38
     },
     {
       "source": "SEBI RSS",
@@ -273,7 +274,7 @@
       "undated_items": 30,
       "out_of_window": 0,
       "bytes": 16155,
-      "elapsed_seconds": 1.1
+      "elapsed_seconds": 1.8
     },
     {
       "source": "Zerodha Pulse RSS",
@@ -288,7 +289,7 @@
       "undated_items": 0,
       "out_of_window": 0,
       "bytes": 53699,
-      "elapsed_seconds": 0.81
+      "elapsed_seconds": 0.77
     },
     {
       "source": "Mint markets RSS",
@@ -303,7 +304,7 @@
       "undated_items": 0,
       "out_of_window": 0,
       "error": "HTTPError: 404 Client Error: Not Found for url: https://www.livemint.com/rss/marketsRSS",
-      "elapsed_seconds": 0.52
+      "elapsed_seconds": 0.47
     },
     {
       "source": "Mint companies RSS",
@@ -318,7 +319,7 @@
       "undated_items": 0,
       "out_of_window": 0,
       "error": "HTTPError: 404 Client Error: Not Found for url: https://www.livemint.com/rss/companiesRSS",
-      "elapsed_seconds": 0.45
+      "elapsed_seconds": 0.37
     },
     {
       "source": "Mint industry RSS",
@@ -333,7 +334,7 @@
       "undated_items": 0,
       "out_of_window": 0,
       "error": "HTTPError: 404 Client Error: Not Found for url: https://www.livemint.com/rss/industryRSS",
-      "elapsed_seconds": 0.4
+      "elapsed_seconds": 0.44
     },
     {
       "source": "Economic Times top RSS",
@@ -348,7 +349,7 @@
       "undated_items": 0,
       "out_of_window": 76,
       "bytes": 58111,
-      "elapsed_seconds": 0.26
+      "elapsed_seconds": 0.51
     },
     {
       "source": "Business Standard latest RSS",
@@ -357,13 +358,13 @@
       "provider": "MEDIA",
       "url": "https://www.business-standard.com/rss/latest.rss",
       "status": "OK",
-      "fetched_items": 178,
-      "verified_in_window": 88,
+      "fetched_items": 181,
+      "verified_in_window": 91,
       "nifty500_matched": 19,
       "undated_items": 0,
       "out_of_window": 90,
-      "bytes": 316958,
-      "elapsed_seconds": 0.44
+      "bytes": 322167,
+      "elapsed_seconds": 0.39
     },
     {
       "source": "Business Standard markets RSS",
@@ -373,12 +374,12 @@
       "url": "https://www.business-standard.com/rss/markets-106.rss",
       "status": "OK",
       "fetched_items": 35,
-      "verified_in_window": 12,
+      "verified_in_window": 15,
       "nifty500_matched": 4,
       "undated_items": 0,
-      "out_of_window": 23,
-      "bytes": 55295,
-      "elapsed_seconds": 0.44
+      "out_of_window": 20,
+      "bytes": 55186,
+      "elapsed_seconds": 0.17
     },
     {
       "source": "Moneycontrol RSS",
@@ -393,7 +394,7 @@
       "undated_items": 0,
       "out_of_window": 15,
       "bytes": 15347,
-      "elapsed_seconds": 0.25
+      "elapsed_seconds": 0.22
     },
     {
       "source": "BusinessLine RSS",
@@ -408,7 +409,7 @@
       "undated_items": 0,
       "out_of_window": 0,
       "bytes": 46813,
-      "elapsed_seconds": 0.27
+      "elapsed_seconds": 0.28
     },
     {
       "source": "NDTV News RSS",
@@ -423,7 +424,7 @@
       "undated_items": 0,
       "out_of_window": 36,
       "bytes": 135519,
-      "elapsed_seconds": 0.59
+      "elapsed_seconds": 0.5
     },
     {
       "source": "Financial Express legacy RSS",
@@ -438,7 +439,7 @@
       "undated_items": 0,
       "out_of_window": 0,
       "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.financialexpress.com/feed/",
-      "elapsed_seconds": 0.21
+      "elapsed_seconds": 0.17
     },
     {
       "source": "Google News RSS",
@@ -453,7 +454,7 @@
       "undated_items": 0,
       "out_of_window": 6,
       "bytes": 24111,
-      "elapsed_seconds": 0.4
+      "elapsed_seconds": 0.42
     },
     {
       "source": "GDELT DOC API",
@@ -468,7 +469,7 @@
       "undated_items": 0,
       "out_of_window": 0,
       "error": "ReadTimeout: HTTPSConnectionPool(host='api.gdeltproject.org', port=443): Read timed out. (read timeout=7)",
-      "elapsed_seconds": 7.13
+      "elapsed_seconds": 7.36
     },
     {
       "source": "Zerodha Pulse web",
@@ -482,8 +483,8 @@
       "nifty500_matched": 0,
       "undated_items": 150,
       "out_of_window": 0,
-      "bytes": 364764,
-      "elapsed_seconds": 0.94
+      "bytes": 364810,
+      "elapsed_seconds": 1.98
     },
     {
       "source": "NSE announcements web",
@@ -497,8 +498,8 @@
       "nifty500_matched": 0,
       "undated_items": 0,
       "out_of_window": 0,
-      "bytes": 402571,
-      "elapsed_seconds": 1.26
+      "bytes": 402574,
+      "elapsed_seconds": 2.45
     },
     {
       "source": "Business Standard BSE filings",
@@ -513,7 +514,7 @@
       "undated_items": 0,
       "out_of_window": 0,
       "bytes": 226351,
-      "elapsed_seconds": 0.8
+      "elapsed_seconds": 2.22
     },
     {
       "source": "Reuters India news",
@@ -528,7 +529,7 @@
       "undated_items": 0,
       "out_of_window": 0,
       "error": "HTTPError: 401 Client Error: HTTP Forbidden for url: https://www.reuters.com/world/india/",
-      "elapsed_seconds": 0.19
+      "elapsed_seconds": 0.3
     },
     {
       "source": "Business Today Markets",
@@ -542,8 +543,8 @@
       "nifty500_matched": 0,
       "undated_items": 1,
       "out_of_window": 0,
-      "bytes": 4910619,
-      "elapsed_seconds": 2.11
+      "bytes": 4964470,
+      "elapsed_seconds": 2.2
     },
     {
       "source": "News18 Business",
@@ -558,7 +559,7 @@
       "undated_items": 0,
       "out_of_window": 0,
       "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.news18.com/business/",
-      "elapsed_seconds": 0.17
+      "elapsed_seconds": 0.22
     },
     {
       "source": "BSE announcements web",
@@ -573,7 +574,7 @@
       "undated_items": 0,
       "out_of_window": 0,
       "bytes": 16912,
-      "elapsed_seconds": 0.68
+      "elapsed_seconds": 0.66
     },
     {
       "source": "RBI releases",
@@ -588,7 +589,7 @@
       "undated_items": 0,
       "out_of_window": 0,
       "bytes": 160727,
-      "elapsed_seconds": 1.22
+      "elapsed_seconds": 1.56
     },
     {
       "source": "SEBI releases web",
@@ -603,7 +604,7 @@
       "undated_items": 0,
       "out_of_window": 0,
       "error": "HTTPError: 404 Client Error: Not Found for url: https://www.sebi.gov.in/media/press-releases.html",
-      "elapsed_seconds": 1.27
+      "elapsed_seconds": 1.23
     },
     {
       "source": "NDTV Profit markets",
@@ -618,7 +619,7 @@
       "undated_items": 0,
       "out_of_window": 0,
       "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.ndtvprofit.com/markets",
-      "elapsed_seconds": 0.27
+      "elapsed_seconds": 0.32
     },
     {
       "source": "Moneycontrol stocks",
@@ -633,7 +634,7 @@
       "undated_items": 0,
       "out_of_window": 0,
       "bytes": 599494,
-      "elapsed_seconds": 0.71
+      "elapsed_seconds": 1.27
     },
     {
       "source": "Business Standard markets",
@@ -648,7 +649,7 @@
       "undated_items": 0,
       "out_of_window": 0,
       "bytes": 303989,
-      "elapsed_seconds": 0.56
+      "elapsed_seconds": 0.67
     },
     {
       "source": "Financial Express markets",
@@ -663,7 +664,7 @@
       "undated_items": 0,
       "out_of_window": 0,
       "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.financialexpress.com/market/",
-      "elapsed_seconds": 0.07
+      "elapsed_seconds": 0.17
     },
     {
       "source": "Mint markets web",
@@ -677,8 +678,8 @@
       "nifty500_matched": 0,
       "undated_items": 38,
       "out_of_window": 0,
-      "bytes": 1365405,
-      "elapsed_seconds": 0.27
+      "bytes": 1365330,
+      "elapsed_seconds": 0.71
     },
     {
       "source": "Economic Times markets web",
@@ -692,8 +693,8 @@
       "nifty500_matched": 0,
       "undated_items": 5,
       "out_of_window": 0,
-      "bytes": 1084778,
-      "elapsed_seconds": 0.64
+      "bytes": 1087803,
+      "elapsed_seconds": 0.81
     },
     {
       "source": "CNBC TV18 markets web",
@@ -707,8 +708,8 @@
       "nifty500_matched": 0,
       "undated_items": 15,
       "out_of_window": 0,
-      "bytes": 523961,
-      "elapsed_seconds": 0.55
+      "bytes": 524272,
+      "elapsed_seconds": 1.25
     },
     {
       "source": "Hindu BusinessLine markets",
@@ -722,8 +723,8 @@
       "nifty500_matched": 0,
       "undated_items": 38,
       "out_of_window": 0,
-      "bytes": 213489,
-      "elapsed_seconds": 0.19
+      "bytes": 211983,
+      "elapsed_seconds": 0.71
     },
     {
       "source": "NSE announcements archive mirror",
@@ -732,13 +733,13 @@
       "provider": "NSE",
       "url": "https://archives.nseindia.com/content/RSS/Online_announcements.xml",
       "status": "OK",
-      "fetched_items": 2244,
-      "verified_in_window": 1461,
-      "nifty500_matched": 368,
+      "fetched_items": 2250,
+      "verified_in_window": 1467,
+      "nifty500_matched": 370,
       "undated_items": 2,
       "out_of_window": 781,
-      "bytes": 1065862,
-      "elapsed_seconds": 0.59
+      "bytes": 1068384,
+      "elapsed_seconds": 1.01
     },
     {
       "source": "BSE latest announcements alternate",
@@ -753,7 +754,7 @@
       "undated_items": 0,
       "out_of_window": 0,
       "bytes": 515,
-      "elapsed_seconds": 0.3
+      "elapsed_seconds": 15.43
     },
     {
       "source": "BSE financial results",
@@ -762,13 +763,13 @@
       "provider": "BSE",
       "url": "https://www.bseindia.com/Data/XML/FinancialResultsFeed.aspx",
       "status": "OK",
-      "fetched_items": 501,
+      "fetched_items": 503,
       "verified_in_window": 0,
       "nifty500_matched": 0,
-      "undated_items": 501,
+      "undated_items": 503,
       "out_of_window": 0,
-      "bytes": 166170,
-      "elapsed_seconds": 0.4
+      "bytes": 166858,
+      "elapsed_seconds": 0.46
     },
     {
       "source": "BSE board meetings",
@@ -782,8 +783,8 @@
       "nifty500_matched": 0,
       "undated_items": 263,
       "out_of_window": 0,
-      "bytes": 56411,
-      "elapsed_seconds": 0.36
+      "bytes": 56435,
+      "elapsed_seconds": 0.55
     },
     {
       "source": "BSE corporate actions",
@@ -798,7 +799,7 @@
       "undated_items": 140,
       "out_of_window": 0,
       "bytes": 54761,
-      "elapsed_seconds": 0.38
+      "elapsed_seconds": 0.37
     },
     {
       "source": "BSE insider trading",
@@ -813,7 +814,7 @@
       "undated_items": 84,
       "out_of_window": 0,
       "bytes": 16393,
-      "elapsed_seconds": 0.99
+      "elapsed_seconds": 1.37
     },
     {
       "source": "NSE integrated financial filings",
@@ -827,8 +828,8 @@
       "nifty500_matched": 4,
       "undated_items": 0,
       "out_of_window": 0,
-      "bytes": 6294,
-      "elapsed_seconds": 0.29
+      "bytes": 6318,
+      "elapsed_seconds": 0.33
     }
   ],
   "limitations": [

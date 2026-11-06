@@ -1,6 +1,6 @@
 {
   "session": "2026-11-09",
-  "generated_at": "2026-11-06T23:23:11.352230+05:30",
+  "generated_at": "2026-11-06T23:42:04.404963+05:30",
   "method": "Symbol + material category presence; NOT event-ID or issuer ISIN reconciliation",
   "category_counts": {
     "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT": 28,
@@ -1623,9 +1623,9 @@
       "status_a": "OK",
       "status_b": "OK",
       "comparison_status": "SNAPSHOT_OVERLAP_ONLY",
-      "feed_a_unique_matched_urls": 367,
-      "feed_b_unique_matched_urls": 367,
-      "both_feeds_same_url": 367,
+      "feed_a_unique_matched_urls": 369,
+      "feed_b_unique_matched_urls": 369,
+      "both_feeds_same_url": 369,
       "only_feed_a_count": 0,
       "only_feed_b_count": 0,
       "only_feed_a_examples": [],
