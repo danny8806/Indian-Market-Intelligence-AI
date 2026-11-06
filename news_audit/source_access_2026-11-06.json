@@ -1,0 +1,391 @@
+{
+  "checked_at_utc": "2026-11-06T17:05:55.143443+00:00",
+  "run_context": "GitHub Actions ubuntu-latest; read-only, unauthenticated endpoints",
+  "date_note": "Source connectivity smoke test, NOT 3pm-9am complete crawl or timestamp verification",
+  "sources": [
+    {
+      "source": "NSE announcements RSS",
+      "type": "rss",
+      "url": "https://nsearchives.nseindia.com/content/RSS/Online_announcements.xml",
+      "http": 200,
+      "final_url": "https://nsearchives.nseindia.com/content/RSS/Online_announcements.xml",
+      "content_type": "application/xml",
+      "bytes": 1054549,
+      "status": "RSS_OK",
+      "items": 2659,
+      "sample_titles": [
+        "Mohini Health & Hygiene Limited",
+        "FSN E-Commerce Ventures Limited",
+        "Poonawalla Fincorp Limited",
+        "Gland Pharma Limited"
+      ]
+    },
+    {
+      "source": "NSE board meetings RSS",
+      "type": "rss",
+      "url": "https://nsearchives.nseindia.com/content/RSS/Board_Meetings.xml",
+      "status": "NETWORK_OR_PARSE_ERROR",
+      "error": "TimeoutError: The read operation timed out"
+    },
+    {
+      "source": "NSE corporate actions RSS",
+      "type": "rss",
+      "url": "https://nsearchives.nseindia.com/content/RSS/Corporate_action.xml",
+      "http": 200,
+      "final_url": "https://nsearchives.nseindia.com/content/RSS/Corporate_action.xml",
+      "content_type": "application/xml",
+      "bytes": 21654,
+      "status": "RSS_OK",
+      "items": 55,
+      "sample_titles": [
+        "Sundram Fasteners Limited - Ex-Date: 06-Nov-2026",
+        "Aurobindo Pharma Limited - Ex-Date: 11-Nov-2026",
+        "Hindustan Unilever Limited - Ex-Date: 12-Nov-2026",
+        "Housing & Urban Development Corporation Limited - Ex-Date: 11-Nov-2026"
+      ]
+    },
+    {
+      "source": "BSE announcements RSS",
+      "type": "rss",
+      "url": "https://www.bseindia.com/data/xml/announcements.xml",
+      "http": 200,
+      "final_url": "https://www.bseindia.com/data/xml/announcements.xml",
+      "content_type": "application/rss+xml",
+      "bytes": 3000000,
+      "status": "NOT_RSS_XML",
+      "error": "no element found: line 1022, column 130678"
+    },
+    {
+      "source": "SEBI RSS",
+      "type": "rss",
+      "url": "https://www.sebi.gov.in/sebirss.xml",
+      "http": 200,
+      "final_url": "https://www.sebi.gov.in/sebirss.xml",
+      "content_type": "text/xml",
+      "bytes": 16155,
+      "status": "RSS_OK",
+      "items": 30,
+      "sample_titles": [
+        "Commencement of SEBI (Settlement of Administrative and Civil Proceedings) Regulations, 2026",
+        "SEBI order for compliance - Release Order dated November 06, 2026 issued under RC No. 9267 of 2026 drawn against S S TRA",
+        "SEBI order for compliance - Release Order dated November 06, 2026 issued under RC No. 9229 of 2026 drawn against Rakeshb",
+        "SEBI order for compliance - Release Order dated November 06, 2026 issued under RC No. 9230 of 2026 drawn against Sonalbe"
+      ]
+    },
+    {
+      "source": "Zerodha Pulse RSS",
+      "type": "rss",
+      "url": "https://pulse.zerodha.com/feed.php?n=100",
+      "http": 200,
+      "final_url": "https://pulse.zerodha.com/feed.php?n=100",
+      "content_type": "text/xml;charset=UTF-8",
+      "bytes": 53699,
+      "status": "RSS_OK",
+      "items": 100,
+      "sample_titles": [
+        "Foreign Investors Change Course After A Rs 90,000 Crore Sell-Off. What's Driving The U-Turn?",
+        "SpiceJet Passengers Clash With Staff At Bengaluru Airport After Last-Minute Flight Cancellation, Video Goes Viral",
+        "'I Saw My Ram Ji On Screen': Vivek Oberoi Shares Ramayana Reaction, Praises Cast And Team",
+        "Vidyut Jammwal Says One Traumatic Incident Should Not Stop Tiger Shroff From Living"
+      ]
+    },
+    {
+      "source": "Mint markets RSS",
+      "type": "rss",
+      "url": "https://www.livemint.com/rss/marketsRSS",
+      "status": "HTTP_404",
+      "http": 404,
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "source": "Mint companies RSS",
+      "type": "rss",
+      "url": "https://www.livemint.com/rss/companiesRSS",
+      "status": "HTTP_404",
+      "http": 404,
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "source": "Mint industry RSS",
+      "type": "rss",
+      "url": "https://www.livemint.com/rss/industryRSS",
+      "status": "HTTP_404",
+      "http": 404,
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "source": "Economic Times top RSS",
+      "type": "rss",
+      "url": "https://economictimes.indiatimes.com/rssfeedsdefault.cms",
+      "http": 200,
+      "final_url": "https://economictimes.indiatimes.com/rssfeedsdefault.cms",
+      "content_type": "text/xml;charset=UTF-8",
+      "bytes": 58111,
+      "status": "RSS_OK",
+      "items": 76,
+      "sample_titles": [
+        "Kalyan, Titan, other Jewellery stocks rally up to 5% on Dhanteras 2026. How is yellow metal placed this festive season?",
+        "Stock Market Holiday 2026: When will BSE &amp; NSE be closed for Diwali? Muhurat trading timings, other key things to kn",
+        "AI selloff hits India too: TD Power, HFCL, Sterlite, other power capex-linked stocks crash up to 15%",
+        "Mahindra &amp; Mahindra shares gain 3% after Q2 profit jumps 25% to Rs 4,588 crore, revenue grows 25%"
+      ]
+    },
+    {
+      "source": "Business Standard latest RSS",
+      "type": "rss",
+      "url": "https://www.business-standard.com/rss/latest.rss",
+      "http": 200,
+      "final_url": "https://www.business-standard.com/rss/latest.rss",
+      "content_type": "application/rss+xml",
+      "bytes": 298512,
+      "status": "RSS_OK",
+      "items": 167,
+      "sample_titles": [
+        "A gameplan for esports: Can India turn its gamers into global champions?",
+        "CR7 heads out: Ronaldo leaves behind a legacy beyond goals and records",
+        "To Bishan, With Love: A tribute to the cricket legend beyond the pitch",
+        "Marico to acquire 51% stake in Bonorizon Consumer Ventures for ₹35 crore"
+      ]
+    },
+    {
+      "source": "Business Standard markets RSS",
+      "type": "rss",
+      "url": "https://www.business-standard.com/rss/markets-106.rss",
+      "http": 200,
+      "final_url": "https://www.business-standard.com/rss/markets-106.rss",
+      "content_type": "application/rss+xml",
+      "bytes": 55299,
+      "status": "RSS_OK",
+      "items": 35,
+      "sample_titles": [
+        "This Samvat, can large companies learn to think like entrepreneurs?",
+        "Sebi warns Dabur India over delay in disclosing USFDA warning letter",
+        "Record FII selling of ₹4.55 trillion meets record DII buying in Samvat 2082",
+        "Pressure on rupee continues in Samvat 2082; 10-year bond yields harden"
+      ]
+    },
+    {
+      "source": "Moneycontrol RSS",
+      "type": "rss",
+      "url": "https://www.moneycontrol.com/rss/latestnews.xml",
+      "http": 200,
+      "final_url": "https://www.moneycontrol.com/rss/latestnews.xml",
+      "content_type": "application/xml",
+      "bytes": 15347,
+      "status": "RSS_OK",
+      "items": 15,
+      "sample_titles": [
+        "Buy HDFC Bank; target of Rs 1,850: ICICI Securities",
+        "Buy Tejas Networks; target of Rs 1100: Emkay Global Financial",
+        "Buy Bajaj Finance; target of Rs 9000: Emkay Global Financial",
+        "Buy Bajaj Finance; target of Rs 9000: Emkay Global Financial"
+      ]
+    },
+    {
+      "source": "BusinessLine RSS",
+      "type": "rss",
+      "url": "https://www.thehindubusinessline.com/feeder/default.rss",
+      "http": 200,
+      "final_url": "https://www.thehindubusinessline.com/feeder/default.rss",
+      "content_type": "application/xml",
+      "bytes": 47045,
+      "status": "RSS_OK",
+      "items": 60,
+      "sample_titles": [
+        "Ethanol blending: OMCs raise questions on Karnataka’s testing methodology",
+        "Nifty reclaims 25,000, Sensex crosses 81,000 as India shrugs off global tech rout",
+        "TTK Prestige Q2 profit surges 65% to ₹104.4 crore as domestic sales drive growth",
+        "October Auto retail sales decline 23% due to high base last year: FADA"
+      ]
+    },
+    {
+      "source": "NDTV News RSS",
+      "type": "rss",
+      "url": "https://feeds.feedburner.com/ndtvnews-latest",
+      "http": 200,
+      "final_url": "https://feeds.feedburner.com/ndtvnews-latest",
+      "content_type": "text/xml; charset=utf-8",
+      "bytes": 135519,
+      "status": "RSS_OK",
+      "items": 100,
+      "sample_titles": [
+        "Sailor Killed After Missile Attack On Oil Tanker In Persian Gulf",
+        "'Fake Authors, Fake Publishers, Books By AI': Tamil Nadu's Mega Library Row",
+        "Jaipur Shop Launches Rs 1.23 Lakh Gold Coin-Shaped Sweet For Diwali",
+        "Meghan Markle's Father Arrested Over Child Sexual Abuse Material"
+      ]
+    },
+    {
+      "source": "Financial Express legacy RSS",
+      "type": "rss",
+      "url": "https://www.financialexpress.com/feed/",
+      "status": "HTTP_403",
+      "http": 403,
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "source": "Google News RSS",
+      "type": "rss",
+      "url": "https://news.google.com/rss/search?q=India+NSE+BSE+results+orders+when%3A1d&hl=en-IN&gl=IN&ceid=IN%3Aen",
+      "http": 200,
+      "final_url": "https://news.google.com/rss/search?q=India+NSE+BSE+results+orders+when%3A1d&hl=en-IN&gl=IN&ceid=IN%3Aen",
+      "content_type": "application/xml; charset=utf-8",
+      "bytes": 21759,
+      "status": "RSS_OK",
+      "items": 11,
+      "sample_titles": [
+        "Diwali 2026 stock market holiday: NSE, BSE open on Sunday but closed this day - Muhurat trading date, time | Samvat 2083",
+        "Stock market holidays for Diwali: When are NSE, BSE open? Check Muhurat trading timings - The Times of India",
+        "Siemens Limited to Consider Q2 FY27 Results on November 6 - Multibagg AI",
+        "Banco Products India Discloses Q2 Financial Performance In Board Filing - Sahi"
+      ]
+    },
+    {
+      "source": "GDELT DOC API",
+      "type": "api",
+      "url": "https://api.gdeltproject.org/api/v2/doc/doc?query=%22India%22+%22quarterly+results%22&mode=artlist&format=json&maxrecords=50&timespan=24h",
+      "status": "HTTP_429",
+      "http": 429,
+      "error": "HTTP Error 429: Too Many Requests"
+    },
+    {
+      "source": "Zerodha Pulse web",
+      "type": "html",
+      "url": "https://pulse.zerodha.com/",
+      "http": 200,
+      "final_url": "https://pulse.zerodha.com/",
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 381761,
+      "status": "HTML_OK",
+      "heading_elements": 250
+    },
+    {
+      "source": "NSE announcements web",
+      "type": "html",
+      "url": "https://www.nseindia.com/companies-listing/corporate-filings-announcements",
+      "status": "NETWORK_OR_PARSE_ERROR",
+      "error": "TimeoutError: The read operation timed out"
+    },
+    {
+      "source": "BSE announcements web",
+      "type": "html",
+      "url": "https://www.bseindia.com/corporates/ann.html",
+      "http": 200,
+      "final_url": "https://www.bseindia.com/corporates/ann",
+      "content_type": "text/html",
+      "bytes": 16912,
+      "status": "HTML_OK",
+      "heading_elements": 0
+    },
+    {
+      "source": "RBI releases",
+      "type": "html",
+      "url": "https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx",
+      "http": 200,
+      "final_url": "https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx",
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 160727,
+      "status": "HTML_OK",
+      "heading_elements": 41
+    },
+    {
+      "source": "SEBI releases web",
+      "type": "html",
+      "url": "https://www.sebi.gov.in/media/press-releases.html",
+      "status": "HTTP_404",
+      "http": 404,
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "source": "NDTV Profit markets",
+      "type": "html",
+      "url": "https://www.ndtvprofit.com/markets",
+      "status": "HTTP_403",
+      "http": 403,
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "source": "Moneycontrol stocks",
+      "type": "html",
+      "url": "https://www.moneycontrol.com/news/business/stocks/",
+      "http": 200,
+      "final_url": "https://www.moneycontrol.com/news/business/stocks/",
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 599268,
+      "status": "HTML_OK",
+      "heading_elements": 37
+    },
+    {
+      "source": "Business Standard markets",
+      "type": "html",
+      "url": "https://www.business-standard.com/markets",
+      "http": 200,
+      "final_url": "https://www.business-standard.com/markets",
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 303989,
+      "status": "HTML_OK",
+      "heading_elements": 1
+    },
+    {
+      "source": "Financial Express markets",
+      "type": "html",
+      "url": "https://www.financialexpress.com/market/",
+      "status": "HTTP_403",
+      "http": 403,
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "source": "Mint markets web",
+      "type": "html",
+      "url": "https://www.livemint.com/market",
+      "http": 200,
+      "final_url": "https://www.livemint.com/market",
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 1367503,
+      "status": "HTML_OK",
+      "heading_elements": 67
+    },
+    {
+      "source": "Economic Times markets web",
+      "type": "html",
+      "url": "https://economictimes.indiatimes.com/markets",
+      "http": 200,
+      "final_url": "https://economictimes.indiatimes.com/markets",
+      "content_type": "text/html",
+      "bytes": 1074363,
+      "status": "HTML_OK",
+      "heading_elements": 38
+    },
+    {
+      "source": "CNBC TV18 markets web",
+      "type": "html",
+      "url": "https://www.cnbctv18.com/market/",
+      "http": 200,
+      "final_url": "https://www.cnbctv18.com/market/",
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 524209,
+      "status": "HTML_OK",
+      "heading_elements": 49
+    },
+    {
+      "source": "Hindu BusinessLine markets",
+      "type": "html",
+      "url": "https://www.thehindubusinessline.com/markets/",
+      "http": 200,
+      "final_url": "https://www.thehindubusinessline.com/markets/",
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 212736,
+      "status": "HTML_OK",
+      "heading_elements": 58
+    }
+  ],
+  "status_counts": {
+    "RSS_OK": 11,
+    "NETWORK_OR_PARSE_ERROR": 2,
+    "NOT_RSS_XML": 1,
+    "HTTP_404": 4,
+    "HTTP_403": 3,
+    "HTTP_429": 1,
+    "HTML_OK": 9
+  }
+}
