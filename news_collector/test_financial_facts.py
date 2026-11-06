@@ -83,6 +83,9 @@ class FactsAndFreezeTests(unittest.TestCase):
             root = Path(temp)
             d = root / SESSION
             d.mkdir()
+            (root / "universe_snapshot.csv").write_text(
+                "Company Name,Symbol\n" + "".join(
+                    f"Example Company {i:04d} Limited,EXM{i:04d}\n" for i in range(500)))
             (d / "events.jsonl").write_text(json.dumps(event()) + "\n")
             (d / "pdf_extraction.jsonl").write_text(json.dumps(pdf_record()) + "\n")
             (d / "coverage.json").write_text(json.dumps({
