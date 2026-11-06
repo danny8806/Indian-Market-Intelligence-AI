@@ -15,7 +15,7 @@ from datetime import datetime, time
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
-from news_collector.engine import ROOT, default_session, read_jsonl
+from news_collector.engine import ROOT, default_session, read_jsonl, parse_universe_csv
 from news_collector.financial_facts import extract_facts, evidence_summary
 from news_collector.reconcile import MATERIAL, event_kind
 
@@ -128,12 +128,27 @@ def build_snapshot(session: str, *, data_root: Path = ROOT / "data",
         read_jsonl(folder / "events.jsonl"),
         read_jsonl(folder / "pdf_extraction.jsonl"),
         start=start, cutoff=cutoff, as_of=now)
+    # Save the actual official constituent list inside the frozen morning
+    # snapshot so historical coverage is not changed by later rebalances.
+    universe_path = data_root / "universe_snapshot.csv"
+    membership = {}
+    membership_sha256 = None
+    if universe_path.exists():
+        try:
+            raw_universe = universe_path.read_bytes()
+            membership = parse_universe_csv(raw_universe.decode("utf-8-sig"))
+            membership_sha256 = hashlib.sha256(raw_universe).hexdigest()
+        except (ValueError, UnicodeError):
+            membership = {}
+            membership_sha256 = None
     return {
         "schema_version": SCHEMA, "session_date": session,
         "as_of": now.isoformat(), "cutoff_exclusive": cutoff.isoformat(),
         "news_window_start": start.isoformat(),
         "data_mode": "PRE_CUTOFF_PREVIEW_NOT_FROZEN" if now < cutoff else "POST_CUTOFF_RESEARCH_PREVIEW_NOT_TRAINABLE",
         "universe_status": coverage.get("universe_status", "UNKNOWN"),
+        "frozen_universe_membership": membership,
+        "frozen_universe_membership_sha256": membership_sha256,
         "collector_last_poll_at": coverage.get("generated_at"),
         "source_failures_last_poll": coverage.get("sources_failed"),
         "company_count": len(rows), "documents_with_eligible_text": len(docs),
@@ -191,6 +206,10 @@ def run(session: str, *, data_root: Path = ROOT / "data",
         if not last_poll or not (0 <= (now - last_poll).total_seconds() <= 15 * 60):
             return {"session": session, "status": "FREEZE_REJECTED_STALE_COLLECTOR",
                     "as_of": now.isoformat(), "last_poll_at": payload.get("collector_last_poll_at")}
+        if (not 450 <= len(payload.get("frozen_universe_membership") or {}) <= 550
+                or not payload.get("frozen_universe_membership_sha256")):
+            return {"session": session, "status": "FREEZE_REJECTED_UNVERIFIED_CONSTITUENT_MEMBERSHIP",
+                    "as_of": now.isoformat()}
         if payload["company_count"] == 0 or not payload["universe_status"].startswith("OFFICIAL_FETCH:"):
             return {"session": session, "status": "FREEZE_REJECTED_NO_VERIFIED_UNIVERSE_OR_CANDIDATES",
                     "as_of": now.isoformat(), "company_count": payload["company_count"]}
