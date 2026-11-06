@@ -35,6 +35,19 @@ jobs:
         run: python -m unittest discover -s learning -p 'test_candidate_learning.py' -v
       - name: Build research preview from original archived source data
         run: python -m news_collector.candidates --session-date 2026-11-09
+      - name: Probe real NSE 6-Nov-2026 public end-of-day bhavcopy (diagnostic only)
+        shell: bash
+        run: |
+          python - <<'PY'
+          from datetime import date
+          from learning.nse_bhavcopy import fetch_bhavcopy
+          try:
+              stocks, url = fetch_bhavcopy(date(2026, 11, 6))
+              print("OFFICIAL_NSE_EOD_WORKING:", len(stocks), "symbols, source:", url)
+          except Exception as exc:
+              print("OFFICIAL_NSE_EOD_UNAVAILABLE:", type(exc).__name__, str(exc)[:450])
+              # Network/source restrictions are not a unit-test failure.
+          PY
       - name: Challenger must not train on insufficient history
         run: python -m learning.train_candidates
       - name: Export preview for manual inspection (never live signals)
