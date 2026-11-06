@@ -17,7 +17,7 @@ from zoneinfo import ZoneInfo
 
 from learning.candidate_outcomes import load_snapshot, atomic_write
 from learning.nse_bhavcopy import fetch_bhavcopy
-from news_collector.engine import ROOT as NEWS_ROOT, parse_universe_csv
+from news_collector.engine import ROOT as NEWS_ROOT, parse_universe_csv, read_jsonl
 from news_collector.candidates import aware
 
 IST = ZoneInfo("Asia/Kolkata")
@@ -157,6 +157,121 @@ def review_market_day(day: date, prices: dict[str, dict],
     return result
 
 
+
+def potential_cause_of_uncovered_movers(
+    report: dict, archive_events: list[dict], frozen: dict | None
+) -> dict:
+    """Observability diagnostic, not causal attribution or complete missed-news count."""
+    if frozen is None:
+        return {"status": "NOT_AVAILABLE_NO_FROZEN_PREOPEN_POOL", "rows": []}
+    cutoff = aware(frozen.get("cutoff_exclusive"))
+    freeze_time = aware(frozen.get("as_of"))
+    start = aware(frozen.get("news_window_start"))
+    if not cutoff or not freeze_time:
+        return {"status": "INVALID_SNAPSHOT_TIMESTAMPS", "rows": []}
+    by_symbol: dict[str, list[dict]] = {}
+    for event in archive_events:
+        pub = aware(event.get("published_at"))
+        discovered = aware(event.get("first_seen_at"))
+        if not pub or not discovered or not (start is None or start <= pub) or pub >= cutoff:
+            continue
+        for symbol in event.get("symbols", []):
+            by_symbol.setdefault(symbol, []).append({
+                "url": event.get("url"),
+                "published_at": pub.isoformat(),
+                "first_seen_at": discovered.isoformat(),
+            })
+    all_movers = report["top_10_by_absolute_intraday_move"]
+    # Also investigate threshold-qualified names outside top-ten if supplied.
+    # Caller supplies top-ten significant movers; not exhaustive classification.
+    rows = []
+    for mover in all_movers:
+        if mover["has_frozen_preopen_news_candidate"] is not False:
+            continue
+        symbol = mover["symbol"]
+        matches = by_symbol.get(symbol, [])
+        if not matches:
+            reason = "NO_MATCHED_ARCHIVED_PREOPEN_DISCLOSURE"
+        elif any(aware(x["first_seen_at"]) <= freeze_time for x in matches):
+            reason = "ARCHIVED_BEFORE_FREEZE_BUT_ABSENT_IN_FROZEN_POOL"
+        elif any(aware(x["first_seen_at"]) < cutoff for x in matches):
+            reason = "FIRST_DISCOVERED_AFTER_FREEZE_BEFORE_9AM"
+        else:
+            reason = "FIRST_DISCOVERED_AFTER_9AM"
+        rows.append({
+            "symbol": symbol, "open_to_close_pct": mover["open_to_close_pct"],
+            "potential_collection_gap": reason, "matched_archive_records": len(matches),
+            "source_examples": matches[:3],
+        })
+    return {
+        "status": "POTENTIAL_GAPS_IN_TOP_10_ABSOLUTE_MOVERS",
+        "rows": rows,
+        "warning": (
+            "Timestamp/URL observations are not a complete news ground truth. "
+            "A large price move may occur without premarket news; do not infer causation. "
+            "Diagnostic is limited to top 10 absolute movers."
+        ),
+    }
+
+
+def markdown_report(report: dict) -> str:
+    """Human-readable post-market scorecard; source-of-truth remains JSON."""
+    def clean(x):
+        return str(x).replace("|", "/").replace("\n", " ")[:100]
+    lines = [
+        "# NIFTY 500 daily news coverage & market movers",
+        "",
+        f"Session: **{report.get('session_date')}**",
+        f"Status: **{report.get('status')}**",
+        f"Official price source: {report.get('official_price_source','unavailable')}",
+        "",
+    ]
+    if report.get("status") == "MARKET_ONLY_NO_VERIFIABLE_PREOPEN_BASELINE":
+        lines += [
+            "**No genuine frozen pre-9 AM candidate snapshot exists.** "
+            "This report cannot measure news capture rates or identify missed news.",
+            "",
+        ]
+    lines += [
+        f"Priced constituents: **{report.get('priced_count', 0)}** / "
+        f"{report.get('nifty500_constituent_count', '?')}",
+        "",
+        "## Open-to-close movement versus pre-market news pool",
+        "",
+        "| Absolute move | Movers | In frozen pool | Coverage |",
+        "|---|---:|---:|---:|",
+    ]
+    for k, v in (report.get("mover_capture_by_threshold") or {}).items():
+        found = v.get("in_frozen_candidate_pool")
+        rate = v.get("candidate_coverage_pct")
+        lines.append(f"| ≥{k}% | {v['movers_in_priced_universe']} | "
+                     f"{found if found is not None else 'N/A'} | "
+                     f"{str(rate)+'%' if rate is not None else 'N/A'} |")
+    for label, key in [
+        ("Top 10 gainers", "headline_only_market_top_10_gainers"),
+        ("Top 10 losers", "headline_only_market_top_10_losers"),
+    ]:
+        lines.extend(["", f"## {label}", "", "| Symbol | Open→close | In frozen news pool |",
+                      "|---|---:|---|"])
+        for x in report.get(key, []):
+            match = x["has_frozen_preopen_news_candidate"]
+            shown = "N/A" if match is None else "Yes" if match else "No matching candidate"
+            lines.append(f"| {clean(x['symbol'])} | {x['open_to_close_pct']:+.2f}% | {shown} |")
+    diagnostics = (report.get("possible_omission_diagnostics") or {}).get("rows") or []
+    if diagnostics:
+        lines.extend(["", "## Potential collection-gap diagnostics (not proof of missed news)", "",
+                      "| Symbol | Potential reason |", "|---|---|"])
+        for x in diagnostics:
+            lines.append(f"| {clean(x['symbol'])} | {clean(x['potential_collection_gap'])} |")
+    lines += [
+        "",
+        "**Interpretation:** Open-to-close movements are not realized profits. "
+        "Unmatched movers do not establish missed premarket news or news-driven causation. "
+        "Historical completeness needs a genuinely frozen before-09:00 dataset.",
+        "",
+    ]
+    return "\n".join(lines)
+
 def run(day: date, *, root: Path = PROJECT, price_loader=fetch_bhavcopy,
         universe_path: Path | None = None, now: datetime | None = None) -> dict:
     now = (now or datetime.now(IST)).astimezone(IST)
@@ -207,7 +322,12 @@ def run(day: date, *, root: Path = PROJECT, price_loader=fetch_bhavcopy,
                                snapshot_status=frozen_status, official_price_url=url)
     report["generated_at"] = now.isoformat()
     report["universe_basis"] = universe_kind
+    archive_path = root / "news_collector/data" / day.isoformat() / "events.jsonl"
+    archive_events = list(read_jsonl(archive_path).values()) if archive_path.exists() else []
+    report["possible_omission_diagnostics"] = potential_cause_of_uncovered_movers(
+        report, archive_events, snapshot)
     atomic_write(output, json.dumps(report, indent=2, ensure_ascii=False) + "\n")
+    atomic_write(output.with_suffix(".md"), markdown_report(report))
     return report
 
 
