@@ -30,6 +30,7 @@ jobs:
           IST=ZoneInfo('Asia/Kolkata')
           sources=[
             ('NSE announcements RSS','rss','https://nsearchives.nseindia.com/content/RSS/Online_announcements.xml'),
+            ('NSE financial results RSS','rss','https://nsearchives.nseindia.com/content/RSS/Financial_Results.xml'),
             ('NSE board meetings RSS','rss','https://nsearchives.nseindia.com/content/RSS/Board_Meetings.xml'),
             ('NSE corporate actions RSS','rss','https://nsearchives.nseindia.com/content/RSS/Corporate_action.xml'),
             ('BSE announcements RSS','rss','https://www.bseindia.com/data/xml/announcements.xml'),
@@ -49,6 +50,10 @@ jobs:
             ('GDELT DOC API','api','https://api.gdeltproject.org/api/v2/doc/doc?query=%22India%22+%22quarterly+results%22&mode=artlist&format=json&maxrecords=50&timespan=24h'),
             ('Zerodha Pulse web','html','https://pulse.zerodha.com/'),
             ('NSE announcements web','html','https://www.nseindia.com/companies-listing/corporate-filings-announcements'),
+            ('Business Standard BSE filings','html','https://www.business-standard.com/markets/bse-announcement'),
+            ('Reuters India news','html','https://www.reuters.com/world/india/'),
+            ('Business Today Markets','html','https://www.businesstoday.in/markets'),
+            ('News18 Business','html','https://www.news18.com/business/'),
             ('BSE announcements web','html','https://www.bseindia.com/corporates/ann.html'),
             ('RBI releases','html','https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx'),
             ('SEBI releases web','html','https://www.sebi.gov.in/media/press-releases.html'),
@@ -71,19 +76,31 @@ jobs:
               for e in it[:4]:
                   t=next(((c.text or '').strip() for c in e if c.tag.rsplit('}',1)[-1].lower()=='title'),'')
                   first.append(t[:120])
-              return len(it),first
+              return len(it),first,it
           def probe(x):
               name,typ,url=x
               result=dict(source=name,type=typ,url=url)
               req=urllib.request.Request(url,headers={'User-Agent':'IndianFinancialNewsSourceAudit/1.0','Accept':'application/xml,text/xml,application/rss+xml,text/html,application/json,*/*'})
               try:
                   with urllib.request.urlopen(req,timeout=16) as response:
-                      body=response.read(3000000)
+                      body=response.read(14000000)
                       result.update(http=response.status,final_url=response.url,content_type=response.headers.get('content-type',''),bytes=len(body))
                   if typ=='rss':
                       try:
-                          n,s=parse_rss(body)
-                          result.update(status='RSS_OK' if n else 'RSS_EMPTY',items=n,sample_titles=s)
+                          n,s,entries=parse_rss(body)
+                          start=datetime.datetime(2026,11,5,15,tzinfo=IST)
+                          end=datetime.datetime(2026,11,6,9,tzinfo=IST)
+                          within=unknown=0
+                          for item in entries:
+                              pub=next(((c.text or '').strip() for c in item if c.tag.rsplit('}',1)[-1].lower() in ('pubdate','published','updated','date')),'')
+                              try:
+                                  t=email.utils.parsedate_to_datetime(pub)
+                                  if t is None: t=datetime.datetime.fromisoformat(pub.replace('Z','+00:00'))
+                                  if t.tzinfo is None: raise ValueError('no timezone')
+                                  if start<=t.astimezone(IST)<end: within+=1
+                              except Exception: unknown+=1
+                          result.update(status='RSS_OK' if n else 'RSS_EMPTY',items=n,sample_titles=s,
+                                        window_overnight_items=within,missing_or_invalid_date=unknown)
                       except Exception as err: result.update(status='NOT_RSS_XML',error=str(err)[:150])
                   elif typ=='api':
                       try:
