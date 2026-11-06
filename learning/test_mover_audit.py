@@ -6,7 +6,7 @@ from datetime import date, datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
-from learning.mover_audit import review_market_day, run, signed_evidence
+from learning.mover_audit import review_market_day, run, signed_evidence, markdown_report, potential_cause_of_uncovered_movers
 
 DAY = date(2026, 11, 6)
 IST = ZoneInfo("Asia/Kolkata")
@@ -110,7 +110,39 @@ class MoverAuditTests(unittest.TestCase):
             self.assertEqual(result["status"], "MARKET_ONLY_NO_VERIFIABLE_PREOPEN_BASELINE")
             saved = root / "learning/data/mover_reports/2026-11-06.json"
             self.assertTrue(saved.exists())
+            self.assertTrue(saved.with_suffix(".md").exists())
             self.assertEqual(json.loads(saved.read_text())["priced_count"], 500)
+
+    def test_coverage_gap_reason_after_cutoff(self):
+        frozen = snapshot()
+        frozen["cutoff_exclusive"] = "2026-11-06T09:00:00+05:30"
+        frozen["news_window_start"] = "2026-11-05T15:00:00+05:30"
+        frozen["as_of"] = "2026-11-06T08:55:00+05:30"
+        m = review_market_day(DAY, prices(), universe(), snapshot=frozen,
+                              snapshot_status="VALIDATED_FROZEN_09AM_SNAPSHOT",
+                              official_price_url="NSE_SAMPLE")
+        events = [
+            {"symbols": ["X0002"], "url": "https://exchange.example/a",
+             "published_at": "2026-11-06T07:00:00+05:30",
+             "first_seen_at": "2026-11-06T09:04:00+05:30"},
+            {"symbols": ["X0003"], "url": "https://exchange.example/b",
+             "published_at": "2026-11-05T18:00:00+05:30",
+             "first_seen_at": "2026-11-06T08:58:00+05:30"},
+        ]
+        gaps = potential_cause_of_uncovered_movers(m, events, frozen)
+        by_symbol = {x["symbol"]: x["potential_collection_gap"] for x in gaps["rows"]}
+        self.assertEqual(by_symbol["X0002"], "FIRST_DISCOVERED_AFTER_9AM")
+        self.assertEqual(by_symbol["X0003"], "FIRST_DISCOVERED_AFTER_FREEZE_BEFORE_9AM")
+
+    def test_readable_market_only_report_does_not_claim_miss(self):
+        r = review_market_day(DAY, prices(), universe(), snapshot=None,
+                              snapshot_status="NO_FROZEN_09AM_SNAPSHOT",
+                              official_price_url="NSE_SAMPLE")
+        text = markdown_report(r)
+        self.assertIn("cannot measure news capture rates", text)
+        self.assertIn("≥3.0%", text)
+        self.assertIn("N/A", text)
+        self.assertNotIn("100.0% |", text)
 
     def test_not_after_close(self):
         r = run(DAY, root=Path("/not/used"), now=datetime(2026, 11, 6, 11, tzinfo=IST))
