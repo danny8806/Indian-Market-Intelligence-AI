@@ -54,6 +54,12 @@ class CollectorUnitTests(unittest.TestCase):
         self.assertEqual(default_session(datetime(2026, 11, 6, 16, tzinfo=IST)), "2026-11-09")
         self.assertEqual(default_session(datetime(2026, 11, 7, 10, tzinfo=IST)), "2026-11-09")
 
+    def test_verified_nse_holiday_skipped(self):
+        self.assertEqual(default_session(datetime(2026, 11, 10, 8, tzinfo=IST)), "2026-11-11")
+        with self.assertRaisesRegex(ValueError, "not a known regular NSE session"):
+            window_for("2026-11-10")
+        self.assertEqual(window_for("2026-11-11")[0].date().isoformat(), "2026-11-09")
+
     def test_universe_fail_closed(self):
         self.assertEqual(universe_match("Thermax Limited", "", {}), [])
         self.assertEqual(universe_match("Thermax Limited", "", UNIVERSE), ["THERMAX"])
