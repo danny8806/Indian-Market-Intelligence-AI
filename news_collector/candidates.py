@@ -132,14 +132,14 @@ def build_snapshot(session: str, *, data_root: Path = ROOT / "data",
         "schema_version": SCHEMA, "session_date": session,
         "as_of": now.isoformat(), "cutoff_exclusive": cutoff.isoformat(),
         "news_window_start": start.isoformat(),
-        "data_mode": "FROZEN_PREMARKET" if now < cutoff else "POST_CUTOFF_RESEARCH_PREVIEW_NOT_TRAINABLE",
+        "data_mode": "PRE_CUTOFF_PREVIEW_NOT_FROZEN" if now < cutoff else "POST_CUTOFF_RESEARCH_PREVIEW_NOT_TRAINABLE",
         "universe_status": coverage.get("universe_status", "UNKNOWN"),
         "collector_last_poll_at": coverage.get("generated_at"),
         "source_failures_last_poll": coverage.get("sources_failed"),
         "company_count": len(rows), "documents_with_eligible_text": len(docs),
         "candidates": rows,
         "doc_evidence_register": docs,
-        "training_allowed_only_if_immutable_and_before_cutoff": True,
+        "training_eligible": False,
         "execution_enabled": False,
         "cautions": [
             "A filing's publication before cutoff does NOT prove our system saw it before cutoff.",
@@ -194,6 +194,8 @@ def run(session: str, *, data_root: Path = ROOT / "data",
         if payload["company_count"] == 0 or not payload["universe_status"].startswith("OFFICIAL_FETCH:"):
             return {"session": session, "status": "FREEZE_REJECTED_NO_VERIFIED_UNIVERSE_OR_CANDIDATES",
                     "as_of": now.isoformat(), "company_count": payload["company_count"]}
+        payload["data_mode"] = "FROZEN_PREMARKET"
+        payload["training_eligible"] = True
         result = write_atomic(folder / "candidate_snapshot.json", payload, only_if_absent=True)
         return {"session": session, "status": result, "company_count": payload["company_count"],
                 "as_of": now.isoformat()}
