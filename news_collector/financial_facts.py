@@ -55,7 +55,7 @@ def extract_line(line: str, *, source: str, doc_hash: str) -> list[dict]:
         nearest_end, metric = max(candidates)
         # Avoid bridging unrelated bullet points or two different sentences.
         intervening = earlier[nearest_end:]
-        if re.search(r"[.!?]\s+(?:[A-Z]|\d)", intervening):
+        if re.search(r"[!?]\s+|\.\s+[A-Z][a-z]{2,}", intervening):
             continue
         direction = m.group("verb").lower()
         if direction in POSITIVE_VERBS:
