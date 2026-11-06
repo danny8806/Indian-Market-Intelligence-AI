@@ -1,5 +1,5 @@
 {
-  "checked_at_utc": "2026-11-06T17:05:55.143443+00:00",
+  "checked_at_utc": "2026-11-06T17:08:22.606254+00:00",
   "run_context": "GitHub Actions ubuntu-latest; read-only, unauthenticated endpoints",
   "date_note": "Source connectivity smoke test, NOT 3pm-9am complete crawl or timestamp verification",
   "sources": [
@@ -18,31 +18,42 @@
         "FSN E-Commerce Ventures Limited",
         "Poonawalla Fincorp Limited",
         "Gland Pharma Limited"
-      ]
+      ],
+      "window_overnight_items": 0,
+      "missing_or_invalid_date": 2659
+    },
+    {
+      "source": "NSE financial results RSS",
+      "type": "rss",
+      "url": "https://nsearchives.nseindia.com/content/RSS/Financial_Results.xml",
+      "status": "NETWORK_OR_PARSE_ERROR",
+      "error": "TimeoutError: The read operation timed out"
     },
     {
       "source": "NSE board meetings RSS",
       "type": "rss",
       "url": "https://nsearchives.nseindia.com/content/RSS/Board_Meetings.xml",
-      "status": "NETWORK_OR_PARSE_ERROR",
-      "error": "TimeoutError: The read operation timed out"
+      "http": 200,
+      "final_url": "https://nsearchives.nseindia.com/content/RSS/Board_Meetings.xml",
+      "content_type": "application/xml",
+      "bytes": 55649,
+      "status": "RSS_OK",
+      "items": 166,
+      "sample_titles": [
+        "Khaitan Chemicals & Fertilizers Limited",
+        "Uma Exports Limited",
+        "Indo Tech Transformers Limited",
+        "Bafna Pharmaceuticals Limited"
+      ],
+      "window_overnight_items": 0,
+      "missing_or_invalid_date": 166
     },
     {
       "source": "NSE corporate actions RSS",
       "type": "rss",
       "url": "https://nsearchives.nseindia.com/content/RSS/Corporate_action.xml",
-      "http": 200,
-      "final_url": "https://nsearchives.nseindia.com/content/RSS/Corporate_action.xml",
-      "content_type": "application/xml",
-      "bytes": 21654,
-      "status": "RSS_OK",
-      "items": 55,
-      "sample_titles": [
-        "Sundram Fasteners Limited - Ex-Date: 06-Nov-2026",
-        "Aurobindo Pharma Limited - Ex-Date: 11-Nov-2026",
-        "Hindustan Unilever Limited - Ex-Date: 12-Nov-2026",
-        "Housing & Urban Development Corporation Limited - Ex-Date: 11-Nov-2026"
-      ]
+      "status": "NETWORK_OR_PARSE_ERROR",
+      "error": "TimeoutError: The read operation timed out"
     },
     {
       "source": "BSE announcements RSS",
@@ -51,9 +62,17 @@
       "http": 200,
       "final_url": "https://www.bseindia.com/data/xml/announcements.xml",
       "content_type": "application/rss+xml",
-      "bytes": 3000000,
-      "status": "NOT_RSS_XML",
-      "error": "no element found: line 1022, column 130678"
+      "bytes": 4630569,
+      "status": "RSS_OK",
+      "items": 12905,
+      "sample_titles": [
+        "Birla Corporation Ltd (500335)",
+        "Birla Corporation Ltd (732571)",
+        "Gland Pharma Ltd (543245)",
+        "SUSTAINABLE ENERGY INFRA TRUST (976953)"
+      ],
+      "window_overnight_items": 0,
+      "missing_or_invalid_date": 12905
     },
     {
       "source": "SEBI RSS",
@@ -70,7 +89,9 @@
         "SEBI order for compliance - Release Order dated November 06, 2026 issued under RC No. 9267 of 2026 drawn against S S TRA",
         "SEBI order for compliance - Release Order dated November 06, 2026 issued under RC No. 9229 of 2026 drawn against Rakeshb",
         "SEBI order for compliance - Release Order dated November 06, 2026 issued under RC No. 9230 of 2026 drawn against Sonalbe"
-      ]
+      ],
+      "window_overnight_items": 0,
+      "missing_or_invalid_date": 30
     },
     {
       "source": "Zerodha Pulse RSS",
@@ -87,7 +108,9 @@
         "SpiceJet Passengers Clash With Staff At Bengaluru Airport After Last-Minute Flight Cancellation, Video Goes Viral",
         "'I Saw My Ram Ji On Screen': Vivek Oberoi Shares Ramayana Reaction, Praises Cast And Team",
         "Vidyut Jammwal Says One Traumatic Incident Should Not Stop Tiger Shroff From Living"
-      ]
+      ],
+      "window_overnight_items": 0,
+      "missing_or_invalid_date": 0
     },
     {
       "source": "Mint markets RSS",
@@ -128,7 +151,9 @@
         "Stock Market Holiday 2026: When will BSE &amp; NSE be closed for Diwali? Muhurat trading timings, other key things to kn",
         "AI selloff hits India too: TD Power, HFCL, Sterlite, other power capex-linked stocks crash up to 15%",
         "Mahindra &amp; Mahindra shares gain 3% after Q2 profit jumps 25% to Rs 4,588 crore, revenue grows 25%"
-      ]
+      ],
+      "window_overnight_items": 0,
+      "missing_or_invalid_date": 0
     },
     {
       "source": "Business Standard latest RSS",
@@ -137,15 +162,17 @@
       "http": 200,
       "final_url": "https://www.business-standard.com/rss/latest.rss",
       "content_type": "application/rss+xml",
-      "bytes": 298512,
+      "bytes": 301874,
       "status": "RSS_OK",
-      "items": 167,
+      "items": 169,
       "sample_titles": [
+        "Amid Karnataka Congress tensions, a leadership test for DK Shivakumar",
+        "Bank locker risks: How to protect your valuables and avoid financial losses",
         "A gameplan for esports: Can India turn its gamers into global champions?",
-        "CR7 heads out: Ronaldo leaves behind a legacy beyond goals and records",
-        "To Bishan, With Love: A tribute to the cricket legend beyond the pitch",
-        "Marico to acquire 51% stake in Bonorizon Consumer Ventures for ₹35 crore"
-      ]
+        "CR7 heads out: Ronaldo leaves behind a legacy beyond goals and records"
+      ],
+      "window_overnight_items": 20,
+      "missing_or_invalid_date": 0
     },
     {
       "source": "Business Standard markets RSS",
@@ -162,7 +189,9 @@
         "Sebi warns Dabur India over delay in disclosing USFDA warning letter",
         "Record FII selling of ₹4.55 trillion meets record DII buying in Samvat 2082",
         "Pressure on rupee continues in Samvat 2082; 10-year bond yields harden"
-      ]
+      ],
+      "window_overnight_items": 3,
+      "missing_or_invalid_date": 0
     },
     {
       "source": "Moneycontrol RSS",
@@ -179,7 +208,9 @@
         "Buy Tejas Networks; target of Rs 1100: Emkay Global Financial",
         "Buy Bajaj Finance; target of Rs 9000: Emkay Global Financial",
         "Buy Bajaj Finance; target of Rs 9000: Emkay Global Financial"
-      ]
+      ],
+      "window_overnight_items": 0,
+      "missing_or_invalid_date": 0
     },
     {
       "source": "BusinessLine RSS",
@@ -196,7 +227,9 @@
         "Nifty reclaims 25,000, Sensex crosses 81,000 as India shrugs off global tech rout",
         "TTK Prestige Q2 profit surges 65% to ₹104.4 crore as domestic sales drive growth",
         "October Auto retail sales decline 23% due to high base last year: FADA"
-      ]
+      ],
+      "window_overnight_items": 0,
+      "missing_or_invalid_date": 0
     },
     {
       "source": "NDTV News RSS",
@@ -213,7 +246,9 @@
         "'Fake Authors, Fake Publishers, Books By AI': Tamil Nadu's Mega Library Row",
         "Jaipur Shop Launches Rs 1.23 Lakh Gold Coin-Shaped Sweet For Diwali",
         "Meghan Markle's Father Arrested Over Child Sexual Abuse Material"
-      ]
+      ],
+      "window_overnight_items": 0,
+      "missing_or_invalid_date": 0
     },
     {
       "source": "Financial Express legacy RSS",
@@ -238,7 +273,9 @@
         "Stock market holidays for Diwali: When are NSE, BSE open? Check Muhurat trading timings - The Times of India",
         "Siemens Limited to Consider Q2 FY27 Results on November 6 - Multibagg AI",
         "Banco Products India Discloses Q2 Financial Performance In Board Filing - Sahi"
-      ]
+      ],
+      "window_overnight_items": 3,
+      "missing_or_invalid_date": 0
     },
     {
       "source": "GDELT DOC API",
@@ -255,7 +292,7 @@
       "http": 200,
       "final_url": "https://pulse.zerodha.com/",
       "content_type": "text/html; charset=UTF-8",
-      "bytes": 381761,
+      "bytes": 381747,
       "status": "HTML_OK",
       "heading_elements": 250
     },
@@ -265,6 +302,44 @@
       "url": "https://www.nseindia.com/companies-listing/corporate-filings-announcements",
       "status": "NETWORK_OR_PARSE_ERROR",
       "error": "TimeoutError: The read operation timed out"
+    },
+    {
+      "source": "Business Standard BSE filings",
+      "type": "html",
+      "url": "https://www.business-standard.com/markets/bse-announcement",
+      "http": 200,
+      "final_url": "https://www.business-standard.com/markets/bse-announcement",
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 229259,
+      "status": "HTML_OK",
+      "heading_elements": 0
+    },
+    {
+      "source": "Reuters India news",
+      "type": "html",
+      "url": "https://www.reuters.com/world/india/",
+      "status": "HTTP_401",
+      "http": 401,
+      "error": "HTTP Error 401: HTTP Forbidden"
+    },
+    {
+      "source": "Business Today Markets",
+      "type": "html",
+      "url": "https://www.businesstoday.in/markets",
+      "http": 200,
+      "final_url": "https://www.businesstoday.in/markets",
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 4910618,
+      "status": "HTML_OK",
+      "heading_elements": 23
+    },
+    {
+      "source": "News18 Business",
+      "type": "html",
+      "url": "https://www.news18.com/business/",
+      "status": "HTTP_403",
+      "http": 403,
+      "error": "HTTP Error 403: Forbidden"
     },
     {
       "source": "BSE announcements web",
@@ -322,7 +397,7 @@
       "http": 200,
       "final_url": "https://www.business-standard.com/markets",
       "content_type": "text/html; charset=utf-8",
-      "bytes": 303989,
+      "bytes": 305007,
       "status": "HTML_OK",
       "heading_elements": 1
     },
@@ -352,7 +427,7 @@
       "http": 200,
       "final_url": "https://economictimes.indiatimes.com/markets",
       "content_type": "text/html",
-      "bytes": 1074363,
+      "bytes": 1087924,
       "status": "HTML_OK",
       "heading_elements": 38
     },
@@ -374,18 +449,18 @@
       "http": 200,
       "final_url": "https://www.thehindubusinessline.com/markets/",
       "content_type": "text/html; charset=UTF-8",
-      "bytes": 212736,
+      "bytes": 211230,
       "status": "HTML_OK",
       "heading_elements": 58
     }
   ],
   "status_counts": {
-    "RSS_OK": 11,
-    "NETWORK_OR_PARSE_ERROR": 2,
-    "NOT_RSS_XML": 1,
+    "RSS_OK": 12,
+    "NETWORK_OR_PARSE_ERROR": 3,
     "HTTP_404": 4,
-    "HTTP_403": 3,
+    "HTTP_403": 4,
     "HTTP_429": 1,
-    "HTML_OK": 9
+    "HTML_OK": 11,
+    "HTTP_401": 1
   }
 }
