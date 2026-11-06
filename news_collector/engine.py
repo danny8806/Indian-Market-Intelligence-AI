@@ -297,7 +297,10 @@ def build_record(item: dict, source: dict, universe: dict[str, str],
     if not url or not headline:
         return "INVALID", None
     timestamp = parse_timestamp(item.get("raw_time", ""), exchange=source["provider"])
-    symbols = universe_match(headline, item.get("summary", ""), universe)
+    # Exchange filings belong to the company named in the filing title;
+    # third-party mentions in its description must not become issuer signals.
+    match_summary = "" if source["provider"] in {"NSE", "BSE"} else item.get("summary", "")
+    symbols = universe_match(headline, match_summary, universe)
     status = ("UNVERIFIED_TIMESTAMP" if timestamp is None
               else "OUT_OF_WINDOW" if not start <= timestamp < end
               else "IN_WINDOW")
