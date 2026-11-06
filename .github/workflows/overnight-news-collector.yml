@@ -63,7 +63,10 @@ jobs:
           git add news_collector/data/
           if ! git diff --cached --quiet; then
             git commit -m 'Archive overnight public financial-news source results'
-            git pull --rebase origin "$GITHUB_REF_NAME"
+            # Concurrent source-code changes must not trigger a rebase conflict
+            # in regenerated coverage.json and events.jsonl.
+            # The current run owns its news data; upstream code changes are merged.
+            git pull --no-rebase -X ours origin "$GITHUB_REF_NAME"
             git push origin "HEAD:$GITHUB_REF_NAME"
           fi
       - name: Upload per-source coverage report as an artifact
