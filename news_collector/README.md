@@ -40,3 +40,27 @@ The scheduled research workflow on the default branch is best-effort (GitHub Act
 3. Extend and test manually curated company aliases and BSE scrip-code/ISIN mapping against labeled false positives and false negatives; current matching is conservative and may miss media nicknames.
 4. Continuous monitoring of source inventory, missing pages, API limits, 09:00 completeness and latency.
 5. Independent, immutable pre-market snapshot for the downstream ranking model. No live trading or automatic orders are authorized.
+
+## Upgrade 3 — Structured reported financial evidence & pre-open training pool
+
+The free **financial_facts.py** extractor reads a small, bounded evidence sample from PDF extraction records. It only records explicit YoY or QoQ percent assertions attached to named financial metrics (revenue, EBITDA, PAT, order book). An unlabeled table is not treated as a comparable financial result. Each numeric assertion includes the original source URL, PDF SHA256, reported period if visible, verbatim short evidence text and a flag indicating manual arithmetic verification is outstanding. Positive/negative evidence summaries describe *reported financial change*, not expected stock-price direction.
+
+Run `python -m news_collector.candidates --session-date 2026-11-09` to build a **research-only preview** from all eligible NIFTY 500 news candidates and PDFs actually processed before the specified as-of time. A run after 09:00 marks that preview `POST_CUTOFF_RESEARCH_PREVIEW_NOT_TRAINABLE`.
+
+A separate create-only workflow at 08:55 and 08:58 IST attempts to write `candidate_snapshot.json` once, only if it runs between **08:50 and 09:00**, has a fresh (no older than 15 minutes) official-source inventory, and knows the genuine first-seen and PDF extraction times. **No retroactive snapshot is permitted.** GitHub scheduled jobs can run late, in which case training for that session must be skipped rather than reconstructed from closing prices. The 08:48 source collection is intended to improve freshness but does not guarantee complete news coverage through 09:00.
+
+The independent **learning/candidate_outcomes.py** script waits until the NSE session is complete, reads only a frozen pre-09:00 snapshot, and labels **all candidates** with unadjusted open-to-close moves from the public NSE Full Bhavcopy CSV (or a caller-supplied OHLCV file). If any selected security is missing, it logs a partial diagnostic and **writes zero training rows** for that date, avoiding a biased selected subset. Exchange CSV availability and corporate actions can still block reliable labels; the system does not guarantee opening fills, short-sale eligibility, or broker P&L.
+
+**learning/train_candidates.py** fits an independent, nondeployed logistic-regression challenger only after >=40 complete sessions and >=250 labeled observations exist. It uses a strictly chronological holdout and compares Brier score with a constant-rate baseline. Its weights/metrics are only GitHub Actions research artifacts; it neither changes the 09:00 stock selections nor sends orders. No trained accuracy is claimed until enough days have been observed and tested.
+
+### Read-only quick commands
+
+```
+python -m news_collector.candidates --session-date 2026-11-09
+python -m unittest discover -s news_collector -p 'test_*.py' -v
+python -m unittest discover -s learning -p test_candidate_learning.py -v
+python -m learning.candidate_outcomes --session-date 2026-11-09
+python -m learning.train_candidates
+```
+
+The outcome command above will correctly refuse to label a future or unfinished session or a session without a genuine frozen snapshot. No automatic live orders are enabled.
