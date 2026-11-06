@@ -1,0 +1,1643 @@
+{
+  "session": "2026-11-09",
+  "generated_at": "2026-11-06T23:23:11.352230+05:30",
+  "method": "Symbol + material category presence; NOT event-ID or issuer ISIN reconciliation",
+  "category_counts": {
+    "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT": 28,
+    "MEDIA_ONLY_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS": 2,
+    "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS": 37
+  },
+  "groups": [
+    {
+      "symbol": "ADANIPORTS",
+      "event_category": "acquisition",
+      "media_count": 0,
+      "nse_count": 1,
+      "bse_count": 0,
+      "filing_examples": [
+        {
+          "headline": "Adani Ports and Special Economic Zone Limited",
+          "url": "https://nsearchives.nseindia.com/corporate/xbrl/REG30_Restructuring_2683_WebXMLFile_20261106_181630405.xml",
+          "published_at": "2026-11-06T18:16:31+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": [
+        "NSE"
+      ]
+    },
+    {
+      "symbol": "AFFLE",
+      "event_category": "regulatory",
+      "media_count": 0,
+      "nse_count": 0,
+      "bse_count": 1,
+      "filing_examples": [
+        {
+          "headline": "Affle 3I Ltd (542752)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/3431d5ba-1304-4d55-905a-45237394c7e9.pdf",
+          "published_at": "2026-11-06T15:51:56+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": [
+        "BSE"
+      ]
+    },
+    {
+      "symbol": "ANURAS",
+      "event_category": "financial_results",
+      "media_count": 0,
+      "nse_count": 3,
+      "bse_count": 5,
+      "filing_examples": [
+        {
+          "headline": "Anupam Rasayan India Ltd (543275)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/92f5e8e1-4c81-4abc-9696-2585d0c7b428.pdf",
+          "published_at": "2026-11-06T15:48:05+05:30"
+        },
+        {
+          "headline": "Anupam Rasayan India Ltd (543275)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/c76238c4-8a6c-4b67-955d-8dd025f4f3d8.pdf",
+          "published_at": "2026-11-06T15:43:54+05:30"
+        },
+        {
+          "headline": "Anupam Rasayan India Ltd (543275)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/4e14d440-744c-49fb-b3fd-82985d5888fd.pdf",
+          "published_at": "2026-11-06T15:35:49+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT",
+      "exchanges_seen": [
+        "BSE",
+        "NSE"
+      ]
+    },
+    {
+      "symbol": "APTUS",
+      "event_category": "regulatory",
+      "media_count": 0,
+      "nse_count": 0,
+      "bse_count": 1,
+      "filing_examples": [
+        {
+          "headline": "Aptus Value Housing Finance India Ltd (543335)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/59B9F913_2C9E_429E_8220_5599417270A7_174059.pdf",
+          "published_at": "2026-11-06T17:41:12+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": [
+        "BSE"
+      ]
+    },
+    {
+      "symbol": "ASIANPAINT",
+      "event_category": "regulatory",
+      "media_count": 0,
+      "nse_count": 1,
+      "bse_count": 2,
+      "filing_examples": [
+        {
+          "headline": "Asian Paints Ltd (500820)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/dd885c0b-f490-4da2-9fcc-a0ef6cfb76a3.pdf",
+          "published_at": "2026-11-06T21:41:36+05:30"
+        },
+        {
+          "headline": "Asian Paints Ltd (500820)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/ddc90afe-51c7-4e86-984c-dbb5d641c44e.pdf",
+          "published_at": "2026-11-06T21:37:13+05:30"
+        },
+        {
+          "headline": "Asian Paints Limited",
+          "url": "https://nsearchives.nseindia.com/corporate/ASIANPAINT_06112026214436_SE_intimation_Result_of_Postal_ballot.pdf",
+          "published_at": "2026-11-06T21:46:25+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT",
+      "exchanges_seen": [
+        "BSE",
+        "NSE"
+      ]
+    },
+    {
+      "symbol": "ASTERDM",
+      "event_category": "acquisition",
+      "media_count": 0,
+      "nse_count": 1,
+      "bse_count": 0,
+      "filing_examples": [
+        {
+          "headline": "Aster DM Quality Care Limited",
+          "url": "https://nsearchives.nseindia.com/corporate/ASTERDM2_06112026193116_Outcomesigned.pdf",
+          "published_at": "2026-11-06T19:31:46+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": [
+        "NSE"
+      ]
+    },
+    {
+      "symbol": "ASTERDM",
+      "event_category": "financial_results",
+      "media_count": 0,
+      "nse_count": 2,
+      "bse_count": 5,
+      "filing_examples": [
+        {
+          "headline": "Aster DM Quality Care Limited",
+          "url": "https://nsearchives.nseindia.com/corporate/ASTERDM2_06112026165600_q2UFRs.pdf",
+          "published_at": "2026-11-06T16:56:44+05:30"
+        },
+        {
+          "headline": "Aster DM Quality Care Ltd (540975)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/4d107730-cbb1-4446-ba16-8f5bd0f11c67.pdf",
+          "published_at": "2026-11-06T16:53:12+05:30"
+        },
+        {
+          "headline": "Aster DM Quality Care Ltd (540975)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/e24346d6-2631-403e-8dba-020c04b7c8c4.pdf",
+          "published_at": "2026-11-06T17:16:53+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT",
+      "exchanges_seen": [
+        "BSE",
+        "NSE"
+      ]
+    },
+    {
+      "symbol": "AZAD",
+      "event_category": "financial_results",
+      "media_count": 0,
+      "nse_count": 1,
+      "bse_count": 1,
+      "filing_examples": [
+        {
+          "headline": "Azad Engineering Limited",
+          "url": "https://nsearchives.nseindia.com/corporate/AZAD2356_06112026182458_Covering.pdf",
+          "published_at": "2026-11-06T18:27:44+05:30"
+        },
+        {
+          "headline": "Azad Engineering Ltd (544061)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/b503fcc5-3502-4eb4-aad9-5c3e8271a276.pdf",
+          "published_at": "2026-11-06T18:47:45+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT",
+      "exchanges_seen": [
+        "BSE",
+        "NSE"
+      ]
+    },
+    {
+      "symbol": "BOSCHLTD",
+      "event_category": "financial_results",
+      "media_count": 3,
+      "nse_count": 0,
+      "bse_count": 0,
+      "filing_examples": [],
+      "media_examples": [
+        {
+          "headline": "Q2 Results Highlights: Hindalco Q2 profit zooms, Voltas up 51%, Aster DM, Gland Pharma surge 58%, Siemens grows 5%; Bosch, Coromandel, Honasa profit down",
+          "url": "https://www.thehindubusinessline.com/markets/q2-results-today-live-updates-hindalco-ind-bosch-siemens-aster-dm-coromandel-intl-gland-pharma-voltas-nuvama-wealth-3m-india-airtel-lic-titan-mahindra-ongc-company-results-06-november-2026/article71669522.ece",
+          "published_at": "2026-11-06T21:39:10+05:30"
+        },
+        {
+          "headline": "Q2 Results Live: Kwality Wall's Narrows Loss, Voltas Net Profit Rises 53%",
+          "url": "https://www.ndtvprofit.com/markets/q2-results-live-updates-november-6-siemens-bosch-hindalco-voltas-among-223-companies-to-announce-earnings-today-12291338",
+          "published_at": "2026-11-06T17:02:58+05:30"
+        }
+      ],
+      "state": "MEDIA_ONLY_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": []
+    },
+    {
+      "symbol": "BOSCHLTD",
+      "event_category": "regulatory",
+      "media_count": 0,
+      "nse_count": 0,
+      "bse_count": 1,
+      "filing_examples": [
+        {
+          "headline": "Bosch Ltd (500530)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/6f329c11-8acb-40d5-a209-8161eb11d807.pdf",
+          "published_at": "2026-11-06T19:17:16+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": [
+        "BSE"
+      ]
+    },
+    {
+      "symbol": "BRITANNIA",
+      "event_category": "financial_results",
+      "media_count": 0,
+      "nse_count": 0,
+      "bse_count": 1,
+      "filing_examples": [
+        {
+          "headline": "Britannia Industries Ltd (500825)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/46b10b9d-d48d-42dd-90d1-de27128fb9db.pdf",
+          "published_at": "2026-11-06T16:47:50+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": [
+        "BSE"
+      ]
+    },
+    {
+      "symbol": "BRITANNIA",
+      "event_category": "regulatory",
+      "media_count": 0,
+      "nse_count": 1,
+      "bse_count": 2,
+      "filing_examples": [
+        {
+          "headline": "Britannia Industries Ltd (500825)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/44566b59-4bf0-4103-86a5-78c9ade03459.pdf",
+          "published_at": "2026-11-06T22:42:41+05:30"
+        },
+        {
+          "headline": "Britannia Industries Ltd (500825)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/9f6d4223-37f8-4712-8f2b-88140765df95.pdf",
+          "published_at": "2026-11-06T16:20:04+05:30"
+        },
+        {
+          "headline": "Britannia Industries Limited",
+          "url": "https://nsearchives.nseindia.com/corporate/BRITANNIA1_06112026223958_Intimation.pdf",
+          "published_at": "2026-11-06T22:41:30+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT",
+      "exchanges_seen": [
+        "BSE",
+        "NSE"
+      ]
+    },
+    {
+      "symbol": "BSOFT",
+      "event_category": "regulatory",
+      "media_count": 0,
+      "nse_count": 0,
+      "bse_count": 1,
+      "filing_examples": [
+        {
+          "headline": "Birlasoft Ltd (532400)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/dd838160-729d-46f2-8821-45474231689b.pdf",
+          "published_at": "2026-11-06T18:13:37+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": [
+        "BSE"
+      ]
+    },
+    {
+      "symbol": "CLEANMAX",
+      "event_category": "financial_results",
+      "media_count": 0,
+      "nse_count": 0,
+      "bse_count": 1,
+      "filing_examples": [
+        {
+          "headline": "Clean Max Enviro Energy Solutions Ltd (544717)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/481a07a7-db11-4b5b-abf3-0c3cad27d442.pdf",
+          "published_at": "2026-11-06T18:09:04+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": [
+        "BSE"
+      ]
+    },
+    {
+      "symbol": "COHANCE",
+      "event_category": "financial_results",
+      "media_count": 0,
+      "nse_count": 1,
+      "bse_count": 0,
+      "filing_examples": [
+        {
+          "headline": "Cohance Lifesciences Limited",
+          "url": "https://nsearchives.nseindia.com/corporate/SUVENPHARMSUSHEEL_06112026174827_Cohance_Outcome_BM_06112026_uploading.pdf",
+          "published_at": "2026-11-06T17:48:45+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": [
+        "NSE"
+      ]
+    },
+    {
+      "symbol": "COROMANDEL",
+      "event_category": "financial_results",
+      "media_count": 0,
+      "nse_count": 1,
+      "bse_count": 1,
+      "filing_examples": [
+        {
+          "headline": "Coromandel International Ltd (506395)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/69a50941-75f7-4b6a-b722-93e9edcdf58e.pdf",
+          "published_at": "2026-11-06T15:16:05+05:30"
+        },
+        {
+          "headline": "Coromandel International Limited",
+          "url": "https://nsearchives.nseindia.com/corporate/COROMANDELINT_06112026150836_CILBMOUTCOME06112026.pdf",
+          "published_at": "2026-11-06T15:10:17+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT",
+      "exchanges_seen": [
+        "BSE",
+        "NSE"
+      ]
+    },
+    {
+      "symbol": "CUMMINSIND",
+      "event_category": "financial_results",
+      "media_count": 0,
+      "nse_count": 1,
+      "bse_count": 1,
+      "filing_examples": [
+        {
+          "headline": "Cummins India Limited",
+          "url": "https://nsearchives.nseindia.com/corporate/CUMMINSIND_06112026172100_SEIntimationNewspaperFRfinal.pdf",
+          "published_at": "2026-11-06T17:21:42+05:30"
+        },
+        {
+          "headline": "Cummins India Ltd (500480)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/499fef94-849d-4ce2-8442-add7a5636b8e.pdf",
+          "published_at": "2026-11-06T17:25:38+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT",
+      "exchanges_seen": [
+        "BSE",
+        "NSE"
+      ]
+    },
+    {
+      "symbol": "DABUR",
+      "event_category": "regulatory",
+      "media_count": 1,
+      "nse_count": 1,
+      "bse_count": 1,
+      "filing_examples": [
+        {
+          "headline": "Dabur India Ltd (500096)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/81a60025-e3a4-47dd-84ae-35c07676a331.pdf",
+          "published_at": "2026-11-06T16:28:54+05:30"
+        },
+        {
+          "headline": "Dabur India Limited",
+          "url": "https://nsearchives.nseindia.com/corporate/DABURA_06112026162506_Letter.pdf",
+          "published_at": "2026-11-06T16:25:46+05:30"
+        }
+      ],
+      "media_examples": [
+        {
+          "headline": "Sebi warns Dabur India over delay in disclosing USFDA warning letter",
+          "url": "https://www.business-standard.com/markets/news/sebi-warns-dabur-india-over-delay-in-disclosing-usfda-warning-letter-126110601897_1.html",
+          "published_at": "2026-11-06T20:53:58+05:30"
+        }
+      ],
+      "state": "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT",
+      "exchanges_seen": [
+        "BSE",
+        "NSE"
+      ]
+    },
+    {
+      "symbol": "DATAPATTNS",
+      "event_category": "financial_results",
+      "media_count": 0,
+      "nse_count": 1,
+      "bse_count": 1,
+      "filing_examples": [
+        {
+          "headline": "Data Patterns (India) Limited",
+          "url": "https://nsearchives.nseindia.com/corporate/Datapatterns_06112026184749_OutcomeofBoardMeeting06Nov2026.pdf",
+          "published_at": "2026-11-06T18:51:41+05:30"
+        },
+        {
+          "headline": "Data Patterns (India) Ltd (543428)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/466bfc14-6e54-400b-bf5b-72d220b032bc.pdf",
+          "published_at": "2026-11-06T19:54:53+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT",
+      "exchanges_seen": [
+        "BSE",
+        "NSE"
+      ]
+    },
+    {
+      "symbol": "DATAPATTNS",
+      "event_category": "orders_contracts",
+      "media_count": 0,
+      "nse_count": 1,
+      "bse_count": 0,
+      "filing_examples": [
+        {
+          "headline": "Data Patterns (India) Limited",
+          "url": "https://nsearchives.nseindia.com/corporate/Datapatterns_06112026200123_IntimationofPressReleaseQ2FY27.pdf",
+          "published_at": "2026-11-06T20:01:35+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": [
+        "NSE"
+      ]
+    },
+    {
+      "symbol": "DATAPATTNS",
+      "event_category": "regulatory",
+      "media_count": 0,
+      "nse_count": 0,
+      "bse_count": 2,
+      "filing_examples": [
+        {
+          "headline": "Data Patterns (India) Ltd (543428)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/51102e2a-0ac1-4e2b-afe8-e0c53b008833.pdf",
+          "published_at": "2026-11-06T19:08:13+05:30"
+        },
+        {
+          "headline": "Data Patterns (India) Ltd (543428)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/49e86c49-db83-454c-b936-c884b94fe36c.pdf",
+          "published_at": "2026-11-06T18:45:53+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": [
+        "BSE"
+      ]
+    },
+    {
+      "symbol": "DOMS",
+      "event_category": "financial_results",
+      "media_count": 0,
+      "nse_count": 0,
+      "bse_count": 1,
+      "filing_examples": [
+        {
+          "headline": "DOMS Industries Ltd (544045)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/0b2194d2-65d4-4256-a454-305e283acd03.pdf",
+          "published_at": "2026-11-06T16:24:30+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": [
+        "BSE"
+      ]
+    },
+    {
+      "symbol": "FIRSTCRY",
+      "event_category": "financial_results",
+      "media_count": 0,
+      "nse_count": 1,
+      "bse_count": 1,
+      "filing_examples": [
+        {
+          "headline": "Brainbees Solutions Limited",
+          "url": "https://nsearchives.nseindia.com/corporate/BRAINBEES_06112026180823_PriorIntimationofBM.pdf",
+          "published_at": "2026-11-06T18:09:07+05:30"
+        },
+        {
+          "headline": "Brainbees Solutions Ltd (544226)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/93eca890-1abb-44ea-b31a-98669f6cc3fc.pdf",
+          "published_at": "2026-11-06T18:04:24+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT",
+      "exchanges_seen": [
+        "BSE",
+        "NSE"
+      ]
+    },
+    {
+      "symbol": "GESHIP",
+      "event_category": "financial_results",
+      "media_count": 0,
+      "nse_count": 1,
+      "bse_count": 2,
+      "filing_examples": [
+        {
+          "headline": "The Great Eastern Shipping Company Limited",
+          "url": "https://nsearchives.nseindia.com/corporate/GESHIP_06112026164308_resultstobefiled.pdf",
+          "published_at": "2026-11-06T16:44:35+05:30"
+        },
+        {
+          "headline": "Great Eastern Shipping Company Ltd (500620)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/13d15eba-65e8-405c-9f82-2b07335552b1.pdf",
+          "published_at": "2026-11-06T16:44:47+05:30"
+        },
+        {
+          "headline": "Great Eastern Shipping Company Ltd (500620)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/dea845de-9cd0-42b1-8139-7ab57bdc8289.pdf",
+          "published_at": "2026-11-06T16:47:22+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT",
+      "exchanges_seen": [
+        "BSE",
+        "NSE"
+      ]
+    },
+    {
+      "symbol": "GLAND",
+      "event_category": "financial_results",
+      "media_count": 1,
+      "nse_count": 2,
+      "bse_count": 2,
+      "filing_examples": [
+        {
+          "headline": "Gland Pharma Ltd (543245)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/f4b35b8c-1699-4a67-b6d1-7845c2c95576.pdf",
+          "published_at": "2026-11-06T16:52:10+05:30"
+        },
+        {
+          "headline": "Gland Pharma Ltd (543245)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/5f33a96b-1daf-4e4f-904a-19d5c41f2d88.pdf",
+          "published_at": "2026-11-06T16:59:34+05:30"
+        },
+        {
+          "headline": "Gland Pharma Limited",
+          "url": "https://nsearchives.nseindia.com/corporate/GLAND_06112026162953_OutcomeBMQ2FY27_Final.pdf",
+          "published_at": "2026-11-06T16:33:34+05:30"
+        }
+      ],
+      "media_examples": [
+        {
+          "headline": "Q2 Results Highlights: Hindalco Q2 profit zooms, Voltas up 51%, Aster DM, Gland Pharma surge 58%, Siemens grows 5%; Bosch, Coromandel, Honasa profit down",
+          "url": "https://www.thehindubusinessline.com/markets/q2-results-today-live-updates-hindalco-ind-bosch-siemens-aster-dm-coromandel-intl-gland-pharma-voltas-nuvama-wealth-3m-india-airtel-lic-titan-mahindra-ongc-company-results-06-november-2026/article71669522.ece",
+          "published_at": "2026-11-06T21:39:10+05:30"
+        }
+      ],
+      "state": "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT",
+      "exchanges_seen": [
+        "BSE",
+        "NSE"
+      ]
+    },
+    {
+      "symbol": "HDBFS",
+      "event_category": "regulatory",
+      "media_count": 0,
+      "nse_count": 0,
+      "bse_count": 1,
+      "filing_examples": [
+        {
+          "headline": "HDB FINANCIAL SERVICES Ltd (977976)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/0664226a-e5bd-4a24-92bf-eb52bf6140f0.pdf",
+          "published_at": "2026-11-06T19:43:51+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": [
+        "BSE"
+      ]
+    },
+    {
+      "symbol": "HDFCBANK",
+      "event_category": "regulatory",
+      "media_count": 0,
+      "nse_count": 0,
+      "bse_count": 1,
+      "filing_examples": [
+        {
+          "headline": "HDFC Bank Ltd (500180)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/0926e958-96d9-4537-ae2b-188dfe3eb1d1.pdf",
+          "published_at": "2026-11-06T22:28:09+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": [
+        "BSE"
+      ]
+    },
+    {
+      "symbol": "HEROMOTOCO",
+      "event_category": "regulatory",
+      "media_count": 0,
+      "nse_count": 1,
+      "bse_count": 1,
+      "filing_examples": [
+        {
+          "headline": "Hero MotoCorp Limited",
+          "url": "https://nsearchives.nseindia.com/corporate/HEROMOTO_06112026204820_Stxintimation6112026newspaperadvertisment.pdf",
+          "published_at": "2026-11-06T20:49:08+05:30"
+        },
+        {
+          "headline": "Hero MotoCorp Ltd (500182)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/04ee57f5-8d8f-44cd-8c10-855e25f067ab.pdf",
+          "published_at": "2026-11-06T20:48:15+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT",
+      "exchanges_seen": [
+        "BSE",
+        "NSE"
+      ]
+    },
+    {
+      "symbol": "HINDALCO",
+      "event_category": "financial_results",
+      "media_count": 1,
+      "nse_count": 0,
+      "bse_count": 0,
+      "filing_examples": [],
+      "media_examples": [
+        {
+          "headline": "Hindalco Q2 result: Net profit jumps 59% to ₹7,533 cr, revenue rises 39%",
+          "url": "https://www.business-standard.com/companies/quarterly-results/hindalco-q2-result-net-profit-jumps-59-to-7-533-cr-revenue-rises-39-126110601026_1.html",
+          "published_at": "2026-11-06T15:12:34+05:30"
+        }
+      ],
+      "state": "MEDIA_ONLY_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": []
+    },
+    {
+      "symbol": "HONASA",
+      "event_category": "financial_results",
+      "media_count": 0,
+      "nse_count": 0,
+      "bse_count": 1,
+      "filing_examples": [
+        {
+          "headline": "Honasa Consumer Ltd (544014)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/55693e8c-53c3-4f61-983b-449b42ad8c1c.pdf",
+          "published_at": "2026-11-06T17:37:52+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": [
+        "BSE"
+      ]
+    },
+    {
+      "symbol": "HUDCO",
+      "event_category": "financial_results",
+      "media_count": 0,
+      "nse_count": 0,
+      "bse_count": 1,
+      "filing_examples": [
+        {
+          "headline": "Housing & Urban Development Corporation Ltd (540530)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/1dfea1f3-0619-473b-babe-eef6ce9e3988.pdf",
+          "published_at": "2026-11-06T17:09:14+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": [
+        "BSE"
+      ]
+    },
+    {
+      "symbol": "IKS",
+      "event_category": "regulatory",
+      "media_count": 0,
+      "nse_count": 0,
+      "bse_count": 1,
+      "filing_examples": [
+        {
+          "headline": "Inventurus Knowledge Solutions Ltd (544309)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/5741ead0-fc9a-4db9-b4a1-124ee77770c8.pdf",
+          "published_at": "2026-11-06T16:10:26+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": [
+        "BSE"
+      ]
+    },
+    {
+      "symbol": "INOXWIND",
+      "event_category": "financial_results",
+      "media_count": 0,
+      "nse_count": 1,
+      "bse_count": 1,
+      "filing_examples": [
+        {
+          "headline": "Inox Wind Limited",
+          "url": "https://nsearchives.nseindia.com/corporate/INOXWIND_06112026174541_1_IWL_PriorBoard_Meeting_intimation.pdf",
+          "published_at": "2026-11-06T17:45:52+05:30"
+        },
+        {
+          "headline": "Inox Wind Ltd (539083)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/abf340f9-40ee-458b-b213-99701ab5c394.pdf",
+          "published_at": "2026-11-06T17:39:56+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT",
+      "exchanges_seen": [
+        "BSE",
+        "NSE"
+      ]
+    },
+    {
+      "symbol": "IOC",
+      "event_category": "regulatory",
+      "media_count": 0,
+      "nse_count": 0,
+      "bse_count": 1,
+      "filing_examples": [
+        {
+          "headline": "Indian Oil Corporation Ltd (530965)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/3EA4CDED_068A_4971_B144_4C27F7C9B8A3_151255.pdf",
+          "published_at": "2026-11-06T15:13:00+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": [
+        "BSE"
+      ]
+    },
+    {
+      "symbol": "IRB",
+      "event_category": "financial_results",
+      "media_count": 0,
+      "nse_count": 1,
+      "bse_count": 1,
+      "filing_examples": [
+        {
+          "headline": "IRB Infrastructure Developers Ltd (532947)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/39d025de-4816-49fe-bb91-12ef4de40111.pdf",
+          "published_at": "2026-11-06T16:27:01+05:30"
+        },
+        {
+          "headline": "IRB Infrastructure Developers Limited",
+          "url": "https://nsearchives.nseindia.com/corporate/IRB_06112026162516_IRBIDL_Newspaper_Advertisement.pdf",
+          "published_at": "2026-11-06T16:27:31+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT",
+      "exchanges_seen": [
+        "BSE",
+        "NSE"
+      ]
+    },
+    {
+      "symbol": "JSWSTEEL",
+      "event_category": "acquisition",
+      "media_count": 0,
+      "nse_count": 1,
+      "bse_count": 0,
+      "filing_examples": [
+        {
+          "headline": "JSW Steel Limited",
+          "url": "https://nsearchives.nseindia.com/corporate/xbrl/REG30_Restructuring_2266_WebXMLFile_20261106_182343067.xml",
+          "published_at": "2026-11-06T18:23:44+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": [
+        "NSE"
+      ]
+    },
+    {
+      "symbol": "JUBLFOOD",
+      "event_category": "financial_results",
+      "media_count": 1,
+      "nse_count": 2,
+      "bse_count": 2,
+      "filing_examples": [
+        {
+          "headline": "Jubilant Foodworks Limited",
+          "url": "https://nsearchives.nseindia.com/corporate/JUBLFOOD_06112026152011_FOutcome_of_BM.pdf",
+          "published_at": "2026-11-06T15:20:30+05:30"
+        },
+        {
+          "headline": "Jubilant FoodWorks Ltd (533155)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/d1391ea1-a8b2-4b35-9822-b16bf6c38d01.pdf",
+          "published_at": "2026-11-06T15:23:33+05:30"
+        },
+        {
+          "headline": "Jubilant Foodworks Limited",
+          "url": "https://nsearchives.nseindia.com/corporate/JUBLFOOD_06112026152646_LettertoShareholders.pdf",
+          "published_at": "2026-11-06T15:26:58+05:30"
+        }
+      ],
+      "media_examples": [
+        {
+          "headline": "Jubilant Foodworks Q2 Results: Net Profit Rises 10% To Rs 70.2 Crore; Margin Rises Marginally",
+          "url": "https://www.ndtvprofit.com/markets/jubilant-foodworks-q2-results-net-profit-rises-10-to-rs-70-2-crore-margin-rises-marginally-12292409",
+          "published_at": "2026-11-06T16:52:29+05:30"
+        }
+      ],
+      "state": "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT",
+      "exchanges_seen": [
+        "BSE",
+        "NSE"
+      ]
+    },
+    {
+      "symbol": "KEC",
+      "event_category": "financial_results",
+      "media_count": 0,
+      "nse_count": 0,
+      "bse_count": 1,
+      "filing_examples": [
+        {
+          "headline": "KEC International Ltd (532714)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/70443387-5e40-4cfe-bab2-600c75f13ec1.pdf",
+          "published_at": "2026-11-06T15:49:16+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": [
+        "BSE"
+      ]
+    },
+    {
+      "symbol": "KPIL",
+      "event_category": "financial_results",
+      "media_count": 0,
+      "nse_count": 0,
+      "bse_count": 1,
+      "filing_examples": [
+        {
+          "headline": "Kalpataru Projects International Ltd (522287)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/2b73a253-4e82-4736-97fb-eee6352de664.pdf",
+          "published_at": "2026-11-06T16:22:11+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": [
+        "BSE"
+      ]
+    },
+    {
+      "symbol": "KPIL",
+      "event_category": "regulatory",
+      "media_count": 0,
+      "nse_count": 0,
+      "bse_count": 1,
+      "filing_examples": [
+        {
+          "headline": "Kalpataru Projects International Ltd (522287)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/9b78f038-ac8f-48bd-a6a0-bbb53e94be49.pdf",
+          "published_at": "2026-11-06T16:33:49+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": [
+        "BSE"
+      ]
+    },
+    {
+      "symbol": "LICI",
+      "event_category": "financial_results",
+      "media_count": 0,
+      "nse_count": 1,
+      "bse_count": 0,
+      "filing_examples": [
+        {
+          "headline": "Life Insurance Corporation Of India",
+          "url": "https://nsearchives.nseindia.com/corporate/LIC_BOARD_06112026155634_Final_Disc_Newsppr_06112026.pdf",
+          "published_at": "2026-11-06T15:56:42+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": [
+        "NSE"
+      ]
+    },
+    {
+      "symbol": "M&M",
+      "event_category": "acquisition",
+      "media_count": 0,
+      "nse_count": 2,
+      "bse_count": 0,
+      "filing_examples": [
+        {
+          "headline": "Mahindra & Mahindra Limited",
+          "url": "https://nsearchives.nseindia.com/corporate/xbrl/REG30_Restructuring_679_WebXMLFile_20261106_162619362.xml",
+          "published_at": "2026-11-06T16:26:20+05:30"
+        },
+        {
+          "headline": "Mahindra & Mahindra Limited",
+          "url": "https://nsearchives.nseindia.com/corporate/AmitDodani_06112026153559_SEIntimationSMLRightsIssue.pdf",
+          "published_at": "2026-11-06T15:36:06+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": [
+        "NSE"
+      ]
+    },
+    {
+      "symbol": "MARICO",
+      "event_category": "acquisition",
+      "media_count": 0,
+      "nse_count": 2,
+      "bse_count": 0,
+      "filing_examples": [
+        {
+          "headline": "Marico Limited",
+          "url": "https://nsearchives.nseindia.com/corporate/xbrl/REG30_Restructuring_1355_WebXMLFile_20261106_175941116.xml",
+          "published_at": "2026-11-06T17:59:42+05:30"
+        },
+        {
+          "headline": "Marico Limited",
+          "url": "https://nsearchives.nseindia.com/corporate/xbrl/REG30_Restructuring_1355_WebXMLFile_20261106_181330869.xml",
+          "published_at": "2026-11-06T18:13:31+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": [
+        "NSE"
+      ]
+    },
+    {
+      "symbol": "MARICO",
+      "event_category": "regulatory",
+      "media_count": 0,
+      "nse_count": 2,
+      "bse_count": 3,
+      "filing_examples": [
+        {
+          "headline": "Marico Ltd (531642)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/d31fa742-4a85-4fe5-91b6-aa10b653682e.pdf",
+          "published_at": "2026-11-06T16:58:11+05:30"
+        },
+        {
+          "headline": "Marico Limited",
+          "url": "https://nsearchives.nseindia.com/corporate/marico_06112026171755_SEIntimation.pdf",
+          "published_at": "2026-11-06T17:20:51+05:30"
+        },
+        {
+          "headline": "Marico Limited",
+          "url": "https://nsearchives.nseindia.com/corporate/marico_06112026171442_SEIntimationn.pdf",
+          "published_at": "2026-11-06T17:16:32+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT",
+      "exchanges_seen": [
+        "BSE",
+        "NSE"
+      ]
+    },
+    {
+      "symbol": "MCX",
+      "event_category": "financial_results",
+      "media_count": 0,
+      "nse_count": 0,
+      "bse_count": 1,
+      "filing_examples": [
+        {
+          "headline": "Multi Commodity Exchange of India Ltd (534091)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/239a1eee-a2c5-42d0-96ef-702283505403.pdf",
+          "published_at": "2026-11-06T15:58:00+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": [
+        "BSE"
+      ]
+    },
+    {
+      "symbol": "MOTHERSON",
+      "event_category": "financial_results",
+      "media_count": 0,
+      "nse_count": 1,
+      "bse_count": 1,
+      "filing_examples": [
+        {
+          "headline": "Samvardhana Motherson International Limited",
+          "url": "https://nsearchives.nseindia.com/corporate/MOTHERSON_06112026163759_Newspaper_Publication.pdf",
+          "published_at": "2026-11-06T16:38:12+05:30"
+        },
+        {
+          "headline": "Samvardhana Motherson International Ltd (517334)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/8224852c-d060-400d-bf28-97be14748697.pdf",
+          "published_at": "2026-11-06T16:36:31+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT",
+      "exchanges_seen": [
+        "BSE",
+        "NSE"
+      ]
+    },
+    {
+      "symbol": "OLECTRA",
+      "event_category": "financial_results",
+      "media_count": 0,
+      "nse_count": 0,
+      "bse_count": 1,
+      "filing_examples": [
+        {
+          "headline": "Olectra Greentech Ltd (532439)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/c392a165-6439-4b01-a0ee-0acc091392df.pdf",
+          "published_at": "2026-11-06T17:06:11+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": [
+        "BSE"
+      ]
+    },
+    {
+      "symbol": "PFOCUS",
+      "event_category": "financial_results",
+      "media_count": 0,
+      "nse_count": 1,
+      "bse_count": 1,
+      "filing_examples": [
+        {
+          "headline": "Prime Focus Limited",
+          "url": "https://nsearchives.nseindia.com/corporate/PFOCUS_06112026195546_IntimationOfBoardMeetingsigned.pdf",
+          "published_at": "2026-11-06T19:58:29+05:30"
+        },
+        {
+          "headline": "Prime Focus Ltd (532748)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/1e6fa806-e49b-4c96-8ba0-fa0d2c8c887d.pdf",
+          "published_at": "2026-11-06T19:59:25+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT",
+      "exchanges_seen": [
+        "BSE",
+        "NSE"
+      ]
+    },
+    {
+      "symbol": "PIIND",
+      "event_category": "financial_results",
+      "media_count": 0,
+      "nse_count": 1,
+      "bse_count": 1,
+      "filing_examples": [
+        {
+          "headline": "PI Industries Limited",
+          "url": "https://nsearchives.nseindia.com/corporate/PIIND_06112026151103_Newspaper_Advertisement_Financial_Result_sd.pdf",
+          "published_at": "2026-11-06T15:11:28+05:30"
+        },
+        {
+          "headline": "PI Industries Ltd (523642)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/071ff837-a606-47f8-a266-0d5ae67adcb8.pdf",
+          "published_at": "2026-11-06T15:15:30+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT",
+      "exchanges_seen": [
+        "BSE",
+        "NSE"
+      ]
+    },
+    {
+      "symbol": "PRESTIGE",
+      "event_category": "acquisition",
+      "media_count": 0,
+      "nse_count": 2,
+      "bse_count": 1,
+      "filing_examples": [
+        {
+          "headline": "Prestige Estates Projects Limited",
+          "url": "https://nsearchives.nseindia.com/corporate/PRESTIGE_06112026210200_IntimationAllure.pdf",
+          "published_at": "2026-11-06T21:02:25+05:30"
+        },
+        {
+          "headline": "Prestige Estates Projects Limited",
+          "url": "https://nsearchives.nseindia.com/corporate/xbrl/REG30_Restructuring_3661_WebXMLFile_20261106_211038484.xml",
+          "published_at": "2026-11-06T21:10:39+05:30"
+        },
+        {
+          "headline": "Prestige Estates Projects Ltd (533274)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/88f9d031-cea6-4cc8-8547-94407c032c93.pdf",
+          "published_at": "2026-11-06T21:00:50+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT",
+      "exchanges_seen": [
+        "BSE",
+        "NSE"
+      ]
+    },
+    {
+      "symbol": "PTCIL",
+      "event_category": "financial_results",
+      "media_count": 0,
+      "nse_count": 1,
+      "bse_count": 0,
+      "filing_examples": [
+        {
+          "headline": "PTC Industries Limited",
+          "url": "https://nsearchives.nseindia.com/corporate/PTCINDUSTRIES_06112026200707_Prior_Intimation_Board_Meeting_14112026.pdf",
+          "published_at": "2026-11-06T20:07:19+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": [
+        "NSE"
+      ]
+    },
+    {
+      "symbol": "RAMCOCEM",
+      "event_category": "financial_results",
+      "media_count": 0,
+      "nse_count": 1,
+      "bse_count": 1,
+      "filing_examples": [
+        {
+          "headline": "The Ramco Cements Limited",
+          "url": "https://nsearchives.nseindia.com/corporate/RAMCOCEM_06112026162247_sesnewspaper.pdf",
+          "published_at": "2026-11-06T16:22:57+05:30"
+        },
+        {
+          "headline": "The Ramco Cements Ltd (500260)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/5821f22b-cbb7-478c-aed9-fcae1d06f0ec.pdf",
+          "published_at": "2026-11-06T16:18:16+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT",
+      "exchanges_seen": [
+        "BSE",
+        "NSE"
+      ]
+    },
+    {
+      "symbol": "SAILIFE",
+      "event_category": "financial_results",
+      "media_count": 0,
+      "nse_count": 0,
+      "bse_count": 1,
+      "filing_examples": [
+        {
+          "headline": "Sai Life Sciences Ltd (544306)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/ef7252da-9cdc-47eb-9088-242684ab65d6.pdf",
+          "published_at": "2026-11-06T15:27:34+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": [
+        "BSE"
+      ]
+    },
+    {
+      "symbol": "SCHNEIDER",
+      "event_category": "financial_results",
+      "media_count": 0,
+      "nse_count": 0,
+      "bse_count": 1,
+      "filing_examples": [
+        {
+          "headline": "Schneider Electric Infrastructure Ltd (534139)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/27bdfafa-32cb-4526-a2b2-7ea54ff1c9bb.pdf",
+          "published_at": "2026-11-06T20:41:27+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": [
+        "BSE"
+      ]
+    },
+    {
+      "symbol": "SHREECEM",
+      "event_category": "regulatory",
+      "media_count": 0,
+      "nse_count": 1,
+      "bse_count": 1,
+      "filing_examples": [
+        {
+          "headline": "SHREE CEMENT LIMITED",
+          "url": "https://nsearchives.nseindia.com/corporate/SHREECEM_06112026164526_NSE_BSE_Demand_order_061126.pdf",
+          "published_at": "2026-11-06T16:45:45+05:30"
+        },
+        {
+          "headline": "Shree Cement Ltd (500387)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/dff8bdaf-136b-4825-b910-827d5ba45781.pdf",
+          "published_at": "2026-11-06T16:42:06+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT",
+      "exchanges_seen": [
+        "BSE",
+        "NSE"
+      ]
+    },
+    {
+      "symbol": "SHRIRAMFIN",
+      "event_category": "regulatory",
+      "media_count": 0,
+      "nse_count": 1,
+      "bse_count": 1,
+      "filing_examples": [
+        {
+          "headline": "Shriram Finance Limited",
+          "url": "https://nsearchives.nseindia.com/corporate/Mathew_06112026154846_BSENSE_311026_74-5_Upload.pdf",
+          "published_at": "2026-11-06T15:49:47+05:30"
+        },
+        {
+          "headline": "Shriram Finance Ltd (511218)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/0fb20250-72d4-4d54-8379-f1144ac6d2cc.pdf",
+          "published_at": "2026-11-06T15:37:13+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT",
+      "exchanges_seen": [
+        "BSE",
+        "NSE"
+      ]
+    },
+    {
+      "symbol": "SIEMENS",
+      "event_category": "financial_results",
+      "media_count": 3,
+      "nse_count": 1,
+      "bse_count": 0,
+      "filing_examples": [
+        {
+          "headline": "Siemens Limited",
+          "url": "https://nsearchives.nseindia.com/corporate/SiemensRaj_06112026154718_SEIntimation.pdf",
+          "published_at": "2026-11-06T15:48:50+05:30"
+        }
+      ],
+      "media_examples": [
+        {
+          "headline": "Q2 Results Highlights: Hindalco Q2 profit zooms, Voltas up 51%, Aster DM, Gland Pharma surge 58%, Siemens grows 5%; Bosch, Coromandel, Honasa profit down",
+          "url": "https://www.thehindubusinessline.com/markets/q2-results-today-live-updates-hindalco-ind-bosch-siemens-aster-dm-coromandel-intl-gland-pharma-voltas-nuvama-wealth-3m-india-airtel-lic-titan-mahindra-ongc-company-results-06-november-2026/article71669522.ece",
+          "published_at": "2026-11-06T21:39:10+05:30"
+        },
+        {
+          "headline": "Q2 Results Live: Kwality Wall's Narrows Loss, Voltas Net Profit Rises 53%",
+          "url": "https://www.ndtvprofit.com/markets/q2-results-live-updates-november-6-siemens-bosch-hindalco-voltas-among-223-companies-to-announce-earnings-today-12291338",
+          "published_at": "2026-11-06T17:02:58+05:30"
+        }
+      ],
+      "state": "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": [
+        "NSE"
+      ]
+    },
+    {
+      "symbol": "SOLARINDS",
+      "event_category": "financial_results",
+      "media_count": 0,
+      "nse_count": 0,
+      "bse_count": 1,
+      "filing_examples": [
+        {
+          "headline": "Solar Industries India Ltd (532725)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/f0c8af66-1e5c-4b88-a0c2-dd7de85f1e61.pdf",
+          "published_at": "2026-11-06T17:04:08+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": [
+        "BSE"
+      ]
+    },
+    {
+      "symbol": "TITAN",
+      "event_category": "financial_results",
+      "media_count": 0,
+      "nse_count": 1,
+      "bse_count": 1,
+      "filing_examples": [
+        {
+          "headline": "Titan Company Ltd (500114)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/a4fd562e-8ef5-4e10-8ba9-d2ae42ae09e1.pdf",
+          "published_at": "2026-11-06T16:58:57+05:30"
+        },
+        {
+          "headline": "Titan Company Limited",
+          "url": "https://nsearchives.nseindia.com/corporate/TITAN_06112026165556_SEnewspaperadresultQ2-combined.pdf",
+          "published_at": "2026-11-06T16:56:24+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT",
+      "exchanges_seen": [
+        "BSE",
+        "NSE"
+      ]
+    },
+    {
+      "symbol": "TORNTPHARM",
+      "event_category": "regulatory",
+      "media_count": 0,
+      "nse_count": 0,
+      "bse_count": 1,
+      "filing_examples": [
+        {
+          "headline": "Torrent Pharmaceuticals Ltd (500420)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/7ab5742a-073d-47c8-bf7f-23f1970fdc8c.pdf",
+          "published_at": "2026-11-06T18:33:30+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": [
+        "BSE"
+      ]
+    },
+    {
+      "symbol": "TORNTPOWER",
+      "event_category": "regulatory",
+      "media_count": 0,
+      "nse_count": 1,
+      "bse_count": 1,
+      "filing_examples": [
+        {
+          "headline": "Torrent Power Ltd (532779)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/05a326bf-b371-4e6c-8816-7a384f982413.pdf",
+          "published_at": "2026-11-06T18:06:21+05:30"
+        },
+        {
+          "headline": "Torrent Power Limited",
+          "url": "https://nsearchives.nseindia.com/corporate/TORNTPOWER_06112026180548_GST_Penalty_order.pdf",
+          "published_at": "2026-11-06T18:05:59+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT",
+      "exchanges_seen": [
+        "BSE",
+        "NSE"
+      ]
+    },
+    {
+      "symbol": "USHAMART",
+      "event_category": "financial_results",
+      "media_count": 0,
+      "nse_count": 1,
+      "bse_count": 1,
+      "filing_examples": [
+        {
+          "headline": "Usha Martin Limited",
+          "url": "https://nsearchives.nseindia.com/corporate/USHAMART_06112026164844_BMIntimation06112026.pdf",
+          "published_at": "2026-11-06T16:49:36+05:30"
+        },
+        {
+          "headline": "Usha Martin Ltd (517146)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/dce0ad62-24b7-4501-8ae8-d1f8081f212d.pdf",
+          "published_at": "2026-11-06T16:21:11+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT",
+      "exchanges_seen": [
+        "BSE",
+        "NSE"
+      ]
+    },
+    {
+      "symbol": "VIJAYA",
+      "event_category": "financial_results",
+      "media_count": 0,
+      "nse_count": 0,
+      "bse_count": 1,
+      "filing_examples": [
+        {
+          "headline": "Vijaya Diagnostic Centre Ltd (543350)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/d6238ebf-26f0-4ffe-902b-fb71c9a4208a.pdf",
+          "published_at": "2026-11-06T18:38:19+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": [
+        "BSE"
+      ]
+    },
+    {
+      "symbol": "VOLTAS",
+      "event_category": "financial_results",
+      "media_count": 2,
+      "nse_count": 1,
+      "bse_count": 1,
+      "filing_examples": [
+        {
+          "headline": "Voltas Limited",
+          "url": "https://nsearchives.nseindia.com/corporate/VOLTAS_RB_06112026165511_01_Financial_Results_signed.pdf",
+          "published_at": "2026-11-06T16:59:40+05:30"
+        },
+        {
+          "headline": "Voltas Ltd (500575)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/4d6c8e4a-79da-4c73-ade1-d580341b1635.pdf",
+          "published_at": "2026-11-06T17:33:19+05:30"
+        }
+      ],
+      "media_examples": [
+        {
+          "headline": "Q2 Results Highlights: Hindalco Q2 profit zooms, Voltas up 51%, Aster DM, Gland Pharma surge 58%, Siemens grows 5%; Bosch, Coromandel, Honasa profit down",
+          "url": "https://www.thehindubusinessline.com/markets/q2-results-today-live-updates-hindalco-ind-bosch-siemens-aster-dm-coromandel-intl-gland-pharma-voltas-nuvama-wealth-3m-india-airtel-lic-titan-mahindra-ongc-company-results-06-november-2026/article71669522.ece",
+          "published_at": "2026-11-06T21:39:10+05:30"
+        },
+        {
+          "headline": "Q2 Results Live: Kwality Wall's Narrows Loss, Voltas Net Profit Rises 53%",
+          "url": "https://www.ndtvprofit.com/markets/q2-results-live-updates-november-6-siemens-bosch-hindalco-voltas-among-223-companies-to-announce-earnings-today-12291338",
+          "published_at": "2026-11-06T17:02:58+05:30"
+        }
+      ],
+      "state": "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT",
+      "exchanges_seen": [
+        "BSE",
+        "NSE"
+      ]
+    },
+    {
+      "symbol": "VOLTAS",
+      "event_category": "regulatory",
+      "media_count": 0,
+      "nse_count": 0,
+      "bse_count": 1,
+      "filing_examples": [
+        {
+          "headline": "Voltas Ltd (500575)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/46ce638d-6912-4256-a3dc-b241191b618b.pdf",
+          "published_at": "2026-11-06T21:21:31+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": [
+        "BSE"
+      ]
+    },
+    {
+      "symbol": "WIPRO",
+      "event_category": "regulatory",
+      "media_count": 0,
+      "nse_count": 0,
+      "bse_count": 2,
+      "filing_examples": [
+        {
+          "headline": "Wipro Ltd (507685)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/943133ef-943d-4df9-9696-291013a5d927.pdf",
+          "published_at": "2026-11-06T17:33:19+05:30"
+        },
+        {
+          "headline": "Wipro Ltd (507685)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/af709745-c0fa-407e-a1f9-d17b822264aa.pdf",
+          "published_at": "2026-11-06T19:11:34+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": [
+        "BSE"
+      ]
+    },
+    {
+      "symbol": "ZYDUSLIFE",
+      "event_category": "regulatory",
+      "media_count": 0,
+      "nse_count": 0,
+      "bse_count": 1,
+      "filing_examples": [
+        {
+          "headline": "Zydus Lifesciences Ltd (532321)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/E7218818_8C4C_4F67_B73B_D85EF6D375F3_151019.pdf",
+          "published_at": "2026-11-06T15:10:24+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": [
+        "BSE"
+      ]
+    }
+  ],
+  "groups_truncated": false,
+  "failed_or_disabled_sources": [
+    {
+      "source": "Mint markets RSS",
+      "status": "ERROR",
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.livemint.com/rss/marketsRSS"
+    },
+    {
+      "source": "Mint companies RSS",
+      "status": "ERROR",
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.livemint.com/rss/companiesRSS"
+    },
+    {
+      "source": "Mint industry RSS",
+      "status": "ERROR",
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.livemint.com/rss/industryRSS"
+    },
+    {
+      "source": "Financial Express legacy RSS",
+      "status": "ERROR",
+      "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.financialexpress.com/feed/"
+    },
+    {
+      "source": "GDELT DOC API",
+      "status": "ERROR",
+      "error": "ReadTimeout: HTTPSConnectionPool(host='api.gdeltproject.org', port=443): Read timed out. (read timeout=7)"
+    },
+    {
+      "source": "Reuters India news",
+      "status": "ERROR",
+      "error": "HTTPError: 401 Client Error: HTTP Forbidden for url: https://www.reuters.com/world/india/"
+    },
+    {
+      "source": "News18 Business",
+      "status": "ERROR",
+      "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.news18.com/business/"
+    },
+    {
+      "source": "SEBI releases web",
+      "status": "ERROR",
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.sebi.gov.in/media/press-releases.html"
+    },
+    {
+      "source": "NDTV Profit markets",
+      "status": "ERROR",
+      "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.ndtvprofit.com/markets"
+    },
+    {
+      "source": "Financial Express markets",
+      "status": "ERROR",
+      "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.financialexpress.com/market/"
+    }
+  ],
+  "limitations": [
+    "Single-exchange does not mean missing: an issuer may file differently on different exchanges.",
+    "Two items in the same category can be distinct events; no exact event match is asserted.",
+    "Unmatched media stories may be independent journalism, not exchange disclosures.",
+    "RSS feeds, publication timestamps and issuer matches are not verified against a complete licensed disclosure log.",
+    "Source failures may hide events. Treat all gaps as investigation leads, never automatically as negative/positive predictions."
+  ],
+  "official_feed_url_overlap": [
+    {
+      "feed_a": "NSE announcements RSS",
+      "feed_b": "NSE announcements archive mirror",
+      "status_a": "OK",
+      "status_b": "OK",
+      "comparison_status": "SNAPSHOT_OVERLAP_ONLY",
+      "feed_a_unique_matched_urls": 367,
+      "feed_b_unique_matched_urls": 367,
+      "both_feeds_same_url": 367,
+      "only_feed_a_count": 0,
+      "only_feed_b_count": 0,
+      "only_feed_a_examples": [],
+      "only_feed_b_examples": [],
+      "warning": "URL-level overlap is NOT event-level completeness; feed length, timing and availability differ."
+    },
+    {
+      "feed_a": "BSE announcements RSS",
+      "feed_b": "BSE latest announcements alternate",
+      "status_a": "EMPTY",
+      "status_b": "EMPTY",
+      "comparison_status": "UNAVAILABLE_SOURCE_FAILURE_OR_EMPTY"
+    }
+  ]
+}
