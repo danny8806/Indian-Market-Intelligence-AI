@@ -10,7 +10,7 @@ from pathlib import Path
 KEYWORDS = (
     ("regulatory", r"\b(?:sebi|gst\s+(?:notice|demand|penalty)|penalt(?:y|ies)|drug\s+regulator|fda|show.cause|litigation|regulatory)\b"),
     ("financial_results", r"\b(?:financial\s+results|quarterly\s+results|q[1-4]\s+results|standalone\s+(?:profit|loss)|consolidated\s+(?:profit|loss)|ebitda|earnings\s+(?:release|result)|profit\s+(?:rose|fell|down|up)|results\s+for\s+the\s+period)\b"),
-    ("orders_contracts", r"\b(?:purchase\s+order|work\s+order|contract\s+(?:award|win|receive)|order\s+book|order\s+worth|letter\s+of\s+award|project\s+awarded)\b"),
+    ("orders_contracts", r"\b(?:purchase\s+order|work\s+order|contract\s+(?:award|win|receive)|order\s+book|order\s+worth|order\s+contract|contract\s+worth|letter\s+of\s+award|project\s+awarded)\b"),
     ("fundraising", r"\b(?:fundraise|fund.rais|qip|preferential\s+issu|issue\s+of\s+securities|debt\s+raising|rights\s+issue)\b"),
     ("acquisition", r"\b(?:acquisition|merger|amalgamation|stake\s+purchase|business\s+transfer|acquires)\b"),
     ("management", r"\b(?:change\s+in\s+directors|appointment\s+of\s+director|resignation|change\s+in\s+kmp)\b"),
