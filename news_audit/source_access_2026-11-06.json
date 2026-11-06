@@ -1,0 +1,588 @@
+{
+  "checked_at_utc": "2026-11-06T17:13:05.359459+00:00",
+  "run_context": "GitHub Actions ubuntu-latest; read-only, unauthenticated endpoints",
+  "date_note": "Source connectivity smoke test, NOT 3pm-9am complete crawl or timestamp verification",
+  "sources": [
+    {
+      "source": "NSE announcements RSS",
+      "type": "rss",
+      "url": "https://nsearchives.nseindia.com/content/RSS/Online_announcements.xml",
+      "http": 200,
+      "final_url": "https://nsearchives.nseindia.com/content/RSS/Online_announcements.xml",
+      "content_type": "application/xml",
+      "bytes": 1056350,
+      "first_item_fields": {
+        "title": "Britannia Industries Limited",
+        "link": "https://nsearchives.nseindia.com/corporate/BRITANNIA1_06112026223958_Intimation.pdf",
+        "description": "Pursuant to Regulation 30 read with Clause 7 of Para A of Part A of Schedule III of the SEBI Listing Regulations, 2015 and our letters dated 6 August 2026 and 6",
+        "pubDate": "06-Nov-2026 22:41:30"
+      },
+      "status": "RSS_OK",
+      "items": 2663,
+      "sample_titles": [
+        "Britannia Industries Limited",
+        "Birla Corporation Limited",
+        "Birla Corporation Limited",
+        "Mufin Green Finance Limited"
+      ],
+      "window_overnight_items": 194,
+      "missing_or_invalid_date": 2
+    },
+    {
+      "source": "NSE financial results RSS",
+      "type": "rss",
+      "url": "https://nsearchives.nseindia.com/content/RSS/Financial_Results.xml",
+      "http": 200,
+      "final_url": "https://nsearchives.nseindia.com/content/RSS/Financial_Results.xml",
+      "content_type": "application/xml",
+      "bytes": 2084,
+      "first_item_fields": {
+        "title": "Gammon India Limited",
+        "link": "https://www.nseindia.com/companies-listing/corporate-filings-financial-results",
+        "description": "RELATING TO:First Quarter |AUDITED/UNAUDITED:Unaudited |CUMULATIVE/NON-CUMULATIVE:Non-Cumulative |CONSOLIDATED/NON-CONSOLIDATED:Non-Consolidated |IND AS/ NON IN",
+        "pubDate": "03-Nov-2026 10:29:23"
+      },
+      "status": "RSS_OK",
+      "items": 3,
+      "sample_titles": [
+        "Gammon India Limited",
+        "Gammon India Limited",
+        "Gammon India Limited"
+      ],
+      "window_overnight_items": 0,
+      "missing_or_invalid_date": 0
+    },
+    {
+      "source": "NSE board meetings RSS",
+      "type": "rss",
+      "url": "https://nsearchives.nseindia.com/content/RSS/Board_Meetings.xml",
+      "http": 200,
+      "final_url": "https://nsearchives.nseindia.com/content/RSS/Board_Meetings.xml",
+      "content_type": "application/xml",
+      "bytes": 137447,
+      "first_item_fields": {
+        "title": "Vasa Retail and Overseas Ltd",
+        "link": "https://nsearchives.nseindia.com/corporate/VASA_06112026204917_Board_Meeting_Intimation_result_September_2026.pdf",
+        "description": "To consider and approve the financial results for the period ended September 30, 2026 |Meeting Date: 12-Nov-2026",
+        "pubDate": "06-Nov-2026 20:50:32"
+      },
+      "status": "RSS_OK",
+      "items": 419,
+      "sample_titles": [
+        "Vasa Retail and Overseas Ltd",
+        "Vasa Retail and Overseas Ltd",
+        "ICSA (India) Limited",
+        "Zetwerk Manufacturing Businesses Limited"
+      ],
+      "window_overnight_items": 0,
+      "missing_or_invalid_date": 0
+    },
+    {
+      "source": "NSE corporate actions RSS",
+      "type": "rss",
+      "url": "https://nsearchives.nseindia.com/content/RSS/Corporate_action.xml",
+      "http": 200,
+      "final_url": "https://nsearchives.nseindia.com/content/RSS/Corporate_action.xml",
+      "content_type": "application/xml",
+      "bytes": 21654,
+      "first_item_fields": {
+        "title": "Computer Age Management Services Limited - Ex-Date: 13-Nov-2026",
+        "link": "https://www.nseindia.com/companies-listing/corporate-filings-actions",
+        "description": "SERIES:EQ |PURPOSE:INTERIM DIVIDEND - RS 3.25 PER SHARE |FACE VALUE:2 |RECORD DATE:13-Nov-2026 |BOOK CLOSURE START DATE:- |BOOK CLOSURE END DATE:-",
+        "pubDate": "06-Nov-2026 06:11:32"
+      },
+      "status": "RSS_OK",
+      "items": 55,
+      "sample_titles": [
+        "Computer Age Management Services Limited - Ex-Date: 13-Nov-2026",
+        "NBCC (INDIA) LIMITED - Ex-Date: 11-Nov-2026",
+        "Chambal Fertilizers & Chemicals Limited - Ex-Date: 11-Nov-2026",
+        "Container Corporation of India Limited - Ex-Date: 11-Nov-2026"
+      ],
+      "window_overnight_items": 55,
+      "missing_or_invalid_date": 0
+    },
+    {
+      "source": "BSE announcements RSS",
+      "type": "rss",
+      "url": "https://www.bseindia.com/data/xml/announcements.xml",
+      "http": 200,
+      "final_url": "https://www.bseindia.com/data/xml/announcements.xml",
+      "content_type": "application/rss+xml",
+      "bytes": 515,
+      "status": "RSS_EMPTY",
+      "items": 0,
+      "sample_titles": [],
+      "window_overnight_items": 0,
+      "missing_or_invalid_date": 0
+    },
+    {
+      "source": "SEBI RSS",
+      "type": "rss",
+      "url": "https://www.sebi.gov.in/sebirss.xml",
+      "http": 200,
+      "final_url": "https://www.sebi.gov.in/sebirss.xml",
+      "content_type": "text/xml",
+      "bytes": 16155,
+      "first_item_fields": {
+        "title": "Commencement of SEBI (Settlement of Administrative and Civil Proceedings) Regulations, 2026",
+        "description": "Commencement of SEBI (Settlement of Administrative and Civil Proceedings) Regulations, 2026",
+        "link": "https://www.sebi.gov.in/media-and-notifications/press-releases/nov-2026/commencement-of-sebi-settlement-of-administrative-and-civil-proceedings-regulations-2026",
+        "pubDate": "06 Nov, 2026 +0530"
+      },
+      "status": "RSS_OK",
+      "items": 30,
+      "sample_titles": [
+        "Commencement of SEBI (Settlement of Administrative and Civil Proceedings) Regulations, 2026",
+        "SEBI order for compliance - Release Order dated November 06, 2026 issued under RC No. 9267 of 2026 drawn against S S TRA",
+        "SEBI order for compliance - Release Order dated November 06, 2026 issued under RC No. 9229 of 2026 drawn against Rakeshb",
+        "SEBI order for compliance - Release Order dated November 06, 2026 issued under RC No. 9230 of 2026 drawn against Sonalbe"
+      ],
+      "window_overnight_items": 0,
+      "missing_or_invalid_date": 30
+    },
+    {
+      "source": "Zerodha Pulse RSS",
+      "type": "rss",
+      "url": "https://pulse.zerodha.com/feed.php?n=100",
+      "http": 200,
+      "final_url": "https://pulse.zerodha.com/feed.php?n=100",
+      "content_type": "text/xml;charset=UTF-8",
+      "bytes": 53699,
+      "first_item_fields": {
+        "title": "Foreign Investors Change Course After A Rs 90,000 Crore Sell-Off. What's Driving The U-Turn?",
+        "link": "https://www.ndtvprofit.com/markets/foreign-investors-change-course-after-a-rs-90-000-crore-sell-off-whats-driving-the-u-turn-12294316#publisher=newsstand",
+        "description": "Foreign investors have bought over Rs 45,000 crore in November after a Rs 90,000 crore sell-off in September and October. Improving earnings and easing global p",
+        "pubDate": "Fri, 06 Nov 2026 21:55:29 +0530"
+      },
+      "status": "RSS_OK",
+      "items": 100,
+      "sample_titles": [
+        "Foreign Investors Change Course After A Rs 90,000 Crore Sell-Off. What's Driving The U-Turn?",
+        "SpiceJet Passengers Clash With Staff At Bengaluru Airport After Last-Minute Flight Cancellation, Video Goes Viral",
+        "'I Saw My Ram Ji On Screen': Vivek Oberoi Shares Ramayana Reaction, Praises Cast And Team",
+        "Vidyut Jammwal Says One Traumatic Incident Should Not Stop Tiger Shroff From Living"
+      ],
+      "window_overnight_items": 0,
+      "missing_or_invalid_date": 0
+    },
+    {
+      "source": "Mint markets RSS",
+      "type": "rss",
+      "url": "https://www.livemint.com/rss/marketsRSS",
+      "status": "HTTP_404",
+      "http": 404,
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "source": "Mint companies RSS",
+      "type": "rss",
+      "url": "https://www.livemint.com/rss/companiesRSS",
+      "status": "HTTP_404",
+      "http": 404,
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "source": "Mint industry RSS",
+      "type": "rss",
+      "url": "https://www.livemint.com/rss/industryRSS",
+      "status": "HTTP_404",
+      "http": 404,
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "source": "Economic Times top RSS",
+      "type": "rss",
+      "url": "https://economictimes.indiatimes.com/rssfeedsdefault.cms",
+      "http": 200,
+      "final_url": "https://economictimes.indiatimes.com/rssfeedsdefault.cms",
+      "content_type": "text/xml;charset=UTF-8",
+      "bytes": 58111,
+      "first_item_fields": {
+        "title": "Kalyan, Titan, other Jewellery stocks rally up to 5% on Dhanteras 2026. How is yellow metal placed this festive season?",
+        "description": "Jewellery stocks rallied ahead of Dhanteras 2026 as investors anticipated stronger precious metal demand. Meanwhile, brokerages see opportunities in gold and si",
+        "link": "https://economictimes.indiatimes.com/markets/stocks/news/kalyan-titan-other-jewellery-stocks-rally-up-to-5-on-dhanteras-2026-how-is-yellow-metal-placed-this-fes",
+        "guid": "https://economictimes.indiatimes.com/markets/stocks/news/kalyan-titan-other-jewellery-stocks-rally-up-to-5-on-dhanteras-2026-how-is-yellow-metal-placed-this-fes",
+        "pubDate": "Fri, 06 Nov 2026 12:20:53 +0530"
+      },
+      "status": "RSS_OK",
+      "items": 76,
+      "sample_titles": [
+        "Kalyan, Titan, other Jewellery stocks rally up to 5% on Dhanteras 2026. How is yellow metal placed this festive season?",
+        "Stock Market Holiday 2026: When will BSE &amp; NSE be closed for Diwali? Muhurat trading timings, other key things to kn",
+        "AI selloff hits India too: TD Power, HFCL, Sterlite, other power capex-linked stocks crash up to 15%",
+        "Mahindra &amp; Mahindra shares gain 3% after Q2 profit jumps 25% to Rs 4,588 crore, revenue grows 25%"
+      ],
+      "window_overnight_items": 0,
+      "missing_or_invalid_date": 0
+    },
+    {
+      "source": "Business Standard latest RSS",
+      "type": "rss",
+      "url": "https://www.business-standard.com/rss/latest.rss",
+      "http": 200,
+      "final_url": "https://www.business-standard.com/rss/latest.rss",
+      "content_type": "application/rss+xml",
+      "bytes": 301874,
+      "first_item_fields": {
+        "title": "Amid Karnataka Congress tensions, a leadership test for DK Shivakumar",
+        "link": "https://www.business-standard.com/opinion/columns/amid-karnataka-congress-tensions-a-leadership-test-for-dk-shivakumar-126110602014_1.html",
+        "guid": "https://www.business-standard.com/opinion/columns/amid-karnataka-congress-tensions-a-leadership-test-for-dk-shivakumar-126110602014_1.html",
+        "description": "The strongest Congress government in Karnataka in 37 years looks to be its weakest",
+        "content": "",
+        "pubDate": "Fri, 06 Nov 2026 22:26:14 +0530",
+        "lastModification": "Fri, 06 Nov 2026 22:27:18 +0530",
+        "premium": "true",
+        "creator": "Aditi Phadnis",
+        "keywords": "BS Opinion, Congress, D K Shivakumar, Leadership",
+        "publisher": "Business Standard",
+        "category": "Opinion"
+      },
+      "status": "RSS_OK",
+      "items": 169,
+      "sample_titles": [
+        "Amid Karnataka Congress tensions, a leadership test for DK Shivakumar",
+        "Bank locker risks: How to protect your valuables and avoid financial losses",
+        "A gameplan for esports: Can India turn its gamers into global champions?",
+        "CR7 heads out: Ronaldo leaves behind a legacy beyond goals and records"
+      ],
+      "window_overnight_items": 20,
+      "missing_or_invalid_date": 0
+    },
+    {
+      "source": "Business Standard markets RSS",
+      "type": "rss",
+      "url": "https://www.business-standard.com/rss/markets-106.rss",
+      "http": 200,
+      "final_url": "https://www.business-standard.com/rss/markets-106.rss",
+      "content_type": "application/rss+xml",
+      "bytes": 55295,
+      "first_item_fields": {
+        "title": "This Samvat, can large companies learn to think like entrepreneurs?",
+        "link": "https://www.business-standard.com/companies/news/this-samvat-can-large-companies-learn-to-think-like-entrepreneurs-126110601936_1.html",
+        "guid": "https://www.business-standard.com/companies/news/this-samvat-can-large-companies-learn-to-think-like-entrepreneurs-126110601936_1.html",
+        "description": "As the new Samvat begins, large companies must embrace entrepreneurial thinking, foster innovation and build the agility to respond to uncertainty rather than r",
+        "content": "",
+        "pubDate": "Fri, 06 Nov 2026 21:22:24 +0530",
+        "lastModification": "Fri, 06 Nov 2026 21:25:24 +0530",
+        "keywords": "Samvat 2083, entrepreneurial thinking, corporate innovation, business leadership, CEOs, business strategy, innovation management, jugaad, startups, corporate bu",
+        "publisher": "Business Standard",
+        "category": "News",
+        "section": "Companies"
+      },
+      "status": "RSS_OK",
+      "items": 35,
+      "sample_titles": [
+        "This Samvat, can large companies learn to think like entrepreneurs?",
+        "Sebi warns Dabur India over delay in disclosing USFDA warning letter",
+        "Record FII selling of ₹4.55 trillion meets record DII buying in Samvat 2082",
+        "Pressure on rupee continues in Samvat 2082; 10-year bond yields harden"
+      ],
+      "window_overnight_items": 3,
+      "missing_or_invalid_date": 0
+    },
+    {
+      "source": "Moneycontrol RSS",
+      "type": "rss",
+      "url": "https://www.moneycontrol.com/rss/latestnews.xml",
+      "http": 200,
+      "final_url": "https://www.moneycontrol.com/rss/latestnews.xml",
+      "content_type": "application/xml",
+      "bytes": 15347,
+      "first_item_fields": {
+        "title": "Buy HDFC Bank; target of Rs 1,850: ICICI Securities",
+        "link": "https://www.moneycontrol.com/news/recommendations/buy-hdfc-bank-targetrs-1850-icici-securities_17531671.html",
+        "description": "<img src=\"https://www.moneycontrol.com/news_image_files/2024/200x200/B/Buy-378x213_200.jpg\" alt=\"Buy HDFC Bank; target of Rs 1,850: ICICI Securities\" title=\"Buy",
+        "pubDate": "Tue, 23 Apr 2024 13:41:02 +0530",
+        "guid": "https://www.moneycontrol.com/news/recommendations/buy-hdfc-bank-targetrs-1850-icici-securities_17531671.html"
+      },
+      "status": "RSS_OK",
+      "items": 15,
+      "sample_titles": [
+        "Buy HDFC Bank; target of Rs 1,850: ICICI Securities",
+        "Buy Tejas Networks; target of Rs 1100: Emkay Global Financial",
+        "Buy Bajaj Finance; target of Rs 9000: Emkay Global Financial",
+        "Buy Bajaj Finance; target of Rs 9000: Emkay Global Financial"
+      ],
+      "window_overnight_items": 0,
+      "missing_or_invalid_date": 0
+    },
+    {
+      "source": "BusinessLine RSS",
+      "type": "rss",
+      "url": "https://www.thehindubusinessline.com/feeder/default.rss",
+      "http": 200,
+      "final_url": "https://www.thehindubusinessline.com/feeder/default.rss",
+      "content_type": "application/xml",
+      "bytes": 47045,
+      "first_item_fields": {
+        "title": "Ethanol blending: OMCs raise questions on Karnataka’s testing methodology",
+        "description": "IOCL, BPCL and HPCL acknowledged Karnataka’s government press release alleging petrol at some outlets contains 26–31% ethanol",
+        "link": "https://www.thehindubusinessline.com/news/ethanol-blending-omcs-raise-questions-on-karnatakas-testing-methodology/article71675739.ece",
+        "guid": "article-71675739",
+        "category": "News",
+        "pubDate": "Fri, 06 Nov 2026 22:11:44 +0530",
+        "content": ""
+      },
+      "status": "RSS_OK",
+      "items": 60,
+      "sample_titles": [
+        "Ethanol blending: OMCs raise questions on Karnataka’s testing methodology",
+        "Nifty reclaims 25,000, Sensex crosses 81,000 as India shrugs off global tech rout",
+        "TTK Prestige Q2 profit surges 65% to ₹104.4 crore as domestic sales drive growth",
+        "October Auto retail sales decline 23% due to high base last year: FADA"
+      ],
+      "window_overnight_items": 0,
+      "missing_or_invalid_date": 0
+    },
+    {
+      "source": "NDTV News RSS",
+      "type": "rss",
+      "url": "https://feeds.feedburner.com/ndtvnews-latest",
+      "http": 200,
+      "final_url": "https://feeds.feedburner.com/ndtvnews-latest",
+      "content_type": "text/xml; charset=utf-8",
+      "bytes": 135519,
+      "first_item_fields": {
+        "guid": "https://www.ndtv.com/world-news/sailor-killed-after-missile-attack-on-oil-tanker-in-persian-gulf-12294472#publisher=newsstand",
+        "title": "Sailor Killed After Missile Attack On Oil Tanker In Persian Gulf",
+        "link": "https://www.ndtv.com/world-news/sailor-killed-after-missile-attack-on-oil-tanker-in-persian-gulf-12294472#publisher=newsstand",
+        "pubDate": "Fri, 06 Nov 2026 22:28:23 +0530",
+        "content": "",
+        "description": "The Marshall Islands-flagged tanker Velos Sapphire was originally sailing to the Bahrain port of Sitra empty of cargo when the attack happened early on Thursday",
+        "encoded": "The Marshall Islands-flagged tanker Velos Sapphire was originally sailing to the Bahrain port of Sitra empty of cargo when the attack happened early on Thursday"
+      },
+      "status": "RSS_OK",
+      "items": 100,
+      "sample_titles": [
+        "Sailor Killed After Missile Attack On Oil Tanker In Persian Gulf",
+        "'Fake Authors, Fake Publishers, Books By AI': Tamil Nadu's Mega Library Row",
+        "Jaipur Shop Launches Rs 1.23 Lakh Gold Coin-Shaped Sweet For Diwali",
+        "Meghan Markle's Father Arrested Over Child Sexual Abuse Material"
+      ],
+      "window_overnight_items": 0,
+      "missing_or_invalid_date": 0
+    },
+    {
+      "source": "Financial Express legacy RSS",
+      "type": "rss",
+      "url": "https://www.financialexpress.com/feed/",
+      "status": "HTTP_403",
+      "http": 403,
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "source": "Google News RSS",
+      "type": "rss",
+      "url": "https://news.google.com/rss/search?q=India+NSE+BSE+results+orders+when%3A1d&hl=en-IN&gl=IN&ceid=IN%3Aen",
+      "http": 200,
+      "final_url": "https://news.google.com/rss/search?q=India+NSE+BSE+results+orders+when%3A1d&hl=en-IN&gl=IN&ceid=IN%3Aen",
+      "content_type": "application/xml; charset=utf-8",
+      "bytes": 21759,
+      "first_item_fields": {
+        "title": "Diwali 2026 stock market holiday: NSE, BSE open on Sunday but closed this day - Muhurat trading date, time | Samvat 2083 - TradingView",
+        "link": "https://news.google.com/rss/articles/CBMi_wFBVV95cUxNRzQ4d3QzRTBZYTZ2TEtmZFZVb3lBU05haGtLdlNvQnJoQ2otUmdNNlEzNEZuTlA2LUMwZTMyTF8taXZkZjVCUDRBVFBUSkFsWGZxMm9HRzN",
+        "guid": "CBMi_wFBVV95cUxNRzQ4d3QzRTBZYTZ2TEtmZFZVb3lBU05haGtLdlNvQnJoQ2otUmdNNlEzNEZuTlA2LUMwZTMyTF8taXZkZjVCUDRBVFBUSkFsWGZxMm9HRzNHbFVud19DV2pEbXdUMWZnLUxDTW03eTBlamhW",
+        "pubDate": "Fri, 06 Nov 2026 16:03:35 GMT",
+        "description": "<a href=\"https://news.google.com/rss/articles/CBMi_wFBVV95cUxNRzQ4d3QzRTBZYTZ2TEtmZFZVb3lBU05haGtLdlNvQnJoQ2otUmdNNlEzNEZuTlA2LUMwZTMyTF8taXZkZjVCUDRBVFBUSkFsWG",
+        "source": "TradingView"
+      },
+      "status": "RSS_OK",
+      "items": 11,
+      "sample_titles": [
+        "Diwali 2026 stock market holiday: NSE, BSE open on Sunday but closed this day - Muhurat trading date, time | Samvat 2083",
+        "Stock market holidays for Diwali: When are NSE, BSE open? Check Muhurat trading timings - The Times of India",
+        "Siemens Limited to Consider Q2 FY27 Results on November 6 - Multibagg AI",
+        "Banco Products India Discloses Q2 Financial Performance In Board Filing - Sahi"
+      ],
+      "window_overnight_items": 3,
+      "missing_or_invalid_date": 0
+    },
+    {
+      "source": "GDELT DOC API",
+      "type": "api",
+      "url": "https://api.gdeltproject.org/api/v2/doc/doc?query=%22India%22+%22quarterly+results%22&mode=artlist&format=json&maxrecords=50&timespan=24h",
+      "status": "HTTP_429",
+      "http": 429,
+      "error": "HTTP Error 429: Too Many Requests"
+    },
+    {
+      "source": "Zerodha Pulse web",
+      "type": "html",
+      "url": "https://pulse.zerodha.com/",
+      "http": 200,
+      "final_url": "https://pulse.zerodha.com/",
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 381715,
+      "status": "HTML_OK",
+      "heading_elements": 250
+    },
+    {
+      "source": "NSE announcements web",
+      "type": "html",
+      "url": "https://www.nseindia.com/companies-listing/corporate-filings-announcements",
+      "status": "NETWORK_OR_PARSE_ERROR",
+      "error": "TimeoutError: The read operation timed out"
+    },
+    {
+      "source": "Business Standard BSE filings",
+      "type": "html",
+      "url": "https://www.business-standard.com/markets/bse-announcement",
+      "http": 200,
+      "final_url": "https://www.business-standard.com/markets/bse-announcement",
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 229259,
+      "status": "HTML_OK",
+      "heading_elements": 0
+    },
+    {
+      "source": "Reuters India news",
+      "type": "html",
+      "url": "https://www.reuters.com/world/india/",
+      "status": "HTTP_401",
+      "http": 401,
+      "error": "HTTP Error 401: HTTP Forbidden"
+    },
+    {
+      "source": "Business Today Markets",
+      "type": "html",
+      "url": "https://www.businesstoday.in/markets",
+      "http": 200,
+      "final_url": "https://www.businesstoday.in/markets",
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 4964469,
+      "status": "HTML_OK",
+      "heading_elements": 23
+    },
+    {
+      "source": "News18 Business",
+      "type": "html",
+      "url": "https://www.news18.com/business/",
+      "status": "HTTP_403",
+      "http": 403,
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "source": "BSE announcements web",
+      "type": "html",
+      "url": "https://www.bseindia.com/corporates/ann.html",
+      "http": 200,
+      "final_url": "https://www.bseindia.com/corporates/ann",
+      "content_type": "text/html",
+      "bytes": 16912,
+      "status": "HTML_OK",
+      "heading_elements": 0
+    },
+    {
+      "source": "RBI releases",
+      "type": "html",
+      "url": "https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx",
+      "http": 200,
+      "final_url": "https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx",
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 159174,
+      "status": "HTML_OK",
+      "heading_elements": 41
+    },
+    {
+      "source": "SEBI releases web",
+      "type": "html",
+      "url": "https://www.sebi.gov.in/media/press-releases.html",
+      "status": "HTTP_404",
+      "http": 404,
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "source": "NDTV Profit markets",
+      "type": "html",
+      "url": "https://www.ndtvprofit.com/markets",
+      "status": "HTTP_403",
+      "http": 403,
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "source": "Moneycontrol stocks",
+      "type": "html",
+      "url": "https://www.moneycontrol.com/news/business/stocks/",
+      "http": 200,
+      "final_url": "https://www.moneycontrol.com/news/business/stocks/",
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 599268,
+      "status": "HTML_OK",
+      "heading_elements": 37
+    },
+    {
+      "source": "Business Standard markets",
+      "type": "html",
+      "url": "https://www.business-standard.com/markets",
+      "http": 200,
+      "final_url": "https://www.business-standard.com/markets",
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 303989,
+      "status": "HTML_OK",
+      "heading_elements": 1
+    },
+    {
+      "source": "Financial Express markets",
+      "type": "html",
+      "url": "https://www.financialexpress.com/market/",
+      "status": "HTTP_403",
+      "http": 403,
+      "error": "HTTP Error 403: Forbidden"
+    },
+    {
+      "source": "Mint markets web",
+      "type": "html",
+      "url": "https://www.livemint.com/market",
+      "http": 200,
+      "final_url": "https://www.livemint.com/market",
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 1367503,
+      "status": "HTML_OK",
+      "heading_elements": 67
+    },
+    {
+      "source": "Economic Times markets web",
+      "type": "html",
+      "url": "https://economictimes.indiatimes.com/markets",
+      "http": 200,
+      "final_url": "https://economictimes.indiatimes.com/markets",
+      "content_type": "text/html",
+      "bytes": 1084736,
+      "status": "HTML_OK",
+      "heading_elements": 38
+    },
+    {
+      "source": "CNBC TV18 markets web",
+      "type": "html",
+      "url": "https://www.cnbctv18.com/market/",
+      "http": 200,
+      "final_url": "https://www.cnbctv18.com/market/",
+      "content_type": "text/html; charset=utf-8",
+      "bytes": 524209,
+      "status": "HTML_OK",
+      "heading_elements": 49
+    },
+    {
+      "source": "Hindu BusinessLine markets",
+      "type": "html",
+      "url": "https://www.thehindubusinessline.com/markets/",
+      "http": 200,
+      "final_url": "https://www.thehindubusinessline.com/markets/",
+      "content_type": "text/html; charset=UTF-8",
+      "bytes": 211983,
+      "status": "HTML_OK",
+      "heading_elements": 58
+    }
+  ],
+  "status_counts": {
+    "RSS_OK": 13,
+    "RSS_EMPTY": 1,
+    "HTTP_404": 4,
+    "HTTP_403": 4,
+    "HTTP_429": 1,
+    "HTML_OK": 11,
+    "NETWORK_OR_PARSE_ERROR": 1,
+    "HTTP_401": 1
+  }
+}

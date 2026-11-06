@@ -1,0 +1,349 @@
+{
+  "description": "Best-effort public-source collection; never implies exhaustive web coverage. Preserve errors for blocked/invalid feeds.",
+  "sources": [
+    {
+      "name": "NSE announcements RSS",
+      "url": "https://nsearchives.nseindia.com/content/RSS/Online_announcements.xml",
+      "kind": "rss",
+      "provider": "NSE",
+      "authority": "official",
+      "enabled": true
+    },
+    {
+      "name": "NSE financial results RSS",
+      "url": "https://nsearchives.nseindia.com/content/RSS/Financial_Results.xml",
+      "kind": "rss",
+      "provider": "NSE",
+      "authority": "official",
+      "enabled": true
+    },
+    {
+      "name": "NSE board meetings RSS",
+      "url": "https://nsearchives.nseindia.com/content/RSS/Board_Meetings.xml",
+      "kind": "rss",
+      "provider": "NSE",
+      "authority": "official",
+      "enabled": true
+    },
+    {
+      "name": "NSE corporate actions RSS",
+      "url": "https://nsearchives.nseindia.com/content/RSS/Corporate_action.xml",
+      "kind": "rss",
+      "provider": "NSE",
+      "authority": "official",
+      "enabled": true
+    },
+    {
+      "name": "BSE announcements RSS",
+      "url": "https://www.bseindia.com/data/xml/announcements.xml",
+      "kind": "rss",
+      "provider": "BSE",
+      "authority": "official",
+      "enabled": true
+    },
+    {
+      "name": "SEBI RSS",
+      "url": "https://www.sebi.gov.in/sebirss.xml",
+      "kind": "rss",
+      "provider": "SEBI",
+      "authority": "official",
+      "enabled": true
+    },
+    {
+      "name": "Zerodha Pulse RSS",
+      "url": "https://pulse.zerodha.com/feed.php?n=100",
+      "kind": "rss",
+      "provider": "MEDIA",
+      "authority": "secondary",
+      "enabled": true
+    },
+    {
+      "name": "Mint markets RSS",
+      "url": "https://www.livemint.com/rss/marketsRSS",
+      "kind": "rss",
+      "provider": "MEDIA",
+      "authority": "secondary",
+      "enabled": true
+    },
+    {
+      "name": "Mint companies RSS",
+      "url": "https://www.livemint.com/rss/companiesRSS",
+      "kind": "rss",
+      "provider": "MEDIA",
+      "authority": "secondary",
+      "enabled": true
+    },
+    {
+      "name": "Mint industry RSS",
+      "url": "https://www.livemint.com/rss/industryRSS",
+      "kind": "rss",
+      "provider": "MEDIA",
+      "authority": "secondary",
+      "enabled": true
+    },
+    {
+      "name": "Economic Times top RSS",
+      "url": "https://economictimes.indiatimes.com/rssfeedsdefault.cms",
+      "kind": "rss",
+      "provider": "MEDIA",
+      "authority": "secondary",
+      "enabled": true
+    },
+    {
+      "name": "Business Standard latest RSS",
+      "url": "https://www.business-standard.com/rss/latest.rss",
+      "kind": "rss",
+      "provider": "MEDIA",
+      "authority": "secondary",
+      "enabled": true
+    },
+    {
+      "name": "Business Standard markets RSS",
+      "url": "https://www.business-standard.com/rss/markets-106.rss",
+      "kind": "rss",
+      "provider": "MEDIA",
+      "authority": "secondary",
+      "enabled": true
+    },
+    {
+      "name": "Moneycontrol RSS",
+      "url": "https://www.moneycontrol.com/rss/latestnews.xml",
+      "kind": "rss",
+      "provider": "MEDIA",
+      "authority": "secondary",
+      "enabled": true
+    },
+    {
+      "name": "BusinessLine RSS",
+      "url": "https://www.thehindubusinessline.com/feeder/default.rss",
+      "kind": "rss",
+      "provider": "MEDIA",
+      "authority": "secondary",
+      "enabled": true
+    },
+    {
+      "name": "NDTV News RSS",
+      "url": "https://feeds.feedburner.com/ndtvnews-latest",
+      "kind": "rss",
+      "provider": "MEDIA",
+      "authority": "secondary",
+      "enabled": true
+    },
+    {
+      "name": "Financial Express legacy RSS",
+      "url": "https://www.financialexpress.com/feed/",
+      "kind": "rss",
+      "provider": "MEDIA",
+      "authority": "secondary",
+      "enabled": true
+    },
+    {
+      "name": "Google News RSS",
+      "url": "https://news.google.com/rss/search?q=India+NSE+BSE+results+orders+when%3A1d&hl=en-IN&gl=IN&ceid=IN%3Aen",
+      "kind": "rss",
+      "provider": "MEDIA",
+      "authority": "secondary",
+      "enabled": true
+    },
+    {
+      "name": "GDELT DOC API",
+      "url": "https://api.gdeltproject.org/api/v2/doc/doc?query=%22India%22+%22quarterly+results%22&mode=artlist&format=json&maxrecords=50&timespan=24h",
+      "kind": "api",
+      "provider": "MEDIA",
+      "authority": "secondary",
+      "enabled": true
+    },
+    {
+      "name": "Zerodha Pulse web",
+      "url": "https://pulse.zerodha.com/",
+      "kind": "html",
+      "provider": "MEDIA",
+      "authority": "secondary",
+      "enabled": true
+    },
+    {
+      "name": "NSE announcements web",
+      "url": "https://www.nseindia.com/companies-listing/corporate-filings-announcements",
+      "kind": "html",
+      "provider": "NSE",
+      "authority": "official",
+      "enabled": true
+    },
+    {
+      "name": "Business Standard BSE filings",
+      "url": "https://www.business-standard.com/markets/bse-announcement",
+      "kind": "html",
+      "provider": "MEDIA",
+      "authority": "secondary",
+      "enabled": true
+    },
+    {
+      "name": "Reuters India news",
+      "url": "https://www.reuters.com/world/india/",
+      "kind": "html",
+      "provider": "MEDIA",
+      "authority": "secondary",
+      "enabled": true
+    },
+    {
+      "name": "Business Today Markets",
+      "url": "https://www.businesstoday.in/markets",
+      "kind": "html",
+      "provider": "MEDIA",
+      "authority": "secondary",
+      "enabled": true
+    },
+    {
+      "name": "News18 Business",
+      "url": "https://www.news18.com/business/",
+      "kind": "html",
+      "provider": "MEDIA",
+      "authority": "secondary",
+      "enabled": true
+    },
+    {
+      "name": "BSE announcements web",
+      "url": "https://www.bseindia.com/corporates/ann.html",
+      "kind": "html",
+      "provider": "BSE",
+      "authority": "official",
+      "enabled": true
+    },
+    {
+      "name": "RBI releases",
+      "url": "https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx",
+      "kind": "html",
+      "provider": "RBI",
+      "authority": "official",
+      "enabled": true
+    },
+    {
+      "name": "SEBI releases web",
+      "url": "https://www.sebi.gov.in/media/press-releases.html",
+      "kind": "html",
+      "provider": "SEBI",
+      "authority": "official",
+      "enabled": true
+    },
+    {
+      "name": "NDTV Profit markets",
+      "url": "https://www.ndtvprofit.com/markets",
+      "kind": "html",
+      "provider": "MEDIA",
+      "authority": "secondary",
+      "enabled": true
+    },
+    {
+      "name": "Moneycontrol stocks",
+      "url": "https://www.moneycontrol.com/news/business/stocks/",
+      "kind": "html",
+      "provider": "MEDIA",
+      "authority": "secondary",
+      "enabled": true
+    },
+    {
+      "name": "Business Standard markets",
+      "url": "https://www.business-standard.com/markets",
+      "kind": "html",
+      "provider": "MEDIA",
+      "authority": "secondary",
+      "enabled": true
+    },
+    {
+      "name": "Financial Express markets",
+      "url": "https://www.financialexpress.com/market/",
+      "kind": "html",
+      "provider": "MEDIA",
+      "authority": "secondary",
+      "enabled": true
+    },
+    {
+      "name": "Mint markets web",
+      "url": "https://www.livemint.com/market",
+      "kind": "html",
+      "provider": "MEDIA",
+      "authority": "secondary",
+      "enabled": true
+    },
+    {
+      "name": "Economic Times markets web",
+      "url": "https://economictimes.indiatimes.com/markets",
+      "kind": "html",
+      "provider": "MEDIA",
+      "authority": "secondary",
+      "enabled": true
+    },
+    {
+      "name": "CNBC TV18 markets web",
+      "url": "https://www.cnbctv18.com/market/",
+      "kind": "html",
+      "provider": "MEDIA",
+      "authority": "secondary",
+      "enabled": true
+    },
+    {
+      "name": "Hindu BusinessLine markets",
+      "url": "https://www.thehindubusinessline.com/markets/",
+      "kind": "html",
+      "provider": "MEDIA",
+      "authority": "secondary",
+      "enabled": true
+    },
+    {
+      "name": "NSE announcements archive mirror",
+      "url": "https://archives.nseindia.com/content/RSS/Online_announcements.xml",
+      "kind": "rss",
+      "provider": "NSE",
+      "authority": "official",
+      "enabled": true
+    },
+    {
+      "name": "BSE latest announcements alternate",
+      "url": "https://www.bseindia.com/data/xml/announcements.aspx",
+      "kind": "rss",
+      "provider": "BSE",
+      "authority": "official",
+      "enabled": true
+    },
+    {
+      "name": "BSE financial results",
+      "url": "https://www.bseindia.com/Data/XML/FinancialResultsFeed.aspx",
+      "kind": "rss",
+      "provider": "BSE",
+      "authority": "official",
+      "enabled": true
+    },
+    {
+      "name": "BSE board meetings",
+      "url": "https://beta.bseindia.com/Data/XML/BoardMeetingsFeed.xml",
+      "kind": "rss",
+      "provider": "BSE",
+      "authority": "official",
+      "enabled": true
+    },
+    {
+      "name": "BSE corporate actions",
+      "url": "https://www.bseindia.com/data/XML/CorpActionFeed.aspx",
+      "kind": "rss",
+      "provider": "BSE",
+      "authority": "official",
+      "enabled": true
+    },
+    {
+      "name": "BSE insider trading",
+      "url": "https://www.bseindia.com/Data/XML/InsiderTradingFeed.aspx",
+      "kind": "rss",
+      "provider": "BSE",
+      "authority": "official",
+      "enabled": true
+    },
+    {
+      "name": "NSE integrated financial filings",
+      "url": "https://nsearchives.nseindia.com/content/RSS/Integrated_Filing_Financials.xml",
+      "kind": "rss",
+      "provider": "NSE",
+      "authority": "official",
+      "enabled": true
+    }
+  ]
+}
