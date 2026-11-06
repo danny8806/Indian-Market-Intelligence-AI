@@ -88,6 +88,8 @@ jobs:
                   if typ=='rss':
                       try:
                           n,s,entries=parse_rss(body)
+                          if entries:
+                              result['first_item_fields']={c.tag.rsplit('}',1)[-1]:(c.text or '').strip()[:160] for c in list(entries[0])[:12]}
                           start=datetime.datetime(2026,11,5,15,tzinfo=IST)
                           end=datetime.datetime(2026,11,6,9,tzinfo=IST)
                           within=unknown=0
