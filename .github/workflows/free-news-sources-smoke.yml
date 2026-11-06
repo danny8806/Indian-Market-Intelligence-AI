@@ -100,7 +100,7 @@ jobs:
                                       t=email.utils.parsedate_to_datetime(pub)
                                       if t is None: t=datetime.datetime.fromisoformat(pub.replace('Z','+00:00'))
                                   except Exception:
-                                      if name.startswith('NSE '):
+                                      if name.startswith('NSE ') or name.startswith('BSE '):
                                           t=datetime.datetime.strptime(pub,'%d-%b-%Y %H:%M:%S').replace(tzinfo=IST)
                                       else: raise
                                   if t.tzinfo is None: raise ValueError('no timezone')
