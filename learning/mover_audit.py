@@ -150,6 +150,7 @@ def review_market_day(day: date, prices: dict[str, dict],
             "Candidate coverage is market-move overlap, not recall against a complete licensed news ground truth.",
             "Official NSE daily OHLCV can reflect corporate actions and trading halts; anomalies require manual review.",
             "All returns are theoretical open-to-close percentages, not realistic entry fills or short-trade P&L.",
+            "If there is no premarket frozen constituent list, current cached membership is not historically point-in-time.",
             "Research-only: no trade recommendation, prediction or automatic broker order.",
         ],
     }
@@ -164,8 +165,18 @@ def run(day: date, *, root: Path = PROJECT, price_loader=fetch_bhavcopy,
     output = root / "learning/data/mover_reports" / (day.isoformat() + ".json")
     cache = universe_path or root / "news_collector/data/universe_snapshot.csv"
     if not cache.exists():
-        return {"session_date": day.isoformat(), "status": "NO_OFFICIAL_NIFTY500_MEMBERSHIP_SNAPSHOT"}
-    universe = parse_universe_csv(cache.read_text(encoding="utf-8-sig"))
+        report = {"session_date": day.isoformat(),
+                  "status": "NO_OFFICIAL_NIFTY500_MEMBERSHIP_SNAPSHOT"}
+        atomic_write(output, json.dumps(report, indent=2) + "\n")
+        return report
+    try:
+        universe = parse_universe_csv(cache.read_text(encoding="utf-8-sig"))
+    except (ValueError, UnicodeError) as e:
+        report = {"session_date": day.isoformat(),
+                  "status": "INVALID_OFFICIAL_CONSTITUENT_SNAPSHOT",
+                  "error": str(e)[:180]}
+        atomic_write(output, json.dumps(report, indent=2) + "\n")
+        return report
     frozen = root / "news_collector/data" / day.isoformat() / "candidate_snapshot.json"
     snapshot = None
     frozen_status = "NO_FROZEN_09AM_SNAPSHOT"
@@ -176,6 +187,14 @@ def run(day: date, *, root: Path = PROJECT, price_loader=fetch_bhavcopy,
             frozen_status = "VALIDATED_FROZEN_09AM_SNAPSHOT"
         except (ValueError, KeyError, TypeError, json.JSONDecodeError) as e:
             frozen_status = "INVALID_FROZEN_SNAPSHOT: " + str(e)[:130]
+    # Prefer the issuer universe captured *at the actual premarket freeze*,
+    # rather than applying today's changed membership to historical snapshots.
+    universe_kind = "LATEST_COLLECTOR_CACHE_NOT_HISTORICAL_POINT_IN_TIME"
+    if snapshot is not None and isinstance(snapshot.get("frozen_universe_membership"), dict):
+        membership = snapshot["frozen_universe_membership"]
+        if 450 <= len(membership) <= 550:
+            universe = membership
+            universe_kind = "FROZEN_PREMARKET_CONSTITUENT_MEMBERSHIP"
     try:
         prices, url = price_loader(day)
     except Exception as e:
@@ -187,6 +206,7 @@ def run(day: date, *, root: Path = PROJECT, price_loader=fetch_bhavcopy,
     report = review_market_day(day, prices, universe, snapshot=snapshot,
                                snapshot_status=frozen_status, official_price_url=url)
     report["generated_at"] = now.isoformat()
+    report["universe_basis"] = universe_kind
     atomic_write(output, json.dumps(report, indent=2, ensure_ascii=False) + "\n")
     return report
 
