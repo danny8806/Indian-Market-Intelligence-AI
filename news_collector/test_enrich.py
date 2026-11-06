@@ -10,7 +10,7 @@ from zoneinfo import ZoneInfo
 from pypdf import PdfWriter
 
 from news_collector.matching import match_issuers
-from news_collector.reconcile import event_kind, source_reconciliation
+from news_collector.reconcile import event_kind, source_reconciliation, feed_overlap_audit
 from news_collector.enrich import (
     allowed_filing_pdf, extract_pdf_text, enrich,
 )
@@ -95,6 +95,21 @@ class SourceUpgradeTests(unittest.TestCase):
         self.assertEqual(classes["SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS"], 1)
         self.assertEqual(classes["MEDIA_ONLY_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS"], 1)
         self.assertNotIn("CONFIRMED_MISS", classes)
+
+    def test_official_feed_overlap_detects_snapshot_difference_not_claimed_miss(self):
+        events = [event("a", "THERMAX", "NSE", "Thermax Limited", "Financial results",
+                        "https://nsearchives.nseindia.com/corporate/a.pdf"),
+                  event("b", "THERMAX", "NSE", "Thermax Limited", "Financial results",
+                        "https://nsearchives.nseindia.com/corporate/b.pdf")]
+        events[0]["sources"] = ["NSE announcements RSS", "NSE announcements archive mirror"]
+        events[1]["sources"] = ["NSE announcements archive mirror"]
+        status = [{"source": "NSE announcements RSS", "status": "OK"},
+                  {"source": "NSE announcements archive mirror", "status": "OK"},
+                  {"source": "BSE announcements RSS", "status": "ERROR"}]
+        rows = feed_overlap_audit(events, status)
+        self.assertEqual(rows[0]["only_feed_b_count"], 1)
+        self.assertEqual(rows[0]["both_feeds_same_url"], 1)
+        self.assertEqual(rows[1]["comparison_status"], "UNAVAILABLE_SOURCE_FAILURE_OR_EMPTY")
 
     def test_meeting_transcript_not_results(self):
         self.assertEqual(event_kind("Thermax", "Earnings call transcript for Q2 results"),
