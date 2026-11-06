@@ -1,0 +1,72 @@
+name: Grade frozen NIFTY 500 news candidates after close (research only)
+
+on:
+  schedule:
+    # 18:20 IST on weekdays (12:50 UTC), after regular NSE cash close.
+    - cron: '50 12 * * 1-5'
+  workflow_dispatch:
+    inputs:
+      session_date:
+        description: 'YYYY-MM-DD completed NSE session (blank = today IST)'
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: candidate-research-learning
+  cancel-in-progress: false
+
+jobs:
+  label-and-challenger:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install scoring and challenger libraries
+        run: |
+          python -m pip install -r news_collector/requirements.txt
+          python -m pip install -r requirements-learning.txt
+      - name: Validate no-lookahead candidate scoring tests
+        run: python -m unittest discover -s learning -p test_candidate_learning.py -v
+      - name: Label entire frozen candidate pool from official EOD report
+        shell: bash
+        env:
+          SESSION_DATE: ${{ inputs.session_date }}
+        run: |
+          day="$SESSION_DATE"
+          if [ -z "$day" ]; then
+            day="$(TZ=Asia/Kolkata date +%F)"
+          fi
+          python -m learning.candidate_outcomes --session-date "$day"
+      - name: Record immutable research observation evidence only
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add learning/data/candidate_reports/
+          if [ -f learning/data/candidate_outcomes.csv ]; then
+            git add learning/data/candidate_outcomes.csv
+          fi
+          if ! git diff --cached --quiet; then
+            git commit -m 'Record research-only frozen candidate EOD outcomes'
+            git pull --no-rebase -X ours origin main
+            git push origin HEAD:main
+          fi
+      - name: Train isolated challenger only if enough complete sessions
+        run: python -m learning.train_candidates
+      - name: Save challenger metrics without production deployment
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: candidate-research-challenger-${{ github.run_id }}
+          path: |
+            learning/out_candidates/
+            learning/data/candidate_reports/
+          if-no-files-found: ignore
+          retention-days: 21
