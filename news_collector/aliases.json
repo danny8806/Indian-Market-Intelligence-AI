@@ -1,0 +1,80 @@
+{
+  "description": "Curated unambiguous media-name variants. Only activated for symbols present in verified NIFTY 500 constituent snapshot. Do not add ambiguous bare 2-3 letter stock names.",
+  "aliases": {
+    "NYKAA": [
+      "Nykaa",
+      "FSN E-Commerce Ventures"
+    ],
+    "LICI": [
+      "Life Insurance Corporation of India",
+      "LIC of India",
+      "LIC India"
+    ],
+    "MCX": [
+      "Multi Commodity Exchange of India",
+      "MCX India"
+    ],
+    "TITAN": [
+      "Titan Company",
+      "Titan Industries"
+    ],
+    "THERMAX": [
+      "Thermax India"
+    ],
+    "DATAPATTNS": [
+      "Data Patterns India",
+      "Data Patterns"
+    ],
+    "SAILIFE": [
+      "Sai Life Sciences"
+    ],
+    "TRIDENT": [
+      "Trident Group"
+    ],
+    "HEGAM": [
+      "HEG Advanced Materials"
+    ],
+    "BHARTIARTL": [
+      "Bharti Airtel",
+      "Airtel India"
+    ],
+    "BEL": [
+      "Bharat Electronics Limited"
+    ],
+    "GVT&D": [
+      "GE Vernova T&D India",
+      "GE T&D India"
+    ],
+    "SCI": [
+      "Shipping Corporation of India"
+    ],
+    "JKPAPER": [
+      "JK Paper"
+    ],
+    "JNKINDIA": [
+      "JNK India"
+    ],
+    "ONGC": [
+      "Oil and Natural Gas Corporation"
+    ],
+    "PRASOLCHEM": [
+      "Prasol Chemicals",
+      "Prasol"
+    ],
+    "AWFIS": [
+      "Awfis Space Solutions"
+    ],
+    "NEULANDLAB": [
+      "Neuland Laboratories"
+    ],
+    "MOIL": [
+      "MOIL Limited"
+    ],
+    "CONCOR": [
+      "Container Corporation of India"
+    ],
+    "FRACTAL": [
+      "Fractal Analytics"
+    ]
+  }
+}
