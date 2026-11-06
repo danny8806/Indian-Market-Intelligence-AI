@@ -105,6 +105,7 @@ def candidate_rows(events: dict[str, dict], pdfs: dict[str, dict],
             "evidence_summary": evidence,
             "explicit_financial_facts": unique_facts[:18],
             "source_urls": source_urls,
+            "headline_samples": [r.get("headline", "")[:180] for r in rows[:8]],
             "not_a_trade_signal": True,
         })
     out.sort(key=lambda r: (-r["review_priority"], r["symbol"]))
