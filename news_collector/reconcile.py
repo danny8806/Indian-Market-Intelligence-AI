@@ -98,10 +98,60 @@ def source_reconciliation(events: list[dict], *, as_of: str, session: str,
     }
 
 
+
+FEED_PAIRS = (
+    ("NSE announcements RSS", "NSE announcements archive mirror"),
+    ("BSE announcements RSS", "BSE latest announcements alternate"),
+)
+
+
+def feed_overlap_audit(events: list[dict], source_status: list[dict]) -> list[dict]:
+    """Compare identical linked URLs across overlapping official feed snapshots.
+
+    A missing URL means 'not observed in this snapshot', not proof of a
+    missing disclosure. Skip comparisons unless both feeds returned items.
+    """
+    statuses = {s.get("source"): s.get("status") for s in source_status}
+    comparisons = []
+    for left, right in FEED_PAIRS:
+        out = {"feed_a": left, "feed_b": right,
+               "status_a": statuses.get(left, "NOT_RUN"),
+               "status_b": statuses.get(right, "NOT_RUN")}
+        if out["status_a"] != "OK" or out["status_b"] != "OK":
+            out["comparison_status"] = "UNAVAILABLE_SOURCE_FAILURE_OR_EMPTY"
+            comparisons.append(out)
+            continue
+        a, b = {}, {}
+        for event in events:
+            seen = set(event.get("sources", []))
+            if left in seen:
+                a[event["id"]] = event
+            if right in seen:
+                b[event["id"]] = event
+        a_only = sorted(set(a) - set(b))
+        b_only = sorted(set(b) - set(a))
+        out.update({
+            "comparison_status": "SNAPSHOT_OVERLAP_ONLY",
+            "feed_a_unique_matched_urls": len(a),
+            "feed_b_unique_matched_urls": len(b),
+            "both_feeds_same_url": len(set(a) & set(b)),
+            "only_feed_a_count": len(a_only),
+            "only_feed_b_count": len(b_only),
+            "only_feed_a_examples": [{"url": a[k]["url"], "symbols": a[k].get("symbols", [])}
+                                      for k in a_only[:12]],
+            "only_feed_b_examples": [{"url": b[k]["url"], "symbols": b[k].get("symbols", [])}
+                                      for k in b_only[:12]],
+            "warning": "URL-level overlap is NOT event-level completeness; feed length, timing and availability differ.",
+        })
+        comparisons.append(out)
+    return comparisons
+
 def write_gap_audit(output_path: Path, events: list[dict], coverage: dict) -> dict:
     report = source_reconciliation(
         events, as_of=coverage["generated_at"], session=coverage["session"],
         source_status=coverage.get("sources", []))
+    report["official_feed_url_overlap"] = feed_overlap_audit(
+        events, coverage.get("sources", []))
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     return report
