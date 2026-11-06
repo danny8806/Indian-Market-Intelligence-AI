@@ -72,10 +72,18 @@ def parse_timestamp(value: str, *, exchange: str = "") -> datetime | None:
     return None
 
 
+def regular_market_day(day) -> bool:
+    """NSE regular cash session calendar, with published 2026 holiday list."""
+    meta = json.loads((ROOT / "holidays_2026.json").read_text(encoding="utf-8"))
+    return day.weekday() < 5 and day.isoformat() not in meta["holidays"]
+
+
 def window_for(session_date: str) -> tuple[datetime, datetime]:
     day = datetime.strptime(session_date, "%Y-%m-%d").date()
+    if not regular_market_day(day):
+        raise ValueError(f"{session_date} is not a known regular NSE session")
     previous = day - timedelta(days=1)
-    while previous.weekday() >= 5:
+    while not regular_market_day(previous):
         previous -= timedelta(days=1)
     return (datetime.combine(previous, dtime(15), IST),
             datetime.combine(day, dtime(9), IST))
@@ -86,7 +94,7 @@ def default_session(now: datetime) -> str:
     day = now.date()
     if now.time() >= dtime(15):
         day += timedelta(days=1)
-    while day.weekday() >= 5:
+    while not regular_market_day(day):
         day += timedelta(days=1)
     return day.isoformat()
 
@@ -387,6 +395,7 @@ def run(session: str, output_dir: Path, *, config: Path = ROOT / "sources.json",
         "session": session, "generated_at": now.isoformat(),
         "window_start_inclusive": begin.isoformat(), "window_end_exclusive": end.isoformat(),
         "universe_status": universe_status, "nifty500_count": len(universe),
+        "holiday_calendar": "NSE official regular-session holidays verified for 2026 only",
         "sources_configured": len(cfg), "sources_with_items": sum(s["status"] == "OK" for s in summaries),
         "sources_failed": sum(s["status"] == "ERROR" for s in summaries),
         "in_window_raw_items": sum(s["verified_in_window"] for s in summaries),
@@ -402,7 +411,7 @@ def run(session: str, output_dir: Path, *, config: Path = ROOT / "sources.json",
             "HTML article links without reliable publication timestamps stay unverified.",
             "NSE/BSE records are not reconciled by ISIN/event ID; exchange_only is NOT proof of a missed story.",
             "Unknown, stale or unverified constituent snapshots prevent claims of complete NIFTY 500 coverage.",
-            "Weekdays used for automatic previous-session inference; override session on NSE holidays.",
+            "NSE regular-session holiday table covers 2026 only; update before 2027 and account for exceptional special sessions.",
             "No stock direction, trading orders, position sizing or portfolio execution."
         ],
     }
