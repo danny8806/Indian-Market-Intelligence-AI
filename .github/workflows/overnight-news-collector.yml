@@ -22,6 +22,8 @@ on:
     - cron: '40 22 * * 0-4'   # 04:10 IST next weekday
     - cron: '40 1 * * 1-5'    # 07:10 IST
     - cron: '5 3 * * 1-5'     # 08:35 IST
+    - cron: '12 3 * * 1-5'    # 08:42 IST
+    - cron: '18 3 * * 1-5'    # 08:48 IST
     - cron: '28 3 * * 1-5'    # 08:58 IST
     - cron: '35 3 * * 1-5'    # 09:05 IST
 
@@ -67,6 +69,16 @@ jobs:
           else
             python -m news_collector.enrich --max-docs 20
           fi
+      - name: Build point-in-time evidence preview (NEVER a trading signal)
+        shell: bash
+        env:
+          SESSION_DATE: ${{ inputs.session_date }}
+        run: |
+          if [ -n "$SESSION_DATE" ]; then
+            python -m news_collector.candidates --session-date "$SESSION_DATE"
+          else
+            python -m news_collector.candidates
+          fi
       - name: Commit reproducible research evidence only
         shell: bash
         run: |
@@ -90,5 +102,6 @@ jobs:
             news_collector/data/*/coverage.json
             news_collector/data/*/source_gap_audit.json
             news_collector/data/*/enrichment_summary.json
+            news_collector/data/*/candidate_preview.json
           if-no-files-found: ignore
           retention-days: 14
