@@ -10,7 +10,7 @@ Python 3.11+:
     python -m unittest discover -s news_collector -p 'test_*.py' -v
     python -m news_collector.engine --session-date 2026-11-09
 
-The optional --session-date specifies the target NSE session; for 2026-11-09 the window is 2026-11-06 15:00 through 2026-11-09 09:00 IST (end exclusive). A weekend-aware, **not holiday-aware**, default is supplied. Override on NSE holidays. The official NIFTY 500 constituent CSV is fetched from Nifty Indices/NSE domains; cached snapshots display an explicit stale-unknown warning. If neither is available, do not claim NIFTY 500 coverage.
+The optional --session-date specifies the target NSE session; for 2026-11-09 the window is 2026-11-06 15:00 through 2026-11-09 09:00 IST (end exclusive). The default skips weekends and the **verified NSE 2026 regular-session holiday dates** (including 10 November 2026); it does not treat exceptional Muhurat trading as a regular cash session. Update the calendar for 2027 or exchange changes. The official NIFTY 500 constituent CSV is fetched from Nifty Indices/NSE domains; cached snapshots display an explicit stale-unknown warning. If neither is available, do not claim NIFTY 500 coverage.
 
 Files after each poll:
 - news_collector/data/YYYY-MM-DD/events.jsonl: timestamp-validated overnight source URLs matched to NIFTY 500 companies.
@@ -31,7 +31,7 @@ The scheduled research workflow on the default branch is best-effort (GitHub Act
 
 ## Remaining production work
 
-1. Stable licensed exchange feed, official NSE holiday calendar and disclosure-time provenance.
+1. Stable licensed exchange feed, future-year NSE holiday updates and disclosure-time provenance.
 2. NSE/BSE reconciliation by ISIN, event type and original disclosure ID (current source-group comparison is only company-level).
 3. Company alias matching and an accuracy/recall benchmark using manually labeled examples.
 4. Continuous monitoring of source inventory, missing pages, API limits, 09:00 completeness and latency.
