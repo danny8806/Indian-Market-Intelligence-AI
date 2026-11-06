@@ -1,8 +1,8 @@
 {
-  "as_of": "2026-11-06T23:42:38.698155+05:30",
+  "as_of": "2026-11-07T00:51:56.552325+05:30",
   "candidates": [
     {
-      "articles": 12,
+      "articles": 14,
       "categories": [
         "analyst_meetings",
         "financial_results",
@@ -84,7 +84,7 @@
       ],
       "material_event_count": 8,
       "not_a_trade_signal": true,
-      "official_filing_count": 12,
+      "official_filing_count": 14,
       "review_priority": 26,
       "source_urls": [
         "https://nsearchives.nseindia.com/corporate/ANURAS_06112026160341_ARILSLDSTX20261106078InvestorPresentation.pdf",
@@ -97,10 +97,85 @@
         "https://nsearchives.nseindia.com/corporate/ANURAS_06112026231616_RevisedFS.pdf",
         "https://nsearchives.nseindia.com/corporate/ANURAS_06112026200036_ARILSLDSTX20261106079AudioRecording.pdf",
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/b67d0e9f-14cb-4571-b840-c9634b33f3b5.pdf",
+        "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1755252_06112026114245_WEB.xml",
         "https://nsearchives.nseindia.com/corporate/ANURAS_06112026153623_ARILSLDSTX20261106076OutcomeofBM.pdf",
+        "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1755250_06112026114213_WEB.xml",
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/a3e81e0e-058a-452c-85de-c01ddb023b62.pdf"
       ],
       "symbol": "ANURAS"
+    },
+    {
+      "articles": 15,
+      "categories": [
+        "acquisition",
+        "financial_results",
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "POSITIVE_REPORTED_FINANCIAL_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [
+          "revenue"
+        ],
+        "yoy_metrics_with_direction": 1
+      },
+      "explicit_financial_facts": [
+        {
+          "basis": "YoY",
+          "document_sha256": "cafc468004ccea8303dcede779ac778bf1784ff580a822d1c7af3e3819140dc9",
+          "evidence_text": "• Revenue for Q2 FY27 grew by 19% YoY to INR 2,829 Cr",
+          "metric": "revenue",
+          "reported_change_pct": 19.0,
+          "reported_period": "Q2FY27",
+          "source": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/687ebc5c-66c0-4c32-b4e4-64bc7608d44c.pdf",
+          "verification": "ASSERTION_NOT_ARITHMETICALLY_VERIFIED"
+        },
+        {
+          "basis": "YoY",
+          "document_sha256": "cafc468004ccea8303dcede779ac778bf1784ff580a822d1c7af3e3819140dc9",
+          "evidence_text": "• MVT revenue grew 36% YoY, led by Maldives and GCC markets, with rising contribution from West",
+          "metric": "revenue",
+          "reported_change_pct": 36.0,
+          "reported_period": null,
+          "source": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/687ebc5c-66c0-4c32-b4e4-64bc7608d44c.pdf",
+          "verification": "ASSERTION_NOT_ARITHMETICALLY_VERIFIED"
+        }
+      ],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "headline_samples": [
+        "Aster DM Quality Care Ltd (540975)",
+        "Aster DM Quality Care Limited",
+        "Aster DM Quality Care Q2 net profit more than doubles to ₹262 crore",
+        "Aster DM Quality Care Limited",
+        "Aster DM Quality Care Ltd (540975)",
+        "Aster DM Quality Care Ltd (540975)",
+        "Aster DM Quality Care Ltd (540975)",
+        "Aster DM Quality Care Limited"
+      ],
+      "material_event_count": 8,
+      "not_a_trade_signal": true,
+      "official_filing_count": 14,
+      "review_priority": 23,
+      "source_urls": [
+        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/6b5366eb-29da-449e-aeea-928ed50038ea.pdf",
+        "https://nsearchives.nseindia.com/corporate/ASTERDM2_06112026193525_Outcomesigned.pdf",
+        "https://www.business-standard.com/companies/quarterly-results/aster-dm-quality-care-q2-net-profit-more-than-doubles-to-262-crore-126110601753_1.html",
+        "https://nsearchives.nseindia.com/corporate/ASTERDM2_06112026165600_q2UFRs.pdf",
+        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/4d107730-cbb1-4446-ba16-8f5bd0f11c67.pdf",
+        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/e24346d6-2631-403e-8dba-020c04b7c8c4.pdf",
+        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/687ebc5c-66c0-4c32-b4e4-64bc7608d44c.pdf",
+        "https://nsearchives.nseindia.com/corporate/ASTERDM2_06112026172136_PressRealease.pdf",
+        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/8443c05e-06c8-4e5d-9a23-e36df99d5467.pdf",
+        "https://nsearchives.nseindia.com/corporate/ASTERDM2_06112026175922_Presentation_1.pdf",
+        "https://nsearchives.nseindia.com/corporate/ASTERDM2_06112026193116_Outcomesigned.pdf",
+        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/400a22a5-12f3-4f7c-85ca-2cbfcbc01634.pdf",
+        "https://nsearchives.nseindia.com/corporate/ASTERDM2_06112026192230_Outcomesigned.pdf",
+        "https://nsearchives.nseindia.com/corporate/ASTERDM2_06112026171202_sePresentation.pdf",
+        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/98049f9e-5f24-4b59-8e71-c9b7831e3d4a.pdf"
+      ],
+      "symbol": "ASTERDM"
     },
     {
       "articles": 16,
@@ -178,59 +253,10 @@
       "symbol": "JUBLFOOD"
     },
     {
-      "articles": 15,
-      "categories": [
-        "acquisition",
-        "financial_results",
-        "other"
-      ],
-      "evidence_summary": {
-        "conflicting_metrics": [],
-        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
-        "negative_metrics": [],
-        "not_a_price_prediction": true,
-        "positive_metrics": [],
-        "yoy_metrics_with_direction": 0
-      },
-      "explicit_financial_facts": [],
-      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
-      "headline_samples": [
-        "Aster DM Quality Care Ltd (540975)",
-        "Aster DM Quality Care Limited",
-        "Aster DM Quality Care Q2 net profit more than doubles to ₹262 crore",
-        "Aster DM Quality Care Limited",
-        "Aster DM Quality Care Ltd (540975)",
-        "Aster DM Quality Care Ltd (540975)",
-        "Aster DM Quality Care Ltd (540975)",
-        "Aster DM Quality Care Limited"
-      ],
-      "material_event_count": 8,
-      "not_a_trade_signal": true,
-      "official_filing_count": 14,
-      "review_priority": 20,
-      "source_urls": [
-        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/6b5366eb-29da-449e-aeea-928ed50038ea.pdf",
-        "https://nsearchives.nseindia.com/corporate/ASTERDM2_06112026193525_Outcomesigned.pdf",
-        "https://www.business-standard.com/companies/quarterly-results/aster-dm-quality-care-q2-net-profit-more-than-doubles-to-262-crore-126110601753_1.html",
-        "https://nsearchives.nseindia.com/corporate/ASTERDM2_06112026165600_q2UFRs.pdf",
-        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/4d107730-cbb1-4446-ba16-8f5bd0f11c67.pdf",
-        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/e24346d6-2631-403e-8dba-020c04b7c8c4.pdf",
-        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/687ebc5c-66c0-4c32-b4e4-64bc7608d44c.pdf",
-        "https://nsearchives.nseindia.com/corporate/ASTERDM2_06112026172136_PressRealease.pdf",
-        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/8443c05e-06c8-4e5d-9a23-e36df99d5467.pdf",
-        "https://nsearchives.nseindia.com/corporate/ASTERDM2_06112026175922_Presentation_1.pdf",
-        "https://nsearchives.nseindia.com/corporate/ASTERDM2_06112026193116_Outcomesigned.pdf",
-        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/400a22a5-12f3-4f7c-85ca-2cbfcbc01634.pdf",
-        "https://nsearchives.nseindia.com/corporate/ASTERDM2_06112026192230_Outcomesigned.pdf",
-        "https://nsearchives.nseindia.com/corporate/ASTERDM2_06112026171202_sePresentation.pdf",
-        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/98049f9e-5f24-4b59-8e71-c9b7831e3d4a.pdf"
-      ],
-      "symbol": "ASTERDM"
-    },
-    {
-      "articles": 7,
+      "articles": 8,
       "categories": [
         "analyst_meetings",
+        "corporate_actions",
         "financial_results",
         "other",
         "regulatory"
@@ -248,6 +274,7 @@
       "headline_samples": [
         "Q2 Results Highlights: Hindalco Q2 profit zooms, Voltas up 51%, Aster DM, Gland Pharma surge 58%, Siemens grows 5%; Bosch, Coromandel, Honasa profit down",
         "Bosch Ltd (500530)",
+        "Bosch announces 1:5 stock split, 3:1 bonus issue. What this means for investors?",
         "Bosch Limited",
         "Q2 Results Live: Kwality Wall's Narrows Loss, Voltas Net Profit Rises 53%",
         "Bosch Limited",
@@ -261,6 +288,7 @@
       "source_urls": [
         "https://www.thehindubusinessline.com/markets/q2-results-today-live-updates-hindalco-ind-bosch-siemens-aster-dm-coromandel-intl-gland-pharma-voltas-nuvama-wealth-3m-india-airtel-lic-titan-mahindra-ongc-company-results-06-november-2026/article71669522.ece",
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/6f329c11-8acb-40d5-a209-8161eb11d807.pdf",
+        "https://economictimes.indiatimes.com/markets/stocks/news/bosch-announces-15-stock-split-31-bonus-issue-what-this-means-for-investors/articleshow/135605839.cms",
         "https://nsearchives.nseindia.com/corporate/xbrl/SAIIM_249_WebXMLFile_20261106_191941157.xml",
         "https://www.ndtvprofit.com/markets/q2-results-live-updates-november-6-siemens-bosch-hindalco-voltas-among-223-companies-to-announce-earnings-today-12291338",
         "https://nsearchives.nseindia.com/corporate/BOSCHLTD2025_06112026191656_L2SEEarningscalloutcomeNov2026.pdf",
@@ -2985,6 +3013,36 @@
     {
       "articles": 2,
       "categories": [
+        "other",
+        "regulatory"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-07T00:51:20.849482+05:30",
+      "headline_samples": [
+        "Tata Motors Limited",
+        "Tata Motors Ltd (544569)"
+      ],
+      "material_event_count": 1,
+      "not_a_trade_signal": true,
+      "official_filing_count": 2,
+      "review_priority": 7,
+      "source_urls": [
+        "https://nsearchives.nseindia.com/corporate/TMLCOMMERCIAL_07112026002910_final.pdf",
+        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/b59a39ec-9f76-4ea1-8b13-d9b453422a10.pdf"
+      ],
+      "symbol": "TMCV"
+    },
+    {
+      "articles": 2,
+      "categories": [
         "analyst_meetings",
         "financial_results"
       ],
@@ -3139,7 +3197,7 @@
       "symbol": "BHARATFORG"
     },
     {
-      "articles": 5,
+      "articles": 6,
       "categories": [
         "analyst_meetings",
         "other"
@@ -3159,7 +3217,8 @@
         "Bharti Airtel Limited",
         "Airtel restores ₹299 prepaid plan withdrawn in August as additions slow",
         "Bharti Airtel Limited",
-        "Bharti Airtel Ltd (532454)"
+        "Bharti Airtel Ltd (532454)",
+        "Bharti Airtel reclaims No. 2 spot among India's most valuable companies, overtakes Jio Platforms"
       ],
       "material_event_count": 0,
       "not_a_trade_signal": true,
@@ -3170,7 +3229,8 @@
         "https://nsearchives.nseindia.com/corporate/BHARTIARTL_06112026160637_BhartiAirtelSTXdisclosure.pdf",
         "https://www.business-standard.com/companies/news/airtel-restores-299-prepaid-plan-withdrawn-in-august-as-additions-slow-126110601758_1.html",
         "https://nsearchives.nseindia.com/corporate/xbrl/SAIIM_2002_WebXMLFile_20261106_161304693.xml",
-        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/c0ebd50a-d1d2-4c02-8be7-cf5e771bb8ff.pdf"
+        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/c0ebd50a-d1d2-4c02-8be7-cf5e771bb8ff.pdf",
+        "https://economictimes.indiatimes.com/markets/stocks/news/bharti-airtel-reclaims-no-2-spot-among-indias-most-valuable-companies-overtakes-jio-platforms-reliance-at-top-spot/articleshow/135605274.cms"
       ],
       "symbol": "BHARTIARTL"
     },
@@ -3237,6 +3297,38 @@
         "https://nsearchives.nseindia.com/corporate/xbrl/SAIIM_261_WebXMLFile_20261106_175111126.xml"
       ],
       "symbol": "CARBORUNIV"
+    },
+    {
+      "articles": 3,
+      "categories": [
+        "management",
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-06T23:23:11.352230+05:30",
+      "headline_samples": [
+        "Chennai Petroleum Corporation Ltd (500110)",
+        "Chennai Petroleum Corporation Limited",
+        "Chennai Petroleum Corporation Limited"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 3,
+      "review_priority": 6,
+      "source_urls": [
+        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/efe46235-c3f2-4117-b3f9-9a7d5872dd88.pdf",
+        "https://nsearchives.nseindia.com/corporate/CHENNPETRO_06112026231855_Reg_30_-_Cessation.pdf",
+        "https://nsearchives.nseindia.com/corporate/xbrl/CIM_1923_WebXMLFile_20261106_233705273.xml"
+      ],
+      "symbol": "CHENNPETRO"
     },
     {
       "articles": 3,
@@ -4377,36 +4469,6 @@
     {
       "articles": 2,
       "categories": [
-        "management",
-        "other"
-      ],
-      "evidence_summary": {
-        "conflicting_metrics": [],
-        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
-        "negative_metrics": [],
-        "not_a_price_prediction": true,
-        "positive_metrics": [],
-        "yoy_metrics_with_direction": 0
-      },
-      "explicit_financial_facts": [],
-      "first_seen_at": "2026-11-06T23:23:11.352230+05:30",
-      "headline_samples": [
-        "Chennai Petroleum Corporation Limited",
-        "Chennai Petroleum Corporation Limited"
-      ],
-      "material_event_count": 0,
-      "not_a_trade_signal": true,
-      "official_filing_count": 2,
-      "review_priority": 4,
-      "source_urls": [
-        "https://nsearchives.nseindia.com/corporate/CHENNPETRO_06112026231855_Reg_30_-_Cessation.pdf",
-        "https://nsearchives.nseindia.com/corporate/xbrl/CIM_1923_WebXMLFile_20261106_233705273.xml"
-      ],
-      "symbol": "CHENNPETRO"
-    },
-    {
-      "articles": 2,
-      "categories": [
         "analyst_meetings"
       ],
       "evidence_summary": {
@@ -5078,6 +5140,35 @@
       "symbol": "CHOLAFIN"
     },
     {
+      "articles": 2,
+      "categories": [
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-06T23:23:11.352230+05:30",
+      "headline_samples": [
+        "States' capital outlay may rise 10-12% to ₹8.5 trillion in FY27: Crisil",
+        "Aditya Birla Sun Life Crisil-IBX Financial Services 9-12 Months Debt Index Fund (9011289)"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 1,
+      "review_priority": 2,
+      "source_urls": [
+        "https://www.business-standard.com/economy/news/states-capital-outlay-may-rise-10-12-to-8-5-trillion-in-fy27-crisil-126110601783_1.html",
+        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/c2494120-81cc-4575-8ef8-c2427ec514eb.pdf"
+      ],
+      "symbol": "CRISIL"
+    },
+    {
       "articles": 1,
       "categories": [
         "other"
@@ -5388,33 +5479,6 @@
         "yoy_metrics_with_direction": 0
       },
       "explicit_financial_facts": [],
-      "first_seen_at": "2026-11-06T23:23:11.352230+05:30",
-      "headline_samples": [
-        "States' capital outlay may rise 10-12% to ₹8.5 trillion in FY27: Crisil"
-      ],
-      "material_event_count": 0,
-      "not_a_trade_signal": true,
-      "official_filing_count": 0,
-      "review_priority": 0,
-      "source_urls": [
-        "https://www.business-standard.com/economy/news/states-capital-outlay-may-rise-10-12-to-8-5-trillion-in-fy27-crisil-126110601783_1.html"
-      ],
-      "symbol": "CRISIL"
-    },
-    {
-      "articles": 1,
-      "categories": [
-        "other"
-      ],
-      "evidence_summary": {
-        "conflicting_metrics": [],
-        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
-        "negative_metrics": [],
-        "not_a_price_prediction": true,
-        "positive_metrics": [],
-        "yoy_metrics_with_direction": 0
-      },
-      "explicit_financial_facts": [],
       "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
       "headline_samples": [
         "Jindal SAW to set up 300,000-tonne seamless pipe plant in Abu Dhabi"
@@ -5547,8 +5611,8 @@
     "Preview created after cutoff is unsuitable for historical model evaluation.",
     "Premarket frozen snapshot includes collector_last_poll_at; intervening minutes may contain uncollected news."
   ],
-  "collector_last_poll_at": "2026-11-06T23:42:04.404963+05:30",
-  "company_count": 163,
+  "collector_last_poll_at": "2026-11-07T00:51:20.849482+05:30",
+  "company_count": 164,
   "cutoff_exclusive": "2026-11-09T09:00:00+05:30",
   "data_mode": "PRE_CUTOFF_PREVIEW_NOT_FROZEN",
   "doc_evidence_register": [
@@ -5616,6 +5680,19 @@
         "KPIL"
       ],
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/2b73a253-4e82-4736-97fb-eee6352de664.pdf"
+    },
+    {
+      "document_sha256": "429940016537e4e0783a56df834b7fb2456e3c4419db4effe28c375a93c2b3cd",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "id": "225cb1bb05e626221a5ab8f3",
+      "parsed_at": "2026-11-07T00:51:46.938260+05:30",
+      "published_at": "2026-11-06T17:37:52+05:30",
+      "symbols": [
+        "HONASA"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/55693e8c-53c3-4f61-983b-449b42ad8c1c.pdf"
     },
     {
       "document_sha256": "6c7cad3c597b969b7d2475c0e0f199c253228cedf67439c0151fafa1b7ceef6b",
@@ -5711,6 +5788,19 @@
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/4e14d440-744c-49fb-b3fd-82985d5888fd.pdf"
     },
     {
+      "document_sha256": "14c2c26660ccf7a2fd97c5e7f29aa2747b4afabd83ed09efe5e6986f7ad70204",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "id": "4dac6db2c3ad71d52a0484f3",
+      "parsed_at": "2026-11-07T00:51:44.881850+05:30",
+      "published_at": "2026-11-06T17:06:11+05:30",
+      "symbols": [
+        "OLECTRA"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/c392a165-6439-4b01-a0ee-0acc091392df.pdf"
+    },
+    {
       "document_sha256": "6c7cad3c597b969b7d2475c0e0f199c253228cedf67439c0151fafa1b7ceef6b",
       "extraction_status": "EXPLICIT_FACTS",
       "facts": [
@@ -5765,6 +5855,19 @@
       "url": "https://nsearchives.nseindia.com/corporate/ANURAS_06112026154649_ARILSLDSTX20261106077PressRelease.pdf"
     },
     {
+      "document_sha256": "e44656251519f989fa97095f0d60a2a91fb1eefe19659ac6ea8c274d5e7602c0",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "id": "5d06d53471105dcac7d2cbb1",
+      "parsed_at": "2026-11-07T00:51:44.880825+05:30",
+      "published_at": "2026-11-06T16:59:40+05:30",
+      "symbols": [
+        "VOLTAS"
+      ],
+      "url": "https://nsearchives.nseindia.com/corporate/VOLTAS_RB_06112026165511_01_Financial_Results_signed.pdf"
+    },
+    {
       "document_sha256": "83a3458939f8aaedd7bd9d0a9ff2d92e98339d31c2bc349f7553f91b9d0ece07",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -5802,6 +5905,19 @@
         "RAMCOCEM"
       ],
       "url": "https://nsearchives.nseindia.com/corporate/RAMCOCEM_06112026162247_sesnewspaper.pdf"
+    },
+    {
+      "document_sha256": "22185496910937125b353b71d4b3b64c3d4aeec72444c9b210ddb630528574ac",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "id": "659f2babd1b980e3b43fae68",
+      "parsed_at": "2026-11-07T00:51:45.498264+05:30",
+      "published_at": "2026-11-06T17:16:53+05:30",
+      "symbols": [
+        "ASTERDM"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/e24346d6-2631-403e-8dba-020c04b7c8c4.pdf"
     },
     {
       "document_sha256": "9de44bf55c18707a70e385cf956d37afcffa012c88ff95e2b9583683ca694979",
@@ -5843,6 +5959,45 @@
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/071ff837-a606-47f8-a266-0d5ae67adcb8.pdf"
     },
     {
+      "document_sha256": "b5fca420e8e06bb25840a0d9514be6bae7c0db87e069a6e958a9bd897ddd2a2e",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "id": "79a989bb4e1456ca9bdc80a4",
+      "parsed_at": "2026-11-07T00:51:45.422580+05:30",
+      "published_at": "2026-11-06T17:09:14+05:30",
+      "symbols": [
+        "HUDCO"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/1dfea1f3-0619-473b-babe-eef6ce9e3988.pdf"
+    },
+    {
+      "document_sha256": "4ab4f5f34017760bce8acb6eb957e5cd142711b70639f61e21f4604eb5f26de8",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "id": "7bd6552d006da25becedcab9",
+      "parsed_at": "2026-11-07T00:51:44.881228+05:30",
+      "published_at": "2026-11-06T17:04:08+05:30",
+      "symbols": [
+        "SOLARINDS"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/f0c8af66-1e5c-4b88-a0c2-dd7de85f1e61.pdf"
+    },
+    {
+      "document_sha256": "f73670c46e8451dc601d565ead3371632514a2eb75f127d4f94d62494af42831",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "id": "856f227a34215699402158fe",
+      "parsed_at": "2026-11-07T00:51:54.471803+05:30",
+      "published_at": "2026-11-06T18:09:07+05:30",
+      "symbols": [
+        "FIRSTCRY"
+      ],
+      "url": "https://nsearchives.nseindia.com/corporate/BRAINBEES_06112026180823_PriorIntimationofBM.pdf"
+    },
+    {
       "document_sha256": "9320d386a6b1f18924ae658e3dfe45e5709aee4ae1c9beaacfa8c6e6b38695d9",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -5854,6 +6009,74 @@
         "KEC"
       ],
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/70443387-5e40-4cfe-bab2-600c75f13ec1.pdf"
+    },
+    {
+      "document_sha256": "cafc468004ccea8303dcede779ac778bf1784ff580a822d1c7af3e3819140dc9",
+      "extraction_status": "EXPLICIT_FACTS",
+      "facts": [
+        {
+          "basis": "YoY",
+          "document_sha256": "cafc468004ccea8303dcede779ac778bf1784ff580a822d1c7af3e3819140dc9",
+          "evidence_text": "• Revenue for Q2 FY27 grew by 19% YoY to INR 2,829 Cr",
+          "metric": "revenue",
+          "reported_change_pct": 19.0,
+          "reported_period": "Q2FY27",
+          "source": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/687ebc5c-66c0-4c32-b4e4-64bc7608d44c.pdf",
+          "verification": "ASSERTION_NOT_ARITHMETICALLY_VERIFIED"
+        },
+        {
+          "basis": "YoY",
+          "document_sha256": "cafc468004ccea8303dcede779ac778bf1784ff580a822d1c7af3e3819140dc9",
+          "evidence_text": "• MVT revenue grew 36% YoY, led by Maldives and GCC markets, with rising contribution from West",
+          "metric": "revenue",
+          "reported_change_pct": 36.0,
+          "reported_period": null,
+          "source": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/687ebc5c-66c0-4c32-b4e4-64bc7608d44c.pdf",
+          "verification": "ASSERTION_NOT_ARITHMETICALLY_VERIFIED"
+        }
+      ],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "id": "91ce492d27e748d4e2a03f4e",
+      "parsed_at": "2026-11-07T00:51:46.365508+05:30",
+      "published_at": "2026-11-06T17:21:53+05:30",
+      "symbols": [
+        "ASTERDM"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/687ebc5c-66c0-4c32-b4e4-64bc7608d44c.pdf"
+    },
+    {
+      "document_sha256": "cafc468004ccea8303dcede779ac778bf1784ff580a822d1c7af3e3819140dc9",
+      "extraction_status": "EXPLICIT_FACTS",
+      "facts": [
+        {
+          "basis": "YoY",
+          "document_sha256": "cafc468004ccea8303dcede779ac778bf1784ff580a822d1c7af3e3819140dc9",
+          "evidence_text": "• Revenue for Q2 FY27 grew by 19% YoY to INR 2,829 Cr",
+          "metric": "revenue",
+          "reported_change_pct": 19.0,
+          "reported_period": "Q2FY27",
+          "source": "https://nsearchives.nseindia.com/corporate/ASTERDM2_06112026172136_PressRealease.pdf",
+          "verification": "ASSERTION_NOT_ARITHMETICALLY_VERIFIED"
+        },
+        {
+          "basis": "YoY",
+          "document_sha256": "cafc468004ccea8303dcede779ac778bf1784ff580a822d1c7af3e3819140dc9",
+          "evidence_text": "• MVT revenue grew 36% YoY, led by Maldives and GCC markets, with rising contribution from West",
+          "metric": "revenue",
+          "reported_change_pct": 36.0,
+          "reported_period": null,
+          "source": "https://nsearchives.nseindia.com/corporate/ASTERDM2_06112026172136_PressRealease.pdf",
+          "verification": "ASSERTION_NOT_ARITHMETICALLY_VERIFIED"
+        }
+      ],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "id": "99a4f63c5e16761e1839341b",
+      "parsed_at": "2026-11-07T00:51:46.090510+05:30",
+      "published_at": "2026-11-06T17:21:47+05:30",
+      "symbols": [
+        "ASTERDM"
+      ],
+      "url": "https://nsearchives.nseindia.com/corporate/ASTERDM2_06112026172136_PressRealease.pdf"
     },
     {
       "document_sha256": "afc6da4e5092d1915c1043a1859ae05aa9c4131065c9bc03e499977f72668fb4",
@@ -5893,6 +6116,19 @@
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/b67d0e9f-14cb-4571-b840-c9634b33f3b5.pdf"
     },
     {
+      "document_sha256": "994fb3d1f25a12ae376b135532ecff4d94d383737763c1dc2076732f644802a5",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "id": "a66c9eadbf1bf8c866f72133",
+      "parsed_at": "2026-11-07T00:51:45.744527+05:30",
+      "published_at": "2026-11-06T17:21:42+05:30",
+      "symbols": [
+        "CUMMINSIND"
+      ],
+      "url": "https://nsearchives.nseindia.com/corporate/CUMMINSIND_06112026172100_SEIntimationNewspaperFRfinal.pdf"
+    },
+    {
       "document_sha256": "dfb9895f21ad6561e5cd64216a9b7a55eff6f936112764cc5fc8f9c72bfcf345",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -5906,6 +6142,19 @@
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/5821f22b-cbb7-478c-aed9-fcae1d06f0ec.pdf"
     },
     {
+      "document_sha256": "c0ded67ac5f3df924c6e67f84c5281fa94129511d1b96e6739bfc788009029a6",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "id": "b5256d0b98f9743f8d6fffc6",
+      "parsed_at": "2026-11-07T00:51:53.668757+05:30",
+      "published_at": "2026-11-06T18:09:04+05:30",
+      "symbols": [
+        "CLEANMAX"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/481a07a7-db11-4b5b-abf3-0c3cad27d442.pdf"
+    },
+    {
       "document_sha256": "53d9a2fa7a694d4dccf1bd0fea40a728250419542ffd6e2a15cac49007862844",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -5917,6 +6166,19 @@
         "GLAND"
       ],
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/5f33a96b-1daf-4e4f-904a-19d5c41f2d88.pdf"
+    },
+    {
+      "document_sha256": "994fb3d1f25a12ae376b135532ecff4d94d383737763c1dc2076732f644802a5",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "id": "bb74ba2d3f3aa31e28ce6f47",
+      "parsed_at": "2026-11-07T00:51:46.530080+05:30",
+      "published_at": "2026-11-06T17:25:38+05:30",
+      "symbols": [
+        "CUMMINSIND"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/499fef94-849d-4ce2-8442-add7a5636b8e.pdf"
     },
     {
       "document_sha256": "53d9a2fa7a694d4dccf1bd0fea40a728250419542ffd6e2a15cac49007862844",
@@ -5943,6 +6205,19 @@
         "BRITANNIA"
       ],
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/46b10b9d-d48d-42dd-90d1-de27128fb9db.pdf"
+    },
+    {
+      "document_sha256": "8184e1e20b3b084af1768b1d97064dda8dd8e9ea0bf6a395e02ef2c9a957ef72",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "id": "bf70ed6cf60e2b225cd43398",
+      "parsed_at": "2026-11-07T00:51:47.404004+05:30",
+      "published_at": "2026-11-06T17:45:52+05:30",
+      "symbols": [
+        "INOXWIND"
+      ],
+      "url": "https://nsearchives.nseindia.com/corporate/INOXWIND_06112026174541_1_IWL_PriorBoard_Meeting_intimation.pdf"
     },
     {
       "document_sha256": "21eb99918b744d38a9df5918536509c79ba6ad7a755fad950a2a0f07349682b8",
@@ -5992,6 +6267,19 @@
       "url": "https://nsearchives.nseindia.com/corporate/ANURAS_06112026153623_ARILSLDSTX20261106076OutcomeofBM.pdf"
     },
     {
+      "document_sha256": "f73670c46e8451dc601d565ead3371632514a2eb75f127d4f94d62494af42831",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "id": "db0e013ecda78c7e4c21b687",
+      "parsed_at": "2026-11-07T00:51:52.198100+05:30",
+      "published_at": "2026-11-06T18:04:24+05:30",
+      "symbols": [
+        "FIRSTCRY"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/93eca890-1abb-44ea-b31a-98669f6cc3fc.pdf"
+    },
+    {
       "document_sha256": "eb32d931d9e40e5bc179f4806a0bbcc7734d31200204a0409e074165a13cd177",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -6016,6 +6304,45 @@
         "SAILIFE"
       ],
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/ef7252da-9cdc-47eb-9088-242684ab65d6.pdf"
+    },
+    {
+      "document_sha256": "8184e1e20b3b084af1768b1d97064dda8dd8e9ea0bf6a395e02ef2c9a957ef72",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "id": "ed66cdce8d66ab04bb856e84",
+      "parsed_at": "2026-11-07T00:51:47.383800+05:30",
+      "published_at": "2026-11-06T17:39:56+05:30",
+      "symbols": [
+        "INOXWIND"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/abf340f9-40ee-458b-b213-99701ab5c394.pdf"
+    },
+    {
+      "document_sha256": "0be77b9b2caa45ff2f74aba440835c5c23b583e5bb6923dd026c3be6df0d9ec1",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "id": "f32ab8339fe37f4a006c69a2",
+      "parsed_at": "2026-11-07T00:51:51.015226+05:30",
+      "published_at": "2026-11-06T18:03:15+05:30",
+      "symbols": [
+        "ASTERDM"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/98049f9e-5f24-4b59-8e71-c9b7831e3d4a.pdf"
+    },
+    {
+      "document_sha256": "9de44bf55c18707a70e385cf956d37afcffa012c88ff95e2b9583683ca694979",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "id": "f40f873a11580e240393683e",
+      "parsed_at": "2026-11-07T00:51:44.881509+05:30",
+      "published_at": "2026-11-06T17:04:22+05:30",
+      "symbols": [
+        "GLAND"
+      ],
+      "url": "https://nsearchives.nseindia.com/corporate/GLAND_06112026170413_PressReleaseQ2FY27_Final.pdf"
     },
     {
       "document_sha256": "19d556352cd7ec538793f02c7e9e396c8183b4ed0b9c2fe8f22b13830b01bb66",
@@ -6063,14 +6390,531 @@
         "JUBLFOOD"
       ],
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/0f12c43f-95a6-4089-ab96-dc7fd08eef69.pdf"
+    },
+    {
+      "document_sha256": "e44656251519f989fa97095f0d60a2a91fb1eefe19659ac6ea8c274d5e7602c0",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "id": "fe1c6b6135f07ab0b3771a34",
+      "parsed_at": "2026-11-07T00:51:46.830173+05:30",
+      "published_at": "2026-11-06T17:33:19+05:30",
+      "symbols": [
+        "VOLTAS"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/4d6c8e4a-79da-4c73-ade1-d580341b1635.pdf"
     }
   ],
-  "documents_with_eligible_text": 29,
+  "documents_with_eligible_text": 47,
   "execution_enabled": false,
+  "frozen_universe_membership": {
+    "360ONE": "360 ONE WAM Ltd.",
+    "AADHARHFC": "Aadhar Housing Finance Ltd.",
+    "AARTIIND": "Aarti Industries Ltd.",
+    "AAVAS": "Aavas Financiers Ltd.",
+    "ABB": "ABB India Ltd.",
+    "ABBOTINDIA": "Abbott India Ltd.",
+    "ABCAPITAL": "Aditya Birla Capital Ltd.",
+    "ABDL": "Allied Blenders and Distillers Ltd.",
+    "ABREL": "Aditya Birla Real Estate Ltd.",
+    "ABSLAMC": "Aditya Birla Sun Life AMC Ltd.",
+    "ACC": "ACC Ltd.",
+    "ACE": "Action Construction Equipment Ltd.",
+    "ACMESOLAR": "ACME Solar Holdings Ltd.",
+    "ACUTAAS": "Acutaas Chemicals Ltd.",
+    "ADANIENSOL": "Adani Energy Solutions Ltd.",
+    "ADANIENT": "Adani Enterprises Ltd.",
+    "ADANIGREEN": "Adani Green Energy Ltd.",
+    "ADANIPORTS": "Adani Ports and Special Economic Zone Ltd.",
+    "ADANIPOWER": "Adani Power Ltd.",
+    "AEGISLOG": "Aegis Logistics Ltd.",
+    "AEGISVOPAK": "Aegis Vopak Terminals Ltd.",
+    "AETHER": "Aether Industries Ltd.",
+    "AFCONS": "Afcons Infrastructure Ltd.",
+    "AFFLE": "Affle 3i Ltd.",
+    "AIAENG": "AIA Engineering Ltd.",
+    "AIIL": "Authum Investment & Infrastructure Ltd.",
+    "AJANTPHARM": "Ajanta Pharmaceuticals Ltd.",
+    "ALKEM": "Alkem Laboratories Ltd.",
+    "AMBER": "Amber Enterprises India Ltd.",
+    "AMBUJACEM": "Ambuja Cements Ltd.",
+    "ANANDRATHI": "Anand Rathi Wealth Ltd.",
+    "ANANTRAJ": "Anant Raj Ltd.",
+    "ANGELONE": "Angel One Ltd.",
+    "ANTHEM": "Anthem Biosciences Ltd.",
+    "ANURAS": "Anupam Rasayan India Ltd.",
+    "APARINDS": "Apar Industries Ltd.",
+    "APLAPOLLO": "APL Apollo Tubes Ltd.",
+    "APOLLOHOSP": "Apollo Hospitals Enterprise Ltd.",
+    "APOLLOTYRE": "Apollo Tyres Ltd.",
+    "APTUS": "Aptus Value Housing Finance India Ltd.",
+    "ARE&M": "Amara Raja Energy & Mobility Ltd.",
+    "ASAHIINDIA": "Asahi India Glass Ltd.",
+    "ASHOKLEY": "Ashok Leyland Ltd.",
+    "ASIANPAINT": "Asian Paints Ltd.",
+    "ASTERDM": "Aster DM Quality Care Ltd.",
+    "ASTRAL": "Astral Ltd.",
+    "ATGL": "Adani Total Gas Ltd.",
+    "ATHERENERG": "Ather Energy Ltd.",
+    "ATUL": "Atul Ltd.",
+    "AUBANK": "AU Small Finance Bank Ltd.",
+    "AUROPHARMA": "Aurobindo Pharma Ltd.",
+    "AVANTIFEED": "Avanti Feeds Ltd.",
+    "AWL": "AWL Agri Business Ltd.",
+    "AXISBANK": "Axis Bank Ltd.",
+    "AZAD": "Azad Engineering Ltd.",
+    "BAGMANE": "Bagmane Prime Office REIT",
+    "BAJAJ-AUTO": "Bajaj Auto Ltd.",
+    "BAJAJFINSV": "Bajaj Finserv Ltd.",
+    "BAJAJHFL": "Bajaj Housing Finance Ltd.",
+    "BAJAJHLDNG": "Bajaj Holdings & Investment Ltd.",
+    "BAJFINANCE": "Bajaj Finance Ltd.",
+    "BALKRISIND": "Balkrishna Industries Ltd.",
+    "BALRAMCHIN": "Balrampur Chini Mills Ltd.",
+    "BANDHANBNK": "Bandhan Bank Ltd.",
+    "BANKBARODA": "Bank of Baroda",
+    "BANKINDIA": "Bank of India",
+    "BATAINDIA": "Bata India Ltd.",
+    "BBOX": "Black Box Ltd.",
+    "BDL": "Bharat Dynamics Ltd.",
+    "BEL": "Bharat Electronics Ltd.",
+    "BELRISE": "Belrise Industries Ltd.",
+    "BEML": "BEML Ltd.",
+    "BERGEPAINT": "Berger Paints India Ltd.",
+    "BHARATCOAL": "Bharat Coking Coal Ltd.",
+    "BHARATFORG": "Bharat Forge Ltd.",
+    "BHARTIARTL": "Bharti Airtel Ltd.",
+    "BHARTIHEXA": "Bharti Hexacom Ltd.",
+    "BHEL": "Bharat Heavy Electricals Ltd.",
+    "BIOCON": "Biocon Ltd.",
+    "BIRET": "Brookfield India Real Estate Trust",
+    "BLS": "BLS International Services Ltd.",
+    "BLUESTARCO": "Blue Star Ltd.",
+    "BOSCHLTD": "Bosch Ltd.",
+    "BPCL": "Bharat Petroleum Corporation Ltd.",
+    "BRIGADE": "Brigade Enterprises Ltd.",
+    "BRITANNIA": "Britannia Industries Ltd.",
+    "BSE": "BSE Ltd.",
+    "BSOFT": "Birlasoft Ltd.",
+    "CAMS": "Computer Age Management Services Ltd.",
+    "CANBK": "Canara Bank",
+    "CANFINHOME": "Can Fin Homes Ltd.",
+    "CANHLIFE": "Canara HSBC Life Insurance Company Ltd.",
+    "CAPLIPOINT": "Caplin Point Laboratories Ltd.",
+    "CARBORUNIV": "Carborundum Universal Ltd.",
+    "CARTRADE": "Cartrade Tech Ltd.",
+    "CASTROLIND": "Castrol India Ltd.",
+    "CCL": "CCL Products (I) Ltd.",
+    "CDSL": "Central Depository Services (India) Ltd.",
+    "CEATLTD": "Ceat Ltd.",
+    "CEMPRO": "Cemindia Projects Ltd.",
+    "CENTRALBK": "Central Bank of India",
+    "CESC": "CESC Ltd.",
+    "CGCL": "Capri Global Capital Ltd.",
+    "CGPOWER": "CG Power and Industrial Solutions Ltd.",
+    "CHAMBLFERT": "Chambal Fertilizers & Chemicals Ltd.",
+    "CHENNPETRO": "Chennai Petroleum Corporation Ltd.",
+    "CHOICEIN": "Choice International Ltd.",
+    "CHOLAFIN": "Cholamandalam Investment and Finance Company Ltd.",
+    "CHOLAHLDNG": "Cholamandalam Financial Holdings Ltd.",
+    "CIEINDIA": "CIE Automotive India Ltd.",
+    "CIPLA": "Cipla Ltd.",
+    "CLEAN": "Clean Science and Technology Ltd.",
+    "CLEANMAX": "Clean Max Enviro Energy Solutions Ltd.",
+    "CMPDI": "Central Mine Planning & Design Institute Ltd.",
+    "COALINDIA": "Coal India Ltd.",
+    "COCHINSHIP": "Cochin Shipyard Ltd.",
+    "COFORGE": "Coforge Ltd.",
+    "COHANCE": "Cohance Lifesciences Ltd.",
+    "COLPAL": "Colgate Palmolive (India) Ltd.",
+    "CONCOR": "Container Corporation of India Ltd.",
+    "CONCORDBIO": "Concord Biotech Ltd.",
+    "COROMANDEL": "Coromandel International Ltd.",
+    "CPPLUS": "Aditya Infotech Ltd.",
+    "CRAFTSMAN": "Craftsman Automation Ltd.",
+    "CREDITACC": "CreditAccess Grameen Ltd.",
+    "CRISIL": "CRISIL Ltd.",
+    "CROMPTON": "Crompton Greaves Consumer Electricals Ltd.",
+    "CUB": "City Union Bank Ltd.",
+    "CUMMINSIND": "Cummins India Ltd.",
+    "CUPID": "Cupid Ltd.",
+    "CYIENT": "Cyient Ltd.",
+    "DABUR": "Dabur India Ltd.",
+    "DALBHARAT": "Dalmia Bharat Ltd.",
+    "DATAPATTNS": "Data Patterns (India) Ltd.",
+    "DEEPAKFERT": "Deepak Fertilisers & Petrochemicals Corp. Ltd.",
+    "DEEPAKNTR": "Deepak Nitrite Ltd.",
+    "DELHIVERY": "Delhivery Ltd.",
+    "DEVYANI": "Devyani International Ltd.",
+    "DIVISLAB": "Divi's Laboratories Ltd.",
+    "DIXON": "Dixon Technologies (India) Ltd.",
+    "DLF": "DLF Ltd.",
+    "DMART": "Avenue Supermarts Ltd.",
+    "DOMS": "DOMS Industries Ltd.",
+    "DRREDDY": "Dr. Reddy's Laboratories Ltd.",
+    "DUMMYHEG": "Dummy HEG Ltd.",
+    "ECLERX": "eClerx Services Ltd.",
+    "EICHERMOT": "Eicher Motors Ltd.",
+    "EIDPARRY": "E.I.D. Parry (India) Ltd.",
+    "EIHOTEL": "EIH Ltd.",
+    "ELECON": "Elecon Engineering Co. Ltd.",
+    "ELGIEQUIP": "Elgi Equipments Ltd.",
+    "EMAMILTD": "Emami Ltd.",
+    "EMBASSY": "EMBASSY OFFICE PARKS REIT",
+    "EMCURE": "Emcure Pharmaceuticals Ltd.",
+    "EMMVEE": "Emmvee Photovoltaic Power Ltd.",
+    "ENDURANCE": "Endurance Technologies Ltd.",
+    "ENGINERSIN": "Engineers India Ltd.",
+    "ENRIN": "Siemens Energy India Ltd.",
+    "ESCORTS": "Escorts Kubota Ltd.",
+    "ETERNAL": "Eternal Ltd.",
+    "EXIDEIND": "Exide Industries Ltd.",
+    "FACT": "Fertilisers and Chemicals Travancore Ltd.",
+    "FEDERALBNK": "Federal Bank Ltd.",
+    "FINCABLES": "Finolex Cables Ltd.",
+    "FIRSTCRY": "Brainbees Solutions Ltd.",
+    "FIVESTAR": "Five-Star Business Finance Ltd.",
+    "FLUOROCHEM": "Gujarat Fluorochemicals Ltd.",
+    "FORCEMOT": "Force Motors Ltd.",
+    "FORTIS": "Fortis Healthcare Ltd.",
+    "FRACTAL": "Fractal Analytics Ltd.",
+    "FSL": "Firstsource Solutions Ltd.",
+    "GABRIEL": "Gabriel India Ltd.",
+    "GAIL": "GAIL (India) Ltd.",
+    "GALLANTT": "Gallantt Ispat Ltd.",
+    "GESHIP": "Great Eastern Shipping Co. Ltd.",
+    "GICRE": "General Insurance Corporation of India",
+    "GILLETTE": "Gillette India Ltd.",
+    "GLAND": "Gland Pharma Ltd.",
+    "GLAXO": "Glaxosmithkline Pharmaceuticals Ltd.",
+    "GLENMARK": "Glenmark Pharmaceuticals Ltd.",
+    "GMDCLTD": "Gujarat Mineral Development Corporation Ltd.",
+    "GMRAIRPORT": "GMR Airports Ltd.",
+    "GODFRYPHLP": "Godfrey Phillips India Ltd.",
+    "GODREJCP": "Godrej Consumer Products Ltd.",
+    "GODREJIND": "Godrej Industries Ltd.",
+    "GODREJPROP": "Godrej Properties Ltd.",
+    "GPIL": "Godawari Power & Ispat Ltd.",
+    "GRANULES": "Granules India Ltd.",
+    "GRAPHITE": "Graphite India Ltd.",
+    "GRASIM": "Grasim Industries Ltd.",
+    "GRAVITA": "Gravita India Ltd.",
+    "GROWW": "Billionbrains Garage Ventures Ltd.",
+    "GRSE": "Garden Reach Shipbuilders & Engineers Ltd.",
+    "GVT&D": "GE Vernova T&D India Ltd.",
+    "HAL": "Hindustan Aeronautics Ltd.",
+    "HAVELLS": "Havells India Ltd.",
+    "HBLENGINE": "HBL Engineering Ltd.",
+    "HCLTECH": "HCL Technologies Ltd.",
+    "HDBFS": "HDB Financial Services Ltd.",
+    "HDFCAMC": "HDFC Asset Management Company Ltd.",
+    "HDFCBANK": "HDFC Bank Ltd.",
+    "HDFCLIFE": "HDFC Life Insurance Company Ltd.",
+    "HEGAM": "HEG Advanced Materials Ltd.",
+    "HEROMOTOCO": "Hero MotoCorp Ltd.",
+    "HEXT": "Hexaware Technologies Ltd.",
+    "HFCL": "HFCL Ltd.",
+    "HINDALCO": "Hindalco Industries Ltd.",
+    "HINDCOPPER": "Hindustan Copper Ltd.",
+    "HINDPETRO": "Hindustan Petroleum Corporation Ltd.",
+    "HINDUNILVR": "Hindustan Unilever Ltd.",
+    "HINDZINC": "Hindustan Zinc Ltd.",
+    "HOMEFIRST": "Home First Finance Company India Ltd.",
+    "HONASA": "Honasa Consumer Ltd.",
+    "HONAUT": "Honeywell Automation India Ltd.",
+    "HSCL": "Himadri Speciality Chemical Ltd.",
+    "HUDCO": "Housing & Urban Development Corporation Ltd.",
+    "HYUNDAI": "Hyundai Motor India Ltd.",
+    "ICICIAMC": "ICICI Prudential Asset Management Company Ltd.",
+    "ICICIBANK": "ICICI Bank Ltd.",
+    "ICICIGI": "ICICI Lombard General Insurance Company Ltd.",
+    "ICICILIFE": "ICICI Life Insurance Ltd.",
+    "IDBI": "IDBI Bank Ltd.",
+    "IDEA": "Vodafone Idea Ltd.",
+    "IDFCFIRSTB": "IDFC First Bank Ltd.",
+    "IEX": "Indian Energy Exchange Ltd.",
+    "IFCI": "IFCI Ltd.",
+    "IGIL": "International Gemological Institute Ltd.",
+    "IGL": "Indraprastha Gas Ltd.",
+    "IIFL": "IIFL Finance Ltd.",
+    "IKS": "Inventurus Knowledge Solutions Ltd.",
+    "INDHOTEL": "Indian Hotels Co. Ltd.",
+    "INDIACEM": "India Cements Ltd.",
+    "INDIAMART": "Indiamart Intermesh Ltd.",
+    "INDIANB": "Indian Bank",
+    "INDIGO": "InterGlobe Aviation Ltd.",
+    "INDUSINDBK": "IndusInd Bank Ltd.",
+    "INDUSTOWER": "Indus Towers Ltd.",
+    "INFY": "Infosys Ltd.",
+    "INOXINDIA": "INOX India Ltd.",
+    "INOXWIND": "Inox Wind Ltd.",
+    "INTELLECT": "Intellect Design Arena Ltd.",
+    "IOB": "Indian Overseas Bank",
+    "IOC": "Indian Oil Corporation Ltd.",
+    "IPCALAB": "Ipca Laboratories Ltd.",
+    "IRB": "IRB Infrastructure Developers Ltd.",
+    "IRCON": "IRCON International Ltd.",
+    "IRCTC": "Indian Railway Catering And Tourism Corporation Ltd.",
+    "IREDA": "Indian Renewable Energy Development Agency Ltd.",
+    "IRFC": "Indian Railway Finance Corporation Ltd.",
+    "ITC": "ITC Ltd.",
+    "ITCHOTELS": "ITC Hotels Ltd.",
+    "ITI": "ITI Ltd.",
+    "J&KBANK": "Jammu & Kashmir Bank Ltd.",
+    "JAINREC": "Jain Resource Recycling Ltd.",
+    "JBMA": "JBM Auto Ltd.",
+    "JINDALSAW": "Jindal Saw Ltd.",
+    "JINDALSTEL": "Jindal Steel Ltd.",
+    "JIOFIN": "Jio Financial Services Ltd.",
+    "JKCEMENT": "J.K. Cement Ltd.",
+    "JKTYRE": "JK Tyre & Industries Ltd.",
+    "JMFINANCIL": "JM Financial Ltd.",
+    "JPPOWER": "Jaiprakash Power Ventures Ltd.",
+    "JSL": "Jindal Stainless Ltd.",
+    "JSWCEMENT": "JSW Cement Ltd.",
+    "JSWENERGY": "JSW Energy Ltd.",
+    "JSWINFRA": "JSW Infrastructure Ltd.",
+    "JSWSTEEL": "JSW Steel Ltd.",
+    "JUBLFOOD": "Jubilant Foodworks Ltd.",
+    "JUBLINGREA": "Jubilant Ingrevia Ltd.",
+    "JWL": "Jupiter Wagons Ltd.",
+    "JYOTICNC": "Jyoti CNC Automation Ltd.",
+    "KAJARIACER": "Kajaria Ceramics Ltd.",
+    "KALYANKJIL": "Kalyan Jewellers India Ltd.",
+    "KARURVYSYA": "Karur Vysya Bank Ltd.",
+    "KAYNES": "Kaynes Technology India Ltd.",
+    "KEC": "Kec International Ltd.",
+    "KEI": "KEI Industries Ltd.",
+    "KFINTECH": "Kfin Technologies Ltd.",
+    "KIMS": "Krishna Institute of Medical Sciences Ltd.",
+    "KIRLOSBROS": "Kirloskar Brothers Ltd.",
+    "KIRLOSENG": "Kirloskar Oil Eng Ltd.",
+    "KOTAKBANK": "Kotak Mahindra Bank Ltd.",
+    "KPIL": "Kalpataru Projects International Ltd.",
+    "KPITTECH": "KPIT Technologies Ltd.",
+    "KPRMILL": "K.P.R. Mill Ltd.",
+    "KSB": "KSB Ltd.",
+    "LALPATHLAB": "Dr. Lal Path Labs Ltd.",
+    "LAURUSLABS": "Laurus Labs Ltd.",
+    "LEMONTREE": "Lemon Tree Hotels Ltd.",
+    "LENSKART": "Lenskart Solutions Ltd.",
+    "LGEINDIA": "LG Electronics India Ltd.",
+    "LICHSGFIN": "LIC Housing Finance Ltd.",
+    "LICI": "Life Insurance Corporation of India",
+    "LINDEINDIA": "Linde India Ltd.",
+    "LLOYDSME": "Lloyds Metals And Energy Ltd.",
+    "LODHA": "Lodha Developers Ltd.",
+    "LT": "Larsen & Toubro Ltd.",
+    "LTF": "L&T Finance Ltd.",
+    "LTFOODS": "LT Foods Ltd.",
+    "LTM": "LTM Ltd.",
+    "LTTS": "L&T Technology Services Ltd.",
+    "LUPIN": "Lupin Ltd.",
+    "M&M": "Mahindra & Mahindra Ltd.",
+    "M&MFIN": "Mahindra & Mahindra Financial Services Ltd.",
+    "MAHABANK": "Bank of Maharashtra",
+    "MANAPPURAM": "Manappuram Finance Ltd.",
+    "MANKIND": "Mankind Pharma Ltd.",
+    "MARICO": "Marico Ltd.",
+    "MARUTI": "Maruti Suzuki India Ltd.",
+    "MAXHEALTH": "Max Healthcare Institute Ltd.",
+    "MAZDOCK": "Mazagoan Dock Shipbuilders Ltd.",
+    "MCX": "Multi Commodity Exchange of India Ltd.",
+    "MEDANTA": "Global Health Ltd.",
+    "MEESHO": "Meesho Ltd.",
+    "MFSL": "Max Financial Services Ltd.",
+    "MGL": "Mahanagar Gas Ltd.",
+    "MINDACORP": "Minda Corporation Ltd.",
+    "MMTC": "MMTC Ltd.",
+    "MOTHERSON": "Samvardhana Motherson International Ltd.",
+    "MOTILALOFS": "Motilal Oswal Financial Services Ltd.",
+    "MPHASIS": "MphasiS Ltd.",
+    "MRF": "MRF Ltd.",
+    "MRPL": "Mangalore Refinery & Petrochemicals Ltd.",
+    "MSUMI": "Motherson Sumi Wiring India Ltd.",
+    "MTARTECH": "MTAR Technologies Ltd.",
+    "MUTHOOTFIN": "Muthoot Finance Ltd.",
+    "NAM-INDIA": "Nippon Life India Asset Management Ltd.",
+    "NATCOPHARM": "NATCO Pharma Ltd.",
+    "NATIONALUM": "National Aluminium Co. Ltd.",
+    "NAUKRI": "Info Edge (India) Ltd.",
+    "NAVA": "Nava Ltd.",
+    "NAVINFLUOR": "Navin Fluorine International Ltd.",
+    "NBCC": "NBCC (India) Ltd.",
+    "NCC": "NCC Ltd.",
+    "NESTLEIND": "Nestle India Ltd.",
+    "NETWEB": "Netweb Technologies India Ltd.",
+    "NEULANDLAB": "Neuland Laboratories Ltd.",
+    "NH": "Narayana Hrudayalaya Ltd.",
+    "NHPC": "NHPC Ltd.",
+    "NIACL": "The New India Assurance Company Ltd.",
+    "NLCINDIA": "NLC India Ltd.",
+    "NMDC": "NMDC Ltd.",
+    "NSLNISP": "NMDC Steel Ltd.",
+    "NTPC": "NTPC Ltd.",
+    "NTPCGREEN": "NTPC Green Energy Ltd.",
+    "NUVAMA": "Nuvama Wealth Management Ltd.",
+    "NUVOCO": "Nuvoco Vistas Corporation Ltd.",
+    "NYKAA": "FSN E-Commerce Ventures Ltd.",
+    "OBEROIRLTY": "Oberoi Realty Ltd.",
+    "OFSS": "Oracle Financial Services Software Ltd.",
+    "OIL": "Oil India Ltd.",
+    "OLAELEC": "Ola Electric Mobility Ltd.",
+    "OLECTRA": "Olectra Greentech Ltd.",
+    "ONESOURCE": "Onesource Specialty Pharma Ltd.",
+    "ONGC": "Oil & Natural Gas Corporation Ltd.",
+    "PAGEIND": "Page Industries Ltd.",
+    "PARADEEP": "Paradeep Phosphates Ltd.",
+    "PATANJALI": "Patanjali Foods Ltd.",
+    "PAYTM": "One 97 Communications Ltd.",
+    "PCBL": "PCBL Chemical Ltd.",
+    "PERSISTENT": "Persistent Systems Ltd.",
+    "PETRONET": "Petronet LNG Ltd.",
+    "PFC": "Power Finance Corporation Ltd.",
+    "PFOCUS": "Prime Focus Ltd.",
+    "PGEL": "PG Electroplast Ltd.",
+    "PHOENIXLTD": "Phoenix Mills Ltd.",
+    "PIDILITIND": "Pidilite Industries Ltd.",
+    "PIIND": "PI Industries Ltd.",
+    "PINELABS": "Pine Labs Ltd.",
+    "PIRAMALFIN": "Piramal Finance Ltd.",
+    "PNB": "Punjab National Bank",
+    "PNBHOUSING": "PNB Housing Finance Ltd.",
+    "POLICYBZR": "PB Fintech Ltd.",
+    "POLYCAB": "Polycab India Ltd.",
+    "POLYMED": "Poly Medicure Ltd.",
+    "POONAWALLA": "Poonawalla Fincorp Ltd.",
+    "POWERGRID": "Power Grid Corporation of India Ltd.",
+    "POWERINDIA": "Hitachi Energy India Ltd.",
+    "PPLPHARMA": "Piramal Pharma Ltd.",
+    "PREMIERENE": "Premier Energies Ltd.",
+    "PRESTIGE": "Prestige Estates Projects Ltd.",
+    "PRIVISCL": "Privi Speciality Chemicals Ltd.",
+    "PTCIL": "PTC Industries Ltd.",
+    "PVRINOX": "PVR INOX Ltd.",
+    "PWL": "Physicswallah Ltd.",
+    "RADICO": "Radico Khaitan Ltd",
+    "RAILTEL": "Railtel Corporation Of India Ltd.",
+    "RAINBOW": "Rainbow Childrens Medicare Ltd.",
+    "RAMCOCEM": "The Ramco Cements Ltd.",
+    "RBLBANK": "RBL Bank Ltd.",
+    "RECLTD": "REC Ltd.",
+    "REDINGTON": "Redington Ltd.",
+    "RELIANCE": "Reliance Industries Ltd.",
+    "RHIM": "RHI MAGNESITA INDIA LTD.",
+    "RITES": "RITES Ltd.",
+    "RKFORGE": "Ramkrishna Forgings Ltd.",
+    "RPOWER": "Reliance Power Ltd.",
+    "RRKABEL": "R R Kabel Ltd.",
+    "RUBICON": "Rubicon Research Ltd.",
+    "RVNL": "Rail Vikas Nigam Ltd.",
+    "SAGILITY": "Sagility Ltd.",
+    "SAIL": "Steel Authority of India Ltd.",
+    "SAILIFE": "Sai Life Sciences Ltd.",
+    "SAMMAANCAP": "Sammaan Capital Ltd.",
+    "SANSERA": "Sansera Engineering Ltd.",
+    "SARDAEN": "Sarda Energy and Minerals Ltd.",
+    "SBICARD": "SBI Cards and Payment Services Ltd.",
+    "SBILIFE": "SBI Life Insurance Company Ltd.",
+    "SBIN": "State Bank of India",
+    "SCHAEFFLER": "Schaeffler India Ltd.",
+    "SCHNEIDER": "Schneider Electric Infrastructure Ltd.",
+    "SCI": "Shipping Corporation of India Ltd.",
+    "SHREECEM": "Shree Cement Ltd.",
+    "SHRIPISTON": "SPR Auto Technologies Ltd.",
+    "SHRIRAMFIN": "Shriram Finance Ltd.",
+    "SHYAMMETL": "Shyam Metalics and Energy Ltd.",
+    "SIEMENS": "Siemens Ltd.",
+    "SIGNATURE": "Signatureglobal (India) Ltd.",
+    "SJVN": "SJVN Ltd.",
+    "SOBHA": "Sobha Ltd.",
+    "SOLARINDS": "Solar Industries India Ltd.",
+    "SONACOMS": "Sona BLW Precision Forgings Ltd.",
+    "SRF": "SRF Ltd.",
+    "STARHEALTH": "Star Health and Allied Insurance Company Ltd.",
+    "STLTECH": "Sterlite Technologies Ltd.",
+    "SUMICHEM": "Sumitomo Chemical India Ltd.",
+    "SUNDARMFIN": "Sundaram Finance Ltd.",
+    "SUNPHARMA": "Sun Pharmaceutical Industries Ltd.",
+    "SUNTV": "Sun TV Network Ltd.",
+    "SUPREMEIND": "Supreme Industries Ltd.",
+    "SUZLON": "Suzlon Energy Ltd.",
+    "SWANCORP": "Swan Corp Ltd.",
+    "SWIGGY": "Swiggy Ltd.",
+    "SYNGENE": "Syngene International Ltd.",
+    "SYRMA": "Syrma SGS Technology Ltd.",
+    "TARIL": "Transformers And Rectifiers (India) Ltd.",
+    "TATACAP": "Tata Capital Ltd.",
+    "TATACHEM": "Tata Chemicals Ltd.",
+    "TATACOMM": "Tata Communications Ltd.",
+    "TATACONSUM": "Tata Consumer Products Ltd.",
+    "TATAELXSI": "Tata Elxsi Ltd.",
+    "TATAINVEST": "Tata Investment Corporation Ltd.",
+    "TATAPOWER": "Tata Power Co. Ltd.",
+    "TATASTEEL": "Tata Steel Ltd.",
+    "TATATECH": "Tata Technologies Ltd.",
+    "TBOTEK": "TBO Tek Ltd.",
+    "TCS": "Tata Consultancy Services Ltd.",
+    "TDPOWERSYS": "TD Power Systems Ltd.",
+    "TECHM": "Tech Mahindra Ltd.",
+    "TECHNOE": "Techno Electric & Engineering Company Ltd.",
+    "TEGA": "Tega Industries Ltd.",
+    "TEJASNET": "Tejas Networks Ltd.",
+    "TENNIND": "Tenneco Clean Air India Ltd.",
+    "THANGAMAYL": "Thangamayil Jewellery Ltd.",
+    "THERMAX": "Thermax Ltd.",
+    "TIINDIA": "Tube Investments of India Ltd.",
+    "TIMKEN": "Timken India Ltd.",
+    "TITAGARH": "Titagarh Rail Systems Ltd.",
+    "TITAN": "Titan Company Ltd.",
+    "TMCV": "Tata Motors Ltd.",
+    "TMPV": "Tata Motors Passenger Vehicles Ltd.",
+    "TORNTPHARM": "Torrent Pharmaceuticals Ltd.",
+    "TORNTPOWER": "Torrent Power Ltd.",
+    "TRENT": "Trent Ltd.",
+    "TRIDENT": "Trident Ltd.",
+    "TRITURBINE": "Triveni Turbine Ltd.",
+    "TTML": "Tata Teleservices (Maharashtra) Ltd.",
+    "TVSMOTOR": "TVS Motor Company Ltd.",
+    "UBL": "United Breweries Ltd.",
+    "UCOBANK": "UCO Bank",
+    "ULTRACEMCO": "UltraTech Cement Ltd.",
+    "UNIONBANK": "Union Bank of India",
+    "UNITDSPR": "United Spirits Ltd.",
+    "UNOMINDA": "UNO Minda Ltd.",
+    "UPL": "UPL Ltd.",
+    "URBANCO": "Urban Company Ltd.",
+    "USHAMART": "Usha Martin Ltd.",
+    "UTIAMC": "UTI Asset Management Company Ltd.",
+    "VAML": "Vedanta Aluminium Metal Ltd.",
+    "VBL": "Varun Beverages Ltd.",
+    "VEDL": "Vedanta Ltd.",
+    "VEDPOWER": "Vedanta Power Ltd.",
+    "VIJAYA": "Vijaya Diagnostic Centre Ltd.",
+    "VISL": "Vedanta Iron and Steel Ltd.",
+    "VMM": "Vishal Mega Mart Ltd.",
+    "VOGL": "Vedanta Oil and Gas Ltd.",
+    "VOLTAS": "Voltas Ltd.",
+    "VTL": "Vardhman Textiles Ltd.",
+    "WAAREEENER": "Waaree Energies Ltd.",
+    "WELCORP": "Welspun Corp Ltd.",
+    "WELSPUNLIV": "Welspun Living Ltd.",
+    "WHIRLPOOL": "Whirlpool of India Ltd.",
+    "WIPRO": "Wipro Ltd.",
+    "WOCKPHARMA": "Wockhardt Ltd.",
+    "YESBANK": "Yes Bank Ltd.",
+    "ZEEL": "Zee Entertainment Enterprises Ltd.",
+    "ZENSARTECH": "Zensar Technolgies Ltd.",
+    "ZENTEC": "Zen Technologies Ltd.",
+    "ZFCVINDIA": "ZF Commercial Vehicle Control Systems India Ltd.",
+    "ZYDUSLIFE": "Zydus Lifesciences Ltd.",
+    "ZYDUSWELL": "Zydus Wellness Ltd."
+  },
+  "frozen_universe_membership_sha256": "31b764a95cc03ad1d7ddb6c42340de9125ed2c78b3d436bf0dbc8440e4e38c5e",
   "news_window_start": "2026-11-06T15:00:00+05:30",
   "schema_version": "research-candidates/1.0",
   "session_date": "2026-11-09",
-  "source_failures_last_poll": 10,
+  "source_failures_last_poll": 12,
   "training_eligible": false,
   "universe_status": "OFFICIAL_FETCH:https://www.niftyindices.com/IndexConstituent/ind_nifty500list.csv"
 }

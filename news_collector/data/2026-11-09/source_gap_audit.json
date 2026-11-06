@@ -1,11 +1,11 @@
 {
   "session": "2026-11-09",
-  "generated_at": "2026-11-06T23:42:04.404963+05:30",
+  "generated_at": "2026-11-07T00:51:20.849482+05:30",
   "method": "Symbol + material category presence; NOT event-ID or issuer ISIN reconciliation",
   "category_counts": {
     "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT": 28,
     "MEDIA_ONLY_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS": 2,
-    "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS": 37
+    "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS": 38
   },
   "groups": [
     {
@@ -1370,6 +1370,25 @@
       ]
     },
     {
+      "symbol": "TMCV",
+      "event_category": "regulatory",
+      "media_count": 0,
+      "nse_count": 0,
+      "bse_count": 1,
+      "filing_examples": [
+        {
+          "headline": "Tata Motors Ltd (544569)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/b59a39ec-9f76-4ea1-8b13-d9b453422a10.pdf",
+          "published_at": "2026-11-07T00:37:19+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": [
+        "BSE"
+      ]
+    },
+    {
       "symbol": "TORNTPHARM",
       "event_category": "regulatory",
       "media_count": 0,
@@ -1574,6 +1593,11 @@
       "error": "HTTPError: 404 Client Error: Not Found for url: https://www.livemint.com/rss/industryRSS"
     },
     {
+      "source": "Moneycontrol RSS",
+      "status": "ERROR",
+      "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.moneycontrol.com/rss/latestnews.xml"
+    },
+    {
       "source": "Financial Express legacy RSS",
       "status": "ERROR",
       "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.financialexpress.com/feed/"
@@ -1604,6 +1628,11 @@
       "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.ndtvprofit.com/markets"
     },
     {
+      "source": "Moneycontrol stocks",
+      "status": "ERROR",
+      "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.moneycontrol.com/news/business/stocks/"
+    },
+    {
       "source": "Financial Express markets",
       "status": "ERROR",
       "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.financialexpress.com/market/"
@@ -1623,9 +1652,9 @@
       "status_a": "OK",
       "status_b": "OK",
       "comparison_status": "SNAPSHOT_OVERLAP_ONLY",
-      "feed_a_unique_matched_urls": 369,
-      "feed_b_unique_matched_urls": 369,
-      "both_feeds_same_url": 369,
+      "feed_a_unique_matched_urls": 370,
+      "feed_b_unique_matched_urls": 370,
+      "both_feeds_same_url": 370,
       "only_feed_a_count": 0,
       "only_feed_b_count": 0,
       "only_feed_a_examples": [],
@@ -1635,7 +1664,7 @@
     {
       "feed_a": "BSE announcements RSS",
       "feed_b": "BSE latest announcements alternate",
-      "status_a": "EMPTY",
+      "status_a": "OK",
       "status_b": "EMPTY",
       "comparison_status": "UNAVAILABLE_SOURCE_FAILURE_OR_EMPTY"
     }
