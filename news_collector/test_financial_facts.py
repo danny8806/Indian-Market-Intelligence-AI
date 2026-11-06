@@ -89,6 +89,7 @@ class FactsAndFreezeTests(unittest.TestCase):
                 "session": SESSION, "window_start_inclusive": START.isoformat(),
                 "window_end_exclusive": CUTOFF.isoformat(),
                 "universe_status": "OFFICIAL_FETCH:https://official.example/universe.csv",
+                "generated_at": "2026-11-09T08:50:00+05:30",
                 "sources_failed": 4,
             }))
             t = datetime(2026, 11, 9, 8, 57, tzinfo=IST)
@@ -119,6 +120,7 @@ class FactsAndFreezeTests(unittest.TestCase):
                 "session": SESSION, "window_start_inclusive": START.isoformat(),
                 "window_end_exclusive": CUTOFF.isoformat(),
                 "universe_status": "CACHED_SNAPSHOT_STALENESS_UNKNOWN",
+                "generated_at": "2026-11-09T08:50:00+05:30",
                 "sources_failed": 0,
             }))
             r = run(SESSION, data_root=Path(temp), freeze=True,
