@@ -1,10 +1,10 @@
 {
   "session": "2026-11-09",
-  "generated_at": "2026-11-07T00:51:20.849482+05:30",
+  "generated_at": "2026-11-09T03:57:57.254687+05:30",
   "method": "Symbol + material category presence; NOT event-ID or issuer ISIN reconciliation",
   "category_counts": {
     "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT": 28,
-    "MEDIA_ONLY_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS": 2,
+    "MEDIA_ONLY_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS": 5,
     "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS": 38
   },
   "groups": [
@@ -45,6 +45,23 @@
       "exchanges_seen": [
         "BSE"
       ]
+    },
+    {
+      "symbol": "AMBER",
+      "event_category": "regulatory",
+      "media_count": 1,
+      "nse_count": 0,
+      "bse_count": 0,
+      "filing_examples": [],
+      "media_examples": [
+        {
+          "headline": "Amber Enterprises arm IL JIN Electronics files DRHP for ₹2,500 crore IPO",
+          "url": "https://www.business-standard.com/markets/ipo/amber-enterprises-arm-il-jin-electronics-files-drhp-for-2-500-crore-ipo-126110700332_1.html",
+          "published_at": "2026-11-07T14:27:31+05:30"
+        }
+      ],
+      "state": "MEDIA_ONLY_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": []
     },
     {
       "symbol": "ANURAS",
@@ -496,6 +513,23 @@
       ]
     },
     {
+      "symbol": "DIVISLAB",
+      "event_category": "financial_results",
+      "media_count": 1,
+      "nse_count": 0,
+      "bse_count": 0,
+      "filing_examples": [],
+      "media_examples": [
+        {
+          "headline": "Divi's Labs Q2 Results: PAT surges 64% YoY to Rs 1,127 crore; revenue jumps 35%",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/earnings/divis-labs-q2-results-pat-surges-64-yoy-to-rs-1127-crore-revenue-jumps-35/articleshow/135632058.cms",
+          "published_at": "2026-11-07T14:55:14+05:30"
+        }
+      ],
+      "state": "MEDIA_ONLY_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": []
+    },
+    {
       "symbol": "DOMS",
       "event_category": "financial_results",
       "media_count": 0,
@@ -572,7 +606,7 @@
     {
       "symbol": "GLAND",
       "event_category": "financial_results",
-      "media_count": 1,
+      "media_count": 2,
       "nse_count": 2,
       "bse_count": 2,
       "filing_examples": [
@@ -597,6 +631,11 @@
           "headline": "Q2 Results Highlights: Hindalco Q2 profit zooms, Voltas up 51%, Aster DM, Gland Pharma surge 58%, Siemens grows 5%; Bosch, Coromandel, Honasa profit down",
           "url": "https://www.thehindubusinessline.com/markets/q2-results-today-live-updates-hindalco-ind-bosch-siemens-aster-dm-coromandel-intl-gland-pharma-voltas-nuvama-wealth-3m-india-airtel-lic-titan-mahindra-ongc-company-results-06-november-2026/article71669522.ece",
           "published_at": "2026-11-06T21:39:10+05:30"
+        },
+        {
+          "headline": "Samvat 2083 | Stock Picks Today: Honasa Consumer, Gland Pharma, Siemens, Voltas On Brokerage Radar Ahead Of Muhurat Trading",
+          "url": "https://www.ndtvprofit.com/markets/samvat-2083-stock-picks-today-honasa-consumer-gland-pharma-siemens-voltas-on-brokerage-radar-ahead-of-muhurat-trading-12299546",
+          "published_at": "2026-11-08T12:11:56+05:30"
         }
       ],
       "state": "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT",
@@ -688,7 +727,7 @@
     {
       "symbol": "HONASA",
       "event_category": "financial_results",
-      "media_count": 0,
+      "media_count": 1,
       "nse_count": 0,
       "bse_count": 1,
       "filing_examples": [
@@ -698,7 +737,13 @@
           "published_at": "2026-11-06T17:37:52+05:30"
         }
       ],
-      "media_examples": [],
+      "media_examples": [
+        {
+          "headline": "Samvat 2083 | Stock Picks Today: Honasa Consumer, Gland Pharma, Siemens, Voltas On Brokerage Radar Ahead Of Muhurat Trading",
+          "url": "https://www.ndtvprofit.com/markets/samvat-2083-stock-picks-today-honasa-consumer-gland-pharma-siemens-voltas-on-brokerage-radar-ahead-of-muhurat-trading-12299546",
+          "published_at": "2026-11-08T12:11:56+05:30"
+        }
+      ],
       "state": "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
       "exchanges_seen": [
         "BSE"
@@ -1298,7 +1343,7 @@
     {
       "symbol": "SIEMENS",
       "event_category": "financial_results",
-      "media_count": 3,
+      "media_count": 4,
       "nse_count": 1,
       "bse_count": 0,
       "filing_examples": [
@@ -1343,6 +1388,23 @@
       "exchanges_seen": [
         "BSE"
       ]
+    },
+    {
+      "symbol": "TATASTEEL",
+      "event_category": "financial_results",
+      "media_count": 1,
+      "nse_count": 0,
+      "bse_count": 0,
+      "filing_examples": [],
+      "media_examples": [
+        {
+          "headline": "Tata Steel Q2 net profit up 18.2 per cent Y-o-Y, led by India operations",
+          "url": "https://www.business-standard.com/companies/quarterly-results/tata-steel-q2-fy27-results-net-profit-india-operations-uk-netherlands-126110700767_1.html",
+          "published_at": "2026-11-07T16:09:57+05:30"
+        }
+      ],
+      "state": "MEDIA_ONLY_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": []
     },
     {
       "symbol": "TITAN",
@@ -1479,7 +1541,7 @@
     {
       "symbol": "VOLTAS",
       "event_category": "financial_results",
-      "media_count": 2,
+      "media_count": 3,
       "nse_count": 1,
       "bse_count": 1,
       "filing_examples": [
@@ -1649,24 +1711,43 @@
     {
       "feed_a": "NSE announcements RSS",
       "feed_b": "NSE announcements archive mirror",
-      "status_a": "OK",
-      "status_b": "OK",
-      "comparison_status": "SNAPSHOT_OVERLAP_ONLY",
-      "feed_a_unique_matched_urls": 370,
-      "feed_b_unique_matched_urls": 370,
-      "both_feeds_same_url": 370,
-      "only_feed_a_count": 0,
-      "only_feed_b_count": 0,
-      "only_feed_a_examples": [],
-      "only_feed_b_examples": [],
-      "warning": "URL-level overlap is NOT event-level completeness; feed length, timing and availability differ."
+      "status_a": "EMPTY",
+      "status_b": "EMPTY",
+      "comparison_status": "UNAVAILABLE_SOURCE_FAILURE_OR_EMPTY"
     },
     {
       "feed_a": "BSE announcements RSS",
       "feed_b": "BSE latest announcements alternate",
       "status_a": "OK",
-      "status_b": "EMPTY",
-      "comparison_status": "UNAVAILABLE_SOURCE_FAILURE_OR_EMPTY"
+      "status_b": "OK",
+      "comparison_status": "SNAPSHOT_OVERLAP_ONLY",
+      "feed_a_unique_matched_urls": 236,
+      "feed_b_unique_matched_urls": 233,
+      "both_feeds_same_url": 233,
+      "only_feed_a_count": 3,
+      "only_feed_b_count": 0,
+      "only_feed_a_examples": [
+        {
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/efe46235-c3f2-4117-b3f9-9a7d5872dd88.pdf",
+          "symbols": [
+            "CHENNPETRO"
+          ]
+        },
+        {
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/b59a39ec-9f76-4ea1-8b13-d9b453422a10.pdf",
+          "symbols": [
+            "TMCV"
+          ]
+        },
+        {
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/c2494120-81cc-4575-8ef8-c2427ec514eb.pdf",
+          "symbols": [
+            "CRISIL"
+          ]
+        }
+      ],
+      "only_feed_b_examples": [],
+      "warning": "URL-level overlap is NOT event-level completeness; feed length, timing and availability differ."
     }
   ]
 }

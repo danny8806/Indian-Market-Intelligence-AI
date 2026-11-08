@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-07T00:51:56.552325+05:30",
+  "as_of": "2026-11-09T03:58:15.428255+05:30",
   "candidates": [
     {
       "articles": 14,
@@ -384,7 +384,7 @@
       "symbol": "DATAPATTNS"
     },
     {
-      "articles": 17,
+      "articles": 18,
       "categories": [
         "analyst_meetings",
         "financial_results",
@@ -410,7 +410,7 @@
         "Gland Pharma Limited",
         "Gland Pharma Ltd (543245)"
       ],
-      "material_event_count": 5,
+      "material_event_count": 6,
       "not_a_trade_signal": true,
       "official_filing_count": 15,
       "review_priority": 20,
@@ -430,13 +430,14 @@
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/1e3aa8cb-435b-4731-b179-772a20cfd385.pdf",
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/5f33a96b-1daf-4e4f-904a-19d5c41f2d88.pdf",
         "https://nsearchives.nseindia.com/corporate/GLAND_06112026162953_OutcomeBMQ2FY27_Final.pdf",
+        "https://www.ndtvprofit.com/markets/samvat-2083-stock-picks-today-honasa-consumer-gland-pharma-siemens-voltas-on-brokerage-radar-ahead-of-muhurat-trading-12299546",
         "https://nsearchives.nseindia.com/corporate/xbrl/SAIIM_18003_WebXMLFile_20261106_222105211.xml",
         "https://nsearchives.nseindia.com/corporate/GLAND_06112026170413_PressReleaseQ2FY27_Final.pdf"
       ],
       "symbol": "GLAND"
     },
     {
-      "articles": 9,
+      "articles": 10,
       "categories": [
         "acquisition",
         "analyst_meetings",
@@ -461,7 +462,7 @@
         "Marico Limited",
         "Marico Ltd (531642)",
         "Marico Limited",
-        "Marico to acquire 51% stake in Bonorizon Consumer Ventures for ₹35 crore"
+        "Stocks To Watch Today: Wipro, Zee Entertainment, Asian Paints, Marico, JSW Energy, Voltas & More"
       ],
       "material_event_count": 7,
       "not_a_trade_signal": true,
@@ -475,13 +476,14 @@
         "https://nsearchives.nseindia.com/corporate/marico_06112026171442_SEIntimationn.pdf",
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/5fd422e5-c7df-4501-b66e-a9872860cec1.pdf",
         "https://nsearchives.nseindia.com/corporate/marico_06112026165447_SEtranscript.pdf",
+        "https://www.ndtvprofit.com/markets/stocks-to-watch-today-wipro-zee-entertainment-asian-paints-marico-jsw-energy-voltas-more-12300885",
         "https://www.business-standard.com/companies/news/marico-to-acquire-51-stake-in-bonorizon-consumer-ventures-for-35-crore-126110601971_1.html",
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/1e5c5144-0baf-4dfc-939f-1a977f4deb77.pdf"
       ],
       "symbol": "MARICO"
     },
     {
-      "articles": 26,
+      "articles": 28,
       "categories": [
         "analyst_meetings",
         "financial_results",
@@ -509,7 +511,7 @@
         "Voltas Ltd (500575)",
         "Voltas Limited"
       ],
-      "material_event_count": 5,
+      "material_event_count": 6,
       "not_a_trade_signal": true,
       "official_filing_count": 22,
       "review_priority": 20,
@@ -527,6 +529,7 @@
         "https://nsearchives.nseindia.com/corporate/VOLTAS_RB_06112026165511_01_Financial_Results_signed.pdf",
         "https://nsearchives.nseindia.com/corporate/VOLTAS_RB_06112026171317_02SE_Directorssigned.pdf",
         "https://www.ndtvprofit.com/markets/q2-results-live-updates-november-6-siemens-bosch-hindalco-voltas-among-223-companies-to-announce-earnings-today-12291338",
+        "https://www.ndtvprofit.com/markets/stocks-to-watch-today-wipro-zee-entertainment-asian-paints-marico-jsw-energy-voltas-more-12300885",
         "https://nsearchives.nseindia.com/corporate/VOLTAS_RB_06112026171832_02SE_Directorssigned.pdf",
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/fbf79fab-6a09-484f-8758-292c72db6a37.pdf",
         "https://nsearchives.nseindia.com/corporate/VOLTAS_RB_06112026171534_02SE_Directorssigned.pdf",
@@ -537,13 +540,12 @@
         "https://nsearchives.nseindia.com/corporate/VOLTAS_RB_06112026170542_03_Auditor_appointment_signed.pdf",
         "https://nsearchives.nseindia.com/corporate/xbrl/SAIIM_231_WebXMLFile_20261106_212454399.xml",
         "https://nsearchives.nseindia.com/corporate/VOLTAS_RB_06112026165629_03_Auditor_appointment_signed.pdf",
-        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/7960fad8-2b05-48aa-8431-fd4a05722542.pdf",
-        "https://nsearchives.nseindia.com/corporate/VOLTAS_RB_06112026211403_SEIntimationAudioRecording.pdf"
+        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/7960fad8-2b05-48aa-8431-fd4a05722542.pdf"
       ],
       "symbol": "VOLTAS"
     },
     {
-      "articles": 7,
+      "articles": 8,
       "categories": [
         "financial_results",
         "other"
@@ -565,9 +567,10 @@
         "Siemens Ltd (500550)",
         "Q2 Results Live: Kwality Wall's Narrows Loss, Voltas Net Profit Rises 53%",
         "Siemens Limited to Consider Q2 FY27 Results on November 6 - Multibagg AI",
-        "Siemens Q2 Results: Profit grows 5% to Rs 504 crore"
+        "Siemens Q2 Results: Profit grows 5% to Rs 504 crore",
+        "Samvat 2083 | Stock Picks Today: Honasa Consumer, Gland Pharma, Siemens, Voltas On Brokerage Radar Ahead Of Muhurat Trading"
       ],
-      "material_event_count": 4,
+      "material_event_count": 5,
       "not_a_trade_signal": true,
       "official_filing_count": 3,
       "review_priority": 18,
@@ -578,12 +581,13 @@
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/03500aa9-33d8-4a6f-be13-6eb61845f5d4.pdf",
         "https://www.ndtvprofit.com/markets/q2-results-live-updates-november-6-siemens-bosch-hindalco-voltas-among-223-companies-to-announce-earnings-today-12291338",
         "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQMTY1LWxlLWdGZUNueUx1NTlMaUtpcFBBWmd1c0doTVRzWUpuYTN6SzgyZGxxRlBGdVd1NlZGV1U2WEN3NUhJQ3ZiblZHdWN5b0hXQ00ya25RczVyRW9MczJvaXpuQU15bVp5SEF0ZUtmZWQ4MHNfb3VzUDJIMlhqUWdOMVBKMUpZSHRjbVozT0pTQUlOWGlvYXpFMjhGaEs2UFFZS0NQRGU?oc=5",
-        "https://economictimes.indiatimes.com/markets/stocks/earnings/siemens-q2-results-profit-grows-5-to-rs-504-crore/articleshow/135605589.cms"
+        "https://economictimes.indiatimes.com/markets/stocks/earnings/siemens-q2-results-profit-grows-5-to-rs-504-crore/articleshow/135605589.cms",
+        "https://www.ndtvprofit.com/markets/samvat-2083-stock-picks-today-honasa-consumer-gland-pharma-siemens-voltas-on-brokerage-radar-ahead-of-muhurat-trading-12299546"
       ],
       "symbol": "SIEMENS"
     },
     {
-      "articles": 7,
+      "articles": 8,
       "categories": [
         "management",
         "other",
@@ -604,6 +608,7 @@
         "Asian Paints Limited",
         "Asian Paints Ltd (500820)",
         "Asian Paints Limited",
+        "Stocks To Watch Today: Wipro, Zee Entertainment, Asian Paints, Marico, JSW Energy, Voltas & More",
         "Asian Paints Limited",
         "Asian Paints Limited",
         "Asian Paints Ltd (500820)"
@@ -617,6 +622,7 @@
         "https://nsearchives.nseindia.com/corporate/ASIANPAINT_06112026220521_SE_intimation_-_Appointment_of_ID.pdf",
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/ddc90afe-51c7-4e86-984c-dbb5d641c44e.pdf",
         "https://nsearchives.nseindia.com/corporate/xbrl/CIM_288_WebXMLFile_20261106_221625263.xml",
+        "https://www.ndtvprofit.com/markets/stocks-to-watch-today-wipro-zee-entertainment-asian-paints-marico-jsw-energy-voltas-more-12300885",
         "https://nsearchives.nseindia.com/corporate/ASIANPAINT_06112026220150_SE_intimation_-_Appointment_of_ID.pdf",
         "https://nsearchives.nseindia.com/corporate/ASIANPAINT_06112026214436_SE_intimation_Result_of_Postal_ballot.pdf",
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/c6c189db-e010-4c6e-a997-b50d6d33767a.pdf"
@@ -624,8 +630,9 @@
       "symbol": "ASIANPAINT"
     },
     {
-      "articles": 6,
+      "articles": 7,
       "categories": [
+        "corporate_actions",
         "other",
         "regulatory"
       ],
@@ -644,18 +651,20 @@
         "Dabur India Ltd (500096)",
         "Dabur India Limited",
         "Sebi warns Dabur India over delay in disclosing USFDA warning letter",
+        "Dr. Lal Path Labs Ltd. - Ex-Date: 11-Nov-2026",
         "Dabur India Limited",
         "Dabur India Ltd (500096)"
       ],
       "material_event_count": 3,
       "not_a_trade_signal": true,
-      "official_filing_count": 5,
+      "official_filing_count": 6,
       "review_priority": 17,
       "source_urls": [
         "https://nsearchives.nseindia.com/corporate/DABURA_06112026172059_RTA.pdf",
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/81a60025-e3a4-47dd-84ae-35c07676a331.pdf",
         "https://nsearchives.nseindia.com/corporate/xbrl/AIATOP_787_WebXMLFile_20261106_165147970.xml",
         "https://www.business-standard.com/markets/news/sebi-warns-dabur-india-over-delay-in-disclosing-usfda-warning-letter-126110601897_1.html",
+        "https://www.nseindia.com/companies-listing/corporate-filings-actions",
         "https://nsearchives.nseindia.com/corporate/DABURA_06112026162506_Letter.pdf",
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/cc33e14d-93aa-4fdc-9612-3f44c08b3fbb.pdf"
       ],
@@ -917,6 +926,54 @@
       "symbol": "FIRSTCRY"
     },
     {
+      "articles": 13,
+      "categories": [
+        "analyst_meetings",
+        "financial_results",
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "headline_samples": [
+        "Honasa Consumer Ltd (544014)",
+        "Honasa Consumer Limited",
+        "Honasa Consumer Ltd (544014)",
+        "Honasa Consumer Limited",
+        "Honasa Consumer Limited",
+        "Honasa Consumer Limited",
+        "Honasa Consumer Limited",
+        "Honasa Consumer Limited"
+      ],
+      "material_event_count": 2,
+      "not_a_trade_signal": true,
+      "official_filing_count": 11,
+      "review_priority": 14,
+      "source_urls": [
+        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/55693e8c-53c3-4f61-983b-449b42ad8c1c.pdf",
+        "https://nsearchives.nseindia.com/corporate/xbrl/ALTERATION_OF_CAPITAL_AND_FUND_RAISING_21481_WebXMLFile_20261106_175034456.xml",
+        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/48fb7bc7-1c84-4564-8826-7890542bd154.pdf",
+        "https://nsearchives.nseindia.com/corporate/xbrl/ALTERATION_OF_CAPITAL_AND_FUND_RAISING_21481_WebXMLFile_20261106_175112210.xml",
+        "https://nsearchives.nseindia.com/corporate/HONASA16_06112026174339_Audiorecordings.pdf",
+        "https://nsearchives.nseindia.com/corporate/xbrl/ALTERATION_OF_CAPITAL_AND_FUND_RAISING_21481_WebXMLFile_20261106_174959142.xml",
+        "https://nsearchives.nseindia.com/corporate/xbrl/SAIIM_21481_WebXMLFile_20261106_174808782.xml",
+        "https://nsearchives.nseindia.com/corporate/HONASA16_06112026151433_Grantofoptions.pdf",
+        "https://nsearchives.nseindia.com/corporate/xbrl/REG30_PARA_B_21481_WebXMLFile_20261106_174825992.xml",
+        "https://nsearchives.nseindia.com/corporate/HONASA16_06112026152106_ESOPAllotment.pdf",
+        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/ebec159d-9295-4c17-8aa8-6f539527e814.pdf",
+        "https://www.ndtvprofit.com/markets/samvat-2083-stock-picks-today-honasa-consumer-gland-pharma-siemens-voltas-on-brokerage-radar-ahead-of-muhurat-trading-12299546",
+        "https://www.thehindubusinessline.com/companies/honasa-consumer-q2-net-profit-rises-87-to-7324-crore-revenue-up-36-to-73118-crore/article71674687.ece"
+      ],
+      "symbol": "HONASA"
+    },
+    {
       "articles": 5,
       "categories": [
         "analyst_meetings",
@@ -954,9 +1011,10 @@
       "symbol": "INOXWIND"
     },
     {
-      "articles": 4,
+      "articles": 5,
       "categories": [
         "analyst_meetings",
+        "corporate_actions",
         "financial_results",
         "other"
       ],
@@ -973,16 +1031,18 @@
       "headline_samples": [
         "IRB Infrastructure Developers Ltd (532947)",
         "IRB Infrastructure Developers Ltd (532947)",
+        "Dr. Lal Path Labs Ltd. - Ex-Date: 11-Nov-2026",
         "IRB Infrastructure Developers Limited",
         "IRB Infrastructure Developers Limited"
       ],
       "material_event_count": 2,
       "not_a_trade_signal": true,
-      "official_filing_count": 4,
+      "official_filing_count": 5,
       "review_priority": 14,
       "source_urls": [
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/39d025de-4816-49fe-bb91-12ef4de40111.pdf",
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/0489bcab-5f25-4d8a-83e7-1f1b74725727.pdf",
+        "https://www.nseindia.com/companies-listing/corporate-filings-actions",
         "https://nsearchives.nseindia.com/corporate/IRB_06112026145950_Audio_recording_of_earnings_call.pdf",
         "https://nsearchives.nseindia.com/corporate/IRB_06112026162516_IRBIDL_Newspaper_Advertisement.pdf"
       ],
@@ -1027,7 +1087,7 @@
       "symbol": "KPIL"
     },
     {
-      "articles": 5,
+      "articles": 6,
       "categories": [
         "acquisition",
         "other"
@@ -1046,6 +1106,7 @@
         "Mahindra & Mahindra Financial Services Limited",
         "Mahindra & Mahindra Limited",
         "Mahindra & Mahindra Financial Services Limited",
+        "Stock markets end marginally lower in special Muhurat trading, snapping seven-day rally",
         "Mahindra & Mahindra Limited",
         "Mahindra & Mahindra Ltd (500520)"
       ],
@@ -1057,13 +1118,14 @@
         "https://nsearchives.nseindia.com/content/debt/WDM/M_MFIN_06112026150606_credit_rating.pdf",
         "https://nsearchives.nseindia.com/corporate/xbrl/REG30_Restructuring_679_WebXMLFile_20261106_162619362.xml",
         "https://nsearchives.nseindia.com/corporate/M_MFIN_06112026150354_credit_rating.pdf",
+        "https://www.thehindu.com/business/Industry/stock-markets-begin-samvat-2083-on-a-firm-note-in-special-muhurat-trading/article71680829.ece",
         "https://nsearchives.nseindia.com/corporate/AmitDodani_06112026153559_SEIntimationSMLRightsIssue.pdf",
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/d3b4d8d0-972b-4690-9ac9-e9120f601fa0.pdf"
       ],
       "symbol": "M&M"
     },
     {
-      "articles": 10,
+      "articles": 12,
       "categories": [
         "analyst_meetings",
         "management",
@@ -1086,9 +1148,9 @@
         "Wipro Limited",
         "Wipro Limited",
         "Wipro Ltd (507685)",
+        "Stocks To Watch Today: Wipro, Zee Entertainment, Asian Paints, Marico, JSW Energy, Voltas & More",
         "Wipro appoints Angan Guha as President and CEO for Americas 2 SMU",
-        "Wipro Limited",
-        "Wipro Ltd (507685)"
+        "F&O Strategy: Buy Wipro call option"
       ],
       "material_event_count": 2,
       "not_a_trade_signal": true,
@@ -1100,7 +1162,9 @@
         "https://nsearchives.nseindia.com/corporate/Wipro_Secretarial_06112026172340_Reg_30_Investor_Meet_Nov_6.pdf",
         "https://nsearchives.nseindia.com/corporate/xbrl/SAIIM_624_WebXMLFile_20261106_174209133.xml",
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/948f92ab-c3b7-4de5-a502-1c0163823829.pdf",
+        "https://www.ndtvprofit.com/markets/stocks-to-watch-today-wipro-zee-entertainment-asian-paints-marico-jsw-energy-voltas-more-12300885",
         "https://www.thehindubusinessline.com/info-tech/wipro-appoints-angan-guha-as-president-and-ceo-for-americas-2-smu/article71675202.ece",
+        "https://www.thehindubusinessline.com/portfolio/commodity-analysis/fampo-strategy-buy-wipro-call-option/article71677295.ece",
         "https://nsearchives.nseindia.com/corporate/xbrl/CIM_624_WebXMLFile_20261106_194136550.xml",
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/af709745-c0fa-407e-a1f9-d17b822264aa.pdf",
         "https://www.business-standard.com/companies/news/angan-guha-rejoins-wipro-as-ceo-of-its-americas-2-unit-effective-dec-8-126110601866_1.html",
@@ -1473,53 +1537,6 @@
       "symbol": "HDFCBANK"
     },
     {
-      "articles": 12,
-      "categories": [
-        "analyst_meetings",
-        "financial_results",
-        "other"
-      ],
-      "evidence_summary": {
-        "conflicting_metrics": [],
-        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
-        "negative_metrics": [],
-        "not_a_price_prediction": true,
-        "positive_metrics": [],
-        "yoy_metrics_with_direction": 0
-      },
-      "explicit_financial_facts": [],
-      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
-      "headline_samples": [
-        "Honasa Consumer Ltd (544014)",
-        "Honasa Consumer Limited",
-        "Honasa Consumer Ltd (544014)",
-        "Honasa Consumer Limited",
-        "Honasa Consumer Limited",
-        "Honasa Consumer Limited",
-        "Honasa Consumer Limited",
-        "Honasa Consumer Limited"
-      ],
-      "material_event_count": 1,
-      "not_a_trade_signal": true,
-      "official_filing_count": 11,
-      "review_priority": 11,
-      "source_urls": [
-        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/55693e8c-53c3-4f61-983b-449b42ad8c1c.pdf",
-        "https://nsearchives.nseindia.com/corporate/xbrl/ALTERATION_OF_CAPITAL_AND_FUND_RAISING_21481_WebXMLFile_20261106_175034456.xml",
-        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/48fb7bc7-1c84-4564-8826-7890542bd154.pdf",
-        "https://nsearchives.nseindia.com/corporate/xbrl/ALTERATION_OF_CAPITAL_AND_FUND_RAISING_21481_WebXMLFile_20261106_175112210.xml",
-        "https://nsearchives.nseindia.com/corporate/HONASA16_06112026174339_Audiorecordings.pdf",
-        "https://nsearchives.nseindia.com/corporate/xbrl/ALTERATION_OF_CAPITAL_AND_FUND_RAISING_21481_WebXMLFile_20261106_174959142.xml",
-        "https://nsearchives.nseindia.com/corporate/xbrl/SAIIM_21481_WebXMLFile_20261106_174808782.xml",
-        "https://nsearchives.nseindia.com/corporate/HONASA16_06112026151433_Grantofoptions.pdf",
-        "https://nsearchives.nseindia.com/corporate/xbrl/REG30_PARA_B_21481_WebXMLFile_20261106_174825992.xml",
-        "https://nsearchives.nseindia.com/corporate/HONASA16_06112026152106_ESOPAllotment.pdf",
-        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/ebec159d-9295-4c17-8aa8-6f539527e814.pdf",
-        "https://www.thehindubusinessline.com/companies/honasa-consumer-q2-net-profit-rises-87-to-7324-crore-revenue-up-36-to-73118-crore/article71674687.ece"
-      ],
-      "symbol": "HONASA"
-    },
-    {
       "articles": 6,
       "categories": [
         "analyst_meetings",
@@ -1632,8 +1649,9 @@
       "symbol": "TORNTPHARM"
     },
     {
-      "articles": 2,
+      "articles": 3,
       "categories": [
+        "other",
         "regulatory"
       ],
       "evidence_summary": {
@@ -1648,6 +1666,7 @@
       "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
       "headline_samples": [
         "Hero MotoCorp Limited",
+        "Hero's two-wheeler crown under threat as Honda extends retail lead",
         "Hero MotoCorp Ltd (500182)"
       ],
       "material_event_count": 2,
@@ -1656,6 +1675,7 @@
       "review_priority": 10,
       "source_urls": [
         "https://nsearchives.nseindia.com/corporate/HEROMOTO_06112026204820_Stxintimation6112026newspaperadvertisment.pdf",
+        "https://www.business-standard.com/industry/auto/industry-auto-honda-four-month-sales-lead-puts-hero-motocorp-top-position-at-risk-126110800258_1.html",
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/04ee57f5-8d8f-44cd-8c10-855e25f067ab.pdf"
       ],
       "symbol": "HEROMOTOCO"
@@ -1871,6 +1891,39 @@
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/0b2194d2-65d4-4256-a454-305e283acd03.pdf"
       ],
       "symbol": "DOMS"
+    },
+    {
+      "articles": 3,
+      "categories": [
+        "analyst_meetings",
+        "corporate_actions",
+        "financial_results"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "headline_samples": [
+        "Housing & Urban Development Corporation Ltd (540530)",
+        "Housing & Urban Development Corporation Limited",
+        "Dr. Lal Path Labs Ltd. - Ex-Date: 11-Nov-2026"
+      ],
+      "material_event_count": 1,
+      "not_a_trade_signal": true,
+      "official_filing_count": 3,
+      "review_priority": 9,
+      "source_urls": [
+        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/1dfea1f3-0619-473b-babe-eef6ce9e3988.pdf",
+        "https://nsearchives.nseindia.com/corporate/HUDCO_06112026171110_NSEBSEReg3006112026_Audio.pdf",
+        "https://www.nseindia.com/companies-listing/corporate-filings-actions"
+      ],
+      "symbol": "HUDCO"
     },
     {
       "articles": 3,
@@ -2102,7 +2155,7 @@
       "symbol": "ABCAPITAL"
     },
     {
-      "articles": 11,
+      "articles": 12,
       "categories": [
         "analyst_meetings",
         "other"
@@ -2121,11 +2174,11 @@
         "India's foreign exchange reserves drop by $2.69 billion to $717 billion",
         "Export Import Bank of India",
         "Indian rupee strengthens past 94/$ as oil slides, foreign inflows return",
+        "SBI expands US footprint as California subsidiary opens first Texas branch",
         "CBI Files Rs 904-Crore Bank Fraud Case Against Businessman Kishore Biyani",
         "State Bank of India",
         "State Bank of India",
-        "Central Bank of India",
-        "State Bank of India (500112)"
+        "Central Bank of India"
       ],
       "material_event_count": 0,
       "not_a_trade_signal": true,
@@ -2135,6 +2188,7 @@
         "https://www.business-standard.com/finance/news/india-s-foreign-exchange-reserves-drop-by-2-69-billion-to-717-billion-126110601467_1.html",
         "https://nsearchives.nseindia.com/content/debt/WDM/export_06112026163512_LettertoNSEFinal.pdf",
         "https://economictimes.indiatimes.com/markets/forex/indian-rupee-strengthens-past-94/-as-oil-slides-foreign-inflows-return/articleshow/135604040.cms",
+        "https://www.business-standard.com/companies/news/sbi-expands-us-footprint-as-california-subsidiary-opens-first-texas-branch-126110800036_1.html",
         "https://www.ndtv.com/india-news/cbi-files-rs-904-crore-bank-fraud-case-against-businessman-kishore-biyani-12292746",
         "https://nsearchives.nseindia.com/corporate/xbrl/SAIIM_238_WebXMLFile_20261106_155318485.xml",
         "https://nsearchives.nseindia.com/corporate/SBIN_06112026154641_MeetOutcome06112026.pdf",
@@ -2367,6 +2421,41 @@
     {
       "articles": 5,
       "categories": [
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-09T03:57:57.254687+05:30",
+      "headline_samples": [
+        "Finolex Cables Limited",
+        "Finolex Cables Limited",
+        "Finolex Cables Limited",
+        "Finolex Cables Limited",
+        "Muhurat Trading 2026: Finolex Cables Jumps 17% As Samvat 2083 Begins. These Stocks Are Also Rallying"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 4,
+      "review_priority": 8,
+      "source_urls": [
+        "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1755508_07112026083727_WEB.xml",
+        "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1755504_07112026082832_WEB.xml",
+        "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1755507_07112026083600_WEB.xml",
+        "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1755505_07112026082928_WEB.xml",
+        "https://www.ndtvprofit.com/markets/muhurat-trading-2026-finolex-cables-jumps-17-as-samvat-2083-begins-these-stocks-are-also-rallying-12299944"
+      ],
+      "symbol": "FINCABLES"
+    },
+    {
+      "articles": 5,
+      "categories": [
         "analyst_meetings",
         "other"
       ],
@@ -2401,7 +2490,7 @@
       "symbol": "HAVELLS"
     },
     {
-      "articles": 4,
+      "articles": 5,
       "categories": [
         "analyst_meetings",
         "other"
@@ -2420,7 +2509,8 @@
         "Hindustan Petroleum Corporation Limited",
         "Hindustan Petroleum Corporation Ltd (500104)",
         "Hindustan Petroleum Corporation Ltd (500104)",
-        "Hindustan Petroleum Corporation Limited"
+        "Hindustan Petroleum Corporation Limited",
+        "Centre counters Karnataka's E20 claims, says samples meet quality standards"
       ],
       "material_event_count": 0,
       "not_a_trade_signal": true,
@@ -2430,7 +2520,8 @@
         "https://nsearchives.nseindia.com/corporate/HINDPETRO1_06112026162440_Investor_Conference_-_CITIC_CLSA_-_November_2026.pdf",
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/cfec0f00-f1c5-4d13-b209-bc2d8b2b0bb8.pdf",
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/ef381599-0b69-4ef8-bf22-48d7729bfb46.pdf",
-        "https://nsearchives.nseindia.com/corporate/HINDPETRO1_06112026163302_Investor_Conference_-_J_M_Financials_signed.pdf"
+        "https://nsearchives.nseindia.com/corporate/HINDPETRO1_06112026163302_Investor_Conference_-_J_M_Financials_signed.pdf",
+        "https://www.business-standard.com/india-news/centre-counters-karnataka-s-e20-claims-says-samples-meet-quality-standards-126110700854_1.html"
       ],
       "symbol": "HINDPETRO"
     },
@@ -2548,7 +2639,7 @@
       "symbol": "JPPOWER"
     },
     {
-      "articles": 4,
+      "articles": 5,
       "categories": [
         "other"
       ],
@@ -2564,6 +2655,7 @@
       "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
       "headline_samples": [
         "JSW Energy Ltd (533148)",
+        "Stocks To Watch Today: Wipro, Zee Entertainment, Asian Paints, Marico, JSW Energy, Voltas & More",
         "JSW Energy Limited",
         "JSW Energy Ltd (533148)",
         "JSW Energy Limited"
@@ -2574,6 +2666,7 @@
       "review_priority": 8,
       "source_urls": [
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/9a0d6082-5967-4e5e-b030-4e2bb1952b73.pdf",
+        "https://www.ndtvprofit.com/markets/stocks-to-watch-today-wipro-zee-entertainment-asian-paints-marico-jsw-energy-voltas-more-12300885",
         "https://nsearchives.nseindia.com/corporate/AJAYJSWEL_06112026192908_Letter_to_BSENSE_060112026_isapur_pennar_windpowerSd.pdf",
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/5f3904de-6d3b-4b27-a8e6-cb21caa15cfb.pdf",
         "https://nsearchives.nseindia.com/corporate/AJAYJSWEL_06112026171614_LettertoBSENSEFinal.pdf"
@@ -2919,36 +3012,6 @@
       "symbol": "HINDALCO"
     },
     {
-      "articles": 2,
-      "categories": [
-        "analyst_meetings",
-        "financial_results"
-      ],
-      "evidence_summary": {
-        "conflicting_metrics": [],
-        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
-        "negative_metrics": [],
-        "not_a_price_prediction": true,
-        "positive_metrics": [],
-        "yoy_metrics_with_direction": 0
-      },
-      "explicit_financial_facts": [],
-      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
-      "headline_samples": [
-        "Housing & Urban Development Corporation Ltd (540530)",
-        "Housing & Urban Development Corporation Limited"
-      ],
-      "material_event_count": 1,
-      "not_a_trade_signal": true,
-      "official_filing_count": 2,
-      "review_priority": 7,
-      "source_urls": [
-        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/1dfea1f3-0619-473b-babe-eef6ce9e3988.pdf",
-        "https://nsearchives.nseindia.com/corporate/HUDCO_06112026171110_NSEBSEReg3006112026_Audio.pdf"
-      ],
-      "symbol": "HUDCO"
-    },
-    {
       "articles": 3,
       "categories": [
         "financial_results",
@@ -3168,6 +3231,38 @@
     {
       "articles": 3,
       "categories": [
+        "corporate_actions",
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "headline_samples": [
+        "Balkrishna Industries Ltd (502355)",
+        "Dr. Lal Path Labs Ltd. - Ex-Date: 11-Nov-2026",
+        "Balkrishna Industries Limited"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 3,
+      "review_priority": 6,
+      "source_urls": [
+        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/8b4e4521-cecb-4707-9812-a75e2b6c57b2.pdf",
+        "https://www.nseindia.com/companies-listing/corporate-filings-actions",
+        "https://nsearchives.nseindia.com/corporate/BALKRISIND_06112026154243_Lettertostockexchangenewspaperresultssigned.pdf"
+      ],
+      "symbol": "BALKRISIND"
+    },
+    {
+      "articles": 3,
+      "categories": [
         "analyst_meetings"
       ],
       "evidence_summary": {
@@ -3197,7 +3292,7 @@
       "symbol": "BHARATFORG"
     },
     {
-      "articles": 6,
+      "articles": 7,
       "categories": [
         "analyst_meetings",
         "other"
@@ -3214,6 +3309,7 @@
       "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
       "headline_samples": [
         "Bharti Airtel reclaims 2nd spot in mcap rankings, overtakes Jio Platforms",
+        "Stock markets end marginally lower in special Muhurat trading, snapping seven-day rally",
         "Bharti Airtel Limited",
         "Airtel restores ₹299 prepaid plan withdrawn in August as additions slow",
         "Bharti Airtel Limited",
@@ -3226,6 +3322,7 @@
       "review_priority": 6,
       "source_urls": [
         "https://www.business-standard.com/companies/news/bharti-airtel-reclaims-2nd-spot-in-mcap-rankings-overtakes-jio-platforms-126110601497_1.html",
+        "https://www.thehindu.com/business/Industry/stock-markets-begin-samvat-2083-on-a-firm-note-in-special-muhurat-trading/article71680829.ece",
         "https://nsearchives.nseindia.com/corporate/BHARTIARTL_06112026160637_BhartiAirtelSTXdisclosure.pdf",
         "https://www.business-standard.com/companies/news/airtel-restores-299-prepaid-plan-withdrawn-in-august-as-additions-slow-126110601758_1.html",
         "https://nsearchives.nseindia.com/corporate/xbrl/SAIIM_2002_WebXMLFile_20261106_161304693.xml",
@@ -3488,9 +3585,10 @@
       "symbol": "IDFCFIRSTB"
     },
     {
-      "articles": 3,
+      "articles": 4,
       "categories": [
-        "analyst_meetings"
+        "analyst_meetings",
+        "other"
       ],
       "evidence_summary": {
         "conflicting_metrics": [],
@@ -3504,6 +3602,7 @@
       "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
       "headline_samples": [
         "Intellect Design Arena Ltd (538835)",
+        "Tech Query: Alkem Laboratories, Intellect Design Arena, Trent, SRF — What is the outlook? Where are these stocks headed?",
         "Intellect Design Arena Limited",
         "Intellect Design Arena Limited"
       ],
@@ -3513,6 +3612,7 @@
       "review_priority": 6,
       "source_urls": [
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/dd6c2d16-0cf6-42ac-8966-31ec1914ea5b.pdf",
+        "https://www.thehindubusinessline.com/portfolio/technical-analysis/tech-query-alkem-laboratoriesintellect-design-arena-trent-srf-what-is-the-outlook-where-are-these-stocks-headed/article71674469.ece",
         "https://nsearchives.nseindia.com/corporate/INTELLECT_06112026155435_Earningscalltranscript06112026.pdf",
         "https://nsearchives.nseindia.com/corporate/xbrl/SAIIM_11206_WebXMLFile_20261106_164851841.xml"
       ],
@@ -3581,6 +3681,38 @@
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/5836eace-0e9c-4854-8265-90ac475a92a6.pdf"
       ],
       "symbol": "IREDA"
+    },
+    {
+      "articles": 3,
+      "categories": [
+        "corporate_actions",
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "headline_samples": [
+        "JM FINANCIAL PRODUCTS Ltd (975188)",
+        "Dr. Lal Path Labs Ltd. - Ex-Date: 11-Nov-2026",
+        "JM Financial Properties and Holdings Ltd (732326)"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 3,
+      "review_priority": 6,
+      "source_urls": [
+        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/407c7493-fc7a-409d-83cd-bcd43d52f082.pdf",
+        "https://www.nseindia.com/companies-listing/corporate-filings-actions",
+        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/b5eda55e-4ff9-4c27-a008-0a6bee766f8e.pdf"
+      ],
+      "symbol": "JMFINANCIL"
     },
     {
       "articles": 3,
@@ -3962,7 +4094,7 @@
       "symbol": "RELIANCE"
     },
     {
-      "articles": 5,
+      "articles": 6,
       "categories": [
         "analyst_meetings",
         "other"
@@ -3978,6 +4110,7 @@
       "explicit_financial_facts": [],
       "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
       "headline_samples": [
+        "SBI expands US footprint as California subsidiary opens first Texas branch",
         "CBI Files Rs 904-Crore Bank Fraud Case Against Businessman Kishore Biyani",
         "State Bank of India",
         "State Bank of India",
@@ -3989,6 +4122,7 @@
       "official_filing_count": 3,
       "review_priority": 6,
       "source_urls": [
+        "https://www.business-standard.com/companies/news/sbi-expands-us-footprint-as-california-subsidiary-opens-first-texas-branch-126110800036_1.html",
         "https://www.ndtv.com/india-news/cbi-files-rs-904-crore-bank-fraud-case-against-businessman-kishore-biyani-12292746",
         "https://nsearchives.nseindia.com/corporate/xbrl/SAIIM_238_WebXMLFile_20261106_155318485.xml",
         "https://nsearchives.nseindia.com/corporate/SBIN_06112026154641_MeetOutcome06112026.pdf",
@@ -4120,8 +4254,9 @@
       "symbol": "APTUS"
     },
     {
-      "articles": 1,
+      "articles": 3,
       "categories": [
+        "other",
         "regulatory"
       ],
       "evidence_summary": {
@@ -4135,14 +4270,18 @@
       "explicit_financial_facts": [],
       "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
       "headline_samples": [
-        "Indian Oil Corporation Ltd (530965)"
+        "Indian Oil Corporation Ltd (530965)",
+        "IOC to buy crude, LPG ships as West Asia crisis exposes shipping risks",
+        "Centre counters Karnataka's E20 claims, says samples meet quality standards"
       ],
       "material_event_count": 1,
       "not_a_trade_signal": true,
       "official_filing_count": 1,
       "review_priority": 5,
       "source_urls": [
-        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/3EA4CDED_068A_4971_B144_4C27F7C9B8A3_151255.pdf"
+        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/3EA4CDED_068A_4971_B144_4C27F7C9B8A3_151255.pdf",
+        "https://www.business-standard.com/companies/news/ioc-to-buy-crude-lpg-ships-as-west-asia-crisis-exposes-shipping-risks-126110800164_1.html",
+        "https://www.business-standard.com/india-news/centre-counters-karnataka-s-e20-claims-says-samples-meet-quality-standards-126110700854_1.html"
       ],
       "symbol": "IOC"
     },
@@ -4172,6 +4311,46 @@
         "https://nsearchives.nseindia.com/corporate/xbrl/REG30_Restructuring_2266_WebXMLFile_20261106_182343067.xml"
       ],
       "symbol": "JSWSTEEL"
+    },
+    {
+      "articles": 7,
+      "categories": [
+        "financial_results",
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-09T03:57:57.254687+05:30",
+      "headline_samples": [
+        "Tata Steel Limited",
+        "Tata Steel spurts 3% in Muhurat trading session post steady Q2 earnings",
+        "Stock markets end marginally lower in special Muhurat trading, snapping seven-day rally",
+        "Muhurat Trading Close: Sensex dips 29 pts, Nifty ends at 24,986; Sun Pharma, Tata Steel shine",
+        "Tata Steel Q2 net profit up 18.2 per cent Y-o-Y, led by India operations",
+        "Muhurat trading: Sensex up 320 pts, Nifty crosses 25,100; Tata Steel, Sun Pharma among top gainers",
+        "Diwali Muhurat Trading: Sun Pharma, Tata Steel Headline Gains As Index Nears 25,100"
+      ],
+      "material_event_count": 1,
+      "not_a_trade_signal": true,
+      "official_filing_count": 1,
+      "review_priority": 5,
+      "source_urls": [
+        "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1755526_08112026034044_WEB.xml",
+        "https://www.business-standard.com/markets/news/tata-steel-spurts-3-in-muhurat-trading-session-post-steady-q2-earnings-126110800313_1.html",
+        "https://www.thehindu.com/business/Industry/stock-markets-begin-samvat-2083-on-a-firm-note-in-special-muhurat-trading/article71680829.ece",
+        "https://www.business-standard.com/markets/news/stock-market-live-november-8-muhurat-trading-live-nse-bse-sensex-today-nifty50-gift-nifty-crude-oil-prices-today-samvat-2083-tata-steel-share-price-126110800267_1.html",
+        "https://www.business-standard.com/companies/quarterly-results/tata-steel-q2-fy27-results-net-profit-india-operations-uk-netherlands-126110700767_1.html",
+        "https://economictimes.indiatimes.com/markets/stocks/news/muhurat-trading-sensex-up-320-pts-nifty-crosses-25100-tata-steel-sun-pharma-among-top-gainers/videoshow/135656015.cms",
+        "https://www.ndtvprofit.com/markets/diwali-muhurat-trading-sun-pharma-tata-steel-headline-gains-as-index-nears-25-100-12299914"
+      ],
+      "symbol": "TATASTEEL"
     },
     {
       "articles": 2,
@@ -4352,35 +4531,6 @@
     {
       "articles": 2,
       "categories": [
-        "other"
-      ],
-      "evidence_summary": {
-        "conflicting_metrics": [],
-        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
-        "negative_metrics": [],
-        "not_a_price_prediction": true,
-        "positive_metrics": [],
-        "yoy_metrics_with_direction": 0
-      },
-      "explicit_financial_facts": [],
-      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
-      "headline_samples": [
-        "Balkrishna Industries Ltd (502355)",
-        "Balkrishna Industries Limited"
-      ],
-      "material_event_count": 0,
-      "not_a_trade_signal": true,
-      "official_filing_count": 2,
-      "review_priority": 4,
-      "source_urls": [
-        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/8b4e4521-cecb-4707-9812-a75e2b6c57b2.pdf",
-        "https://nsearchives.nseindia.com/corporate/BALKRISIND_06112026154243_Lettertostockexchangenewspaperresultssigned.pdf"
-      ],
-      "symbol": "BALKRISIND"
-    },
-    {
-      "articles": 2,
-      "categories": [
         "management",
         "other"
       ],
@@ -4523,36 +4673,6 @@
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/6f348e3c-bc70-4595-83a5-6a9f32ccd4c5.pdf"
       ],
       "symbol": "GODREJCP"
-    },
-    {
-      "articles": 2,
-      "categories": [
-        "corporate_actions",
-        "other"
-      ],
-      "evidence_summary": {
-        "conflicting_metrics": [],
-        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
-        "negative_metrics": [],
-        "not_a_price_prediction": true,
-        "positive_metrics": [],
-        "yoy_metrics_with_direction": 0
-      },
-      "explicit_financial_facts": [],
-      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
-      "headline_samples": [
-        "JM FINANCIAL PRODUCTS Ltd (975188)",
-        "JM Financial Properties and Holdings Ltd (732326)"
-      ],
-      "material_event_count": 0,
-      "not_a_trade_signal": true,
-      "official_filing_count": 2,
-      "review_priority": 4,
-      "source_urls": [
-        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/407c7493-fc7a-409d-83cd-bcd43d52f082.pdf",
-        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/b5eda55e-4ff9-4c27-a008-0a6bee766f8e.pdf"
-      ],
-      "symbol": "JMFINANCIL"
     },
     {
       "articles": 2,
@@ -4734,7 +4854,40 @@
       "symbol": "MTARTECH"
     },
     {
-      "articles": 2,
+      "articles": 3,
+      "categories": [
+        "analyst_meetings",
+        "corporate_actions",
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-06T23:23:11.352230+05:30",
+      "headline_samples": [
+        "Dr. Lal Path Labs Ltd. - Ex-Date: 11-Nov-2026",
+        "Tamil Nadu Greenlights Setting Up PSU For Executing Big-Ticket Govt Construction Projects",
+        "NBCC (India) Limited"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 2,
+      "review_priority": 4,
+      "source_urls": [
+        "https://www.nseindia.com/companies-listing/corporate-filings-actions",
+        "https://www.ndtvprofit.com/india/tamil-nadu-greenlights-setting-up-psu-for-executing-big-ticket-govt-construction-projects-12300273",
+        "https://nsearchives.nseindia.com/corporate/NBCC_06112026155648_Audio_call_intimation.pdf"
+      ],
+      "symbol": "NBCC"
+    },
+    {
+      "articles": 3,
       "categories": [
         "other"
       ],
@@ -4749,6 +4902,7 @@
       "explicit_financial_facts": [],
       "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
       "headline_samples": [
+        "Oil India Limited In Assam Suspends 4 Officials After 3 Killed In Fire",
         "Oil India Ltd (533106)",
         "Oil India Limited"
       ],
@@ -4757,10 +4911,41 @@
       "official_filing_count": 2,
       "review_priority": 4,
       "source_urls": [
+        "https://www.ndtv.com/india-news/oil-india-limited-in-assam-suspends-4-officials-after-3-killed-in-fire-12299750",
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/f746f92e-9960-4edf-9e16-4ab90dfaab73.pdf",
         "https://nsearchives.nseindia.com/corporate/OIL_06112026170007_Press_Release06112026_signed.pdf"
       ],
       "symbol": "OIL"
+    },
+    {
+      "articles": 2,
+      "categories": [
+        "analyst_meetings",
+        "corporate_actions"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "headline_samples": [
+        "Oil & Natural Gas Corporation Limited",
+        "Dr. Lal Path Labs Ltd. - Ex-Date: 11-Nov-2026"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 2,
+      "review_priority": 4,
+      "source_urls": [
+        "https://nsearchives.nseindia.com/corporate/ONGC_06112026215343_linkaudio06112026SD.pdf",
+        "https://www.nseindia.com/companies-listing/corporate-filings-actions"
+      ],
+      "symbol": "ONGC"
     },
     {
       "articles": 2,
@@ -4997,6 +5182,37 @@
       "symbol": "TATACAP"
     },
     {
+      "articles": 3,
+      "categories": [
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-09T03:57:57.254687+05:30",
+      "headline_samples": [
+        "Tata Chemicals posts loss at ₹50 cr in Q2 on lower realisations, higher energy and logistics costs",
+        "Tata Chemicals Limited",
+        "Tata Chemicals Limited"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 2,
+      "review_priority": 4,
+      "source_urls": [
+        "https://www.thehindubusinessline.com/companies/tata-chemicals-posts-loss-at-50-cr-in-q2-on-lower-realisations-higher-energy-and-logistics-costs/article71680490.ece",
+        "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1755498_07112026075211_WEB.xml",
+        "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1755499_07112026075331_WEB.xml"
+      ],
+      "symbol": "TATACHEM"
+    },
+    {
       "articles": 2,
       "categories": [
         "other"
@@ -5088,6 +5304,120 @@
     {
       "articles": 1,
       "categories": [
+        "regulatory"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-09T03:57:57.254687+05:30",
+      "headline_samples": [
+        "Amber Enterprises arm IL JIN Electronics files DRHP for ₹2,500 crore IPO"
+      ],
+      "material_event_count": 1,
+      "not_a_trade_signal": true,
+      "official_filing_count": 0,
+      "review_priority": 3,
+      "source_urls": [
+        "https://www.business-standard.com/markets/ipo/amber-enterprises-arm-il-jin-electronics-files-drhp-for-2-500-crore-ipo-126110700332_1.html"
+      ],
+      "symbol": "AMBER"
+    },
+    {
+      "articles": 2,
+      "categories": [
+        "financial_results",
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-09T03:57:57.254687+05:30",
+      "headline_samples": [
+        "Divi's Labs Q2 Results: PAT surges 64% YoY to Rs 1,127 crore; revenue jumps 35%",
+        "Muhurat Trading 2026: Finolex Cables Jumps 17% As Samvat 2083 Begins. These Stocks Are Also Rallying"
+      ],
+      "material_event_count": 1,
+      "not_a_trade_signal": true,
+      "official_filing_count": 0,
+      "review_priority": 3,
+      "source_urls": [
+        "https://economictimes.indiatimes.com/markets/stocks/earnings/divis-labs-q2-results-pat-surges-64-yoy-to-rs-1127-crore-revenue-jumps-35/articleshow/135632058.cms",
+        "https://www.ndtvprofit.com/markets/muhurat-trading-2026-finolex-cables-jumps-17-as-samvat-2083-begins-these-stocks-are-also-rallying-12299944"
+      ],
+      "symbol": "DIVISLAB"
+    },
+    {
+      "articles": 2,
+      "categories": [
+        "corporate_actions",
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-09T03:57:57.254687+05:30",
+      "headline_samples": [
+        "Dr. Lal Path Labs Ltd. - Ex-Date: 11-Nov-2026",
+        "Samir Arora backed Helios Mid Cap Fund adds Aurobindo Pharma, 2 others, increase stake in Paytm, MCX and 16 others"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 1,
+      "review_priority": 2,
+      "source_urls": [
+        "https://www.nseindia.com/companies-listing/corporate-filings-actions",
+        "https://economictimes.indiatimes.com/mf/analysis/samir-arora-backed-helios-mid-cap-fund-adds-aurobindo-pharma-2-others-increase-stake-in-paytm-mcx-and-16-others/articleshow/135631989.cms"
+      ],
+      "symbol": "AUROPHARMA"
+    },
+    {
+      "articles": 1,
+      "categories": [
+        "corporate_actions"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-09T03:57:57.254687+05:30",
+      "headline_samples": [
+        "Dr. Lal Path Labs Ltd. - Ex-Date: 11-Nov-2026"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 1,
+      "review_priority": 2,
+      "source_urls": [
+        "https://www.nseindia.com/companies-listing/corporate-filings-actions"
+      ],
+      "symbol": "BALRAMCHIN"
+    },
+    {
+      "articles": 1,
+      "categories": [
         "other"
       ],
       "evidence_summary": {
@@ -5115,6 +5445,60 @@
     {
       "articles": 1,
       "categories": [
+        "corporate_actions"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-09T03:57:57.254687+05:30",
+      "headline_samples": [
+        "Dr. Lal Path Labs Ltd. - Ex-Date: 11-Nov-2026"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 1,
+      "review_priority": 2,
+      "source_urls": [
+        "https://www.nseindia.com/companies-listing/corporate-filings-actions"
+      ],
+      "symbol": "CAMS"
+    },
+    {
+      "articles": 1,
+      "categories": [
+        "corporate_actions"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-09T03:57:57.254687+05:30",
+      "headline_samples": [
+        "Dr. Lal Path Labs Ltd. - Ex-Date: 11-Nov-2026"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 1,
+      "review_priority": 2,
+      "source_urls": [
+        "https://www.nseindia.com/companies-listing/corporate-filings-actions"
+      ],
+      "symbol": "CHAMBLFERT"
+    },
+    {
+      "articles": 1,
+      "categories": [
         "other"
       ],
       "evidence_summary": {
@@ -5138,6 +5522,33 @@
         "https://nsearchives.nseindia.com/content/debt/WDM/JashJS_06112026161223_CertificateofPaymentObligation6thNov2026.pdf"
       ],
       "symbol": "CHOLAFIN"
+    },
+    {
+      "articles": 1,
+      "categories": [
+        "corporate_actions"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-09T03:57:57.254687+05:30",
+      "headline_samples": [
+        "Dr. Lal Path Labs Ltd. - Ex-Date: 11-Nov-2026"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 1,
+      "review_priority": 2,
+      "source_urls": [
+        "https://www.nseindia.com/companies-listing/corporate-filings-actions"
+      ],
+      "symbol": "CONCOR"
     },
     {
       "articles": 2,
@@ -5198,6 +5609,60 @@
     {
       "articles": 1,
       "categories": [
+        "corporate_actions"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-09T03:57:57.254687+05:30",
+      "headline_samples": [
+        "Dr. Lal Path Labs Ltd. - Ex-Date: 11-Nov-2026"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 1,
+      "review_priority": 2,
+      "source_urls": [
+        "https://www.nseindia.com/companies-listing/corporate-filings-actions"
+      ],
+      "symbol": "HINDUNILVR"
+    },
+    {
+      "articles": 1,
+      "categories": [
+        "corporate_actions"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-09T03:57:57.254687+05:30",
+      "headline_samples": [
+        "Dr. Lal Path Labs Ltd. - Ex-Date: 11-Nov-2026"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 1,
+      "review_priority": 2,
+      "source_urls": [
+        "https://www.nseindia.com/companies-listing/corporate-filings-actions"
+      ],
+      "symbol": "LALPATHLAB"
+    },
+    {
+      "articles": 1,
+      "categories": [
         "analyst_meetings"
       ],
       "evidence_summary": {
@@ -5252,7 +5717,7 @@
     {
       "articles": 1,
       "categories": [
-        "analyst_meetings"
+        "corporate_actions"
       ],
       "evidence_summary": {
         "conflicting_metrics": [],
@@ -5263,18 +5728,18 @@
         "yoy_metrics_with_direction": 0
       },
       "explicit_financial_facts": [],
-      "first_seen_at": "2026-11-06T23:23:11.352230+05:30",
+      "first_seen_at": "2026-11-09T03:57:57.254687+05:30",
       "headline_samples": [
-        "NBCC (India) Limited"
+        "Dr. Lal Path Labs Ltd. - Ex-Date: 11-Nov-2026"
       ],
       "material_event_count": 0,
       "not_a_trade_signal": true,
       "official_filing_count": 1,
       "review_priority": 2,
       "source_urls": [
-        "https://nsearchives.nseindia.com/corporate/NBCC_06112026155648_Audio_call_intimation.pdf"
+        "https://www.nseindia.com/companies-listing/corporate-filings-actions"
       ],
-      "symbol": "NBCC"
+      "symbol": "NLCINDIA"
     },
     {
       "articles": 1,
@@ -5306,33 +5771,6 @@
     {
       "articles": 1,
       "categories": [
-        "analyst_meetings"
-      ],
-      "evidence_summary": {
-        "conflicting_metrics": [],
-        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
-        "negative_metrics": [],
-        "not_a_price_prediction": true,
-        "positive_metrics": [],
-        "yoy_metrics_with_direction": 0
-      },
-      "explicit_financial_facts": [],
-      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
-      "headline_samples": [
-        "Oil & Natural Gas Corporation Limited"
-      ],
-      "material_event_count": 0,
-      "not_a_trade_signal": true,
-      "official_filing_count": 1,
-      "review_priority": 2,
-      "source_urls": [
-        "https://nsearchives.nseindia.com/corporate/ONGC_06112026215343_linkaudio06112026SD.pdf"
-      ],
-      "symbol": "ONGC"
-    },
-    {
-      "articles": 1,
-      "categories": [
         "other"
       ],
       "evidence_summary": {
@@ -5356,6 +5794,63 @@
         "https://nsearchives.nseindia.com/corporate/xbrl/ALTERATION_OF_CAPITAL_AND_FUND_RAISING_3142_WebXMLFile_20261106_231305209.xml"
       ],
       "symbol": "PERSISTENT"
+    },
+    {
+      "articles": 2,
+      "categories": [
+        "corporate_actions",
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "headline_samples": [
+        "Dr. Lal Path Labs Ltd. - Ex-Date: 11-Nov-2026",
+        "Premier Energies Q2 net profit rises 31% to ₹462.4 crore"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 1,
+      "review_priority": 2,
+      "source_urls": [
+        "https://www.nseindia.com/companies-listing/corporate-filings-actions",
+        "https://www.thehindubusinessline.com/companies/premier-energies-q2-net-profit-rises-31-to-4624-crore/article71673725.ece"
+      ],
+      "symbol": "PREMIERENE"
+    },
+    {
+      "articles": 1,
+      "categories": [
+        "corporate_actions"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-09T03:57:57.254687+05:30",
+      "headline_samples": [
+        "Dr. Lal Path Labs Ltd. - Ex-Date: 11-Nov-2026"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 1,
+      "review_priority": 2,
+      "source_urls": [
+        "https://www.nseindia.com/companies-listing/corporate-filings-actions"
+      ],
+      "symbol": "RITES"
     },
     {
       "articles": 1,
@@ -5439,6 +5934,64 @@
       "symbol": "ZENTEC"
     },
     {
+      "articles": 3,
+      "categories": [
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-09T03:57:57.254687+05:30",
+      "headline_samples": [
+        "Adani Enterprises plans ₹35,000-40,000 crore annual capex in next two years",
+        "Adani Enterprises plans ₹40,000 cr annual capex over two years",
+        "Adani Enterprises plans ₹35,000-₹40,000 cr annual capex in next two years"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 0,
+      "review_priority": 0,
+      "source_urls": [
+        "https://www.thehindu.com/business/Industry/adani-enterprises-plans-35000-40000-crore-annual-capex-in-next-two-years/article71680605.ece",
+        "https://www.thehindubusinessline.com/companies/adani-enterprises-plans-35000-40000-cr-annual-capex-in-next-two-years/article71680572.ece",
+        "https://www.business-standard.com/companies/news/adani-enterprises-plans-35-000-40-000-cr-annual-capex-in-next-two-years-126110800133_1.html"
+      ],
+      "symbol": "ADANIENT"
+    },
+    {
+      "articles": 1,
+      "categories": [
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-09T03:57:57.254687+05:30",
+      "headline_samples": [
+        "Tech Query: Alkem Laboratories, Intellect Design Arena, Trent, SRF — What is the outlook? Where are these stocks headed?"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 0,
+      "review_priority": 0,
+      "source_urls": [
+        "https://www.thehindubusinessline.com/portfolio/technical-analysis/tech-query-alkem-laboratoriesintellect-design-arena-trent-srf-what-is-the-outlook-where-are-these-stocks-headed/article71674469.ece"
+      ],
+      "symbol": "ALKEM"
+    },
+    {
       "articles": 1,
       "categories": [
         "other"
@@ -5479,18 +6032,180 @@
         "yoy_metrics_with_direction": 0
       },
       "explicit_financial_facts": [],
-      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "first_seen_at": "2026-11-09T03:57:57.254687+05:30",
       "headline_samples": [
-        "Jindal SAW to set up 300,000-tonne seamless pipe plant in Abu Dhabi"
+        "Stock markets end marginally lower in special Muhurat trading, snapping seven-day rally"
       ],
       "material_event_count": 0,
       "not_a_trade_signal": true,
       "official_filing_count": 0,
       "review_priority": 0,
       "source_urls": [
-        "https://www.thehindu.com/business/Industry/jindal-saw-to-set-up-300000-tonne-seamless-pipe-plant-in-abu-dhabi/article71674906.ece"
+        "https://www.thehindu.com/business/Industry/stock-markets-begin-samvat-2083-on-a-firm-note-in-special-muhurat-trading/article71680829.ece"
       ],
-      "symbol": "JINDALSAW"
+      "symbol": "AXISBANK"
+    },
+    {
+      "articles": 1,
+      "categories": [
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-09T03:57:57.254687+05:30",
+      "headline_samples": [
+        "Centre counters Karnataka's E20 claims, says samples meet quality standards"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 0,
+      "review_priority": 0,
+      "source_urls": [
+        "https://www.business-standard.com/india-news/centre-counters-karnataka-s-e20-claims-says-samples-meet-quality-standards-126110700854_1.html"
+      ],
+      "symbol": "BPCL"
+    },
+    {
+      "articles": 1,
+      "categories": [
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-09T03:57:57.254687+05:30",
+      "headline_samples": [
+        "Diwali turned lucky for these 8 stocks! Investors' wealth more than doubled, returns soar up to 191%"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 0,
+      "review_priority": 0,
+      "source_urls": [
+        "https://economictimes.indiatimes.com/markets/stocks/news/diwali-turned-lucky-for-these-8-stocks-investors-wealth-more-than-doubled-returns-soar-up-to-191/slideshow/135652712.cms"
+      ],
+      "symbol": "CPPLUS"
+    },
+    {
+      "articles": 1,
+      "categories": [
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-09T03:57:57.254687+05:30",
+      "headline_samples": [
+        "Three investors offload 1.84% stake in Groww for ₹2,457 crore in bulk deals"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 0,
+      "review_priority": 0,
+      "source_urls": [
+        "https://www.business-standard.com/companies/news/three-investors-offload-1-84-stake-in-groww-for-2-457-crore-in-bulk-deals-126110701037_1.html"
+      ],
+      "symbol": "GROWW"
+    },
+    {
+      "articles": 1,
+      "categories": [
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-09T03:57:57.254687+05:30",
+      "headline_samples": [
+        "ICICI Bank, Divi's among 14 NSE 500 stocks hit new highs in Muhurat session"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 0,
+      "review_priority": 0,
+      "source_urls": [
+        "https://www.business-standard.com/markets/news/icici-bank-divi-s-among-14-nse-500-stocks-hit-new-highs-in-muhurat-session-126110800329_1.html"
+      ],
+      "symbol": "ICICIBANK"
+    },
+    {
+      "articles": 1,
+      "categories": [
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-09T03:57:57.254687+05:30",
+      "headline_samples": [
+        "Stock markets end marginally lower in special Muhurat trading, snapping seven-day rally"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 0,
+      "review_priority": 0,
+      "source_urls": [
+        "https://www.thehindu.com/business/Industry/stock-markets-begin-samvat-2083-on-a-firm-note-in-special-muhurat-trading/article71680829.ece"
+      ],
+      "symbol": "INDIGO"
+    },
+    {
+      "articles": 1,
+      "categories": [
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-09T03:57:57.254687+05:30",
+      "headline_samples": [
+        "Stock markets end marginally lower in special Muhurat trading, snapping seven-day rally"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 0,
+      "review_priority": 0,
+      "source_urls": [
+        "https://www.thehindu.com/business/Industry/stock-markets-begin-samvat-2083-on-a-firm-note-in-special-muhurat-trading/article71680829.ece"
+      ],
+      "symbol": "INFY"
     },
     {
       "articles": 1,
@@ -5508,19 +6223,19 @@
       "explicit_financial_facts": [],
       "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
       "headline_samples": [
-        "Premier Energies Q2 net profit rises 31% to ₹462.4 crore"
+        "Jindal SAW to set up 300,000-tonne seamless pipe plant in Abu Dhabi"
       ],
       "material_event_count": 0,
       "not_a_trade_signal": true,
       "official_filing_count": 0,
       "review_priority": 0,
       "source_urls": [
-        "https://www.thehindubusinessline.com/companies/premier-energies-q2-net-profit-rises-31-to-4624-crore/article71673725.ece"
+        "https://www.thehindu.com/business/Industry/jindal-saw-to-set-up-300000-tonne-seamless-pipe-plant-in-abu-dhabi/article71674906.ece"
       ],
-      "symbol": "PREMIERENE"
+      "symbol": "JINDALSAW"
     },
     {
-      "articles": 2,
+      "articles": 3,
       "categories": [
         "other"
       ],
@@ -5536,7 +6251,8 @@
       "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
       "headline_samples": [
         "PVR INOX Issues Clarification After Food Counter Temporarily Shut Over Complaint",
-        "Man Claims Cups Reused To Serve Soft Drinks At PVR Inox In Bengaluru, Company Responds"
+        "Man Claims Cups Reused To Serve Soft Drinks At PVR Inox In Bengaluru, Company Responds",
+        "Samir Arora backed Helios Mid Cap Fund adds Aurobindo Pharma, 2 others, increase stake in Paytm, MCX and 16 others"
       ],
       "material_event_count": 0,
       "not_a_trade_signal": true,
@@ -5544,9 +6260,37 @@
       "review_priority": 0,
       "source_urls": [
         "https://www.ndtvprofit.com/india/food-safety-crackdown-pvr-inox-issues-clarification-after-bengaluru-theatre-food-counter-temporarily-shut-over-cup-reuse-complaint-12290536",
-        "https://www.ndtv.com/india-news/bengaluru-pvr-inox-beverage-counter-forum-mall-found-serving-drinks-in-used-cups-sealed-12291769"
+        "https://www.ndtv.com/india-news/bengaluru-pvr-inox-beverage-counter-forum-mall-found-serving-drinks-in-used-cups-sealed-12291769",
+        "https://economictimes.indiatimes.com/mf/analysis/samir-arora-backed-helios-mid-cap-fund-adds-aurobindo-pharma-2-others-increase-stake-in-paytm-mcx-and-16-others/articleshow/135631989.cms"
       ],
       "symbol": "PVRINOX"
+    },
+    {
+      "articles": 1,
+      "categories": [
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-09T03:57:57.254687+05:30",
+      "headline_samples": [
+        "Muhurat Trading 2026: Finolex Cables Jumps 17% As Samvat 2083 Begins. These Stocks Are Also Rallying"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 0,
+      "review_priority": 0,
+      "source_urls": [
+        "https://www.ndtvprofit.com/markets/muhurat-trading-2026-finolex-cables-jumps-17-as-samvat-2083-begins-these-stocks-are-also-rallying-12299944"
+      ],
+      "symbol": "SUNPHARMA"
     },
     {
       "articles": 1,
@@ -5576,7 +6320,7 @@
       "symbol": "TATAPOWER"
     },
     {
-      "articles": 1,
+      "articles": 2,
       "categories": [
         "other"
       ],
@@ -5591,16 +6335,74 @@
       "explicit_financial_facts": [],
       "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
       "headline_samples": [
-        "Tech Mahindra to acquire more shares in Pininfarina, raise stake to 92.59%"
+        "Tech Mahindra to acquire more shares in Pininfarina, raise stake to 92.59%",
+        "Former Tech Mahindra Executive Came Home For Diwali. A Parking Dispute Ended In His Murder"
       ],
       "material_event_count": 0,
       "not_a_trade_signal": true,
       "official_filing_count": 0,
       "review_priority": 0,
       "source_urls": [
-        "https://www.business-standard.com/companies/news/tech-mahindra-acquire-more-shares-in-pininfarina-raise-stake-to-92-59-pc-126110601080_1.html"
+        "https://www.business-standard.com/companies/news/tech-mahindra-acquire-more-shares-in-pininfarina-raise-stake-to-92-59-pc-126110601080_1.html",
+        "https://www.ndtvprofit.com/india/former-tech-mahindra-executive-came-home-for-diwali-a-parking-dispute-ended-in-his-murder-in-faridabad-paramjeet-dhankar-12299473"
       ],
       "symbol": "TECHM"
+    },
+    {
+      "articles": 2,
+      "categories": [
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-09T03:57:57.254687+05:30",
+      "headline_samples": [
+        "Tech Query: Alkem Laboratories, Intellect Design Arena, Trent, SRF — What is the outlook? Where are these stocks headed?",
+        "Stock markets end marginally lower in special Muhurat trading, snapping seven-day rally"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 0,
+      "review_priority": 0,
+      "source_urls": [
+        "https://www.thehindubusinessline.com/portfolio/technical-analysis/tech-query-alkem-laboratoriesintellect-design-arena-trent-srf-what-is-the-outlook-where-are-these-stocks-headed/article71674469.ece",
+        "https://www.thehindu.com/business/Industry/stock-markets-begin-samvat-2083-on-a-firm-note-in-special-muhurat-trading/article71680829.ece"
+      ],
+      "symbol": "TRENT"
+    },
+    {
+      "articles": 1,
+      "categories": [
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-09T03:57:57.254687+05:30",
+      "headline_samples": [
+        "Diwali turned lucky for these 8 stocks! Investors' wealth more than doubled, returns soar up to 191%"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 0,
+      "review_priority": 0,
+      "source_urls": [
+        "https://economictimes.indiatimes.com/markets/stocks/news/diwali-turned-lucky-for-these-8-stocks-investors-wealth-more-than-doubled-returns-soar-up-to-191/slideshow/135652712.cms"
+      ],
+      "symbol": "WELCORP"
     }
   ],
   "cautions": [
@@ -5611,11 +6413,24 @@
     "Preview created after cutoff is unsuitable for historical model evaluation.",
     "Premarket frozen snapshot includes collector_last_poll_at; intervening minutes may contain uncollected news."
   ],
-  "collector_last_poll_at": "2026-11-07T00:51:20.849482+05:30",
-  "company_count": 164,
+  "collector_last_poll_at": "2026-11-09T03:57:57.254687+05:30",
+  "company_count": 190,
   "cutoff_exclusive": "2026-11-09T09:00:00+05:30",
   "data_mode": "PRE_CUTOFF_PREVIEW_NOT_FROZEN",
   "doc_evidence_register": [
+    {
+      "document_sha256": "641bb5b838e0cce5ab087ed15467d3f711f312c998e82b285caf2257a66dea5d",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "id": "03056dd2e0ad971a3df1135f",
+      "parsed_at": "2026-11-09T03:58:09.283314+05:30",
+      "published_at": "2026-11-06T18:51:41+05:30",
+      "symbols": [
+        "DATAPATTNS"
+      ],
+      "url": "https://nsearchives.nseindia.com/corporate/Datapatterns_06112026184749_OutcomeofBoardMeeting06Nov2026.pdf"
+    },
     {
       "document_sha256": "0d66d242130353c8b0ac49c99817e84bc7a6a54d91af9d67d846d315847dccec",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
@@ -5643,6 +6458,19 @@
       "url": "https://nsearchives.nseindia.com/corporate/SiemensRaj_06112026154718_SEIntimation.pdf"
     },
     {
+      "document_sha256": "641bb5b838e0cce5ab087ed15467d3f711f312c998e82b285caf2257a66dea5d",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "id": "0fe17972adf1ba8a46c7a215",
+      "parsed_at": "2026-11-09T03:58:11.813270+05:30",
+      "published_at": "2026-11-06T19:08:13+05:30",
+      "symbols": [
+        "DATAPATTNS"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/51102e2a-0ac1-4e2b-afe8-e0c53b008833.pdf"
+    },
+    {
       "document_sha256": "87f0080c59c29ab6b3b92de518f4d8959e19aac6f67d767b7b448a3b5970ba56",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -5654,6 +6482,19 @@
         "MCX"
       ],
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/239a1eee-a2c5-42d0-96ef-702283505403.pdf"
+    },
+    {
+      "document_sha256": "62e267b3c66263a2dc60c9ab6d451805ff015cdbfb923b27a9bf8ef3f946502d",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "id": "188781a828a1f4e22bcb29d1",
+      "parsed_at": "2026-11-09T03:58:11.093995+05:30",
+      "published_at": "2026-11-06T16:10:26+05:30",
+      "symbols": [
+        "IKS"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/5741ead0-fc9a-4db9-b4a1-124ee77770c8.pdf"
     },
     {
       "document_sha256": "19d556352cd7ec538793f02c7e9e396c8183b4ed0b9c2fe8f22b13830b01bb66",
@@ -5682,6 +6523,19 @@
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/2b73a253-4e82-4736-97fb-eee6352de664.pdf"
     },
     {
+      "document_sha256": "e4d679558698d474a70826dc578124972ccf4b9c1147778ce859f9342147ff2a",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "id": "21ae3b27438c946cdaf37f08",
+      "parsed_at": "2026-11-09T03:58:09.281540+05:30",
+      "published_at": "2026-11-06T18:27:44+05:30",
+      "symbols": [
+        "AZAD"
+      ],
+      "url": "https://nsearchives.nseindia.com/corporate/AZAD2356_06112026182458_Covering.pdf"
+    },
+    {
       "document_sha256": "429940016537e4e0783a56df834b7fb2456e3c4419db4effe28c375a93c2b3cd",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -5693,6 +6547,19 @@
         "HONASA"
       ],
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/55693e8c-53c3-4f61-983b-449b42ad8c1c.pdf"
+    },
+    {
+      "document_sha256": "641bb5b838e0cce5ab087ed15467d3f711f312c998e82b285caf2257a66dea5d",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "id": "2336ca3a16db6be16aaed483",
+      "parsed_at": "2026-11-09T03:58:11.566901+05:30",
+      "published_at": "2026-11-06T18:45:53+05:30",
+      "symbols": [
+        "DATAPATTNS"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/49e86c49-db83-454c-b936-c884b94fe36c.pdf"
     },
     {
       "document_sha256": "6c7cad3c597b969b7d2475c0e0f199c253228cedf67439c0151fafa1b7ceef6b",
@@ -5762,6 +6629,32 @@
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/c76238c4-8a6c-4b67-955d-8dd025f4f3d8.pdf"
     },
     {
+      "document_sha256": "1d6e4c3d7532c7b6ce13b90186a425b1cd846b330043dd2caed400797685e673",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "id": "2e7447dd7087f427489fc5b5",
+      "parsed_at": "2026-11-09T03:58:11.400090+05:30",
+      "published_at": "2026-11-06T16:45:45+05:30",
+      "symbols": [
+        "SHREECEM"
+      ],
+      "url": "https://nsearchives.nseindia.com/corporate/SHREECEM_06112026164526_NSE_BSE_Demand_order_061126.pdf"
+    },
+    {
+      "document_sha256": "209956df835a1467eb77cd0f4897cd6a5988a83deb8f4ee0faac929ca4d15dc4",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "id": "30315ed5ce839cf57b4d4b8b",
+      "parsed_at": "2026-11-09T03:58:11.433225+05:30",
+      "published_at": "2026-11-06T16:58:11+05:30",
+      "symbols": [
+        "MARICO"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/d31fa742-4a85-4fe5-91b6-aa10b653682e.pdf"
+    },
+    {
       "document_sha256": "a536164506602d54bb72652953f81d7a01423b57bf5ee77f16d34e3468217b9e",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -5773,6 +6666,45 @@
         "USHAMART"
       ],
       "url": "https://nsearchives.nseindia.com/corporate/USHAMART_06112026164844_BMIntimation06112026.pdf"
+    },
+    {
+      "document_sha256": "7de89a404be0a0c38653c03ed6e37b235419cea4341fe1c08a3d8b39c7e32204",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "id": "335ddb072417ff5d20b4b1d6",
+      "parsed_at": "2026-11-09T03:58:09.972964+05:30",
+      "published_at": "2026-11-06T19:54:53+05:30",
+      "symbols": [
+        "DATAPATTNS"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/466bfc14-6e54-400b-bf5b-72d220b032bc.pdf"
+    },
+    {
+      "document_sha256": "1d6e4c3d7532c7b6ce13b90186a425b1cd846b330043dd2caed400797685e673",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "id": "43986dc1e8aae5441f38d062",
+      "parsed_at": "2026-11-09T03:58:11.199012+05:30",
+      "published_at": "2026-11-06T16:42:06+05:30",
+      "symbols": [
+        "SHREECEM"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/dff8bdaf-136b-4825-b910-827d5ba45781.pdf"
+    },
+    {
+      "document_sha256": "8e247eaa0263182094e2e8ff9f0787d32351e56d0975c205cdd83326c9a41906",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "id": "440aaab51ade13a2d146ad79",
+      "parsed_at": "2026-11-09T03:58:10.003831+05:30",
+      "published_at": "2026-11-06T19:58:29+05:30",
+      "symbols": [
+        "PFOCUS"
+      ],
+      "url": "https://nsearchives.nseindia.com/corporate/PFOCUS_06112026195546_IntimationOfBoardMeetingsigned.pdf"
     },
     {
       "document_sha256": "d97b045dc054d84d507d681495c7606a63afd87c1629e8205a8a24ae06ccbf4d",
@@ -5881,6 +6813,19 @@
       "url": "https://nsearchives.nseindia.com/corporate/JUBLFOOD_06112026152011_FOutcome_of_BM.pdf"
     },
     {
+      "document_sha256": "1902b660f31c4f3cc5cff7ef27c04a5aa294d49873012474c8d88d36f824ecd4",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "id": "5fbdddcb9caf1b20f2a043da",
+      "parsed_at": "2026-11-09T03:58:11.928365+05:30",
+      "published_at": "2026-11-06T21:37:13+05:30",
+      "symbols": [
+        "ASIANPAINT"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/ddc90afe-51c7-4e86-984c-dbb5d641c44e.pdf"
+    },
+    {
       "document_sha256": "83a3458939f8aaedd7bd9d0a9ff2d92e98339d31c2bc349f7553f91b9d0ece07",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -5972,6 +6917,19 @@
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/1dfea1f3-0619-473b-babe-eef6ce9e3988.pdf"
     },
     {
+      "document_sha256": "e4d679558698d474a70826dc578124972ccf4b9c1147778ce859f9342147ff2a",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "id": "7aa73c6adfd70c4603d00595",
+      "parsed_at": "2026-11-09T03:58:09.282237+05:30",
+      "published_at": "2026-11-06T18:47:45+05:30",
+      "symbols": [
+        "AZAD"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/b503fcc5-3502-4eb4-aad9-5c3e8271a276.pdf"
+    },
+    {
       "document_sha256": "4ab4f5f34017760bce8acb6eb957e5cd142711b70639f61e21f4604eb5f26de8",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -5996,6 +6954,32 @@
         "FIRSTCRY"
       ],
       "url": "https://nsearchives.nseindia.com/corporate/BRAINBEES_06112026180823_PriorIntimationofBM.pdf"
+    },
+    {
+      "document_sha256": "53da8e7de25cff4a9f43b2b1c315420a9d93ac1afae0c7984cac79c6026acb1d",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "id": "8648250f72272722772fe445",
+      "parsed_at": "2026-11-09T03:58:10.407416+05:30",
+      "published_at": "2026-11-06T20:07:19+05:30",
+      "symbols": [
+        "PTCIL"
+      ],
+      "url": "https://nsearchives.nseindia.com/corporate/PTCINDUSTRIES_06112026200707_Prior_Intimation_Board_Meeting_14112026.pdf"
+    },
+    {
+      "document_sha256": "7de89a404be0a0c38653c03ed6e37b235419cea4341fe1c08a3d8b39c7e32204",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "id": "8ae46c24a6fa4271c0580753",
+      "parsed_at": "2026-11-09T03:58:10.883358+05:30",
+      "published_at": "2026-11-06T20:01:35+05:30",
+      "symbols": [
+        "DATAPATTNS"
+      ],
+      "url": "https://nsearchives.nseindia.com/corporate/Datapatterns_06112026200123_IntimationofPressReleaseQ2FY27.pdf"
     },
     {
       "document_sha256": "9320d386a6b1f18924ae658e3dfe45e5709aee4ae1c9beaacfa8c6e6b38695d9",
@@ -6142,6 +7126,19 @@
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/5821f22b-cbb7-478c-aed9-fcae1d06f0ec.pdf"
     },
     {
+      "document_sha256": "7638fdd0a064d73dc104e8d26de3f7e68e01c5b63f369e0eb0cee0a2d097c820",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "id": "b506eb55938613f8d9aeba66",
+      "parsed_at": "2026-11-09T03:58:09.281881+05:30",
+      "published_at": "2026-11-06T18:38:19+05:30",
+      "symbols": [
+        "VIJAYA"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/d6238ebf-26f0-4ffe-902b-fb71c9a4208a.pdf"
+    },
+    {
       "document_sha256": "c0ded67ac5f3df924c6e67f84c5281fa94129511d1b96e6739bfc788009029a6",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -6254,6 +7251,32 @@
       "url": "https://nsearchives.nseindia.com/corporate/JUBLFOOD_06112026152646_LettertoShareholders.pdf"
     },
     {
+      "document_sha256": "8e247eaa0263182094e2e8ff9f0787d32351e56d0975c205cdd83326c9a41906",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "id": "d11e5e67b6e352a777b056c1",
+      "parsed_at": "2026-11-09T03:58:10.407207+05:30",
+      "published_at": "2026-11-06T19:59:25+05:30",
+      "symbols": [
+        "PFOCUS"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/1e6fa806-e49b-4c96-8ba0-fa0d2c8c887d.pdf"
+    },
+    {
+      "document_sha256": "b927e34252f63edbc1733d62cf41bb490d95cceda20a1a2119b59249bf5170c7",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "id": "d32b6714c04809a5de929caa",
+      "parsed_at": "2026-11-09T03:58:11.151094+05:30",
+      "published_at": "2026-11-06T16:20:04+05:30",
+      "symbols": [
+        "BRITANNIA"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/9f6d4223-37f8-4712-8f2b-88140765df95.pdf"
+    },
+    {
       "document_sha256": "d97b045dc054d84d507d681495c7606a63afd87c1629e8205a8a24ae06ccbf4d",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -6317,6 +7340,19 @@
         "INOXWIND"
       ],
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/abf340f9-40ee-458b-b213-99701ab5c394.pdf"
+    },
+    {
+      "document_sha256": "f67f24338e94d1a8bcbd806969b63a7e1fb5f02c97901bc44335754ba235762b",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "id": "efca9356339ff0421b23187a",
+      "parsed_at": "2026-11-09T03:58:09.698096+05:30",
+      "published_at": "2026-11-06T19:50:45+05:30",
+      "symbols": [
+        "ANURAS"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/a3e81e0e-058a-452c-85de-c01ddb023b62.pdf"
     },
     {
       "document_sha256": "0be77b9b2caa45ff2f74aba440835c5c23b583e5bb6923dd026c3be6df0d9ec1",
@@ -6403,9 +7439,22 @@
         "VOLTAS"
       ],
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/4d6c8e4a-79da-4c73-ade1-d580341b1635.pdf"
+    },
+    {
+      "document_sha256": "72cc52edd0f9225507fe6c69fbe2993a92a8e47e1928a90eeb20bed7d235a586",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "id": "ff904d766c5133786cf2e6d4",
+      "parsed_at": "2026-11-09T03:58:10.575842+05:30",
+      "published_at": "2026-11-06T20:41:27+05:30",
+      "symbols": [
+        "SCHNEIDER"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/27bdfafa-32cb-4526-a2b2-7ea54ff1c9bb.pdf"
     }
   ],
-  "documents_with_eligible_text": 47,
+  "documents_with_eligible_text": 66,
   "execution_enabled": false,
   "frozen_universe_membership": {
     "360ONE": "360 ONE WAM Ltd.",
