@@ -71,7 +71,7 @@ def import_inbox(*, root: Path = ROOT, now: datetime | None = None,
     start, end = window_for(session)
     target = root / "data" / session
     existing = read_jsonl(target / "undated_candidates.jsonl")
-    manifest = target / "chatgpt_inbox_processed.json"
+    manifest = root / "data" / "chatgpt_inbox_processed.json"
     processed = json.loads(manifest.read_text(encoding="utf-8")) if manifest.exists() else {}
     if not isinstance(processed, dict):
         raise ValueError("Invalid processed inbox manifest")
