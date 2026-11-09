@@ -240,6 +240,8 @@ def main() -> None:
     parser.add_argument("--session-date", default=None)
     parser.add_argument("--data-dir", type=Path, default=ROOT / "data")
     parser.add_argument("--require-db", action="store_true")
+    parser.add_argument("--backfill-all", action="store_true",
+                        help="Import existing saved session archives one time")
     args = parser.parse_args()
     url = os.getenv("NEWS_DATABASE_URL", "")
     if not url:
@@ -248,6 +250,13 @@ def main() -> None:
         print(json.dumps({"status": "SKIPPED_NO_DB", "reason": "NEWS_DATABASE_URL not configured"}))
         return
     engine = engine_for_url(url)
+    if args.backfill_all:
+        sessions = sorted(p.name for p in args.data_dir.iterdir()
+                          if p.is_dir() and (p / "coverage.json").is_file())
+        results = [sync_session(engine, args.data_dir, day) for day in sessions]
+        print(json.dumps({"status": "BACKFILL_OK", "sessions": len(results),
+                          "session_dates": sessions}))
+        return
     session = args.session_date or default_session(datetime.now(IST))
     # Never print the database URL (may contain credentials).
     print(json.dumps(sync_session(engine, args.data_dir, session)))
