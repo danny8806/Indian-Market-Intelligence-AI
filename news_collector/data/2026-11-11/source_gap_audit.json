@@ -1,9 +1,10 @@
 {
   "session": "2026-11-11",
-  "generated_at": "2026-11-09T16:54:35.190282+05:30",
+  "generated_at": "2026-11-09T17:08:56.220071+05:30",
   "method": "Symbol + material category presence; NOT event-ID or issuer ISIN reconciliation",
   "category_counts": {
-    "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT": 3,
+    "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT": 4,
+    "MEDIA_ONLY_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS": 1,
     "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS": 6
   },
   "groups": [
@@ -65,6 +66,23 @@
       ]
     },
     {
+      "symbol": "GODREJPROP",
+      "event_category": "acquisition",
+      "media_count": 1,
+      "nse_count": 0,
+      "bse_count": 0,
+      "filing_examples": [],
+      "media_examples": [
+        {
+          "headline": "Godrej Properties to launch ₹32,000 crore worth homes for sale in H2 FY27 to cash in on demand",
+          "url": "https://www.thehindubusinessline.com/companies/godrej-properties-to-launch-32000-crore-worth-homes-for-sale-in-h2-fy27-to-cash-in-on-demand/article71682370.ece",
+          "published_at": "2026-11-09T17:04:56+05:30"
+        }
+      ],
+      "state": "MEDIA_ONLY_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": []
+    },
+    {
       "symbol": "JWL",
       "event_category": "financial_results",
       "media_count": 0,
@@ -124,8 +142,13 @@
       "event_category": "financial_results",
       "media_count": 0,
       "nse_count": 1,
-      "bse_count": 0,
+      "bse_count": 1,
       "filing_examples": [
+        {
+          "headline": "Olectra Greentech Ltd (532439)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/0d91d704-6d45-4c38-a1ce-087fb56de86c.pdf",
+          "published_at": "2026-11-09T17:05:54+05:30"
+        },
         {
           "headline": "Olectra Greentech Limited",
           "url": "https://nsearchives.nseindia.com/corporate/OLECTRA_09112026165030_BMOUTCOMEQ227.pdf",
@@ -133,8 +156,9 @@
         }
       ],
       "media_examples": [],
-      "state": "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "state": "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT",
       "exchanges_seen": [
+        "BSE",
         "NSE"
       ]
     },
@@ -149,6 +173,30 @@
           "headline": "Petronet LNG Ltd (532522)",
           "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/ce333f44-11ad-4ff0-9feb-55df877a6d07.pdf",
           "published_at": "2026-11-09T16:53:06+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": [
+        "BSE"
+      ]
+    },
+    {
+      "symbol": "RKFORGE",
+      "event_category": "regulatory",
+      "media_count": 0,
+      "nse_count": 0,
+      "bse_count": 2,
+      "filing_examples": [
+        {
+          "headline": "Ramkrishna Forgings Ltd (532527)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/82CD1F99_627E_4FA9_923C_EE752169E6AD_165658.pdf",
+          "published_at": "2026-11-09T16:57:08+05:30"
+        },
+        {
+          "headline": "Ramkrishna Forgings Ltd (532527)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/2C785288_0E84_49FB_946B_D00AC24A9BEB_165452.pdf",
+          "published_at": "2026-11-09T16:55:00+05:30"
         }
       ],
       "media_examples": [],
@@ -269,28 +317,29 @@
       "status_a": "OK",
       "status_b": "OK",
       "comparison_status": "SNAPSHOT_OVERLAP_ONLY",
-      "feed_a_unique_matched_urls": 43,
-      "feed_b_unique_matched_urls": 44,
-      "both_feeds_same_url": 43,
+      "feed_a_unique_matched_urls": 54,
+      "feed_b_unique_matched_urls": 54,
+      "both_feeds_same_url": 54,
       "only_feed_a_count": 0,
-      "only_feed_b_count": 1,
+      "only_feed_b_count": 0,
       "only_feed_a_examples": [],
-      "only_feed_b_examples": [
-        {
-          "url": "https://nsearchives.nseindia.com/corporate/APTUS_09112026165405_Aptus_Investor_Meeting_Intimation_11_November_2026_sd.pdf",
-          "symbols": [
-            "APTUS"
-          ]
-        }
-      ],
+      "only_feed_b_examples": [],
       "warning": "URL-level overlap is NOT event-level completeness; feed length, timing and availability differ."
     },
     {
       "feed_a": "BSE announcements RSS",
       "feed_b": "BSE latest announcements alternate",
       "status_a": "OK",
-      "status_b": "EMPTY",
-      "comparison_status": "UNAVAILABLE_SOURCE_FAILURE_OR_EMPTY"
+      "status_b": "OK",
+      "comparison_status": "SNAPSHOT_OVERLAP_ONLY",
+      "feed_a_unique_matched_urls": 37,
+      "feed_b_unique_matched_urls": 37,
+      "both_feeds_same_url": 37,
+      "only_feed_a_count": 0,
+      "only_feed_b_count": 0,
+      "only_feed_a_examples": [],
+      "only_feed_b_examples": [],
+      "warning": "URL-level overlap is NOT event-level completeness; feed length, timing and availability differ."
     }
   ]
 }
