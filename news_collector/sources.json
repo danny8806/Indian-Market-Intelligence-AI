@@ -7,7 +7,8 @@
       "kind": "rss",
       "provider": "NSE",
       "authority": "official",
-      "enabled": true
+      "enabled": true,
+      "recover_truncated_rss": true
     },
     {
       "name": "NSE financial results RSS",
@@ -15,7 +16,8 @@
       "kind": "rss",
       "provider": "NSE",
       "authority": "official",
-      "enabled": true
+      "enabled": true,
+      "recover_truncated_rss": true
     },
     {
       "name": "NSE board meetings RSS",
@@ -23,7 +25,8 @@
       "kind": "rss",
       "provider": "NSE",
       "authority": "official",
-      "enabled": true
+      "enabled": true,
+      "recover_truncated_rss": true
     },
     {
       "name": "NSE corporate actions RSS",
@@ -31,7 +34,8 @@
       "kind": "rss",
       "provider": "NSE",
       "authority": "official",
-      "enabled": true
+      "enabled": true,
+      "recover_truncated_rss": true
     },
     {
       "name": "BSE announcements RSS",
@@ -296,7 +300,8 @@
       "kind": "rss",
       "provider": "NSE",
       "authority": "official",
-      "enabled": true
+      "enabled": true,
+      "recover_truncated_rss": true
     },
     {
       "name": "BSE latest announcements alternate",
@@ -344,7 +349,8 @@
       "kind": "rss",
       "provider": "NSE",
       "authority": "official",
-      "enabled": true
+      "enabled": true,
+      "recover_truncated_rss": true
     },
     {
       "name": "BazaarWatch indexed discovery",
@@ -429,6 +435,110 @@
       "authority": "secondary",
       "timestamp_provenance": "discovery",
       "enabled": true
+    },
+    {
+      "name": "RBI official press releases",
+      "url": "https://rbi.org.in/pressreleases_rss.xml",
+      "kind": "rss",
+      "provider": "RBI",
+      "authority": "official",
+      "enabled": true,
+      "market_context": true,
+      "max_attempts": 2,
+      "timestamp_provenance": "publisher",
+      "terms_url": "https://www.rbi.org.in/Scripts/rss.aspx",
+      "origin_project": "Indian-Market-Intelligence"
+    },
+    {
+      "name": "RBI official notifications",
+      "url": "https://rbi.org.in/notifications_rss.xml",
+      "kind": "rss",
+      "provider": "RBI",
+      "authority": "official",
+      "enabled": true,
+      "market_context": true,
+      "max_attempts": 2,
+      "timestamp_provenance": "publisher",
+      "terms_url": "https://www.rbi.org.in/Scripts/rss.aspx",
+      "origin_project": "Indian-Market-Intelligence"
+    },
+    {
+      "name": "RBI official speeches",
+      "url": "https://rbi.org.in/speeches_rss.xml",
+      "kind": "rss",
+      "provider": "RBI",
+      "authority": "official",
+      "enabled": true,
+      "market_context": true,
+      "max_attempts": 2,
+      "timestamp_provenance": "publisher",
+      "terms_url": "https://www.rbi.org.in/Scripts/rss.aspx",
+      "origin_project": "Indian-Market-Intelligence"
+    },
+    {
+      "name": "TRAI official RSS",
+      "url": "https://www.trai.gov.in/rss.xml",
+      "kind": "rss",
+      "provider": "TRAI",
+      "authority": "official",
+      "enabled": true,
+      "market_context": true,
+      "max_attempts": 2,
+      "timestamp_provenance": "publisher",
+      "terms_url": "https://www.trai.gov.in/rss-feeds",
+      "origin_project": "Indian-Market-Intelligence"
+    },
+    {
+      "name": "PIB India press releases English",
+      "url": "https://pib.gov.in/RssMain.aspx?ModId=6&Lang=1&Regid=3&reg=3",
+      "kind": "rss",
+      "provider": "PIB",
+      "authority": "official",
+      "enabled": true,
+      "market_context": true,
+      "max_attempts": 2,
+      "timestamp_provenance": "publisher",
+      "terms_url": "https://www.pib.gov.in/ViewRss.aspx?lang=1&reg=1",
+      "origin_project": "Indian-Market-Intelligence"
+    },
+    {
+      "name": "Federal Reserve official press releases",
+      "url": "https://www.federalreserve.gov/feeds/press_all.xml",
+      "kind": "rss",
+      "provider": "FED",
+      "authority": "official",
+      "enabled": true,
+      "market_context": true,
+      "max_attempts": 2,
+      "timestamp_provenance": "publisher",
+      "terms_url": "https://www.federalreserve.gov/disclaimer.htm",
+      "origin_project": "Indian-Market-Intelligence"
+    },
+    {
+      "name": "European Central Bank official press",
+      "url": "https://www.ecb.europa.eu/rss/press.html",
+      "kind": "rss",
+      "provider": "ECB",
+      "authority": "official",
+      "enabled": true,
+      "market_context": true,
+      "max_attempts": 2,
+      "timestamp_provenance": "publisher",
+      "terms_url": "https://www.ecb.europa.eu/services/using-our-site/disclaimer/html/index.en.html",
+      "origin_project": "Indian-Market-Intelligence"
+    },
+    {
+      "name": "GDELT global article index RSS",
+      "url": "https://data.gdeltproject.org/gdeltv3/gal/feed.rss",
+      "kind": "rss",
+      "provider": "MEDIA",
+      "authority": "secondary",
+      "enabled": true,
+      "market_context": false,
+      "max_attempts": 2,
+      "timestamp_provenance": "discovery",
+      "terms_url": "https://gdeltproject.org/about.html",
+      "origin_project": "Indian-Market-Intelligence"
     }
   ]
 }

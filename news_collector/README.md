@@ -102,3 +102,54 @@ key, the four RSS index feeds remain usable, subject to availability.
 The following never occur in this extension: order placement, Kotak token
 access, account access, enabling automated trading, or modifying the published
 `signals/latest.json`.
+
+
+## Cross-repository source-method audit and reuse (10 November 2026)
+
+Reviewed all 30 accessible account repositories by name and the tree/source
+code of related projects. The reusable collectors were:
+
+- **Indian-Market-Intelligence:** official RBI, PIB, TRAI, US Fed and ECB
+  catalogs; bounded XML recovery; transient network retry; source permission
+  gates; explicit global-news discovery timestamps. Eight official/global
+  sources are added from its catalog and share the existing bounded worker pool.
+- **StockSenseAI:** simple `requests` + RSS parsing + per-source fetch health.
+  The main collector already had equivalent RSS and `coverage.json` health
+  accounting, so its five sources were not added again as duplicates.
+- **Kotak-Neo-Algo:** ISIN cross-check and complete NSE/BSE announcements
+  pagination. Its direct exchange APIs are **not imported** without verified
+  permission/entitlement, and broker/trading calls are never reused. Existing
+  symbol matching is tightened to avoid nested legal-name false positives.
+
+### New source and provenance behavior
+
+- Adds RBI press releases, notifications and speeches; TRAI RSS; PIB English
+  releases; U.S. Fed and ECB press releases; GDELT global article-index RSS.
+  The exact URLs and publisher attribution requirements are retained in
+  `sources.json`. Publisher-site restricted feeds are not newly enabled.
+- Macro/regulatory announcements that do not name a NIFTY 500 company are saved
+  separately in `macro_context.jsonl`, *only when the original feed offers a
+  parseable timezone-aware timestamp inside the session window*. They are not
+  automatically assigned a stock or direction and do not enter trading signals.
+- GDELT global RSS and Google News RSS are search/discovery indexes:
+  their timestamps are not treated as original company announcements.
+- Transient network failures and HTTP 408/429/5xx may retry up to twice
+  **only** for newly configured feeds. HTTP 403/401 and other permanent errors
+  are never retried as a workaround.
+- NSE RSS truncation may recover only complete `<item>` elements when the XML
+  is cut at EOF; malformed interior XML remains an error. Original raw source
+  provenance and time validation remain required.
+- If an official filing headline contains nested company names, the more
+  specific matching legal name is favored. This does not replace a genuine
+  ISIN/event-ID reconciliation and is not a complete issuer guarantee.
+
+Run the offline regression suite:
+
+```sh
+python -m pip install -r news_collector/requirements.txt
+python -m unittest discover -s news_collector -p 'test_*.py' -v
+```
+
+Review `coverage.json`, `macro_context.jsonl`, and `source_gap_audit.json`
+for source-level success, failures and unmatched evidence. No claim of
+all-source completeness is made, and no automatic live orders are enabled.
