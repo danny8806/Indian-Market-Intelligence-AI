@@ -17,6 +17,7 @@ on:
         type: string
   schedule:
     # UTC -> IST. Schedules are only active on the repository default branch.
+    - cron: '17,37,57 * * * *' # 24/7, 20-minute cloud fallback (GitHub scheduling can be delayed)
     - cron: '40 10 * * 1-5'   # 16:10 IST
     - cron: '40 14 * * 1-5'   # 20:10 IST
     - cron: '40 18 * * 0-4'   # 00:10 IST next weekday
@@ -33,7 +34,7 @@ permissions:
 
 concurrency:
   group: overnight-news-collector-${{ github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: false # Finish current batch before the next one; do not cancel collected evidence.
 
 jobs:
   fetch-research-news:
@@ -54,9 +55,9 @@ jobs:
         shell: bash
         env:
           SESSION_DATE: ${{ inputs.session_date }}
-          SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
+          SERPER_API_KEY: '' # No key-based/paid search in the 20-minute collector.
           # Paid/keyed providers require BOTH opt-in variable and individual secret.
-          ENABLE_PAID_NEWS_APIS: ${{ vars.ENABLE_PAID_NEWS_APIS }}
+          ENABLE_PAID_NEWS_APIS: 'false' # No paid news APIs without explicit future change.
           TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
           EXA_API_KEY: ${{ secrets.EXA_API_KEY }}
           BRAVE_SEARCH_API_KEY: ${{ secrets.BRAVE_SEARCH_API_KEY }}
@@ -74,7 +75,7 @@ jobs:
         shell: bash
         env:
           SESSION_DATE: ${{ inputs.session_date }}
-          ENABLE_OPENAI_WEB_RESEARCH: ${{ vars.ENABLE_OPENAI_WEB_RESEARCH }}
+          ENABLE_OPENAI_WEB_RESEARCH: 'false' # ChatGPT subscription schedule handles AI discovery.
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_NEWS_MODEL: ${{ vars.OPENAI_NEWS_MODEL }}
           OPENAI_MAX_SEARCHES_PER_DAY: ${{ vars.OPENAI_MAX_SEARCHES_PER_DAY }}
