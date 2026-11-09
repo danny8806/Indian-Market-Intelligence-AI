@@ -1,10 +1,10 @@
 {
   "session": "2026-11-11",
-  "generated_at": "2026-11-09T16:51:11.327151+05:30",
+  "generated_at": "2026-11-09T16:54:35.190282+05:30",
   "method": "Symbol + material category presence; NOT event-ID or issuer ISIN reconciliation",
   "category_counts": {
     "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT": 3,
-    "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS": 4
+    "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS": 6
   },
   "groups": [
     {
@@ -120,6 +120,44 @@
       ]
     },
     {
+      "symbol": "OLECTRA",
+      "event_category": "financial_results",
+      "media_count": 0,
+      "nse_count": 1,
+      "bse_count": 0,
+      "filing_examples": [
+        {
+          "headline": "Olectra Greentech Limited",
+          "url": "https://nsearchives.nseindia.com/corporate/OLECTRA_09112026165030_BMOUTCOMEQ227.pdf",
+          "published_at": "2026-11-09T16:53:50+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": [
+        "NSE"
+      ]
+    },
+    {
+      "symbol": "PETRONET",
+      "event_category": "financial_results",
+      "media_count": 0,
+      "nse_count": 0,
+      "bse_count": 1,
+      "filing_examples": [
+        {
+          "headline": "Petronet LNG Ltd (532522)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/ce333f44-11ad-4ff0-9feb-55df877a6d07.pdf",
+          "published_at": "2026-11-09T16:53:06+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": [
+        "BSE"
+      ]
+    },
+    {
       "symbol": "WHIRLPOOL",
       "event_category": "financial_results",
       "media_count": 0,
@@ -231,23 +269,17 @@
       "status_a": "OK",
       "status_b": "OK",
       "comparison_status": "SNAPSHOT_OVERLAP_ONLY",
-      "feed_a_unique_matched_urls": 34,
-      "feed_b_unique_matched_urls": 36,
-      "both_feeds_same_url": 34,
+      "feed_a_unique_matched_urls": 43,
+      "feed_b_unique_matched_urls": 44,
+      "both_feeds_same_url": 43,
       "only_feed_a_count": 0,
-      "only_feed_b_count": 2,
+      "only_feed_b_count": 1,
       "only_feed_a_examples": [],
       "only_feed_b_examples": [
         {
-          "url": "https://nsearchives.nseindia.com/corporate/WHIRLPOOL_09112026164908_SEIntimation_signed.pdf",
+          "url": "https://nsearchives.nseindia.com/corporate/APTUS_09112026165405_Aptus_Investor_Meeting_Intimation_11_November_2026_sd.pdf",
           "symbols": [
-            "WHIRLPOOL"
-          ]
-        },
-        {
-          "url": "https://nsearchives.nseindia.com/corporate/xbrl/SAIIM_1853_WebXMLFile_20261109_165040745.xml",
-          "symbols": [
-            "GLENMARK"
+            "APTUS"
           ]
         }
       ],
@@ -257,16 +289,8 @@
       "feed_a": "BSE announcements RSS",
       "feed_b": "BSE latest announcements alternate",
       "status_a": "OK",
-      "status_b": "OK",
-      "comparison_status": "SNAPSHOT_OVERLAP_ONLY",
-      "feed_a_unique_matched_urls": 26,
-      "feed_b_unique_matched_urls": 26,
-      "both_feeds_same_url": 26,
-      "only_feed_a_count": 0,
-      "only_feed_b_count": 0,
-      "only_feed_a_examples": [],
-      "only_feed_b_examples": [],
-      "warning": "URL-level overlap is NOT event-level completeness; feed length, timing and availability differ."
+      "status_b": "EMPTY",
+      "comparison_status": "UNAVAILABLE_SOURCE_FAILURE_OR_EMPTY"
     }
   ]
 }

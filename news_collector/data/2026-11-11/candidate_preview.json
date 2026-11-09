@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-09T16:52:20.005853+05:30",
+  "as_of": "2026-11-09T16:55:01.546230+05:30",
   "candidates": [
     {
       "articles": 4,
@@ -194,6 +194,46 @@
       "symbol": "COCHINSHIP"
     },
     {
+      "articles": 7,
+      "categories": [
+        "analyst_meetings",
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-09T16:51:11.327151+05:30",
+      "headline_samples": [
+        "Glenmark Pharmaceuticals Limited",
+        "Glenmark Pharmaceuticals Limited",
+        "Glenmark Pharmaceuticals Ltd (532296)",
+        "Glenmark Pharmaceuticals Limited",
+        "Glenmark Pharmaceuticals Limited",
+        "Glenmark Pharmaceuticals Limited",
+        "Glenmark Pharmaceuticals Limited"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 7,
+      "review_priority": 8,
+      "source_urls": [
+        "https://nsearchives.nseindia.com/corporate/GLENMARK_09112026165133_SE_Investor_Meet.pdf",
+        "https://nsearchives.nseindia.com/corporate/GLENMARK_09112026165020_SE_Investor_Meet.pdf",
+        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/85602aab-1cf0-43e7-940a-b026598466b7.pdf",
+        "https://nsearchives.nseindia.com/corporate/xbrl/SAIIM_1853_WebXMLFile_20261109_165040745.xml",
+        "https://nsearchives.nseindia.com/corporate/GLENMARK_09112026164849_SE_Investor_Meet.pdf",
+        "https://nsearchives.nseindia.com/corporate/GLENMARK_09112026164556_BSE_NSE_EarningsCallTranscript.pdf",
+        "https://nsearchives.nseindia.com/corporate/GLENMARK_09112026165036_SE_Investor_Meet.pdf"
+      ],
+      "symbol": "GLENMARK"
+    },
+    {
       "articles": 4,
       "categories": [
         "analyst_meetings",
@@ -229,7 +269,7 @@
       "symbol": "INDUSINDBK"
     },
     {
-      "articles": 4,
+      "articles": 6,
       "categories": [
         "analyst_meetings",
         "other"
@@ -247,16 +287,20 @@
       "headline_samples": [
         "Nuvama Wealth Management Limited",
         "Nuvama Wealth Management Ltd (543988)",
+        "Nuvama Wealth Management Limited",
+        "Nuvama Wealth Management Limited",
         "Nuvama Wealth Management Ltd (543988)",
         "Nuvama Wealth Management Limited"
       ],
       "material_event_count": 0,
       "not_a_trade_signal": true,
-      "official_filing_count": 4,
+      "official_filing_count": 6,
       "review_priority": 8,
       "source_urls": [
         "https://nsearchives.nseindia.com/corporate/xbrl/SAIIM_21997_WebXMLFile_20261109_161246421.xml",
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/e7a17297-69d1-4b38-a38c-28ac09e90b5c.pdf",
+        "https://nsearchives.nseindia.com/corporate/NWML_09112026165042_SE_InvestorMeet_Final.pdf",
+        "https://nsearchives.nseindia.com/corporate/NWML_09112026165213_SE_InvestorMeet_Final.pdf",
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/6bd52518-104f-4d33-b96d-e7686154a91e.pdf",
         "https://nsearchives.nseindia.com/corporate/NWML_09112026161048_SE_EarningsCallAudio_Q2FY27_Final.pdf"
       ],
@@ -356,8 +400,7 @@
     {
       "articles": 3,
       "categories": [
-        "analyst_meetings",
-        "other"
+        "analyst_meetings"
       ],
       "evidence_summary": {
         "conflicting_metrics": [],
@@ -370,20 +413,20 @@
       "explicit_financial_facts": [],
       "first_seen_at": "2026-11-09T16:51:11.327151+05:30",
       "headline_samples": [
-        "Glenmark Pharmaceuticals Ltd (532296)",
-        "Glenmark Pharmaceuticals Limited",
-        "Glenmark Pharmaceuticals Limited"
+        "Aptus Value Housing Finance India Limited",
+        "Aptus Value Housing Finance India Limited",
+        "Aptus Value Housing Finance India Ltd (543335)"
       ],
       "material_event_count": 0,
       "not_a_trade_signal": true,
       "official_filing_count": 3,
       "review_priority": 6,
       "source_urls": [
-        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/85602aab-1cf0-43e7-940a-b026598466b7.pdf",
-        "https://nsearchives.nseindia.com/corporate/xbrl/SAIIM_1853_WebXMLFile_20261109_165040745.xml",
-        "https://nsearchives.nseindia.com/corporate/GLENMARK_09112026164556_BSE_NSE_EarningsCallTranscript.pdf"
+        "https://nsearchives.nseindia.com/corporate/xbrl/SAIIM_19468_WebXMLFile_20261109_165020625.xml",
+        "https://nsearchives.nseindia.com/corporate/APTUS_09112026165405_Aptus_Investor_Meeting_Intimation_11_November_2026_sd.pdf",
+        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/66b8e999-a691-4a16-9195-4b43d7dd8da0.pdf"
       ],
-      "symbol": "GLENMARK"
+      "symbol": "APTUS"
     },
     {
       "articles": 3,
@@ -450,9 +493,9 @@
       "symbol": "TITAN"
     },
     {
-      "articles": 2,
+      "articles": 1,
       "categories": [
-        "analyst_meetings"
+        "financial_results"
       ],
       "evidence_summary": {
         "conflicting_metrics": [],
@@ -463,20 +506,45 @@
         "yoy_metrics_with_direction": 0
       },
       "explicit_financial_facts": [],
-      "first_seen_at": "2026-11-09T16:51:11.327151+05:30",
+      "first_seen_at": "2026-11-09T16:54:35.190282+05:30",
       "headline_samples": [
-        "Aptus Value Housing Finance India Limited",
-        "Aptus Value Housing Finance India Ltd (543335)"
+        "Olectra Greentech Limited"
       ],
-      "material_event_count": 0,
+      "material_event_count": 1,
       "not_a_trade_signal": true,
-      "official_filing_count": 2,
-      "review_priority": 4,
+      "official_filing_count": 1,
+      "review_priority": 5,
       "source_urls": [
-        "https://nsearchives.nseindia.com/corporate/xbrl/SAIIM_19468_WebXMLFile_20261109_165020625.xml",
-        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/66b8e999-a691-4a16-9195-4b43d7dd8da0.pdf"
+        "https://nsearchives.nseindia.com/corporate/OLECTRA_09112026165030_BMOUTCOMEQ227.pdf"
       ],
-      "symbol": "APTUS"
+      "symbol": "OLECTRA"
+    },
+    {
+      "articles": 1,
+      "categories": [
+        "financial_results"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-09T16:54:35.190282+05:30",
+      "headline_samples": [
+        "Petronet LNG Ltd (532522)"
+      ],
+      "material_event_count": 1,
+      "not_a_trade_signal": true,
+      "official_filing_count": 1,
+      "review_priority": 5,
+      "source_urls": [
+        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/ce333f44-11ad-4ff0-9feb-55df877a6d07.pdf"
+      ],
+      "symbol": "PETRONET"
     },
     {
       "articles": 2,
@@ -776,6 +844,33 @@
         "yoy_metrics_with_direction": 0
       },
       "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-09T16:54:35.190282+05:30",
+      "headline_samples": [
+        "Avenue Supermarts Ltd (540376)"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 1,
+      "review_priority": 2,
+      "source_urls": [
+        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/cd354e96-8ec1-4953-a1f5-463fb3f9e419.pdf"
+      ],
+      "symbol": "DMART"
+    },
+    {
+      "articles": 1,
+      "categories": [
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
       "first_seen_at": "2026-11-09T16:51:11.327151+05:30",
       "headline_samples": [
         "Larsen & Toubro Limited"
@@ -933,11 +1028,24 @@
     "Preview created after cutoff is unsuitable for historical model evaluation.",
     "Premarket frozen snapshot includes collector_last_poll_at; intervening minutes may contain uncollected news."
   ],
-  "collector_last_poll_at": "2026-11-09T16:51:11.327151+05:30",
-  "company_count": 31,
+  "collector_last_poll_at": "2026-11-09T16:54:35.190282+05:30",
+  "company_count": 34,
   "cutoff_exclusive": "2026-11-11T09:00:00+05:30",
   "data_mode": "PRE_CUTOFF_PREVIEW_NOT_FROZEN",
   "doc_evidence_register": [
+    {
+      "document_sha256": "24d170cf88ac15225fb66441b0296539fe17a6696bdca02d39cbe50514deda55",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-09T16:51:11.327151+05:30",
+      "id": "0395824a1426b5c7a883b630",
+      "parsed_at": "2026-11-09T16:54:59.150882+05:30",
+      "published_at": "2026-11-09T15:56:41+05:30",
+      "symbols": [
+        "BANKINDIA"
+      ],
+      "url": "https://nsearchives.nseindia.com/content/debt/WDM/SIDBI_2_09112026155620_NSE_Letter09112026s.pdf"
+    },
     {
       "document_sha256": "61847a769f331fcf614d86fefa6120db45ee87ca2c7706d41e33c4b542eb5c3e",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
@@ -965,6 +1073,19 @@
       "url": "https://nsearchives.nseindia.com/corporate/CEBBCO_09112026150408_BMINTIMATION131126.pdf"
     },
     {
+      "document_sha256": "971f95a3c66d6fa9d7742d725ed4f9aa3ce2bd597f4df4c7b8e37cd8be775d4e",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-09T16:54:35.190282+05:30",
+      "id": "072053376f56131bc38bed7a",
+      "parsed_at": "2026-11-09T16:54:58.800103+05:30",
+      "published_at": "2026-11-09T16:53:06+05:30",
+      "symbols": [
+        "PETRONET"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/ce333f44-11ad-4ff0-9feb-55df877a6d07.pdf"
+    },
+    {
       "document_sha256": "49fd415a9ec20a015cda4ca182f267c173fce0759e9edb797fff84986ed5950d",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -989,6 +1110,32 @@
         "COCHINSHIP"
       ],
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/7fcc8236-e719-458b-ba78-08723f3f54d9.pdf"
+    },
+    {
+      "document_sha256": "4ec478f8804f380b19fef0c866c637076044e1f6bf816891cb2b17f2f75a80b0",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-09T16:51:11.327151+05:30",
+      "id": "2340d3c8ea08191d53d24bdc",
+      "parsed_at": "2026-11-09T16:55:00.652820+05:30",
+      "published_at": "2026-11-09T16:13:43+05:30",
+      "symbols": [
+        "IIFL"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/28034a94-4d37-4bc6-8443-e18fb9802097.pdf"
+    },
+    {
+      "document_sha256": "97350ba2fdcb6cc9532852a85a3c0e5c0cdfb58106928063ac6f0257cd1e1651",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-09T16:51:11.327151+05:30",
+      "id": "3aef9f48cadba2777750231e",
+      "parsed_at": "2026-11-09T16:55:01.080879+05:30",
+      "published_at": "2026-11-09T16:21:22+05:30",
+      "symbols": [
+        "ABCAPITAL"
+      ],
+      "url": "https://nsearchives.nseindia.com/content/debt/WDM/palavjain_09112026162054_ABCL_Interest_payment_notification_letter_November_9_2026.pdf"
     },
     {
       "document_sha256": "4cf386b39695c52b3ffee1ae0e189bdfc6fadc6b7d215f38210c393266f282f5",
@@ -1028,6 +1175,19 @@
         "GESHIP"
       ],
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/0df3a77d-f7b9-4b1d-9311-4cfd0429207d.pdf"
+    },
+    {
+      "document_sha256": "bd2b2e96e113a753ba96056e57770e1d755f74d68b2f9fc419b0999d72efcb2d",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-09T16:51:11.327151+05:30",
+      "id": "6a330c13e1b23aa4cc169ba0",
+      "parsed_at": "2026-11-09T16:54:59.325261+05:30",
+      "published_at": "2026-11-09T15:58:17+05:30",
+      "symbols": [
+        "GESHIP"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/b46c5c24-6d55-4309-bb85-890769efcb18.pdf"
     },
     {
       "document_sha256": "cbbbd3aa63785fb89750caf8cde6228365fa161cc13da3d8b1ccde33090ec658",
@@ -1082,6 +1242,32 @@
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/fd9e186d-8a8a-4c78-922e-6283486130c5.pdf"
     },
     {
+      "document_sha256": "182dde6ff839cc91fe6da6bc22c4ff8533c5930b1ffd6fcaf1fd18390db310da",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-09T16:51:11.327151+05:30",
+      "id": "83e3323934d85ae91b75492d",
+      "parsed_at": "2026-11-09T16:54:58.800753+05:30",
+      "published_at": "2026-11-09T15:53:08+05:30",
+      "symbols": [
+        "GESHIP"
+      ],
+      "url": "https://nsearchives.nseindia.com/corporate/GESHIP_09112026155159_investorpresentation_signed.pdf"
+    },
+    {
+      "document_sha256": "025f3b13991b4454663175559cc33b12f22de641f3452ec901aab2d191475d75",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-09T16:51:11.327151+05:30",
+      "id": "85c59b53a679c4db0d44f46d",
+      "parsed_at": "2026-11-09T16:55:00.429734+05:30",
+      "published_at": "2026-11-09T16:10:00+05:30",
+      "symbols": [
+        "NUVAMA"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/6bd52518-104f-4d33-b96d-e7686154a91e.pdf"
+    },
+    {
       "document_sha256": "30d87860fb6df1303c9e9d210689941a97921829c6396f6339956a5603ba71a0",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -1095,6 +1281,32 @@
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/173eacf7-d5be-4600-8a8d-d0cb61120486.pdf"
     },
     {
+      "document_sha256": "3cbce5cb4697f70439a031855d0fb4bbed9701384ff41161dcba79a5a1abaaa3",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-09T16:51:11.327151+05:30",
+      "id": "9660bb815791f9f853831412",
+      "parsed_at": "2026-11-09T16:55:00.701216+05:30",
+      "published_at": "2026-11-09T16:15:29+05:30",
+      "symbols": [
+        "INDUSINDBK"
+      ],
+      "url": "https://nsearchives.nseindia.com/content/debt/WDM/INDUSINDBK4_09112026160922_SE_Intimation-Regulation_60_2__Signed.pdf"
+    },
+    {
+      "document_sha256": "3b0360d3ab965941e8c7b3cb498ccf6e2ba14db3ae379619f5fe93cd32cf2f3c",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-09T16:51:11.327151+05:30",
+      "id": "98ee3f16e858652f216b53ee",
+      "parsed_at": "2026-11-09T16:54:59.458402+05:30",
+      "published_at": "2026-11-09T16:03:48+05:30",
+      "symbols": [
+        "SHRIRAMFIN"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/60737d9b-9abf-4596-941f-afd0b4a0dcee.pdf"
+    },
+    {
       "document_sha256": "cbbbd3aa63785fb89750caf8cde6228365fa161cc13da3d8b1ccde33090ec658",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -1106,6 +1318,32 @@
         "MOTILALOFS"
       ],
       "url": "https://nsearchives.nseindia.com/corporate/MOTILALOFS_09112026153241_Intimation_for_Conference_Nov2026.pdf"
+    },
+    {
+      "document_sha256": "c318f994c6e02de90d3440f96580af972dad6c86a23ff70b77684ac5f3635f27",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-09T16:51:11.327151+05:30",
+      "id": "9f9f4dcfce9b748200a4cde0",
+      "parsed_at": "2026-11-09T16:55:00.759789+05:30",
+      "published_at": "2026-11-09T16:17:55+05:30",
+      "symbols": [
+        "ABCAPITAL"
+      ],
+      "url": "https://nsearchives.nseindia.com/content/debt/WDM/palavjain_09112026161732_CP_Redemption_Payment_Letter_November_9_2026.pdf"
+    },
+    {
+      "document_sha256": "53ab3e95503d2a721f423517776e6ba95f428be38f0ecdc3d6be77062144ab39",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-09T16:51:11.327151+05:30",
+      "id": "a1960ed6c0876e2496e8491f",
+      "parsed_at": "2026-11-09T16:54:59.501128+05:30",
+      "published_at": "2026-11-09T16:05:28+05:30",
+      "symbols": [
+        "ULTRACEMCO"
+      ],
+      "url": "https://nsearchives.nseindia.com/content/debt/WDM/ULTRACEMCO_09112026160509_SEintimation.pdf"
     },
     {
       "document_sha256": "30d87860fb6df1303c9e9d210689941a97921829c6396f6339956a5603ba71a0",
@@ -1132,6 +1370,45 @@
         "MPHASIS"
       ],
       "url": "https://nsearchives.nseindia.com/corporate/MPHASIS_09112026150003_Intimation_of_transcript_-_Q2FY2027.pdf"
+    },
+    {
+      "document_sha256": "025f3b13991b4454663175559cc33b12f22de641f3452ec901aab2d191475d75",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-09T16:51:11.327151+05:30",
+      "id": "bca9848f858b3a69d55b6a87",
+      "parsed_at": "2026-11-09T16:55:00.564221+05:30",
+      "published_at": "2026-11-09T16:10:59+05:30",
+      "symbols": [
+        "NUVAMA"
+      ],
+      "url": "https://nsearchives.nseindia.com/corporate/NWML_09112026161048_SE_EarningsCallAudio_Q2FY27_Final.pdf"
+    },
+    {
+      "document_sha256": "b0175322769d7f050fe92524f08adc6ec233a93ca1894a2b5d8d07a4f20417dc",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-09T16:51:11.327151+05:30",
+      "id": "c2f2399d2d5f711c646bab67",
+      "parsed_at": "2026-11-09T16:54:59.127475+05:30",
+      "published_at": "2026-11-09T15:55:27+05:30",
+      "symbols": [
+        "CRISIL"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/6b8755bb-a133-4e7a-94bb-78441e35aa8e.pdf"
+    },
+    {
+      "document_sha256": "044e9e98063e627f62e438476a57c21dc0bd88893b70d3e46d4a0392a16b2ee8",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-09T16:51:11.327151+05:30",
+      "id": "c57fa0cfa40e5a3e23dc8923",
+      "parsed_at": "2026-11-09T16:55:00.738013+05:30",
+      "published_at": "2026-11-09T16:15:30+05:30",
+      "symbols": [
+        "AUBANK"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/ee25f8d4-45c4-4f94-bb80-b23c1f4289ec.pdf"
     },
     {
       "document_sha256": "864c59063aea08b423570fb473dfeee5fd1fdfbfc180a9633d431a4913eb7aa7",
@@ -1173,6 +1450,58 @@
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/f1adda02-5720-474e-8cd2-5632e9218b7d.pdf"
     },
     {
+      "document_sha256": "4cf386b39695c52b3ffee1ae0e189bdfc6fadc6b7d215f38210c393266f282f5",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-09T16:51:11.327151+05:30",
+      "id": "dba22b544fa0575a875a2462",
+      "parsed_at": "2026-11-09T16:54:58.800916+05:30",
+      "published_at": "2026-11-09T15:54:06+05:30",
+      "symbols": [
+        "AMBER"
+      ],
+      "url": "https://nsearchives.nseindia.com/corporate/AMBER_09112026155242_SE_Intimation_Earnings_call_Invite13112026.pdf"
+    },
+    {
+      "document_sha256": "8ea914a6ed663e52d9ca4ad6c97a6d3ec61340a09489dcce51d56e257bee09b3",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-09T16:51:11.327151+05:30",
+      "id": "dbb71e8ce6d85acd64756f47",
+      "parsed_at": "2026-11-09T16:55:00.997731+05:30",
+      "published_at": "2026-11-09T16:20:02+05:30",
+      "symbols": [
+        "PREMIERENE"
+      ],
+      "url": "https://nsearchives.nseindia.com/corporate/PEL2024_09112026161948_Shareholder_Communication.pdf"
+    },
+    {
+      "document_sha256": "3b0360d3ab965941e8c7b3cb498ccf6e2ba14db3ae379619f5fe93cd32cf2f3c",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-09T16:51:11.327151+05:30",
+      "id": "e4dffa5f5d22f6ab9f8a6ebb",
+      "parsed_at": "2026-11-09T16:54:59.742917+05:30",
+      "published_at": "2026-11-09T16:06:12+05:30",
+      "symbols": [
+        "SHRIRAMFIN"
+      ],
+      "url": "https://nsearchives.nseindia.com/corporate/Mathew_09112026160603_BSENSE_InterimDividend_2026_27.pdf"
+    },
+    {
+      "document_sha256": "e4986e78928fa80506020acfa18029e5fd6b91e5b6f55ce325ac5e5496e77371",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-09T16:51:11.327151+05:30",
+      "id": "e5529a330bbb332c707d6e15",
+      "parsed_at": "2026-11-09T16:55:01.050550+05:30",
+      "published_at": "2026-11-09T16:20:21+05:30",
+      "symbols": [
+        "360ONE"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/f493b270-3049-4759-911a-3f764dc0eba8.pdf"
+    },
+    {
       "document_sha256": "4306044ba16fad42d0052c3f8cd2dbd03a470edd2bec9fc54acd6d5ee10f2938",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -1184,6 +1513,19 @@
         "TITAN"
       ],
       "url": "https://nsearchives.nseindia.com/corporate/TITAN_09112026150627_SECPRedemption09112026.pdf"
+    },
+    {
+      "document_sha256": "4ec478f8804f380b19fef0c866c637076044e1f6bf816891cb2b17f2f75a80b0",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-09T16:51:11.327151+05:30",
+      "id": "f7e57f93b3a11929730ba478",
+      "parsed_at": "2026-11-09T16:55:00.047586+05:30",
+      "published_at": "2026-11-09T16:09:18+05:30",
+      "symbols": [
+        "IIFL"
+      ],
+      "url": "https://nsearchives.nseindia.com/content/debt/WDM/IIFL_09112026160709_InterestPayment.pdf"
     },
     {
       "document_sha256": "864c59063aea08b423570fb473dfeee5fd1fdfbfc180a9633d431a4913eb7aa7",
@@ -1199,7 +1541,7 @@
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/647209bb-3305-4ef9-9d5e-ab98f54d50d5.pdf"
     }
   ],
-  "documents_with_eligible_text": 20,
+  "documents_with_eligible_text": 39,
   "execution_enabled": false,
   "frozen_universe_membership": {
     "360ONE": "360 ONE WAM Ltd.",
