@@ -1,11 +1,11 @@
 {
   "session": "2026-11-11",
-  "generated_at": "2026-11-10T04:16:09.797943+05:30",
+  "generated_at": "2026-11-10T04:28:38.826556+05:30",
   "method": "Symbol + material category presence; NOT event-ID or issuer ISIN reconciliation",
   "category_counts": {
     "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT": 4,
     "MEDIA_ONLY_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS": 2,
-    "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS": 8
+    "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS": 7
   },
   "groups": [
     {
@@ -19,25 +19,6 @@
           "headline": "Amber Enterprises India Ltd (540902)",
           "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/59dc1ce1-c826-4125-84ee-c65b36362ebd.pdf",
           "published_at": "2026-11-09T15:50:41+05:30"
-        }
-      ],
-      "media_examples": [],
-      "state": "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
-      "exchanges_seen": [
-        "BSE"
-      ]
-    },
-    {
-      "symbol": "BANKINDIA",
-      "event_category": "regulatory",
-      "media_count": 0,
-      "nse_count": 0,
-      "bse_count": 1,
-      "filing_examples": [
-        {
-          "headline": "Union Bank of India (532477)",
-          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/ec48598e-3879-45f7-934a-2132e527fa84.pdf",
-          "published_at": "2026-11-09T17:18:26+05:30"
         }
       ],
       "media_examples": [],
@@ -340,7 +321,7 @@
     {
       "source": "GDELT DOC API",
       "status": "ERROR",
-      "error": "ReadTimeout: HTTPSConnectionPool(host='api.gdeltproject.org', port=443): Read timed out. (read timeout=7)"
+      "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://api.gdeltproject.org/api/v2/doc/doc?query=%22India%22+%22quarterly+results%22&mode=artlist&format=json&maxrecords=50&timespan=2"
     },
     {
       "source": "Reuters India news",
@@ -419,17 +400,9 @@
     {
       "feed_a": "BSE announcements RSS",
       "feed_b": "BSE latest announcements alternate",
-      "status_a": "OK",
+      "status_a": "EMPTY",
       "status_b": "OK",
-      "comparison_status": "SNAPSHOT_OVERLAP_ONLY",
-      "feed_a_unique_matched_urls": 40,
-      "feed_b_unique_matched_urls": 40,
-      "both_feeds_same_url": 40,
-      "only_feed_a_count": 0,
-      "only_feed_b_count": 0,
-      "only_feed_a_examples": [],
-      "only_feed_b_examples": [],
-      "warning": "URL-level overlap is NOT event-level completeness; feed length, timing and availability differ."
+      "comparison_status": "UNAVAILABLE_SOURCE_FAILURE_OR_EMPTY"
     }
   ]
 }

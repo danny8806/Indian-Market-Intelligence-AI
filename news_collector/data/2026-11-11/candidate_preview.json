@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-10T04:16:20.755785+05:30",
+  "as_of": "2026-11-10T04:29:05.041764+05:30",
   "candidates": [
     {
       "articles": 4,
@@ -204,42 +204,6 @@
         "https://nsearchives.nseindia.com/corporate/xbrl/PRIOR_INTIMATION_2785_WebXMLFile_20261109_162307112.xml"
       ],
       "symbol": "ZFCVINDIA"
-    },
-    {
-      "articles": 5,
-      "categories": [
-        "other",
-        "regulatory"
-      ],
-      "evidence_summary": {
-        "conflicting_metrics": [],
-        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
-        "negative_metrics": [],
-        "not_a_price_prediction": true,
-        "positive_metrics": [],
-        "yoy_metrics_with_direction": 0
-      },
-      "explicit_financial_facts": [],
-      "first_seen_at": "2026-11-09T16:51:11.327151+05:30",
-      "headline_samples": [
-        "Small Industries Development Bank of India",
-        "Union Bank of India (532477)",
-        "Union Bank of India",
-        "RBI's $239 bn forward dollar position to limit rupee gains: Report",
-        "RBI's $239 bn forward dollar position to limit rupee gains despite FPI inflows: Report"
-      ],
-      "material_event_count": 1,
-      "not_a_trade_signal": true,
-      "official_filing_count": 3,
-      "review_priority": 9,
-      "source_urls": [
-        "https://nsearchives.nseindia.com/content/debt/WDM/SIDBI_2_09112026155620_NSE_Letter09112026s.pdf",
-        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/ec48598e-3879-45f7-934a-2132e527fa84.pdf",
-        "https://nsearchives.nseindia.com/content/debt/WDM/UNIONBANK_09112026170932_SE_payment_of_interest_INE112A8051.pdf",
-        "https://www.business-standard.com/finance/news/rbi-s-239-bn-forward-dollar-position-to-limit-rupee-gains-report-126110900571_1.html",
-        "https://economictimes.indiatimes.com/markets/forex/rbis-usd-239-bn-forward-dollar-position-to-limit-rupee-gains-despite-fpi-inflows-report/articleshow/135678171.cms"
-      ],
-      "symbol": "BANKINDIA"
     },
     {
       "articles": 3,
@@ -1110,6 +1074,37 @@
       "symbol": "AUROPHARMA"
     },
     {
+      "articles": 3,
+      "categories": [
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-09T16:51:11.327151+05:30",
+      "headline_samples": [
+        "Small Industries Development Bank of India",
+        "RBI's $239 bn forward dollar position to limit rupee gains: Report",
+        "RBI's $239 bn forward dollar position to limit rupee gains despite FPI inflows: Report"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 1,
+      "review_priority": 2,
+      "source_urls": [
+        "https://nsearchives.nseindia.com/content/debt/WDM/SIDBI_2_09112026155620_NSE_Letter09112026s.pdf",
+        "https://www.business-standard.com/finance/news/rbi-s-239-bn-forward-dollar-position-to-limit-rupee-gains-report-126110900571_1.html",
+        "https://economictimes.indiatimes.com/markets/forex/rbis-usd-239-bn-forward-dollar-position-to-limit-rupee-gains-despite-fpi-inflows-report/articleshow/135678171.cms"
+      ],
+      "symbol": "BANKINDIA"
+    },
+    {
       "articles": 1,
       "categories": [
         "other"
@@ -1631,7 +1626,7 @@
     "Preview created after cutoff is unsuitable for historical model evaluation.",
     "Premarket frozen snapshot includes collector_last_poll_at; intervening minutes may contain uncollected news."
   ],
-  "collector_last_poll_at": "2026-11-10T04:16:09.797943+05:30",
+  "collector_last_poll_at": "2026-11-10T04:28:38.826556+05:30",
   "company_count": 53,
   "cutoff_exclusive": "2026-11-11T09:00:00+05:30",
   "data_mode": "PRE_CUTOFF_PREVIEW_NOT_FROZEN",
@@ -1747,7 +1742,6 @@
       "parsed_at": "2026-11-09T17:30:01.575916+05:30",
       "published_at": "2026-11-09T17:18:26+05:30",
       "symbols": [
-        "BANKINDIA",
         "UNIONBANK"
       ],
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/ec48598e-3879-45f7-934a-2132e527fa84.pdf"
@@ -2084,7 +2078,6 @@
       "parsed_at": "2026-11-09T17:30:04.892870+05:30",
       "published_at": "2026-11-09T17:09:48+05:30",
       "symbols": [
-        "BANKINDIA",
         "UNIONBANK"
       ],
       "url": "https://nsearchives.nseindia.com/content/debt/WDM/UNIONBANK_09112026170932_SE_payment_of_interest_INE112A8051.pdf"
