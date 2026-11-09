@@ -143,7 +143,8 @@
       "kind": "rss",
       "provider": "MEDIA",
       "authority": "secondary",
-      "enabled": true
+      "enabled": true,
+      "timestamp_provenance": "discovery"
     },
     {
       "name": "GDELT DOC API",
@@ -344,6 +345,54 @@
       "provider": "NSE",
       "authority": "official",
       "enabled": true
+    },
+    {
+      "name": "BazaarWatch indexed discovery",
+      "url": "https://bazaarwatch.com/",
+      "kind": "indexed_search",
+      "provider": "MEDIA",
+      "authority": "secondary",
+      "enabled": true,
+      "search_query": "site:bazaarwatch.com (NSE OR BSE) corporate announcement",
+      "allowed_domains": [
+        "bazaarwatch.com"
+      ]
+    },
+    {
+      "name": "ALFA Finder indexed discovery",
+      "url": "https://news.alfafinder.com/",
+      "kind": "indexed_search",
+      "provider": "MEDIA",
+      "authority": "secondary",
+      "enabled": true,
+      "search_query": "site:news.alfafinder.com stock market filings results orders",
+      "allowed_domains": [
+        "news.alfafinder.com"
+      ]
+    },
+    {
+      "name": "PatternsRadar indexed discovery",
+      "url": "https://patternsradar.com/market/corporate",
+      "kind": "indexed_search",
+      "provider": "MEDIA",
+      "authority": "secondary",
+      "enabled": true,
+      "search_query": "site:patternsradar.com/market/corporate NSE company announcement",
+      "allowed_domains": [
+        "patternsradar.com"
+      ]
+    },
+    {
+      "name": "ResultKal indexed discovery",
+      "url": "https://resultkal.com/results",
+      "kind": "indexed_search",
+      "provider": "MEDIA",
+      "authority": "secondary",
+      "enabled": true,
+      "search_query": "site:resultkal.com/results NSE quarterly financial results",
+      "allowed_domains": [
+        "resultkal.com"
+      ]
     }
   ]
 }
