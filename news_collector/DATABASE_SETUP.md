@@ -37,6 +37,10 @@ Run one test:
     python -m unittest discover -s news_collector -p 'test_*.py' -v
     python -m news_collector.continuous_worker --once
 
+To import existing session archives to a fresh PostgreSQL database one time:
+
+    python -m news_collector.db_store --require-db --backfill-all
+
 For continuous VPS service, create a dedicated newsbot system user, a writable news_collector/data folder, a Python virtual environment, and /etc/market-news.env with mode 0600. Install ops/market-news-collector.service as /etc/systemd/system/market-news-collector.service, adjust paths, then run:
 
     sudo systemctl daemon-reload
