@@ -69,6 +69,20 @@ jobs:
           else
             python -m news_collector.engine
           fi
+      - name: Optional cost-capped OpenAI web search discovery
+        shell: bash
+        env:
+          SESSION_DATE: ${{ inputs.session_date }}
+          ENABLE_OPENAI_WEB_RESEARCH: ${{ vars.ENABLE_OPENAI_WEB_RESEARCH }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_NEWS_MODEL: ${{ vars.OPENAI_NEWS_MODEL }}
+          OPENAI_MAX_SEARCHES_PER_DAY: ${{ vars.OPENAI_MAX_SEARCHES_PER_DAY }}
+        run: |
+          if [ -n "$SESSION_DATE" ]; then
+            python -m news_collector.openai_web_discovery --session-date "$SESSION_DATE"
+          else
+            python -m news_collector.openai_web_discovery
+          fi
       - name: Extract bounded text from public NSE/BSE PDFs and flag potential source gaps
         shell: bash
         env:
@@ -88,6 +102,17 @@ jobs:
             python -m news_collector.candidates --session-date "$SESSION_DATE"
           else
             python -m news_collector.candidates
+          fi
+      - name: Sync evidence and health to optional persistent news database
+        env:
+          SESSION_DATE: ${{ inputs.session_date }}
+          NEWS_DATABASE_URL: ${{ secrets.NEWS_DATABASE_URL }}
+        shell: bash
+        run: |
+          if [ -n "$SESSION_DATE" ]; then
+            python -m news_collector.db_store --session-date "$SESSION_DATE"
+          else
+            python -m news_collector.db_store
           fi
       - name: Commit reproducible research evidence only
         shell: bash
