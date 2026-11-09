@@ -1,6 +1,6 @@
 # Free overnight financial-news collector (research-only)
 
-This component checks **all 43 configured public source endpoints** (the prior 36-source live audit plus 7 official fallback endpoints), persists news linked to NIFTY 500 companies, preserves undated candidates separately, and produces source failure and coverage reports. **Not a stock-selection AI and not a trading bridge.** It does not enable live orders or overwrite existing signals.
+This component checks **all configured public source endpoints** (the prior 36-source live audit plus 7 official fallback endpoints), persists news linked to NIFTY 500 companies, preserves undated candidates separately, and produces source failure and coverage reports. **Not a stock-selection AI and not a trading bridge.** It does not enable live orders or overwrite existing signals.
 
 ## Run
 
@@ -153,3 +153,69 @@ python -m unittest discover -s news_collector -p 'test_*.py' -v
 Review `coverage.json`, `macro_context.jsonl`, and `source_gap_audit.json`
 for source-level success, failures and unmatched evidence. No claim of
 all-source completeness is made, and no automatic live orders are enabled.
+
+
+## Multi-source discovery expansion — 10 November 2026
+
+The catalog now includes **80 configured endpoints/adapters** (including the
+original feeds, exchange mirrors, regulator/macro sources, Google News
+site-specific discovery, and seven credentialed provider adapters). Catalog
+count is NOT a measure of successful, authorized or unique stories.
+
+### Free/public methods
+- Official NIFTY 500 constituent CSV; NSE/BSE public feeds where permissible.
+- RBI, SEBI, TRAI, PIB, Federal Reserve, ECB official RSS.
+- Zerodha Pulse, other public media RSS where permitted.
+- Google News RSS plus ten publisher-specific site searches (Moneycontrol,
+  Reuters, NDTV Profit, CNBC-TV18, ET, Business Standard, Financial Express,
+  Trendlyne, Mint and Business Today); all are **discovery-only**.
+- GDELT article listings, source-gap reports, bounded official PDF parsing,
+  conservative ticker mapping, provenance tracking and nightly research output.
+
+### Optional API discovery (never automatically buys credits)
+Configure desired API keys as GitHub Actions repository **secrets**:
+`SERPER_API_KEY` (existing aggregator search),
+`TAVILY_API_KEY`, `EXA_API_KEY`, `BRAVE_SEARCH_API_KEY`,
+`MARKETAUX_API_TOKEN`, `GNEWS_API_KEY`,
+`NEWSDATA_API_KEY` and `NEWSAPI_API_KEY`.
+
+For the seven new providers, additionally set a repository Actions **variable**
+`ENABLE_PAID_NEWS_APIS=true`. By default these report
+`SKIPPED_COST_GUARD`. When opted in, missing individual keys show
+`SKIPPED_NO_KEY`; no external request is made for those providers.
+The optional Serper aggregator sources continue to use their separately
+configured `SERPER_API_KEY` gate. Each enabled provider makes one bounded
+search request per collector poll; check plan quotas and GitHub schedule rates
+before opting in. The connector never logs API tokens or retains returned
+full page text.
+
+Provider APIs: Tavily Search, Exa Search, Brave News Search, Marketaux Finance
+News, GNews Search, NewsData Latest and NewsAPI Everything. All API responses
+are treated as **unverified discovery metadata** even if they include a
+`publishedAt` field. API-record snippets and URLs are saved as *undated
+candidates* until a permitted original publisher/official disclosure provides
+a verified publication timestamp. Some free APIs delay news for 12–24 hours;
+they must NOT be relied on for 9 AM trading selection.
+
+### Permissions / data quality
+- Index appearance is not evidence of original publication time.
+- A blocked news publisher does not grant crawling rights through a search
+  service; this project only keeps search-index leads and does not fetch
+  restricted page bodies.
+- Public or official endpoints may also impose contractual limits on
+  automated polling/retention. Sources requiring permission must remain
+  unavailable for production use until approved, licensed or otherwise cleared.
+- No paywall/CAPTCHA bypass, no orders, no broker account credentials, no
+  unverified data promoted into `signals/latest.json`.
+- `events.jsonl` contains NIFTY 500 matches with parseable original feed time;
+  `undated_candidates.jsonl` contains discovery leads not eligible for trades;
+  `macro_context.jsonl` contains unmatched regulator/macro items with feed
+  time, not direct stock signals.
+- Inspect `coverage.json` and `source_gap_audit.json` after each run; a
+  200/OK response is not proof a source delivered all available documents.
+
+Run local tests:
+```sh
+python -m pip install -r news_collector/requirements.txt
+python -m unittest discover -s news_collector -p 'test_*.py' -v
+```
