@@ -1,6 +1,6 @@
 {
   "session": "2026-11-09",
-  "generated_at": "2026-11-09T03:57:57.254687+05:30",
+  "generated_at": "2026-11-09T07:25:37.518467+05:30",
   "method": "Symbol + material category presence; NOT event-ID or issuer ISIN reconciliation",
   "category_counts": {
     "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT": 28,
@@ -1655,11 +1655,6 @@
       "error": "HTTPError: 404 Client Error: Not Found for url: https://www.livemint.com/rss/industryRSS"
     },
     {
-      "source": "Moneycontrol RSS",
-      "status": "ERROR",
-      "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.moneycontrol.com/rss/latestnews.xml"
-    },
-    {
       "source": "Financial Express legacy RSS",
       "status": "ERROR",
       "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.financialexpress.com/feed/"
@@ -1688,11 +1683,6 @@
       "source": "NDTV Profit markets",
       "status": "ERROR",
       "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.ndtvprofit.com/markets"
-    },
-    {
-      "source": "Moneycontrol stocks",
-      "status": "ERROR",
-      "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.moneycontrol.com/news/business/stocks/"
     },
     {
       "source": "Financial Express markets",

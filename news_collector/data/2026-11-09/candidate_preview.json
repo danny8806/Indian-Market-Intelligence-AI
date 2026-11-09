@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-09T03:58:15.428255+05:30",
+  "as_of": "2026-11-09T07:26:04.010527+05:30",
   "candidates": [
     {
       "articles": 14,
@@ -2155,7 +2155,7 @@
       "symbol": "ABCAPITAL"
     },
     {
-      "articles": 12,
+      "articles": 13,
       "categories": [
         "analyst_meetings",
         "other"
@@ -2195,6 +2195,7 @@
         "https://nsearchives.nseindia.com/corporate/CENTRALBK_06112026164246_SE_Analyst06112026.pdf",
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/7117581f-eff4-47fe-8b67-bf7a62cc2fe5.pdf",
         "https://economictimes.indiatimes.com/markets/bonds/indias-10-year-bond-posts-best-week-in-7-years-leads-emerging-asia-as-oil-slides/articleshow/135606792.cms",
+        "https://economictimes.indiatimes.com/markets/forex/fcnrb-interest-bill-to-keep-dollar-hedging-costs-high/articleshow/135667135.cms",
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/c765e233-579c-4f89-b41b-796af52031fe.pdf",
         "https://www.business-standard.com/industry/news/cbi-books-kishore-biyani-future-retail-in-alleged-904-cr-bank-fraud-126110601341_1.html"
       ],
@@ -6235,6 +6236,33 @@
       "symbol": "JINDALSAW"
     },
     {
+      "articles": 1,
+      "categories": [
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-09T07:25:37.518467+05:30",
+      "headline_samples": [
+        "Sensex today | Stock Market Live Updates: Stock to buy today: PG Electroplast (₹546.65)"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 0,
+      "review_priority": 0,
+      "source_urls": [
+        "https://www.thehindubusinessline.com/markets/sensex-nifty50-today-stock-market-live-updates-9-november-2026/article71681002.ece"
+      ],
+      "symbol": "PGEL"
+    },
+    {
       "articles": 3,
       "categories": [
         "other"
@@ -6413,8 +6441,8 @@
     "Preview created after cutoff is unsuitable for historical model evaluation.",
     "Premarket frozen snapshot includes collector_last_poll_at; intervening minutes may contain uncollected news."
   ],
-  "collector_last_poll_at": "2026-11-09T03:57:57.254687+05:30",
-  "company_count": 190,
+  "collector_last_poll_at": "2026-11-09T07:25:37.518467+05:30",
+  "company_count": 191,
   "cutoff_exclusive": "2026-11-09T09:00:00+05:30",
   "data_mode": "PRE_CUTOFF_PREVIEW_NOT_FROZEN",
   "doc_evidence_register": [
@@ -6471,6 +6499,32 @@
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/51102e2a-0ac1-4e2b-afe8-e0c53b008833.pdf"
     },
     {
+      "document_sha256": "1166675488748132638295ac22be67bca02739364dca32ea9dace8e80a15cab7",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "id": "13a1d578064a644443e11dbc",
+      "parsed_at": "2026-11-09T07:25:53.013265+05:30",
+      "published_at": "2026-11-06T16:28:54+05:30",
+      "symbols": [
+        "DABUR"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/81a60025-e3a4-47dd-84ae-35c07676a331.pdf"
+    },
+    {
+      "document_sha256": "b905bb5d6e01a8779d3570c79ee7e86ba0bf96140bb864c4692cfff50192f07f",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "id": "1640db8a71831cd3cba36c0e",
+      "parsed_at": "2026-11-09T07:26:02.753772+05:30",
+      "published_at": "2026-11-06T18:33:30+05:30",
+      "symbols": [
+        "TORNTPHARM"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/7ab5742a-073d-47c8-bf7f-23f1970fdc8c.pdf"
+    },
+    {
       "document_sha256": "87f0080c59c29ab6b3b92de518f4d8959e19aac6f67d767b7b448a3b5970ba56",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -6495,6 +6549,19 @@
         "IKS"
       ],
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/5741ead0-fc9a-4db9-b4a1-124ee77770c8.pdf"
+    },
+    {
+      "document_sha256": "0f623d88ccaaa33bc56340bcf08dafabd247dd9f30e939f8beacffb63041e6aa",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "id": "1a07e540ece2192829b1c541",
+      "parsed_at": "2026-11-09T07:25:59.481079+05:30",
+      "published_at": "2026-11-06T17:33:19+05:30",
+      "symbols": [
+        "WIPRO"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/943133ef-943d-4df9-9696-291013a5d927.pdf"
     },
     {
       "document_sha256": "19d556352cd7ec538793f02c7e9e396c8183b4ed0b9c2fe8f22b13830b01bb66",
@@ -6616,6 +6683,19 @@
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/92f5e8e1-4c81-4abc-9696-2585d0c7b428.pdf"
     },
     {
+      "document_sha256": "1902b660f31c4f3cc5cff7ef27c04a5aa294d49873012474c8d88d36f824ecd4",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "id": "281ceb6ca876999d673ff744",
+      "parsed_at": "2026-11-09T07:25:50.725862+05:30",
+      "published_at": "2026-11-06T21:41:36+05:30",
+      "symbols": [
+        "ASIANPAINT"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/dd885c0b-f490-4da2-9fcc-a0ef6cfb76a3.pdf"
+    },
+    {
       "document_sha256": "d97b045dc054d84d507d681495c7606a63afd87c1629e8205a8a24ae06ccbf4d",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -6681,6 +6761,19 @@
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/466bfc14-6e54-400b-bf5b-72d220b032bc.pdf"
     },
     {
+      "document_sha256": "3d0fd9b93a6de09b0e64ed6db3947a49b7f95f8ddb36b0d33d3b498441096825",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "id": "341120910fed554ccb72d2f1",
+      "parsed_at": "2026-11-09T07:25:51.633474+05:30",
+      "published_at": "2026-11-06T15:49:47+05:30",
+      "symbols": [
+        "SHRIRAMFIN"
+      ],
+      "url": "https://nsearchives.nseindia.com/corporate/Mathew_06112026154846_BSENSE_311026_74-5_Upload.pdf"
+    },
+    {
       "document_sha256": "1d6e4c3d7532c7b6ce13b90186a425b1cd846b330043dd2caed400797685e673",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -6731,6 +6824,19 @@
         "OLECTRA"
       ],
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/c392a165-6439-4b01-a0ee-0acc091392df.pdf"
+    },
+    {
+      "document_sha256": "29a72477330bfb570cc782252c484c66fa6de271b7a5dd098eb98442748373b4",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "id": "4df0793ea94ca920b9b7a160",
+      "parsed_at": "2026-11-09T07:25:58.226985+05:30",
+      "published_at": "2026-11-06T17:20:51+05:30",
+      "symbols": [
+        "MARICO"
+      ],
+      "url": "https://nsearchives.nseindia.com/corporate/marico_06112026171755_SEIntimation.pdf"
     },
     {
       "document_sha256": "6c7cad3c597b969b7d2475c0e0f199c253228cedf67439c0151fafa1b7ceef6b",
@@ -6785,6 +6891,19 @@
         "ANURAS"
       ],
       "url": "https://nsearchives.nseindia.com/corporate/ANURAS_06112026154649_ARILSLDSTX20261106077PressRelease.pdf"
+    },
+    {
+      "document_sha256": "b880cf0baca5808b80063d485af76cef2ced79e37feb7382a908fe0864fc53b8",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "id": "547a41362a2520b98a05eaa9",
+      "parsed_at": "2026-11-09T07:26:01.510592+05:30",
+      "published_at": "2026-11-06T18:06:21+05:30",
+      "symbols": [
+        "TORNTPOWER"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/05a326bf-b371-4e6c-8816-7a384f982413.pdf"
     },
     {
       "document_sha256": "e44656251519f989fa97095f0d60a2a91fb1eefe19659ac6ea8c274d5e7602c0",
@@ -6904,6 +7023,32 @@
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/071ff837-a606-47f8-a266-0d5ae67adcb8.pdf"
     },
     {
+      "document_sha256": "320745fd99b4fd9080ce92b0242cb0aceeead2c5bad986e33fc4b916bb0e6e9c",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "id": "76c14b5bbf31d4a14d9bee95",
+      "parsed_at": "2026-11-09T07:25:55.600248+05:30",
+      "published_at": "2026-11-06T16:33:49+05:30",
+      "symbols": [
+        "KPIL"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/9b78f038-ac8f-48bd-a6a0-bbb53e94be49.pdf"
+    },
+    {
+      "document_sha256": "2051521ca068850c3539c8de162d9629832587e6d7ff5ffddd7db5b657f95146",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "id": "77361f7e658e04f834ef27ef",
+      "parsed_at": "2026-11-09T07:25:55.988487+05:30",
+      "published_at": "2026-11-06T17:16:32+05:30",
+      "symbols": [
+        "MARICO"
+      ],
+      "url": "https://nsearchives.nseindia.com/corporate/marico_06112026171442_SEIntimationn.pdf"
+    },
+    {
       "document_sha256": "b5fca420e8e06bb25840a0d9514be6bae7c0db87e069a6e958a9bd897ddd2a2e",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -6941,6 +7086,19 @@
         "SOLARINDS"
       ],
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/f0c8af66-1e5c-4b88-a0c2-dd7de85f1e61.pdf"
+    },
+    {
+      "document_sha256": "2051521ca068850c3539c8de162d9629832587e6d7ff5ffddd7db5b657f95146",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "id": "7c522dba4d6c879c04e3c4f6",
+      "parsed_at": "2026-11-09T07:25:56.322676+05:30",
+      "published_at": "2026-11-06T17:16:46+05:30",
+      "symbols": [
+        "MARICO"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/5fd422e5-c7df-4501-b66e-a9872860cec1.pdf"
     },
     {
       "document_sha256": "f73670c46e8451dc601d565ead3371632514a2eb75f127d4f94d62494af42831",
@@ -7152,6 +7310,19 @@
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/481a07a7-db11-4b5b-abf3-0c3cad27d442.pdf"
     },
     {
+      "document_sha256": "b880cf0baca5808b80063d485af76cef2ced79e37feb7382a908fe0864fc53b8",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "id": "b7262794393a43af0ca58fbb",
+      "parsed_at": "2026-11-09T07:26:00.307470+05:30",
+      "published_at": "2026-11-06T18:05:59+05:30",
+      "symbols": [
+        "TORNTPOWER"
+      ],
+      "url": "https://nsearchives.nseindia.com/corporate/TORNTPOWER_06112026180548_GST_Penalty_order.pdf"
+    },
+    {
       "document_sha256": "53d9a2fa7a694d4dccf1bd0fea40a728250419542ffd6e2a15cac49007862844",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -7251,6 +7422,32 @@
       "url": "https://nsearchives.nseindia.com/corporate/JUBLFOOD_06112026152646_LettertoShareholders.pdf"
     },
     {
+      "document_sha256": "29a72477330bfb570cc782252c484c66fa6de271b7a5dd098eb98442748373b4",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "id": "c81648f8263fde229bcee7ed",
+      "parsed_at": "2026-11-09T07:25:58.380378+05:30",
+      "published_at": "2026-11-06T17:21:03+05:30",
+      "symbols": [
+        "MARICO"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/1e5c5144-0baf-4dfc-939f-1a977f4deb77.pdf"
+    },
+    {
+      "document_sha256": "1166675488748132638295ac22be67bca02739364dca32ea9dace8e80a15cab7",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "id": "c873e94d7d2f56f5db6b2b8a",
+      "parsed_at": "2026-11-09T07:25:52.694999+05:30",
+      "published_at": "2026-11-06T16:25:46+05:30",
+      "symbols": [
+        "DABUR"
+      ],
+      "url": "https://nsearchives.nseindia.com/corporate/DABURA_06112026162506_Letter.pdf"
+    },
+    {
       "document_sha256": "8e247eaa0263182094e2e8ff9f0787d32351e56d0975c205cdd83326c9a41906",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -7275,6 +7472,32 @@
         "BRITANNIA"
       ],
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/9f6d4223-37f8-4712-8f2b-88140765df95.pdf"
+    },
+    {
+      "document_sha256": "3d0fd9b93a6de09b0e64ed6db3947a49b7f95f8ddb36b0d33d3b498441096825",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "id": "d4be94d5abc3c9a9c7011f83",
+      "parsed_at": "2026-11-09T07:25:51.154611+05:30",
+      "published_at": "2026-11-06T15:37:13+05:30",
+      "symbols": [
+        "SHRIRAMFIN"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/0fb20250-72d4-4d54-8379-f1144ac6d2cc.pdf"
+    },
+    {
+      "document_sha256": "ba684167a1a9f6451d9fa0d1a38dc2835f96057399de2c8a402d02d93c031a7f",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "id": "d5ecdfcd13b2d4327657e4a0",
+      "parsed_at": "2026-11-09T07:26:01.869167+05:30",
+      "published_at": "2026-11-06T18:13:37+05:30",
+      "symbols": [
+        "BSOFT"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/dd838160-729d-46f2-8821-45474231689b.pdf"
     },
     {
       "document_sha256": "d97b045dc054d84d507d681495c7606a63afd87c1629e8205a8a24ae06ccbf4d",
@@ -7303,6 +7526,19 @@
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/93eca890-1abb-44ea-b31a-98669f6cc3fc.pdf"
     },
     {
+      "document_sha256": "59e21768f038ef2301cfb19720e95ce35fa43bad51743829b67f18eaf12264b5",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "id": "dd0d78feb80e8ba72391acdb",
+      "parsed_at": "2026-11-09T07:25:52.138015+05:30",
+      "published_at": "2026-11-06T15:51:56+05:30",
+      "symbols": [
+        "AFFLE"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/3431d5ba-1304-4d55-905a-45237394c7e9.pdf"
+    },
+    {
       "document_sha256": "eb32d931d9e40e5bc179f4806a0bbcc7734d31200204a0409e074165a13cd177",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -7314,6 +7550,19 @@
         "DOMS"
       ],
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/0b2194d2-65d4-4256-a454-305e283acd03.pdf"
+    },
+    {
+      "document_sha256": "1902b660f31c4f3cc5cff7ef27c04a5aa294d49873012474c8d88d36f824ecd4",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "id": "e3894f5ba19757f62236e7db",
+      "parsed_at": "2026-11-09T07:25:50.726377+05:30",
+      "published_at": "2026-11-06T21:46:25+05:30",
+      "symbols": [
+        "ASIANPAINT"
+      ],
+      "url": "https://nsearchives.nseindia.com/corporate/ASIANPAINT_06112026214436_SE_intimation_Result_of_Postal_ballot.pdf"
     },
     {
       "document_sha256": "aeb2bc267dba21ce0bf602d198a3d93b1ff755e7ccb73174cac222437780a43f",
@@ -7454,7 +7703,7 @@
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/27bdfafa-32cb-4526-a2b2-7ea54ff1c9bb.pdf"
     }
   ],
-  "documents_with_eligible_text": 66,
+  "documents_with_eligible_text": 83,
   "execution_enabled": false,
   "frozen_universe_membership": {
     "360ONE": "360 ONE WAM Ltd.",
@@ -7963,7 +8212,7 @@
   "news_window_start": "2026-11-06T15:00:00+05:30",
   "schema_version": "research-candidates/1.0",
   "session_date": "2026-11-09",
-  "source_failures_last_poll": 12,
+  "source_failures_last_poll": 10,
   "training_eligible": false,
   "universe_status": "OFFICIAL_FETCH:https://www.niftyindices.com/IndexConstituent/ind_nifty500list.csv"
 }
