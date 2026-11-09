@@ -1,6 +1,6 @@
 {
   "session": "2026-11-11",
-  "generated_at": "2026-11-09T17:28:47.701821+05:30",
+  "generated_at": "2026-11-09T17:32:55.523427+05:30",
   "method": "Symbol + material category presence; NOT event-ID or issuer ISIN reconciliation",
   "category_counts": {
     "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT": 4,
@@ -313,7 +313,7 @@
     {
       "source": "GDELT DOC API",
       "status": "ERROR",
-      "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://api.gdeltproject.org/api/v2/doc/doc?query=%22India%22+%22quarterly+results%22&mode=artlist&format=json&maxrecords=50&timespan=2"
+      "error": "ReadTimeout: HTTPSConnectionPool(host='api.gdeltproject.org', port=443): Read timed out. (read timeout=7)"
     },
     {
       "source": "Reuters India news",
@@ -367,17 +367,9 @@
     {
       "feed_a": "BSE announcements RSS",
       "feed_b": "BSE latest announcements alternate",
-      "status_a": "OK",
-      "status_b": "OK",
-      "comparison_status": "SNAPSHOT_OVERLAP_ONLY",
-      "feed_a_unique_matched_urls": 40,
-      "feed_b_unique_matched_urls": 40,
-      "both_feeds_same_url": 40,
-      "only_feed_a_count": 0,
-      "only_feed_b_count": 0,
-      "only_feed_a_examples": [],
-      "only_feed_b_examples": [],
-      "warning": "URL-level overlap is NOT event-level completeness; feed length, timing and availability differ."
+      "status_a": "EMPTY",
+      "status_b": "EMPTY",
+      "comparison_status": "UNAVAILABLE_SOURCE_FAILURE_OR_EMPTY"
     }
   ]
 }

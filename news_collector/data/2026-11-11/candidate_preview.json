@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-09T17:30:06.891818+05:30",
+  "as_of": "2026-11-09T17:33:09.957421+05:30",
   "candidates": [
     {
       "articles": 4,
@@ -1287,7 +1287,7 @@
     "Preview created after cutoff is unsuitable for historical model evaluation.",
     "Premarket frozen snapshot includes collector_last_poll_at; intervening minutes may contain uncollected news."
   ],
-  "collector_last_poll_at": "2026-11-09T17:28:47.701821+05:30",
+  "collector_last_poll_at": "2026-11-09T17:32:55.523427+05:30",
   "company_count": 41,
   "cutoff_exclusive": "2026-11-11T09:00:00+05:30",
   "data_mode": "PRE_CUTOFF_PREVIEW_NOT_FROZEN",
@@ -2240,6 +2240,19 @@
       "url": "https://nsearchives.nseindia.com/corporate/TITAN_09112026150627_SECPRedemption09112026.pdf"
     },
     {
+      "document_sha256": "49fd415a9ec20a015cda4ca182f267c173fce0759e9edb797fff84986ed5950d",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-09T17:28:47.701821+05:30",
+      "id": "f3365168f9537aea8aff8760",
+      "parsed_at": "2026-11-09T17:33:09.130287+05:30",
+      "published_at": "2026-11-09T17:26:20+05:30",
+      "symbols": [
+        "WHIRLPOOL"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/d848c7f3-defb-4505-a47a-448043865c76.pdf"
+    },
+    {
       "document_sha256": "4ec478f8804f380b19fef0c866c637076044e1f6bf816891cb2b17f2f75a80b0",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -2279,7 +2292,7 @@
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/647209bb-3305-4ef9-9d5e-ab98f54d50d5.pdf"
     }
   ],
-  "documents_with_eligible_text": 74,
+  "documents_with_eligible_text": 75,
   "execution_enabled": false,
   "frozen_universe_membership": {
     "360ONE": "360 ONE WAM Ltd.",
