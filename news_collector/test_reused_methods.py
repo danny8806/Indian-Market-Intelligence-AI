@@ -34,7 +34,7 @@ class ReusedSourceTests(unittest.TestCase):
             rss_items(broken, {**source, "recover_truncated_rss": False})
 
     def test_rss_invalid_controls_cleaned_without_silent_xml_rewrite(self):
-        root = rss_root(b"<rss><channel><item><title>Hi\\x01 ok</title>"
+        root = rss_root(b"<rss><channel><item><title>Hi\x01 ok</title>"
                         b"<link>https://example.org</link></item></channel></rss>")
         self.assertEqual(root.find(".//title").text, "Hi ok")
         with self.assertRaises(ET.ParseError):
@@ -90,8 +90,8 @@ class ReusedSourceTests(unittest.TestCase):
                 "market_context": True, "enabled": True
             }]}), encoding="utf-8")
             csv = root / "universe.csv"
-            csv.write_text("Company Name,Symbol\\n" + "".join(
-                f"Example Company {i:03d} Limited,SYM{i:03d}\\n"
+            csv.write_text("Company Name,Symbol\n" + "".join(
+                f"Example Company {i:03d} Limited,SYM{i:03d}\n"
                 for i in range(500)), encoding="utf-8")
             def fixture(_src):
                 return ({"source": "RBI official press releases", "status": "OK",
