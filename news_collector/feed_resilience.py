@@ -10,7 +10,7 @@ import xml.etree.ElementTree as ET
 import requests
 
 MAX_TAIL_BYTES = 64_000
-_XML_CONTROLS = re.compile("[\\x00-\\x08\\x0b\\x0c\\x0e-\\x1f]")
+_XML_CONTROLS = re.compile("[\x00-\x08\x0b\x0c\x0e-\x1f]")
 RETRYABLE_STATUS = frozenset({408, 429, 500, 502, 503, 504})
 
 
@@ -31,10 +31,10 @@ def _recover_prefix(raw: bytes, err: ET.ParseError) -> ET.Element | None:
         "no element found:", "unclosed token:", "unclosed CDATA section:",
     )):
         return None
-    if not (re.search(rb"<rss\\b", raw[:4096], flags=re.I)
-            and re.search(rb"<channel\\b", raw[:4096], flags=re.I)):
+    if not (re.search(rb"<rss\b", raw[:4096], flags=re.I)
+            and re.search(rb"<channel\b", raw[:4096], flags=re.I)):
         return None
-    ends = list(re.finditer(rb"</item\\s*>", raw, flags=re.I))
+    ends = list(re.finditer(rb"</item\s*>", raw, flags=re.I))
     if not ends:
         return None
     last = ends[-1].end()
