@@ -169,7 +169,14 @@ def main():
     p.add_argument("--data-dir", type=Path, default=ROOT / "data")
     args = p.parse_args()
     session = args.session_date or default_session(datetime.now(IST))
-    print(json.dumps(run(session, args.data_dir)))
+    try:
+        result = run(session, args.data_dir)
+    except Exception as exc:
+        # Optional provider errors must never stop core feeds/DB synchronization.
+        # Do not log raw exception strings that might contain credentials.
+        result = {"status": "OPENAI_DISCOVERY_FAILED",
+                  "error_type": type(exc).__name__}
+    print(json.dumps(result))
 
 
 if __name__ == "__main__":
