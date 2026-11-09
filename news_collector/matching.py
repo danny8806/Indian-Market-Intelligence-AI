@@ -65,6 +65,30 @@ def match_issuers(title: str, summary: str, universe: dict[str, str],
                 result.add(symbol)
                 break
 
+    if official_filing and len(result) > 1:
+        # A headline headed "Union Bank of India" should not also attach
+        # "Bank of India": prefer a longer, explicitly matched legal name.
+        # Keep independent companies when their names do not contain one another.
+        matches = {}
+        variants_by_symbol = aliases if aliases is not None else curated_aliases()
+        for symbol in result:
+            all_names = [universe[symbol], *variants_by_symbol.get(symbol, [])]
+            matches[symbol] = {
+                p for phrase in all_names
+                if (p := normalized(phrase)) and safe_needle(p)
+                and bounded_phrase(normalized_text, p)
+            }
+        contained = {
+            symbol for symbol, phrases in matches.items()
+            if phrases and all(
+                any(symbol != other and len(longer) > len(phrase)
+                    and bounded_phrase(longer, phrase)
+                    for other, other_phrases in matches.items()
+                    for longer in other_phrases)
+                for phrase in phrases)
+        }
+        result.difference_update(contained)
+
     # Explicit NSE symbol notation is evidence even for short ticker symbols.
     for candidate in re.findall(
         r"(?<!\w)(?:NSE\s*(?:SYMBOL|TICKER)?|TICKER)\s*[:：]\s*([A-Z][A-Z0-9&._-]{1,30})\b",
