@@ -54,6 +54,15 @@ jobs:
         env:
           SESSION_DATE: ${{ inputs.session_date }}
           SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
+          # Paid/keyed providers require BOTH opt-in variable and individual secret.
+          ENABLE_PAID_NEWS_APIS: ${{ vars.ENABLE_PAID_NEWS_APIS }}
+          TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
+          EXA_API_KEY: ${{ secrets.EXA_API_KEY }}
+          BRAVE_SEARCH_API_KEY: ${{ secrets.BRAVE_SEARCH_API_KEY }}
+          MARKETAUX_API_TOKEN: ${{ secrets.MARKETAUX_API_TOKEN }}
+          GNEWS_API_KEY: ${{ secrets.GNEWS_API_KEY }}
+          NEWSDATA_API_KEY: ${{ secrets.NEWDATA_API_KEY }}
+          NEWSAPI_API_KEY: ${{ secrets.NEWSAPI_API_KEY }}
         run: |
           if [ -n "$SESSION_DATE" ]; then
             python -m news_collector.engine --session-date "$SESSION_DATE"
