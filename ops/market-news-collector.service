@@ -1,0 +1,27 @@
+# Install after creating a dedicated 'newsbot' system user, writable data
+# directory, Python virtualenv and /etc/market-news.env (chmod 0600).
+# No permissions to trade or place orders.
+[Unit]
+Description=Indian Market Intelligence 24/7 news collector (research only)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=newsbot
+Group=newsbot
+WorkingDirectory=/opt/Indian-Market-Intelligence-AI
+Environment=PYTHONUNBUFFERED=1
+EnvironmentFile=/etc/market-news.env
+ExecStart=/opt/Indian-Market-Intelligence-AI/.venv/bin/python -m news_collector.continuous_worker
+Restart=on-failure
+RestartSec=30
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=true
+ReadWritePaths=/opt/Indian-Market-Intelligence-AI/news_collector/data
+LimitNOFILE=4096
+
+[Install]
+WantedBy=multi-user.target
