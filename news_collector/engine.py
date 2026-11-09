@@ -27,6 +27,9 @@ import requests
 from bs4 import BeautifulSoup
 from news_collector.matching import match_issuers
 from news_collector.feed_resilience import rss_root, read_with_retry
+from news_collector.provider_discovery import (
+    fetch_provider_news, provider_api_items, provider_has_key,
+)
 from news_collector.index_discovery import fetch_search_index, search_index_items
 
 IST = ZoneInfo("Asia/Kolkata")
@@ -250,8 +253,14 @@ def fetch_one(source: dict) -> tuple[dict, list[dict]]:
         return ({**base, "status": "DISABLED"}, [])
     if source["kind"] == "indexed_search" and not os.environ.get("SERPER_API_KEY", "").strip():
         return ({**base, "status": "SKIPPED_NO_KEY", "error": "SERPER_API_KEY not configured"}, [])
+    if source["kind"] == "provider_api":
+        if os.environ.get("ENABLE_PAID_NEWS_APIS", "").lower().strip() != "true":
+            return ({**base, "status": "SKIPPED_COST_GUARD", "error": "Opt-in required via ENABLE_PAID_NEWS_APIS"}, [])
+        if not provider_has_key(source):
+            return ({**base, "status": "SKIPPED_NO_KEY", "error": "Provider key not configured"}, [])
     try:
         raw = (fetch_search_index(source) if source["kind"] == "indexed_search"
+               else fetch_provider_news(source) if source["kind"] == "provider_api"
                else read_with_retry(source["url"], fetch_bytes,
                                     max_attempts=source.get("max_attempts", 1)))
         if source["kind"] == "rss":
@@ -262,6 +271,8 @@ def fetch_one(source: dict) -> tuple[dict, list[dict]]:
             items = api_items(raw, source)
         elif source["kind"] == "indexed_search":
             items = search_index_items(raw, source)
+        elif source["kind"] == "provider_api":
+            items = provider_api_items(raw, source)
         else:
             raise ValueError("Unsupported source kind")
         base.update(status="OK" if items else "EMPTY", fetched_items=len(items), bytes=len(raw))
@@ -313,6 +324,7 @@ def build_record(item: dict, source: dict, universe: dict[str, str],
                     "published_at": timestamp.isoformat() if timestamp else None,
                     "first_seen_at": fetched_at.isoformat(), "last_seen_at": fetched_at.isoformat(),
                     "publication_time_status": "VERIFIED_FORMAT" if timestamp else "UNVERIFIED",
+                    "provider_reported_time_unverified": item.get("provider_reported_time", ""),
                     "symbols": symbols,
                     "sources": [source["name"]], "providers": [source["provider"]],
                     "authorities": [source["authority"]]}
@@ -410,6 +422,7 @@ def run(session: str, output_dir: Path, *, config: Path = ROOT / "sources.json",
             "Best-effort RSS/HTML/API collection; cannot guarantee all websites or full NSE/BSE filings.",
             "Date parsing validates format, not original publisher provenance.",
             "Search-index results are discovery-only without original publication timestamps.",
+            "All optional API discovery is opt-in, metadata only, and not trade-eligible without primary-source timestamp verification.",
             "Unmatched regulator/global RSS items are separate macro context, not NIFTY 500 signals.",
             "HTML article links without reliable publication timestamps stay unverified.",
             "NSE/BSE records are not reconciled by ISIN/event ID; exchange_only is NOT proof of a missed story.",
