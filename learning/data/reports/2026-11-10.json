@@ -1,0 +1,11 @@
+{
+  "daily_equal_weight_return_pct": null,
+  "data_status": "UNAVAILABLE",
+  "date": "2026-11-10",
+  "errors": {},
+  "note": "Research audit only. Open-price execution is hypothetical. No live orders.",
+  "priced": 0,
+  "reason": "No immutable 09:00 signal snapshot in repository.",
+  "signals_expected": 0,
+  "source": "Yahoo Finance unadjusted daily OHLC (not NSE-verified)"
+}
