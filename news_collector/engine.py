@@ -26,6 +26,7 @@ from zoneinfo import ZoneInfo
 import requests
 from bs4 import BeautifulSoup
 from news_collector.matching import match_issuers
+from news_collector.feed_resilience import rss_root, read_with_retry
 from news_collector.index_discovery import fetch_search_index, search_index_items
 
 IST = ZoneInfo("Asia/Kolkata")
@@ -178,7 +179,7 @@ def universe_match(title: str, summary: str, universe: dict[str, str]) -> list[s
 
 
 def rss_items(raw: bytes, source: dict) -> list[dict]:
-    root = ET.fromstring(raw)
+    root = rss_root(raw, allow_truncated=bool(source.get("recover_truncated_rss", False)))
     if local_name(root.tag) not in {"rss", "rdf", "feed"}:
         raise ValueError("Not RSS/Atom XML")
     found = []
@@ -251,7 +252,8 @@ def fetch_one(source: dict) -> tuple[dict, list[dict]]:
         return ({**base, "status": "SKIPPED_NO_KEY", "error": "SERPER_API_KEY not configured"}, [])
     try:
         raw = (fetch_search_index(source) if source["kind"] == "indexed_search"
-               else fetch_bytes(source["url"]))
+               else read_with_retry(source["url"], fetch_bytes,
+                                    max_attempts=source.get("max_attempts", 1)))
         if source["kind"] == "rss":
             items = rss_items(raw, source)
         elif source["kind"] == "html":
@@ -342,6 +344,7 @@ def run(session: str, output_dir: Path, *, config: Path = ROOT / "sources.json",
     target = output_dir / session
     events = read_jsonl(target / "events.jsonl")
     pending = read_jsonl(target / "undated_candidates.jsonl")
+    macro_context = read_jsonl(target / "macro_context.jsonl")
     # Revalidate persisted issuer matches when rules change; never leave stale
     # secondary-company mentions attached to exchange filings.
     if universe:
@@ -370,9 +373,13 @@ def run(session: str, output_dir: Path, *, config: Path = ROOT / "sources.json",
                     if row and row["symbols"]:
                         stat["nifty500_matched"] += 1
                         merge_record(events, row)
+                    elif row and src.get("market_context"):
+                        # Macro/regulator records are research context, never stock signals.
+                        merge_record(macro_context, row)
             summaries.append(stat)
     write_jsonl(target / "events.jsonl", events)
     write_jsonl(target / "undated_candidates.jsonl", pending)
+    write_jsonl(target / "macro_context.jsonl", macro_context)
     by_symbol = defaultdict(set)
     for row in events.values():
         for symbol in row["symbols"]:
@@ -395,6 +402,7 @@ def run(session: str, output_dir: Path, *, config: Path = ROOT / "sources.json",
         "nifty500_matched_raw_items": sum(s["nifty500_matched"] for s in summaries),
         "stored_unique_matched_urls": len(events),
         "stored_undated_candidate_urls": len(pending),
+        "stored_macro_context_urls": len(macro_context),
         "distinct_matched_symbols": len(by_symbol),
         "cross_source_symbol_presence_NOT_event_level_reconciliation": discrep,
         "sources": summaries,
@@ -402,6 +410,7 @@ def run(session: str, output_dir: Path, *, config: Path = ROOT / "sources.json",
             "Best-effort RSS/HTML/API collection; cannot guarantee all websites or full NSE/BSE filings.",
             "Date parsing validates format, not original publisher provenance.",
             "Search-index results are discovery-only without original publication timestamps.",
+            "Unmatched regulator/global RSS items are separate macro context, not NIFTY 500 signals.",
             "HTML article links without reliable publication timestamps stay unverified.",
             "NSE/BSE records are not reconciled by ISIN/event ID; exchange_only is NOT proof of a missed story.",
             "Unknown, stale or unverified constituent snapshots prevent claims of complete NIFTY 500 coverage.",
