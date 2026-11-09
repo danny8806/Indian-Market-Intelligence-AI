@@ -1,0 +1,41 @@
+{
+  "schema": "chatgpt-news-discovery/v1",
+  "captured_at_ist": "2026-11-10T05:13:10+05:30",
+  "articles": [
+    {
+      "url": "https://www.bazaarwatch.com/announcement/298709/ashoka-buildcon-ltd-the-company-has-received-letter-of-acceptance-loa-from-nhai-for-the-project",
+      "headline": "Ashoka Buildcon receives NHAI Letter of Acceptance for an EPC project",
+      "publisher": "BazaarWatch (BSE announcement metadata)",
+      "publisher_time_claim": "2026-11-09T21:40:00+05:30",
+      "evidence_note": "BSE-derived announcement states accepted EPC price Rs 865.90 crore excluding GST; continuation of earlier L1 disclosure dated 5 November. Verify primary filing and event novelty."
+    },
+    {
+      "url": "https://resultkal.com/r/olectra-2026-11-09",
+      "headline": "Olectra Greentech publishes September-quarter consolidated financial results",
+      "publisher": "ResultKal (NSE results summary)",
+      "publisher_time_claim": "2026-11-09T16:53:00+05:30",
+      "evidence_note": "Exchange-derived results page reports consolidated revenue of Rs 687.01 crore and net profit of Rs 52.12 crore, about 4.6% and 5.4% above prior-year quarter. Validate against original NSE PDF."
+    },
+    {
+      "url": "https://www.bazaarwatch.com/announcement/298199/whirlpool-of-india-limited-outcome-of-board-meeting",
+      "headline": "Whirlpool of India files September-quarter financial results and board meeting outcome",
+      "publisher": "BazaarWatch (NSE announcement metadata)",
+      "publisher_time_claim": "2026-11-09T16:50:00+05:30",
+      "evidence_note": "Company submitted unaudited standalone and consolidated results for quarter and half-year ended 30 September 2026. Contains original filing attachment reference; not an AI decision."
+    },
+    {
+      "url": "https://bazaarwatch.com/announcement/298309/whirlpool-of-india-limited-press-release",
+      "headline": "Whirlpool of India files Q2 FY2026-27 earnings press release",
+      "publisher": "BazaarWatch (NSE press release metadata)",
+      "publisher_time_claim": "2026-11-09T17:39:00+05:30",
+      "evidence_note": "Press release references consolidated revenue from operations of Rs 1,873 crore, with revenue up 14% year on year. Source-derived summary; verify filing and consolidated basis."
+    },
+    {
+      "url": "https://www.reuters.com/world/india/whirlpool-india-quarterly-profit-slumps-raw-material-costs-rise-2026-11-09/",
+      "headline": "Whirlpool India quarterly profit declines amid higher raw material costs",
+      "publisher": "Reuters",
+      "publisher_time_claim": null,
+      "evidence_note": "Reuters reports approximately 39% year-over-year decline in consolidated quarterly net profit. Publication clock time was not confirmed from an original publisher timestamp."
+    }
+  ]
+}
