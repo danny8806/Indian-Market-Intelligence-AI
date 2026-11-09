@@ -1,10 +1,10 @@
 {
   "session": "2026-11-09",
-  "generated_at": "2026-11-09T07:25:37.518467+05:30",
+  "generated_at": "2026-11-09T14:08:19.083015+05:30",
   "method": "Symbol + material category presence; NOT event-ID or issuer ISIN reconciliation",
   "category_counts": {
     "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT": 28,
-    "MEDIA_ONLY_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS": 5,
+    "MEDIA_ONLY_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS": 6,
     "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS": 38
   },
   "groups": [
@@ -1371,6 +1371,23 @@
       ]
     },
     {
+      "symbol": "SIEMENS",
+      "event_category": "orders_contracts",
+      "media_count": 1,
+      "nse_count": 0,
+      "bse_count": 0,
+      "filing_examples": [],
+      "media_examples": [
+        {
+          "headline": "Siemens India Q2 Review: Strong Order Book, Weak Margins Leave Brokerages Divided | Check Potential Upside",
+          "url": "https://www.ndtvprofit.com/markets/siemens-india-q2-review-strong-order-book-weak-margins-leave-brokerages-divided-check-target-price-potential-upside-12301715",
+          "published_at": "2026-11-09T08:40:44+05:30"
+        }
+      ],
+      "state": "MEDIA_ONLY_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": []
+    },
+    {
       "symbol": "SOLARINDS",
       "event_category": "financial_results",
       "media_count": 0,
@@ -1701,9 +1718,17 @@
     {
       "feed_a": "NSE announcements RSS",
       "feed_b": "NSE announcements archive mirror",
-      "status_a": "EMPTY",
-      "status_b": "EMPTY",
-      "comparison_status": "UNAVAILABLE_SOURCE_FAILURE_OR_EMPTY"
+      "status_a": "OK",
+      "status_b": "OK",
+      "comparison_status": "SNAPSHOT_OVERLAP_ONLY",
+      "feed_a_unique_matched_urls": 371,
+      "feed_b_unique_matched_urls": 371,
+      "both_feeds_same_url": 371,
+      "only_feed_a_count": 0,
+      "only_feed_b_count": 0,
+      "only_feed_a_examples": [],
+      "only_feed_b_examples": [],
+      "warning": "URL-level overlap is NOT event-level completeness; feed length, timing and availability differ."
     },
     {
       "feed_a": "BSE announcements RSS",
@@ -1711,9 +1736,9 @@
       "status_a": "OK",
       "status_b": "OK",
       "comparison_status": "SNAPSHOT_OVERLAP_ONLY",
-      "feed_a_unique_matched_urls": 236,
-      "feed_b_unique_matched_urls": 233,
-      "both_feeds_same_url": 233,
+      "feed_a_unique_matched_urls": 237,
+      "feed_b_unique_matched_urls": 234,
+      "both_feeds_same_url": 234,
       "only_feed_a_count": 3,
       "only_feed_b_count": 0,
       "only_feed_a_examples": [

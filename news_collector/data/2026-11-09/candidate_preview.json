@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-09T07:26:04.010527+05:30",
+  "as_of": "2026-11-09T14:09:15.414032+05:30",
   "candidates": [
     {
       "articles": 14,
@@ -630,9 +630,8 @@
       "symbol": "ASIANPAINT"
     },
     {
-      "articles": 7,
+      "articles": 6,
       "categories": [
-        "corporate_actions",
         "other",
         "regulatory"
       ],
@@ -651,20 +650,18 @@
         "Dabur India Ltd (500096)",
         "Dabur India Limited",
         "Sebi warns Dabur India over delay in disclosing USFDA warning letter",
-        "Dr. Lal Path Labs Ltd. - Ex-Date: 11-Nov-2026",
         "Dabur India Limited",
         "Dabur India Ltd (500096)"
       ],
       "material_event_count": 3,
       "not_a_trade_signal": true,
-      "official_filing_count": 6,
+      "official_filing_count": 5,
       "review_priority": 17,
       "source_urls": [
         "https://nsearchives.nseindia.com/corporate/DABURA_06112026172059_RTA.pdf",
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/81a60025-e3a4-47dd-84ae-35c07676a331.pdf",
         "https://nsearchives.nseindia.com/corporate/xbrl/AIATOP_787_WebXMLFile_20261106_165147970.xml",
         "https://www.business-standard.com/markets/news/sebi-warns-dabur-india-over-delay-in-disclosing-usfda-warning-letter-126110601897_1.html",
-        "https://www.nseindia.com/companies-listing/corporate-filings-actions",
         "https://nsearchives.nseindia.com/corporate/DABURA_06112026162506_Letter.pdf",
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/cc33e14d-93aa-4fdc-9612-3f44c08b3fbb.pdf"
       ],
@@ -1011,10 +1008,9 @@
       "symbol": "INOXWIND"
     },
     {
-      "articles": 5,
+      "articles": 4,
       "categories": [
         "analyst_meetings",
-        "corporate_actions",
         "financial_results",
         "other"
       ],
@@ -1031,18 +1027,16 @@
       "headline_samples": [
         "IRB Infrastructure Developers Ltd (532947)",
         "IRB Infrastructure Developers Ltd (532947)",
-        "Dr. Lal Path Labs Ltd. - Ex-Date: 11-Nov-2026",
         "IRB Infrastructure Developers Limited",
         "IRB Infrastructure Developers Limited"
       ],
       "material_event_count": 2,
       "not_a_trade_signal": true,
-      "official_filing_count": 5,
+      "official_filing_count": 4,
       "review_priority": 14,
       "source_urls": [
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/39d025de-4816-49fe-bb91-12ef4de40111.pdf",
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/0489bcab-5f25-4d8a-83e7-1f1b74725727.pdf",
-        "https://www.nseindia.com/companies-listing/corporate-filings-actions",
         "https://nsearchives.nseindia.com/corporate/IRB_06112026145950_Audio_recording_of_earnings_call.pdf",
         "https://nsearchives.nseindia.com/corporate/IRB_06112026162516_IRBIDL_Newspaper_Advertisement.pdf"
       ],
@@ -1891,39 +1885,6 @@
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/0b2194d2-65d4-4256-a454-305e283acd03.pdf"
       ],
       "symbol": "DOMS"
-    },
-    {
-      "articles": 3,
-      "categories": [
-        "analyst_meetings",
-        "corporate_actions",
-        "financial_results"
-      ],
-      "evidence_summary": {
-        "conflicting_metrics": [],
-        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
-        "negative_metrics": [],
-        "not_a_price_prediction": true,
-        "positive_metrics": [],
-        "yoy_metrics_with_direction": 0
-      },
-      "explicit_financial_facts": [],
-      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
-      "headline_samples": [
-        "Housing & Urban Development Corporation Ltd (540530)",
-        "Housing & Urban Development Corporation Limited",
-        "Dr. Lal Path Labs Ltd. - Ex-Date: 11-Nov-2026"
-      ],
-      "material_event_count": 1,
-      "not_a_trade_signal": true,
-      "official_filing_count": 3,
-      "review_priority": 9,
-      "source_urls": [
-        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/1dfea1f3-0619-473b-babe-eef6ce9e3988.pdf",
-        "https://nsearchives.nseindia.com/corporate/HUDCO_06112026171110_NSEBSEReg3006112026_Audio.pdf",
-        "https://www.nseindia.com/companies-listing/corporate-filings-actions"
-      ],
-      "symbol": "HUDCO"
     },
     {
       "articles": 3,
@@ -3013,6 +2974,36 @@
       "symbol": "HINDALCO"
     },
     {
+      "articles": 2,
+      "categories": [
+        "analyst_meetings",
+        "financial_results"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "headline_samples": [
+        "Housing & Urban Development Corporation Ltd (540530)",
+        "Housing & Urban Development Corporation Limited"
+      ],
+      "material_event_count": 1,
+      "not_a_trade_signal": true,
+      "official_filing_count": 2,
+      "review_priority": 7,
+      "source_urls": [
+        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/1dfea1f3-0619-473b-babe-eef6ce9e3988.pdf",
+        "https://nsearchives.nseindia.com/corporate/HUDCO_06112026171110_NSEBSEReg3006112026_Audio.pdf"
+      ],
+      "symbol": "HUDCO"
+    },
+    {
       "articles": 3,
       "categories": [
         "financial_results",
@@ -3228,38 +3219,6 @@
         "https://nsearchives.nseindia.com/corporate/lkwalimbe_bajajauto_co_in_06112026155411_SE_Intimation_PB_Final.pdf"
       ],
       "symbol": "BAJAJ-AUTO"
-    },
-    {
-      "articles": 3,
-      "categories": [
-        "corporate_actions",
-        "other"
-      ],
-      "evidence_summary": {
-        "conflicting_metrics": [],
-        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
-        "negative_metrics": [],
-        "not_a_price_prediction": true,
-        "positive_metrics": [],
-        "yoy_metrics_with_direction": 0
-      },
-      "explicit_financial_facts": [],
-      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
-      "headline_samples": [
-        "Balkrishna Industries Ltd (502355)",
-        "Dr. Lal Path Labs Ltd. - Ex-Date: 11-Nov-2026",
-        "Balkrishna Industries Limited"
-      ],
-      "material_event_count": 0,
-      "not_a_trade_signal": true,
-      "official_filing_count": 3,
-      "review_priority": 6,
-      "source_urls": [
-        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/8b4e4521-cecb-4707-9812-a75e2b6c57b2.pdf",
-        "https://www.nseindia.com/companies-listing/corporate-filings-actions",
-        "https://nsearchives.nseindia.com/corporate/BALKRISIND_06112026154243_Lettertostockexchangenewspaperresultssigned.pdf"
-      ],
-      "symbol": "BALKRISIND"
     },
     {
       "articles": 3,
@@ -3682,38 +3641,6 @@
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/5836eace-0e9c-4854-8265-90ac475a92a6.pdf"
       ],
       "symbol": "IREDA"
-    },
-    {
-      "articles": 3,
-      "categories": [
-        "corporate_actions",
-        "other"
-      ],
-      "evidence_summary": {
-        "conflicting_metrics": [],
-        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
-        "negative_metrics": [],
-        "not_a_price_prediction": true,
-        "positive_metrics": [],
-        "yoy_metrics_with_direction": 0
-      },
-      "explicit_financial_facts": [],
-      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
-      "headline_samples": [
-        "JM FINANCIAL PRODUCTS Ltd (975188)",
-        "Dr. Lal Path Labs Ltd. - Ex-Date: 11-Nov-2026",
-        "JM Financial Properties and Holdings Ltd (732326)"
-      ],
-      "material_event_count": 0,
-      "not_a_trade_signal": true,
-      "official_filing_count": 3,
-      "review_priority": 6,
-      "source_urls": [
-        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/407c7493-fc7a-409d-83cd-bcd43d52f082.pdf",
-        "https://www.nseindia.com/companies-listing/corporate-filings-actions",
-        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/b5eda55e-4ff9-4c27-a008-0a6bee766f8e.pdf"
-      ],
-      "symbol": "JMFINANCIL"
     },
     {
       "articles": 3,
@@ -4532,6 +4459,35 @@
     {
       "articles": 2,
       "categories": [
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "headline_samples": [
+        "Balkrishna Industries Ltd (502355)",
+        "Balkrishna Industries Limited"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 2,
+      "review_priority": 4,
+      "source_urls": [
+        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/8b4e4521-cecb-4707-9812-a75e2b6c57b2.pdf",
+        "https://nsearchives.nseindia.com/corporate/BALKRISIND_06112026154243_Lettertostockexchangenewspaperresultssigned.pdf"
+      ],
+      "symbol": "BALKRISIND"
+    },
+    {
+      "articles": 2,
+      "categories": [
         "management",
         "other"
       ],
@@ -4674,6 +4630,36 @@
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/6f348e3c-bc70-4595-83a5-6a9f32ccd4c5.pdf"
       ],
       "symbol": "GODREJCP"
+    },
+    {
+      "articles": 2,
+      "categories": [
+        "corporate_actions",
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "headline_samples": [
+        "JM FINANCIAL PRODUCTS Ltd (975188)",
+        "JM Financial Properties and Holdings Ltd (732326)"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 2,
+      "review_priority": 4,
+      "source_urls": [
+        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/407c7493-fc7a-409d-83cd-bcd43d52f082.pdf",
+        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/b5eda55e-4ff9-4c27-a008-0a6bee766f8e.pdf"
+      ],
+      "symbol": "JMFINANCIL"
     },
     {
       "articles": 2,
@@ -4857,39 +4843,6 @@
     {
       "articles": 3,
       "categories": [
-        "analyst_meetings",
-        "corporate_actions",
-        "other"
-      ],
-      "evidence_summary": {
-        "conflicting_metrics": [],
-        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
-        "negative_metrics": [],
-        "not_a_price_prediction": true,
-        "positive_metrics": [],
-        "yoy_metrics_with_direction": 0
-      },
-      "explicit_financial_facts": [],
-      "first_seen_at": "2026-11-06T23:23:11.352230+05:30",
-      "headline_samples": [
-        "Dr. Lal Path Labs Ltd. - Ex-Date: 11-Nov-2026",
-        "Tamil Nadu Greenlights Setting Up PSU For Executing Big-Ticket Govt Construction Projects",
-        "NBCC (India) Limited"
-      ],
-      "material_event_count": 0,
-      "not_a_trade_signal": true,
-      "official_filing_count": 2,
-      "review_priority": 4,
-      "source_urls": [
-        "https://www.nseindia.com/companies-listing/corporate-filings-actions",
-        "https://www.ndtvprofit.com/india/tamil-nadu-greenlights-setting-up-psu-for-executing-big-ticket-govt-construction-projects-12300273",
-        "https://nsearchives.nseindia.com/corporate/NBCC_06112026155648_Audio_call_intimation.pdf"
-      ],
-      "symbol": "NBCC"
-    },
-    {
-      "articles": 3,
-      "categories": [
         "other"
       ],
       "evidence_summary": {
@@ -4917,36 +4870,6 @@
         "https://nsearchives.nseindia.com/corporate/OIL_06112026170007_Press_Release06112026_signed.pdf"
       ],
       "symbol": "OIL"
-    },
-    {
-      "articles": 2,
-      "categories": [
-        "analyst_meetings",
-        "corporate_actions"
-      ],
-      "evidence_summary": {
-        "conflicting_metrics": [],
-        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
-        "negative_metrics": [],
-        "not_a_price_prediction": true,
-        "positive_metrics": [],
-        "yoy_metrics_with_direction": 0
-      },
-      "explicit_financial_facts": [],
-      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
-      "headline_samples": [
-        "Oil & Natural Gas Corporation Limited",
-        "Dr. Lal Path Labs Ltd. - Ex-Date: 11-Nov-2026"
-      ],
-      "material_event_count": 0,
-      "not_a_trade_signal": true,
-      "official_filing_count": 2,
-      "review_priority": 4,
-      "source_urls": [
-        "https://nsearchives.nseindia.com/corporate/ONGC_06112026215343_linkaudio06112026SD.pdf",
-        "https://www.nseindia.com/companies-listing/corporate-filings-actions"
-      ],
-      "symbol": "ONGC"
     },
     {
       "articles": 2,
@@ -5360,63 +5283,6 @@
       "symbol": "DIVISLAB"
     },
     {
-      "articles": 2,
-      "categories": [
-        "corporate_actions",
-        "other"
-      ],
-      "evidence_summary": {
-        "conflicting_metrics": [],
-        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
-        "negative_metrics": [],
-        "not_a_price_prediction": true,
-        "positive_metrics": [],
-        "yoy_metrics_with_direction": 0
-      },
-      "explicit_financial_facts": [],
-      "first_seen_at": "2026-11-09T03:57:57.254687+05:30",
-      "headline_samples": [
-        "Dr. Lal Path Labs Ltd. - Ex-Date: 11-Nov-2026",
-        "Samir Arora backed Helios Mid Cap Fund adds Aurobindo Pharma, 2 others, increase stake in Paytm, MCX and 16 others"
-      ],
-      "material_event_count": 0,
-      "not_a_trade_signal": true,
-      "official_filing_count": 1,
-      "review_priority": 2,
-      "source_urls": [
-        "https://www.nseindia.com/companies-listing/corporate-filings-actions",
-        "https://economictimes.indiatimes.com/mf/analysis/samir-arora-backed-helios-mid-cap-fund-adds-aurobindo-pharma-2-others-increase-stake-in-paytm-mcx-and-16-others/articleshow/135631989.cms"
-      ],
-      "symbol": "AUROPHARMA"
-    },
-    {
-      "articles": 1,
-      "categories": [
-        "corporate_actions"
-      ],
-      "evidence_summary": {
-        "conflicting_metrics": [],
-        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
-        "negative_metrics": [],
-        "not_a_price_prediction": true,
-        "positive_metrics": [],
-        "yoy_metrics_with_direction": 0
-      },
-      "explicit_financial_facts": [],
-      "first_seen_at": "2026-11-09T03:57:57.254687+05:30",
-      "headline_samples": [
-        "Dr. Lal Path Labs Ltd. - Ex-Date: 11-Nov-2026"
-      ],
-      "material_event_count": 0,
-      "not_a_trade_signal": true,
-      "official_filing_count": 1,
-      "review_priority": 2,
-      "source_urls": [
-        "https://www.nseindia.com/companies-listing/corporate-filings-actions"
-      ],
-      "symbol": "BALRAMCHIN"
-    },
-    {
       "articles": 1,
       "categories": [
         "other"
@@ -5446,60 +5312,6 @@
     {
       "articles": 1,
       "categories": [
-        "corporate_actions"
-      ],
-      "evidence_summary": {
-        "conflicting_metrics": [],
-        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
-        "negative_metrics": [],
-        "not_a_price_prediction": true,
-        "positive_metrics": [],
-        "yoy_metrics_with_direction": 0
-      },
-      "explicit_financial_facts": [],
-      "first_seen_at": "2026-11-09T03:57:57.254687+05:30",
-      "headline_samples": [
-        "Dr. Lal Path Labs Ltd. - Ex-Date: 11-Nov-2026"
-      ],
-      "material_event_count": 0,
-      "not_a_trade_signal": true,
-      "official_filing_count": 1,
-      "review_priority": 2,
-      "source_urls": [
-        "https://www.nseindia.com/companies-listing/corporate-filings-actions"
-      ],
-      "symbol": "CAMS"
-    },
-    {
-      "articles": 1,
-      "categories": [
-        "corporate_actions"
-      ],
-      "evidence_summary": {
-        "conflicting_metrics": [],
-        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
-        "negative_metrics": [],
-        "not_a_price_prediction": true,
-        "positive_metrics": [],
-        "yoy_metrics_with_direction": 0
-      },
-      "explicit_financial_facts": [],
-      "first_seen_at": "2026-11-09T03:57:57.254687+05:30",
-      "headline_samples": [
-        "Dr. Lal Path Labs Ltd. - Ex-Date: 11-Nov-2026"
-      ],
-      "material_event_count": 0,
-      "not_a_trade_signal": true,
-      "official_filing_count": 1,
-      "review_priority": 2,
-      "source_urls": [
-        "https://www.nseindia.com/companies-listing/corporate-filings-actions"
-      ],
-      "symbol": "CHAMBLFERT"
-    },
-    {
-      "articles": 1,
-      "categories": [
         "other"
       ],
       "evidence_summary": {
@@ -5523,33 +5335,6 @@
         "https://nsearchives.nseindia.com/content/debt/WDM/JashJS_06112026161223_CertificateofPaymentObligation6thNov2026.pdf"
       ],
       "symbol": "CHOLAFIN"
-    },
-    {
-      "articles": 1,
-      "categories": [
-        "corporate_actions"
-      ],
-      "evidence_summary": {
-        "conflicting_metrics": [],
-        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
-        "negative_metrics": [],
-        "not_a_price_prediction": true,
-        "positive_metrics": [],
-        "yoy_metrics_with_direction": 0
-      },
-      "explicit_financial_facts": [],
-      "first_seen_at": "2026-11-09T03:57:57.254687+05:30",
-      "headline_samples": [
-        "Dr. Lal Path Labs Ltd. - Ex-Date: 11-Nov-2026"
-      ],
-      "material_event_count": 0,
-      "not_a_trade_signal": true,
-      "official_filing_count": 1,
-      "review_priority": 2,
-      "source_urls": [
-        "https://www.nseindia.com/companies-listing/corporate-filings-actions"
-      ],
-      "symbol": "CONCOR"
     },
     {
       "articles": 2,
@@ -5606,33 +5391,6 @@
         "https://nsearchives.nseindia.com/content/debt/WDM/GODREJPROP_06112026151743_LettertoNSEComsd.pdf"
       ],
       "symbol": "GODREJPROP"
-    },
-    {
-      "articles": 1,
-      "categories": [
-        "corporate_actions"
-      ],
-      "evidence_summary": {
-        "conflicting_metrics": [],
-        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
-        "negative_metrics": [],
-        "not_a_price_prediction": true,
-        "positive_metrics": [],
-        "yoy_metrics_with_direction": 0
-      },
-      "explicit_financial_facts": [],
-      "first_seen_at": "2026-11-09T03:57:57.254687+05:30",
-      "headline_samples": [
-        "Dr. Lal Path Labs Ltd. - Ex-Date: 11-Nov-2026"
-      ],
-      "material_event_count": 0,
-      "not_a_trade_signal": true,
-      "official_filing_count": 1,
-      "review_priority": 2,
-      "source_urls": [
-        "https://www.nseindia.com/companies-listing/corporate-filings-actions"
-      ],
-      "symbol": "HINDUNILVR"
     },
     {
       "articles": 1,
@@ -5716,9 +5474,10 @@
       "symbol": "NAVINFLUOR"
     },
     {
-      "articles": 1,
+      "articles": 2,
       "categories": [
-        "corporate_actions"
+        "analyst_meetings",
+        "other"
       ],
       "evidence_summary": {
         "conflicting_metrics": [],
@@ -5729,18 +5488,20 @@
         "yoy_metrics_with_direction": 0
       },
       "explicit_financial_facts": [],
-      "first_seen_at": "2026-11-09T03:57:57.254687+05:30",
+      "first_seen_at": "2026-11-06T23:23:11.352230+05:30",
       "headline_samples": [
-        "Dr. Lal Path Labs Ltd. - Ex-Date: 11-Nov-2026"
+        "Tamil Nadu Greenlights Setting Up PSU For Executing Big-Ticket Govt Construction Projects",
+        "NBCC (India) Limited"
       ],
       "material_event_count": 0,
       "not_a_trade_signal": true,
       "official_filing_count": 1,
       "review_priority": 2,
       "source_urls": [
-        "https://www.nseindia.com/companies-listing/corporate-filings-actions"
+        "https://www.ndtvprofit.com/india/tamil-nadu-greenlights-setting-up-psu-for-executing-big-ticket-govt-construction-projects-12300273",
+        "https://nsearchives.nseindia.com/corporate/NBCC_06112026155648_Audio_call_intimation.pdf"
       ],
-      "symbol": "NLCINDIA"
+      "symbol": "NBCC"
     },
     {
       "articles": 1,
@@ -5772,6 +5533,33 @@
     {
       "articles": 1,
       "categories": [
+        "analyst_meetings"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "headline_samples": [
+        "Oil & Natural Gas Corporation Limited"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 1,
+      "review_priority": 2,
+      "source_urls": [
+        "https://nsearchives.nseindia.com/corporate/ONGC_06112026215343_linkaudio06112026SD.pdf"
+      ],
+      "symbol": "ONGC"
+    },
+    {
+      "articles": 1,
+      "categories": [
         "other"
       ],
       "evidence_summary": {
@@ -5795,63 +5583,6 @@
         "https://nsearchives.nseindia.com/corporate/xbrl/ALTERATION_OF_CAPITAL_AND_FUND_RAISING_3142_WebXMLFile_20261106_231305209.xml"
       ],
       "symbol": "PERSISTENT"
-    },
-    {
-      "articles": 2,
-      "categories": [
-        "corporate_actions",
-        "other"
-      ],
-      "evidence_summary": {
-        "conflicting_metrics": [],
-        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
-        "negative_metrics": [],
-        "not_a_price_prediction": true,
-        "positive_metrics": [],
-        "yoy_metrics_with_direction": 0
-      },
-      "explicit_financial_facts": [],
-      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
-      "headline_samples": [
-        "Dr. Lal Path Labs Ltd. - Ex-Date: 11-Nov-2026",
-        "Premier Energies Q2 net profit rises 31% to ₹462.4 crore"
-      ],
-      "material_event_count": 0,
-      "not_a_trade_signal": true,
-      "official_filing_count": 1,
-      "review_priority": 2,
-      "source_urls": [
-        "https://www.nseindia.com/companies-listing/corporate-filings-actions",
-        "https://www.thehindubusinessline.com/companies/premier-energies-q2-net-profit-rises-31-to-4624-crore/article71673725.ece"
-      ],
-      "symbol": "PREMIERENE"
-    },
-    {
-      "articles": 1,
-      "categories": [
-        "corporate_actions"
-      ],
-      "evidence_summary": {
-        "conflicting_metrics": [],
-        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
-        "negative_metrics": [],
-        "not_a_price_prediction": true,
-        "positive_metrics": [],
-        "yoy_metrics_with_direction": 0
-      },
-      "explicit_financial_facts": [],
-      "first_seen_at": "2026-11-09T03:57:57.254687+05:30",
-      "headline_samples": [
-        "Dr. Lal Path Labs Ltd. - Ex-Date: 11-Nov-2026"
-      ],
-      "material_event_count": 0,
-      "not_a_trade_signal": true,
-      "official_filing_count": 1,
-      "review_priority": 2,
-      "source_urls": [
-        "https://www.nseindia.com/companies-listing/corporate-filings-actions"
-      ],
-      "symbol": "RITES"
     },
     {
       "articles": 1,
@@ -6018,6 +5749,33 @@
         "https://www.business-standard.com/companies/news/angel-one-overtakes-zerodha-to-become-2nd-largest-broker-by-active-clients-126110601754_1.html"
       ],
       "symbol": "ANGELONE"
+    },
+    {
+      "articles": 1,
+      "categories": [
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-09T03:57:57.254687+05:30",
+      "headline_samples": [
+        "Samir Arora backed Helios Mid Cap Fund adds Aurobindo Pharma, 2 others, increase stake in Paytm, MCX and 16 others"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 0,
+      "review_priority": 0,
+      "source_urls": [
+        "https://economictimes.indiatimes.com/mf/analysis/samir-arora-backed-helios-mid-cap-fund-adds-aurobindo-pharma-2-others-increase-stake-in-paytm-mcx-and-16-others/articleshow/135631989.cms"
+      ],
+      "symbol": "AUROPHARMA"
     },
     {
       "articles": 1,
@@ -6263,6 +6021,33 @@
       "symbol": "PGEL"
     },
     {
+      "articles": 1,
+      "categories": [
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-06T22:53:52.042019+05:30",
+      "headline_samples": [
+        "Premier Energies Q2 net profit rises 31% to ₹462.4 crore"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 0,
+      "review_priority": 0,
+      "source_urls": [
+        "https://www.thehindubusinessline.com/companies/premier-energies-q2-net-profit-rises-31-to-4624-crore/article71673725.ece"
+      ],
+      "symbol": "PREMIERENE"
+    },
+    {
       "articles": 3,
       "categories": [
         "other"
@@ -6441,10 +6226,10 @@
     "Preview created after cutoff is unsuitable for historical model evaluation.",
     "Premarket frozen snapshot includes collector_last_poll_at; intervening minutes may contain uncollected news."
   ],
-  "collector_last_poll_at": "2026-11-09T07:25:37.518467+05:30",
-  "company_count": 191,
+  "collector_last_poll_at": "2026-11-09T14:08:19.083015+05:30",
+  "company_count": 184,
   "cutoff_exclusive": "2026-11-09T09:00:00+05:30",
-  "data_mode": "PRE_CUTOFF_PREVIEW_NOT_FROZEN",
+  "data_mode": "POST_CUTOFF_RESEARCH_PREVIEW_NOT_TRAINABLE",
   "doc_evidence_register": [
     {
       "document_sha256": "641bb5b838e0cce5ab087ed15467d3f711f312c998e82b285caf2257a66dea5d",
