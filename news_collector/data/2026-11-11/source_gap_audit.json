@@ -1,10 +1,10 @@
 {
   "session": "2026-11-11",
-  "generated_at": "2026-11-09T17:32:55.523427+05:30",
+  "generated_at": "2026-11-10T02:35:36.815607+05:30",
   "method": "Symbol + material category presence; NOT event-ID or issuer ISIN reconciliation",
   "category_counts": {
     "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT": 4,
-    "MEDIA_ONLY_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS": 1,
+    "MEDIA_ONLY_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS": 2,
     "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS": 8
   },
   "groups": [
@@ -87,11 +87,16 @@
     {
       "symbol": "GODREJPROP",
       "event_category": "acquisition",
-      "media_count": 1,
+      "media_count": 2,
       "nse_count": 0,
       "bse_count": 0,
       "filing_examples": [],
       "media_examples": [
+        {
+          "headline": "Godrej Properties to launch ₹32,000 crore worth homes for sale in H2 FY27 to cash in on demand",
+          "url": "https://www.thehindubusinessline.com/news/real-estate/godrej-properties-to-launch-32000-crore-worth-homes-for-sale-in-h2-fy27-to-cash-in-on-demand/article71682370.ece",
+          "published_at": "2026-11-09T19:00:15+05:30"
+        },
         {
           "headline": "Godrej Properties to launch ₹32,000 crore worth homes for sale in H2 FY27 to cash in on demand",
           "url": "https://www.thehindubusinessline.com/companies/godrej-properties-to-launch-32000-crore-worth-homes-for-sale-in-h2-fy27-to-cash-in-on-demand/article71682370.ece",
@@ -225,6 +230,23 @@
       ]
     },
     {
+      "symbol": "TATASTEEL",
+      "event_category": "regulatory",
+      "media_count": 1,
+      "nse_count": 0,
+      "bse_count": 0,
+      "filing_examples": [],
+      "media_examples": [
+        {
+          "headline": "Strong Q2, future prospects keep Street bullish on Tata Steel stock",
+          "url": "https://www.business-standard.com/markets/news/strong-q2-future-prospects-keep-street-bullish-on-tata-steel-stock-126110901188_1.html",
+          "published_at": "2026-11-09T19:53:23+05:30"
+        }
+      ],
+      "state": "MEDIA_ONLY_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": []
+    },
+    {
       "symbol": "UNIONBANK",
       "event_category": "regulatory",
       "media_count": 0,
@@ -306,6 +328,11 @@
       "error": "HTTPError: 404 Client Error: Not Found for url: https://www.livemint.com/rss/industryRSS"
     },
     {
+      "source": "Moneycontrol RSS",
+      "status": "ERROR",
+      "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.moneycontrol.com/rss/latestnews.xml"
+    },
+    {
       "source": "Financial Express legacy RSS",
       "status": "ERROR",
       "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.financialexpress.com/feed/"
@@ -334,6 +361,11 @@
       "source": "NDTV Profit markets",
       "status": "ERROR",
       "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.ndtvprofit.com/markets"
+    },
+    {
+      "source": "Moneycontrol stocks",
+      "status": "ERROR",
+      "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.moneycontrol.com/news/business/stocks/"
     },
     {
       "source": "Financial Express markets",
@@ -368,7 +400,7 @@
       "feed_a": "BSE announcements RSS",
       "feed_b": "BSE latest announcements alternate",
       "status_a": "EMPTY",
-      "status_b": "EMPTY",
+      "status_b": "OK",
       "comparison_status": "UNAVAILABLE_SOURCE_FAILURE_OR_EMPTY"
     }
   ]

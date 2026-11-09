@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-09T17:33:09.957421+05:30",
+  "as_of": "2026-11-10T02:35:48.407865+05:30",
   "candidates": [
     {
       "articles": 4,
@@ -35,7 +35,7 @@
       "symbol": "JWL"
     },
     {
-      "articles": 6,
+      "articles": 8,
       "categories": [
         "financial_results",
         "other"
@@ -51,23 +51,27 @@
       "explicit_financial_facts": [],
       "first_seen_at": "2026-11-09T16:54:35.190282+05:30",
       "headline_samples": [
+        "Olectra Greentech Limited",
         "Olectra Greentech Ltd (532439)",
         "Olectra Greentech Ltd (532439)",
         "Olectra Greentech Limited Q2 FY27 Results Board Meets November 9 - Multibagg AI",
         "Olectra Greentech Ltd (532439)",
         "Olectra Greentech Limited",
+        "Olectra Greentech Limited",
         "Olectra Greentech Limited"
       ],
       "material_event_count": 2,
       "not_a_trade_signal": true,
-      "official_filing_count": 5,
+      "official_filing_count": 7,
       "review_priority": 14,
       "source_urls": [
+        "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1755715_09112026090139_WEB.xml",
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/2940370e-0ed4-4fcc-8552-66d71d82827f.pdf",
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/db874cd0-ad4d-4e68-a6b5-2967fc1f3196.pdf",
         "https://news.google.com/rss/articles/CBMiowFBVV95cUxPbUZBS2pjSEx3a3ItV1l2TXJWYzAtMzVtQ0ZpYXk2dms2ckZxMjFaYnF4VWFieUs5aTNzNFlfTEQzcnYtaU1pTm12aTNOczc5VVFNQ2hwV3kxeUlnVzNjQ1plbnYwRUg1TkdORmpLUzdXdG9pWjBwNG5XNGZxOENFUVJNcWNaY1FSTDlyMEtIYWtUMDM0ZXpJT0hQQWtaSEo4aXM4?oc=5",
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/0d91d704-6d45-4c38-a1ce-087fb56de86c.pdf",
         "https://nsearchives.nseindia.com/corporate/OLECTRA_09112026165030_BMOUTCOMEQ227.pdf",
+        "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1755714_09112026085932_WEB.xml",
         "https://nsearchives.nseindia.com/corporate/OLECTRA_09112026171810_BMOUTCOMEQ227.pdf"
       ],
       "symbol": "OLECTRA"
@@ -103,6 +107,42 @@
         "https://nsearchives.nseindia.com/corporate/xbrl/SAIIM_2906_WebXMLFile_20261109_163424932.xml"
       ],
       "symbol": "OIL"
+    },
+    {
+      "articles": 5,
+      "categories": [
+        "financial_results",
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-09T16:51:11.327151+05:30",
+      "headline_samples": [
+        "Whirlpool of India Limited",
+        "Whirlpool of India Limited",
+        "Whirlpool of India Limited",
+        "Whirlpool of India Ltd (500238)",
+        "Whirlpool of India Ltd (500238)"
+      ],
+      "material_event_count": 1,
+      "not_a_trade_signal": true,
+      "official_filing_count": 5,
+      "review_priority": 11,
+      "source_urls": [
+        "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1755690_09112026060717_WEB.xml",
+        "https://nsearchives.nseindia.com/corporate/WHIRLPOOL_09112026164908_SEIntimation_signed.pdf",
+        "https://nsearchives.nseindia.com/corporate/xbrl/INTEGRATED_FILING_INDAS_1755691_09112026060735_WEB.xml",
+        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/1c78de47-199b-4fa5-9d85-3d0e8113294e.pdf",
+        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/d848c7f3-defb-4505-a47a-448043865c76.pdf"
+      ],
+      "symbol": "WHIRLPOOL"
     },
     {
       "articles": 3,
@@ -310,38 +350,6 @@
         "https://nsearchives.nseindia.com/content/debt/WDM/LLOYDSME_09112026171357_20261109_Chapter_XIV.pdf"
       ],
       "symbol": "LLOYDSME"
-    },
-    {
-      "articles": 3,
-      "categories": [
-        "financial_results",
-        "other"
-      ],
-      "evidence_summary": {
-        "conflicting_metrics": [],
-        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
-        "negative_metrics": [],
-        "not_a_price_prediction": true,
-        "positive_metrics": [],
-        "yoy_metrics_with_direction": 0
-      },
-      "explicit_financial_facts": [],
-      "first_seen_at": "2026-11-09T16:51:11.327151+05:30",
-      "headline_samples": [
-        "Whirlpool of India Limited",
-        "Whirlpool of India Ltd (500238)",
-        "Whirlpool of India Ltd (500238)"
-      ],
-      "material_event_count": 1,
-      "not_a_trade_signal": true,
-      "official_filing_count": 3,
-      "review_priority": 9,
-      "source_urls": [
-        "https://nsearchives.nseindia.com/corporate/WHIRLPOOL_09112026164908_SEIntimation_signed.pdf",
-        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/1c78de47-199b-4fa5-9d85-3d0e8113294e.pdf",
-        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/d848c7f3-defb-4505-a47a-448043865c76.pdf"
-      ],
-      "symbol": "WHIRLPOOL"
     },
     {
       "articles": 5,
@@ -683,7 +691,36 @@
       "symbol": "BHEL"
     },
     {
-      "articles": 3,
+      "articles": 2,
+      "categories": [
+        "acquisition"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-09T17:08:56.220071+05:30",
+      "headline_samples": [
+        "Godrej Properties to launch ₹32,000 crore worth homes for sale in H2 FY27 to cash in on demand",
+        "Godrej Properties to launch ₹32,000 crore worth homes for sale in H2 FY27 to cash in on demand"
+      ],
+      "material_event_count": 2,
+      "not_a_trade_signal": true,
+      "official_filing_count": 0,
+      "review_priority": 6,
+      "source_urls": [
+        "https://www.thehindubusinessline.com/news/real-estate/godrej-properties-to-launch-32000-crore-worth-homes-for-sale-in-h2-fy27-to-cash-in-on-demand/article71682370.ece",
+        "https://www.thehindubusinessline.com/companies/godrej-properties-to-launch-32000-crore-worth-homes-for-sale-in-h2-fy27-to-cash-in-on-demand/article71682370.ece"
+      ],
+      "symbol": "GODREJPROP"
+    },
+    {
+      "articles": 4,
       "categories": [
         "analyst_meetings",
         "other"
@@ -701,6 +738,7 @@
       "headline_samples": [
         "Motilal Oswal Financial Services Ltd (532892)",
         "Motilal Oswal Financial Services Limited",
+        "Banking stocks rally 1.5% as PSU lenders lead; broader markets pause after six-day bull run",
         "Motilal Oswal Financial Services Limited"
       ],
       "material_event_count": 0,
@@ -710,6 +748,7 @@
       "source_urls": [
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/952ca7e5-d728-4970-9696-1158c22f4f35.pdf",
         "https://nsearchives.nseindia.com/content/debt/WDM/MOTILALOFS_09112026155059_Intimation_for_Conference_Nov2026.pdf",
+        "https://www.thehindu.com/business/banking-stocks-rally-15-as-psu-lenders-lead-broader-markets-pause-after-six-day-bull-run/article71683059.ece",
         "https://nsearchives.nseindia.com/corporate/MOTILALOFS_09112026153241_Intimation_for_Conference_Nov2026.pdf"
       ],
       "symbol": "MOTILALOFS"
@@ -779,7 +818,7 @@
       "symbol": "TITAN"
     },
     {
-      "articles": 3,
+      "articles": 4,
       "categories": [
         "other"
       ],
@@ -795,6 +834,7 @@
       "first_seen_at": "2026-11-09T16:51:11.327151+05:30",
       "headline_samples": [
         "Bank of Baroda",
+        "Bank of Baroda ups MCLR by 5 to 20 bps",
         "Bank of Baroda (532134)",
         "Banks to plough back UPI MDR gains into tech, security and expansion"
       ],
@@ -804,6 +844,7 @@
       "review_priority": 4,
       "source_urls": [
         "https://nsearchives.nseindia.com/corporate/BANKBARODA_09112026163028_SEMCLR.pdf",
+        "https://www.thehindubusinessline.com/money-and-banking/bank-of-baroda-ups-mclr-by-5-to-20-bps/article71682613.ece",
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/780accac-591f-44e7-8057-004b892c89a1.pdf",
         "https://www.business-standard.com/industry/banking/banks-to-plough-back-upi-mdr-gains-into-tech-security-and-expansion-126110900770_1.html"
       ],
@@ -868,9 +909,10 @@
       "symbol": "IIFL"
     },
     {
-      "articles": 2,
+      "articles": 3,
       "categories": [
-        "analyst_meetings"
+        "analyst_meetings",
+        "other"
       ],
       "evidence_summary": {
         "conflicting_metrics": [],
@@ -883,6 +925,7 @@
       "explicit_financial_facts": [],
       "first_seen_at": "2026-11-09T16:51:11.327151+05:30",
       "headline_samples": [
+        "Mphasis eyes double-digit FY27 growth on strong deal pipeline, AI demand",
         "MphasiS Limited",
         "MphasiS Limited"
       ],
@@ -891,6 +934,7 @@
       "official_filing_count": 2,
       "review_priority": 4,
       "source_urls": [
+        "https://www.business-standard.com/companies/quarterly-results/mphasis-eyes-double-digit-fy27-growth-on-strong-deal-pipeline-ai-demand-126110901021_1.html",
         "https://nsearchives.nseindia.com/corporate/MPHASIS_09112026150003_Intimation_of_transcript_-_Q2FY2027.pdf",
         "https://nsearchives.nseindia.com/corporate/xbrl/SAIIM_1534_WebXMLFile_20261109_150132770.xml"
       ],
@@ -926,9 +970,10 @@
       "symbol": "PREMIERENE"
     },
     {
-      "articles": 2,
+      "articles": 3,
       "categories": [
-        "corporate_actions"
+        "corporate_actions",
+        "other"
       ],
       "evidence_summary": {
         "conflicting_metrics": [],
@@ -941,6 +986,7 @@
       "explicit_financial_facts": [],
       "first_seen_at": "2026-11-09T16:51:11.327151+05:30",
       "headline_samples": [
+        "Buy, Sell Or Hold: Divi's Labs, Tata Power, Kalyan Jewellers, Reliance Industries, L&T And Shriram Finance — Ask Profit",
         "Shriram Finance Ltd (511218)",
         "Shriram Finance Limited"
       ],
@@ -949,6 +995,7 @@
       "official_filing_count": 2,
       "review_priority": 4,
       "source_urls": [
+        "https://www.ndtvprofit.com/markets/buy-sell-or-hold-divis-labs-tata-power-kalyan-jewellers-reliance-industries-l-t-and-shriram-finance-ask-profit-12304863",
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/60737d9b-9abf-4596-941f-afd0b4a0dcee.pdf",
         "https://nsearchives.nseindia.com/corporate/Mathew_09112026160603_BSENSE_InterimDividend_2026_27.pdf"
       ],
@@ -957,7 +1004,7 @@
     {
       "articles": 1,
       "categories": [
-        "acquisition"
+        "regulatory"
       ],
       "evidence_summary": {
         "conflicting_metrics": [],
@@ -968,18 +1015,18 @@
         "yoy_metrics_with_direction": 0
       },
       "explicit_financial_facts": [],
-      "first_seen_at": "2026-11-09T17:08:56.220071+05:30",
+      "first_seen_at": "2026-11-10T02:35:36.815607+05:30",
       "headline_samples": [
-        "Godrej Properties to launch ₹32,000 crore worth homes for sale in H2 FY27 to cash in on demand"
+        "Strong Q2, future prospects keep Street bullish on Tata Steel stock"
       ],
       "material_event_count": 1,
       "not_a_trade_signal": true,
       "official_filing_count": 0,
       "review_priority": 3,
       "source_urls": [
-        "https://www.thehindubusinessline.com/companies/godrej-properties-to-launch-32000-crore-worth-homes-for-sale-in-h2-fy27-to-cash-in-on-demand/article71682370.ece"
+        "https://www.business-standard.com/markets/news/strong-q2-future-prospects-keep-street-bullish-on-tata-steel-stock-126110901188_1.html"
       ],
-      "symbol": "GODREJPROP"
+      "symbol": "TATASTEEL"
     },
     {
       "articles": 1,
@@ -1211,6 +1258,33 @@
         "yoy_metrics_with_direction": 0
       },
       "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-10T02:35:36.815607+05:30",
+      "headline_samples": [
+        "Ceat to Apollo Tyres: Tyre makers find little grip on rising input costs"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 0,
+      "review_priority": 0,
+      "source_urls": [
+        "https://www.business-standard.com/industry/news/ceat-to-apollo-tyres-tyre-makers-find-little-grip-on-rising-input-costs-126110901020_1.html"
+      ],
+      "symbol": "APOLLOTYRE"
+    },
+    {
+      "articles": 1,
+      "categories": [
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
       "first_seen_at": "2026-11-09T17:08:56.220071+05:30",
       "headline_samples": [
         "Banks to plough back UPI MDR gains into tech, security and expansion"
@@ -1223,6 +1297,114 @@
         "https://www.business-standard.com/industry/banking/banks-to-plough-back-upi-mdr-gains-into-tech-security-and-expansion-126110900770_1.html"
       ],
       "symbol": "AXISBANK"
+    },
+    {
+      "articles": 1,
+      "categories": [
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-10T02:35:36.815607+05:30",
+      "headline_samples": [
+        "Sonia Gandhi Recalls 'Indira's Tears' Over Op Blue Star, Akali Dal Hits Back"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 0,
+      "review_priority": 0,
+      "source_urls": [
+        "https://www.ndtv.com/india-news/akali-dal-hits-out-after-sonia-gandhis-op-bluestar-distressed-indira-remark-12305209"
+      ],
+      "symbol": "BLUESTARCO"
+    },
+    {
+      "articles": 1,
+      "categories": [
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-10T02:35:36.815607+05:30",
+      "headline_samples": [
+        "Central PSUs pledge ₹2 trn investment in UP's thermal, clean energy sectors"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 0,
+      "review_priority": 0,
+      "source_urls": [
+        "https://www.business-standard.com/economy/uttar-pradesh/central-psus-pledge-2-trn-investment-in-up-s-thermal-clean-energy-sectors-126110901053_1.html"
+      ],
+      "symbol": "COALINDIA"
+    },
+    {
+      "articles": 1,
+      "categories": [
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-10T02:35:36.815607+05:30",
+      "headline_samples": [
+        "Microfinance lenders expect H2 disbursements to rise on seasonal demand"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 0,
+      "review_priority": 0,
+      "source_urls": [
+        "https://www.business-standard.com/finance/news/microfinance-lenders-expect-h2-disbursements-to-rise-on-seasonal-demand-126110901121_1.html"
+      ],
+      "symbol": "CREDITACC"
+    },
+    {
+      "articles": 1,
+      "categories": [
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-10T02:35:36.815607+05:30",
+      "headline_samples": [
+        "Gap between rural, urban has started narrowing: Dabur India CEO Bhalla"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 0,
+      "review_priority": 0,
+      "source_urls": [
+        "https://www.business-standard.com/companies/people/rural-urban-demand-growth-gap-narrowing-says-dabur-india-ceo-herjit-bhalla-126110901182_1.html"
+      ],
+      "symbol": "DABUR"
     },
     {
       "articles": 1,
@@ -1265,6 +1447,33 @@
         "yoy_metrics_with_direction": 0
       },
       "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-10T02:35:36.815607+05:30",
+      "headline_samples": [
+        "HUL hikes prices of detergent brands Surf Excel, Rin, Wheel by up to 11%"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 0,
+      "review_priority": 0,
+      "source_urls": [
+        "https://www.business-standard.com/industry/news/hul-hikes-prices-of-detergent-brands-surf-excel-rin-wheel-by-up-to-11-126110901252_1.html"
+      ],
+      "symbol": "HINDUNILVR"
+    },
+    {
+      "articles": 1,
+      "categories": [
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
       "first_seen_at": "2026-11-09T16:51:11.327151+05:30",
       "headline_samples": [
         "RBI's $239 bn forward dollar position to limit rupee gains: Report"
@@ -1277,6 +1486,141 @@
         "https://www.business-standard.com/finance/news/rbi-s-239-bn-forward-dollar-position-to-limit-rupee-gains-report-126110900571_1.html"
       ],
       "symbol": "IDFCFIRSTB"
+    },
+    {
+      "articles": 1,
+      "categories": [
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-10T02:35:36.815607+05:30",
+      "headline_samples": [
+        "FMCG ad spending accelerates as macro pressures ease"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 0,
+      "review_priority": 0,
+      "source_urls": [
+        "https://www.thehindubusinessline.com/companies/fmcg-ad-spending-accelerates-as-macro-pressures-ease/article71681564.ece"
+      ],
+      "symbol": "MARICO"
+    },
+    {
+      "articles": 1,
+      "categories": [
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-10T02:35:36.815607+05:30",
+      "headline_samples": [
+        "Buy, Sell Or Hold: Divi's Labs, Tata Power, Kalyan Jewellers, Reliance Industries, L&T And Shriram Finance — Ask Profit"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 0,
+      "review_priority": 0,
+      "source_urls": [
+        "https://www.ndtvprofit.com/markets/buy-sell-or-hold-divis-labs-tata-power-kalyan-jewellers-reliance-industries-l-t-and-shriram-finance-ask-profit-12304863"
+      ],
+      "symbol": "RELIANCE"
+    },
+    {
+      "articles": 1,
+      "categories": [
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-10T02:35:36.815607+05:30",
+      "headline_samples": [
+        "Buy, Sell Or Hold: Divi's Labs, Tata Power, Kalyan Jewellers, Reliance Industries, L&T And Shriram Finance — Ask Profit"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 0,
+      "review_priority": 0,
+      "source_urls": [
+        "https://www.ndtvprofit.com/markets/buy-sell-or-hold-divis-labs-tata-power-kalyan-jewellers-reliance-industries-l-t-and-shriram-finance-ask-profit-12304863"
+      ],
+      "symbol": "TATAPOWER"
+    },
+    {
+      "articles": 1,
+      "categories": [
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-10T02:35:36.815607+05:30",
+      "headline_samples": [
+        "Tenneco India explores diversifying beyond auto sector, eyes M&A plans"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 0,
+      "review_priority": 0,
+      "source_urls": [
+        "https://www.business-standard.com/companies/news/tenneco-india-explores-diversifying-beyond-auto-sector-eyes-m-a-plans-126110900918_1.html"
+      ],
+      "symbol": "TENNIND"
+    },
+    {
+      "articles": 1,
+      "categories": [
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-10T02:35:36.815607+05:30",
+      "headline_samples": [
+        "Uno Minda among 7 stocks hitting 52-week highs; rally up to 26% in a month"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 0,
+      "review_priority": 0,
+      "source_urls": [
+        "https://economictimes.indiatimes.com/markets/stocks/news/uno-minda-among-7-stocks-hitting-52-week-highs-rally-up-to-26-in-a-month/slideshow/135681703.cms"
+      ],
+      "symbol": "UNOMINDA"
     }
   ],
   "cautions": [
@@ -1287,8 +1631,8 @@
     "Preview created after cutoff is unsuitable for historical model evaluation.",
     "Premarket frozen snapshot includes collector_last_poll_at; intervening minutes may contain uncollected news."
   ],
-  "collector_last_poll_at": "2026-11-09T17:32:55.523427+05:30",
-  "company_count": 41,
+  "collector_last_poll_at": "2026-11-10T02:35:36.815607+05:30",
+  "company_count": 53,
   "cutoff_exclusive": "2026-11-11T09:00:00+05:30",
   "data_mode": "PRE_CUTOFF_PREVIEW_NOT_FROZEN",
   "doc_evidence_register": [
@@ -2801,7 +3145,7 @@
   "news_window_start": "2026-11-09T15:00:00+05:30",
   "schema_version": "research-candidates/1.0",
   "session_date": "2026-11-11",
-  "source_failures_last_poll": 10,
+  "source_failures_last_poll": 12,
   "training_eligible": false,
   "universe_status": "OFFICIAL_FETCH:https://www.niftyindices.com/IndexConstituent/ind_nifty500list.csv"
 }
