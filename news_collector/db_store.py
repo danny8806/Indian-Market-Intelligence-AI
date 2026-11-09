@@ -89,6 +89,8 @@ def read_jsonl(path: Path) -> list[dict]:
 def engine_for_url(url: str):
     if not url.startswith(("postgresql://", "postgresql+psycopg://", "sqlite://")):
         raise ValueError("Only PostgreSQL or SQLite database URLs are allowed")
+    if url.startswith("postgresql://"):
+        url = "postgresql+psycopg://" + url[len("postgresql://"):]
     return create_engine(url, pool_pre_ping=True)
 
 
@@ -96,7 +98,15 @@ def _unique(existing: list, incoming: list) -> list:
     return sorted(set(existing or []) | set(incoming or []))
 
 
+def _normalize_sqlite_time(value: datetime | None):
+    if value is not None and value.tzinfo is None:
+        return value.replace(tzinfo=timezone.utc)
+    return value
+
+
 def _oldest(left: datetime | None, right: datetime | None):
+    left = _normalize_sqlite_time(left)
+    right = _normalize_sqlite_time(right)
     if left is None:
         return right
     if right is None:
@@ -105,6 +115,8 @@ def _oldest(left: datetime | None, right: datetime | None):
 
 
 def _newest(left: datetime | None, right: datetime | None):
+    left = _normalize_sqlite_time(left)
+    right = _normalize_sqlite_time(right)
     if left is None:
         return right
     if right is None:
