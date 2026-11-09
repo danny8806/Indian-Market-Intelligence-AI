@@ -7,6 +7,7 @@ on:
       - 'news_collector/*.py'
       - 'news_collector/*.json'
       - 'news_collector/requirements.txt'
+      - 'news_collector/chatgpt_inbox/*.json'
       - '.github/workflows/overnight-news-collector.yml'
   workflow_dispatch:
     inputs:
@@ -83,6 +84,15 @@ jobs:
           else
             python -m news_collector.openai_web_discovery
           fi
+      - name: Import ChatGPT scheduled discovery inbox (no API key)
+        shell: bash
+        env:
+          SESSION_DATE: ${{ inputs.session_date }}
+        run: |
+          if [ -n "$SESSION_DATE" ]; then
+            python -m news_collector.chatgpt_inbox_import --session-date "$SESSION_DATE"
+          else
+            python -m news_collector.chatgpt_inbox_import
       - name: Extract bounded text from public NSE/BSE PDFs and flag potential source gaps
         shell: bash
         env:
