@@ -1,0 +1,18 @@
+{
+  "session": "2026-11-11",
+  "checked_at": "2026-11-09T16:52:19.802125+05:30",
+  "pdf_candidates_total": 51,
+  "pdf_candidates_seen_before_cutoff": 51,
+  "pdf_candidates_late_discovery_or_unknown": 0,
+  "attempted_this_poll": 20,
+  "completed_document_records": 20,
+  "status_counts": {
+    "EXTRACTED": 20
+  },
+  "unattempted_or_retryable": 31,
+  "source_gap_groups": {
+    "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT": 3,
+    "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS": 4
+  },
+  "note": "Official publicly available PDF text extracted by pypdf. Only a bounded excerpt and context lines are stored. No OCR on scanned documents, no AI classification, no inference of price direction. PDF retrieval after 09:00 is not proof that its contents were known to the prediction system before 09:00."
+}

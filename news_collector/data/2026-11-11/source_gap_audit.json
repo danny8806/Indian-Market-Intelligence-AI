@@ -1,0 +1,272 @@
+{
+  "session": "2026-11-11",
+  "generated_at": "2026-11-09T16:51:11.327151+05:30",
+  "method": "Symbol + material category presence; NOT event-ID or issuer ISIN reconciliation",
+  "category_counts": {
+    "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT": 3,
+    "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS": 4
+  },
+  "groups": [
+    {
+      "symbol": "AMBER",
+      "event_category": "regulatory",
+      "media_count": 0,
+      "nse_count": 0,
+      "bse_count": 1,
+      "filing_examples": [
+        {
+          "headline": "Amber Enterprises India Ltd (540902)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/59dc1ce1-c826-4125-84ee-c65b36362ebd.pdf",
+          "published_at": "2026-11-09T15:50:41+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": [
+        "BSE"
+      ]
+    },
+    {
+      "symbol": "BATAINDIA",
+      "event_category": "regulatory",
+      "media_count": 0,
+      "nse_count": 0,
+      "bse_count": 1,
+      "filing_examples": [
+        {
+          "headline": "Bata India Ltd (500043)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/fd9e186d-8a8a-4c78-922e-6283486130c5.pdf",
+          "published_at": "2026-11-09T16:00:07+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": [
+        "BSE"
+      ]
+    },
+    {
+      "symbol": "GESHIP",
+      "event_category": "financial_results",
+      "media_count": 0,
+      "nse_count": 0,
+      "bse_count": 1,
+      "filing_examples": [
+        {
+          "headline": "Great Eastern Shipping Company Ltd (500620)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/0df3a77d-f7b9-4b1d-9311-4cfd0429207d.pdf",
+          "published_at": "2026-11-09T15:56:28+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": [
+        "BSE"
+      ]
+    },
+    {
+      "symbol": "JWL",
+      "event_category": "financial_results",
+      "media_count": 0,
+      "nse_count": 3,
+      "bse_count": 1,
+      "filing_examples": [
+        {
+          "headline": "Jupiter Wagons Ltd (533272)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/34ec7d1c-1cf6-4f49-bb59-c2511e804e68.pdf",
+          "published_at": "2026-11-09T15:17:43+05:30"
+        },
+        {
+          "headline": "Jupiter Wagons Limited",
+          "url": "https://nsearchives.nseindia.com/corporate/CEBBCO_09112026150408_BMINTIMATION131126.pdf",
+          "published_at": "2026-11-09T15:04:52+05:30"
+        },
+        {
+          "headline": "Jupiter Wagons Limited",
+          "url": "https://nsearchives.nseindia.com/corporate/xbrl/PRIOR_INTIMATION_3641_WebXMLFile_20261109_151944032.xml",
+          "published_at": "2026-11-09T15:19:45+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT",
+      "exchanges_seen": [
+        "BSE",
+        "NSE"
+      ]
+    },
+    {
+      "symbol": "OIL",
+      "event_category": "regulatory",
+      "media_count": 0,
+      "nse_count": 1,
+      "bse_count": 1,
+      "filing_examples": [
+        {
+          "headline": "Oil India Ltd (533106)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/173eacf7-d5be-4600-8a8d-d0cb61120486.pdf",
+          "published_at": "2026-11-09T15:27:58+05:30"
+        },
+        {
+          "headline": "Oil India Limited",
+          "url": "https://nsearchives.nseindia.com/corporate/OIL_09112026153015_Reg30__Announcement_signed.pdf",
+          "published_at": "2026-11-09T15:30:30+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT",
+      "exchanges_seen": [
+        "BSE",
+        "NSE"
+      ]
+    },
+    {
+      "symbol": "WHIRLPOOL",
+      "event_category": "financial_results",
+      "media_count": 0,
+      "nse_count": 1,
+      "bse_count": 0,
+      "filing_examples": [
+        {
+          "headline": "Whirlpool of India Limited",
+          "url": "https://nsearchives.nseindia.com/corporate/WHIRLPOOL_09112026164908_SEIntimation_signed.pdf",
+          "published_at": "2026-11-09T16:50:44+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": [
+        "NSE"
+      ]
+    },
+    {
+      "symbol": "ZFCVINDIA",
+      "event_category": "financial_results",
+      "media_count": 0,
+      "nse_count": 1,
+      "bse_count": 1,
+      "filing_examples": [
+        {
+          "headline": "ZF Commercial Vehicle Control Systems India Ltd (533023)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/d5ae0901-0c23-4bb8-bcb6-42d215305ec2.pdf",
+          "published_at": "2026-11-09T16:21:36+05:30"
+        },
+        {
+          "headline": "ZF Commercial Vehicle Control Systems India Limited",
+          "url": "https://nsearchives.nseindia.com/corporate/xbrl/PRIOR_INTIMATION_2785_WebXMLFile_20261109_162307112.xml",
+          "published_at": "2026-11-09T16:23:08+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT",
+      "exchanges_seen": [
+        "BSE",
+        "NSE"
+      ]
+    }
+  ],
+  "groups_truncated": false,
+  "failed_or_disabled_sources": [
+    {
+      "source": "Mint markets RSS",
+      "status": "ERROR",
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.livemint.com/rss/marketsRSS"
+    },
+    {
+      "source": "Mint companies RSS",
+      "status": "ERROR",
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.livemint.com/rss/companiesRSS"
+    },
+    {
+      "source": "Mint industry RSS",
+      "status": "ERROR",
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.livemint.com/rss/industryRSS"
+    },
+    {
+      "source": "Financial Express legacy RSS",
+      "status": "ERROR",
+      "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.financialexpress.com/feed/"
+    },
+    {
+      "source": "GDELT DOC API",
+      "status": "ERROR",
+      "error": "ReadTimeout: HTTPSConnectionPool(host='api.gdeltproject.org', port=443): Read timed out. (read timeout=7)"
+    },
+    {
+      "source": "Reuters India news",
+      "status": "ERROR",
+      "error": "HTTPError: 401 Client Error: HTTP Forbidden for url: https://www.reuters.com/world/india/"
+    },
+    {
+      "source": "News18 Business",
+      "status": "ERROR",
+      "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.news18.com/business/"
+    },
+    {
+      "source": "SEBI releases web",
+      "status": "ERROR",
+      "error": "HTTPError: 404 Client Error: Not Found for url: https://www.sebi.gov.in/media/press-releases.html"
+    },
+    {
+      "source": "NDTV Profit markets",
+      "status": "ERROR",
+      "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.ndtvprofit.com/markets"
+    },
+    {
+      "source": "Financial Express markets",
+      "status": "ERROR",
+      "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.financialexpress.com/market/"
+    }
+  ],
+  "limitations": [
+    "Single-exchange does not mean missing: an issuer may file differently on different exchanges.",
+    "Two items in the same category can be distinct events; no exact event match is asserted.",
+    "Unmatched media stories may be independent journalism, not exchange disclosures.",
+    "RSS feeds, publication timestamps and issuer matches are not verified against a complete licensed disclosure log.",
+    "Source failures may hide events. Treat all gaps as investigation leads, never automatically as negative/positive predictions."
+  ],
+  "official_feed_url_overlap": [
+    {
+      "feed_a": "NSE announcements RSS",
+      "feed_b": "NSE announcements archive mirror",
+      "status_a": "OK",
+      "status_b": "OK",
+      "comparison_status": "SNAPSHOT_OVERLAP_ONLY",
+      "feed_a_unique_matched_urls": 34,
+      "feed_b_unique_matched_urls": 36,
+      "both_feeds_same_url": 34,
+      "only_feed_a_count": 0,
+      "only_feed_b_count": 2,
+      "only_feed_a_examples": [],
+      "only_feed_b_examples": [
+        {
+          "url": "https://nsearchives.nseindia.com/corporate/WHIRLPOOL_09112026164908_SEIntimation_signed.pdf",
+          "symbols": [
+            "WHIRLPOOL"
+          ]
+        },
+        {
+          "url": "https://nsearchives.nseindia.com/corporate/xbrl/SAIIM_1853_WebXMLFile_20261109_165040745.xml",
+          "symbols": [
+            "GLENMARK"
+          ]
+        }
+      ],
+      "warning": "URL-level overlap is NOT event-level completeness; feed length, timing and availability differ."
+    },
+    {
+      "feed_a": "BSE announcements RSS",
+      "feed_b": "BSE latest announcements alternate",
+      "status_a": "OK",
+      "status_b": "OK",
+      "comparison_status": "SNAPSHOT_OVERLAP_ONLY",
+      "feed_a_unique_matched_urls": 26,
+      "feed_b_unique_matched_urls": 26,
+      "both_feeds_same_url": 26,
+      "only_feed_a_count": 0,
+      "only_feed_b_count": 0,
+      "only_feed_a_examples": [],
+      "only_feed_b_examples": [],
+      "warning": "URL-level overlap is NOT event-level completeness; feed length, timing and availability differ."
+    }
+  ]
+}
