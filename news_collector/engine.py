@@ -10,6 +10,7 @@ import csv
 import hashlib
 import io
 import json
+import os
 import re
 import sys
 import time
@@ -25,6 +26,7 @@ from zoneinfo import ZoneInfo
 import requests
 from bs4 import BeautifulSoup
 from news_collector.matching import match_issuers
+from news_collector.index_discovery import fetch_search_index, search_index_items
 
 IST = ZoneInfo("Asia/Kolkata")
 ROOT = Path(__file__).resolve().parent
@@ -199,7 +201,8 @@ def rss_items(raw: bytes, source: dict) -> list[dict]:
             "headline": headline[:550],
             "summary": BeautifulSoup(fields.get("description", ""), "html.parser").get_text(" ", strip=True)[:1800],
             "url": url,
-            "raw_time": fields.get("pubdate") or fields.get("published") or fields.get("updated") or fields.get("date") or "",
+            "raw_time": ("" if source.get("timestamp_provenance") == "discovery"
+                         else fields.get("pubdate") or fields.get("published") or fields.get("updated") or fields.get("date") or ""),
         })
         if len(found) >= MAX_ITEMS:
             break
@@ -244,14 +247,19 @@ def fetch_one(source: dict) -> tuple[dict, list[dict]]:
             "undated_items": 0, "out_of_window": 0}
     if not source.get("enabled", True):
         return ({**base, "status": "DISABLED"}, [])
+    if source["kind"] == "indexed_search" and not os.environ.get("SERPER_API_KEY", "").strip():
+        return ({**base, "status": "SKIPPED_NO_KEY", "error": "SERPER_API_KEY not configured"}, [])
     try:
-        raw = fetch_bytes(source["url"])
+        raw = (fetch_search_index(source) if source["kind"] == "indexed_search"
+               else fetch_bytes(source["url"]))
         if source["kind"] == "rss":
             items = rss_items(raw, source)
         elif source["kind"] == "html":
             items = html_items(raw, source)
         elif source["kind"] == "api":
             items = api_items(raw, source)
+        elif source["kind"] == "indexed_search":
+            items = search_index_items(raw, source)
         else:
             raise ValueError("Unsupported source kind")
         base.update(status="OK" if items else "EMPTY", fetched_items=len(items), bytes=len(raw))
@@ -393,6 +401,7 @@ def run(session: str, output_dir: Path, *, config: Path = ROOT / "sources.json",
         "limitations": [
             "Best-effort RSS/HTML/API collection; cannot guarantee all websites or full NSE/BSE filings.",
             "Date parsing validates format, not original publisher provenance.",
+            "Search-index results are discovery-only without original publication timestamps.",
             "HTML article links without reliable publication timestamps stay unverified.",
             "NSE/BSE records are not reconciled by ISIN/event ID; exchange_only is NOT proof of a missed story.",
             "Unknown, stale or unverified constituent snapshots prevent claims of complete NIFTY 500 coverage.",

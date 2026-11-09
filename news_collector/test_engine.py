@@ -81,6 +81,16 @@ class CollectorUnitTests(unittest.TestCase):
         self.assertEqual(len(items), 1)
         self.assertEqual(items[0]["raw_time"], "05-Nov-2026 18:02:00")
 
+    def test_google_news_discovery_timestamp_is_not_original_publication(self):
+        source = {**sample_source(provider="MEDIA"), "timestamp_provenance": "discovery"}
+        xml = b"""<rss><channel><item><title>Thermax Limited quarterly results announced</title>
+        <link>https://news.example.org/thermax</link>
+        <pubDate>Mon, 09 Nov 2026 18:30:00 +0530</pubDate>
+        </item></channel></rss>"""
+        rows = rss_items(xml, source)
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0]["raw_time"], "")
+
     def test_html_without_time_is_unverified(self):
         raw = b'<html><article><h2><a href="/test">Thermax quarterly results announced</a></h2></article></html>'
         items = html_items(raw, sample_source(kind="html"))
