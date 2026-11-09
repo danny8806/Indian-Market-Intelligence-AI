@@ -1,6 +1,6 @@
 {
   "session": "2026-11-11",
-  "generated_at": "2026-11-10T04:28:38.826556+05:30",
+  "generated_at": "2026-11-10T04:42:44.348145+05:30",
   "method": "Symbol + material category presence; NOT event-ID or issuer ISIN reconciliation",
   "category_counts": {
     "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT": 4,
@@ -321,7 +321,7 @@
     {
       "source": "GDELT DOC API",
       "status": "ERROR",
-      "error": "HTTPError: 429 Client Error: Too Many Requests for url: https://api.gdeltproject.org/api/v2/doc/doc?query=%22India%22+%22quarterly+results%22&mode=artlist&format=json&maxrecords=50&timespan=2"
+      "error": "ReadTimeout: HTTPSConnectionPool(host='api.gdeltproject.org', port=443): Read timed out. (read timeout=7)"
     },
     {
       "source": "Reuters India news",
@@ -372,6 +372,41 @@
       "source": "ResultKal indexed discovery",
       "status": "SKIPPED_NO_KEY",
       "error": "SERPER_API_KEY not configured"
+    },
+    {
+      "source": "Tavily Indian market discovery",
+      "status": "SKIPPED_COST_GUARD",
+      "error": "Opt-in required via ENABLE_PAID_NEWS_APIS"
+    },
+    {
+      "source": "Exa Indian market discovery",
+      "status": "SKIPPED_COST_GUARD",
+      "error": "Opt-in required via ENABLE_PAID_NEWS_APIS"
+    },
+    {
+      "source": "Brave News Indian market discovery",
+      "status": "SKIPPED_COST_GUARD",
+      "error": "Opt-in required via ENABLE_PAID_NEWS_APIS"
+    },
+    {
+      "source": "Marketaux India finance discovery",
+      "status": "SKIPPED_COST_GUARD",
+      "error": "Opt-in required via ENABLE_PAID_NEWS_APIS"
+    },
+    {
+      "source": "GNews India stock discovery",
+      "status": "SKIPPED_COST_GUARD",
+      "error": "Opt-in required via ENABLE_PAID_NEWS_APIS"
+    },
+    {
+      "source": "NewsData India stock discovery",
+      "status": "SKIPPED_COST_GUARD",
+      "error": "Opt-in required via ENABLE_PAID_NEWS_APIS"
+    },
+    {
+      "source": "NewsAPI India stock discovery",
+      "status": "SKIPPED_COST_GUARD",
+      "error": "Opt-in required via ENABLE_PAID_NEWS_APIS"
     }
   ],
   "limitations": [
@@ -400,9 +435,17 @@
     {
       "feed_a": "BSE announcements RSS",
       "feed_b": "BSE latest announcements alternate",
-      "status_a": "EMPTY",
+      "status_a": "OK",
       "status_b": "OK",
-      "comparison_status": "UNAVAILABLE_SOURCE_FAILURE_OR_EMPTY"
+      "comparison_status": "SNAPSHOT_OVERLAP_ONLY",
+      "feed_a_unique_matched_urls": 40,
+      "feed_b_unique_matched_urls": 40,
+      "both_feeds_same_url": 40,
+      "only_feed_a_count": 0,
+      "only_feed_b_count": 0,
+      "only_feed_a_examples": [],
+      "only_feed_b_examples": [],
+      "warning": "URL-level overlap is NOT event-level completeness; feed length, timing and availability differ."
     }
   ]
 }

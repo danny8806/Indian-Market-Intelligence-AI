@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-10T04:29:05.041764+05:30",
+  "as_of": "2026-11-10T04:43:08.094420+05:30",
   "candidates": [
     {
       "articles": 4,
@@ -1626,7 +1626,7 @@
     "Preview created after cutoff is unsuitable for historical model evaluation.",
     "Premarket frozen snapshot includes collector_last_poll_at; intervening minutes may contain uncollected news."
   ],
-  "collector_last_poll_at": "2026-11-10T04:28:38.826556+05:30",
+  "collector_last_poll_at": "2026-11-10T04:42:44.348145+05:30",
   "company_count": 53,
   "cutoff_exclusive": "2026-11-11T09:00:00+05:30",
   "data_mode": "PRE_CUTOFF_PREVIEW_NOT_FROZEN",
