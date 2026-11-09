@@ -93,6 +93,7 @@ jobs:
             python -m news_collector.chatgpt_inbox_import --session-date "$SESSION_DATE"
           else
             python -m news_collector.chatgpt_inbox_import
+          fi
       - name: Extract bounded text from public NSE/BSE PDFs and flag potential source gaps
         shell: bash
         env:
