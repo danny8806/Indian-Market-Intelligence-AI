@@ -64,3 +64,41 @@ python -m learning.train_candidates
 ```
 
 The outcome command above will correctly refuse to label a future or unfinished session or a session without a genuine frozen snapshot. No automatic live orders are enabled.
+
+
+## Added discovery: announcement-aggregator search indexes (optional)
+
+The original **43** public endpoints are preserved. This extension adds **8**
+separate discovery paths for **BazaarWatch, ALFA Finder, PatternsRadar and
+ResultKal**: four free Google News site-search RSS queries and four optional
+Serper Google-search queries. These are *search-indexed leads*, not direct
+publisher scrapers or licensed exchange-feed replacements.
+
+- The Google News site queries work without a key when indexed results exist.
+  Search-index `pubDate` is intentionally **not accepted** as the underlying
+  exchange/publisher disclosure time, including for the original broad Google
+  News RSS feed. Such leads remain in `undated_candidates.jsonl` until
+  independently verified from a permitted original source.
+- The Serper sources use `SERPER_API_KEY` from the environment. If unset, they
+  show `SKIPPED_NO_KEY` in `coverage.json`, not a false successful poll.
+  Requests use the search endpoint only; no aggregator site is crawled and
+  result domains are allowlisted.
+- Additional results do **not** change trade signals or the candidate freeze
+  until an independently verified publication timestamp and NIFTY 500 issuer
+  match are available. Search snippets may contain errors and should not be
+  treated as official disclosure evidence.
+- Publisher crawling, article-body ingestion, reuse, and redistribution must
+  follow each source's terms and permissions. A Google-indexed link does not
+  grant rights to scrape the destination page.
+- The free index may omit some or all aggregator articles. It is a coverage
+  experiment, not an assurance that the eight added paths find eight unique
+  classes of announcements.
+
+For optional Serper testing, set `SERPER_API_KEY` as a repository Actions
+secret and expose it to **the read-only overnight collector job only** as an
+environment variable. Keep secrets out of commits and job logs. Without the
+key, the four RSS index feeds remain usable, subject to availability.
+
+The following never occur in this extension: order placement, Kotak token
+access, account access, enabling automated trading, or modifying the published
+`signals/latest.json`.
