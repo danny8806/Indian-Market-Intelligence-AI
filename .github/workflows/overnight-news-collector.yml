@@ -53,6 +53,7 @@ jobs:
         shell: bash
         env:
           SESSION_DATE: ${{ inputs.session_date }}
+          SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
         run: |
           if [ -n "$SESSION_DATE" ]; then
             python -m news_collector.engine --session-date "$SESSION_DATE"
