@@ -63,6 +63,8 @@ run_compose exec -T postgres pg_isready -U news_admin -d market_news >/dev/null 
   echo "BLOCKED: private PostgreSQL did not become ready"; exit 4;
 }
 run_compose build collector
+run_compose run --rm --no-deps -T --entrypoint python collector \
+  -m news_collector.source_registry --check
 
 # Stop only the previous persistent collector in this Compose project. If the
 # first one-shot fails, restart that exact previous container.

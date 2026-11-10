@@ -29,6 +29,7 @@ RUN python -m pip install --no-cache-dir -r /tmp/news-requirements.txt \
 
 COPY --chown=newsbot:newsbot schema/stock-signals.schema.json /app/schema/stock-signals.schema.json
 COPY --chown=newsbot:newsbot news_collector/ /app/news_collector/
+RUN python -m news_collector.source_registry --check
 COPY --chown=newsbot:newsbot ops/news-stack/start-news-worker.sh /app/start-news-worker.sh
 RUN chmod 0555 /app/start-news-worker.sh \
     && mkdir -p /app/news_collector/data /app/news_collector/chatgpt_inbox \

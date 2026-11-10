@@ -20,6 +20,7 @@ ASSIGNMENTS = {
     "copilot-cli": "Find M&A, fundraising, buybacks, and credit-rating changes.",
     "grok-build": "Find time-sensitive disruptions and adverse disclosures in original sources.",
     "cursor-cli": "Find follow-up filings, corrections, and material items missed by headline aggregators.",
+    "gemini": "Use Google web search and web fetch to find official filings, issuer releases and earnings coverage missed by the other lanes.",
 }
 FAILURES = {"AUTH_REQUIRED", "NO_LIVE_WEB", "QUOTA_LIMIT", "TIMEOUT",
             "NOT_INSTALLED", "CLI_ERROR", "NO_RESULTS", "ACCESS_BLOCKED"}
@@ -28,7 +29,7 @@ MAX_BYTES = 32_768
 
 def assignment(provider: str, now: datetime) -> dict:
     now = now.astimezone(IST)
-    minute = list(ASSIGNMENTS).index(provider) * 6
+    minute = (list(ASSIGNMENTS).index(provider) * 5) % 60
     scheduled = now.replace(minute=minute, second=0, microsecond=0)
     if scheduled > now:
         scheduled -= timedelta(hours=1)

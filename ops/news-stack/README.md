@@ -3,6 +3,13 @@
 The Compose project exposes no database port. The stock dashboard keeps its own trading records. The news service has no access to option-selling data. Research reports are stored
 with execution_enabled=false. The news service has no broker or bridge credentials.
 
+Official and issuer endpoint access evidence lives in
+`news_collector/source_registry.json`; the enabled poll list is
+`news_collector/sources.json`. The image build and activation script run
+`python -m news_collector.source_registry --check`, which rejects an enabled
+blocked/not-found endpoint or an ACTIVE entry without its matching poll source.
+A registry status is evidence of access, not proof of complete coverage.
+
 ## Scheduler and data flow
 
 - market-news-collect.timer runs every ten minutes in Asia/Kolkata. The one-shot

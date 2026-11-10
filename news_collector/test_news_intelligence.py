@@ -7,7 +7,8 @@ from unittest.mock import patch
 
 from sqlalchemy import create_engine, select
 
-from news_collector.agent_intake import assignment, ingest_inbox, validate_report
+from news_collector.agent_intake import (ASSIGNMENTS, assignment, ingest_inbox,
+                                         validate_report)
 from news_collector.archive import observation, replay, stage
 from news_collector.broker_sources import listing_items
 from news_collector.codex_research import allowed_url, publisher_article
@@ -253,6 +254,28 @@ class NewsIntelligenceTests(unittest.TestCase):
         self.assertEqual(len(items), 1)
         self.assertEqual(items[0]["summary"], "Revenue changed.")
         self.assertTrue(items[0]["shared_broker_link"])
+
+    def test_every_external_provider_has_a_valid_schedule(self):
+        now = at(8, 50)
+        for provider in ASSIGNMENTS:
+            with self.subTest(provider=provider):
+                job = assignment(provider, now)
+                self.assertEqual(job["provider"], provider)
+                self.assertIn("Search independently", job["prompt"])
+                self.assertRegex(job["assignment_id"], rf"^{provider}-\d{{8}}T\d{{4}}$")
+
+    def test_gemini_lane_requires_independent_search_evidence(self):
+        now = at(8, 50)
+        job = assignment("gemini", now)
+        self.assertIn("Google web search", job["prompt"])
+        payload = {**job, "finished_at": now.isoformat(), "status": "RETRIEVED",
+                   "urls": ["https://www.nseindia.com/filing"]}
+        with self.assertRaises(ValueError):
+            validate_report(payload, "gemini", now)
+        payload["retrieval_event"] = {"kind": "web_search", "id": "gemini-trace-1"}
+        report = validate_report(payload, "gemini", now)
+        self.assertEqual(report["status"], "RETRIEVED")
+        self.assertEqual(report["retrieval_event"]["id"], "gemini-trace-1")
 
     def test_external_cli_reports_without_search_proof_fail_closed(self):
         now = at(8, 50)

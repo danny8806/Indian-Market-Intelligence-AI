@@ -1,6 +1,6 @@
 # Free overnight financial-news collector (research-only)
 
-This component checks **all configured public source endpoints** (the prior 36-source live audit plus 7 official fallback endpoints), persists news linked to NIFTY 500 companies, preserves undated candidates separately, and produces source failure and coverage reports. **Not a stock-selection AI and not a trading bridge.** It does not enable live orders or overwrite existing signals.
+This component checks **all configured public source endpoints** in `sources.json`, persists news linked to NIFTY 500 companies, preserves undated candidates separately, and produces source failure and coverage reports. **Not a stock-selection AI and not a trading bridge.** It does not enable live orders or overwrite existing signals.
 
 ## Run
 
@@ -27,7 +27,26 @@ The feed stores headlines, excerpts, original URLs and dates. The enrichment sta
 
 ## Source policies
 
-Configured endpoints include previously successful, failed, blocked, stale and empty sources. Every request is a normal, unauthenticated bounded GET; no CAPTCHA, paywall or robots bypass. HTML sources require an article-local time tag for timestamp eligibility. A 200 response is not proof every filing was found. Some external publishers restrict automated access; comply with their terms and disable sources if necessary.
+Configured endpoints include previously successful, failed, blocked, stale and empty sources. Every request is a normal, unauthenticated bounded GET; no CAPTCHA, paywall or robots bypass. HTML sources require an article-local time tag for timestamp eligibility, except an explicitly configured `html_table` source whose own timestamp column is parsed. A 200 response is not proof every filing was found. Some external publishers restrict automated access; comply with their terms and disable sources if necessary.
+
+## Official/issuer source registry
+
+`source_registry.json` is the auditable master catalog for official and issuer endpoints. It records the URL, access status, last probe result, HTTP status, parsed item count, whether the endpoint is polled, and the reason an endpoint is not active. `sources.json` remains the enabled poll list.
+
+Validate the two files together:
+
+    python -m news_collector.source_registry --check
+
+The check is also run during Docker image construction and again before the VPS activation script performs its collection smoke test. It fails closed when an ACTIVE registry entry has no enabled poll source, when URLs disagree, when a blocked/not-found endpoint is enabled, or when an enabled official source is missing from the registry. The image build and deployment therefore cannot silently activate an unverified endpoint.
+
+Verified additions in this release:
+
+- NSE insider trading, circulars, SAST Regulation 29/31, voting results, daily buyback, related-party transactions, investor complaints, unitholding patterns and statement-of-deviation RSS feeds. Each returned dated items in a direct collector-parser probe; the publication time comes from the feed, never from fetch time.
+- DGFT notifications via an explicitly configured `html_table` parser. The table's hidden `CRT DT` value supplies the full date and time; date-only values remain unverified.
+
+Retired from active polling after repeated empty/404 results and retained in the registry with evidence: NSE announcements HTML, BSE announcements HTML, RBI releases HTML and the SEBI press-release HTML URL. Their official RSS/table equivalents remain active.
+
+Recorded as unavailable without bypass: MCA returns HTTP 403; US FDA returns an abuse-detection 404 to the collector user agent (a browser user agent returning 200 is not authorization); TCS, Infosys, Tata Motors, Dr Reddy's and HUL return 403; Maruti, Bajaj Finserv and Asian Paints returned 404. CCI orders are behind an interactive search form; CDSCO release dates are date-only; MoD pages expose no dated list; several issuer IR pages are navigation shells. These stay `REGISTRY_ONLY`, `BLOCKED` or `NOT_FOUND` and are not polled. The issuer catalog is partial and grows only from observed access evidence, not from assumptions.
 
 ## Automation
 
@@ -207,6 +226,11 @@ they must NOT be relied on for 9 AM trading selection.
   unavailable for production use until approved, licensed or otherwise cleared.
 - No paywall/CAPTCHA bypass, no orders, no broker account credentials, no
   unverified data promoted into `signals/latest.json`.
+- The audited `agent_intake.py` inbox accepts a `gemini` report, but the lane is
+  **not configured** until Gemini CLI authentication and a real `web_search` or
+  `web_fetch` trace are verified on the VPS. A report without tool evidence and
+  HTTPS URLs is rejected; the pipeline does not install unauthenticated CLIs or
+  treat model output as live retrieval.
 - `events.jsonl` contains NIFTY 500 matches with parseable original feed time;
   `undated_candidates.jsonl` contains discovery leads not eligible for trades;
   `macro_context.jsonl` contains unmatched regulator/macro items with feed

@@ -54,6 +54,110 @@
       "enabled": true
     },
     {
+      "name": "NSE insider trading RSS",
+      "url": "https://nsearchives.nseindia.com/content/RSS/InsiderTrading.xml",
+      "kind": "rss",
+      "provider": "NSE",
+      "authority": "official",
+      "enabled": true,
+      "recover_truncated_rss": true
+    },
+    {
+      "name": "NSE circulars RSS",
+      "url": "https://nsearchives.nseindia.com/content/RSS/Circulars.xml",
+      "kind": "rss",
+      "provider": "NSE",
+      "authority": "official",
+      "enabled": true,
+      "recover_truncated_rss": true
+    },
+    {
+      "name": "NSE SAST regulation 29 RSS",
+      "url": "https://nsearchives.nseindia.com/content/RSS/Sast_Regulation29.xml",
+      "kind": "rss",
+      "provider": "NSE",
+      "authority": "official",
+      "enabled": true,
+      "recover_truncated_rss": true
+    },
+    {
+      "name": "NSE SAST regulation 31 RSS",
+      "url": "https://nsearchives.nseindia.com/content/RSS/Sast_Regulation31.xml",
+      "kind": "rss",
+      "provider": "NSE",
+      "authority": "official",
+      "enabled": true,
+      "recover_truncated_rss": true
+    },
+    {
+      "name": "NSE voting results RSS",
+      "url": "https://nsearchives.nseindia.com/content/RSS/Voting_Results.xml",
+      "kind": "rss",
+      "provider": "NSE",
+      "authority": "official",
+      "enabled": true,
+      "recover_truncated_rss": true
+    },
+    {
+      "name": "NSE daily buyback RSS",
+      "url": "https://nsearchives.nseindia.com/content/RSS/Daily_Buyback.xml",
+      "kind": "rss",
+      "provider": "NSE",
+      "authority": "official",
+      "enabled": true,
+      "recover_truncated_rss": true
+    },
+    {
+      "name": "NSE related party transactions RSS",
+      "url": "https://nsearchives.nseindia.com/content/RSS/Related_Party_Trans.xml",
+      "kind": "rss",
+      "provider": "NSE",
+      "authority": "official",
+      "enabled": true,
+      "recover_truncated_rss": true
+    },
+    {
+      "name": "NSE investor complaints RSS",
+      "url": "https://nsearchives.nseindia.com/content/RSS/Investor_Complaints.xml",
+      "kind": "rss",
+      "provider": "NSE",
+      "authority": "official",
+      "enabled": true,
+      "recover_truncated_rss": true
+    },
+    {
+      "name": "NSE unitholding patterns RSS",
+      "url": "https://nsearchives.nseindia.com/content/RSS/Unitholding_Patterns.xml",
+      "kind": "rss",
+      "provider": "NSE",
+      "authority": "official",
+      "enabled": true,
+      "recover_truncated_rss": true
+    },
+    {
+      "name": "NSE statement of deviation RSS",
+      "url": "https://nsearchives.nseindia.com/content/RSS/Statement_Of_Deviation.xml",
+      "kind": "rss",
+      "provider": "NSE",
+      "authority": "official",
+      "enabled": true,
+      "recover_truncated_rss": true
+    },
+    {
+      "name": "DGFT notifications",
+      "url": "https://www.dgft.gov.in/CP/?opt=notification",
+      "kind": "html_table",
+      "provider": "DGFT",
+      "authority": "official",
+      "enabled": true,
+      "table_selector": "#metaTable",
+      "headline_columns": ["Number", "Description"],
+      "url_column": "Attachment",
+      "timestamp_column": "CRT DT",
+      "timestamp_format": "%d/%m/%Y %H:%M:%S",
+      "summary_columns": ["Year"]
+    },
+    {
       "name": "Zerodha Pulse RSS",
       "url": "https://pulse.zerodha.com/feed.php?n=100",
       "kind": "rss",
@@ -168,14 +272,6 @@
       "enabled": true
     },
     {
-      "name": "NSE announcements web",
-      "url": "https://www.nseindia.com/companies-listing/corporate-filings-announcements",
-      "kind": "html",
-      "provider": "NSE",
-      "authority": "official",
-      "enabled": true
-    },
-    {
       "name": "Business Standard BSE filings",
       "url": "https://www.business-standard.com/markets/bse-announcement",
       "kind": "html",
@@ -205,30 +301,6 @@
       "kind": "html",
       "provider": "MEDIA",
       "authority": "secondary",
-      "enabled": true
-    },
-    {
-      "name": "BSE announcements web",
-      "url": "https://www.bseindia.com/corporates/ann.html",
-      "kind": "html",
-      "provider": "BSE",
-      "authority": "official",
-      "enabled": true
-    },
-    {
-      "name": "RBI releases",
-      "url": "https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx",
-      "kind": "html",
-      "provider": "RBI",
-      "authority": "official",
-      "enabled": true
-    },
-    {
-      "name": "SEBI releases web",
-      "url": "https://www.sebi.gov.in/media/press-releases.html",
-      "kind": "html",
-      "provider": "SEBI",
-      "authority": "official",
       "enabled": true
     },
     {

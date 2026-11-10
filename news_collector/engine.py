@@ -72,10 +72,11 @@ def parse_timestamp(value: str, *, exchange: str = "") -> datetime | None:
     except ValueError:
         pass
     if exchange in {"NSE", "BSE"}:
-        try:
-            return datetime.strptime(val, "%d-%b-%Y %H:%M:%S").replace(tzinfo=IST)
-        except ValueError:
-            pass
+        for pattern in ("%d-%b-%Y %H:%M:%S", "%d-%b-%Y %H:%M"):
+            try:
+                return datetime.strptime(val, pattern).replace(tzinfo=IST)
+            except ValueError:
+                pass
     # A date without clock time is insufficient for 3 PM / 9 AM cutoff.
     return None
 
@@ -237,6 +238,60 @@ def html_items(raw: bytes, source: dict) -> list[dict]:
     return found
 
 
+def html_table_items(raw: bytes, source: dict) -> list[dict]:
+    """Read a dated official HTML table using explicit column configuration.
+
+    The publication time must come from the table's own timestamp column. Date-only
+    values stay unverified and are never replaced with fetch time.
+    """
+    soup = BeautifulSoup(raw, "html.parser")
+    table = soup.select_one(source["table_selector"])
+    if table is None:
+        raise ValueError("Configured table not found")
+    headers = [th.get_text(" ", strip=True) for th in table.select("thead th")]
+    if not headers:
+        raise ValueError("Configured table has no header row")
+    positions = {name: index for index, name in enumerate(headers)}
+    headline_columns = source.get("headline_columns") or []
+    url_column = source.get("url_column", "")
+    timestamp_column = source.get("timestamp_column", "")
+    timestamp_format = source.get("timestamp_format", "")
+    summary_columns = source.get("summary_columns") or []
+    for column in [*headline_columns, url_column, timestamp_column]:
+        if column and column not in positions:
+            raise ValueError(f"Configured column missing: {column}")
+    found = []
+    for row in table.select("tbody tr"):
+        cells = row.find_all("td")
+        if len(cells) < len(headers):
+            continue
+
+        def value(column: str) -> str:
+            index = positions.get(column)
+            return cells[index].get_text(" ", strip=True) if index is not None else ""
+
+        headline = " - ".join(part for part in (value(column)
+                                                for column in headline_columns) if part)
+        link = cells[positions[url_column]].find("a", href=True) if url_column else None
+        url = urllib.parse.urljoin(source["url"], link["href"]) if link else ""
+        if not headline or not url:
+            continue
+        raw_time = ""
+        if timestamp_column and timestamp_format:
+            try:
+                raw_time = datetime.strptime(
+                    value(timestamp_column), timestamp_format).replace(tzinfo=IST).isoformat()
+            except ValueError:
+                raw_time = ""
+        summary = " | ".join(part for part in (value(column)
+                                               for column in summary_columns) if part)
+        found.append({"headline": headline[:550], "summary": summary[:1800],
+                      "url": url, "raw_time": raw_time})
+        if len(found) >= 150:
+            break
+    return found
+
+
 def api_items(raw: bytes, source: dict) -> list[dict]:
     d = json.loads(raw)
     arr = d.get("articles", []) if isinstance(d, dict) else []
@@ -263,7 +318,7 @@ def fetch_one(source: dict, *, raw_sink=None) -> tuple[dict, list[dict]]:
         if not provider_has_key(source):
             return ({**base, "status": "SKIPPED_NO_KEY", "error": "Provider key not configured"}, [])
     try:
-        if source["kind"] == "broker_html":
+        if source["kind"] in {"broker_html", "html_table"}:
             allowed, reason = allowed_by_robots(source["url"], USER_AGENT)
             if not allowed:
                 return ({**base, "status": "BLOCKED_ROBOTS", "error": reason}, [])
@@ -281,6 +336,8 @@ def fetch_one(source: dict, *, raw_sink=None) -> tuple[dict, list[dict]]:
             items = rss_items(raw, source)
         elif source["kind"] == "html":
             items = html_items(raw, source)
+        elif source["kind"] == "html_table":
+            items = html_table_items(raw, source)
         elif source["kind"] == "broker_html":
             items = listing_items(raw, source)
         elif source["kind"] == "api":
