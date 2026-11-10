@@ -2,6 +2,10 @@
 
 **Prepared:** 2026-11-10 (Asia/Kolkata). **Target start:** next morning, 2026-11-11, when the operator begins setup. **Status:** DOCUMENTATION ONLY — nothing in this file installs software, activates a schedule, connects the VPS, or writes news records. Never infer deployment from a GitHub commit.
 
+Actual tool probes, rejected options and untested catalog entries are recorded in
+[`TOOL-TEST-LOG.md`](TOOL-TEST-LOG.md). That log distinguishes production
+dependencies from disposable tests.
+
 ## Goal and constraints
 
 Build a reliable **24/7, every-10-minute** news discovery system for current NSE NIFTY 500 constituents first, with separately tagged news for other NSE/BSE companies. Verify *first public availability* timestamps, company/ticker identity, source links, numbers and contradicting evidence, then persist source metadata and structured events. After the **09:00 IST** cutoff on each NSE trading day, an independent research decision/reviewer stage can produce up to **5 bullish and 5 bearish** symbols with weaker candidates rejected. Use the last NSE trading session's **15:00 IST through today's 09:00 IST** as-of window. **Research only: no broker orders, no trade arming, no model-to-broker direct access.**

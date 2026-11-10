@@ -4,10 +4,12 @@ Audit date: 2026-11-10 IST. This maps the required data-record fields from
 `START-HERE-OTHER-AI-HANDOFF.md` section 4/9 to the current implementation.
 It records gaps instead of claiming they are already satisfied.
 
-The additive columns below were deployed in release `974b806` on 2026-11-10
-16:41 IST. The one-time backfill updated 1,725 of 3,524 existing rows; columns
-were added idempotently and no article ID was duplicated. The running release
-reads `974b806`.
+The additive columns below were first deployed in release `974b806` on
+2026-11-10 16:41 IST; the one-time backfill updated 1,725 of 3,524 existing
+rows, the columns were added idempotently and no article ID was duplicated.
+Release `69395c5` is the current live release and adds write-once discovery
+provenance. Live database totals are recorded after the deployment check in
+this handoff and are not repeated here to avoid stale counts.
 
 | Required field | Current storage | Status |
 | --- | --- | --- |
@@ -25,7 +27,7 @@ reads `974b806`.
 | Updates / corrections | `news_article_revisions` (append-only, unique by article + evidence) | Present |
 | Sentiment (including mixed/unclear) | `news_articles.sentiment` and `sentiment_score`; `BULLISH`, `BEARISH`, `MIXED` or `UNCLEAR` | Present as a deterministic headline reading, not a model prediction |
 | Confidence | Morning signal JSON only | Partial |
-| Discovery agent/tool | `news_articles.discoverer`; also retained in revision evidence | Present |
+| Discovery agent/tool | `news_articles.discoverer` is write-once for the lane that first observed the URL; every later lane is retained in `news_article_revisions.evidence.discoverer` | Present; later re-observations cannot overwrite the first discoverer |
 | HTTP / retrieval status | `news_source_checks.status` and `error`; raw-document details JSON | Present |
 | Idempotency key | `news_articles.id` (URL/source/filing hash), `news_archive_batches.batch_id`, revision id | Present |
 | ISIN | `news_articles.isin` when an upstream item supplies it; the NSE equity master currently keeps symbol/name only | Partial: column ready, feed/universe mapping not yet wired |

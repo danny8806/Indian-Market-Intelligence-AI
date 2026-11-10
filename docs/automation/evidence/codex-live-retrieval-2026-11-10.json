@@ -1,0 +1,57 @@
+{
+  "schema": "market-news-ai-live-retrieval-evidence/1.0",
+  "recorded_at": "2026-11-10T18:25:00+05:30",
+  "source_of_record": "PostgreSQL market_news tables queried on the VPS",
+  "codex": {
+    "source_check": "Codex CLI",
+    "status": "VERIFIED",
+    "checked_at_ist": "2026-11-10T18:06:16.729352+05:30",
+    "fetched_items": 2,
+    "web_search_gate": "passed; codex_research.py emits VERIFIED only after the CLI emits a web_search event",
+    "model_recorded": false,
+    "limitations": [
+      "The raw Codex CLI transcript was not persisted; only the gate result and verified observations are stored.",
+      "Both URLs had already been collected by Python, so Codex proves live retrieval but no unique coverage on this run."
+    ]
+  },
+  "articles": [
+    {
+      "id": "0fcf7f9eadbc018e261ffd01",
+      "symbol": "KALYANKJIL",
+      "url": "https://nsearchives.nseindia.com/corporate/KALYANKJIL_10112026170450_Results_q2_Signed.pdf",
+      "published_at_ist": "2026-11-10T17:08:21+05:30",
+      "first_seen_ist": "2026-11-10T17:10:03.442327+05:30",
+      "article_discoverer": "python",
+      "earliest_revision_discoverer": "python",
+      "revision_lanes": [
+        {"observed_at_ist": "2026-11-10T17:10:03.442327+05:30", "discoverer": "python", "sources": ["NSE announcements RSS"]},
+        {"observed_at_ist": "2026-11-10T17:10:08.677214+05:30", "discoverer": "python", "sources": ["NSE announcements archive mirror"]},
+        {"observed_at_ist": "2026-11-10T18:06:16.723685+05:30", "discoverer": "codex", "sources": ["NSE announcements archive mirror"]}
+      ]
+    },
+    {
+      "id": "c0b99294743ce8767c725bd8",
+      "symbol": "KARAMTARA",
+      "url": "https://nsearchives.nseindia.com/corporate/9833315135_10112026171352_EC_Transcript.pdf",
+      "published_at_ist": "2026-11-10T17:16:11+05:30",
+      "first_seen_ist": "2026-11-10T17:20:04.770019+05:30",
+      "article_discoverer": "python",
+      "earliest_revision_discoverer": "python",
+      "revision_lanes": [
+        {"observed_at_ist": "2026-11-10T17:20:04.770019+05:30", "discoverer": "python", "sources": ["NSE announcements RSS"]},
+        {"observed_at_ist": "2026-11-10T17:20:10.512276+05:30", "discoverer": "python", "sources": ["NSE announcements archive mirror"]},
+        {"observed_at_ist": "2026-11-10T18:06:16.726556+05:30", "discoverer": "codex", "sources": ["NSE announcements archive mirror"]}
+      ]
+    }
+  ],
+  "opencode": {
+    "source_check": "OpenCode CLI",
+    "status": "QUOTA_LIMIT",
+    "checked_at_ist": "2026-11-10T18:05:30.994032+05:30",
+    "model": "opencode/deepseek-v4.1-flash-free",
+    "source_batch_count": 12,
+    "live_retrievals": 0,
+    "retry_after_ist": "2026-11-11T05:30:00+05:30",
+    "bypass_attempted": false
+  }
+}

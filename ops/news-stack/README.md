@@ -9,6 +9,11 @@ Official and issuer endpoint access evidence lives in
 `python -m news_collector.source_registry --check`, which rejects an enabled
 blocked/not-found endpoint or an ACTIVE entry without its matching poll source.
 A registry status is evidence of access, not proof of complete coverage.
+Publisher article verification is opt-in per source through `verify_article` and
+is capped at two publisher fetches per source per run. Listing-card fallback
+items without a real publisher timestamp remain discovery-only. Probes,
+rejected tools and untested catalog entries are recorded in
+`docs/automation/TOOL-TEST-LOG.md`.
 
 ## Scheduler and data flow
 

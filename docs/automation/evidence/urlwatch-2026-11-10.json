@@ -1,0 +1,122 @@
+{
+  "tool": "urlwatch",
+  "tool_version": "urlwatch 2.29",
+  "generated_at": "2026-11-10T11:59:12.317766+00:00",
+  "urls": [
+    "https://www.nseindia.com/companies-listing/corporate-filings-announcements",
+    "https://www.bseindia.com/corporates/ann.html",
+    "https://www.hdfc.bank.in/about-us/investor-relations",
+    "https://sbi.bank.in/web/investor-relations",
+    "https://www.airtel.in/investor-relations",
+    "https://www.airtel.in/press-release/",
+    "https://investors.larsentoubro.com/",
+    "https://sunpharma.com/investors/",
+    "https://itcportal.com/media-centre/press-releases.html",
+    "https://www.ril.com/investors/financial-reporting"
+  ],
+  "passes": [
+    {
+      "exit_code": 0,
+      "seconds": 2.61,
+      "new_count": 10,
+      "changed_count": 0,
+      "error_count": 0,
+      "watched": [],
+      "error_jobs": [],
+      "changed_jobs": [],
+      "output_bytes": 3165
+    },
+    {
+      "exit_code": 0,
+      "seconds": 1.76,
+      "new_count": 0,
+      "changed_count": 3,
+      "error_count": 0,
+      "watched": [],
+      "error_jobs": [],
+      "changed_jobs": [
+        "reliance-financial-reporting",
+        "nse-corporate-filings-page",
+        "sbi-investor-relations"
+      ],
+      "output_bytes": 18347
+    }
+  ],
+  "cache": {
+    "exists": true,
+    "bytes": 1261568,
+    "sha256": "310ca618c393a5ef75a2066b4b5304012bc59ed4a448a92e88a44363b8abd77b",
+    "entries": [
+      {
+        "guid": "163111a2a4447059e7445cdd48c94a4a13e6b3e1",
+        "first_seen_epoch": 1794311948,
+        "last_seen_epoch": 1794311950,
+        "observations": 2,
+        "latest_sha256": "06b80aaea00349b473a6f1f5f0ea8847b2a758c487d84a512eae5d1e1ae630de"
+      },
+      {
+        "guid": "1b1f152bf9892349a0cb7e207d63b5786b748576",
+        "first_seen_epoch": 1794311948,
+        "last_seen_epoch": 1794311948,
+        "observations": 1,
+        "latest_sha256": "d64d7f38d2e458361399e45f1901854547004d654358af349c12f72c7238bd04"
+      },
+      {
+        "guid": "220ed2c4c542465fd09d778bf1997f6c04bc388c",
+        "first_seen_epoch": 1794311948,
+        "last_seen_epoch": 1794311951,
+        "observations": 2,
+        "latest_sha256": "11e48a7ab44be9ebc2810fdc256f6c7a66033b0b29796aad21b10225d787253b"
+      },
+      {
+        "guid": "647f9b7634de70d57338f508ab85d62b326f7f37",
+        "first_seen_epoch": 1794311948,
+        "last_seen_epoch": 1794311948,
+        "observations": 1,
+        "latest_sha256": "367807ae7e222c3fec1dd9d7bafd4c4cf1a1789cea89c8bef0255776eb0583c3"
+      },
+      {
+        "guid": "7402ea4e4a616ec4cb064aed83f3f097e46ff688",
+        "first_seen_epoch": 1794311948,
+        "last_seen_epoch": 1794311948,
+        "observations": 1,
+        "latest_sha256": "c599b28d97be145835ab78b0648c58cb88fddb7fc90df625c752bc2824c21d51"
+      },
+      {
+        "guid": "90679ee2847f8e6b75c366dbe161c4e34d133228",
+        "first_seen_epoch": 1794311948,
+        "last_seen_epoch": 1794311950,
+        "observations": 2,
+        "latest_sha256": "b4e8fa983efc71eae4c15baf2af944939fe607e4198fd02966123fcb5557e64b"
+      },
+      {
+        "guid": "a2fc31c2618c09b7a32a9a00183ecba42c36ed97",
+        "first_seen_epoch": 1794311950,
+        "last_seen_epoch": 1794311950,
+        "observations": 1,
+        "latest_sha256": "c8e4a270ddf23f51c4c96a5b92d7585f448f16352bc5298c0d332685cd6bb6e6"
+      },
+      {
+        "guid": "a4f55573889afb76310bb8008f4331de52464953",
+        "first_seen_epoch": 1794311950,
+        "last_seen_epoch": 1794311950,
+        "observations": 1,
+        "latest_sha256": "ff6cd49ac94ba02145dc8325d0e0e4449c1b838d644c1bfedce7b1f19c230fa2"
+      },
+      {
+        "guid": "ca4b5a0432d89ea243165258283e627a42f0533b",
+        "first_seen_epoch": 1794311948,
+        "last_seen_epoch": 1794311948,
+        "observations": 1,
+        "latest_sha256": "0982152d87f88aefdcd56ad89b0b5d080fa5e238db620d1fce16e6ebb5c93618"
+      },
+      {
+        "guid": "ff0ce2f975151b8ebd63bd3b9a3abc1883dad906",
+        "first_seen_epoch": 1794311949,
+        "last_seen_epoch": 1794311949,
+        "observations": 1,
+        "latest_sha256": "3e3589ad1c42c7d180ba44c67c82cf3c9ccc467a4076bb089d9d70785af017ee"
+      }
+    ]
+  }
+}
