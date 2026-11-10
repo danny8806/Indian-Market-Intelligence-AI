@@ -12,9 +12,11 @@ from news_collector.archive import observation, replay, stage
 from news_collector.broker_sources import listing_items
 from news_collector.codex_research import allowed_url, publisher_article
 from news_collector.continuous_worker import codex_slot
-from news_collector.db_store import archive_batches, article_revisions, articles, sync_archive_batch
+from news_collector.db_store import (archive_batches, article_revisions, articles,
+                                     morning_reports, raw_documents, runs, source_checks,
+                                     source_cursors, sync_archive_batch)
 from news_collector.engine import IST
-from news_collector.morning import run, select_candidates
+from news_collector.morning import review_candidates, run, select_candidates
 from news_collector.headline_fallback import fill_from_headlines, headline_direction
 
 FEED = {"provider": "NSE", "kind": "rss", "authority": "official",
@@ -55,6 +57,90 @@ class NewsIntelligenceTests(unittest.TestCase):
             self.assertEqual(len(conn.execute(select(articles)).all()), 1)
             self.assertEqual(len(conn.execute(select(article_revisions)).all()), 2)
 
+    def test_archive_batch_updates_source_ledger_cursors_raw_docs_and_runs(self):
+        checked = at(13, 42)
+        current = batch("ledger", checked, record(at(13, 40), at(13, 31)))
+        current.update({
+            "session": "2026-11-11", "sources_configured": 2,
+            "sources": [
+                {"source": "NSE filings", "kind": "rss", "status": "OK",
+                 "fetched_items": 4, "latest_raw_time": "2026-11-11T13:30:00+05:30",
+                 "latest_item_url": "https://nsearchives.nseindia.com/one.pdf"},
+                {"source": "OpenCode CLI", "kind": "ai_cli", "status": "QUOTA_LIMIT",
+                 "fetched_items": 0, "error": "Free usage limit reached",
+                 "model": "opencode/deepseek-v4.1-flash-free"},
+            ],
+            "raw_documents": [{
+                "id": "raw-1", "source": "NSE filings",
+                "url": "https://nsearchives.nseindia.com/feed.xml",
+                "content_type": "application/xml", "sha256": "a" * 64,
+                "byte_size": 120, "storage_path": "raw/2026-11-11/feed.gz",
+                "captured_at": checked.isoformat(), "provider": "NSE",
+                "authority": "official", "kind": "rss", "status": "OK",
+                "truncated": False,
+            }],
+        })
+        self.assertTrue(sync_archive_batch(self.db, current))
+        self.assertFalse(sync_archive_batch(self.db, current))
+        with self.db.connect() as conn:
+            checks = {row.source: row for row in conn.execute(select(source_checks)).all()}
+            self.assertEqual(checks["OpenCode CLI"].status, "QUOTA_LIMIT")
+            self.assertEqual(checks["NSE filings"].fetched_items, 4)
+            cursor = conn.execute(select(source_cursors).where(
+                source_cursors.c.source == "NSE filings")).one()
+            self.assertEqual(cursor.consecutive_failures, 0)
+            self.assertEqual(cursor.latest_item_url,
+                             "https://nsearchives.nseindia.com/one.pdf")
+            self.assertEqual(len(conn.execute(select(runs)).all()), 1)
+            raw = conn.execute(select(raw_documents)).one()
+            self.assertEqual(raw.storage_path, "raw/2026-11-11/feed.gz")
+
+    def test_collect_batch_captures_bounded_raw_responses_and_prunes(self):
+        import gzip
+        from news_collector.archive import collect_batch, prune_raw
+
+        with TemporaryDirectory() as folder:
+            root = Path(folder)
+            config = root / "sources.json"
+            config.write_text(json.dumps({"sources": [
+                {"name": "NSE A", "url": "https://nsearchives.nseindia.com/a.xml",
+                 "kind": "rss", "provider": "NSE", "authority": "official",
+                 "enabled": True},
+                {"name": "NSE B", "url": "https://nsearchives.nseindia.com/b.xml",
+                 "kind": "rss", "provider": "NSE", "authority": "official",
+                 "enabled": True},
+            ]}), encoding="utf-8")
+
+            def fake_fetch(source, *, raw_sink=None):
+                raw_sink(source, b"<rss><item>Thermax net profit rises</item></rss>", {})
+                return ({"source": source["name"], "kind": "rss",
+                         "authority": "official", "provider": "NSE",
+                         "url": source["url"], "status": "OK", "fetched_items": 1},
+                        [{"url": "https://nsearchives.nseindia.com/filing.pdf",
+                          "headline": "Thermax Limited net profit rises", "summary": "",
+                          "raw_time": "11-Nov-2026 08:50:00", "original_time": True}])
+
+            with patch("news_collector.archive.load_universes",
+                       return_value=(NIFTY, NIFTY, True)), \
+                 patch("news_collector.archive.fetch_one", side_effect=fake_fetch):
+                batch, _, _ = collect_batch(root, clock=lambda: at(13, 0), config=config)
+
+            self.assertEqual(len(batch["raw_documents"]), 2)
+            self.assertEqual({doc["status"] for doc in batch["raw_documents"]}, {"OK"})
+            self.assertEqual({doc["source"] for doc in batch["raw_documents"]},
+                             {"NSE A", "NSE B"})
+            for doc in batch["raw_documents"]:
+                path = root / doc["storage_path"]
+                self.assertTrue(path.is_file())
+                with gzip.open(path, "rb") as handle:
+                    self.assertIn(b"Thermax", handle.read())
+
+            old = root / "raw" / "2026-01-01"
+            old.mkdir(parents=True)
+            (old / "x.gz").write_bytes(b"x")
+            self.assertEqual(prune_raw(root, days=30, today=at(13, 0).date()), 1)
+            self.assertFalse(old.exists())
+
     def test_failed_db_write_retains_spool_then_replays_once(self):
         with TemporaryDirectory() as folder:
             root = Path(folder)
@@ -82,7 +168,17 @@ class NewsIntelligenceTests(unittest.TestCase):
             self.assertNotIn("late.pdf", prompt)
             self.assertNotIn("boundary.pdf", prompt)
             self.assertFalse(options["search"])
-            calls.append(prompt)
+            calls.append("analyst")
+            return "OK", {"selections": [
+                {"symbol": "THERMAX", "side": "LONG", "reason": "Higher profits than expected",
+                 "news_summary": "Thermax announced higher profits", "evidence_ids": [identity]}
+            ]}
+
+        def critic(prompt, schema, **options):
+            self.assertNotIn("late.pdf", prompt)
+            self.assertNotIn("boundary.pdf", prompt)
+            self.assertFalse(options["search"])
+            calls.append("critic")
             return "OK", {"selections": [
                 {"symbol": "THERMAX", "side": "LONG", "reason": "Higher profits than expected",
                  "news_summary": "Thermax announced higher profits", "evidence_ids": [identity]}
@@ -90,13 +186,13 @@ class NewsIntelligenceTests(unittest.TestCase):
 
         draft = run(self.db, clock=lambda: at(8, 59), analyst=analyst)
         self.assertEqual(draft, {"status": "DRAFT_SAVED", "draft_status": "READY", "signals": 1})
-        report = run(self.db, clock=lambda: at(9, 5), analyst=analyst)
+        report = run(self.db, clock=lambda: at(9, 5), analyst=analyst, critic=critic)
         self.assertEqual(report["status"], "READY", report["reason"])
-        self.assertEqual(report["news_cutoff_at"], at(9, 5).isoformat())
+        self.assertEqual(report["news_cutoff_at"], at(9, 0).isoformat())
         self.assertFalse(report["execution_enabled"])
         self.assertEqual(len(report["signals"]), 1)
-        self.assertEqual(run(self.db, clock=lambda: at(9, 8), analyst=analyst), report)
-        self.assertEqual(len(calls), 2)
+        self.assertEqual(run(self.db, clock=lambda: at(9, 8), analyst=analyst, critic=critic), report)
+        self.assertEqual(calls, ["analyst", "critic"])
 
     def test_bse_only_scrip_identity_is_archived_without_nifty_qualification(self):
         feed = {**FEED, "provider": "BSE", "url": "https://www.bseindia.com/feed.xml"}
@@ -202,73 +298,138 @@ class NewsIntelligenceTests(unittest.TestCase):
         template = record(at(8, 55), at(8, 50))
         items = [{**template, "evidence_id": f"evidence-{index}"}
                  for index in range(101)]
-        calls = []
+        analyst_calls = []
 
         def analyst(prompt, _schema, **_options):
-            calls.append(prompt)
+            analyst_calls.append(prompt)
             return "OK", {"selections": []}
 
-        status, _, _ = select_candidates(
+        status, _, shortlist = select_candidates(
             {"items": items, "recent_coverage": True, "source_health": {"qwen-code": "QUOTA_LIMIT"}},
             analyst=analyst)
         self.assertEqual(status, "NO_TRADE")
-        self.assertEqual(len(calls), 3)
-        self.assertNotIn('"evidence-100"', calls[0])
-        self.assertIn('"evidence-100"', calls[1])
-        self.assertIn('"evidence-100"', calls[2])
-        self.assertIn("QUOTA_LIMIT", calls[2])
+        self.assertEqual(shortlist, [])
+        self.assertEqual(len(analyst_calls), 2)
+        self.assertNotIn('"evidence-100"', analyst_calls[0])
+        self.assertIn('"evidence-100"', analyst_calls[1])
+
+        critic_calls = []
+
+        def critic(prompt, _schema, **_options):
+            critic_calls.append(prompt)
+            self.assertIn('"evidence-100"', prompt)
+            self.assertIn("QUOTA_LIMIT", prompt)
+            return "OK", {"selections": []}
+
+        status, _, selected, audit = review_candidates(
+            {"items": items, "recent_coverage": True,
+             "source_health": {"qwen-code": "QUOTA_LIMIT"}},
+            [{"symbol": "THERMAX", "side": "LONG", "reason": "Supported",
+              "news_summary": "Supported by evidence", "evidence_ids": ["evidence-0"]}],
+            critic=critic)
+        self.assertEqual(status, "NO_TRADE")
+        self.assertEqual(selected, [])
+        self.assertEqual(audit["status"], "REJECTED_ALL")
 
     def test_finalization_reuses_only_reviewed_symbols_with_unchanged_evidence(self):
         early = record(at(8, 40), at(8, 35))
         sync_archive_batch(self.db, batch("a", at(8, 45), early))
-        candidate = {
-            "symbol": "THERMAX", "side": "LONG", "rank": 1,
+        with self.db.connect() as conn:
+            first_id = conn.execute(select(article_revisions.c.id).where(
+                article_revisions.c.article_id == early["id"])).scalar_one()
+        shortlist = [{
+            "symbol": "THERMAX", "side": "LONG",
             "reason": "Completed analyst review supports the candidate",
             "news_summary": "Existing verified report supported the candidate",
-            "first_available_at": early["published_at"],
-            "sources": [{"url": early["url"], "title": early["headline"],
-                         "published_at": early["published_at"]}],
-        }
+            "evidence_ids": [first_id],
+        }]
+
+        def echo_critic(_prompt, _schema, **_options):
+            return "OK", {"selections": shortlist}
+
         with patch("news_collector.morning.select_candidates",
-                   return_value=("READY", "Reviewed", [candidate])) as call:
+                   return_value=("READY", "Shortlist", shortlist)) as call:
             self.assertEqual(run(self.db, clock=lambda: at(8, 55))["status"], "DRAFT_SAVED")
         call.assert_called_once()
-        extra = record(at(9, 3), at(9, 2), name="last-minute",
+        extra = record(at(8, 58), at(8, 57), name="last-minute",
                        headline="Other net profit rises 20 percent")
         extra.update(symbols=["OTHER"], nifty_symbols=["OTHER"])
-        sync_archive_batch(self.db, batch("b", at(9, 4), extra))
+        sync_archive_batch(self.db, batch("b", at(8, 59), extra))
         with patch("news_collector.morning.select_candidates") as call:
-            report = run(self.db, clock=lambda: at(9, 5))
+            report = run(self.db, clock=lambda: at(9, 5), critic=echo_critic)
             call.assert_not_called()
-        self.assertEqual(report["signals"][0], candidate)
+        self.assertEqual(report["signals"][0]["symbol"], "THERMAX")
+        self.assertEqual(report["signals"][0]["rank"], 1)
         self.assertEqual(report["signals"][1]["symbol"], "OTHER")
         self.assertEqual(report["signals"][1]["rank"], 2)
         self.assertNotIn("_reviewed_evidence", report["signals"][0])
+        with self.db.connect() as conn:
+            frozen = conn.execute(select(morning_reports.c.evidence)).scalar_one()
+        self.assertEqual(frozen["review_audit"]["critic"]["status"], "OK")
+        self.assertFalse(frozen["review_audit"]["critic"]["independent"])
+        self.assertIn("critic=echo_critic:OK", report["reason"])
 
-    def test_changed_reviewed_symbol_uses_current_evidence_instead_of_stale_pick(self):
+    def test_critic_can_reject_stale_pick_and_fallback_uses_current_evidence(self):
         early = record(at(8, 40), at(8, 35))
         sync_archive_batch(self.db, batch("a", at(8, 45), early))
-        candidate = {"symbol": "THERMAX", "side": "LONG", "rank": 1}
+        with self.db.connect() as conn:
+            first_id = conn.execute(select(article_revisions.c.id).where(
+                article_revisions.c.article_id == early["id"])).scalar_one()
+        shortlist = [{
+            "symbol": "THERMAX", "side": "LONG", "reason": "Initial analyst view",
+            "news_summary": "Initial analyst summary", "evidence_ids": [first_id],
+        }]
         with patch("news_collector.morning.select_candidates",
-                   return_value=("READY", "Reviewed", [candidate])):
+                   return_value=("READY", "Shortlist", shortlist)):
             run(self.db, clock=lambda: at(8, 55))
-        contrary = record(at(9, 3), at(9, 2), name="contrary",
+        contrary = record(at(8, 58), at(8, 57), name="contrary",
                           headline="Thermax Limited net profit falls 25 percent")
-        sync_archive_batch(self.db, batch("b", at(9, 4), contrary))
+        sync_archive_batch(self.db, batch("b", at(8, 59), contrary))
         with patch("news_collector.morning.select_candidates") as call:
-            report = run(self.db, clock=lambda: at(9, 5))
+            report = run(self.db, clock=lambda: at(9, 5),
+                         critic=lambda *_a, **_k: ("OK", {"selections": []}))
             call.assert_not_called()
         self.assertEqual([(row["symbol"], row["side"]) for row in report["signals"]],
                          [("THERMAX", "SHORT")])
         self.assertIn("fallback", report["signals"][0]["reason"])
 
-    def test_late_draft_cannot_become_locked_watchlist(self):
-        sync_archive_batch(self.db, batch("a", at(8, 53), record(at(8, 51), at(8, 50))))
-        clock = iter([at(8, 55), at(9, 5)]).__next__
-        result = run(self.db, clock=clock, analyst=lambda *_a, **_k: ("OK", {"selections": []}))
-        self.assertEqual(result["status"], "DRAFT_FINISHED_AFTER_LOCK")
-        report = run(self.db, clock=lambda: at(9, 10))
-        self.assertEqual(report["status"], "UNAVAILABLE")
+    def test_draft_started_before_cutoff_can_finish_after_cutoff(self):
+        news = record(at(8, 51), at(8, 50))
+        sync_archive_batch(self.db, batch("a", at(8, 53), news))
+        with self.db.connect() as conn:
+            first_id = conn.execute(select(article_revisions.c.id).where(
+                article_revisions.c.article_id == news["id"])).scalar_one()
+        shortlist = [{
+            "symbol": "THERMAX", "side": "LONG",
+            "reason": "Pre-cutoff evidence supports the candidate",
+            "news_summary": "Pre-cutoff evidence supported the candidate",
+            "evidence_ids": [first_id],
+        }]
+        clock = iter([at(8, 55), at(9, 2)]).__next__
+        result = run(self.db, clock=clock,
+                     analyst=lambda *_a, **_k: ("OK", {"selections": shortlist}))
+        self.assertEqual(result, {"status": "DRAFT_SAVED", "draft_status": "READY", "signals": 1})
+        report = run(self.db, clock=lambda: at(9, 10),
+                     critic=lambda *_a, **_k: ("OK", {"selections": shortlist}))
+        self.assertEqual(report["status"], "READY", report["reason"])
+        self.assertEqual(report["news_cutoff_at"], at(9, 0).isoformat())
+
+    def test_post_cutoff_evidence_cannot_enter_review(self):
+        pre = record(at(8, 55), at(8, 50))
+        snapshot = {"items": [{**pre, "evidence_id": "pre"}],
+                    "recent_coverage": True, "source_health": {}}
+        shortlist = [{
+            "symbol": "THERMAX", "side": "LONG",
+            "reason": "Post-cutoff evidence should be rejected",
+            "news_summary": "Post-cutoff evidence should be rejected",
+            "evidence_ids": ["post-cutoff"],
+        }]
+        status, _, selected, audit = review_candidates(
+            snapshot, shortlist,
+            critic=lambda *_a, **_k: ("OK", {"selections": shortlist}))
+        self.assertEqual(status, "NO_TRADE")
+        self.assertEqual(selected, [])
+        self.assertEqual(audit["status"], "REJECTED_ALL")
 
     def test_codex_discovery_stays_on_half_hour_slots(self):
         self.assertEqual(codex_slot(at(8, 0), 48), 16)
@@ -299,7 +460,18 @@ class NewsIntelligenceTests(unittest.TestCase):
                    return_value=("NO_TRADE", "No qualified stock", [])) as call:
             self.assertEqual(run(self.db, clock=lambda: at(9, 5, day=10)), {"status": "CLOSED"})
             call.assert_not_called()
-            self.assertEqual(run(self.db, clock=lambda: at(9, 0))["status"], "DRAFT_SAVED")
+            self.assertEqual(run(self.db, clock=lambda: at(8, 59))["status"], "DRAFT_SAVED")
+
+    def test_nine_am_freezes_evidence_and_waits_for_late_draft(self):
+        sync_archive_batch(self.db, batch("a", at(8, 58), record(at(8, 57), at(8, 56))))
+        self.assertEqual(run(self.db, clock=lambda: at(9, 0)),
+                         {"status": "EVIDENCE_FROZEN_AWAITING_DRAFT"})
+        with self.db.connect() as conn:
+            frozen = conn.execute(select(morning_reports)).mappings().one()
+            expected = conn.execute(select(article_revisions.c.id)).scalar_one()
+        self.assertIsNone(frozen["report"])
+        self.assertEqual(len(frozen["evidence"]["items"]), 1)
+        self.assertEqual(frozen["evidence"]["items"][0]["evidence_id"], expected)
 
     def test_finalization_reaching_hard_deadline_cannot_lock(self):
         sync_archive_batch(self.db, batch("a", at(9, 4), record(at(9, 3), at(9, 2))))
@@ -344,7 +516,7 @@ class NewsIntelligenceTests(unittest.TestCase):
         sync_archive_batch(self.db, batch("a", at(8, 59), news))
         with patch("news_collector.morning.select_candidates",
                    return_value=("UNAVAILABLE", "Temporary quota issue", [])):
-            run(self.db, clock=lambda: at(9, 0))
+            run(self.db, clock=lambda: at(8, 59))
         report = run(self.db, clock=lambda: at(9, 5))
         self.assertEqual(report["status"], "READY", report["reason"])
         self.assertEqual(report["signals"][0]["symbol"], "THERMAX")

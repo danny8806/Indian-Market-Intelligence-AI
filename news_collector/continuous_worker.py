@@ -82,8 +82,8 @@ def collect_and_store(engine, *, data_root: Path = DATA_ROOT,
             "github_pull": inbox["status"], "inbox_import": imported["status"]}
 
 
-def codex_slot(now: datetime, budget: int) -> int | None:
-    """Only the first Python pass in each half hour can spend a discovery slot."""
+def model_slot(now: datetime, budget: int) -> int | None:
+    """Only the first Python pass in each half hour can spend a model slot."""
     if now.minute % 30 >= 10:
         return None
     slots = 48
@@ -92,10 +92,28 @@ def codex_slot(now: datetime, budget: int) -> int | None:
     return slot if slot * budget // slots > (slot - 1) * budget // slots else None
 
 
+def codex_slot(now: datetime, budget: int) -> int | None:
+    return model_slot(now, budget)
+
+
+def _claim_slot(root: Path, name: str, started: datetime, slot: int) -> bool:
+    """Persist an attempted slot before calling, so a retry cannot spend twice."""
+    ledger = root / f"last_{name}_slot"
+    slot_id = f"{started.date()}:half-hour:{slot}"
+    if ledger.is_file() and ledger.read_text(encoding="utf-8") == slot_id:
+        return False
+    temporary = ledger.with_suffix(".tmp")
+    temporary.write_text(slot_id, encoding="utf-8")
+    temporary.replace(ledger)
+    return True
+
+
 def collect_archive(engine, root: Path, *, clock=lambda: datetime.now(IST)) -> dict:
     from news_collector.agent_intake import ingest_inbox, lane_statuses
-    from news_collector.archive import collect_batch, replay, stage
-    from news_collector.codex_research import discover
+    from news_collector.archive import collect_batch, prune_raw, replay, stage
+    from news_collector.codex_research import discover as discover_codex
+    from news_collector.db_store import prune_raw_documents
+    from news_collector.opencode_research import discover as discover_opencode
     from uuid import uuid4
 
     started = clock().astimezone(IST)
@@ -103,34 +121,79 @@ def collect_archive(engine, root: Path, *, clock=lambda: datetime.now(IST)) -> d
     inbox = Path(os.getenv("NEWS_AGENT_INBOX", str(root / "agent_inbox")))
     batch["agent_lanes"] = lane_statuses(inbox)
     stage(root, batch)
+    prune_marker = root / "last_raw_prune"
+    if not prune_marker.is_file() or prune_marker.read_text(encoding="utf-8") != started.date().isoformat():
+        try:
+            days = max(1, int(os.getenv("NEWS_RAW_RETENTION_DAYS", "30")))
+        except ValueError:
+            days = 30
+        prune_raw(root, days=days, today=started.date())
+        try:
+            prune_raw_documents(engine, days=days)
+        except Exception:
+            pass
+        temporary = prune_marker.with_suffix(".tmp")
+        temporary.write_text(started.date().isoformat(), encoding="utf-8")
+        temporary.replace(prune_marker)
     # Commit primary sources before optional CLI calls can run out of time.
     saved = replay(engine, root)
     now = clock().astimezone(IST)
+    try:
+        opencode_budget = int(os.getenv("NEWS_OPENCODE_DAILY_CALLS", "48"))
+    except ValueError:
+        opencode_budget = 0
+    opencode_slot = model_slot(started, opencode_budget)
+    opencode_status = "SKIPPED_BUDGET"
+    opencode_audit: dict = {}
+    if opencode_slot is not None and _claim_slot(root, "opencode", started, opencode_slot):
+        # OpenCode runs first: it is the keyless free-model lane. A quota
+        # block is recorded and must never prevent the Codex or Python lanes.
+        try:
+            opencode_status, rows, opencode_audit = discover_opencode(
+                now, nifty, universe, clock=clock, slot=opencode_slot)
+        except Exception as exc:
+            opencode_status, rows, opencode_audit = (
+                f"DISCOVERY_FAILED_{type(exc).__name__}", [], {})
+        stage(root, {
+            "batch_id": uuid4().hex, "session": now.date().isoformat(),
+            "generated_at": clock().isoformat(), "records": rows,
+            "sources_configured": 1, "sources_with_items": 1 if rows else 0,
+            "sources_failed": 0,
+            "sources": [{"source": "OpenCode CLI", "kind": "ai_cli",
+                         "status": opencode_status, "fetched_items": len(rows),
+                         "model": opencode_audit.get("model", ""),
+                         "source_batch_count": len(opencode_audit.get("source_batch", [])),
+                         "live_retrievals": opencode_audit.get("live_retrievals", 0),
+                         "quota_reset_at": opencode_audit.get("preflight", {}).get("quota_reset_at"),
+                         "error": (opencode_audit.get("preflight", {}).get("message")
+                                   or opencode_audit.get("error") or "")[:300]}],
+        })
+        marker = root / "last_opencode_run.json"
+        temp = marker.with_suffix(".tmp")
+        temp.write_text(json.dumps({
+            "status": opencode_status, "session": now.date().isoformat(),
+            "slot": opencode_slot, "audit": opencode_audit,
+        }, sort_keys=True) + "\n", encoding="utf-8")
+        temp.replace(marker)
     try:
         budget = int(os.getenv("NEWS_CODEX_DAILY_CALLS", "48"))
     except ValueError:
         budget = 0
     slot = codex_slot(started, budget)
     codex_status = "SKIPPED_BUDGET"
-    if slot is not None:
-        # Persist attempted slot before calling, so a service retry cannot spend twice.
-        ledger = root / "last_codex_slot"
-        slot_id = f"{started.date()}:half-hour:{slot}"
-        if not ledger.is_file() or ledger.read_text(encoding="utf-8") != slot_id:
-            temporary = ledger.with_suffix(".tmp")
-            temporary.write_text(slot_id, encoding="utf-8")
-            temporary.replace(ledger)
-            try:
-                codex_status, rows = discover(now, nifty, universe, clock=clock)
-            except Exception as exc:
-                codex_status, rows = f"DISCOVERY_FAILED_{type(exc).__name__}", []
-            stage(root, {
-                "batch_id": uuid4().hex, "session": now.date().isoformat(),
-                "generated_at": clock().isoformat(), "records": rows,
-                "sources_configured": 1, "sources_with_items": 0, "sources_failed": 0,
-                "sources": [{"source": "Codex CLI", "status": codex_status,
-                             "fetched_items": len(rows)}],
-            })
+    if slot is not None and _claim_slot(root, "codex", started, slot):
+        try:
+            codex_status, rows = discover_codex(now, nifty, universe, clock=clock)
+        except Exception as exc:
+            codex_status, rows = f"DISCOVERY_FAILED_{type(exc).__name__}", []
+        stage(root, {
+            "batch_id": uuid4().hex, "session": now.date().isoformat(),
+            "generated_at": clock().isoformat(), "records": rows,
+            "sources_configured": 1, "sources_with_items": 1 if rows else 0,
+            "sources_failed": 0,
+            "sources": [{"source": "Codex CLI", "kind": "ai_cli",
+                         "status": codex_status, "fetched_items": len(rows)}],
+        })
     try:
         external_status = ingest_inbox(inbox, root, nifty, universe, clock=clock)
     except (OSError, ValueError) as exc:
@@ -141,6 +204,8 @@ def collect_archive(engine, root: Path, *, clock=lambda: datetime.now(IST)) -> d
         "session": batch["session"], "source_count": batch["sources_configured"],
         "sources_with_items": batch["sources_with_items"],
         "sources_failed": batch["sources_failed"], "sources_blocked": batch["sources_blocked"],
+        "opencode": opencode_status,
+        "opencode_sources": len(opencode_audit.get("source_batch", [])),
         "codex": codex_status,
         "observations": len(batch["records"]), "batches_committed": saved,
         "external_cli": external_status,

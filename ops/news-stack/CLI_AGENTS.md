@@ -6,16 +6,28 @@ Other CLIs get staggered, independent assignments. The intake normalizes their
 results and checks the original publication or exchange feed. It stores the
 discoverer's identity separately from the original publisher.
 
-The morning Codex job reviews the combined database at 08:00, 08:30, 08:55 and 09:00 IST.
-At 09:05 IST it freezes the evidence, keeps still-valid reviewed picks, and fills open slots from verified news without waiting for another model call. Its evidence window
-opens at 15:00 IST on the preceding regular NSE session and ends just before
-09:05 IST on the current session. The archive continues throughout the day.
-Evidence must be observed and committed before the cutoff. The job compares
-positive, negative and conflicting evidence and reviews recent source outcomes.
-It returns up to five LONG and five SHORT research candidates, fewer if evidence
-is weak, or NO_TRADE or UNAVAILABLE. It stores the report with execution disabled.
-More than 400 verified records exceeds the bounded morning review capacity and
-returns UNAVAILABLE rather than silently ranking a truncated evidence set.
+The morning research job reviews the combined database at 08:00, 08:30 and
+08:55 IST. At 09:00 IST it freezes the exact evidence snapshot and closes the
+analyst window. From 09:00 to 09:12 a separate critic reviews the shortlist
+using only the frozen pre-09:00 snapshot; it cannot add symbols or evidence.
+The critic is provider-independent when `NEWS_CRITIC_BASE_URL` and
+`NEWS_CRITIC_MODEL` point at a different OpenAI-compatible endpoint. Otherwise
+the Codex CLI is used as a distinct no-tools review call and the audit records
+that the analyst and critic share a provider.
+
+If the critic is quota-blocked or times out, the 09:05 and 09:10 invocations
+retry. By 09:12 the report is finalized from verified directional headlines, or
+NO_TRADE/UNAVAILABLE if nothing qualifies. Its evidence window opens at 15:00
+IST on the preceding regular NSE session and ends just before 09:00 IST on the
+current session. Evidence must be observed and committed before the cutoff; a
+draft that started before 09:00 may finish afterwards, but any evidence ID not
+present in the frozen snapshot is rejected. The archive continues throughout
+the day. The job compares positive, negative and conflicting evidence and
+reviews recent source outcomes. It returns up to five LONG and five SHORT
+research candidates, fewer if evidence is weak, or NO_TRADE or UNAVAILABLE. It
+stores the report with execution disabled. More than 400 verified records
+exceeds the bounded morning review capacity and returns UNAVAILABLE rather than
+silently ranking a truncated evidence set.
 
 ## Assigned searches
 

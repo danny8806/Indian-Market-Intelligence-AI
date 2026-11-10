@@ -57,6 +57,31 @@ source_checks = Table(
     Column("error", Text, nullable=False),
     Column("kind", String(35), nullable=False),
 )
+source_cursors = Table(
+    "news_source_cursors", metadata,
+    Column("source", String(255), primary_key=True),
+    Column("status", String(40), nullable=False),
+    Column("checked_at", DateTime(timezone=True), nullable=False),
+    Column("latest_item_at", DateTime(timezone=True)),
+    Column("latest_item_url", Text, nullable=False),
+    Column("consecutive_failures", Integer, nullable=False),
+    Column("cursor_state", JSON, nullable=False),
+)
+raw_documents = Table(
+    "news_raw_documents", metadata,
+    Column("id", String(64), primary_key=True),
+    Column("source", String(255), nullable=False),
+    Column("url", Text, nullable=False),
+    Column("content_type", String(120), nullable=False),
+    Column("sha256", String(64), nullable=False),
+    Column("byte_size", Integer, nullable=False),
+    Column("storage_path", Text, nullable=False),
+    Column("captured_at", DateTime(timezone=True), nullable=False),
+    Column("last_seen_at", DateTime(timezone=True), nullable=False),
+    Column("details", JSON, nullable=False),
+)
+Index("ix_news_raw_documents_source", raw_documents.c.source,
+      raw_documents.c.last_seen_at)
 runs = Table(
     "news_ingest_runs", metadata,
     Column("id", Integer, primary_key=True, autoincrement=True),
@@ -302,10 +327,104 @@ def sync_archive_batch(engine, batch: dict) -> bool:
             elif seen < _normalize_sqlite_time(old):
                 conn.execute(update(article_revisions).where(
                     article_revisions.c.id == identity).values(observed_at=seen))
-        coverage = {key: value for key, value in batch.items() if key != "records"}
+        _sync_source_ledger(conn, batch, checked)
+        _sync_raw_documents(conn, batch, checked)
+        coverage = {key: value for key, value in batch.items()
+                    if key not in {"records", "raw_documents"}}
         conn.execute(insert(archive_batches).values(
             batch_id=batch["batch_id"], checked_at=checked, coverage=coverage))
+        conn.execute(insert(runs).values(
+            session_date=batch.get("session") or checked.date().isoformat(),
+            checked_at=checked, saved_at=datetime.now(timezone.utc),
+            configured=int(batch.get("sources_configured") or len(batch.get("sources", []))),
+            returning_items=int(batch.get("sources_with_items") or 0),
+            failed=int(batch.get("sources_failed") or 0),
+            total_articles_in_archive=len(batch.get("records", [])),
+        ))
     return True
+
+
+def _sync_source_ledger(conn, batch: dict, checked: datetime) -> None:
+    """Upsert the latest source outcome and durable cursor for every batch."""
+    for source in batch.get("sources", []):
+        name = str(source.get("source") or "")[:255]
+        if not name:
+            continue
+        status = str(source.get("status", "UNKNOWN"))[:40]
+        fetched = int(source.get("fetched_items") or 0)
+        kind = str(source.get("kind") or "ai_cli")[:35]
+        error = str(source.get("error") or "")[:600]
+        row = dict(status=status, checked_at=checked, fetched_items=fetched,
+                   kind=kind, error=error)
+        present = conn.execute(select(source_checks.c.source).where(
+            source_checks.c.source == name)).first()
+        if present:
+            conn.execute(update(source_checks).where(
+                source_checks.c.source == name).values(**row))
+        else:
+            conn.execute(insert(source_checks).values(source=name, **row))
+        old = conn.execute(select(source_cursors).where(
+            source_cursors.c.source == name)).mappings().first()
+        failed = status in {"ERROR", "BLOCKED_ROBOTS", "TIMEOUT"}
+        failures = (int(old["consecutive_failures"]) + 1 if old else 1) if failed else 0
+        latest_at = aware(source.get("latest_item_at"))
+        cursor = {
+            "latest_raw_time": str(source.get("latest_raw_time") or "")[:80],
+            "item_count": int(source.get("item_count") or fetched),
+            "elapsed_seconds": source.get("elapsed_seconds"),
+            "bytes": source.get("bytes"),
+            "http_status": source.get("http_status"),
+            "model": str(source.get("model") or "")[:120],
+            "source_batch_count": source.get("source_batch_count"),
+            "live_retrievals": source.get("live_retrievals"),
+        }
+        values = dict(status=status, checked_at=checked,
+                      latest_item_at=latest_at,
+                      latest_item_url=str(source.get("latest_item_url") or "")[:2048],
+                      consecutive_failures=failures, cursor_state=cursor)
+        if old:
+            conn.execute(update(source_cursors).where(
+                source_cursors.c.source == name).values(**values))
+        else:
+            conn.execute(insert(source_cursors).values(source=name, **values))
+
+
+def _sync_raw_documents(conn, batch: dict, checked: datetime) -> None:
+    for raw in batch.get("raw_documents", []):
+        document_id = str(raw.get("id") or "")
+        if not document_id:
+            continue
+        captured = aware(raw.get("captured_at")) or checked
+        details = {"provider": raw.get("provider"), "authority": raw.get("authority"),
+                   "kind": raw.get("kind"), "status": raw.get("status"),
+                   "truncated": bool(raw.get("truncated"))}
+        old = conn.execute(select(raw_documents.c.last_seen_at).where(
+            raw_documents.c.id == document_id)).scalar_one_or_none()
+        if old is None:
+            conn.execute(insert(raw_documents).values(
+                id=document_id[:64], source=str(raw.get("source") or "")[:255],
+                url=str(raw.get("url") or "")[:2048],
+                content_type=str(raw.get("content_type") or "")[:120],
+                sha256=str(raw.get("sha256") or "")[:64],
+                byte_size=int(raw.get("byte_size") or 0),
+                storage_path=str(raw.get("storage_path") or "")[:2048],
+                captured_at=captured, last_seen_at=captured, details=details))
+        else:
+            conn.execute(update(raw_documents).where(raw_documents.c.id == document_id).values(
+                last_seen_at=_newest(old, captured),
+                storage_path=str(raw.get("storage_path") or "")[:2048],
+                byte_size=int(raw.get("byte_size") or 0), details=details))
+
+
+def prune_raw_documents(engine, *, days: int = 30) -> int:
+    """Remove raw-document index rows outside the retention window."""
+    from datetime import timedelta
+    cutoff = datetime.now(timezone.utc) - timedelta(days=max(1, days))
+    with engine.begin() as conn:
+        metadata.create_all(conn)
+        result = conn.execute(raw_documents.delete().where(
+            raw_documents.c.last_seen_at < cutoff))
+        return int(result.rowcount or 0)
 
 
 def main() -> None:

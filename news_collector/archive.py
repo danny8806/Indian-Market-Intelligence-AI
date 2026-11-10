@@ -2,12 +2,15 @@
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, time, timedelta
 import csv
+import gzip
 import hashlib
 import io
 import json
 import os
 import re
+import shutil
 from pathlib import Path
+from threading import Lock
 from urllib.parse import urlsplit
 from uuid import uuid4
 
@@ -135,13 +138,51 @@ def collect_batch(root: Path, *, clock=lambda: datetime.now(IST), config=ROOT / 
     started = clock()
     nifty, universe, verified = load_universes(root, started)
     sources = json.loads(config.read_text(encoding="utf-8"))["sources"]
-    rows, checks, publisher_leads = [], [], []
+    rows, checks, publisher_leads, raw_documents = [], [], [], []
+    raw_dir = root / "raw" / started.astimezone(IST).date().isoformat()
+    seen_raw = set()
+    raw_lock = Lock()
     preopen = started.astimezone(IST)
     verify_publishers = (verified and time(8, 40) <= preopen.time() < time(9)
                          and regular_market_day(preopen.date()))
 
+    def capture_raw(source, raw: bytes, stats: dict) -> None:
+        content = raw[:2_000_000]
+        digest = hashlib.sha256(content).hexdigest()
+        document_id = hashlib.sha256(
+            f'{source["name"]}:{digest}'.encode()).hexdigest()
+        with raw_lock:
+            if document_id in seen_raw:
+                return
+            seen_raw.add(document_id)
+            name_hash = hashlib.sha256(source["name"].encode()).hexdigest()[:12]
+            path = raw_dir / f"{name_hash}-{digest[:16]}.gz"
+            if not path.is_file():
+                path.parent.mkdir(parents=True, exist_ok=True)
+                temporary = path.with_suffix(".tmp")
+                with gzip.open(temporary, "wb", compresslevel=6) as output:
+                    output.write(content)
+                os.replace(temporary, path)
+            content_type = {"rss": "application/xml", "html": "text/html",
+                            "broker_html": "text/html", "api": "application/json",
+                            "indexed_search": "application/json",
+                            "provider_api": "application/json"}.get(source["kind"], "")
+            raw_documents.append({
+                "id": document_id, "source": source["name"], "url": source["url"],
+                "content_type": content_type, "sha256": digest,
+                "byte_size": len(content), "storage_path": path.relative_to(root).as_posix(),
+                "captured_at": clock().isoformat(), "provider": source["provider"],
+                "authority": source["authority"], "kind": source["kind"],
+                "status": stats.get("status"), "truncated": len(raw) > len(content),
+            })
+
     def retrieve(source):
-        stats, items = fetch_one(source)
+        stats, items = fetch_one(source, raw_sink=capture_raw)
+        latest = max((str(item.get("raw_time") or ""), str(item.get("url") or ""))
+                     for item in items) if items else ("", "")
+        stats["latest_raw_time"] = latest[0][:80]
+        stats["latest_item_url"] = latest[1][:2048]
+        stats["item_count"] = len(items)
         return stats, items, clock()
 
     with ThreadPoolExecutor(max_workers=4) as pool:
@@ -153,10 +194,17 @@ def collect_batch(root: Path, *, clock=lambda: datetime.now(IST), config=ROOT / 
                                   discoverer="python")
                 if row and (row["published_at"] or row["symbols"] or source["kind"] == "broker_html"):
                     rows.append(row)
+                if row and row["published_at"]:
+                    current = stats.get("latest_item_at")
+                    if not current or row["published_at"] > current:
+                        stats["latest_item_at"] = row["published_at"]
                 if (verify_publishers and source.get("verify_article") and row
                         and len(row["nifty_symbols"]) == 1 and len(source_leads) < 2):
                     source_leads.append((source, row))
             publisher_leads.extend(source_leads)
+    status_by_source = {stats["source"]: stats["status"] for stats in checks}
+    for document in raw_documents:
+        document["status"] = status_by_source.get(document["source"], document["status"])
     verified_urls = {row["url"] for row in rows if row["verified_origin"]}
     pending_urls = {lead["url"]: (source, lead) for source, lead in publisher_leads
                     if lead["url"] not in verified_urls}
@@ -175,6 +223,7 @@ def collect_batch(root: Path, *, clock=lambda: datetime.now(IST), config=ROOT / 
         "sources_failed": sum(check["status"] == "ERROR" for check in checks),
         "sources_blocked": sum(check["status"] == "BLOCKED_ROBOTS" for check in checks),
         "sources": checks,
+        "raw_documents": raw_documents,
         "publisher_checks": len(pending_urls),
         "records": rows,
         "nifty_count": len(nifty) if verified else 0,
@@ -208,3 +257,22 @@ def replay(engine, root: Path) -> int:
         path.unlink()
         total += 1
     return total
+
+
+def prune_raw(root: Path, *, days: int = 30, today=None) -> int:
+    """Delete raw-response date folders older than the retention window."""
+    today = today or datetime.now(IST).date()
+    cutoff = today - timedelta(days=max(1, days))
+    removed = 0
+    folder_root = root / "raw"
+    if not folder_root.is_dir():
+        return 0
+    for folder in folder_root.iterdir():
+        try:
+            day = datetime.strptime(folder.name, "%Y-%m-%d").date()
+        except ValueError:
+            continue
+        if folder.is_dir() and day < cutoff:
+            shutil.rmtree(folder, ignore_errors=True)
+            removed += 1
+    return removed

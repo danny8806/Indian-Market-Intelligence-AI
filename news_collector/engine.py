@@ -247,7 +247,7 @@ def api_items(raw: bytes, source: dict) -> list[dict]:
             for i in arr[:500] if isinstance(i, dict)]
 
 
-def fetch_one(source: dict) -> tuple[dict, list[dict]]:
+def fetch_one(source: dict, *, raw_sink=None) -> tuple[dict, list[dict]]:
     began = time.monotonic()
     base = {"source": source["name"], "kind": source["kind"], "authority": source["authority"],
             "provider": source["provider"], "url": source["url"], "status": "ERROR",
@@ -271,6 +271,12 @@ def fetch_one(source: dict) -> tuple[dict, list[dict]]:
                else fetch_provider_news(source) if source["kind"] == "provider_api"
                else read_with_retry(source["url"], fetch_bytes,
                                     max_attempts=source.get("max_attempts", 1)))
+        if raw_sink is not None:
+            try:
+                raw_sink(source, raw, base)
+            except Exception:
+                # Raw-document capture must never discard the parsed evidence.
+                pass
         if source["kind"] == "rss":
             items = rss_items(raw, source)
         elif source["kind"] == "html":
