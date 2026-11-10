@@ -97,6 +97,17 @@ morning_reports = Table(
 
 
 
+morning_drafts = Table(
+    "news_morning_drafts", metadata,
+    Column("session_date", String(10), primary_key=True),
+    Column("evidence_sha256", String(64), primary_key=True),
+    Column("completed_at", DateTime(timezone=True), nullable=False),
+    Column("status", String(16), nullable=False),
+    Column("reason", Text, nullable=False),
+    Column("signals", JSON, nullable=False),
+)
+
+
 def aware(value: str | None) -> datetime | None:
     if not value:
         return None

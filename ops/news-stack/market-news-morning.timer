@@ -1,7 +1,8 @@
 [Unit]
-Description=Build a research-only report at 09:00 IST
+Description=Review research from 08:00 and lock the watchlist at 09:00 IST
 
 [Timer]
+OnCalendar=Mon..Fri *-*-* 08:00,30,55:00 Asia/Kolkata
 OnCalendar=Mon..Fri *-*-* 09:00:00 Asia/Kolkata
 AccuracySec=1s
 Persistent=false

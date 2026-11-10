@@ -1,5 +1,6 @@
 """Build a frozen, research-only morning report using verified pre-cutoff evidence."""
 from datetime import datetime, timedelta, timezone
+import hashlib
 import json
 import os
 
@@ -8,7 +9,7 @@ from sqlalchemy import insert, select, text, update
 
 from news_collector.codex_research import run_codex
 from news_collector.db_store import (
-    archive_batches, article_revisions, engine_for_url, metadata, morning_reports,
+    archive_batches, article_revisions, engine_for_url, metadata, morning_drafts, morning_reports,
 )
 from news_collector.engine import IST, ROOT, regular_market_day, window_for
 
@@ -27,58 +28,58 @@ SELECTIONS = {
 }
 
 
-def freeze(engine, now, start, cutoff):
-    day = cutoff.date().isoformat()
+def lock_morning(conn):
+    if conn.dialect.name == "postgresql":
+        conn.execute(text("SELECT pg_advisory_xact_lock(73518417)"))
+    metadata.create_all(conn)
+
+
+def read_evidence(conn, start, as_of):
     start = start.astimezone(timezone.utc)
-    cutoff = cutoff.astimezone(timezone.utc)
-    with engine.begin() as conn:
-        if conn.dialect.name == "postgresql":
-            conn.execute(text("SELECT pg_advisory_xact_lock(73518416)"))
-        metadata.create_all(conn)
-        old = conn.execute(select(morning_reports).where(
-            morning_reports.c.session_date == day)).mappings().first()
-        if old is not None:
-            return old["evidence"], old["report"]
-        evidence = []
-        seen = set()
-        revisions = conn.execute(select(article_revisions).where(
-            article_revisions.c.verified_origin.is_(True),
-            article_revisions.c.published_at >= start,
-            article_revisions.c.published_at < cutoff,
-            article_revisions.c.observed_at < cutoff,
-            article_revisions.c.published_at <= article_revisions.c.observed_at,
-        ).order_by(article_revisions.c.observed_at.desc(), article_revisions.c.id)).mappings()
-        for row in revisions:
-            data = row["evidence"]
-            if not data["nifty_symbols"] or row["article_id"] in seen:
-                continue
-            seen.add(row["article_id"])
-            evidence.append({**data, "evidence_id": row["id"],
-                             "observed_at": (row["observed_at"].replace(tzinfo=timezone.utc)
-                                             .astimezone(IST).isoformat())})
-        recent = conn.execute(select(
-            archive_batches.c.checked_at, archive_batches.c.coverage,
-        ).where(
-            archive_batches.c.checked_at >= cutoff - timedelta(minutes=120),
-            archive_batches.c.checked_at < cutoff,
-        ).order_by(archive_batches.c.checked_at)).all()
-        source_health = {}
-        for _, batch in recent:
-            source_health.update(batch.get("agent_lanes", {}))
-        for _, batch in recent:
-            source_health.update({source["source"]: source["status"]
-                                  for source in batch.get("sources", [])
-                                  if "source" in source and "status" in source})
-        recent_collection = any(
-            (checked if checked.tzinfo else checked.replace(tzinfo=timezone.utc))
-            >= cutoff - timedelta(minutes=35)
-            and batch.get("nifty_count") and batch.get("sources_with_items")
-            for checked, batch in recent)
-        snapshot = {"items": evidence, "recent_coverage": recent_collection,
-                    "source_health": source_health}
-        conn.execute(insert(morning_reports).values(
-            session_date=day, frozen_at=now, evidence=snapshot))
-        return snapshot, None
+    cutoff = as_of.astimezone(timezone.utc)
+    evidence = []
+    seen = set()
+    revisions = conn.execute(select(article_revisions).where(
+        article_revisions.c.verified_origin.is_(True),
+        article_revisions.c.published_at >= start,
+        article_revisions.c.published_at < cutoff,
+        article_revisions.c.observed_at < cutoff,
+        article_revisions.c.published_at <= article_revisions.c.observed_at,
+    ).order_by(article_revisions.c.observed_at.desc(), article_revisions.c.id)).mappings()
+    for row in revisions:
+        data = row["evidence"]
+        if not data["nifty_symbols"] or row["article_id"] in seen:
+            continue
+        seen.add(row["article_id"])
+        evidence.append({**data, "evidence_id": row["id"],
+                         "observed_at": (row["observed_at"].replace(tzinfo=timezone.utc)
+                                         .astimezone(IST).isoformat())})
+    recent = conn.execute(select(
+        archive_batches.c.checked_at, archive_batches.c.coverage,
+    ).where(
+        archive_batches.c.checked_at >= cutoff - timedelta(minutes=120),
+        archive_batches.c.checked_at < cutoff,
+    ).order_by(archive_batches.c.checked_at)).all()
+    source_health = {}
+    for _, batch in recent:
+        source_health.update(batch.get("agent_lanes", {}))
+    for _, batch in recent:
+        source_health.update({source["source"]: source["status"]
+                              for source in batch.get("sources", [])
+                              if "source" in source and "status" in source})
+    recent_collection = any(
+        (checked if checked.tzinfo else checked.replace(tzinfo=timezone.utc))
+        >= cutoff - timedelta(minutes=35)
+        and batch.get("nifty_count") and batch.get("sources_with_items")
+        for checked, batch in recent)
+    snapshot = {"items": evidence, "recent_coverage": recent_collection,
+                "source_health": source_health}
+    return snapshot
+
+
+def evidence_hash(snapshot):
+    keys = sorted(row["evidence_id"] for row in snapshot["items"])
+    return hashlib.sha256(json.dumps([snapshot["recent_coverage"], keys]).encode()).hexdigest()
 
 
 def select_candidates(snapshot, *, analyst=run_codex):
@@ -148,25 +149,10 @@ def select_candidates(snapshot, *, analyst=run_codex):
     return "READY", "Frozen source evidence independently reviewed", selected
 
 
-def run(engine, *, clock=lambda: datetime.now(IST), analyst=run_codex):
-    now = clock().astimezone(IST)
-    if now.year != 2026:
-        return {"status": "CALENDAR_UPDATE_REQUIRED"}
-    if not regular_market_day(now.date()):
-        return {"status": "CLOSED"}
-    start, cutoff = window_for(now.date().isoformat())
-    if not cutoff <= now < cutoff + timedelta(minutes=14):
-        return {"status": "OUTSIDE_RESEARCH_WINDOW"}
-    snapshot, previous = freeze(engine, now, start, cutoff)
-    if previous is not None:
-        return previous
-    status, reason, signals = select_candidates(snapshot, analyst=analyst)
-    generated = clock().astimezone(IST)
-    if generated >= cutoff + timedelta(minutes=14):
-        status, reason, signals = "UNAVAILABLE", "Research deadline elapsed", []
+def make_report(day, cutoff, generated, *, status, reason, signals):
     report = {
         "schema_version": "1.0", "status": status, "market": "NSE", "timezone": "Asia/Kolkata",
-        "session_date": cutoff.date().isoformat(), "news_cutoff_at": cutoff.isoformat(),
+        "session_date": day, "news_cutoff_at": cutoff.isoformat(),
         "generated_at": generated.isoformat(), "execution_enabled": False,
         "reason": reason, "signals": signals,
     }
@@ -175,12 +161,76 @@ def run(engine, *, clock=lambda: datetime.now(IST), analyst=run_codex):
     if not validator.is_valid(report):
         report.update(status="UNAVAILABLE", reason="Report failed schema validation", signals=[])
         validator.validate(report)
+    return report
+
+
+def prepare_draft(engine, now, start, cutoff, *, clock, analyst):
+    day = cutoff.date().isoformat()
     with engine.begin() as conn:
-        conn.execute(update(morning_reports).where(
-            morning_reports.c.session_date == report["session_date"],
-            morning_reports.c.report.is_(None)).values(report=report))
-        return conn.execute(select(morning_reports.c.report).where(
-            morning_reports.c.session_date == report["session_date"])).scalar_one()
+        lock_morning(conn)
+        snapshot = read_evidence(conn, start, now)
+        digest = evidence_hash(snapshot)
+        key = ((morning_drafts.c.session_date == day)
+               & (morning_drafts.c.evidence_sha256 == digest))
+        existing = conn.execute(select(morning_drafts.c.status).where(key)).scalar_one_or_none()
+        if existing in {"READY", "NO_TRADE"}:
+            return {"status": "DRAFT_REUSED", "draft_status": existing}
+    status, reason, signals = select_candidates(snapshot, analyst=analyst)
+    completed = clock().astimezone(IST)
+    if completed >= cutoff:
+        return {"status": "DRAFT_FINISHED_AFTER_LOCK"}
+    fields = dict(completed_at=completed.astimezone(timezone.utc), status=status, reason=reason, signals=signals)
+    with engine.begin() as conn:
+        lock_morning(conn)
+        existing = conn.execute(select(morning_drafts.c.status).where(key)).scalar_one_or_none()
+        if existing is None:
+            conn.execute(insert(morning_drafts).values(session_date=day, evidence_sha256=digest,
+                                                       **fields))
+        elif existing == "UNAVAILABLE":
+            conn.execute(update(morning_drafts).where(key).values(**fields))
+    return {"status": "DRAFT_SAVED", "draft_status": status, "signals": len(signals)}
+
+
+def lock_watchlist(engine, now, start, cutoff):
+    day = cutoff.date().isoformat()
+    with engine.begin() as conn:
+        lock_morning(conn)
+        key = morning_reports.c.session_date == day
+        existing = conn.execute(select(morning_reports).where(key)).mappings().first()
+        if existing is not None and existing["report"] is not None:
+            return existing["report"]
+        snapshot = read_evidence(conn, start, cutoff)
+        draft = conn.execute(select(morning_drafts).where(
+            morning_drafts.c.session_date == day,
+            morning_drafts.c.evidence_sha256 == evidence_hash(snapshot),
+            morning_drafts.c.completed_at < cutoff.astimezone(timezone.utc),
+        )).mappings().first()
+        if draft is None:
+            outcome = dict(status="UNAVAILABLE", reason=(
+                "No completed draft matches all verified evidence at the 09:00 IST lock"), signals=[])
+        else:
+            outcome = {field: draft[field] for field in ("status", "reason", "signals")}
+        report = make_report(day, cutoff, now, **outcome)
+        values = dict(frozen_at=now, evidence=snapshot, report=report)
+        if existing is None:
+            conn.execute(insert(morning_reports).values(session_date=day, **values))
+        else:
+            conn.execute(update(morning_reports).where(key).values(**values))
+        return report
+
+
+def run(engine, *, clock=lambda: datetime.now(IST), analyst=run_codex):
+    now = clock().astimezone(IST)
+    if now.year != 2026:
+        return {"status": "CALENDAR_UPDATE_REQUIRED"}
+    if not regular_market_day(now.date()):
+        return {"status": "CLOSED"}
+    start, cutoff = window_for(now.date().isoformat())
+    if cutoff - timedelta(hours=1) <= now < cutoff:
+        return prepare_draft(engine, now, start, cutoff, clock=clock, analyst=analyst)
+    if cutoff <= now < cutoff + timedelta(minutes=14):
+        return lock_watchlist(engine, now, start, cutoff)
+    return {"status": "OUTSIDE_RESEARCH_WINDOW"}
 
 
 if __name__ == "__main__":

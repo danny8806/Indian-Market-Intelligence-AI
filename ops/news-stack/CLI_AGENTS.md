@@ -6,7 +6,8 @@ Other CLIs get staggered, independent assignments. The intake normalizes their
 results and checks the original publication or exchange feed. It stores the
 discoverer's identity separately from the original publisher.
 
-The morning Codex job uses the combined database snapshot. Its evidence window
+The morning Codex job reviews the combined database at 08:00, 08:30 and 08:55 IST.
+At 09:00 IST it locks a matching completed review without making a model call. Its evidence window
 opens at 15:00 IST on the preceding regular NSE session and ends just before
 09:00 IST on the current session. The archive continues throughout the day.
 Evidence must be observed and committed before the cutoff. The job compares

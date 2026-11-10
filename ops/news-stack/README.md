@@ -11,14 +11,18 @@ with execution_enabled=false. The news service has no broker or bridge credentia
   A failed database write leaves the batch queued on the archive volume for replay.
 - Codex discovery searches independently, then verifies returned links against
   configured original publisher metadata or the original exchange feed. Its
-  default budget is 24 scheduled discovery slots per IST day. Set
-  NEWS_CODEX_DAILY_CALLS from 0 to 144. The 09:00 slot is reserved for morning
-  research. Missing authentication or retrieval failure is reported per attempt.
-- market-news-morning.timer runs at 09:00 IST on weekdays. The job checks the
-  NSE regular-session calendar, freezes evidence already committed before the
-  cutoff, and stores the validated report in news_morning_reports. The analyst
-  and critic run separately and receive only frozen evidence. Update the bundled
-  2026 calendar before running morning research in the following year.
+  default budget is 48 discovery slots per IST day, at :00 and :30. Set
+  NEWS_CODEX_DAILY_CALLS from 0 to 48 to cap usage. Missing authentication
+  or retrieval failure is reported per attempt.
+- market-news-morning.timer starts research at 08:00 IST on weekdays, refreshes
+  at 08:30 and 08:55, and locks the final research watchlist at 09:00. The job
+  checks the NSE session calendar and reuses a completed draft only when it
+  matches the verified evidence at lock time. The 09:00 job does not wait for
+  another model call. It persists one report in news_morning_reports. Changed
+  evidence or a missing reviewed draft produces UNAVAILABLE with no signals.
+  Update the bundled 2026 calendar before running morning research in the
+  following year.
+
 ## Broker coverage
 
 Public broker news and research are stored as leads. The broker summary or analyst

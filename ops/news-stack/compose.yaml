@@ -43,7 +43,7 @@ services:
       NEWS_AGENT_INBOX: /app/cli-inbox
       NEWS_CODEX_HOME: /home/newsbot/.news-codex
       CODEX_HOME: /home/newsbot/.news-codex
-      NEWS_CODEX_DAILY_CALLS: ${NEWS_CODEX_DAILY_CALLS:-24}
+      NEWS_CODEX_DAILY_CALLS: ${NEWS_CODEX_DAILY_CALLS:-48}
       SERPER_API_KEY: ""
       TZ: Asia/Kolkata
     volumes:

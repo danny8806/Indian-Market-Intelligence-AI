@@ -11,6 +11,7 @@ from news_collector.agent_intake import assignment, ingest_inbox, validate_repor
 from news_collector.archive import observation, replay, stage
 from news_collector.broker_sources import listing_items
 from news_collector.codex_research import allowed_url
+from news_collector.continuous_worker import codex_slot
 from news_collector.db_store import archive_batches, article_revisions, articles, sync_archive_batch
 from news_collector.engine import IST
 from news_collector.morning import run, select_candidates
@@ -86,7 +87,9 @@ class NewsIntelligenceTests(unittest.TestCase):
                  "news_summary": "Thermax announced higher profits", "evidence_ids": [identity]}
             ]}
 
-        report = run(self.db, clock=lambda: at(9, 3), analyst=analyst)
+        draft = run(self.db, clock=lambda: at(8, 59), analyst=analyst)
+        self.assertEqual(draft, {"status": "DRAFT_SAVED", "draft_status": "READY", "signals": 1})
+        report = run(self.db, clock=lambda: at(9, 0), analyst=analyst)
         self.assertEqual(report["status"], "READY", report["reason"])
         self.assertFalse(report["execution_enabled"])
         self.assertEqual(len(report["signals"]), 1)
@@ -212,3 +215,36 @@ class NewsIntelligenceTests(unittest.TestCase):
         self.assertIn('"evidence-100"', calls[1])
         self.assertIn('"evidence-100"', calls[2])
         self.assertIn("QUOTA_LIMIT", calls[2])
+
+    def test_lock_refuses_draft_when_verified_evidence_changes(self):
+        early = record(at(8, 40), at(8, 35))
+        sync_archive_batch(self.db, batch("a", at(8, 45), early))
+
+        def analyst(_prompt, _schema, **_options):
+            return "OK", {"selections": []}
+
+        draft = run(self.db, clock=lambda: at(8, 55), analyst=analyst)
+        self.assertEqual(draft["draft_status"], "NO_TRADE")
+        extra = record(at(8, 57), at(8, 56), name="last-minute")
+        sync_archive_batch(self.db, batch("b", at(8, 59), extra))
+        with patch("news_collector.morning.select_candidates") as call:
+            report = run(self.db, clock=lambda: at(9, 0))
+            call.assert_not_called()
+        self.assertEqual(report["status"], "UNAVAILABLE")
+        self.assertEqual(report["signals"], [])
+
+    def test_late_draft_cannot_become_locked_watchlist(self):
+        sync_archive_batch(self.db, batch("a", at(8, 53), record(at(8, 51), at(8, 50))))
+        clock = iter([at(8, 55), at(9, 0)]).__next__
+        result = run(self.db, clock=clock, analyst=lambda *_a, **_k: ("OK", {"selections": []}))
+        self.assertEqual(result["status"], "DRAFT_FINISHED_AFTER_LOCK")
+        report = run(self.db, clock=lambda: at(9, 0))
+        self.assertEqual(report["status"], "UNAVAILABLE")
+
+    def test_codex_discovery_stays_on_half_hour_slots(self):
+        self.assertEqual(codex_slot(at(8, 0), 48), 16)
+        self.assertIsNone(codex_slot(at(8, 10), 48))
+        self.assertIsNone(codex_slot(at(8, 20), 48))
+        self.assertEqual(codex_slot(at(8, 30), 48), 17)
+        self.assertEqual(codex_slot(at(9, 0), 48), 18)
+        self.assertIsNone(codex_slot(at(8, 30), 0))

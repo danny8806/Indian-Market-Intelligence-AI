@@ -82,12 +82,23 @@ def collect_and_store(engine, *, data_root: Path = DATA_ROOT,
             "github_pull": inbox["status"], "inbox_import": imported["status"]}
 
 
+def codex_slot(now: datetime, budget: int) -> int | None:
+    """Only the first Python pass in each half hour can spend a discovery slot."""
+    if now.minute % 30 >= 10:
+        return None
+    slots = 48
+    slot = (now.hour * 60 + now.minute) // 30
+    budget = max(0, min(slots, budget))
+    return slot if slot * budget // slots > (slot - 1) * budget // slots else None
+
+
 def collect_archive(engine, root: Path, *, clock=lambda: datetime.now(IST)) -> dict:
     from news_collector.agent_intake import ingest_inbox, lane_statuses
     from news_collector.archive import collect_batch, replay, stage
     from news_collector.codex_research import discover
     from uuid import uuid4
 
+    started = clock().astimezone(IST)
     batch, nifty, universe = collect_batch(root, clock=clock)
     inbox = Path(os.getenv("NEWS_AGENT_INBOX", str(root / "agent_inbox")))
     batch["agent_lanes"] = lane_statuses(inbox)
@@ -95,17 +106,16 @@ def collect_archive(engine, root: Path, *, clock=lambda: datetime.now(IST)) -> d
     # Commit primary sources before optional CLI calls can run out of time.
     saved = replay(engine, root)
     now = clock().astimezone(IST)
-    daily_slots = 144
     try:
-        budget = max(0, min(daily_slots, int(os.getenv("NEWS_CODEX_DAILY_CALLS", "24"))))
+        budget = int(os.getenv("NEWS_CODEX_DAILY_CALLS", "48"))
     except ValueError:
         budget = 0
-    slot = (now.hour * 60 + now.minute) // 10
+    slot = codex_slot(started, budget)
     codex_status = "SKIPPED_BUDGET"
-    if slot != 54 and slot * budget // daily_slots > (slot - 1) * budget // daily_slots:
+    if slot is not None:
         # Persist attempted slot before calling, so a service retry cannot spend twice.
         ledger = root / "last_codex_slot"
-        slot_id = f"{now.date()}:{slot}"
+        slot_id = f"{started.date()}:half-hour:{slot}"
         if not ledger.is_file() or ledger.read_text(encoding="utf-8") != slot_id:
             temporary = ledger.with_suffix(".tmp")
             temporary.write_text(slot_id, encoding="utf-8")
