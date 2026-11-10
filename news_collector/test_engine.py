@@ -127,6 +127,21 @@ class CollectorUnitTests(unittest.TestCase):
         self.assertEqual(len(items), 1)
         self.assertEqual(items[0]["raw_time"], "")
 
+    def test_vetted_listing_recovers_plain_article_cards_only(self):
+        raw = b"""<html><nav><a href="/news/category">Markets and economy section</a></nav>
+        <div class="card"><a href="/news/thermax-quarterly-results-2026-11-10.html">
+        Thermax quarterly results beat estimates on strong order inflow</a></div>
+        <div class="card"><a href="https://evil.example/news/fake-story-2026-11-10.html">
+        Fake external story with enough words to pass length filter</a></div></html>"""
+        source = {**sample_source(provider="MEDIA", kind="html"),
+                  "url": "https://example.org/markets", "verify_article": True}
+        items = html_items(raw, source)
+        self.assertEqual(len(items), 1)
+        self.assertEqual(items[0]["url"],
+                         "https://example.org/news/thermax-quarterly-results-2026-11-10.html")
+        self.assertEqual(items[0]["raw_time"], "")
+        self.assertEqual(html_items(raw, {**source, "verify_article": False}), [])
+
     def test_event_url_dedupe(self):
         rows = {}
         start, end = window_for("2026-11-06")

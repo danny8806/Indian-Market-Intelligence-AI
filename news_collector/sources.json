@@ -154,7 +154,7 @@
     },
     {
       "name": "Mint markets RSS",
-      "url": "https://www.livemint.com/rss/marketsRSS",
+      "url": "https://www.livemint.com/rss/markets",
       "kind": "rss",
       "provider": "MEDIA",
       "authority": "secondary",
@@ -162,7 +162,7 @@
     },
     {
       "name": "Mint companies RSS",
-      "url": "https://www.livemint.com/rss/companiesRSS",
+      "url": "https://www.livemint.com/rss/companies",
       "kind": "rss",
       "provider": "MEDIA",
       "authority": "secondary",
@@ -170,7 +170,7 @@
     },
     {
       "name": "Mint industry RSS",
-      "url": "https://www.livemint.com/rss/industryRSS",
+      "url": "https://www.livemint.com/rss/industry",
       "kind": "rss",
       "provider": "MEDIA",
       "authority": "secondary",
@@ -886,6 +886,15 @@
       "provider": "BROKER",
       "authority": "secondary",
       "article_path": "/uploads/(?:Morning_Insight|Market_Morning|Market_Strategy)[^/]*\\.pdf"
+    },
+    {
+      "name": "Kotak Neo Market News",
+      "url": "https://www.kotakneo.com/news/market-news/",
+      "kind": "broker_html",
+      "provider": "BROKER",
+      "authority": "secondary",
+      "article_path": "/news/market-news/[^/]+/?",
+      "verify_article": true
     },
     {
       "name": "Motilal Oswal Public Research",

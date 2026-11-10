@@ -218,6 +218,53 @@ def rss_items(raw: bytes, source: dict) -> list[dict]:
     return found
 
 
+ARTICLE_PATH = re.compile(
+    r"/(?:news|markets/news|companies|industry|economy|earnings|stocks/news)/", re.I)
+NAV_HEADLINES = {
+    "read more", "view all", "click here", "sign in", "log in", "subscribe",
+    "download app", "follow us", "share", "next", "previous",
+}
+
+
+def _fallback_listing_items(soup: BeautifulSoup, source: dict) -> list[dict]:
+    """Recover plain article-card links on vetted listing pages.
+
+    Some publishers do not wrap cards in ``article``/heading elements. This
+    fallback is opt-in through ``verify_article`` because those same pages are
+    allowed to fetch the publisher article and prove its publication time.
+    Links without a real timestamp remain discovery-only and cannot become a
+    signal on their own.
+    """
+    source_host = (urllib.parse.urlsplit(source["url"]).hostname or "").removeprefix("www.")
+    found, seen = [], set()
+    for a in soup.select("a[href]")[:2000]:
+        headline = a.get_text(" ", strip=True)
+        words = headline.split()
+        if not 30 <= len(headline) <= 250 or len(words) < 5:
+            continue
+        if headline.casefold().strip(" .:") in NAV_HEADLINES:
+            continue
+        url = urllib.parse.urljoin(source["url"], a.get("href") or "")
+        parsed = urllib.parse.urlsplit(url)
+        host = (parsed.hostname or "").removeprefix("www.")
+        if (parsed.scheme not in {"http", "https"} or host != source_host
+                or not ARTICLE_PATH.search(parsed.path)):
+            continue
+        canonical = canonical_url(url)
+        if not canonical or canonical in seen or canonical == canonical_url(source["url"]):
+            continue
+        seen.add(canonical)
+        bucket = a.find_parent(["article", "li", "div"])
+        timestamp = bucket.find("time") if bucket else None
+        raw_time = timestamp.get("datetime", "") if timestamp else ""
+        summary = bucket.get_text(" ", strip=True)[:1800] if bucket else ""
+        found.append({"headline": headline, "summary": summary, "url": url,
+                      "raw_time": raw_time})
+        if len(found) >= 150:
+            break
+    return found
+
+
 def html_items(raw: bytes, source: dict) -> list[dict]:
     """Extract candidate article links, but require per-article <time datetime> to qualify."""
     soup = BeautifulSoup(raw, "html.parser")
@@ -235,6 +282,8 @@ def html_items(raw: bytes, source: dict) -> list[dict]:
         found.append({"headline": headline, "summary": summary, "url": url, "raw_time": raw_time})
         if len(found) >= 150:
             break
+    if not found and source.get("verify_article"):
+        found = _fallback_listing_items(soup, source)
     return found
 
 
