@@ -4,7 +4,11 @@ on:
   push:
     branches: [main]
     paths:
-      - 'ops/**'
+      - 'ops/deploy_live_vps.sh'
+      - 'ops/activate_live_vps.sh'
+      - 'ops/retire_old_dashboard.sh'
+      - 'ops/bootstrap_deploy_access.py'
+      - 'ops/nginx.live-subdomain.example.conf'
       - 'tests/test_vps_bootstrap.py'
       - 'live_desk/**'
       - 'bridge/**'
