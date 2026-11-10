@@ -14,14 +14,14 @@ with execution_enabled=false. The news service has no broker or bridge credentia
   default budget is 48 discovery slots per IST day, at :00 and :30. Set
   NEWS_CODEX_DAILY_CALLS from 0 to 48 to cap usage. Missing authentication
   or retrieval failure is reported per attempt.
-- market-news-morning.timer starts research at 08:00 IST on weekdays, refreshes
-  at 08:30 and 08:55, and locks the final research watchlist at 09:00. The job
-  checks the NSE session calendar and reuses a completed draft only when it
-  matches the verified evidence at lock time. The 09:00 job does not wait for
-  another model call. It persists one report in news_morning_reports. Changed
-  evidence or a missing reviewed draft produces UNAVAILABLE with no signals.
-  Update the bundled 2026 calendar before running morning research in the
-  following year.
+- market-news-morning.timer starts research at 08:00 IST on weekdays and
+  refreshes at 08:30 and 08:55. At 09:00 the job freezes the news evidence.
+  It reuses a matching completed draft or ranks the frozen evidence in the
+  finalization window. A 09:05 retry handles temporary failures. The 09:10
+  job locks an empty UNAVAILABLE report if no review has completed, and the
+  09:12 deadline prevents publishing a late result. One final research
+  watchlist is persisted in news_morning_reports. Update the bundled 2026
+  calendar before running morning research in the following year.
 
 ## Broker coverage
 

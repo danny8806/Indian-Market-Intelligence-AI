@@ -216,7 +216,7 @@ class NewsIntelligenceTests(unittest.TestCase):
         self.assertIn('"evidence-100"', calls[2])
         self.assertIn("QUOTA_LIMIT", calls[2])
 
-    def test_lock_refuses_draft_when_verified_evidence_changes(self):
+    def test_finalization_reranks_when_verified_evidence_changes(self):
         early = record(at(8, 40), at(8, 35))
         sync_archive_batch(self.db, batch("a", at(8, 45), early))
 
@@ -227,10 +227,12 @@ class NewsIntelligenceTests(unittest.TestCase):
         self.assertEqual(draft["draft_status"], "NO_TRADE")
         extra = record(at(8, 57), at(8, 56), name="last-minute")
         sync_archive_batch(self.db, batch("b", at(8, 59), extra))
-        with patch("news_collector.morning.select_candidates") as call:
+        with patch("news_collector.morning.select_candidates",
+                   return_value=("NO_TRADE", "No qualified stock", [])) as call:
             report = run(self.db, clock=lambda: at(9, 0))
-            call.assert_not_called()
-        self.assertEqual(report["status"], "UNAVAILABLE")
+            self.assertTrue(any("last-minute.pdf" in item["url"]
+                                for item in call.call_args.args[0]["items"]))
+        self.assertEqual(report["status"], "NO_TRADE")
         self.assertEqual(report["signals"], [])
 
     def test_late_draft_cannot_become_locked_watchlist(self):
@@ -238,7 +240,7 @@ class NewsIntelligenceTests(unittest.TestCase):
         clock = iter([at(8, 55), at(9, 0)]).__next__
         result = run(self.db, clock=clock, analyst=lambda *_a, **_k: ("OK", {"selections": []}))
         self.assertEqual(result["status"], "DRAFT_FINISHED_AFTER_LOCK")
-        report = run(self.db, clock=lambda: at(9, 0))
+        report = run(self.db, clock=lambda: at(9, 10))
         self.assertEqual(report["status"], "UNAVAILABLE")
 
     def test_codex_discovery_stays_on_half_hour_slots(self):
@@ -248,3 +250,20 @@ class NewsIntelligenceTests(unittest.TestCase):
         self.assertEqual(codex_slot(at(8, 30), 48), 17)
         self.assertEqual(codex_slot(at(9, 0), 48), 18)
         self.assertIsNone(codex_slot(at(8, 30), 0))
+
+    def test_finalization_retry_uses_same_cutoff_and_locks_only_once(self):
+        sync_archive_batch(self.db, batch("a", at(8, 53), record(at(8, 51), at(8, 50))))
+        with patch("news_collector.morning.select_candidates",
+                   return_value=("UNAVAILABLE", "Temporary quota issue", [])):
+            result = run(self.db, clock=lambda: at(9, 0))
+        self.assertEqual(result["status"], "REVIEW_PENDING")
+        late = record(at(9, 2), at(8, 58), name="post-cutoff-verification")
+        sync_archive_batch(self.db, batch("b", at(9, 3), late))
+        with patch("news_collector.morning.select_candidates",
+                   return_value=("NO_TRADE", "No qualified stock", [])) as call:
+            report = run(self.db, clock=lambda: at(9, 5))
+            self.assertEqual(len(call.call_args.args[0]["items"]), 1)
+        self.assertEqual(report["generated_at"], at(9, 5).isoformat())
+        self.assertEqual(run(self.db, clock=lambda: at(9, 10)), report)
+        self.assertEqual(run(self.db, clock=lambda: at(9, 12))["status"],
+                         "OUTSIDE_RESEARCH_WINDOW")

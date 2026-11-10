@@ -7,7 +7,7 @@ results and checks the original publication or exchange feed. It stores the
 discoverer's identity separately from the original publisher.
 
 The morning Codex job reviews the combined database at 08:00, 08:30 and 08:55 IST.
-At 09:00 IST it locks a matching completed review without making a model call. Its evidence window
+At 09:00 IST it freezes the evidence and either reuses a matching review or finalizes a new one before 09:12 IST. Its evidence window
 opens at 15:00 IST on the preceding regular NSE session and ends just before
 09:00 IST on the current session. The archive continues throughout the day.
 Evidence must be observed and committed before the cutoff. The job compares
