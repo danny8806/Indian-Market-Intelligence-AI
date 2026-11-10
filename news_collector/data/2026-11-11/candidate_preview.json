@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-11T02:30:47.073021+05:30",
+  "as_of": "2026-11-11T03:07:41.939057+05:30",
   "candidates": [
     {
       "articles": 8,
@@ -665,6 +665,114 @@
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/d848c7f3-defb-4505-a47a-448043865c76.pdf"
       ],
       "symbol": "WHIRLPOOL"
+    },
+    {
+      "articles": 2,
+      "categories": [
+        "analyst_meetings",
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "POSITIVE_REPORTED_FINANCIAL_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [
+          "pat",
+          "revenue"
+        ],
+        "yoy_metrics_with_direction": 2
+      },
+      "explicit_financial_facts": [
+        {
+          "basis": "YoY",
+          "document_sha256": "7efe83d5582e0d5b53ccea59886e209dfc989887d9391d1d2188d05aad1b9e56",
+          "evidence_text": "crores. And both EBITDA and profit after tax grew 32% year-on-year, underscoring the strength",
+          "metric": "pat",
+          "reported_change_pct": 32.0,
+          "reported_period": null,
+          "source": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/8c4eb7ad-d42f-4a99-be61-fdce9aa0eb61.pdf",
+          "verification": "ASSERTION_NOT_ARITHMETICALLY_VERIFIED"
+        },
+        {
+          "basis": "YoY",
+          "document_sha256": "7efe83d5582e0d5b53ccea59886e209dfc989887d9391d1d2188d05aad1b9e56",
+          "evidence_text": "For the first half, revenue rose 15% year-on-year to INR505 crores, supported by the ramp-up",
+          "metric": "revenue",
+          "reported_change_pct": 15.0,
+          "reported_period": null,
+          "source": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/8c4eb7ad-d42f-4a99-be61-fdce9aa0eb61.pdf",
+          "verification": "ASSERTION_NOT_ARITHMETICALLY_VERIFIED"
+        }
+      ],
+      "first_seen_at": "2026-11-10T23:45:49.158430+05:30",
+      "headline_samples": [
+        "Aegis Logistics Ltd (500003)",
+        "Aegis Logistics Limited"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 2,
+      "review_priority": 10,
+      "source_urls": [
+        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/8c4eb7ad-d42f-4a99-be61-fdce9aa0eb61.pdf",
+        "https://nsearchives.nseindia.com/corporate/AEGISCHEM_10112026224806_ALL_Earning_callCV_Transcript_Signed.pdf"
+      ],
+      "symbol": "AEGISLOG"
+    },
+    {
+      "articles": 2,
+      "categories": [
+        "analyst_meetings",
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "POSITIVE_REPORTED_FINANCIAL_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [
+          "pat",
+          "revenue"
+        ],
+        "yoy_metrics_with_direction": 2
+      },
+      "explicit_financial_facts": [
+        {
+          "basis": "YoY",
+          "document_sha256": "b557008cffcf59306988c704735e2e15a547c2a9dccaa4da0df10d6d7e21f686",
+          "evidence_text": "crores. And both EBITDA and profit after tax grew 32% year-on-year, underscoring the strength",
+          "metric": "pat",
+          "reported_change_pct": 32.0,
+          "reported_period": null,
+          "source": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/0b84a9e2-3b5f-47a5-9a2e-2e5c0f58e151.pdf",
+          "verification": "ASSERTION_NOT_ARITHMETICALLY_VERIFIED"
+        },
+        {
+          "basis": "YoY",
+          "document_sha256": "b557008cffcf59306988c704735e2e15a547c2a9dccaa4da0df10d6d7e21f686",
+          "evidence_text": "For the first half, revenue rose 15% year-on-year to INR505 crores, supported by the ramp-up",
+          "metric": "revenue",
+          "reported_change_pct": 15.0,
+          "reported_period": null,
+          "source": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/0b84a9e2-3b5f-47a5-9a2e-2e5c0f58e151.pdf",
+          "verification": "ASSERTION_NOT_ARITHMETICALLY_VERIFIED"
+        }
+      ],
+      "first_seen_at": "2026-11-10T23:45:49.158430+05:30",
+      "headline_samples": [
+        "Aegis Vopak Terminals Ltd (544407)",
+        "Aegis Vopak Terminals Limited"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 2,
+      "review_priority": 10,
+      "source_urls": [
+        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/0b84a9e2-3b5f-47a5-9a2e-2e5c0f58e151.pdf",
+        "https://nsearchives.nseindia.com/corporate/AVTL_10112026224057_AVTL_Earningcall_Transcript_FY27_CV_Signed.pdf"
+      ],
+      "symbol": "AEGISVOPAK"
     },
     {
       "articles": 2,
@@ -1565,7 +1673,7 @@
       "symbol": "INDUSINDBK"
     },
     {
-      "articles": 7,
+      "articles": 8,
       "categories": [
         "analyst_meetings",
         "other"
@@ -1586,12 +1694,13 @@
         "Krishna Institute of Medical Sciences Ltd (543308)",
         "Krishna Institute of Medical Sciences Limited",
         "Krishna Institute of Medical Sciences Limited",
+        "Krishna Institute of Medical Sciences Limited",
         "Krishna Institute of Medical Sciences Ltd (543308)",
         "Krishna Institute of Medical Sciences Ltd (543308)"
       ],
       "material_event_count": 0,
       "not_a_trade_signal": true,
-      "official_filing_count": 7,
+      "official_filing_count": 8,
       "review_priority": 8,
       "source_urls": [
         "https://nsearchives.nseindia.com/corporate/xbrl/SAIIM_19312_WebXMLFile_20261110_124039053.xml",
@@ -1599,6 +1708,7 @@
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/5736757b-5d19-4422-8e79-d3f8c79bc517.pdf",
         "https://nsearchives.nseindia.com/corporate/KIMS_10112026123353_Investor_call_17112026.pdf",
         "https://nsearchives.nseindia.com/corporate/xbrl/SAIIM_19312_WebXMLFile_20261110_134756612.xml",
+        "https://nsearchives.nseindia.com/corporate/KIMS_11112026023357_Transcript_of_Investor_call_held_on_05112026_FINAL.pdf",
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/c101c2f5-1273-445f-83a6-b6b7a55781a4.pdf",
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/a7694acd-c72a-4334-b9b6-9ba2a886aab1.pdf"
       ],
@@ -2706,66 +2816,6 @@
         "https://nsearchives.nseindia.com/corporate/ZEEL_10112026150253_SEIntimationInvestorconferenceNov26signed.pdf"
       ],
       "symbol": "ZEEL"
-    },
-    {
-      "articles": 2,
-      "categories": [
-        "analyst_meetings",
-        "other"
-      ],
-      "evidence_summary": {
-        "conflicting_metrics": [],
-        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
-        "negative_metrics": [],
-        "not_a_price_prediction": true,
-        "positive_metrics": [],
-        "yoy_metrics_with_direction": 0
-      },
-      "explicit_financial_facts": [],
-      "first_seen_at": "2026-11-10T23:45:49.158430+05:30",
-      "headline_samples": [
-        "Aegis Logistics Ltd (500003)",
-        "Aegis Logistics Limited"
-      ],
-      "material_event_count": 0,
-      "not_a_trade_signal": true,
-      "official_filing_count": 2,
-      "review_priority": 4,
-      "source_urls": [
-        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/8c4eb7ad-d42f-4a99-be61-fdce9aa0eb61.pdf",
-        "https://nsearchives.nseindia.com/corporate/AEGISCHEM_10112026224806_ALL_Earning_callCV_Transcript_Signed.pdf"
-      ],
-      "symbol": "AEGISLOG"
-    },
-    {
-      "articles": 2,
-      "categories": [
-        "analyst_meetings",
-        "other"
-      ],
-      "evidence_summary": {
-        "conflicting_metrics": [],
-        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
-        "negative_metrics": [],
-        "not_a_price_prediction": true,
-        "positive_metrics": [],
-        "yoy_metrics_with_direction": 0
-      },
-      "explicit_financial_facts": [],
-      "first_seen_at": "2026-11-10T23:45:49.158430+05:30",
-      "headline_samples": [
-        "Aegis Vopak Terminals Ltd (544407)",
-        "Aegis Vopak Terminals Limited"
-      ],
-      "material_event_count": 0,
-      "not_a_trade_signal": true,
-      "official_filing_count": 2,
-      "review_priority": 4,
-      "source_urls": [
-        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/0b84a9e2-3b5f-47a5-9a2e-2e5c0f58e151.pdf",
-        "https://nsearchives.nseindia.com/corporate/AVTL_10112026224057_AVTL_Earningcall_Transcript_FY27_CV_Signed.pdf"
-      ],
-      "symbol": "AEGISVOPAK"
     },
     {
       "articles": 4,
@@ -4285,7 +4335,7 @@
     "Preview created after cutoff is unsuitable for historical model evaluation.",
     "Premarket frozen snapshot includes collector_last_poll_at; intervening minutes may contain uncollected news."
   ],
-  "collector_last_poll_at": "2026-11-11T02:30:16.011523+05:30",
+  "collector_last_poll_at": "2026-11-11T03:07:01.448562+05:30",
   "company_count": 129,
   "cutoff_exclusive": "2026-11-11T09:00:00+05:30",
   "data_mode": "PRE_CUTOFF_PREVIEW_NOT_FROZEN",
@@ -4817,6 +4867,19 @@
       "url": "https://nsearchives.nseindia.com/corporate/HONASA16_10112026170619_Transcript_s.pdf"
     },
     {
+      "document_sha256": "63de71dd5c526b3d5890699ea67a968c67e8440b2c790e6e996d0895aefa25c7",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T23:45:49.158430+05:30",
+      "id": "1e977ea69bf16504352bc7c9",
+      "parsed_at": "2026-11-11T03:07:37.880958+05:30",
+      "published_at": "2026-11-10T21:51:58+05:30",
+      "symbols": [
+        "NAM-INDIA"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/2bfb2bff-1a3b-4bbe-a928-ae7ce2d4c8e9.pdf"
+    },
+    {
       "document_sha256": "13827d25eff3e5269e2b291ab0880aa32f6e6df4f8632bc355be5a3e6596314d",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -4921,6 +4984,19 @@
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/58d4ee11-9747-4c0e-964f-1e38269142c3.pdf"
     },
     {
+      "document_sha256": "2c25b829f1471296140f893603904065895f3078e7415884c132159e8d0f447c",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T23:45:49.158430+05:30",
+      "id": "2a2562bfa97391e1023eefb5",
+      "parsed_at": "2026-11-11T03:07:38.175578+05:30",
+      "published_at": "2026-11-10T22:02:19+05:30",
+      "symbols": [
+        "DABUR"
+      ],
+      "url": "https://nsearchives.nseindia.com/corporate/DABURA_10112026220115_Dabur_Pars.pdf"
+    },
+    {
       "document_sha256": "a4250a4da6ac4da38d87e71fc3a66c9451e1859f184376010fed9966650c6bfe",
       "extraction_status": "EXPLICIT_FACTS",
       "facts": [
@@ -4984,6 +5060,19 @@
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/0dbf7c8d-5d27-49cc-a379-591fcf245fa9.pdf"
     },
     {
+      "document_sha256": "c859071c9a27cab6033bec066174bea86853bcce14b01ea71c0d45fc0c2e8cf6",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T21:15:46.460118+05:30",
+      "id": "2b356b02e86e2aed3cb51c1d",
+      "parsed_at": "2026-11-11T03:07:37.880034+05:30",
+      "published_at": "2026-11-10T21:02:32+05:30",
+      "symbols": [
+        "MEESHO"
+      ],
+      "url": "https://nsearchives.nseindia.com/corporate/MEESHO_10112026210212_MLinvestormeet10112026.pdf"
+    },
+    {
       "document_sha256": "cd168fe1152c1f8cec06e6bf829915b7826d33009f5e9745e65e54f29754f72a",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -5021,6 +5110,19 @@
         "DMART"
       ],
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/cd354e96-8ec1-4953-a1f5-463fb3f9e419.pdf"
+    },
+    {
+      "document_sha256": "d8e9b744f10851213a7907a57f9445a7eb0e3d2d51f44c40fe5fb52269875cbd",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T23:45:49.158430+05:30",
+      "id": "2e47aee7d778452a0bd27adf",
+      "parsed_at": "2026-11-11T03:07:38.120963+05:30",
+      "published_at": "2026-11-10T21:58:55+05:30",
+      "symbols": [
+        "NAM-INDIA"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/5115c28e-629f-4a41-aba5-3707b541c7ca.pdf"
     },
     {
       "document_sha256": "ca0e9a70408c4daf192ea46ac5f11d4554a3ef6c316238ee1cac4565ca472d68",
@@ -5127,6 +5229,19 @@
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/2b74a7fe-194c-4a61-8cf6-dbba26573f57.pdf"
     },
     {
+      "document_sha256": "63de71dd5c526b3d5890699ea67a968c67e8440b2c790e6e996d0895aefa25c7",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T23:45:49.158430+05:30",
+      "id": "3f0517f5a739fd6f79db5287",
+      "parsed_at": "2026-11-11T03:07:39.063127+05:30",
+      "published_at": "2026-11-10T22:14:19+05:30",
+      "symbols": [
+        "NAM-INDIA"
+      ],
+      "url": "https://nsearchives.nseindia.com/corporate/RNLAM_10112026221145_SE_Intimation_Nov_16_-_360_One_Capital.pdf"
+    },
+    {
       "document_sha256": "d226b643b8ceafe78b507aa8159068c9bec4ee9a7bad85594ae110a0b532154e",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -5218,6 +5333,19 @@
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/102d885e-7e81-4e8f-b3cd-ef60af7265c3.pdf"
     },
     {
+      "document_sha256": "5a7a7bc254b6c1c4ca1ea9ad164ddbce3f9346347078f42d15885d7a9ffcd126",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T23:45:49.158430+05:30",
+      "id": "46f9f3ac0f2319a32d55dc06",
+      "parsed_at": "2026-11-11T03:07:38.055969+05:30",
+      "published_at": "2026-11-10T21:56:02+05:30",
+      "symbols": [
+        "NAM-INDIA"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/56cebf56-1212-4d05-8b8b-b7da3c8e65a5.pdf"
+    },
+    {
       "document_sha256": "95dc0a1aee2e8080536dba1b1bd6ead1de0ff71acb5c41418245c8e985488e10",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -5281,6 +5409,19 @@
         "HDFCLIFE"
       ],
       "url": "https://nsearchives.nseindia.com/corporate/HDFCLIFE2_10112026184938_Analyst_Meet.pdf"
+    },
+    {
+      "document_sha256": "9612cfd294de3bb823c7b68c5bbcd2a71f0f9bb25d4e48fbe98dda9c5b0b0bd9",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T23:45:49.158430+05:30",
+      "id": "4c9907834560b25f065f913a",
+      "parsed_at": "2026-11-11T03:07:38.567414+05:30",
+      "published_at": "2026-11-10T22:08:14+05:30",
+      "symbols": [
+        "JINDALSTEL"
+      ],
+      "url": "https://nsearchives.nseindia.com/corporate/JINDALSTEL_10112026220801_stx_11102026_signed.pdf"
     },
     {
       "document_sha256": "4162d1eb5a108211200f991cbf4d0c8991c299591e1c3eee0021136d284e2257",
@@ -5426,6 +5567,40 @@
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/9f40454d-586f-4a52-bc76-39b51b230d3b.pdf"
     },
     {
+      "document_sha256": "b557008cffcf59306988c704735e2e15a547c2a9dccaa4da0df10d6d7e21f686",
+      "extraction_status": "EXPLICIT_FACTS",
+      "facts": [
+        {
+          "basis": "YoY",
+          "document_sha256": "b557008cffcf59306988c704735e2e15a547c2a9dccaa4da0df10d6d7e21f686",
+          "evidence_text": "crores. And both EBITDA and profit after tax grew 32% year-on-year, underscoring the strength",
+          "metric": "pat",
+          "reported_change_pct": 32.0,
+          "reported_period": null,
+          "source": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/0b84a9e2-3b5f-47a5-9a2e-2e5c0f58e151.pdf",
+          "verification": "ASSERTION_NOT_ARITHMETICALLY_VERIFIED"
+        },
+        {
+          "basis": "YoY",
+          "document_sha256": "b557008cffcf59306988c704735e2e15a547c2a9dccaa4da0df10d6d7e21f686",
+          "evidence_text": "For the first half, revenue rose 15% year-on-year to INR505 crores, supported by the ramp-up",
+          "metric": "revenue",
+          "reported_change_pct": 15.0,
+          "reported_period": null,
+          "source": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/0b84a9e2-3b5f-47a5-9a2e-2e5c0f58e151.pdf",
+          "verification": "ASSERTION_NOT_ARITHMETICALLY_VERIFIED"
+        }
+      ],
+      "first_seen_at": "2026-11-10T23:45:49.158430+05:30",
+      "id": "5cf4d052d8bff2acfdc9ce2a",
+      "parsed_at": "2026-11-11T03:07:39.891258+05:30",
+      "published_at": "2026-11-10T22:41:37+05:30",
+      "symbols": [
+        "AEGISVOPAK"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/0b84a9e2-3b5f-47a5-9a2e-2e5c0f58e151.pdf"
+    },
+    {
       "document_sha256": "2e426d66e43db87c68adcdfb40990abb7aafb5d90271f1eb302b4ae461311e5b",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -5437,6 +5612,40 @@
         "M&MFIN"
       ],
       "url": "https://nsearchives.nseindia.com/corporate/M_MFIN_10112026165758_MMFSLInvestorMeet10thNov26signed.pdf"
+    },
+    {
+      "document_sha256": "7efe83d5582e0d5b53ccea59886e209dfc989887d9391d1d2188d05aad1b9e56",
+      "extraction_status": "EXPLICIT_FACTS",
+      "facts": [
+        {
+          "basis": "YoY",
+          "document_sha256": "7efe83d5582e0d5b53ccea59886e209dfc989887d9391d1d2188d05aad1b9e56",
+          "evidence_text": "crores. And both EBITDA and profit after tax grew 32% year-on-year, underscoring the strength",
+          "metric": "pat",
+          "reported_change_pct": 32.0,
+          "reported_period": null,
+          "source": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/8c4eb7ad-d42f-4a99-be61-fdce9aa0eb61.pdf",
+          "verification": "ASSERTION_NOT_ARITHMETICALLY_VERIFIED"
+        },
+        {
+          "basis": "YoY",
+          "document_sha256": "7efe83d5582e0d5b53ccea59886e209dfc989887d9391d1d2188d05aad1b9e56",
+          "evidence_text": "For the first half, revenue rose 15% year-on-year to INR505 crores, supported by the ramp-up",
+          "metric": "revenue",
+          "reported_change_pct": 15.0,
+          "reported_period": null,
+          "source": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/8c4eb7ad-d42f-4a99-be61-fdce9aa0eb61.pdf",
+          "verification": "ASSERTION_NOT_ARITHMETICALLY_VERIFIED"
+        }
+      ],
+      "first_seen_at": "2026-11-10T23:45:49.158430+05:30",
+      "id": "5e83643e67c5f5e59afe6963",
+      "parsed_at": "2026-11-11T03:07:40.469048+05:30",
+      "published_at": "2026-11-10T22:52:37+05:30",
+      "symbols": [
+        "AEGISLOG"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/8c4eb7ad-d42f-4a99-be61-fdce9aa0eb61.pdf"
     },
     {
       "document_sha256": "e9ccef0dfa40168082b555c69760cf165393cbdfd21ff94f38b551423cc6e61a",
@@ -6063,6 +6272,19 @@
       "url": "https://nsearchives.nseindia.com/corporate/Piramalcapital_10112026113736_PFL_SE_Intimation_JM_Avendus_Group_sd.pdf"
     },
     {
+      "document_sha256": "9757559dc1799fa9e6f565ec5578ff56c1bcf5d082ef92193974670c50a64454",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T21:15:46.460118+05:30",
+      "id": "874e7fefb06273f4a954455e",
+      "parsed_at": "2026-11-11T03:07:37.880653+05:30",
+      "published_at": "2026-11-10T21:04:20+05:30",
+      "symbols": [
+        "TITAGARH"
+      ],
+      "url": "https://nsearchives.nseindia.com/corporate/TWL_10112026210409_StatementofDeviation.pdf"
+    },
+    {
       "document_sha256": "30d87860fb6df1303c9e9d210689941a97921829c6396f6339956a5603ba71a0",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -6323,6 +6545,19 @@
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/60737d9b-9abf-4596-941f-afd0b4a0dcee.pdf"
     },
     {
+      "document_sha256": "5a7a7bc254b6c1c4ca1ea9ad164ddbce3f9346347078f42d15885d7a9ffcd126",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T23:45:49.158430+05:30",
+      "id": "9957ae681eda489a763267b5",
+      "parsed_at": "2026-11-11T03:07:39.384179+05:30",
+      "published_at": "2026-11-10T22:14:19+05:30",
+      "symbols": [
+        "NAM-INDIA"
+      ],
+      "url": "https://nsearchives.nseindia.com/corporate/RNLAM_10112026221240_SE_Intimation_Nov_16_-_BoFA.pdf"
+    },
+    {
       "document_sha256": "83512f569bd2b228d90163aa1b70ec689bdbec11f7036a4c5dd93ca4d87714dd",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -6568,6 +6803,19 @@
         "ONGC"
       ],
       "url": "https://nsearchives.nseindia.com/corporate/ONGC_10112026205311_investormeet10112026.pdf"
+    },
+    {
+      "document_sha256": "d8e9b744f10851213a7907a57f9445a7eb0e3d2d51f44c40fe5fb52269875cbd",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T23:45:49.158430+05:30",
+      "id": "ad15848c4c7c7d3717f86f3d",
+      "parsed_at": "2026-11-11T03:07:39.555059+05:30",
+      "published_at": "2026-11-10T22:14:19+05:30",
+      "symbols": [
+        "NAM-INDIA"
+      ],
+      "url": "https://nsearchives.nseindia.com/corporate/RNLAM_10112026221348_SE_Intimation_Nov_17.pdf"
     },
     {
       "document_sha256": "fe60ee427bed85d33fabe55f6a3e8ca4592e0e340c0e96b04cd89df029724f5a",
@@ -6973,6 +7221,40 @@
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/0b53f182-e78d-4873-9add-813c78f9c892.pdf"
     },
     {
+      "document_sha256": "b557008cffcf59306988c704735e2e15a547c2a9dccaa4da0df10d6d7e21f686",
+      "extraction_status": "EXPLICIT_FACTS",
+      "facts": [
+        {
+          "basis": "YoY",
+          "document_sha256": "b557008cffcf59306988c704735e2e15a547c2a9dccaa4da0df10d6d7e21f686",
+          "evidence_text": "crores. And both EBITDA and profit after tax grew 32% year-on-year, underscoring the strength",
+          "metric": "pat",
+          "reported_change_pct": 32.0,
+          "reported_period": null,
+          "source": "https://nsearchives.nseindia.com/corporate/AVTL_10112026224057_AVTL_Earningcall_Transcript_FY27_CV_Signed.pdf",
+          "verification": "ASSERTION_NOT_ARITHMETICALLY_VERIFIED"
+        },
+        {
+          "basis": "YoY",
+          "document_sha256": "b557008cffcf59306988c704735e2e15a547c2a9dccaa4da0df10d6d7e21f686",
+          "evidence_text": "For the first half, revenue rose 15% year-on-year to INR505 crores, supported by the ramp-up",
+          "metric": "revenue",
+          "reported_change_pct": 15.0,
+          "reported_period": null,
+          "source": "https://nsearchives.nseindia.com/corporate/AVTL_10112026224057_AVTL_Earningcall_Transcript_FY27_CV_Signed.pdf",
+          "verification": "ASSERTION_NOT_ARITHMETICALLY_VERIFIED"
+        }
+      ],
+      "first_seen_at": "2026-11-10T23:45:49.158430+05:30",
+      "id": "c9656743aa7b13bb4fe297fc",
+      "parsed_at": "2026-11-11T03:07:39.924863+05:30",
+      "published_at": "2026-11-10T22:41:44+05:30",
+      "symbols": [
+        "AEGISVOPAK"
+      ],
+      "url": "https://nsearchives.nseindia.com/corporate/AVTL_10112026224057_AVTL_Earningcall_Transcript_FY27_CV_Signed.pdf"
+    },
+    {
       "document_sha256": "facb06c9cc725b25a56cf542e9f4391f24cebd4f3d9866f420febdb6c8458668",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -7176,6 +7458,40 @@
       "url": "https://nsearchives.nseindia.com/corporate/TENNECO_10112026184209_Earnings_Call_Transcript_Intimation_Signed.pdf"
     },
     {
+      "document_sha256": "7efe83d5582e0d5b53ccea59886e209dfc989887d9391d1d2188d05aad1b9e56",
+      "extraction_status": "EXPLICIT_FACTS",
+      "facts": [
+        {
+          "basis": "YoY",
+          "document_sha256": "7efe83d5582e0d5b53ccea59886e209dfc989887d9391d1d2188d05aad1b9e56",
+          "evidence_text": "crores. And both EBITDA and profit after tax grew 32% year-on-year, underscoring the strength",
+          "metric": "pat",
+          "reported_change_pct": 32.0,
+          "reported_period": null,
+          "source": "https://nsearchives.nseindia.com/corporate/AEGISCHEM_10112026224806_ALL_Earning_callCV_Transcript_Signed.pdf",
+          "verification": "ASSERTION_NOT_ARITHMETICALLY_VERIFIED"
+        },
+        {
+          "basis": "YoY",
+          "document_sha256": "7efe83d5582e0d5b53ccea59886e209dfc989887d9391d1d2188d05aad1b9e56",
+          "evidence_text": "For the first half, revenue rose 15% year-on-year to INR505 crores, supported by the ramp-up",
+          "metric": "revenue",
+          "reported_change_pct": 15.0,
+          "reported_period": null,
+          "source": "https://nsearchives.nseindia.com/corporate/AEGISCHEM_10112026224806_ALL_Earning_callCV_Transcript_Signed.pdf",
+          "verification": "ASSERTION_NOT_ARITHMETICALLY_VERIFIED"
+        }
+      ],
+      "first_seen_at": "2026-11-10T23:45:49.158430+05:30",
+      "id": "d263ee5e639dd08f32f3a771",
+      "parsed_at": "2026-11-11T03:07:40.426824+05:30",
+      "published_at": "2026-11-10T22:49:54+05:30",
+      "symbols": [
+        "AEGISLOG"
+      ],
+      "url": "https://nsearchives.nseindia.com/corporate/AEGISCHEM_10112026224806_ALL_Earning_callCV_Transcript_Signed.pdf"
+    },
+    {
       "document_sha256": "4306044ba16fad42d0052c3f8cd2dbd03a470edd2bec9fc54acd6d5ee10f2938",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -7200,6 +7516,19 @@
         "MEDANTA"
       ],
       "url": "https://nsearchives.nseindia.com/corporate/MEDANTA21_10112026160354_GHLANALYSTSMEETNOVEMBER102026_SIGNED.pdf"
+    },
+    {
+      "document_sha256": "2c25b829f1471296140f893603904065895f3078e7415884c132159e8d0f447c",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T23:45:49.158430+05:30",
+      "id": "d415a61c221adf53bbaeb38f",
+      "parsed_at": "2026-11-11T03:07:37.960535+05:30",
+      "published_at": "2026-11-10T21:54:56+05:30",
+      "symbols": [
+        "DABUR"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/244bb932-be92-4a18-ba66-96dfce0229e7.pdf"
     },
     {
       "document_sha256": "f78e9f3bb13808fb12e4d454e4b8248cfc7a4633c2f92b10a83d8515d39b446b",
@@ -7582,6 +7911,19 @@
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/ffb89fc1-4d3e-46c2-be1f-c041795264b4.pdf"
     },
     {
+      "document_sha256": "e17eaf9ef30e6897706f96cd779e45ac089057787c06e1615ee7c00b5e524e52",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T23:45:49.158430+05:30",
+      "id": "e8d8d3b6fe825df72d65c8ef",
+      "parsed_at": "2026-11-11T03:07:40.328244+05:30",
+      "published_at": "2026-11-10T22:48:17+05:30",
+      "symbols": [
+        "HCLTECH"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/95e1cf08-ec7f-49d6-836f-8371653c4217.pdf"
+    },
+    {
       "document_sha256": "f1a6b319bcce22c8f0d4276d2cd46e855b1d3187115a1d53f006995606dcc67a",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -7738,6 +8080,19 @@
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/5f951d2c-ed41-4478-a687-cdd4122ac45b.pdf"
     },
     {
+      "document_sha256": "e17eaf9ef30e6897706f96cd779e45ac089057787c06e1615ee7c00b5e524e52",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T23:45:49.158430+05:30",
+      "id": "f0ed1c92e667b58cc7968af6",
+      "parsed_at": "2026-11-11T03:07:39.980009+05:30",
+      "published_at": "2026-11-10T22:46:15+05:30",
+      "symbols": [
+        "HCLTECH"
+      ],
+      "url": "https://nsearchives.nseindia.com/corporate/HCLTECH_10112026224547_Release10Nov2026.pdf"
+    },
+    {
       "document_sha256": "7fdc877b82c533ae61e41b658cf5a8ba25d71ada75fdf0adddbdcecb7c0b6c8d",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -7855,6 +8210,19 @@
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/7459891c-cfb9-4e54-b4bc-ccb646f685e5.pdf"
     },
     {
+      "document_sha256": "ec60bb32905f3956d7d885244ddaa8b8c4f0bcffd9f62849aef7b56b0f4e8872",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T21:15:46.460118+05:30",
+      "id": "f92b159730181caf856ae670",
+      "parsed_at": "2026-11-11T03:07:37.880449+05:30",
+      "published_at": "2026-11-10T21:02:52+05:30",
+      "symbols": [
+        "TITAGARH"
+      ],
+      "url": "https://nsearchives.nseindia.com/corporate/TWL_10112026210244_MonitoringAgencyReportSep2026.pdf"
+    },
+    {
       "document_sha256": "204a8794777755fceb70326b67d0402ffb863991f3e29a31f99d94a3bbdcc142",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -7933,7 +8301,7 @@
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/647209bb-3305-4ef9-9d5e-ab98f54d50d5.pdf"
     }
   ],
-  "documents_with_eligible_text": 272,
+  "documents_with_eligible_text": 290,
   "execution_enabled": false,
   "frozen_universe_membership": {
     "360ONE": "360 ONE WAM Ltd.",
