@@ -31,9 +31,10 @@ infrastructure merely because it appears in the catalog or in this file.
 
 ## Source-access probes
 
-- The enabled collector list contains 98 unique sources. The latest completed
-  production batch (17:47 IST) returned 74 `OK`, 8 `EMPTY`, 6 `ERROR`,
-  3 `BLOCKED_ROBOTS`, 7 `SKIPPED_COST_GUARD` and 4 `SKIPPED_NO_KEY`.
+- The enabled collector list contains 98 unique sources. Current source-state
+  totals after the 18:20 IST batch are 73 `OK`, 9 `EMPTY`, 6 `ERROR`,
+  3 `BLOCKED_ROBOTS`, 7 `SKIPPED_COST_GUARD`, 4 `SKIPPED_NO_KEY`,
+  1 `VERIFIED` (Codex) and 1 `QUOTA_LIMIT` (OpenCode).
   Codex recorded `VERIFIED` at 18:06 IST with two NSE filing URLs after a real
   `web_search` event. Both URLs had already been collected by Python at
   17:10/17:20 IST, so this proves live retrieval but not new coverage.
