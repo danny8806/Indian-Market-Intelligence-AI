@@ -65,6 +65,19 @@ class OpenCodeResearchTests(unittest.TestCase):
             seen.update(item["name"] for item in oc.source_batch(sources, slot, 3))
         self.assertEqual(seen, {f"S{i}" for i in range(10)})
 
+    def test_discovery_only_fetches_sources_accessible_in_the_current_batch(self):
+        now = datetime(2026, 11, 10, 8, 0, tzinfo=IST)
+        allowed = feed("Allowed", "https://exchange.example/filings")
+        blocked = feed("Blocked", "https://blocked.example/news")
+        with patch("news_collector.opencode_research.run_opencode",
+                   return_value=("QUOTA_LIMIT", None, {})) as run:
+            status, _, _ = oc.discover(now, {}, {}, clock=lambda: now,
+                                       sources=[allowed, blocked], batch_size=2,
+                                       accessible_urls={allowed["url"]})
+        self.assertEqual(status, "QUOTA_LIMIT")
+        self.assertEqual(run.call_args.kwargs["sources"], [allowed])
+        self.assertNotIn(blocked["url"], run.call_args.args[0])
+
     def test_preflight_maps_free_quota_to_retryable_limit(self):
         class Response:
             status_code = 429
@@ -99,12 +112,17 @@ class OpenCodeResearchTests(unittest.TestCase):
                  "generated_at": datetime(2026, 11, 10, 9, 31, tzinfo=IST).isoformat(),
                  "records": [], "sources_configured": 2, "sources_with_items": 1,
                  "sources_failed": 0, "sources_blocked": 0,
-                 "sources": [{"source": "NSE filings", "kind": "rss", "status": "OK",
-                              "fetched_items": 1}]}
+                 "sources": [
+                     {"source": "NSE filings", "kind": "rss", "status": "OK",
+                      "url": "https://exchange.example/filings", "fetched_items": 1},
+                     {"source": "Blocked", "kind": "broker_html", "status": "BLOCKED_ROBOTS",
+                      "url": "https://blocked.example/news", "fetched_items": 0},
+                 ]}
         audit = {"model": "opencode/deepseek-v4.1-flash-free", "source_batch": [],
                  "preflight": {"status": "QUOTA_LIMIT", "message": "Free usage limit reached"}}
 
-        def opencode(*_args, **_kwargs):
+        def opencode(*_args, **kwargs):
+            self.assertEqual(kwargs["accessible_urls"], {"https://exchange.example/filings"})
             calls.append("opencode")
             return "QUOTA_LIMIT", [], audit
 
