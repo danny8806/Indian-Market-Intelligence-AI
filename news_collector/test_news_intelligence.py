@@ -15,6 +15,7 @@ from news_collector.continuous_worker import codex_slot
 from news_collector.db_store import archive_batches, article_revisions, articles, sync_archive_batch
 from news_collector.engine import IST
 from news_collector.morning import run, select_candidates
+from news_collector.headline_fallback import fill_from_headlines, headline_direction
 
 FEED = {"provider": "NSE", "kind": "rss", "authority": "official",
         "url": "https://nsearchives.nseindia.com/feed.xml", "name": "NSE filings"}
@@ -283,3 +284,49 @@ class NewsIntelligenceTests(unittest.TestCase):
         with patch("news_collector.morning.select_candidates",
                    return_value=("NO_TRADE", "No qualified stock", [])):
             self.assertEqual(run(self.db, clock=clock), {"status": "FINALIZATION_DEADLINE_ELAPSED"})
+
+
+    def test_headline_fallback_fills_five_each_without_repeating_symbols(self):
+        rows = []
+        for side, metric in (("LONG", "net profit rises"), ("SHORT", "net profit falls")):
+            for index in range(6):
+                symbol = f"{side}{index}"
+                rows.append({
+                    "verified_origin": True, "nifty_symbols": [symbol],
+                    "headline": f"{symbol} quarterly {metric} 20 percent",
+                    "published_at": at(8, 30 + index).isoformat(),
+                    "url": f"https://example.com/{symbol}",
+                })
+        reviewed = {"symbol": "LONG5", "side": "LONG", "rank": 1}
+        output = fill_from_headlines({"items": rows, "recent_coverage": False, "recent_universe": True}, [reviewed])
+        self.assertEqual(output[0], reviewed)
+        self.assertEqual(len({row["symbol"] for row in output}), 10)
+        for side in ("LONG", "SHORT"):
+            self.assertEqual([row["rank"] for row in output if row["side"] == side],
+                             [1, 2, 3, 4, 5])
+
+    def test_fallback_rejects_unknown_and_conflicting_news(self):
+        row = {"verified_origin": True, "nifty_symbols": ["KNOWN"],
+               "headline": "Known Company net profit falls while shares rise",
+               "published_at": at(8, 52).isoformat(), "url": "https://example.com/one"}
+        self.assertEqual(headline_direction(row["headline"]), ("SHORT", 3))
+        self.assertIsNone(headline_direction("Known revenue rises but net profit falls"))
+        output = fill_from_headlines({"recent_coverage": True, "items": [
+            row, {**row, "headline": "Known Company net profit rises"},
+            {**row, "nifty_symbols": []}, {**row, "nifty_symbols": ["ONE", "TWO"]},
+            {**row, "nifty_symbols": ["UNVERIFIED"], "verified_origin": False},
+        ]}, [])
+        self.assertEqual(output, [])
+
+    def test_unavailable_review_locks_verified_headline_fallback(self):
+        news = record(at(8, 57), at(8, 56), headline="Thermax Limited net profit rises 25 percent")
+        sync_archive_batch(self.db, batch("a", at(8, 59), news))
+        with patch("news_collector.morning.select_candidates",
+                   return_value=("UNAVAILABLE", "Temporary quota issue", [])):
+            pending = run(self.db, clock=lambda: at(9, 5))
+        self.assertEqual(pending["status"], "REVIEW_PENDING")
+        report = run(self.db, clock=lambda: at(9, 10))
+        self.assertEqual(report["status"], "READY", report["reason"])
+        self.assertEqual(report["signals"][0]["symbol"], "THERMAX")
+        self.assertIn("fallback", report["signals"][0]["reason"])
+        self.assertFalse(report["execution_enabled"])

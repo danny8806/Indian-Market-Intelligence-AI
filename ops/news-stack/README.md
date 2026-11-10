@@ -18,9 +18,12 @@ with execution_enabled=false. The news service has no broker or bridge credentia
   refreshes at 08:30, 08:55 and 09:00. At 09:05 the job freezes the news
   evidence from 15:00 on the previous regular NSE session.
   It reuses a matching completed draft or ranks the frozen evidence in the
-  finalization window. The 09:10
-  job locks an empty UNAVAILABLE report if no review has completed, and the
-  09:12 deadline prevents publishing a late result. One final research
+  finalization window. Verified, explicitly directional headlines can fill
+  open slots in a reviewed watchlist. If the review is unavailable, the 09:10
+  job uses the same headline fallback. It targets five LONG and five SHORT
+  using distinct verified NIFTY 500 symbols. Ambiguous, speculative or
+  conflicting headlines leave slots open. The 09:12 deadline prevents
+  publishing a late result. One final research
   watchlist is persisted in news_morning_reports. Update the bundled 2026
   calendar before running morning research in the following year.
 
