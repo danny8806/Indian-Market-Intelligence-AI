@@ -1,11 +1,11 @@
 {
   "session": "2026-11-11",
-  "generated_at": "2026-11-10T17:11:55.827160+05:30",
+  "generated_at": "2026-11-10T21:15:46.460118+05:30",
   "method": "Symbol + material category presence; NOT event-ID or issuer ISIN reconciliation",
   "category_counts": {
-    "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT": 9,
-    "MEDIA_ONLY_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS": 3,
-    "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS": 17
+    "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT": 11,
+    "MEDIA_ONLY_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS": 2,
+    "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS": 19
   },
   "groups": [
     {
@@ -30,14 +30,19 @@
     {
       "symbol": "AVANTIFEED",
       "event_category": "financial_results",
-      "media_count": 2,
-      "nse_count": 0,
+      "media_count": 3,
+      "nse_count": 1,
       "bse_count": 2,
       "filing_examples": [
         {
           "headline": "Avanti Feeds Ltd-$ (512573)",
           "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/db123403-6dd8-46d8-ad71-894d26d50702.pdf",
           "published_at": "2026-11-10T17:10:03+05:30"
+        },
+        {
+          "headline": "Avanti Feeds Limited",
+          "url": "https://nsearchives.nseindia.com/corporate/AVANTIFEEDS_10112026171424_AFL_Financial_Results_Q2.pdf",
+          "published_at": "2026-11-10T17:16:07+05:30"
         },
         {
           "headline": "Avanti Feeds Ltd (512573)",
@@ -47,19 +52,39 @@
       ],
       "media_examples": [
         {
+          "headline": "Q2 Results Today Highlights: Cochin Shipyard Q2 profit falls 53%, MRF PAT down 28%, Matrimony profit zooms, Kalyan Jewellers, Avanti Feeds, Titagarh Rail Systems, MMTC to announce ",
+          "url": "https://www.thehindubusinessline.com/markets/q2-results-today-highlights-kalyan-jewellers-mrf-cochin-shipyard-avanti-feeds-titagarh-rail-systems-mntc-company-results-10-november-2026/article71684906.ece",
+          "published_at": "2026-11-10T19:58:22+05:30"
+        },
+        {
           "headline": "Q2 Results Live: Hind Rectifiers Profit Falls 54%, MRF Profit Slips 28%; Kalyan Jewellers, Cochin Shipyard Also In Focus",
           "url": "https://www.ndtvprofit.com/markets/q2-results-live-updates-november-10-kalyan-jewellers-mrf-cochin-shipyard-among-44-companies-to-announce-earnings-today-12306507",
           "published_at": "2026-11-10T12:41:37+05:30"
-        },
-        {
-          "headline": "Q2 Results Today Live: Kalyan Jewellers, MRF, Cochin Shipyard, Avanti Feeds, Titagarh Rail Systems, MMTC to announce Q2 results",
-          "url": "https://www.thehindubusinessline.com/markets/q2-results-today-live-updates-kalyan-jewellers-mrf-cochin-shipyard-avanti-feeds-titagarh-rail-systems-mntc-company-results-10-november-2026/article71684906.ece",
-          "published_at": "2026-11-10T09:22:58+05:30"
         }
       ],
+      "state": "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT",
+      "exchanges_seen": [
+        "BSE",
+        "NSE"
+      ]
+    },
+    {
+      "symbol": "BAJAJFINSV",
+      "event_category": "acquisition",
+      "media_count": 0,
+      "nse_count": 1,
+      "bse_count": 0,
+      "filing_examples": [
+        {
+          "headline": "Bajaj Finserv Limited",
+          "url": "https://nsearchives.nseindia.com/corporate/xbrl/REG30_Restructuring_2749_WebXMLFile_20261110_191756021.xml",
+          "published_at": "2026-11-10T19:17:57+05:30"
+        }
+      ],
+      "media_examples": [],
       "state": "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
       "exchanges_seen": [
-        "BSE"
+        "NSE"
       ]
     },
     {
@@ -122,7 +147,7 @@
     {
       "symbol": "COCHINSHIP",
       "event_category": "financial_results",
-      "media_count": 3,
+      "media_count": 4,
       "nse_count": 1,
       "bse_count": 0,
       "filing_examples": [
@@ -139,9 +164,9 @@
           "published_at": "2026-11-10T15:23:46+05:30"
         },
         {
-          "headline": "Q2 Results Live: Hind Rectifiers Profit Falls 54%, MRF Profit Slips 28%; Kalyan Jewellers, Cochin Shipyard Also In Focus",
-          "url": "https://www.ndtvprofit.com/markets/q2-results-live-updates-november-10-kalyan-jewellers-mrf-cochin-shipyard-among-44-companies-to-announce-earnings-today-12306507",
-          "published_at": "2026-11-10T12:41:37+05:30"
+          "headline": "Q2 Results Today Highlights: Cochin Shipyard Q2 profit falls 53%, MRF PAT down 28%, Matrimony profit zooms, Kalyan Jewellers, Avanti Feeds, Titagarh Rail Systems, MMTC to announce ",
+          "url": "https://www.thehindubusinessline.com/markets/q2-results-today-highlights-kalyan-jewellers-mrf-cochin-shipyard-avanti-feeds-titagarh-rail-systems-mntc-company-results-10-november-2026/article71684906.ece",
+          "published_at": "2026-11-10T19:58:22+05:30"
         }
       ],
       "state": "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
@@ -293,12 +318,17 @@
       "event_category": "financial_results",
       "media_count": 1,
       "nse_count": 1,
-      "bse_count": 1,
+      "bse_count": 2,
       "filing_examples": [
         {
           "headline": "Kalyan Jewellers India Limited",
           "url": "https://nsearchives.nseindia.com/corporate/KALYANKJIL_10112026170450_Results_q2_Signed.pdf",
           "published_at": "2026-11-10T17:08:21+05:30"
+        },
+        {
+          "headline": "Kalyan Jewellers India Ltd (543278)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/d85bf970-587c-4188-9160-426af90ea045.pdf",
+          "published_at": "2026-11-10T17:13:16+05:30"
         },
         {
           "headline": "Kalyan Jewellers India Ltd (543278)",
@@ -317,6 +347,25 @@
       "exchanges_seen": [
         "BSE",
         "NSE"
+      ]
+    },
+    {
+      "symbol": "LENSKART",
+      "event_category": "financial_results",
+      "media_count": 0,
+      "nse_count": 0,
+      "bse_count": 1,
+      "filing_examples": [
+        {
+          "headline": "Lenskart Solutions Ltd (544600)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/620b2142-34a1-4764-848c-11421c98cac0.pdf",
+          "published_at": "2026-11-10T20:09:17+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": [
+        "BSE"
       ]
     },
     {
@@ -555,19 +604,57 @@
     {
       "symbol": "TITAGARH",
       "event_category": "financial_results",
-      "media_count": 1,
-      "nse_count": 0,
-      "bse_count": 0,
-      "filing_examples": [],
+      "media_count": 2,
+      "nse_count": 1,
+      "bse_count": 1,
+      "filing_examples": [
+        {
+          "headline": "TITAGARH RAIL SYSTEMS LIMITED",
+          "url": "https://nsearchives.nseindia.com/corporate/TWL_10112026204612_OutcomeofBM10112026.pdf",
+          "published_at": "2026-11-10T20:47:39+05:30"
+        },
+        {
+          "headline": "Titagarh Rail Systems Ltd (532966)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/4bce05e7-542d-474b-9e53-7dabda443269.pdf",
+          "published_at": "2026-11-10T20:52:27+05:30"
+        }
+      ],
       "media_examples": [
+        {
+          "headline": "Q2 Results Today Highlights: Cochin Shipyard Q2 profit falls 53%, MRF PAT down 28%, Matrimony profit zooms, Kalyan Jewellers, Avanti Feeds, Titagarh Rail Systems, MMTC to announce ",
+          "url": "https://www.thehindubusinessline.com/markets/q2-results-today-highlights-kalyan-jewellers-mrf-cochin-shipyard-avanti-feeds-titagarh-rail-systems-mntc-company-results-10-november-2026/article71684906.ece",
+          "published_at": "2026-11-10T19:58:22+05:30"
+        },
         {
           "headline": "Q2 Results Today Live: Kalyan Jewellers, MRF, Cochin Shipyard, Avanti Feeds, Titagarh Rail Systems, MMTC to announce Q2 results",
           "url": "https://www.thehindubusinessline.com/markets/q2-results-today-live-updates-kalyan-jewellers-mrf-cochin-shipyard-avanti-feeds-titagarh-rail-systems-mntc-company-results-10-november-2026/article71684906.ece",
           "published_at": "2026-11-10T09:22:58+05:30"
         }
       ],
-      "state": "MEDIA_ONLY_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
-      "exchanges_seen": []
+      "state": "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT",
+      "exchanges_seen": [
+        "BSE",
+        "NSE"
+      ]
+    },
+    {
+      "symbol": "TITAGARH",
+      "event_category": "regulatory",
+      "media_count": 0,
+      "nse_count": 0,
+      "bse_count": 1,
+      "filing_examples": [
+        {
+          "headline": "Titagarh Rail Systems Ltd (532966)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/d5f8d69b-a3ce-4fd5-b2bc-e686ca72687a.pdf",
+          "published_at": "2026-11-10T20:44:24+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": [
+        "BSE"
+      ]
     },
     {
       "symbol": "TRIDENT",
@@ -700,11 +787,6 @@
       "error": "HTTPError: 404 Client Error: Not Found for url: https://www.livemint.com/rss/industryRSS"
     },
     {
-      "source": "Moneycontrol RSS",
-      "status": "ERROR",
-      "error": "ParseError: not well-formed (invalid token): line 6, column 305"
-    },
-    {
       "source": "Financial Express legacy RSS",
       "status": "ERROR",
       "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.financialexpress.com/feed/"
@@ -793,6 +875,11 @@
       "source": "NewsAPI India stock discovery",
       "status": "SKIPPED_COST_GUARD",
       "error": "Opt-in required via ENABLE_PAID_NEWS_APIS"
+    },
+    {
+      "source": "PIB India releases Hindi",
+      "status": "ERROR",
+      "error": "ParseError: not well-formed (invalid token): line 8, column 766"
     }
   ],
   "limitations": [
@@ -809,36 +896,21 @@
       "status_a": "OK",
       "status_b": "OK",
       "comparison_status": "SNAPSHOT_OVERLAP_ONLY",
-      "feed_a_unique_matched_urls": 164,
-      "feed_b_unique_matched_urls": 165,
-      "both_feeds_same_url": 164,
-      "only_feed_a_count": 0,
-      "only_feed_b_count": 1,
-      "only_feed_a_examples": [],
-      "only_feed_b_examples": [
-        {
-          "url": "https://nsearchives.nseindia.com/corporate/xbrl/PRIOR_INTIMATION_228_WebXMLFile_20261110_171138464.xml",
-          "symbols": [
-            "ASHOKLEY"
-          ]
-        }
-      ],
-      "warning": "URL-level overlap is NOT event-level completeness; feed length, timing and availability differ."
-    },
-    {
-      "feed_a": "BSE announcements RSS",
-      "feed_b": "BSE latest announcements alternate",
-      "status_a": "OK",
-      "status_b": "OK",
-      "comparison_status": "SNAPSHOT_OVERLAP_ONLY",
-      "feed_a_unique_matched_urls": 113,
-      "feed_b_unique_matched_urls": 113,
-      "both_feeds_same_url": 113,
+      "feed_a_unique_matched_urls": 208,
+      "feed_b_unique_matched_urls": 208,
+      "both_feeds_same_url": 208,
       "only_feed_a_count": 0,
       "only_feed_b_count": 0,
       "only_feed_a_examples": [],
       "only_feed_b_examples": [],
       "warning": "URL-level overlap is NOT event-level completeness; feed length, timing and availability differ."
+    },
+    {
+      "feed_a": "BSE announcements RSS",
+      "feed_b": "BSE latest announcements alternate",
+      "status_a": "EMPTY",
+      "status_b": "OK",
+      "comparison_status": "UNAVAILABLE_SOURCE_FAILURE_OR_EMPTY"
     }
   ]
 }
