@@ -1,6 +1,6 @@
 # START HERE — Handoff for another AI / Codex agent: NIFTY 500 news collector
 
-**Date:** 2026-11-10, Asia/Kolkata. **Planned working session:** morning of 2026-11-11. **Status (updated 2026-11-10 17:00 IST):** PARTIALLY DEPLOYED — the isolated Python collector, PostgreSQL archive, 10-minute systemd timer and 09:00 freeze/fallback are running on the VPS; official feed coverage is being expanded with an auditable registry. Codex and OpenCode are quota-blocked, Gemini is not installed, and the first real morning report is expected on 2026-11-11. This is **not** permission to enable real-money orders.
+**Date:** 2026-11-10, Asia/Kolkata. **Planned working session:** morning of 2026-11-11. **Status (updated 2026-11-10 16:30 IST):** PARTIALLY DEPLOYED — the isolated Python collector, PostgreSQL archive, 10-minute systemd timer and 09:00 freeze/fallback are running on the VPS; official feed coverage is being expanded with an auditable registry. Codex and OpenCode are quota-blocked, Gemini is not installed, and the first real morning report is expected on 2026-11-11. This is **not** permission to enable real-money orders.
 
 ## 1. Project and direct links
 

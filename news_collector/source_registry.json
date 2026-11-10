@@ -1,6 +1,6 @@
 {
   "schema": "market-news-source-registry/1.0",
-  "generated_at": "2026-11-10T16:45:00+05:30",
+  "generated_at": "2026-11-10T16:26:00+05:30",
   "timezone": "Asia/Kolkata",
   "policy": {
     "access": "Public unauthenticated endpoints only. No login, paywall, robots.txt, bot-detection, CAPTCHA, rate-limit or subscription bypass.",
@@ -131,7 +131,7 @@
           "access_status": "ACTIVE",
           "poll_source": "NSE insider trading RSS",
           "evidence": {
-            "checked_at": "2026-11-10T16:40:00+05:30",
+            "checked_at": "2026-11-10T16:20:00+05:30",
             "method": "collector_ua_http_get",
             "last_status": "OK",
             "http_status": 200,
@@ -150,7 +150,7 @@
           "access_status": "ACTIVE",
           "poll_source": "NSE circulars RSS",
           "evidence": {
-            "checked_at": "2026-11-10T16:40:00+05:30",
+            "checked_at": "2026-11-10T16:20:00+05:30",
             "method": "collector_ua_http_get",
             "last_status": "OK",
             "http_status": 200,
@@ -169,7 +169,7 @@
           "access_status": "ACTIVE",
           "poll_source": "NSE SAST regulation 29 RSS",
           "evidence": {
-            "checked_at": "2026-11-10T16:40:00+05:30",
+            "checked_at": "2026-11-10T16:20:00+05:30",
             "method": "collector_ua_http_get",
             "last_status": "OK",
             "http_status": 200,
@@ -188,7 +188,7 @@
           "access_status": "ACTIVE",
           "poll_source": "NSE SAST regulation 31 RSS",
           "evidence": {
-            "checked_at": "2026-11-10T16:40:00+05:30",
+            "checked_at": "2026-11-10T16:20:00+05:30",
             "method": "collector_ua_http_get",
             "last_status": "OK",
             "http_status": 200,
@@ -207,7 +207,7 @@
           "access_status": "ACTIVE",
           "poll_source": "NSE voting results RSS",
           "evidence": {
-            "checked_at": "2026-11-10T16:40:00+05:30",
+            "checked_at": "2026-11-10T16:20:00+05:30",
             "method": "collector_ua_http_get",
             "last_status": "OK",
             "http_status": 200,
@@ -226,7 +226,7 @@
           "access_status": "ACTIVE",
           "poll_source": "NSE daily buyback RSS",
           "evidence": {
-            "checked_at": "2026-11-10T16:40:00+05:30",
+            "checked_at": "2026-11-10T16:20:00+05:30",
             "method": "collector_ua_http_get",
             "last_status": "OK",
             "http_status": 200,
@@ -245,7 +245,7 @@
           "access_status": "ACTIVE",
           "poll_source": "NSE related party transactions RSS",
           "evidence": {
-            "checked_at": "2026-11-10T16:40:00+05:30",
+            "checked_at": "2026-11-10T16:20:00+05:30",
             "method": "collector_ua_http_get",
             "last_status": "OK",
             "http_status": 200,
@@ -264,7 +264,7 @@
           "access_status": "ACTIVE",
           "poll_source": "NSE investor complaints RSS",
           "evidence": {
-            "checked_at": "2026-11-10T16:40:00+05:30",
+            "checked_at": "2026-11-10T16:20:00+05:30",
             "method": "collector_ua_http_get",
             "last_status": "OK",
             "http_status": 200,
@@ -283,7 +283,7 @@
           "access_status": "ACTIVE",
           "poll_source": "NSE unitholding patterns RSS",
           "evidence": {
-            "checked_at": "2026-11-10T16:40:00+05:30",
+            "checked_at": "2026-11-10T16:20:00+05:30",
             "method": "collector_ua_http_get",
             "last_status": "OK",
             "http_status": 200,
@@ -302,7 +302,7 @@
           "access_status": "ACTIVE",
           "poll_source": "NSE statement of deviation RSS",
           "evidence": {
-            "checked_at": "2026-11-10T16:40:00+05:30",
+            "checked_at": "2026-11-10T16:20:00+05:30",
             "method": "collector_ua_http_get",
             "last_status": "OK",
             "http_status": 200,
@@ -322,7 +322,7 @@
           "poll_source": null,
           "reason": "Discovery index used to enumerate official feeds; not an article feed.",
           "evidence": {
-            "checked_at": "2026-11-10T16:40:00+05:30",
+            "checked_at": "2026-11-10T16:20:00+05:30",
             "method": "collector_ua_http_get",
             "last_status": "REGISTRY_ONLY",
             "http_status": 200,
@@ -341,7 +341,7 @@
           "poll_source": null,
           "reason": "Feed has no publication timestamp; date-only or absent values are insufficient for the 15:00/09:00 cutoff.",
           "evidence": {
-            "checked_at": "2026-11-10T16:40:00+05:30",
+            "checked_at": "2026-11-10T16:20:00+05:30",
             "method": "collector_ua_http_get",
             "last_status": "REGISTRY_ONLY",
             "http_status": 200,
@@ -361,7 +361,7 @@
           "poll_source": null,
           "reason": "Feed has no publication timestamp; cannot be verified against the cutoff.",
           "evidence": {
-            "checked_at": "2026-11-10T16:40:00+05:30",
+            "checked_at": "2026-11-10T16:20:00+05:30",
             "method": "collector_ua_http_get",
             "last_status": "REGISTRY_ONLY",
             "http_status": 200,
@@ -381,7 +381,7 @@
           "poll_source": null,
           "reason": "Feed returned no items in the parser probe.",
           "evidence": {
-            "checked_at": "2026-11-10T16:40:00+05:30",
+            "checked_at": "2026-11-10T16:20:00+05:30",
             "method": "collector_ua_http_get",
             "last_status": "REGISTRY_ONLY",
             "http_status": 200,
@@ -401,7 +401,7 @@
           "poll_source": null,
           "reason": "Feed returned no items in the parser probe.",
           "evidence": {
-            "checked_at": "2026-11-10T16:40:00+05:30",
+            "checked_at": "2026-11-10T16:20:00+05:30",
             "method": "collector_ua_http_get",
             "last_status": "REGISTRY_ONLY",
             "http_status": 200,
@@ -421,7 +421,7 @@
           "poll_source": null,
           "reason": "Only 5 of 20 items had a parseable publication time; not enabled until the feed is consistent.",
           "evidence": {
-            "checked_at": "2026-11-10T16:40:00+05:30",
+            "checked_at": "2026-11-10T16:20:00+05:30",
             "method": "collector_ua_http_get",
             "last_status": "REGISTRY_ONLY",
             "http_status": 200,
@@ -441,7 +441,7 @@
           "poll_source": null,
           "reason": "Publication values are date-only, which is insufficient for the 15:00/09:00 cutoff.",
           "evidence": {
-            "checked_at": "2026-11-10T16:40:00+05:30",
+            "checked_at": "2026-11-10T16:20:00+05:30",
             "method": "collector_ua_http_get",
             "last_status": "REGISTRY_ONLY",
             "http_status": 200,
@@ -461,7 +461,7 @@
           "poll_source": null,
           "reason": "Low-signal physical share-transfer notices; kept in the registry to conserve the ten-minute cycle budget.",
           "evidence": {
-            "checked_at": "2026-11-10T16:40:00+05:30",
+            "checked_at": "2026-11-10T16:20:00+05:30",
             "method": "collector_ua_http_get",
             "last_status": "REGISTRY_ONLY",
             "http_status": 200,
@@ -596,7 +596,7 @@
           "poll_source": null,
           "reason": "HTML page returned no dated article links; the official RSS feeds are enabled instead.",
           "evidence": {
-            "checked_at": "2026-11-10T16:40:00+05:30",
+            "checked_at": "2026-11-10T16:20:00+05:30",
             "method": "collector_ua_http_get",
             "last_status": "REGISTRY_ONLY",
             "http_status": 200,
@@ -640,7 +640,7 @@
           "poll_source": null,
           "reason": "HTTP 404; the official SEBI RSS feed is enabled instead.",
           "evidence": {
-            "checked_at": "2026-11-10T16:40:00+05:30",
+            "checked_at": "2026-11-10T16:20:00+05:30",
             "method": "collector_ua_http_get",
             "last_status": "NOT_FOUND",
             "http_status": 404,
@@ -738,7 +738,7 @@
           "poll_source": null,
           "reason": "HTML page returned no dated article links; the official RSS feeds are enabled instead.",
           "evidence": {
-            "checked_at": "2026-11-10T16:40:00+05:30",
+            "checked_at": "2026-11-10T16:20:00+05:30",
             "method": "collector_ua_http_get",
             "last_status": "REGISTRY_ONLY",
             "http_status": 200,
@@ -764,7 +764,7 @@
           "poll_source": null,
           "reason": "HTTP 403 Access Denied to the collector user agent; no bypass attempted.",
           "evidence": {
-            "checked_at": "2026-11-10T16:40:00+05:30",
+            "checked_at": "2026-11-10T16:20:00+05:30",
             "method": "collector_ua_http_get",
             "last_status": "BLOCKED",
             "http_status": 403,
@@ -783,7 +783,7 @@
           "poll_source": null,
           "reason": "HTTP 403 Access Denied to the collector user agent; no bypass attempted.",
           "evidence": {
-            "checked_at": "2026-11-10T16:40:00+05:30",
+            "checked_at": "2026-11-10T16:20:00+05:30",
             "method": "collector_ua_http_get",
             "last_status": "BLOCKED",
             "http_status": 403,
@@ -809,7 +809,7 @@
           "poll_source": null,
           "reason": "Accessible, but orders are loaded through an interactive search form; no dated public list was parseable.",
           "evidence": {
-            "checked_at": "2026-11-10T16:40:00+05:30",
+            "checked_at": "2026-11-10T16:20:00+05:30",
             "method": "collector_ua_http_get",
             "last_status": "REGISTRY_ONLY",
             "http_status": 200,
@@ -828,7 +828,7 @@
           "poll_source": null,
           "reason": "Accessible, but the orders table is populated by a CSRF-protected search form; only the site title parsed.",
           "evidence": {
-            "checked_at": "2026-11-10T16:40:00+05:30",
+            "checked_at": "2026-11-10T16:20:00+05:30",
             "method": "collector_ua_http_get",
             "last_status": "REGISTRY_ONLY",
             "http_status": 200,
@@ -854,7 +854,7 @@
           "poll_source": null,
           "reason": "Earlier connection failure; latest probe reached HTTP 200 but no dated article list.",
           "evidence": {
-            "checked_at": "2026-11-10T16:40:00+05:30",
+            "checked_at": "2026-11-10T16:20:00+05:30",
             "method": "collector_ua_http_get",
             "last_status": "REGISTRY_ONLY",
             "http_status": 200,
@@ -873,7 +873,7 @@
           "poll_source": null,
           "reason": "Release dates are date-only (for example 2026-Sep-22), insufficient for the 15:00/09:00 cutoff.",
           "evidence": {
-            "checked_at": "2026-11-10T16:40:00+05:30",
+            "checked_at": "2026-11-10T16:20:00+05:30",
             "method": "collector_ua_http_get",
             "last_status": "REGISTRY_ONLY",
             "http_status": 200,
@@ -900,7 +900,7 @@
           "poll_source": null,
           "reason": "Collector user agent receives an abuse-detection 404; a browser-like agent returned 200, which is not authorization to bypass bot protection.",
           "evidence": {
-            "checked_at": "2026-11-10T16:40:00+05:30",
+            "checked_at": "2026-11-10T16:20:00+05:30",
             "method": "collector_ua_http_get",
             "last_status": "BLOCKED",
             "http_status": 404,
@@ -919,7 +919,7 @@
           "poll_source": null,
           "reason": "Collector user agent receives an abuse-detection 404; no bypass attempted.",
           "evidence": {
-            "checked_at": "2026-11-10T16:40:00+05:30",
+            "checked_at": "2026-11-10T16:20:00+05:30",
             "method": "collector_ua_http_get",
             "last_status": "BLOCKED",
             "http_status": 404,
@@ -945,7 +945,7 @@
           "poll_source": null,
           "reason": "Accessible but no dated article list was parseable from the public page.",
           "evidence": {
-            "checked_at": "2026-11-10T16:40:00+05:30",
+            "checked_at": "2026-11-10T16:20:00+05:30",
             "method": "collector_ua_http_get",
             "last_status": "REGISTRY_ONLY",
             "http_status": 200,
@@ -964,7 +964,7 @@
           "poll_source": null,
           "reason": "Accessible but page contains no article/time elements or dated links; likely a JavaScript shell.",
           "evidence": {
-            "checked_at": "2026-11-10T16:40:00+05:30",
+            "checked_at": "2026-11-10T16:20:00+05:30",
             "method": "collector_ua_http_get",
             "last_status": "REGISTRY_ONLY",
             "http_status": 200,
@@ -986,18 +986,18 @@
           "url": "https://www.dgft.gov.in/CP/?opt=notification",
           "kind": "html_table",
           "authority": "official",
-          "access_status": "ACTIVE",
-          "poll_source": "DGFT notifications",
+          "access_status": "BLOCKED",
+          "poll_source": null,
+          "reason": "A local probe parsed 150 dated rows, but the VPS collector received HTTP 403; the endpoint is not enabled and no IP/header bypass is attempted.",
           "evidence": {
-            "checked_at": "2026-11-10T16:40:00+05:30",
+            "checked_at": "2026-11-10T16:25:00+05:30",
             "method": "collector_ua_http_get",
-            "last_status": "OK",
-            "http_status": 200,
-            "items": 150,
-            "detail": "Enabled collector source returned parsed items.",
-            "dated_items": 150
+            "last_status": "BLOCKED",
+            "http_status": 403,
+            "items": 0,
+            "detail": "VPS pre-deployment probe returned HTTP 403 from the collector container. Kept for a future network/allowlist review."
           },
-          "notes": "Official notification table; publication time is read from the hidden CRT DT column, not fetch time."
+          "notes": "DGFT"
         },
         {
           "id": "dgft-home",
@@ -1007,9 +1007,9 @@
           "authority": "official",
           "access_status": "REGISTRY_ONLY",
           "poll_source": null,
-          "reason": "The home URL is a JavaScript shell; the dated notifications table is enabled instead.",
+          "reason": "The home URL is a JavaScript shell; the notifications table is blocked from the VPS.",
           "evidence": {
-            "checked_at": "2026-11-10T16:40:00+05:30",
+            "checked_at": "2026-11-10T16:20:00+05:30",
             "method": "collector_ua_http_get",
             "last_status": "REGISTRY_ONLY",
             "http_status": 200,
@@ -1189,7 +1189,7 @@
           "poll_source": null,
           "reason": "HTTP 200 but the page is a navigation shell with no dated article list.",
           "evidence": {
-            "checked_at": "2026-11-10T16:40:00+05:30",
+            "checked_at": "2026-11-10T16:20:00+05:30",
             "method": "collector_ua_http_get",
             "last_status": "REGISTRY_ONLY",
             "http_status": 200,
@@ -1208,7 +1208,7 @@
           "poll_source": null,
           "reason": "HTTP 200 but no dated article list was parseable.",
           "evidence": {
-            "checked_at": "2026-11-10T16:40:00+05:30",
+            "checked_at": "2026-11-10T16:20:00+05:30",
             "method": "collector_ua_http_get",
             "last_status": "REGISTRY_ONLY",
             "http_status": 200,
@@ -1227,7 +1227,7 @@
           "poll_source": null,
           "reason": "HTTP 200 but the page exposes navigation and documents without per-item publication times.",
           "evidence": {
-            "checked_at": "2026-11-10T16:40:00+05:30",
+            "checked_at": "2026-11-10T16:20:00+05:30",
             "method": "collector_ua_http_get",
             "last_status": "REGISTRY_ONLY",
             "http_status": 200,
@@ -1246,7 +1246,7 @@
           "poll_source": null,
           "reason": "HTTP 200 but the page is a navigation shell with no dated article list.",
           "evidence": {
-            "checked_at": "2026-11-10T16:40:00+05:30",
+            "checked_at": "2026-11-10T16:20:00+05:30",
             "method": "collector_ua_http_get",
             "last_status": "REGISTRY_ONLY",
             "http_status": 200,
@@ -1265,7 +1265,7 @@
           "poll_source": null,
           "reason": "Press list is accessible, but URLs carry only a month (for example 10-2026); that is not an exact publication timestamp.",
           "evidence": {
-            "checked_at": "2026-11-10T16:40:00+05:30",
+            "checked_at": "2026-11-10T16:20:00+05:30",
             "method": "collector_ua_http_get",
             "last_status": "REGISTRY_ONLY",
             "http_status": 200,
@@ -1284,7 +1284,7 @@
           "poll_source": null,
           "reason": "HTTP 200 but no dated article list was parseable.",
           "evidence": {
-            "checked_at": "2026-11-10T16:40:00+05:30",
+            "checked_at": "2026-11-10T16:20:00+05:30",
             "method": "collector_ua_http_get",
             "last_status": "REGISTRY_ONLY",
             "http_status": 200,
@@ -1303,7 +1303,7 @@
           "poll_source": null,
           "reason": "HTTP 200 but the page links to documents without per-item publication times.",
           "evidence": {
-            "checked_at": "2026-11-10T16:40:00+05:30",
+            "checked_at": "2026-11-10T16:20:00+05:30",
             "method": "collector_ua_http_get",
             "last_status": "REGISTRY_ONLY",
             "http_status": 200,
@@ -1322,7 +1322,7 @@
           "poll_source": null,
           "reason": "HTTP 200 and dated releases exist, but the page has no machine-readable time element; not enabled until a verified per-item timestamp parser is tested.",
           "evidence": {
-            "checked_at": "2026-11-10T16:40:00+05:30",
+            "checked_at": "2026-11-10T16:20:00+05:30",
             "method": "collector_ua_http_get",
             "last_status": "REGISTRY_ONLY",
             "http_status": 200,
@@ -1341,7 +1341,7 @@
           "poll_source": null,
           "reason": "HTTP 200 but annual reports and presentations have no per-item publication timestamps.",
           "evidence": {
-            "checked_at": "2026-11-10T16:40:00+05:30",
+            "checked_at": "2026-11-10T16:20:00+05:30",
             "method": "collector_ua_http_get",
             "last_status": "REGISTRY_ONLY",
             "http_status": 200,
@@ -1360,7 +1360,7 @@
           "poll_source": null,
           "reason": "HTTP 403 to the collector user agent; no bypass attempted.",
           "evidence": {
-            "checked_at": "2026-11-10T16:40:00+05:30",
+            "checked_at": "2026-11-10T16:20:00+05:30",
             "method": "collector_ua_http_get",
             "last_status": "BLOCKED",
             "http_status": 403,
@@ -1379,7 +1379,7 @@
           "poll_source": null,
           "reason": "HTTP 403 to the collector user agent; no bypass attempted.",
           "evidence": {
-            "checked_at": "2026-11-10T16:40:00+05:30",
+            "checked_at": "2026-11-10T16:20:00+05:30",
             "method": "collector_ua_http_get",
             "last_status": "BLOCKED",
             "http_status": 403,
@@ -1398,7 +1398,7 @@
           "poll_source": null,
           "reason": "HTTP 403 with a 14-byte response; no bypass attempted.",
           "evidence": {
-            "checked_at": "2026-11-10T16:40:00+05:30",
+            "checked_at": "2026-11-10T16:20:00+05:30",
             "method": "collector_ua_http_get",
             "last_status": "BLOCKED",
             "http_status": 403,
@@ -1417,7 +1417,7 @@
           "poll_source": null,
           "reason": "HTTP 403 to the collector user agent; no bypass attempted.",
           "evidence": {
-            "checked_at": "2026-11-10T16:40:00+05:30",
+            "checked_at": "2026-11-10T16:20:00+05:30",
             "method": "collector_ua_http_get",
             "last_status": "BLOCKED",
             "http_status": 403,
@@ -1436,7 +1436,7 @@
           "poll_source": null,
           "reason": "HTTP 403 to the collector user agent; no bypass attempted.",
           "evidence": {
-            "checked_at": "2026-11-10T16:40:00+05:30",
+            "checked_at": "2026-11-10T16:20:00+05:30",
             "method": "collector_ua_http_get",
             "last_status": "BLOCKED",
             "http_status": 403,
@@ -1455,7 +1455,7 @@
           "poll_source": null,
           "reason": "HTTP 404; no verified alternate endpoint recorded yet.",
           "evidence": {
-            "checked_at": "2026-11-10T16:40:00+05:30",
+            "checked_at": "2026-11-10T16:20:00+05:30",
             "method": "collector_ua_http_get",
             "last_status": "NOT_FOUND",
             "http_status": 404,
@@ -1474,7 +1474,7 @@
           "poll_source": null,
           "reason": "HTTP 404; no verified alternate endpoint recorded yet.",
           "evidence": {
-            "checked_at": "2026-11-10T16:40:00+05:30",
+            "checked_at": "2026-11-10T16:20:00+05:30",
             "method": "collector_ua_http_get",
             "last_status": "NOT_FOUND",
             "http_status": 404,
@@ -1493,7 +1493,7 @@
           "poll_source": null,
           "reason": "HTTP 404; no verified alternate endpoint recorded yet.",
           "evidence": {
-            "checked_at": "2026-11-10T16:40:00+05:30",
+            "checked_at": "2026-11-10T16:20:00+05:30",
             "method": "collector_ua_http_get",
             "last_status": "NOT_FOUND",
             "http_status": 404,

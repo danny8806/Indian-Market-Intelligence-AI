@@ -38,7 +38,6 @@ class SourceRegistryTests(unittest.TestCase):
             "NSE voting results RSS", "NSE daily buyback RSS",
             "NSE related party transactions RSS", "NSE investor complaints RSS",
             "NSE unitholding patterns RSS", "NSE statement of deviation RSS",
-            "DGFT notifications",
         }
         active = {row["poll_source"] for row in endpoints(self.registry)
                   if row["access_status"] == "ACTIVE"}

@@ -31,7 +31,7 @@ Configured endpoints include previously successful, failed, blocked, stale and e
 
 ## Official/issuer source registry
 
-`source_registry.json` is the auditable master catalog for official and issuer endpoints. It records the URL, access status, last probe result, HTTP status, parsed item count, whether the endpoint is polled, and the reason an endpoint is not active. `sources.json` remains the enabled poll list.
+`source_registry.json` is the auditable master catalog for official and issuer endpoints. It records the URL, access status, last probe result, HTTP status, parsed item count, whether the endpoint is polled, and the reason an endpoint is not active. `sources.json` remains the enabled poll list. Evidence timestamps are Asia/Kolkata; endpoint status reflects the VPS network wherever it differs from a local probe.
 
 Validate the two files together:
 
@@ -41,8 +41,8 @@ The check is also run during Docker image construction and again before the VPS 
 
 Verified additions in this release:
 
-- NSE insider trading, circulars, SAST Regulation 29/31, voting results, daily buyback, related-party transactions, investor complaints, unitholding patterns and statement-of-deviation RSS feeds. Each returned dated items in a direct collector-parser probe; the publication time comes from the feed, never from fetch time.
-- DGFT notifications via an explicitly configured `html_table` parser. The table's hidden `CRT DT` value supplies the full date and time; date-only values remain unverified.
+- NSE insider trading, circulars, SAST Regulation 29/31, voting results, daily buyback, related-party transactions, investor complaints, unitholding patterns and statement-of-deviation RSS feeds. Each returned dated items in a direct collector-parser probe from the VPS; the publication time comes from the feed, never from fetch time.
+- A generic `html_table` parser is implemented and tested for official tables whose own timestamp column contains a full date and time. DGFT's notifications table parsed 150 dated rows from a local probe, but the VPS collector received HTTP 403, so DGFT remains **BLOCKED** in the registry and is not polled. No IP or user-agent bypass was attempted.
 
 Retired from active polling after repeated empty/404 results and retained in the registry with evidence: NSE announcements HTML, BSE announcements HTML, RBI releases HTML and the SEBI press-release HTML URL. Their official RSS/table equivalents remain active.
 

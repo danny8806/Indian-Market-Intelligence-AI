@@ -144,20 +144,6 @@
       "recover_truncated_rss": true
     },
     {
-      "name": "DGFT notifications",
-      "url": "https://www.dgft.gov.in/CP/?opt=notification",
-      "kind": "html_table",
-      "provider": "DGFT",
-      "authority": "official",
-      "enabled": true,
-      "table_selector": "#metaTable",
-      "headline_columns": ["Number", "Description"],
-      "url_column": "Attachment",
-      "timestamp_column": "CRT DT",
-      "timestamp_format": "%d/%m/%Y %H:%M:%S",
-      "summary_columns": ["Year"]
-    },
-    {
       "name": "Zerodha Pulse RSS",
       "url": "https://pulse.zerodha.com/feed.php?n=100",
       "kind": "rss",
