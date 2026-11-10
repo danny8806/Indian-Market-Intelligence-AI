@@ -111,6 +111,30 @@ class DBTests(unittest.TestCase):
             self.assertEqual(row["record_kind"], "timestamped_stock")
             self.assertIsNotNone(row["published_at"])
 
+    def test_later_lane_cannot_overwrite_first_discoverer(self):
+        sync_session(self.database, self.folder.parent, "2026-11-11")
+        later = dict(self.verified, discoverer="codex",
+                     first_seen_at="2026-11-10T04:40:00+05:30",
+                     last_seen_at="2026-11-10T04:40:00+05:30")
+        self._write("undated_candidates.jsonl", "")
+        self._write("events.jsonl", json.dumps(later) + "\n")
+        sync_session(self.database, self.folder.parent, "2026-11-11")
+        with self.database.connect() as conn:
+            row = conn.execute(select(articles)).mappings().one()
+            self.assertEqual(row["discoverer"], "python")
+
+    def test_earlier_observation_can_claim_discovery(self):
+        sync_session(self.database, self.folder.parent, "2026-11-11")
+        earlier = dict(self.verified, discoverer="codex",
+                       first_seen_at="2026-11-09T23:00:00+05:30",
+                       last_seen_at="2026-11-09T23:00:00+05:30")
+        self._write("undated_candidates.jsonl", "")
+        self._write("events.jsonl", json.dumps(earlier) + "\n")
+        sync_session(self.database, self.folder.parent, "2026-11-11")
+        with self.database.connect() as conn:
+            row = conn.execute(select(articles)).mappings().one()
+            self.assertEqual(row["discoverer"], "codex")
+
     def test_reject_naive_timestamp_and_missing_session(self):
         with self.assertRaises(ValueError):
             aware("2026-11-09T15:30:00")

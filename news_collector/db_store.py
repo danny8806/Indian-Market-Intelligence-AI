@@ -274,13 +274,22 @@ def _insert_or_update(connection, incoming: dict, kind: str, checked_at: datetim
             row["summary"] = old["summary"]
         elif old_kind == kind and old["published_at"] is not None:
             row["published_at"] = _oldest(old["published_at"], pub)
-        row["first_seen_at"] = _oldest(old["first_seen_at"], first)
+        old_first = _normalize_sqlite_time(old["first_seen_at"])
+        row["first_seen_at"] = _oldest(old_first, first)
         row["last_seen_at"] = _newest(old["last_seen_at"], last)
         for field in ("symbols", "sources", "providers", "authorities"):
             row[field] = _unique(old[field], row[field])
-        for field in ("discoverer", "company_name", "isin", "verification_method"):
+        for field in ("company_name", "isin", "verification_method"):
             if not row[field]:
                 row[field] = old[field]
+        # Provenance is write-once: the lane that first observed an article
+        # stays its discoverer. Later lanes that re-observe the same URL are
+        # recorded in article_revisions, not by rewriting this field. Only a
+        # genuinely earlier observation may claim discovery.
+        if old_first is None or not (first < old_first):
+            row["discoverer"] = old["discoverer"] or row["discoverer"]
+        elif not row["discoverer"]:
+            row["discoverer"] = old["discoverer"]
         if row["financial_figures"] is None:
             row["financial_figures"] = old["financial_figures"]
     category, sentiment, score = classify_event(row["headline"], row["summary"])
