@@ -5,6 +5,7 @@
 ## 1. Project and direct links
 
 - **Main repository (source code):** https://github.com/danny8806/Indian-Market-Intelligence-AI
+- **All news sources, free web tools, browser/MCP services and AI CLI roles:** https://github.com/danny8806/Indian-Market-Intelligence-AI/blob/main/docs/automation/COMPLETE-SOURCES-TOOLS-MODELS-AI-OPERATING-PLAN.md
 - **Main README:** https://github.com/danny8806/Indian-Market-Intelligence-AI/blob/main/README.md
 - **Complete tool inventory + free/limited-free notes + morning steps:** https://github.com/danny8806/Indian-Market-Intelligence-AI/blob/main/docs/automation/FREE-TOOLS-NEWS-COLLECTOR-MORNING-PLAN.md
 - **Multi-agent pipeline design:** https://github.com/danny8806/Indian-Market-Intelligence-AI/blob/main/docs/automation/multi-agent-news-pipeline.md
