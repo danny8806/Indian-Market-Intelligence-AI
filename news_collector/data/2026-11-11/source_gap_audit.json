@@ -1,6 +1,6 @@
 {
   "session": "2026-11-11",
-  "generated_at": "2026-11-10T05:14:49.077689+05:30",
+  "generated_at": "2026-11-10T05:35:46.901971+05:30",
   "method": "Symbol + material category presence; NOT event-ID or issuer ISIN reconciliation",
   "category_counts": {
     "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT": 4,

@@ -1,10 +1,10 @@
 {
   "status": "CHATGPT_INBOX_IMPORTED",
   "session": "2026-11-11",
-  "new_files": 1,
-  "accepted_discovery_links": 5,
+  "new_files": 0,
+  "accepted_discovery_links": 0,
   "invalid_files": 0,
-  "total_undated_candidates": 220,
+  "total_undated_candidates": 224,
   "all_imported_times_unverified": true,
-  "processed_at": "2026-11-10T05:15:14.436419+05:30"
+  "processed_at": "2026-11-10T05:36:13.696319+05:30"
 }
