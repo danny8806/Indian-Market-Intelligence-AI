@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-10T17:04:56.871397+05:30",
+  "as_of": "2026-11-10T17:12:38.834567+05:30",
   "candidates": [
     {
       "articles": 19,
@@ -176,6 +176,39 @@
       "symbol": "PIRAMALFIN"
     },
     {
+      "articles": 4,
+      "categories": [
+        "financial_results"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-10T09:47:54.774719+05:30",
+      "headline_samples": [
+        "Avanti Feeds Ltd-$ (512573)",
+        "Q2 Results Live: Hind Rectifiers Profit Falls 54%, MRF Profit Slips 28%; Kalyan Jewellers, Cochin Shipyard Also In Focus",
+        "Avanti Feeds Ltd (512573)",
+        "Q2 Results Today Live: Kalyan Jewellers, MRF, Cochin Shipyard, Avanti Feeds, Titagarh Rail Systems, MMTC to announce Q2 results"
+      ],
+      "material_event_count": 4,
+      "not_a_trade_signal": true,
+      "official_filing_count": 2,
+      "review_priority": 16,
+      "source_urls": [
+        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/db123403-6dd8-46d8-ad71-894d26d50702.pdf",
+        "https://www.ndtvprofit.com/markets/q2-results-live-updates-november-10-kalyan-jewellers-mrf-cochin-shipyard-among-44-companies-to-announce-earnings-today-12306507",
+        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/ac27c807-60b9-4c70-a46a-fc2ddb831bc0.pdf",
+        "https://www.thehindubusinessline.com/markets/q2-results-today-live-updates-kalyan-jewellers-mrf-cochin-shipyard-avanti-feeds-titagarh-rail-systems-mntc-company-results-10-november-2026/article71684906.ece"
+      ],
+      "symbol": "AVANTIFEED"
+    },
+    {
       "articles": 3,
       "categories": [
         "acquisition"
@@ -350,6 +383,37 @@
     {
       "articles": 3,
       "categories": [
+        "financial_results"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-10T14:19:20.491516+05:30",
+      "headline_samples": [
+        "Kalyan Jewellers India Limited",
+        "Kalyan Jewellers India Ltd (543278)",
+        "Q2 Results Live: Hind Rectifiers Profit Falls 54%, MRF Profit Slips 28%; Kalyan Jewellers, Cochin Shipyard Also In Focus"
+      ],
+      "material_event_count": 3,
+      "not_a_trade_signal": true,
+      "official_filing_count": 2,
+      "review_priority": 13,
+      "source_urls": [
+        "https://nsearchives.nseindia.com/corporate/KALYANKJIL_10112026170450_Results_q2_Signed.pdf",
+        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/102d885e-7e81-4e8f-b3cd-ef60af7265c3.pdf",
+        "https://www.ndtvprofit.com/markets/q2-results-live-updates-november-10-kalyan-jewellers-mrf-cochin-shipyard-among-44-companies-to-announce-earnings-today-12306507"
+      ],
+      "symbol": "KALYANKJIL"
+    },
+    {
+      "articles": 3,
+      "categories": [
         "analyst_meetings",
         "other"
       ],
@@ -434,37 +498,6 @@
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/dd3d9734-9f0f-4806-a317-c38e7f9bed7d.pdf"
       ],
       "symbol": "RADICO"
-    },
-    {
-      "articles": 3,
-      "categories": [
-        "financial_results"
-      ],
-      "evidence_summary": {
-        "conflicting_metrics": [],
-        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
-        "negative_metrics": [],
-        "not_a_price_prediction": true,
-        "positive_metrics": [],
-        "yoy_metrics_with_direction": 0
-      },
-      "explicit_financial_facts": [],
-      "first_seen_at": "2026-11-10T09:47:54.774719+05:30",
-      "headline_samples": [
-        "Q2 Results Live: Hind Rectifiers Profit Falls 54%, MRF Profit Slips 28%; Kalyan Jewellers, Cochin Shipyard Also In Focus",
-        "Avanti Feeds Ltd (512573)",
-        "Q2 Results Today Live: Kalyan Jewellers, MRF, Cochin Shipyard, Avanti Feeds, Titagarh Rail Systems, MMTC to announce Q2 results"
-      ],
-      "material_event_count": 3,
-      "not_a_trade_signal": true,
-      "official_filing_count": 1,
-      "review_priority": 11,
-      "source_urls": [
-        "https://www.ndtvprofit.com/markets/q2-results-live-updates-november-10-kalyan-jewellers-mrf-cochin-shipyard-among-44-companies-to-announce-earnings-today-12306507",
-        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/ac27c807-60b9-4c70-a46a-fc2ddb831bc0.pdf",
-        "https://www.thehindubusinessline.com/markets/q2-results-today-live-updates-kalyan-jewellers-mrf-cochin-shipyard-avanti-feeds-titagarh-rail-systems-mntc-company-results-10-november-2026/article71684906.ece"
-      ],
-      "symbol": "AVANTIFEED"
     },
     {
       "articles": 7,
@@ -730,6 +763,38 @@
         "https://nsearchives.nseindia.com/corporate/GESHIP_09112026155159_investorpresentation_signed.pdf"
       ],
       "symbol": "GESHIP"
+    },
+    {
+      "articles": 3,
+      "categories": [
+        "analyst_meetings",
+        "financial_results"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-10T17:04:17.089674+05:30",
+      "headline_samples": [
+        "Honasa Consumer Limited",
+        "Honasa Consumer Ltd (544014)",
+        "Honasa Consumer Limited"
+      ],
+      "material_event_count": 1,
+      "not_a_trade_signal": true,
+      "official_filing_count": 3,
+      "review_priority": 9,
+      "source_urls": [
+        "https://nsearchives.nseindia.com/corporate/HONASA16_10112026170619_Transcript_s.pdf",
+        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/58d4ee11-9747-4c0e-964f-1e38269142c3.pdf",
+        "https://nsearchives.nseindia.com/corporate/xbrl/SAIIM_21481_WebXMLFile_20261110_170335519.xml"
+      ],
+      "symbol": "HONASA"
     },
     {
       "articles": 3,
@@ -1058,7 +1123,7 @@
       "symbol": "CONCOR"
     },
     {
-      "articles": 5,
+      "articles": 6,
       "categories": [
         "analyst_meetings",
         "other"
@@ -1078,18 +1143,20 @@
         "Delhivery Limited",
         "Delhivery Ltd (543529)",
         "Delhivery Limited",
+        "Delhivery Limited",
         "Delhivery Limited"
       ],
       "material_event_count": 0,
       "not_a_trade_signal": true,
-      "official_filing_count": 5,
+      "official_filing_count": 6,
       "review_priority": 8,
       "source_urls": [
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/41ee0047-fb47-4e1d-b602-32651331fc82.pdf",
         "https://nsearchives.nseindia.com/corporate/DELHIVERYLTD_10112026164634_InvestorsConfBofA.pdf",
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/f331fc5a-1660-4d1e-a88a-3a4a75b9ac14.pdf",
         "https://nsearchives.nseindia.com/corporate/DELHIVERYLTD_10112026163956_InvestorsConfAvendus.pdf",
-        "https://nsearchives.nseindia.com/corporate/xbrl/SAIIM_20163_WebXMLFile_20261110_165916487.xml"
+        "https://nsearchives.nseindia.com/corporate/xbrl/SAIIM_20163_WebXMLFile_20261110_165916487.xml",
+        "https://nsearchives.nseindia.com/corporate/xbrl/SAIIM_20163_WebXMLFile_20261110_170448948.xml"
       ],
       "symbol": "DELHIVERY"
     },
@@ -1136,7 +1203,7 @@
       "symbol": "GLENMARK"
     },
     {
-      "articles": 16,
+      "articles": 17,
       "categories": [
         "other"
       ],
@@ -1176,6 +1243,7 @@
         "https://nsearchives.nseindia.com/corporate/IIFL_10112026160231_SEIntimation_Final.pdf",
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/94bc6232-8059-48de-9a7d-46c8610fd65d.pdf",
         "https://nsearchives.nseindia.com/corporate/IIFL_10112026160653_SEIntimation_Final.pdf",
+        "https://www.thehindubusinessline.com/money-and-banking/blackstone-to-buy-about-16-stake-in-iifl-finance-for-5000-crore/article71685978.ece",
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/09259200-c849-4878-8fa7-69c099c7725a.pdf",
         "https://www.business-standard.com/companies/news/blackstone-set-to-become-key-investor-in-iifl-finance-with-15-stake-126111000088_1.html",
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/94971117-dd07-4050-ab05-0f6de59cc167.pdf",
@@ -1548,6 +1616,37 @@
         "https://nsearchives.nseindia.com/content/debt/WDM/palavjain_09112026161732_CP_Redemption_Payment_Letter_November_9_2026.pdf"
       ],
       "symbol": "ABCAPITAL"
+    },
+    {
+      "articles": 3,
+      "categories": [
+        "corporate_actions"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-10T14:19:20.491516+05:30",
+      "headline_samples": [
+        "Ashok Leyland Limited",
+        "Ashok Leyland Limited",
+        "Ashok Leyland Ltd (500477)"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 3,
+      "review_priority": 6,
+      "source_urls": [
+        "https://nsearchives.nseindia.com/corporate/xbrl/PRIOR_INTIMATION_228_WebXMLFile_20261110_171138464.xml",
+        "https://nsearchives.nseindia.com/corporate/ASHOKLEYLAND_10112026141946_45BMIntimation-IDPDF.pdf",
+        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/32fc54e1-ee5a-4388-9730-2c140b7fc1b4.pdf"
+      ],
+      "symbol": "ASHOKLEY"
     },
     {
       "articles": 3,
@@ -1960,35 +2059,6 @@
         "https://nsearchives.nseindia.com/corporate/ZEEL_10112026150253_SEIntimationInvestorconferenceNov26signed.pdf"
       ],
       "symbol": "ZEEL"
-    },
-    {
-      "articles": 2,
-      "categories": [
-        "corporate_actions"
-      ],
-      "evidence_summary": {
-        "conflicting_metrics": [],
-        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
-        "negative_metrics": [],
-        "not_a_price_prediction": true,
-        "positive_metrics": [],
-        "yoy_metrics_with_direction": 0
-      },
-      "explicit_financial_facts": [],
-      "first_seen_at": "2026-11-10T14:19:20.491516+05:30",
-      "headline_samples": [
-        "Ashok Leyland Limited",
-        "Ashok Leyland Ltd (500477)"
-      ],
-      "material_event_count": 0,
-      "not_a_trade_signal": true,
-      "official_filing_count": 2,
-      "review_priority": 4,
-      "source_urls": [
-        "https://nsearchives.nseindia.com/corporate/ASHOKLEYLAND_10112026141946_45BMIntimation-IDPDF.pdf",
-        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/32fc54e1-ee5a-4388-9730-2c140b7fc1b4.pdf"
-      ],
-      "symbol": "ASHOKLEY"
     },
     {
       "articles": 4,
@@ -2475,33 +2545,6 @@
     {
       "articles": 1,
       "categories": [
-        "financial_results"
-      ],
-      "evidence_summary": {
-        "conflicting_metrics": [],
-        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
-        "negative_metrics": [],
-        "not_a_price_prediction": true,
-        "positive_metrics": [],
-        "yoy_metrics_with_direction": 0
-      },
-      "explicit_financial_facts": [],
-      "first_seen_at": "2026-11-10T14:19:20.491516+05:30",
-      "headline_samples": [
-        "Q2 Results Live: Hind Rectifiers Profit Falls 54%, MRF Profit Slips 28%; Kalyan Jewellers, Cochin Shipyard Also In Focus"
-      ],
-      "material_event_count": 1,
-      "not_a_trade_signal": true,
-      "official_filing_count": 0,
-      "review_priority": 3,
-      "source_urls": [
-        "https://www.ndtvprofit.com/markets/q2-results-live-updates-november-10-kalyan-jewellers-mrf-cochin-shipyard-among-44-companies-to-announce-earnings-today-12306507"
-      ],
-      "symbol": "KALYANKJIL"
-    },
-    {
-      "articles": 1,
-      "categories": [
         "regulatory"
       ],
       "evidence_summary": {
@@ -2672,33 +2715,6 @@
         "https://economictimes.indiatimes.com/markets/forex/rbis-usd-239-bn-forward-dollar-position-to-limit-rupee-gains-despite-fpi-inflows-report/articleshow/135678171.cms"
       ],
       "symbol": "BANKINDIA"
-    },
-    {
-      "articles": 1,
-      "categories": [
-        "analyst_meetings"
-      ],
-      "evidence_summary": {
-        "conflicting_metrics": [],
-        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
-        "negative_metrics": [],
-        "not_a_price_prediction": true,
-        "positive_metrics": [],
-        "yoy_metrics_with_direction": 0
-      },
-      "explicit_financial_facts": [],
-      "first_seen_at": "2026-11-10T17:04:17.089674+05:30",
-      "headline_samples": [
-        "Honasa Consumer Limited"
-      ],
-      "material_event_count": 0,
-      "not_a_trade_signal": true,
-      "official_filing_count": 1,
-      "review_priority": 2,
-      "source_urls": [
-        "https://nsearchives.nseindia.com/corporate/xbrl/SAIIM_21481_WebXMLFile_20261110_170335519.xml"
-      ],
-      "symbol": "HONASA"
     },
     {
       "articles": 1,
@@ -3359,7 +3375,7 @@
     "Preview created after cutoff is unsuitable for historical model evaluation.",
     "Premarket frozen snapshot includes collector_last_poll_at; intervening minutes may contain uncollected news."
   ],
-  "collector_last_poll_at": "2026-11-10T17:04:17.089674+05:30",
+  "collector_last_poll_at": "2026-11-10T17:11:55.827160+05:30",
   "company_count": 104,
   "cutoff_exclusive": "2026-11-11T09:00:00+05:30",
   "data_mode": "PRE_CUTOFF_PREVIEW_NOT_FROZEN",
@@ -3579,6 +3595,32 @@
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/e7a17297-69d1-4b38-a38c-28ac09e90b5c.pdf"
     },
     {
+      "document_sha256": "2dfd69a49fad7cbdbbbe494debb8e25806b78f6864057d3d7d43a5fa56403669",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T17:11:55.827160+05:30",
+      "id": "0e6d2a172b50cd02418f549f",
+      "parsed_at": "2026-11-10T17:12:33.104242+05:30",
+      "published_at": "2026-11-10T17:10:03+05:30",
+      "symbols": [
+        "AVANTIFEED"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/db123403-6dd8-46d8-ad71-894d26d50702.pdf"
+    },
+    {
+      "document_sha256": "bd9d49aeec40f6be3514580a659e43d6027f9597095687ff6cc6ffec08d47891",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T17:11:55.827160+05:30",
+      "id": "0fcf7f9eadbc018e261ffd01",
+      "parsed_at": "2026-11-10T17:12:33.103753+05:30",
+      "published_at": "2026-11-10T17:08:21+05:30",
+      "symbols": [
+        "KALYANKJIL"
+      ],
+      "url": "https://nsearchives.nseindia.com/corporate/KALYANKJIL_10112026170450_Results_q2_Signed.pdf"
+    },
+    {
       "document_sha256": "86f0657dc2236be44fe7cfa094f3c473013d78d68d8346cf29c98145cc5a0f96",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -3616,6 +3658,19 @@
         "BAJFINANCE"
       ],
       "url": "https://nsearchives.nseindia.com/corporate/BAJFINANCE_10112026121523_BFL_Reg_30_Outcome_PricingofPIpostVRFinal.pdf"
+    },
+    {
+      "document_sha256": "63d723d2048b93454e4ffc075e8b84321808de3b280fc1a0e4459fafdbb99443",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T16:47:47.760687+05:30",
+      "id": "13ff12a34a4ac02ca41190f6",
+      "parsed_at": "2026-11-10T17:12:36.932104+05:30",
+      "published_at": "2026-11-10T16:40:22+05:30",
+      "symbols": [
+        "IIFL"
+      ],
+      "url": "https://nsearchives.nseindia.com/corporate/IIFL_10112026164007_SEIntimation.pdf"
     },
     {
       "document_sha256": "5665be1a4ed6e569933f64cc768b69bc9eca6e75b463658a37e630864b72deef",
@@ -3709,6 +3764,19 @@
       "url": "https://nsearchives.nseindia.com/corporate/IRB_10112026122055_IRBIDL_disclosure_Toll_Revenue_October_2026_sd.pdf"
     },
     {
+      "document_sha256": "2a55ebcc188638888c43bb874a16ef8fe33c9880736da69e12d4d18e9dc4555d",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T17:11:55.827160+05:30",
+      "id": "1c21936da7ef81b566f865da",
+      "parsed_at": "2026-11-10T17:12:33.884767+05:30",
+      "published_at": "2026-11-10T17:06:46+05:30",
+      "symbols": [
+        "HONASA"
+      ],
+      "url": "https://nsearchives.nseindia.com/corporate/HONASA16_10112026170619_Transcript_s.pdf"
+    },
+    {
       "document_sha256": "6db53681b98a60b122cd65499c296eaade886826cee46d5c0bb45f63d4d01836",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -3759,6 +3827,19 @@
         "IIFL"
       ],
       "url": "https://nsearchives.nseindia.com/corporate/IIFL_10112026161221_SEIntimation_Final.pdf"
+    },
+    {
+      "document_sha256": "2a55ebcc188638888c43bb874a16ef8fe33c9880736da69e12d4d18e9dc4555d",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T17:11:55.827160+05:30",
+      "id": "2889a0ce00c39f2ef3ab487d",
+      "parsed_at": "2026-11-10T17:12:33.103244+05:30",
+      "published_at": "2026-11-10T17:06:19+05:30",
+      "symbols": [
+        "HONASA"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/58d4ee11-9747-4c0e-964f-1e38269142c3.pdf"
     },
     {
       "document_sha256": "a4250a4da6ac4da38d87e71fc3a66c9451e1859f184376010fed9966650c6bfe",
@@ -3876,6 +3957,19 @@
       "url": "https://nsearchives.nseindia.com/corporate/MARUTIASHISH_10112026115416_STxIntimation_SMCResults_FirstHalfYr_10Nov2026.pdf"
     },
     {
+      "document_sha256": "a95d874ba142836fc0dfad7a392f1bd68bbd269293bf932dbeaa5398e21d2698",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T16:47:47.760687+05:30",
+      "id": "3a8af2cf7afa9040bb845a2f",
+      "parsed_at": "2026-11-10T17:12:37.159137+05:30",
+      "published_at": "2026-11-10T16:46:34+05:30",
+      "symbols": [
+        "PREMIERENE"
+      ],
+      "url": "https://nsearchives.nseindia.com/corporate/PEL2024_10112026164612_SE_Intimation_-_Monitoring_Agency_Report.pdf"
+    },
+    {
       "document_sha256": "0da57ec3795cf45677a320c961fbfd2a19d8900517080afd36013b0c7a8e7d8b",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -3913,6 +4007,19 @@
         "MARUTI"
       ],
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/2b74a7fe-194c-4a61-8cf6-dbba26573f57.pdf"
+    },
+    {
+      "document_sha256": "d226b643b8ceafe78b507aa8159068c9bec4ee9a7bad85594ae110a0b532154e",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T16:47:47.760687+05:30",
+      "id": "42e22c7138968d6b647cc0c2",
+      "parsed_at": "2026-11-10T17:12:36.511267+05:30",
+      "published_at": "2026-11-10T16:38:30+05:30",
+      "symbols": [
+        "ADANIPOWER"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/d2750717-4482-4881-a9c6-b1dfdbdeb8e2.pdf"
     },
     {
       "document_sha256": "4cf386b39695c52b3ffee1ae0e189bdfc6fadc6b7d215f38210c393266f282f5",
@@ -3954,6 +4061,19 @@
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/41ee0047-fb47-4e1d-b602-32651331fc82.pdf"
     },
     {
+      "document_sha256": "63d723d2048b93454e4ffc075e8b84321808de3b280fc1a0e4459fafdbb99443",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T16:47:47.760687+05:30",
+      "id": "43abdfdb91d3b90386d79b2f",
+      "parsed_at": "2026-11-10T17:12:36.322644+05:30",
+      "published_at": "2026-11-10T16:36:37+05:30",
+      "symbols": [
+        "IIFL"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/ea4a2477-6d54-4b96-8222-1650352d7390.pdf"
+    },
+    {
       "document_sha256": "4ca6bb2baa27d3629f9f6cf47d8fec371bfda4992875b4f35da957c7174523c3",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -3965,6 +4085,19 @@
         "HUDCO"
       ],
       "url": "https://nsearchives.nseindia.com/corporate/HUDCO_10112026120452_SE_DISCLOSURE_TRANSCRIPT_6NOV.pdf"
+    },
+    {
+      "document_sha256": "8019d33886e3b3a96e6b3690f429a82c7b0f26645f47fa55fee09bf0e0ecb0ff",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T17:11:55.827160+05:30",
+      "id": "46410d56c5d2dffde6fc0e52",
+      "parsed_at": "2026-11-10T17:12:33.107989+05:30",
+      "published_at": "2026-11-10T17:10:03+05:30",
+      "symbols": [
+        "KALYANKJIL"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/102d885e-7e81-4e8f-b3cd-ef60af7265c3.pdf"
     },
     {
       "document_sha256": "95dc0a1aee2e8080536dba1b1bd6ead1de0ff71acb5c41418245c8e985488e10",
@@ -4004,6 +4137,32 @@
         "IRB"
       ],
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/668424da-df0f-403d-8d7c-0599e6f9f145.pdf"
+    },
+    {
+      "document_sha256": "4162d1eb5a108211200f991cbf4d0c8991c299591e1c3eee0021136d284e2257",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T16:47:47.760687+05:30",
+      "id": "4ec0442ff3e8b04041b12b92",
+      "parsed_at": "2026-11-10T17:12:35.801957+05:30",
+      "published_at": "2026-11-10T16:35:54+05:30",
+      "symbols": [
+        "APTUS"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/70b1a3ef-5b89-4eb5-88f6-a5b12e0dd593.pdf"
+    },
+    {
+      "document_sha256": "d226b643b8ceafe78b507aa8159068c9bec4ee9a7bad85594ae110a0b532154e",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T16:47:47.760687+05:30",
+      "id": "52c44a4ae8d0693899a67279",
+      "parsed_at": "2026-11-10T17:12:37.033841+05:30",
+      "published_at": "2026-11-10T16:40:58+05:30",
+      "symbols": [
+        "ADANIPOWER"
+      ],
+      "url": "https://nsearchives.nseindia.com/corporate/ADANIPOWER_10112026164048_APLCreditRatingenhancementICRA10112026.pdf"
     },
     {
       "document_sha256": "143ed991f1d9b4efbdfd7e5a95c5b83641fa505ed727558e356207740f9eb262",
@@ -4173,6 +4332,19 @@
         "BHEL"
       ],
       "url": "https://nsearchives.nseindia.com/corporate/BHEL_09112026170052_HYDfine09112026.pdf"
+    },
+    {
+      "document_sha256": "83512f569bd2b228d90163aa1b70ec689bdbec11f7036a4c5dd93ca4d87714dd",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T16:30:56.550244+05:30",
+      "id": "66a74f8217f721ac87c353ac",
+      "parsed_at": "2026-11-10T17:12:35.340734+05:30",
+      "published_at": "2026-11-10T16:26:20+05:30",
+      "symbols": [
+        "MEDANTA"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/b3da0cb4-461e-494e-b852-a148ccca4d6d.pdf"
     },
     {
       "document_sha256": "1d4168fd58b3201144d7ec0b5d3700966a748c27599ec8ad5f07d9ad5469da1e",
@@ -4368,6 +4540,19 @@
         "GLENMARK"
       ],
       "url": "https://nsearchives.nseindia.com/corporate/GLENMARK_09112026165133_SE_Investor_Meet.pdf"
+    },
+    {
+      "document_sha256": "cf26669d159d72996c8f9536762643b4228775bd3ed6f48f5028c4f7f7f6a4e6",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T16:47:47.760687+05:30",
+      "id": "7855ea79130574591c57ad1f",
+      "parsed_at": "2026-11-10T17:12:38.071737+05:30",
+      "published_at": "2026-11-10T16:46:57+05:30",
+      "symbols": [
+        "DELHIVERY"
+      ],
+      "url": "https://nsearchives.nseindia.com/corporate/DELHIVERYLTD_10112026164634_InvestorsConfBofA.pdf"
     },
     {
       "document_sha256": "701ed84c1ee740aa4801a7f7f28f980cf92482e892b1cdd70b47788a59a4e0c5",
@@ -4760,6 +4945,19 @@
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/41e7bb57-172f-4858-a5ac-8c15fe653e81.pdf"
     },
     {
+      "document_sha256": "268e2d5cec0ebfa9ac8880fb81c2952b3e2bfe899c155f5e8d0a612695c3fbc6",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T16:30:56.550244+05:30",
+      "id": "985c6d0585f1e141971614eb",
+      "parsed_at": "2026-11-10T17:12:35.715482+05:30",
+      "published_at": "2026-11-10T16:28:26+05:30",
+      "symbols": [
+        "REDINGTON"
+      ],
+      "url": "https://nsearchives.nseindia.com/corporate/Jhanviu_10112026162813_Earnings_call_transcript_Q2_2026-27_Final.pdf"
+    },
+    {
       "document_sha256": "ec83d01e3e876e314018364940384e9fd2785fee842a05b7b3a77ddb9c2fd59f",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -4797,6 +4995,19 @@
         "MEDANTA"
       ],
       "url": "https://nsearchives.nseindia.com/corporate/MEDANTA21_10112026160417_GHLANALYSTSMEETNOVEMBER102026_SIGNED.pdf"
+    },
+    {
+      "document_sha256": "204a8794777755fceb70326b67d0402ffb863991f3e29a31f99d94a3bbdcc142",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T16:30:56.550244+05:30",
+      "id": "9c709c5e5f109c99fe7baeea",
+      "parsed_at": "2026-11-10T17:12:34.470471+05:30",
+      "published_at": "2026-11-10T16:25:22+05:30",
+      "symbols": [
+        "IIFL"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/94bc6232-8059-48de-9a7d-46c8610fd65d.pdf"
     },
     {
       "document_sha256": "429228cbf9ed10297842bf5a2ddc85e6a8dfe85b1527321aab0594b141626fe7",
@@ -5020,6 +5231,19 @@
       "url": "https://nsearchives.nseindia.com/content/debt/WDM/MRPL_10112026095713_TranscriptSD.pdf"
     },
     {
+      "document_sha256": "a95d874ba142836fc0dfad7a392f1bd68bbd269293bf932dbeaa5398e21d2698",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T16:47:47.760687+05:30",
+      "id": "b04e930e1994c29823df7305",
+      "parsed_at": "2026-11-10T17:12:37.111006+05:30",
+      "published_at": "2026-11-10T16:41:38+05:30",
+      "symbols": [
+        "PREMIERENE"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/65e191d7-5f33-48f5-8d5f-b9f54149ad8f.pdf"
+    },
+    {
       "document_sha256": "f78e9f3bb13808fb12e4d454e4b8248cfc7a4633c2f92b10a83d8515d39b446b",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -5057,6 +5281,19 @@
         "MPHASIS"
       ],
       "url": "https://nsearchives.nseindia.com/corporate/MPHASIS_09112026150003_Intimation_of_transcript_-_Q2FY2027.pdf"
+    },
+    {
+      "document_sha256": "cf26669d159d72996c8f9536762643b4228775bd3ed6f48f5028c4f7f7f6a4e6",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T16:30:56.550244+05:30",
+      "id": "b581789d6a253490370e41ce",
+      "parsed_at": "2026-11-10T17:12:34.111541+05:30",
+      "published_at": "2026-11-10T16:24:26+05:30",
+      "symbols": [
+        "DELHIVERY"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/f331fc5a-1660-4d1e-a88a-3a4a75b9ac14.pdf"
     },
     {
       "document_sha256": "2a29c64151accb63aa49a2c47ca787ccd240670477a265f50a42192bba53e4d1",
@@ -5397,6 +5634,19 @@
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/04408e86-768f-4913-b9c5-ec99a12893cd.pdf"
     },
     {
+      "document_sha256": "8a9a987922aec92f8b4e44288a118a32c0697941d457c377841a88994a18b6fd",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T16:47:47.760687+05:30",
+      "id": "d064a7569694dfe5f945d7b9",
+      "parsed_at": "2026-11-10T17:12:36.956401+05:30",
+      "published_at": "2026-11-10T16:40:56+05:30",
+      "symbols": [
+        "DELHIVERY"
+      ],
+      "url": "https://nsearchives.nseindia.com/corporate/DELHIVERYLTD_10112026163956_InvestorsConfAvendus.pdf"
+    },
+    {
       "document_sha256": "805f0960e4aef4db94d891332f0c424257775c36fd12c7897ebfc6e45abaf2c2",
       "extraction_status": "EXPLICIT_FACTS",
       "facts": [
@@ -5606,6 +5856,19 @@
         "ECLERX"
       ],
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/395be7a1-4dae-479c-a4e7-1bd1735e44d9.pdf"
+    },
+    {
+      "document_sha256": "83512f569bd2b228d90163aa1b70ec689bdbec11f7036a4c5dd93ca4d87714dd",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T16:30:56.550244+05:30",
+      "id": "e1f563cf451b7c421dcfc90b",
+      "parsed_at": "2026-11-10T17:12:35.670198+05:30",
+      "published_at": "2026-11-10T16:28:21+05:30",
+      "symbols": [
+        "MEDANTA"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/17bb12f5-dd61-4739-8c43-1a970bc0d93f.pdf"
     },
     {
       "document_sha256": "8eded8ee21a65cdbea11bdaf634e3c07b84a9fb70cc8f282dd06bb69f2452e86",
@@ -5863,6 +6126,19 @@
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/f5572049-c08e-47f8-a0ed-4696a82f43d8.pdf"
     },
     {
+      "document_sha256": "268e2d5cec0ebfa9ac8880fb81c2952b3e2bfe899c155f5e8d0a612695c3fbc6",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T16:30:56.550244+05:30",
+      "id": "f2f840aca0e18046336747d6",
+      "parsed_at": "2026-11-10T17:12:34.844529+05:30",
+      "published_at": "2026-11-10T16:26:15+05:30",
+      "symbols": [
+        "REDINGTON"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/78612866-38a7-4331-8300-205a26f8cf78.pdf"
+    },
+    {
       "document_sha256": "49fd415a9ec20a015cda4ca182f267c173fce0759e9edb797fff84986ed5950d",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -6006,7 +6282,7 @@
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/647209bb-3305-4ef9-9d5e-ab98f54d50d5.pdf"
     }
   ],
-  "documents_with_eligible_text": 195,
+  "documents_with_eligible_text": 215,
   "execution_enabled": false,
   "frozen_universe_membership": {
     "360ONE": "360 ONE WAM Ltd.",
@@ -6515,7 +6791,7 @@
   "news_window_start": "2026-11-09T15:00:00+05:30",
   "schema_version": "research-candidates/1.0",
   "session_date": "2026-11-11",
-  "source_failures_last_poll": 10,
+  "source_failures_last_poll": 11,
   "training_eligible": false,
   "universe_status": "OFFICIAL_FETCH:https://www.niftyindices.com/IndexConstituent/ind_nifty500list.csv"
 }

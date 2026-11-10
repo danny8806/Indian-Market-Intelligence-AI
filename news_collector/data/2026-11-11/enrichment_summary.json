@@ -1,21 +1,21 @@
 {
   "session": "2026-11-11",
-  "checked_at": "2026-11-10T17:04:56.676619+05:30",
-  "pdf_candidates_total": 224,
-  "pdf_candidates_seen_before_cutoff": 224,
+  "checked_at": "2026-11-10T17:12:38.637914+05:30",
+  "pdf_candidates_total": 229,
+  "pdf_candidates_seen_before_cutoff": 229,
   "pdf_candidates_late_discovery_or_unknown": 0,
   "attempted_this_poll": 20,
-  "completed_document_records": 203,
+  "completed_document_records": 223,
   "status_counts": {
-    "EXTRACTED": 195,
+    "EXTRACTED": 215,
     "NOT_PDF_OR_UNSAFE": 7,
     "NO_EXTRACTABLE_TEXT": 1
   },
-  "unattempted_or_retryable": 21,
+  "unattempted_or_retryable": 6,
   "source_gap_groups": {
-    "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT": 8,
-    "MEDIA_ONLY_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS": 4,
-    "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS": 16
+    "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT": 9,
+    "MEDIA_ONLY_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS": 3,
+    "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS": 17
   },
   "note": "Official publicly available PDF text extracted by pypdf. Only a bounded excerpt and context lines are stored. No OCR on scanned documents, no AI classification, no inference of price direction. PDF retrieval after 09:00 is not proof that its contents were known to the prediction system before 09:00."
 }

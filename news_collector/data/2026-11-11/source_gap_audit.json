@@ -1,11 +1,11 @@
 {
   "session": "2026-11-11",
-  "generated_at": "2026-11-10T17:04:17.089674+05:30",
+  "generated_at": "2026-11-10T17:11:55.827160+05:30",
   "method": "Symbol + material category presence; NOT event-ID or issuer ISIN reconciliation",
   "category_counts": {
-    "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT": 8,
-    "MEDIA_ONLY_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS": 4,
-    "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS": 16
+    "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT": 9,
+    "MEDIA_ONLY_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS": 3,
+    "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS": 17
   },
   "groups": [
     {
@@ -32,8 +32,13 @@
       "event_category": "financial_results",
       "media_count": 2,
       "nse_count": 0,
-      "bse_count": 1,
+      "bse_count": 2,
       "filing_examples": [
+        {
+          "headline": "Avanti Feeds Ltd-$ (512573)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/db123403-6dd8-46d8-ad71-894d26d50702.pdf",
+          "published_at": "2026-11-10T17:10:03+05:30"
+        },
         {
           "headline": "Avanti Feeds Ltd (512573)",
           "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/ac27c807-60b9-4c70-a46a-fc2ddb831bc0.pdf",
@@ -205,6 +210,25 @@
       "exchanges_seen": []
     },
     {
+      "symbol": "HONASA",
+      "event_category": "financial_results",
+      "media_count": 0,
+      "nse_count": 0,
+      "bse_count": 1,
+      "filing_examples": [
+        {
+          "headline": "Honasa Consumer Ltd (544014)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/58d4ee11-9747-4c0e-964f-1e38269142c3.pdf",
+          "published_at": "2026-11-10T17:06:19+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": [
+        "BSE"
+      ]
+    },
+    {
       "symbol": "IKS",
       "event_category": "acquisition",
       "media_count": 0,
@@ -268,9 +292,20 @@
       "symbol": "KALYANKJIL",
       "event_category": "financial_results",
       "media_count": 1,
-      "nse_count": 0,
-      "bse_count": 0,
-      "filing_examples": [],
+      "nse_count": 1,
+      "bse_count": 1,
+      "filing_examples": [
+        {
+          "headline": "Kalyan Jewellers India Limited",
+          "url": "https://nsearchives.nseindia.com/corporate/KALYANKJIL_10112026170450_Results_q2_Signed.pdf",
+          "published_at": "2026-11-10T17:08:21+05:30"
+        },
+        {
+          "headline": "Kalyan Jewellers India Ltd (543278)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/102d885e-7e81-4e8f-b3cd-ef60af7265c3.pdf",
+          "published_at": "2026-11-10T17:10:03+05:30"
+        }
+      ],
       "media_examples": [
         {
           "headline": "Q2 Results Live: Hind Rectifiers Profit Falls 54%, MRF Profit Slips 28%; Kalyan Jewellers, Cochin Shipyard Also In Focus",
@@ -278,8 +313,11 @@
           "published_at": "2026-11-10T12:41:37+05:30"
         }
       ],
-      "state": "MEDIA_ONLY_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
-      "exchanges_seen": []
+      "state": "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT",
+      "exchanges_seen": [
+        "BSE",
+        "NSE"
+      ]
     },
     {
       "symbol": "MARUTI",
@@ -662,6 +700,11 @@
       "error": "HTTPError: 404 Client Error: Not Found for url: https://www.livemint.com/rss/industryRSS"
     },
     {
+      "source": "Moneycontrol RSS",
+      "status": "ERROR",
+      "error": "ParseError: not well-formed (invalid token): line 6, column 305"
+    },
+    {
       "source": "Financial Express legacy RSS",
       "status": "ERROR",
       "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.financialexpress.com/feed/"
@@ -766,13 +809,20 @@
       "status_a": "OK",
       "status_b": "OK",
       "comparison_status": "SNAPSHOT_OVERLAP_ONLY",
-      "feed_a_unique_matched_urls": 161,
-      "feed_b_unique_matched_urls": 161,
-      "both_feeds_same_url": 161,
+      "feed_a_unique_matched_urls": 164,
+      "feed_b_unique_matched_urls": 165,
+      "both_feeds_same_url": 164,
       "only_feed_a_count": 0,
-      "only_feed_b_count": 0,
+      "only_feed_b_count": 1,
       "only_feed_a_examples": [],
-      "only_feed_b_examples": [],
+      "only_feed_b_examples": [
+        {
+          "url": "https://nsearchives.nseindia.com/corporate/xbrl/PRIOR_INTIMATION_228_WebXMLFile_20261110_171138464.xml",
+          "symbols": [
+            "ASHOKLEY"
+          ]
+        }
+      ],
       "warning": "URL-level overlap is NOT event-level completeness; feed length, timing and availability differ."
     },
     {
@@ -781,9 +831,9 @@
       "status_a": "OK",
       "status_b": "OK",
       "comparison_status": "SNAPSHOT_OVERLAP_ONLY",
-      "feed_a_unique_matched_urls": 110,
-      "feed_b_unique_matched_urls": 110,
-      "both_feeds_same_url": 110,
+      "feed_a_unique_matched_urls": 113,
+      "feed_b_unique_matched_urls": 113,
+      "both_feeds_same_url": 113,
       "only_feed_a_count": 0,
       "only_feed_b_count": 0,
       "only_feed_a_examples": [],
