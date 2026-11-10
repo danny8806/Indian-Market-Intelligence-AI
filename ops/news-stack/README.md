@@ -46,6 +46,15 @@ A registry status is evidence of access, not proof of complete coverage.
   rejects late results, and one final research watchlist is persisted in
   news_morning_reports. Update the bundled 2026 calendar before running morning
   research in the following year.
+- After 09:12 on a regular session, run
+  `ops/news-stack/verify-morning-report.sh YYYY-MM-DD` on the VPS. It prints the
+  stored report, per-side counts, cutoff violations, critic audit and the raw
+  report JSON. Validate that JSON with
+  `python scripts/validate_signals.py <file> --session-date YYYY-MM-DD`.
+- After 16:00 IST, `python scripts/audit_morning_report.py <file>
+  --session-date YYYY-MM-DD` compares each selection with official NSE EOD
+  open-to-close prices. The audit is research-only, uses no broker API, and
+  fails closed when any price is missing or invalid.
 
 ## Broker coverage
 
