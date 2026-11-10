@@ -17,6 +17,8 @@ of delivery to the live desk.
 
 ## News collection — free tools and morning rollout (research only)
 
+**Blocked-source handling and additional open-source research agents:** [Access-resilience and agents playbook](docs/automation/OPEN-SOURCE-AGENTS-SOURCE-ACCESS-RESILIENCE.md).
+
 **Expanded open-source agents, RSS, crawlers, browsers and news-fetching tools:** [Master catalog (100+ options)](docs/automation/EXTENDED-OPEN-SOURCE-NEWS-FETCHING-TOOLS-CATALOG.md).
 
 **Complete source, crawler, model and MCP operating manual:** [Sources, tools, AI roles and implementation workflow](docs/automation/COMPLETE-SOURCES-TOOLS-MODELS-AI-OPERATING-PLAN.md).
