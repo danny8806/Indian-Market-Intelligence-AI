@@ -17,6 +17,8 @@ of delivery to the live desk.
 
 ## News collection — free tools and morning rollout (research only)
 
+**Expanded open-source agents, RSS, crawlers, browsers and news-fetching tools:** [Master catalog (100+ options)](docs/automation/EXTENDED-OPEN-SOURCE-NEWS-FETCHING-TOOLS-CATALOG.md).
+
 **Complete source, crawler, model and MCP operating manual:** [Sources, tools, AI roles and implementation workflow](docs/automation/COMPLETE-SOURCES-TOOLS-MODELS-AI-OPERATING-PLAN.md).
 
 **Other AI / Codex implementation handoff:** [START HERE — complete project/code links and step-by-step implementation](docs/automation/START-HERE-OTHER-AI-HANDOFF.md).
