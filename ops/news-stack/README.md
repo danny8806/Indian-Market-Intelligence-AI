@@ -43,3 +43,5 @@ Provision Codex interactively using the dedicated named credential volume.
 From the release root, use the pinned news Compose config and run the collector
 service with --entrypoint codex and login --device-auth. Complete the login in
 the operator browser. No login state is stored in the code or database.
+
+See [Independent CLI discovery](CLI_AGENTS.md) for the additional agent lanes.

@@ -1,3 +1,4 @@
+import json
 from datetime import datetime
 from pathlib import Path
 from tempfile import TemporaryDirectory
@@ -6,12 +7,13 @@ from unittest.mock import patch
 
 from sqlalchemy import create_engine, select
 
+from news_collector.agent_intake import assignment, ingest_inbox, validate_report
 from news_collector.archive import observation, replay, stage
 from news_collector.broker_sources import listing_items
 from news_collector.codex_research import allowed_url
-from news_collector.db_store import article_revisions, articles, sync_archive_batch
+from news_collector.db_store import archive_batches, article_revisions, articles, sync_archive_batch
 from news_collector.engine import IST
-from news_collector.morning import run
+from news_collector.morning import run, select_candidates
 
 FEED = {"provider": "NSE", "kind": "rss", "authority": "official",
         "url": "https://nsearchives.nseindia.com/feed.xml", "name": "NSE filings"}
@@ -139,7 +141,6 @@ class NewsIntelligenceTests(unittest.TestCase):
         fetch.assert_not_called()
 
     def test_dhan_public_cards_use_the_deployed_selectors(self):
-        import json
         from news_collector.engine import ROOT
 
         sources = json.loads((ROOT / "sources.json").read_text(encoding="utf-8"))["sources"]
@@ -151,3 +152,63 @@ class NewsIntelligenceTests(unittest.TestCase):
         self.assertEqual(len(items), 1)
         self.assertEqual(items[0]["summary"], "Revenue changed.")
         self.assertTrue(items[0]["shared_broker_link"])
+
+    def test_external_cli_reports_without_search_proof_fail_closed(self):
+        now = at(8, 50)
+        job = assignment("claude-code", now)
+        payload = {**job, "finished_at": now.isoformat(), "status": "RETRIEVED",
+                   "urls": ["https://www.nseindia.com/filing"]}
+        with self.assertRaises(ValueError):
+            validate_report(payload, "claude-code", now)
+        payload["status"] = "AUTH_REQUIRED"
+        with self.assertRaises(ValueError):
+            validate_report(payload, "claude-code", now)
+
+    def test_cli_intake_stores_verified_provenance_and_failure_status(self):
+        now = at(8, 50)
+        with TemporaryDirectory() as folder:
+            root = Path(folder)
+            inbox = root / "inbox"
+            for provider, status in [("claude-code", "RETRIEVED"), ("cursor-cli", "QUOTA_LIMIT")]:
+                job = assignment(provider, now)
+                target = inbox / provider
+                target.mkdir(parents=True)
+                payload = {**job, "status": status, "finished_at": now.isoformat()}
+                if status == "RETRIEVED":
+                    payload.update(urls=["https://www.nseindia.com/filing"],
+                                   retrieval_event={"kind": "web_search", "id": "trace-1"})
+                (target / (job["assignment_id"] + ".json")).write_text(
+                    json.dumps(payload), encoding="utf-8")
+            observed = record(now, at(8, 45))
+            observed["discoverer"] = "claude-code"
+            with patch("news_collector.agent_intake.verify_links",
+                       return_value=("VERIFIED", [observed])) as verify:
+                status = ingest_inbox(inbox, root, NIFTY, NIFTY, clock=lambda: now)
+            self.assertEqual(status["claude-code"], "VERIFIED")
+            self.assertEqual(status["cursor-cli"], "QUOTA_LIMIT")
+            self.assertEqual(verify.call_args.kwargs["discoverer"], "claude-code")
+            self.assertEqual(replay(self.db, root), 2)
+            with self.db.connect() as conn:
+                rows = conn.execute(select(archive_batches.c.coverage)).scalars().all()
+            self.assertEqual({row["sources"][0]["status"] for row in rows},
+                             {"VERIFIED", "QUOTA_LIMIT"})
+
+    def test_morning_batches_review_all_frozen_evidence_and_source_status(self):
+        template = record(at(8, 55), at(8, 50))
+        items = [{**template, "evidence_id": f"evidence-{index}"}
+                 for index in range(101)]
+        calls = []
+
+        def analyst(prompt, _schema, **_options):
+            calls.append(prompt)
+            return "OK", {"selections": []}
+
+        status, _, _ = select_candidates(
+            {"items": items, "recent_coverage": True, "source_health": {"qwen-code": "QUOTA_LIMIT"}},
+            analyst=analyst)
+        self.assertEqual(status, "NO_TRADE")
+        self.assertEqual(len(calls), 3)
+        self.assertNotIn('"evidence-100"', calls[0])
+        self.assertIn('"evidence-100"', calls[1])
+        self.assertIn('"evidence-100"', calls[2])
+        self.assertIn("QUOTA_LIMIT", calls[2])

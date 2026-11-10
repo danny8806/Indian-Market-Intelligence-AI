@@ -19,7 +19,7 @@ COPY --chown=newsbot:newsbot ops/news-stack/start-news-worker.sh /app/start-news
 RUN chmod 0555 /app/start-news-worker.sh \
     && mkdir -p /app/news_collector/data /app/news_collector/chatgpt_inbox \
     && chown -R newsbot:newsbot /app/news_collector \
-    && install -d -m 700 -o newsbot -g newsbot /home/newsbot/.news-codex
+    && install -d -m 700 -o newsbot -g newsbot /home/newsbot/.news-codex /app/cli-inbox
 
 USER newsbot
 ENTRYPOINT ["/app/start-news-worker.sh"]

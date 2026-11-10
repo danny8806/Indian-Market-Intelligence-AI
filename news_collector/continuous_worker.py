@@ -83,12 +83,17 @@ def collect_and_store(engine, *, data_root: Path = DATA_ROOT,
 
 
 def collect_archive(engine, root: Path, *, clock=lambda: datetime.now(IST)) -> dict:
+    from news_collector.agent_intake import ingest_inbox, lane_statuses
     from news_collector.archive import collect_batch, replay, stage
     from news_collector.codex_research import discover
     from uuid import uuid4
 
     batch, nifty, universe = collect_batch(root, clock=clock)
+    inbox = Path(os.getenv("NEWS_AGENT_INBOX", str(root / "agent_inbox")))
+    batch["agent_lanes"] = lane_statuses(inbox)
     stage(root, batch)
+    # Commit primary sources before optional CLI calls can run out of time.
+    saved = replay(engine, root)
     now = clock().astimezone(IST)
     daily_slots = 144
     try:
@@ -116,7 +121,11 @@ def collect_archive(engine, root: Path, *, clock=lambda: datetime.now(IST)) -> d
                 "sources": [{"source": "Codex CLI", "status": codex_status,
                              "fetched_items": len(rows)}],
             })
-    saved = replay(engine, root)
+    try:
+        external_status = ingest_inbox(inbox, root, nifty, universe, clock=clock)
+    except (OSError, ValueError) as exc:
+        external_status = {"status": f"INTAKE_FAILED_{type(exc).__name__}"}
+    saved += replay(engine, root)
     result = {
         "db_status": "DATABASE_SYNC_OK", "sync_completed_at": clock().isoformat(),
         "session": batch["session"], "source_count": batch["sources_configured"],
@@ -124,6 +133,7 @@ def collect_archive(engine, root: Path, *, clock=lambda: datetime.now(IST)) -> d
         "sources_failed": batch["sources_failed"], "sources_blocked": batch["sources_blocked"],
         "codex": codex_status,
         "observations": len(batch["records"]), "batches_committed": saved,
+        "external_cli": external_status,
         "pending_batches": sum(1 for _ in (root / "pending_batches").glob("*.json")),
     }
     marker = root / "last_successful_db_sync.json"
