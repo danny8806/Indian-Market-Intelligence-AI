@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-10T12:56:50.350808+05:30",
+  "as_of": "2026-11-10T14:19:54.896262+05:30",
   "candidates": [
     {
       "articles": 4,
@@ -153,6 +153,99 @@
       "symbol": "USHAMART"
     },
     {
+      "articles": 6,
+      "categories": [
+        "financial_results",
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-09T16:51:11.327151+05:30",
+      "headline_samples": [
+        "Cochin Shipyard Ltd (540678)",
+        "Cochin Shipyard Ltd (540678)",
+        "Q2 Results Live: Hind Rectifiers Profit Falls 54%, MRF Profit Slips 28%; Kalyan Jewellers, Cochin Shipyard Also In Focus",
+        "Cochin Shipyard Limited",
+        "Cochin Shipyard Limited",
+        "Q2 Results Today Live: Kalyan Jewellers, MRF, Cochin Shipyard, Avanti Feeds, Titagarh Rail Systems, MMTC to announce Q2 results"
+      ],
+      "material_event_count": 2,
+      "not_a_trade_signal": true,
+      "official_filing_count": 4,
+      "review_priority": 14,
+      "source_urls": [
+        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/7fcc8236-e719-458b-ba78-08723f3f54d9.pdf",
+        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/b1267199-f12a-4855-bf32-085e5bd25f15.pdf",
+        "https://www.ndtvprofit.com/markets/q2-results-live-updates-november-10-kalyan-jewellers-mrf-cochin-shipyard-among-44-companies-to-announce-earnings-today-12306507",
+        "https://nsearchives.nseindia.com/corporate/Aswi4739_09112026164622_SE_Intimation.pdf",
+        "https://nsearchives.nseindia.com/corporate/Aswi4739_09112026163408_SE_Intimation_Results_Sgd.pdf",
+        "https://www.thehindubusinessline.com/markets/q2-results-today-live-updates-kalyan-jewellers-mrf-cochin-shipyard-avanti-feeds-titagarh-rail-systems-mntc-company-results-10-november-2026/article71684906.ece"
+      ],
+      "symbol": "COCHINSHIP"
+    },
+    {
+      "articles": 3,
+      "categories": [
+        "analyst_meetings"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "POSITIVE_REPORTED_FINANCIAL_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [
+          "ebitda",
+          "revenue"
+        ],
+        "yoy_metrics_with_direction": 2
+      },
+      "explicit_financial_facts": [
+        {
+          "basis": "YoY",
+          "document_sha256": "457bd94e0b37063ac06ad4441c9c3ab2bc705b540c8f500d3829e23ec71387ea",
+          "evidence_text": "EBITDA grew 60% year-on-year to INR 3,701 million, with improved margins of 25.2% in Q2",
+          "metric": "ebitda",
+          "reported_change_pct": 60.0,
+          "reported_period": null,
+          "source": "https://nsearchives.nseindia.com/corporate/MEDANTA21_10112026114048_GHLTRANSCRIPTSINTNOV2026SIGNED.pdf",
+          "verification": "ASSERTION_NOT_ARITHMETICALLY_VERIFIED"
+        },
+        {
+          "basis": "YoY",
+          "document_sha256": "457bd94e0b37063ac06ad4441c9c3ab2bc705b540c8f500d3829e23ec71387ea",
+          "evidence_text": "Q2 FY26. Average revenue per patient, ARPP, increased by 3% year-on-year to INR 2.06 lakhs,",
+          "metric": "revenue",
+          "reported_change_pct": 3.0,
+          "reported_period": "Q2FY26",
+          "source": "https://nsearchives.nseindia.com/corporate/MEDANTA21_10112026114048_GHLTRANSCRIPTSINTNOV2026SIGNED.pdf",
+          "verification": "ASSERTION_NOT_ARITHMETICALLY_VERIFIED"
+        }
+      ],
+      "first_seen_at": "2026-11-10T12:55:56.757300+05:30",
+      "headline_samples": [
+        "Global Health Limited",
+        "Global Health Limited",
+        "Global Health Ltd (543654)"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 3,
+      "review_priority": 12,
+      "source_urls": [
+        "https://nsearchives.nseindia.com/corporate/MEDANTA21_10112026114048_GHLTRANSCRIPTSINTNOV2026SIGNED.pdf",
+        "https://nsearchives.nseindia.com/corporate/xbrl/SAIIM_20051_WebXMLFile_20261110_123318165.xml",
+        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/0ef79fd6-fd64-4635-96fd-3e8f240e4da9.pdf"
+      ],
+      "symbol": "MEDANTA"
+    },
+    {
       "articles": 3,
       "categories": [
         "analyst_meetings",
@@ -215,42 +308,6 @@
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/dd3d9734-9f0f-4806-a317-c38e7f9bed7d.pdf"
       ],
       "symbol": "RADICO"
-    },
-    {
-      "articles": 5,
-      "categories": [
-        "financial_results",
-        "other"
-      ],
-      "evidence_summary": {
-        "conflicting_metrics": [],
-        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
-        "negative_metrics": [],
-        "not_a_price_prediction": true,
-        "positive_metrics": [],
-        "yoy_metrics_with_direction": 0
-      },
-      "explicit_financial_facts": [],
-      "first_seen_at": "2026-11-09T16:51:11.327151+05:30",
-      "headline_samples": [
-        "Cochin Shipyard Ltd (540678)",
-        "Cochin Shipyard Ltd (540678)",
-        "Cochin Shipyard Limited",
-        "Cochin Shipyard Limited",
-        "Q2 Results Today Live: Kalyan Jewellers, MRF, Cochin Shipyard, Avanti Feeds, Titagarh Rail Systems, MMTC to announce Q2 results"
-      ],
-      "material_event_count": 1,
-      "not_a_trade_signal": true,
-      "official_filing_count": 4,
-      "review_priority": 11,
-      "source_urls": [
-        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/7fcc8236-e719-458b-ba78-08723f3f54d9.pdf",
-        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/b1267199-f12a-4855-bf32-085e5bd25f15.pdf",
-        "https://nsearchives.nseindia.com/corporate/Aswi4739_09112026164622_SE_Intimation.pdf",
-        "https://nsearchives.nseindia.com/corporate/Aswi4739_09112026163408_SE_Intimation_Results_Sgd.pdf",
-        "https://www.thehindubusinessline.com/markets/q2-results-today-live-updates-kalyan-jewellers-mrf-cochin-shipyard-avanti-feeds-titagarh-rail-systems-mntc-company-results-10-november-2026/article71684906.ece"
-      ],
-      "symbol": "COCHINSHIP"
     },
     {
       "articles": 7,
@@ -561,6 +618,41 @@
       "symbol": "MRPL"
     },
     {
+      "articles": 4,
+      "categories": [
+        "analyst_meetings",
+        "financial_results",
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-10T09:47:54.774719+05:30",
+      "headline_samples": [
+        "TITAGARH RAIL SYSTEMS LIMITED",
+        "Titagarh Rail Systems Ltd (532966)",
+        "TITAGARH RAIL SYSTEMS LIMITED",
+        "Q2 Results Today Live: Kalyan Jewellers, MRF, Cochin Shipyard, Avanti Feeds, Titagarh Rail Systems, MMTC to announce Q2 results"
+      ],
+      "material_event_count": 1,
+      "not_a_trade_signal": true,
+      "official_filing_count": 3,
+      "review_priority": 9,
+      "source_urls": [
+        "https://nsearchives.nseindia.com/corporate/xbrl/SAIIM_2744_WebXMLFile_20261110_140814130.xml",
+        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/00225ed9-4021-43e8-8398-3a9c6a0f11a5.pdf",
+        "https://nsearchives.nseindia.com/corporate/TWL_10112026140533_IntimationofearningscallQ2H1FY27.pdf",
+        "https://www.thehindubusinessline.com/markets/q2-results-today-live-updates-kalyan-jewellers-mrf-cochin-shipyard-avanti-feeds-titagarh-rail-systems-mntc-company-results-10-november-2026/article71684906.ece"
+      ],
+      "symbol": "TITAGARH"
+    },
+    {
       "articles": 5,
       "categories": [
         "analyst_meetings"
@@ -594,6 +686,39 @@
         "https://nsearchives.nseindia.com/corporate/xbrl/SAIIM_19468_WebXMLFile_20261109_165524265.xml"
       ],
       "symbol": "APTUS"
+    },
+    {
+      "articles": 4,
+      "categories": [
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-10T12:55:56.757300+05:30",
+      "headline_samples": [
+        "Bajaj Finance Limited",
+        "Bajaj Finance Limited",
+        "Bajaj Finance Ltd (500034)",
+        "Bajaj Finance Ltd (500034)"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 4,
+      "review_priority": 8,
+      "source_urls": [
+        "https://nsearchives.nseindia.com/corporate/BAJFINANCE_10112026121523_BFL_Reg_30_Outcome_PricingofPIpostVRFinal.pdf",
+        "https://nsearchives.nseindia.com/corporate/BAJFINANCE_10112026125828_BFL_Reg_30__Allotment_of_warrants_Final_1.pdf",
+        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/41e7bb57-172f-4858-a5ac-8c15fe653e81.pdf",
+        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/84c0dbf5-4b55-41b9-ab7b-e20d9fe359a9.pdf"
+      ],
+      "symbol": "BAJFINANCE"
     },
     {
       "articles": 8,
@@ -671,6 +796,44 @@
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/647209bb-3305-4ef9-9d5e-ab98f54d50d5.pdf"
       ],
       "symbol": "INDUSINDBK"
+    },
+    {
+      "articles": 6,
+      "categories": [
+        "analyst_meetings",
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-10T12:55:56.757300+05:30",
+      "headline_samples": [
+        "Krishna Institute of Medical Sciences Limited",
+        "Krishna Institute of Medical Sciences Limited",
+        "Krishna Institute of Medical Sciences Ltd (543308)",
+        "Krishna Institute of Medical Sciences Limited",
+        "Krishna Institute of Medical Sciences Limited",
+        "Krishna Institute of Medical Sciences Ltd (543308)"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 6,
+      "review_priority": 8,
+      "source_urls": [
+        "https://nsearchives.nseindia.com/corporate/xbrl/SAIIM_19312_WebXMLFile_20261110_124039053.xml",
+        "https://nsearchives.nseindia.com/corporate/KIMS_10112026134757_Investor_call_19112026.pdf",
+        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/5736757b-5d19-4422-8e79-d3f8c79bc517.pdf",
+        "https://nsearchives.nseindia.com/corporate/KIMS_10112026123353_Investor_call_17112026.pdf",
+        "https://nsearchives.nseindia.com/corporate/xbrl/SAIIM_19312_WebXMLFile_20261110_134756612.xml",
+        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/c101c2f5-1273-445f-83a6-b6b7a55781a4.pdf"
+      ],
+      "symbol": "KIMS"
     },
     {
       "articles": 8,
@@ -896,9 +1059,9 @@
       "symbol": "ABCAPITAL"
     },
     {
-      "articles": 3,
+      "articles": 2,
       "categories": [
-        "other"
+        "financial_results"
       ],
       "evidence_summary": {
         "conflicting_metrics": [],
@@ -909,22 +1072,20 @@
         "yoy_metrics_with_direction": 0
       },
       "explicit_financial_facts": [],
-      "first_seen_at": "2026-11-10T12:55:56.757300+05:30",
+      "first_seen_at": "2026-11-10T09:47:54.774719+05:30",
       "headline_samples": [
-        "Bajaj Finance Limited",
-        "Bajaj Finance Ltd (500034)",
-        "Bajaj Finance Ltd (500034)"
+        "Q2 Results Live: Hind Rectifiers Profit Falls 54%, MRF Profit Slips 28%; Kalyan Jewellers, Cochin Shipyard Also In Focus",
+        "Q2 Results Today Live: Kalyan Jewellers, MRF, Cochin Shipyard, Avanti Feeds, Titagarh Rail Systems, MMTC to announce Q2 results"
       ],
-      "material_event_count": 0,
+      "material_event_count": 2,
       "not_a_trade_signal": true,
-      "official_filing_count": 3,
+      "official_filing_count": 0,
       "review_priority": 6,
       "source_urls": [
-        "https://nsearchives.nseindia.com/corporate/BAJFINANCE_10112026121523_BFL_Reg_30_Outcome_PricingofPIpostVRFinal.pdf",
-        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/41e7bb57-172f-4858-a5ac-8c15fe653e81.pdf",
-        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/84c0dbf5-4b55-41b9-ab7b-e20d9fe359a9.pdf"
+        "https://www.ndtvprofit.com/markets/q2-results-live-updates-november-10-kalyan-jewellers-mrf-cochin-shipyard-among-44-companies-to-announce-earnings-today-12306507",
+        "https://www.thehindubusinessline.com/markets/q2-results-today-live-updates-kalyan-jewellers-mrf-cochin-shipyard-avanti-feeds-titagarh-rail-systems-mntc-company-results-10-november-2026/article71684906.ece"
       ],
-      "symbol": "BAJFINANCE"
+      "symbol": "AVANTIFEED"
     },
     {
       "articles": 3,
@@ -1017,69 +1178,6 @@
         "https://www.thehindubusinessline.com/companies/godrej-properties-to-launch-32000-crore-worth-homes-for-sale-in-h2-fy27-to-cash-in-on-demand/article71682370.ece"
       ],
       "symbol": "GODREJPROP"
-    },
-    {
-      "articles": 3,
-      "categories": [
-        "analyst_meetings",
-        "other"
-      ],
-      "evidence_summary": {
-        "conflicting_metrics": [],
-        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
-        "negative_metrics": [],
-        "not_a_price_prediction": true,
-        "positive_metrics": [],
-        "yoy_metrics_with_direction": 0
-      },
-      "explicit_financial_facts": [],
-      "first_seen_at": "2026-11-10T12:55:56.757300+05:30",
-      "headline_samples": [
-        "Krishna Institute of Medical Sciences Limited",
-        "Krishna Institute of Medical Sciences Limited",
-        "Krishna Institute of Medical Sciences Ltd (543308)"
-      ],
-      "material_event_count": 0,
-      "not_a_trade_signal": true,
-      "official_filing_count": 3,
-      "review_priority": 6,
-      "source_urls": [
-        "https://nsearchives.nseindia.com/corporate/xbrl/SAIIM_19312_WebXMLFile_20261110_124039053.xml",
-        "https://nsearchives.nseindia.com/corporate/KIMS_10112026123353_Investor_call_17112026.pdf",
-        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/c101c2f5-1273-445f-83a6-b6b7a55781a4.pdf"
-      ],
-      "symbol": "KIMS"
-    },
-    {
-      "articles": 3,
-      "categories": [
-        "analyst_meetings"
-      ],
-      "evidence_summary": {
-        "conflicting_metrics": [],
-        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
-        "negative_metrics": [],
-        "not_a_price_prediction": true,
-        "positive_metrics": [],
-        "yoy_metrics_with_direction": 0
-      },
-      "explicit_financial_facts": [],
-      "first_seen_at": "2026-11-10T12:55:56.757300+05:30",
-      "headline_samples": [
-        "Global Health Limited",
-        "Global Health Limited",
-        "Global Health Ltd (543654)"
-      ],
-      "material_event_count": 0,
-      "not_a_trade_signal": true,
-      "official_filing_count": 3,
-      "review_priority": 6,
-      "source_urls": [
-        "https://nsearchives.nseindia.com/corporate/MEDANTA21_10112026114048_GHLTRANSCRIPTSINTNOV2026SIGNED.pdf",
-        "https://nsearchives.nseindia.com/corporate/xbrl/SAIIM_20051_WebXMLFile_20261110_123318165.xml",
-        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/0ef79fd6-fd64-4635-96fd-3e8f240e4da9.pdf"
-      ],
-      "symbol": "MEDANTA"
     },
     {
       "articles": 4,
@@ -1368,6 +1466,36 @@
     {
       "articles": 2,
       "categories": [
+        "analyst_meetings",
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-10T12:55:56.757300+05:30",
+      "headline_samples": [
+        "Exide Industries Limited",
+        "Exide Industries Ltd (500086)"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 2,
+      "review_priority": 4,
+      "source_urls": [
+        "https://nsearchives.nseindia.com/corporate/EXIDEIND_10112026125437_sdSETranscript.pdf",
+        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/8b33122d-6995-4c4b-a788-64e981867279.pdf"
+      ],
+      "symbol": "EXIDEIND"
+    },
+    {
+      "articles": 2,
+      "categories": [
         "analyst_meetings"
       ],
       "evidence_summary": {
@@ -1453,6 +1581,64 @@
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/668424da-df0f-403d-8d7c-0599e6f9f145.pdf"
       ],
       "symbol": "IRB"
+    },
+    {
+      "articles": 2,
+      "categories": [
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-10T14:19:20.491516+05:30",
+      "headline_samples": [
+        "Jindal Stainless Limited",
+        "Jindal Stainless Ltd (532508)"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 2,
+      "review_priority": 4,
+      "source_urls": [
+        "https://nsearchives.nseindia.com/corporate/JSL_10112026132611_finalsefilingsd.pdf",
+        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/04408e86-768f-4913-b9c5-ec99a12893cd.pdf"
+      ],
+      "symbol": "JSL"
+    },
+    {
+      "articles": 2,
+      "categories": [
+        "analyst_meetings"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-10T14:19:20.491516+05:30",
+      "headline_samples": [
+        "L&T Technology Services Limited",
+        "L&T Technology Services Ltd (540115)"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 2,
+      "review_priority": 4,
+      "source_urls": [
+        "https://nsearchives.nseindia.com/corporate/LTTS_10112026140901_Reg30_InvestorAnalystMeetsd.pdf",
+        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/7459891c-cfb9-4e54-b4bc-ccb646f685e5.pdf"
+      ],
+      "symbol": "LTTS"
     },
     {
       "articles": 3,
@@ -1548,6 +1734,36 @@
       "symbol": "SHRIRAMFIN"
     },
     {
+      "articles": 2,
+      "categories": [
+        "corporate_actions",
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-09T16:51:11.327151+05:30",
+      "headline_samples": [
+        "Tata Teleservices (Maharashtra) Limited",
+        "Tata Teleservices (Maharashtra) Limited"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 2,
+      "review_priority": 4,
+      "source_urls": [
+        "https://nsearchives.nseindia.com/content/debt/WDM/TTMLCS_09112026151735_TTML_Redemption_notification_INE517B14AL3_09_November_2026.pdf",
+        "https://nsearchives.nseindia.com/content/debt/WDM/TTMLCS_10112026125652_TTML_Record_date_notification_INE517B14AG3_17_November_2026.pdf"
+      ],
+      "symbol": "TTML"
+    },
+    {
       "articles": 1,
       "categories": [
         "financial_results"
@@ -1561,18 +1777,18 @@
         "yoy_metrics_with_direction": 0
       },
       "explicit_financial_facts": [],
-      "first_seen_at": "2026-11-10T09:47:54.774719+05:30",
+      "first_seen_at": "2026-11-10T14:19:20.491516+05:30",
       "headline_samples": [
-        "Q2 Results Today Live: Kalyan Jewellers, MRF, Cochin Shipyard, Avanti Feeds, Titagarh Rail Systems, MMTC to announce Q2 results"
+        "Q2 Results Live: Hind Rectifiers Profit Falls 54%, MRF Profit Slips 28%; Kalyan Jewellers, Cochin Shipyard Also In Focus"
       ],
       "material_event_count": 1,
       "not_a_trade_signal": true,
       "official_filing_count": 0,
       "review_priority": 3,
       "source_urls": [
-        "https://www.thehindubusinessline.com/markets/q2-results-today-live-updates-kalyan-jewellers-mrf-cochin-shipyard-avanti-feeds-titagarh-rail-systems-mntc-company-results-10-november-2026/article71684906.ece"
+        "https://www.ndtvprofit.com/markets/q2-results-live-updates-november-10-kalyan-jewellers-mrf-cochin-shipyard-among-44-companies-to-announce-earnings-today-12306507"
       ],
-      "symbol": "AVANTIFEED"
+      "symbol": "KALYANKJIL"
     },
     {
       "articles": 1,
@@ -1604,33 +1820,6 @@
     {
       "articles": 1,
       "categories": [
-        "financial_results"
-      ],
-      "evidence_summary": {
-        "conflicting_metrics": [],
-        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
-        "negative_metrics": [],
-        "not_a_price_prediction": true,
-        "positive_metrics": [],
-        "yoy_metrics_with_direction": 0
-      },
-      "explicit_financial_facts": [],
-      "first_seen_at": "2026-11-10T09:47:54.774719+05:30",
-      "headline_samples": [
-        "Q2 Results Today Live: Kalyan Jewellers, MRF, Cochin Shipyard, Avanti Feeds, Titagarh Rail Systems, MMTC to announce Q2 results"
-      ],
-      "material_event_count": 1,
-      "not_a_trade_signal": true,
-      "official_filing_count": 0,
-      "review_priority": 3,
-      "source_urls": [
-        "https://www.thehindubusinessline.com/markets/q2-results-today-live-updates-kalyan-jewellers-mrf-cochin-shipyard-avanti-feeds-titagarh-rail-systems-mntc-company-results-10-november-2026/article71684906.ece"
-      ],
-      "symbol": "TITAGARH"
-    },
-    {
-      "articles": 1,
-      "categories": [
         "other"
       ],
       "evidence_summary": {
@@ -1654,6 +1843,33 @@
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/f493b270-3049-4759-911a-3f764dc0eba8.pdf"
       ],
       "symbol": "360ONE"
+    },
+    {
+      "articles": 1,
+      "categories": [
+        "corporate_actions"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-10T14:19:20.491516+05:30",
+      "headline_samples": [
+        "Ashok Leyland Ltd (500477)"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 1,
+      "review_priority": 2,
+      "source_urls": [
+        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/32fc54e1-ee5a-4388-9730-2c140b7fc1b4.pdf"
+      ],
+      "symbol": "ASHOKLEY"
     },
     {
       "articles": 1,
@@ -1710,7 +1926,7 @@
       "symbol": "AUROPHARMA"
     },
     {
-      "articles": 5,
+      "articles": 6,
       "categories": [
         "other"
       ],
@@ -1726,6 +1942,7 @@
       "first_seen_at": "2026-11-09T16:51:11.327151+05:30",
       "headline_samples": [
         "Small Industries Development Bank of India",
+        "Banks To Remain Closed In 5 States On November 11: Check State-Wise List",
         "RBI's $239 bn forward dollar position to limit rupee gains: Report",
         "RBI said to query bank valuations of some bond derivative trades",
         "Rupee among Asia's top performing currencies as AI trade cools",
@@ -1737,39 +1954,13 @@
       "review_priority": 2,
       "source_urls": [
         "https://nsearchives.nseindia.com/content/debt/WDM/SIDBI_2_09112026155620_NSE_Letter09112026s.pdf",
+        "https://www.ndtv.com/india-news/banks-to-remain-closed-in-5-states-on-november-11-check-state-wise-list-12306764",
         "https://www.business-standard.com/finance/news/rbi-s-239-bn-forward-dollar-position-to-limit-rupee-gains-report-126110900571_1.html",
         "https://economictimes.indiatimes.com/markets/bonds/rbi-said-to-query-bank-valuations-of-some-bond-derivative-trades/articleshow/135696624.cms",
         "https://economictimes.indiatimes.com/markets/forex/rupee-among-asias-top-3-as-india-turns-ai-hedge/articleshow/135696371.cms",
         "https://economictimes.indiatimes.com/markets/forex/rbis-usd-239-bn-forward-dollar-position-to-limit-rupee-gains-despite-fpi-inflows-report/articleshow/135678171.cms"
       ],
       "symbol": "BANKINDIA"
-    },
-    {
-      "articles": 1,
-      "categories": [
-        "other"
-      ],
-      "evidence_summary": {
-        "conflicting_metrics": [],
-        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
-        "negative_metrics": [],
-        "not_a_price_prediction": true,
-        "positive_metrics": [],
-        "yoy_metrics_with_direction": 0
-      },
-      "explicit_financial_facts": [],
-      "first_seen_at": "2026-11-10T12:55:56.757300+05:30",
-      "headline_samples": [
-        "Exide Industries Ltd (500086)"
-      ],
-      "material_event_count": 0,
-      "not_a_trade_signal": true,
-      "official_filing_count": 1,
-      "review_priority": 2,
-      "source_urls": [
-        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/8b33122d-6995-4c4b-a788-64e981867279.pdf"
-      ],
-      "symbol": "EXIDEIND"
     },
     {
       "articles": 1,
@@ -1851,33 +2042,6 @@
         "https://nsearchives.nseindia.com/corporate/NIPPONAMC_10112026104743_NIMF_MONTHLY_PORTFOLIO_31_Oct_26.pdf"
       ],
       "symbol": "NAM-INDIA"
-    },
-    {
-      "articles": 1,
-      "categories": [
-        "other"
-      ],
-      "evidence_summary": {
-        "conflicting_metrics": [],
-        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
-        "negative_metrics": [],
-        "not_a_price_prediction": true,
-        "positive_metrics": [],
-        "yoy_metrics_with_direction": 0
-      },
-      "explicit_financial_facts": [],
-      "first_seen_at": "2026-11-09T16:51:11.327151+05:30",
-      "headline_samples": [
-        "Tata Teleservices (Maharashtra) Limited"
-      ],
-      "material_event_count": 0,
-      "not_a_trade_signal": true,
-      "official_filing_count": 1,
-      "review_priority": 2,
-      "source_urls": [
-        "https://nsearchives.nseindia.com/content/debt/WDM/TTMLCS_09112026151735_TTML_Redemption_notification_INE517B14AL3_09_November_2026.pdf"
-      ],
-      "symbol": "TTML"
     },
     {
       "articles": 1,
@@ -2015,6 +2179,33 @@
         "https://www.ndtv.com/india-news/sonia-gandhi-memoir-sonia-gandhi-book-after-operation-blue-star-indira-gandhi-told-rahul-to-be-brave-sonia-gandhi-in-her-book-12306483"
       ],
       "symbol": "BLUESTARCO"
+    },
+    {
+      "articles": 1,
+      "categories": [
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-10T14:19:20.491516+05:30",
+      "headline_samples": [
+        "AMFI Reshuffle: Five midcap stocks that may get upgraded to largecap"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 0,
+      "review_priority": 0,
+      "source_urls": [
+        "https://economictimes.indiatimes.com/mf/analysis/amfi-reshuffle-lenskart-solutions-zydus-lifesciences-among-5-midcap-stocks-that-may-get-upgraded-to-largecap/slideshow/135700451.cms"
+      ],
+      "symbol": "BOSCHLTD"
     },
     {
       "articles": 1,
@@ -2192,6 +2383,33 @@
         "yoy_metrics_with_direction": 0
       },
       "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-10T14:19:20.491516+05:30",
+      "headline_samples": [
+        "AMFI Reshuffle: Five midcap stocks that may get upgraded to largecap"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 0,
+      "review_priority": 0,
+      "source_urls": [
+        "https://economictimes.indiatimes.com/mf/analysis/amfi-reshuffle-lenskart-solutions-zydus-lifesciences-among-5-midcap-stocks-that-may-get-upgraded-to-largecap/slideshow/135700451.cms"
+      ],
+      "symbol": "LODHA"
+    },
+    {
+      "articles": 1,
+      "categories": [
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
       "first_seen_at": "2026-11-10T07:16:00.137792+05:30",
       "headline_samples": [
         "Foreign investors keep faith in 83 stocks despite prolonged India selloff"
@@ -2339,6 +2557,33 @@
         "https://economictimes.indiatimes.com/markets/stocks/news/uno-minda-among-7-stocks-hitting-52-week-highs-rally-up-to-26-in-a-month/slideshow/135681703.cms"
       ],
       "symbol": "UNOMINDA"
+    },
+    {
+      "articles": 1,
+      "categories": [
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-10T14:19:20.491516+05:30",
+      "headline_samples": [
+        "AMFI Reshuffle: Five midcap stocks that may get upgraded to largecap"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 0,
+      "review_priority": 0,
+      "source_urls": [
+        "https://economictimes.indiatimes.com/mf/analysis/amfi-reshuffle-lenskart-solutions-zydus-lifesciences-among-5-midcap-stocks-that-may-get-upgraded-to-largecap/slideshow/135700451.cms"
+      ],
+      "symbol": "ZYDUSLIFE"
     }
   ],
   "cautions": [
@@ -2349,8 +2594,8 @@
     "Preview created after cutoff is unsuitable for historical model evaluation.",
     "Premarket frozen snapshot includes collector_last_poll_at; intervening minutes may contain uncollected news."
   ],
-  "collector_last_poll_at": "2026-11-10T12:55:56.757300+05:30",
-  "company_count": 76,
+  "collector_last_poll_at": "2026-11-10T14:19:20.491516+05:30",
+  "company_count": 83,
   "cutoff_exclusive": "2026-11-11T09:00:00+05:30",
   "data_mode": "PRE_CUTOFF_PREVIEW_NOT_FROZEN",
   "doc_evidence_register": [
@@ -2433,6 +2678,40 @@
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/c0a1bde0-4d57-46c0-ac73-940d5ff093d7.pdf"
     },
     {
+      "document_sha256": "457bd94e0b37063ac06ad4441c9c3ab2bc705b540c8f500d3829e23ec71387ea",
+      "extraction_status": "EXPLICIT_FACTS",
+      "facts": [
+        {
+          "basis": "YoY",
+          "document_sha256": "457bd94e0b37063ac06ad4441c9c3ab2bc705b540c8f500d3829e23ec71387ea",
+          "evidence_text": "EBITDA grew 60% year-on-year to INR 3,701 million, with improved margins of 25.2% in Q2",
+          "metric": "ebitda",
+          "reported_change_pct": 60.0,
+          "reported_period": null,
+          "source": "https://nsearchives.nseindia.com/corporate/MEDANTA21_10112026114048_GHLTRANSCRIPTSINTNOV2026SIGNED.pdf",
+          "verification": "ASSERTION_NOT_ARITHMETICALLY_VERIFIED"
+        },
+        {
+          "basis": "YoY",
+          "document_sha256": "457bd94e0b37063ac06ad4441c9c3ab2bc705b540c8f500d3829e23ec71387ea",
+          "evidence_text": "Q2 FY26. Average revenue per patient, ARPP, increased by 3% year-on-year to INR 2.06 lakhs,",
+          "metric": "revenue",
+          "reported_change_pct": 3.0,
+          "reported_period": "Q2FY26",
+          "source": "https://nsearchives.nseindia.com/corporate/MEDANTA21_10112026114048_GHLTRANSCRIPTSINTNOV2026SIGNED.pdf",
+          "verification": "ASSERTION_NOT_ARITHMETICALLY_VERIFIED"
+        }
+      ],
+      "first_seen_at": "2026-11-10T12:55:56.757300+05:30",
+      "id": "0881062d144c2cdf6d241100",
+      "parsed_at": "2026-11-10T14:19:50.820591+05:30",
+      "published_at": "2026-11-10T11:41:17+05:30",
+      "symbols": [
+        "MEDANTA"
+      ],
+      "url": "https://nsearchives.nseindia.com/corporate/MEDANTA21_10112026114048_GHLTRANSCRIPTSINTNOV2026SIGNED.pdf"
+    },
+    {
       "document_sha256": "1d4168fd58b3201144d7ec0b5d3700966a748c27599ec8ad5f07d9ad5469da1e",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -2483,6 +2762,19 @@
       "url": "https://nsearchives.nseindia.com/corporate/LLOYDSME_09112026165507_20261100_TECC_Cover_Letter.pdf"
     },
     {
+      "document_sha256": "8ec57d7aec91f3990e4386b324902840c20c78b353a12b5eb5c89039fa31fed7",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T12:55:56.757300+05:30",
+      "id": "0bea39fd649d416f3f65c396",
+      "parsed_at": "2026-11-10T14:19:50.820966+05:30",
+      "published_at": "2026-11-10T11:41:40+05:30",
+      "symbols": [
+        "TRIDENT"
+      ],
+      "url": "https://nsearchives.nseindia.com/corporate/TRIDENTTECHLABS_10112026114131_TRIDENT_Disclosure_Subsidary_Reg_30__2_.pdf"
+    },
+    {
       "document_sha256": "1b08c643376478a88217127e534687b501895664e0bf803778d328cbdd8b3194",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -2522,6 +2814,32 @@
       "url": "https://nsearchives.nseindia.com/corporate/WHIRLPOOL_09112026164908_SEIntimation_signed.pdf"
     },
     {
+      "document_sha256": "d2ba59f6284ad85fd4dee84ca4f5be994193627a58886bfeb8f26ba50d5f4fde",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T12:55:56.757300+05:30",
+      "id": "1372e4d09e207e56e9f8ab66",
+      "parsed_at": "2026-11-10T14:19:53.316981+05:30",
+      "published_at": "2026-11-10T12:15:58+05:30",
+      "symbols": [
+        "BAJFINANCE"
+      ],
+      "url": "https://nsearchives.nseindia.com/corporate/BAJFINANCE_10112026121523_BFL_Reg_30_Outcome_PricingofPIpostVRFinal.pdf"
+    },
+    {
+      "document_sha256": "5665be1a4ed6e569933f64cc768b69bc9eca6e75b463658a37e630864b72deef",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T12:55:56.757300+05:30",
+      "id": "1423b58a29578ec2022e33d4",
+      "parsed_at": "2026-11-10T14:19:51.795007+05:30",
+      "published_at": "2026-11-10T11:49:23+05:30",
+      "symbols": [
+        "PIRAMALFIN"
+      ],
+      "url": "https://nsearchives.nseindia.com/corporate/Piramalcapital_10112026114901_PFL_SE_Intimation_JM_Avendus_Group_sd.pdf"
+    },
+    {
       "document_sha256": "76ae671e49a4ce977efd3fa7918cfdf764067d7caf744bad58a83f89208ba853",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -2546,6 +2864,19 @@
         "COCHINSHIP"
       ],
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/7fcc8236-e719-458b-ba78-08723f3f54d9.pdf"
+    },
+    {
+      "document_sha256": "9619f01535f17417284754aae08aef5ba2683a1c72f50335ec004d6f8432003e",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T12:55:56.757300+05:30",
+      "id": "1af1d7c497f2a905ca0268c5",
+      "parsed_at": "2026-11-10T14:19:53.441753+05:30",
+      "published_at": "2026-11-10T12:21:37+05:30",
+      "symbols": [
+        "IRB"
+      ],
+      "url": "https://nsearchives.nseindia.com/corporate/IRB_10112026122055_IRBIDL_disclosure_Toll_Revenue_October_2026_sd.pdf"
     },
     {
       "document_sha256": "6db53681b98a60b122cd65499c296eaade886826cee46d5c0bb45f63d4d01836",
@@ -2650,6 +2981,19 @@
       "url": "https://nsearchives.nseindia.com/corporate/MARUTIASHISH_10112026115416_STxIntimation_SMCResults_FirstHalfYr_10Nov2026.pdf"
     },
     {
+      "document_sha256": "0da57ec3795cf45677a320c961fbfd2a19d8900517080afd36013b0c7a8e7d8b",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T12:55:56.757300+05:30",
+      "id": "3a9a74a3c146a65b26d2382a",
+      "parsed_at": "2026-11-10T14:19:50.821224+05:30",
+      "published_at": "2026-11-10T11:45:00+05:30",
+      "symbols": [
+        "WHIRLPOOL"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/cf182cc7-7a9f-4d1b-a76b-102613b3bf23.pdf"
+    },
+    {
       "document_sha256": "97350ba2fdcb6cc9532852a85a3c0e5c0cdfb58106928063ac6f0257cd1e1651",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -2702,6 +3046,19 @@
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/d5ae0901-0c23-4bb8-bcb6-42d215305ec2.pdf"
     },
     {
+      "document_sha256": "4ca6bb2baa27d3629f9f6cf47d8fec371bfda4992875b4f35da957c7174523c3",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T12:55:56.757300+05:30",
+      "id": "446e74553fe88bd39040da3e",
+      "parsed_at": "2026-11-10T14:19:52.765882+05:30",
+      "published_at": "2026-11-10T12:05:09+05:30",
+      "symbols": [
+        "HUDCO"
+      ],
+      "url": "https://nsearchives.nseindia.com/corporate/HUDCO_10112026120452_SE_DISCLOSURE_TRANSCRIPT_6NOV.pdf"
+    },
+    {
       "document_sha256": "971f95a3c66d6fa9d7742d725ed4f9aa3ce2bd597f4df4c7b8e37cd8be775d4e",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -2715,6 +3072,19 @@
       "url": "https://nsearchives.nseindia.com/corporate/PETRONET_09112026165711_Intimationtranscript.pdf"
     },
     {
+      "document_sha256": "9619f01535f17417284754aae08aef5ba2683a1c72f50335ec004d6f8432003e",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T12:55:56.757300+05:30",
+      "id": "4b5c2369985f2e5433b3e333",
+      "parsed_at": "2026-11-10T14:19:53.391216+05:30",
+      "published_at": "2026-11-10T12:21:03+05:30",
+      "symbols": [
+        "IRB"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/668424da-df0f-403d-8d7c-0599e6f9f145.pdf"
+    },
+    {
       "document_sha256": "97350ba2fdcb6cc9532852a85a3c0e5c0cdfb58106928063ac6f0257cd1e1651",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -2726,6 +3096,19 @@
         "ABCAPITAL"
       ],
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/e74b95c1-1514-4b10-ac47-10b5496a2e24.pdf"
+    },
+    {
+      "document_sha256": "5665be1a4ed6e569933f64cc768b69bc9eca6e75b463658a37e630864b72deef",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T12:55:56.757300+05:30",
+      "id": "5ad3b420375c942f936edd81",
+      "parsed_at": "2026-11-10T14:19:51.981887+05:30",
+      "published_at": "2026-11-10T11:56:10+05:30",
+      "symbols": [
+        "PIRAMALFIN"
+      ],
+      "url": "https://nsearchives.nseindia.com/corporate/Piramalcapital_10112026115554_PFL_SE_Intimation_JM_Avendus_Group_sd.pdf"
     },
     {
       "document_sha256": "182dde6ff839cc91fe6da6bc22c4ff8533c5930b1ffd6fcaf1fd18390db310da",
@@ -2936,6 +3319,19 @@
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/780accac-591f-44e7-8057-004b892c89a1.pdf"
     },
     {
+      "document_sha256": "5665be1a4ed6e569933f64cc768b69bc9eca6e75b463658a37e630864b72deef",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T12:55:56.757300+05:30",
+      "id": "82ac1c0e3764020b59dbfcde",
+      "parsed_at": "2026-11-10T14:19:52.501830+05:30",
+      "published_at": "2026-11-10T12:03:14+05:30",
+      "symbols": [
+        "PIRAMALFIN"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/cd1a8c4f-6062-4df7-a835-3f7eb456dffe.pdf"
+    },
+    {
       "document_sha256": "182dde6ff839cc91fe6da6bc22c4ff8533c5930b1ffd6fcaf1fd18390db310da",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -2999,6 +3395,19 @@
         "NUVAMA"
       ],
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/6bd52518-104f-4d33-b96d-e7686154a91e.pdf"
+    },
+    {
+      "document_sha256": "5665be1a4ed6e569933f64cc768b69bc9eca6e75b463658a37e630864b72deef",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T12:55:56.757300+05:30",
+      "id": "86e0387bc0a5d1d6bf85f35e",
+      "parsed_at": "2026-11-10T14:19:50.820203+05:30",
+      "published_at": "2026-11-10T11:38:45+05:30",
+      "symbols": [
+        "PIRAMALFIN"
+      ],
+      "url": "https://nsearchives.nseindia.com/corporate/Piramalcapital_10112026113736_PFL_SE_Intimation_JM_Avendus_Group_sd.pdf"
     },
     {
       "document_sha256": "30d87860fb6df1303c9e9d210689941a97921829c6396f6339956a5603ba71a0",
@@ -3077,6 +3486,19 @@
         "INDUSINDBK"
       ],
       "url": "https://nsearchives.nseindia.com/content/debt/WDM/INDUSINDBK4_09112026160922_SE_Intimation-Regulation_60_2__Signed.pdf"
+    },
+    {
+      "document_sha256": "d2ba59f6284ad85fd4dee84ca4f5be994193627a58886bfeb8f26ba50d5f4fde",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T12:55:56.757300+05:30",
+      "id": "9772c86e03e462294733cc45",
+      "parsed_at": "2026-11-10T14:19:53.294443+05:30",
+      "published_at": "2026-11-10T12:12:30+05:30",
+      "symbols": [
+        "BAJFINANCE"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/41e7bb57-172f-4858-a5ac-8c15fe653e81.pdf"
     },
     {
       "document_sha256": "3b0360d3ab965941e8c7b3cb498ccf6e2ba14db3ae379619f5fe93cd32cf2f3c",
@@ -3209,6 +3631,19 @@
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/fca0a7e9-4561-48a5-a2a9-fff6ad2a7a01.pdf"
     },
     {
+      "document_sha256": "fe60ee427bed85d33fabe55f6a3e8ca4592e0e340c0e96b04cd89df029724f5a",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T12:55:56.757300+05:30",
+      "id": "ad863512e05af26b118a9639",
+      "parsed_at": "2026-11-10T14:19:54.164095+05:30",
+      "published_at": "2026-11-10T12:34:00+05:30",
+      "symbols": [
+        "KIMS"
+      ],
+      "url": "https://nsearchives.nseindia.com/corporate/KIMS_10112026123353_Investor_call_17112026.pdf"
+    },
+    {
       "document_sha256": "30d87860fb6df1303c9e9d210689941a97921829c6396f6339956a5603ba71a0",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -3259,6 +3694,19 @@
         "DMART"
       ],
       "url": "https://nsearchives.nseindia.com/corporate/DMART_09112026165607_RedemptionofCP_09112026.pdf"
+    },
+    {
+      "document_sha256": "6db6c5d979d6ecda5f01ab593c05c58c739b3aa0ba34dbe2e8bc3a23079587ec",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T12:55:56.757300+05:30",
+      "id": "bb63fd06f324dad817e7662d",
+      "parsed_at": "2026-11-10T14:19:53.638841+05:30",
+      "published_at": "2026-11-10T12:22:26+05:30",
+      "symbols": [
+        "TATACOMM"
+      ],
+      "url": "https://nsearchives.nseindia.com/corporate/TATACOMM_10112026122210_18547.pdf"
     },
     {
       "document_sha256": "39c67974a9888fa7110d83b5babad302f8bc08eb4d3e12beba93178a393b2acf",
@@ -3391,6 +3839,32 @@
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/f1adda02-5720-474e-8cd2-5632e9218b7d.pdf"
     },
     {
+      "document_sha256": "0da57ec3795cf45677a320c961fbfd2a19d8900517080afd36013b0c7a8e7d8b",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T12:55:56.757300+05:30",
+      "id": "d6e2485a799457964880e35d",
+      "parsed_at": "2026-11-10T14:19:51.102088+05:30",
+      "published_at": "2026-11-10T11:46:39+05:30",
+      "symbols": [
+        "WHIRLPOOL"
+      ],
+      "url": "https://nsearchives.nseindia.com/corporate/WHIRLPOOL_10112026114624_SEIntimarion_newspaper_signed.pdf"
+    },
+    {
+      "document_sha256": "4ca6bb2baa27d3629f9f6cf47d8fec371bfda4992875b4f35da957c7174523c3",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T12:55:56.757300+05:30",
+      "id": "d858d5bc57b588a6ecd40da0",
+      "parsed_at": "2026-11-10T14:19:52.198898+05:30",
+      "published_at": "2026-11-10T11:59:25+05:30",
+      "symbols": [
+        "HUDCO"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/37fd524c-437e-4777-af8c-76b05ba573ff.pdf"
+    },
+    {
       "document_sha256": "3264aa131dbc6b19d50b290b0a9f9c354e35bef6ca66a4e2ca3212f8cb045d9b",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -3415,6 +3889,19 @@
         "PIRAMALFIN"
       ],
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/3b82ad9d-9402-4fe3-a95d-9b9df07b821a.pdf"
+    },
+    {
+      "document_sha256": "5665be1a4ed6e569933f64cc768b69bc9eca6e75b463658a37e630864b72deef",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T12:55:56.757300+05:30",
+      "id": "db8914a30ae256d81ccd6252",
+      "parsed_at": "2026-11-10T14:19:52.960378+05:30",
+      "published_at": "2026-11-10T12:06:41+05:30",
+      "symbols": [
+        "PIRAMALFIN"
+      ],
+      "url": "https://nsearchives.nseindia.com/corporate/Piramalcapital_10112026120625_PFL_SE_Intimation_JM_Avendus_Group_sd.pdf"
     },
     {
       "document_sha256": "4cf386b39695c52b3ffee1ae0e189bdfc6fadc6b7d215f38210c393266f282f5",
@@ -3454,6 +3941,40 @@
         "BBOX"
       ],
       "url": "https://nsearchives.nseindia.com/corporate/BBOX_10112026110341_SE_Intimation_for_investor_call.pdf"
+    },
+    {
+      "document_sha256": "457bd94e0b37063ac06ad4441c9c3ab2bc705b540c8f500d3829e23ec71387ea",
+      "extraction_status": "EXPLICIT_FACTS",
+      "facts": [
+        {
+          "basis": "YoY",
+          "document_sha256": "457bd94e0b37063ac06ad4441c9c3ab2bc705b540c8f500d3829e23ec71387ea",
+          "evidence_text": "EBITDA grew 60% year-on-year to INR 3,701 million, with improved margins of 25.2% in Q2",
+          "metric": "ebitda",
+          "reported_change_pct": 60.0,
+          "reported_period": null,
+          "source": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/0ef79fd6-fd64-4635-96fd-3e8f240e4da9.pdf",
+          "verification": "ASSERTION_NOT_ARITHMETICALLY_VERIFIED"
+        },
+        {
+          "basis": "YoY",
+          "document_sha256": "457bd94e0b37063ac06ad4441c9c3ab2bc705b540c8f500d3829e23ec71387ea",
+          "evidence_text": "Q2 FY26. Average revenue per patient, ARPP, increased by 3% year-on-year to INR 2.06 lakhs,",
+          "metric": "revenue",
+          "reported_change_pct": 3.0,
+          "reported_period": "Q2FY26",
+          "source": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/0ef79fd6-fd64-4635-96fd-3e8f240e4da9.pdf",
+          "verification": "ASSERTION_NOT_ARITHMETICALLY_VERIFIED"
+        }
+      ],
+      "first_seen_at": "2026-11-10T12:55:56.757300+05:30",
+      "id": "e46b55f85579e982adaf5e71",
+      "parsed_at": "2026-11-10T14:19:51.576374+05:30",
+      "published_at": "2026-11-10T11:48:59+05:30",
+      "symbols": [
+        "MEDANTA"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/0ef79fd6-fd64-4635-96fd-3e8f240e4da9.pdf"
     },
     {
       "document_sha256": "3b0360d3ab965941e8c7b3cb498ccf6e2ba14db3ae379619f5fe93cd32cf2f3c",
@@ -3560,6 +4081,32 @@
       "url": "https://nsearchives.nseindia.com/corporate/TITAN_09112026150627_SECPRedemption09112026.pdf"
     },
     {
+      "document_sha256": "bbb27c6fb0dd5877b834696b511ff09787500980aa15269b8d1dcf337c3546bf",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T12:55:56.757300+05:30",
+      "id": "f058cf0662f0ffb048620821",
+      "parsed_at": "2026-11-10T14:19:53.884623+05:30",
+      "published_at": "2026-11-10T12:23:07+05:30",
+      "symbols": [
+        "BAJFINANCE"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/84c0dbf5-4b55-41b9-ab7b-e20d9fe359a9.pdf"
+    },
+    {
+      "document_sha256": "6db6c5d979d6ecda5f01ab593c05c58c739b3aa0ba34dbe2e8bc3a23079587ec",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T12:55:56.757300+05:30",
+      "id": "f09e5bf8dbdd2bb28644044f",
+      "parsed_at": "2026-11-10T14:19:53.975848+05:30",
+      "published_at": "2026-11-10T12:23:40+05:30",
+      "symbols": [
+        "TATACOMM"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/5f951d2c-ed41-4478-a687-cdd4122ac45b.pdf"
+    },
+    {
       "document_sha256": "49fd415a9ec20a015cda4ca182f267c173fce0759e9edb797fff84986ed5950d",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -3612,7 +4159,7 @@
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/647209bb-3305-4ef9-9d5e-ab98f54d50d5.pdf"
     }
   ],
-  "documents_with_eligible_text": 95,
+  "documents_with_eligible_text": 115,
   "execution_enabled": false,
   "frozen_universe_membership": {
     "360ONE": "360 ONE WAM Ltd.",
