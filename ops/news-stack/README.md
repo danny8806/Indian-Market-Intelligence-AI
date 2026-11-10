@@ -17,17 +17,23 @@ with execution_enabled=false. The news service has no broker or bridge credentia
   passes also verify a bounded sample of individual public publisher pages
   using original publication metadata, subject to their access rules.
 - market-news-morning.timer starts research at 08:00 IST on weekdays and
-  refreshes at 08:30, 08:55 and 09:00. At 09:05 the job freezes the news
-  evidence from 15:00 on the previous regular NSE session.
-  The 09:05 lock uses a completed draft and keeps reviewed symbols whose
-  evidence matches the cutoff snapshot. Verified, explicitly directional
-  headlines and publisher excerpts fill open slots, including when no draft
-  is ready. The lock runs without waiting for an AI call and targets five
-  LONG and five SHORT distinct verified NIFTY 500 symbols. Ambiguous or
-  conflicting headlines leave slots open. The 09:10 timer retries a missed
-  lock, and the 09:12 deadline rejects late results. One final research
-  watchlist is persisted in news_morning_reports. Update the bundled 2026
-  calendar before running morning research in the following year.
+  refreshes at 08:30 and 08:55. At 09:00 the job freezes the exact news
+  evidence observed from 15:00 on the previous regular NSE session and closes
+  the analyst window; a draft that started before 09:00 may finish afterwards,
+  but any evidence ID outside the frozen snapshot is rejected. A separate
+  critic then reviews the analyst shortlist using only that snapshot from 09:00
+  to 09:12. It cannot add symbols or evidence. The critic is provider-independent
+  when NEWS_CRITIC_BASE_URL and NEWS_CRITIC_MODEL configure a different
+  OpenAI-compatible endpoint; otherwise a distinct no-tools Codex call is used
+  and the audit records that the analyst and critic share a provider.
+- If the critic is quota-blocked or times out, the 09:05 and 09:10 invocations
+  retry. Verified, explicitly directional headlines and publisher excerpts fill
+  remaining slots, including when no draft or critic is ready. The watchlist
+  targets five LONG and five SHORT distinct verified NIFTY 500 symbols;
+  ambiguous or conflicting headlines leave slots open. The 09:12 deadline
+  rejects late results, and one final research watchlist is persisted in
+  news_morning_reports. Update the bundled 2026 calendar before running morning
+  research in the following year.
 
 ## Broker coverage
 
