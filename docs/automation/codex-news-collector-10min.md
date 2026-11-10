@@ -1,5 +1,8 @@
 # Codex thread automation — NSE/BSE news collector (every 10 minutes)
 
+**UPDATED DIRECTION (2026-11-10): EVERY enabled live-search AI CLI, including Codex, independently FETCHES news first. The FINAL stock selection is made by a distinct Codex FINAL invocation using ALL agents' merged, verified, as-of news.**
+Canonical specification: [ALL-CLI-NEWS-FETCHERS-CODEX-FINAL.md](ALL-CLI-NEWS-FETCHERS-CODEX-FINAL.md). Separate role prompts: [CODEX-DUAL-ROLE-PROMPTS.md](CODEX-DUAL-ROLE-PROMPTS.md).
+
 ## Setup in Codex
 Open this repository in the supported Codex/ChatGPT desktop app and create a **thread scheduled task / thread automation**. Request **every 10 minutes**, timezone **Asia/Kolkata**, continuously including holidays and weekends. Verify the Saved/Scheduled view actually confirms 10-minute intervals; do not silently fall back to hourly. Run once manually, inspect logs and database inserts, then enable unattended runs. On a local project, keep the application, network and computer running; if cloud execution is offered, configure and verify its network/secret access separately.
 
