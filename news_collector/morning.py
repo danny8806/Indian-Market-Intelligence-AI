@@ -193,8 +193,8 @@ def prepare_draft(engine, now, start, cutoff, *, clock, analyst):
 
 def finalize_watchlist(engine, now, start, cutoff, *, clock, analyst):
     day = cutoff.date().isoformat()
-    target = cutoff + timedelta(minutes=10)
-    deadline = cutoff + timedelta(minutes=12)
+    target = cutoff + timedelta(minutes=5)
+    deadline = cutoff + timedelta(minutes=7)
     key = morning_reports.c.session_date == day
     with engine.begin() as conn:
         lock_morning(conn)
@@ -243,10 +243,11 @@ def run(engine, *, clock=lambda: datetime.now(IST), analyst=run_codex):
         return {"status": "CALENDAR_UPDATE_REQUIRED"}
     if not regular_market_day(now.date()):
         return {"status": "CLOSED"}
-    start, cutoff = window_for(now.date().isoformat())
-    if cutoff - timedelta(hours=1) <= now < cutoff:
+    start, opening_research = window_for(now.date().isoformat())
+    cutoff = opening_research + timedelta(minutes=5)
+    if opening_research - timedelta(hours=1) <= now < cutoff:
         return prepare_draft(engine, now, start, cutoff, clock=clock, analyst=analyst)
-    if cutoff <= now < cutoff + timedelta(minutes=12):
+    if cutoff <= now < cutoff + timedelta(minutes=7):
         return finalize_watchlist(engine, now, start, cutoff, clock=clock, analyst=analyst)
     return {"status": "OUTSIDE_RESEARCH_WINDOW"}
 

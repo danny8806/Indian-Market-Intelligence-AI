@@ -68,10 +68,10 @@ class NewsIntelligenceTests(unittest.TestCase):
 
     def test_snapshot_excludes_late_verification_and_is_immutable(self):
         good = record(at(8, 55), at(8, 50))
-        late = record(at(9, 1), at(8, 49), name="late")
-        boundary = record(at(9, 0), at(9, 0), name="boundary")
+        late = record(at(9, 6), at(8, 49), name="late")
+        boundary = record(at(9, 5), at(9, 5), name="boundary")
         sync_archive_batch(self.db, batch("a", at(8, 58), good))
-        sync_archive_batch(self.db, batch("b", at(9, 2), late, boundary))
+        sync_archive_batch(self.db, batch("b", at(9, 7), late, boundary))
         calls = []
         with self.db.connect() as conn:
             identity = conn.execute(select(article_revisions.c.id).where(
@@ -89,11 +89,12 @@ class NewsIntelligenceTests(unittest.TestCase):
 
         draft = run(self.db, clock=lambda: at(8, 59), analyst=analyst)
         self.assertEqual(draft, {"status": "DRAFT_SAVED", "draft_status": "READY", "signals": 1})
-        report = run(self.db, clock=lambda: at(9, 0), analyst=analyst)
+        report = run(self.db, clock=lambda: at(9, 5), analyst=analyst)
         self.assertEqual(report["status"], "READY", report["reason"])
+        self.assertEqual(report["news_cutoff_at"], at(9, 5).isoformat())
         self.assertFalse(report["execution_enabled"])
         self.assertEqual(len(report["signals"]), 1)
-        self.assertEqual(run(self.db, clock=lambda: at(9, 4), analyst=analyst), report)
+        self.assertEqual(run(self.db, clock=lambda: at(9, 8), analyst=analyst), report)
         self.assertEqual(len(calls), 2)
 
     def test_bse_only_scrip_identity_is_archived_without_nifty_qualification(self):
@@ -225,11 +226,11 @@ class NewsIntelligenceTests(unittest.TestCase):
 
         draft = run(self.db, clock=lambda: at(8, 55), analyst=analyst)
         self.assertEqual(draft["draft_status"], "NO_TRADE")
-        extra = record(at(8, 57), at(8, 56), name="last-minute")
-        sync_archive_batch(self.db, batch("b", at(8, 59), extra))
+        extra = record(at(9, 3), at(9, 2), name="last-minute")
+        sync_archive_batch(self.db, batch("b", at(9, 4), extra))
         with patch("news_collector.morning.select_candidates",
                    return_value=("NO_TRADE", "No qualified stock", [])) as call:
-            report = run(self.db, clock=lambda: at(9, 0))
+            report = run(self.db, clock=lambda: at(9, 5))
             self.assertTrue(any("last-minute.pdf" in item["url"]
                                 for item in call.call_args.args[0]["items"]))
         self.assertEqual(report["status"], "NO_TRADE")
@@ -237,7 +238,7 @@ class NewsIntelligenceTests(unittest.TestCase):
 
     def test_late_draft_cannot_become_locked_watchlist(self):
         sync_archive_batch(self.db, batch("a", at(8, 53), record(at(8, 51), at(8, 50))))
-        clock = iter([at(8, 55), at(9, 0)]).__next__
+        clock = iter([at(8, 55), at(9, 5)]).__next__
         result = run(self.db, clock=clock, analyst=lambda *_a, **_k: ("OK", {"selections": []}))
         self.assertEqual(result["status"], "DRAFT_FINISHED_AFTER_LOCK")
         report = run(self.db, clock=lambda: at(9, 10))
@@ -255,15 +256,30 @@ class NewsIntelligenceTests(unittest.TestCase):
         sync_archive_batch(self.db, batch("a", at(8, 53), record(at(8, 51), at(8, 50))))
         with patch("news_collector.morning.select_candidates",
                    return_value=("UNAVAILABLE", "Temporary quota issue", [])):
-            result = run(self.db, clock=lambda: at(9, 0))
+            result = run(self.db, clock=lambda: at(9, 5))
         self.assertEqual(result["status"], "REVIEW_PENDING")
-        late = record(at(9, 2), at(8, 58), name="post-cutoff-verification")
-        sync_archive_batch(self.db, batch("b", at(9, 3), late))
+        late = record(at(9, 6), at(9, 4), name="post-cutoff-verification")
+        sync_archive_batch(self.db, batch("b", at(9, 7), late))
         with patch("news_collector.morning.select_candidates",
                    return_value=("NO_TRADE", "No qualified stock", [])) as call:
-            report = run(self.db, clock=lambda: at(9, 5))
+            report = run(self.db, clock=lambda: at(9, 8))
             self.assertEqual(len(call.call_args.args[0]["items"]), 1)
-        self.assertEqual(report["generated_at"], at(9, 5).isoformat())
+        self.assertEqual(report["generated_at"], at(9, 8).isoformat())
         self.assertEqual(run(self.db, clock=lambda: at(9, 10)), report)
         self.assertEqual(run(self.db, clock=lambda: at(9, 12))["status"],
                          "OUTSIDE_RESEARCH_WINDOW")
+
+    def test_nine_am_is_still_a_draft_and_exchange_holiday_skips(self):
+        sync_archive_batch(self.db, batch("a", at(8, 59), record(at(8, 57), at(8, 56))))
+        with patch("news_collector.morning.select_candidates",
+                   return_value=("NO_TRADE", "No qualified stock", [])) as call:
+            self.assertEqual(run(self.db, clock=lambda: at(9, 5, day=10)), {"status": "CLOSED"})
+            call.assert_not_called()
+            self.assertEqual(run(self.db, clock=lambda: at(9, 0))["status"], "DRAFT_SAVED")
+
+    def test_analysis_finishing_at_hard_deadline_cannot_lock(self):
+        sync_archive_batch(self.db, batch("a", at(9, 4), record(at(9, 3), at(9, 2))))
+        clock = iter([at(9, 8), at(9, 12)]).__next__
+        with patch("news_collector.morning.select_candidates",
+                   return_value=("NO_TRADE", "No qualified stock", [])):
+            self.assertEqual(run(self.db, clock=clock), {"status": "FINALIZATION_DEADLINE_ELAPSED"})

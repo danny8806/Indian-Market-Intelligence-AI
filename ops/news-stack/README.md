@@ -15,9 +15,10 @@ with execution_enabled=false. The news service has no broker or bridge credentia
   NEWS_CODEX_DAILY_CALLS from 0 to 48 to cap usage. Missing authentication
   or retrieval failure is reported per attempt.
 - market-news-morning.timer starts research at 08:00 IST on weekdays and
-  refreshes at 08:30 and 08:55. At 09:00 the job freezes the news evidence.
+  refreshes at 08:30, 08:55 and 09:00. At 09:05 the job freezes the news
+  evidence from 15:00 on the previous regular NSE session.
   It reuses a matching completed draft or ranks the frozen evidence in the
-  finalization window. A 09:05 retry handles temporary failures. The 09:10
+  finalization window. The 09:10
   job locks an empty UNAVAILABLE report if no review has completed, and the
   09:12 deadline prevents publishing a late result. One final research
   watchlist is persisted in news_morning_reports. Update the bundled 2026
