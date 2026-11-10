@@ -15,6 +15,16 @@ for the live application and deployment procedure. The signal-feed description
 below documents the older research feed and must not be interpreted as proof
 of delivery to the live desk.
 
+## News collection — free tools and morning rollout (research only)
+
+**Next setup session (11 Nov 2026 IST):** [Free tools catalog, web/MCP/browser methods and VPS rollout checklist](docs/automation/FREE-TOOLS-NEWS-COLLECTOR-MORNING-PLAN.md).
+
+Related design documents:
+- [Multi-agent AI CLI + Python news pipeline](docs/automation/multi-agent-news-pipeline.md)
+- [Codex independent news-fetching agent (10-minute requirements)](docs/automation/codex-news-collector-10min.md)
+
+These are **implementation plans, not deployed automations**. Start with official NSE/BSE sources and verified timestamps; run Python collection every 10 minutes once tested, add independently searching Codex/Gemini agents with quota limits, store the results in a separate news database, and keep broker orders disabled. Tools, search plans and optional provider free tiers are documented in the rollout checklist.
+
 ## Live Kotak Neo Dashboard (no simulated execution)
 
 The new [**live-only Kotak Neo trading dashboard**](live_desk/README.md) consumes this repository's exact v1.0 news-signal contract through the authenticated **direct HTTPS API bridge**, uses read-only Dhan market data for fresh market prices, and shows actual Kotak Neo broker orders, positions and reported fills. There is no local stock-prediction model, no paper trading engine and no synthetic order P&L in the live package.
