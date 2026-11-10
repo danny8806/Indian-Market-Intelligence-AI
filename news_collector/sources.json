@@ -869,9 +869,9 @@
       "kind": "broker_html",
       "provider": "BROKER",
       "authority": "secondary",
-      "card_selector": "div.w-full:has(> div > p[id^='marketnewsdivweb'])",
-      "headline_selector": "div:first-child p",
-      "summary_selector": "p[id^='marketnewsdivweb']"
+      "card_selector": "div.w-full",
+      "headline_selector": ":scope > div:first-child p",
+      "summary_selector": ":scope > div > p[id^='marketnewsdivweb']"
     }
   ]
 }

@@ -137,3 +137,17 @@ class NewsIntelligenceTests(unittest.TestCase):
         self.assertEqual(stats["status"], "BLOCKED_ROBOTS")
         self.assertEqual(items, [])
         fetch.assert_not_called()
+
+    def test_dhan_public_cards_use_the_deployed_selectors(self):
+        import json
+        from news_collector.engine import ROOT
+
+        sources = json.loads((ROOT / "sources.json").read_text(encoding="utf-8"))["sources"]
+        dhan = next(source for source in sources if source["name"] == "Dhan Live Stock News")
+        html = b"""<div class="w-full"><p>Unrelated price</p></div>
+        <div class="w-full"><div><p>Thermax Limited posted its quarterly results</p></div>
+        <div><p id="marketnewsdivweb1">Revenue changed.</p></div></div>"""
+        items = listing_items(html, dhan)
+        self.assertEqual(len(items), 1)
+        self.assertEqual(items[0]["summary"], "Revenue changed.")
+        self.assertTrue(items[0]["shared_broker_link"])

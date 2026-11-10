@@ -30,7 +30,7 @@ def listing_items(raw: bytes, source: dict) -> list[dict]:
     soup = BeautifulSoup(raw, "html.parser")
     if source.get("card_selector"):
         rows = {}
-        for card in soup.select(source["card_selector"])[:100]:
+        for card in soup.select(source["card_selector"]):
             title = card.select_one(source["headline_selector"])
             summary = card.select_one(source["summary_selector"])
             if title is None or summary is None:
@@ -42,6 +42,8 @@ def listing_items(raw: bytes, source: dict) -> list[dict]:
                     "summary": summary.get_text(" ", strip=True)[:1800],
                     "raw_time": "", "shared_broker_link": True,
                 }
+                if len(rows) == 100:
+                    break
         return list(rows.values())
     path_rule = re.compile(source["article_path"], re.I)
     origin = urlsplit(source["url"]).hostname
