@@ -16,7 +16,7 @@ from news_collector.engine import (
     IST, ROOT, build_record, fetch_bytes, fetch_one, get_universe, parse_universe_csv,
 )
 
-NSE_MASTER = "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv"
+NSE_MASTER = "https://archives.nseindia.com/content/equities/EQUITY_L.csv"
 
 
 def equity_master(body: str) -> dict[str, str]:
@@ -32,18 +32,23 @@ def equity_master(body: str) -> dict[str, str]:
     return result
 
 
-def load_universes(root: Path, now: datetime) -> tuple[dict, dict]:
+def load_universes(root: Path, now: datetime) -> tuple[dict, dict, bool]:
     root.mkdir(parents=True, exist_ok=True)
     master_path = root / "nse_equities.csv"
     nifty_path = root / "universe_snapshot.csv"
+    verified_path = root / "nifty_snapshot_verified"
 
     def fresh(path):
         return path.is_file() and 0 <= now.timestamp() - path.stat().st_mtime < 86400
 
-    if fresh(nifty_path):
+    verified = fresh(verified_path) and nifty_path.is_file()
+    if verified:
         nifty = parse_universe_csv(nifty_path.read_text(encoding="utf-8"))
     else:
-        nifty, _ = get_universe(nifty_path)
+        nifty, status = get_universe(nifty_path)
+        verified = status.startswith("OFFICIAL_FETCH:")
+        if verified:
+            verified_path.write_text(status + "\n", encoding="utf-8")
     broader = {}
     if not fresh(master_path):
         try:
@@ -54,7 +59,7 @@ def load_universes(root: Path, now: datetime) -> tuple[dict, dict]:
             pass
     if master_path.is_file():
         broader = equity_master(master_path.read_text(encoding="utf-8"))
-    return nifty, {**broader, **nifty}
+    return nifty, {**broader, **nifty}, verified
 
 
 def trusted_origin(source: dict, url: str) -> bool:
@@ -84,7 +89,11 @@ def observation(item: dict, source: dict, observed: datetime, universe: dict,
     if filing_id and source["provider"] in {"NSE", "BSE"}:
         row["id"] = hashlib.sha256(
             f'{source["provider"]}:{filing_id}'.encode()).hexdigest()[:24]
-    row["archive_observation"] = True
+    # The original BSE RSS explicitly identifies each issuer by scrip code.
+    # Store that exchange identity even if the company has no NSE listing.
+    code = item.get("scrip_code", "")
+    if source["provider"] == "BSE" and re.fullmatch(r"[0-9]{6}", code):
+        row["symbols"] = sorted({*row["symbols"], f"BSE:{code}"})
     row["discoverer"] = discoverer
     row["nifty_symbols"] = sorted(set(row["symbols"]) & nifty.keys())
     row["verified_origin"] = bool(
@@ -101,7 +110,7 @@ def observation(item: dict, source: dict, observed: datetime, universe: dict,
 
 def collect_batch(root: Path, *, clock=lambda: datetime.now(IST), config=ROOT / "sources.json"):
     started = clock()
-    nifty, universe = load_universes(root, started)
+    nifty, universe, verified = load_universes(root, started)
     sources = json.loads(config.read_text(encoding="utf-8"))["sources"]
     rows, checks = [], []
 
@@ -113,7 +122,8 @@ def collect_batch(root: Path, *, clock=lambda: datetime.now(IST), config=ROOT / 
         for source, (stats, items, observed) in zip(sources, pool.map(retrieve, sources)):
             checks.append(stats)
             for item in items:
-                row = observation(item, source, observed, universe, nifty, discoverer="python")
+                row = observation(item, source, observed, universe, nifty if verified else {},
+                                  discoverer="python")
                 if row and (row["published_at"] or row["symbols"]):
                     rows.append(row)
     return {
@@ -125,9 +135,10 @@ def collect_batch(root: Path, *, clock=lambda: datetime.now(IST), config=ROOT / 
         "sources_failed": sum(check["status"] == "ERROR" for check in checks),
         "sources": checks,
         "records": rows,
-        "nifty_count": len(nifty),
+        "nifty_count": len(nifty) if verified else 0,
+        "nifty_membership_verified": verified,
         "listed_count": len(universe),
-    }, nifty, universe
+    }, (nifty if verified else {}), universe
 
 
 def stage(root: Path, batch: dict) -> Path:

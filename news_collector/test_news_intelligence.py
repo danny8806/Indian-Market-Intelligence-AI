@@ -92,6 +92,17 @@ class NewsIntelligenceTests(unittest.TestCase):
         self.assertEqual(run(self.db, clock=lambda: at(9, 4), analyst=analyst), report)
         self.assertEqual(len(calls), 2)
 
+    def test_bse_only_scrip_identity_is_archived_without_nifty_qualification(self):
+        feed = {**FEED, "provider": "BSE", "url": "https://www.bseindia.com/feed.xml"}
+        row = observation({
+            "url": "https://www.bseindia.com/filing.pdf",
+            "headline": "Results announced", "raw_time": "11-Nov-2026 08:50:00",
+            "scrip_code": "500123", "original_time": True,
+        }, feed, at(8, 55), NIFTY, NIFTY, discoverer="python")
+        self.assertEqual(row["symbols"], ["BSE:500123"])
+        self.assertEqual(row["nifty_symbols"], [])
+        self.assertTrue(row["verified_origin"])
+
     def test_discovery_host_boundary(self):
         known = {"www.nseindia.com"}
         self.assertTrue(allowed_url("https://www.nseindia.com/filing", known))

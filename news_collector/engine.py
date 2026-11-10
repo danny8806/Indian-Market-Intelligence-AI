@@ -38,9 +38,9 @@ MAX_BYTES = 14_000_000
 MAX_ITEMS = 18_000
 USER_AGENT = "IndianMarketResearchCollector/1.0 (public feeds; no login or bypass)"
 UNIVERSE_URLS = (
+    "https://archives.nseindia.com/content/indices/ind_nifty500list.csv",
     "https://www.niftyindices.com/IndexConstituent/ind_nifty500list.csv",
     "https://niftyindices.com/IndexConstituent/ind_nifty500list.csv",
-    "https://archives.nseindia.com/content/indices/ind_nifty500list.csv",
 )
 FINANCE_TERMS = re.compile(
     r"\b(results?|earnings|profit|loss|revenue|ebitda|margin|order|contract|"
@@ -205,6 +205,8 @@ def rss_items(raw: bytes, source: dict) -> list[dict]:
             "headline": headline[:550],
             "summary": BeautifulSoup(fields.get("description", ""), "html.parser").get_text(" ", strip=True)[:1800],
             "url": url,
+            "scrip_code": fields.get("scripcode", ""),
+            "filing_id": fields.get("filingid", ""),
             "original_time": bool(fields.get("pubdate") or fields.get("published") or fields.get("date")),
             "raw_time": ("" if source.get("timestamp_provenance") == "discovery"
                          else fields.get("pubdate") or fields.get("published") or fields.get("updated") or fields.get("date") or ""),
