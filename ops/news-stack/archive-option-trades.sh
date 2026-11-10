@@ -21,8 +21,8 @@ with closing(sqlite3.connect(source.as_uri() + "?mode=ro", uri=True, timeout=10)
         db.backup(copy)
 PY
 chmod 644 "$TEMP_DB/trades.db"
-IMAGE="$(docker compose -p market-news-db --env-file "$ENV" \
-    -f "$BASE/current/ops/news-stack/compose.yaml" config --images | grep -Fx 'market-news-db-collector')"
+IMAGE=market-news-db-collector
+docker image inspect "$IMAGE" >/dev/null
 export TRADE_ARCHIVE_DATABASE_URL="postgresql+psycopg://trade_archive_writer:$PASS@postgres:5432/market_news"
 docker run --rm --name market-news-trade-job --network market-news-private \
     --memory 256m --cpus 0.25 --mount "type=bind,src=$TEMP_DB/trades.db,dst=/trade-source.db,readonly" \

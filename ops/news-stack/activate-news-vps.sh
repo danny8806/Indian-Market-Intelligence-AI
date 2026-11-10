@@ -97,10 +97,10 @@ echo "DB VERIFIED: news_articles count=$ARTICLES"
 for unit in market-news-{collect,morning,trades}.{service,timer}; do
   "${SYSTEM_INSTALL[@]}" -m 644 "$RELEASE/ops/news-stack/$unit" "/etc/systemd/system/$unit"
 done
+bash "$RELEASE/ops/news-stack/archive-option-trades.sh"
 ln -sfn "$RELEASE" "$BASE/current.new"
 mv -Tf "$BASE/current.new" "$BASE/current"
 "${SYSTEMCTL[@]}" daemon-reload
-bash "$RELEASE/ops/news-stack/archive-option-trades.sh"
 "${SYSTEMCTL[@]}" enable --now market-news-collect.timer market-news-morning.timer market-news-trades.timer
 "${SYSTEMCTL[@]}" is-active market-news-collect.timer market-news-morning.timer market-news-trades.timer
 printf '%s\n' "$SHA" > "$BASE/last_verified_news_commit"
