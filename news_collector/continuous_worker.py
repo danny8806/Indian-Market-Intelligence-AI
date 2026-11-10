@@ -148,9 +148,12 @@ def collect_archive(engine, root: Path, *, clock=lambda: datetime.now(IST)) -> d
     if opencode_slot is not None and _claim_slot(root, "opencode", started, opencode_slot):
         # OpenCode runs first: it is the keyless free-model lane. A quota
         # block is recorded and must never prevent the Codex or Python lanes.
+        accessible_urls = {check["url"] for check in batch["sources"]
+                           if check.get("url") and check["status"] in {"OK", "EMPTY"}}
         try:
             opencode_status, rows, opencode_audit = discover_opencode(
-                now, nifty, universe, clock=clock, slot=opencode_slot)
+                now, nifty, universe, clock=clock, slot=opencode_slot,
+                accessible_urls=accessible_urls)
         except Exception as exc:
             opencode_status, rows, opencode_audit = (
                 f"DISCOVERY_FAILED_{type(exc).__name__}", [], {})

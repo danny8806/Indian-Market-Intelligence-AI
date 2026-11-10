@@ -437,10 +437,13 @@ def _cli_version(cli: str) -> str:
 
 
 def discover(now: datetime, nifty: dict, universe: dict, *, clock, sources=None,
-             slot: int = 0, batch_size: int | None = None) -> tuple[str, list[dict], dict]:
+             slot: int = 0, batch_size: int | None = None,
+             accessible_urls: set[str] | None = None) -> tuple[str, list[dict], dict]:
     """Fetch a rotating batch of configured sources and verify returned articles."""
     if sources is None:
         sources = json.loads((ROOT / "sources.json").read_text(encoding="utf-8"))["sources"]
+    if accessible_urls is not None:
+        sources = [source for source in sources if source.get("url") in accessible_urls]
     if batch_size is None:
         try:
             batch_size = max(1, int(os.getenv("NEWS_OPENCODE_SOURCES_PER_RUN", "12")))
