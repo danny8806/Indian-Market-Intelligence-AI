@@ -4,6 +4,7 @@
 
 ## 1. Project and direct links
 
+- **Source-access resilience and new OSS research agents:** https://github.com/danny8806/Indian-Market-Intelligence-AI/blob/main/docs/automation/OPEN-SOURCE-AGENTS-SOURCE-ACCESS-RESILIENCE.md
 - **Expanded open-source tools and agents catalog:** https://github.com/danny8806/Indian-Market-Intelligence-AI/blob/main/docs/automation/EXTENDED-OPEN-SOURCE-NEWS-FETCHING-TOOLS-CATALOG.md
 - **Main repository (source code):** https://github.com/danny8806/Indian-Market-Intelligence-AI
 - **All news sources, free web tools, browser/MCP services and AI CLI roles:** https://github.com/danny8806/Indian-Market-Intelligence-AI/blob/main/docs/automation/COMPLETE-SOURCES-TOOLS-MODELS-AI-OPERATING-PLAN.md
