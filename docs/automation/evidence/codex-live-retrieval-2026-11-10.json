@@ -9,6 +9,11 @@
     "fetched_items": 2,
     "web_search_gate": "passed; codex_research.py emits VERIFIED only after the CLI emits a web_search event",
     "model_recorded": false,
+    "later_run": {
+      "checked_at_ist": "2026-11-10T18:35:16.352340+05:30",
+      "status": "NO_VERIFIED_RESULTS",
+      "fetched_items": 0
+    },
     "limitations": [
       "The raw Codex CLI transcript was not persisted; only the gate result and verified observations are stored.",
       "Both URLs had already been collected by Python, so Codex proves live retrieval but no unique coverage on this run."
@@ -47,7 +52,7 @@
   "opencode": {
     "source_check": "OpenCode CLI",
     "status": "QUOTA_LIMIT",
-    "checked_at_ist": "2026-11-10T18:05:30.994032+05:30",
+    "checked_at_ist": "2026-11-10T18:34:33.438671+05:30",
     "model": "opencode/deepseek-v4.1-flash-free",
     "source_batch_count": 12,
     "live_retrievals": 0,

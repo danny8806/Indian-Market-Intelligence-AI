@@ -32,12 +32,14 @@ infrastructure merely because it appears in the catalog or in this file.
 ## Source-access probes
 
 - The enabled collector list contains 98 unique sources. Current source-state
-  totals after the 18:20 IST batch are 73 `OK`, 9 `EMPTY`, 6 `ERROR`,
+  totals after the 18:30 IST batch are 73 `OK`, 8 `EMPTY`, 7 `ERROR`,
   3 `BLOCKED_ROBOTS`, 7 `SKIPPED_COST_GUARD`, 4 `SKIPPED_NO_KEY`,
-  1 `VERIFIED` (Codex) and 1 `QUOTA_LIMIT` (OpenCode).
+  1 `NO_VERIFIED_RESULTS` (Codex) and 1 `QUOTA_LIMIT` (OpenCode).
   Codex recorded `VERIFIED` at 18:06 IST with two NSE filing URLs after a real
   `web_search` event. Both URLs had already been collected by Python at
-  17:10/17:20 IST, so this proves live retrieval but not new coverage.
+  17:10/17:20 IST, so this proves live retrieval but not new coverage. A later
+  18:35 IST Codex run returned `NO_VERIFIED_RESULTS`; the 18:06 evidence
+  remains in revision history and the evidence JSON.
   OpenCode recorded `QUOTA_LIMIT`; no bypass was attempted.
 - Provenance is write-once. A later lane that re-observes an existing URL is
   retained in `news_article_revisions`; it cannot rewrite the article-level
@@ -72,7 +74,7 @@ infrastructure merely because it appears in the catalog or in this file.
 
 | Lane | Current evidence | Status |
 | --- | --- | --- |
-| Codex CLI | Passed the `web_search` event gate and returned `VERIFIED` with two NSE filing URLs at 18:06 IST. Both URLs had already been collected by Python at 17:10/17:20 IST | Live retrieval proven; no unique coverage demonstrated yet |
+| Codex CLI | Passed the `web_search` event gate and returned `VERIFIED` with two NSE filing URLs at 18:06 IST. Both URLs had already been collected by Python at 17:10/17:20 IST. A later 18:35 IST run returned `NO_VERIFIED_RESULTS` | Live retrieval proven; no unique coverage demonstrated yet |
 | OpenCode | Free-model quota exhausted until 2026-11-11 05:30 IST; logs show `QUOTA_LIMIT`/`SKIPPED_BUDGET` | No proven live retrieval |
 | Gemini, Qwen, Claude, Copilot, Ollama | No verified authentication, installed binary or live-search evidence in the collector | Not configured |
 
