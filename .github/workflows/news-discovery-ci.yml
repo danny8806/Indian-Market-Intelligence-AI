@@ -52,6 +52,20 @@ jobs:
           done
           [[ "$ok" == "1" ]] || { echo "Postgres writer/reader roles were not initialized"; exit 4; }
           echo "PASS: isolated database booted with separate writer and reader."
+      - name: Import archived NIFTY news into actual isolated PostgreSQL
+        run: |
+          docker compose -p market-news-ci -f ops/news-stack/compose.yaml build collector
+          docker compose -p market-news-ci -f ops/news-stack/compose.yaml run --rm --no-deps collector \
+            python -m news_collector.db_store --require-db --backfill-all
+          count="$(docker compose -p market-news-ci -f ops/news-stack/compose.yaml exec -T postgres \
+            psql -U news_admin -d market_news -Atqc 'select count(*) from news_articles;')"
+          [[ "$count" =~ ^[0-9]+$ && "$count" -gt 0 ]] || { echo "No rows imported"; exit 5; }
+          echo "PASS: archived news imported to PostgreSQL: $count distinct articles."
+          reader="$(docker compose -p market-news-ci -f ops/news-stack/compose.yaml exec -T \
+            -e PGPASSWORD="$NEWS_READER_PASSWORD" postgres \
+            psql -h 127.0.0.1 -U news_reader -d market_news -Atqc 'select count(*) from news_articles;')"
+          [[ "$reader" == "$count" ]] || { echo "News read-only role cannot read article records"; exit 6; }
+          echo "PASS: independent news_reader role can SELECT all archived records."
       - name: Remove temporary database containers and test volumes
         if: always()
         run: docker compose -p market-news-ci -f ops/news-stack/compose.yaml down -v --remove-orphans || true
