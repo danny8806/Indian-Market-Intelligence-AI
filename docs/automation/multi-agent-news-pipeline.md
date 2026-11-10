@@ -2,6 +2,9 @@
 
 Status: **proposed architecture, NOT deployed**. Last reviewed 2026-11-10 IST.
 
+**UPDATED DIRECTION (2026-11-10): EVERY enabled live-search AI CLI, including Codex, independently FETCHES news first. The FINAL stock selection is made by a distinct Codex FINAL invocation using ALL agents' merged, verified, as-of news.**
+Canonical specification: [ALL-CLI-NEWS-FETCHERS-CODEX-FINAL.md](ALL-CLI-NEWS-FETCHERS-CODEX-FINAL.md). Separate role prompts: [CODEX-DUAL-ROLE-PROMPTS.md](CODEX-DUAL-ROLE-PROMPTS.md).
+
 ## Goal
 Every 10 minutes, independently discover and persist new NSE/BSE corporate announcements and Indian equity news using **Python + multiple AI CLI agents**. Every trading morning, have an independently verified final decision agent rank up to **five bullish and five bearish NIFTY 500 research candidates**, based only on news first available from the previous NSE trading session at 15:00 IST through current session 09:00 IST. Preserve non-NIFTY-500 news separately. **NO live trades or broker actions.**
 
@@ -19,7 +22,7 @@ Every 10 minutes, independently discover and persist new NSE/BSE corporate annou
 4. Normalize entities, identify duplicate articles and event duplicates while retaining all source URLs and `discovered_by` agents. Keep originals and corrections.
 5. Commit each verified event to an **independent news DB**, with a transactional per-source cursor. Daily event set is immutable as-of the 09:00 cut-off for backtesting; corrections versioned separately.
 6. A separate premarket job after 09:00 IST reads ONLY events with defensible `first_available_at <= 09:00 IST` and within the prior-session-15:00 window. It MUST NOT use news added later unless evidence proves it was publicly available by 09:00. Mark unclear timestamp as excluded from time-limited selection.
-7. **Final decision agent** evaluates consolidated, deduplicated news using structured evidence and price expectations. Independent **critic/reviewer agent** challenges each candidate using already available news and sources. Final ranked JSON must meet existing `schema/stock-signals.schema.json` and `bridge/CHATGPT_TASK_PROMPT.md` requirements. Score evidence quality, surprise vs expectation, earnings/contract/regulatory materiality, liquidity, and bearish/bullish counterevidence. Two agents citing the same outlet are not independent source confirmation. Disagreement lowers confidence or rejects candidate rather than becoming a majority vote.
+7. **Codex FINAL** (separate process from Codex FETCH) evaluates consolidated, deduplicated news using structured evidence and price expectations. Independent **critic/reviewer agent** challenges each candidate using already available news and sources. Final ranked JSON must meet existing `schema/stock-signals.schema.json` and `bridge/CHATGPT_TASK_PROMPT.md` requirements. Score evidence quality, surprise vs expectation, earnings/contract/regulatory materiality, liquidity, and bearish/bullish counterevidence. Two agents citing the same outlet are not independent source confirmation. Disagreement lowers confidence or rejects candidate rather than becoming a majority vote.
 8. Persist decisions, source references, cutoff, rejected candidates, model/runtime versions, rationale and audit logs. Produce at most five LONG and five SHORT; zero is valid. Delivery to `/api/v1/signals/incoming` is a separate authenticated, user-approved, tested integration; it must not auto-enable real orders.
 
 ## Proposed database entities
