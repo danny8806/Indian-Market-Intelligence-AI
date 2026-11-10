@@ -521,6 +521,23 @@ class NewsIntelligenceTests(unittest.TestCase):
         self.assertEqual(run(self.db, clock=clock), {"status": "FINALIZATION_DEADLINE_ELAPSED"})
 
 
+    def test_deadline_is_rechecked_after_waiting_for_the_final_database_lock(self):
+        from news_collector.morning import lock_morning
+        current = [at(9, 11)]
+        attempts = []
+
+        def delayed_lock(conn):
+            attempts.append(conn)
+            if len(attempts) == 3:
+                current[0] = at(9, 12)
+            lock_morning(conn)
+
+        with patch("news_collector.morning.lock_morning", side_effect=delayed_lock):
+            self.assertEqual(run(self.db, clock=lambda: current[0]),
+                             {"status": "FINALIZATION_DEADLINE_ELAPSED"})
+        with self.db.connect() as conn:
+            self.assertIsNone(conn.execute(select(morning_reports.c.report)).scalar_one())
+
     def test_headline_fallback_fills_five_each_without_repeating_symbols(self):
         rows = []
         for side, metric in (("LONG", "net profit rises"), ("SHORT", "net profit falls")):

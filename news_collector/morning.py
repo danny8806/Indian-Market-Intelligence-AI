@@ -323,17 +323,18 @@ def finalize_watchlist(engine, now, start, cutoff, *, clock, critic=None):
         status, reason = "UNAVAILABLE", "No completed review or verified fallback candidates"
     reason += (f" | critic={critic_label}:{critic_status}"
                f" independent={str(independent).lower()}")
-    locked_at = clock().astimezone(IST)
-    audit["completed_at"] = locked_at.isoformat()
-    if locked_at >= deadline:
-        return {"status": "FINALIZATION_DEADLINE_ELAPSED"}
-    frozen = {**snapshot, "review_audit": audit}
-    report = make_report(day, cutoff, locked_at, status=status, reason=reason, signals=signals)
     with engine.begin() as conn:
         lock_morning(conn)
         existing = conn.execute(select(morning_reports).where(key)).mappings().first()
         if existing is not None and existing["report"] is not None:
             return existing["report"]
+        # A concurrent finalizer can hold the database lock across the deadline.
+        locked_at = clock().astimezone(IST)
+        if locked_at >= deadline:
+            return {"status": "FINALIZATION_DEADLINE_ELAPSED"}
+        audit["completed_at"] = locked_at.isoformat()
+        frozen = {**snapshot, "review_audit": audit}
+        report = make_report(day, cutoff, locked_at, status=status, reason=reason, signals=signals)
         if existing is None:
             conn.execute(insert(morning_reports).values(
                 session_date=day, frozen_at=now.astimezone(timezone.utc),
