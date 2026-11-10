@@ -1,11 +1,11 @@
 {
   "session": "2026-11-11",
-  "generated_at": "2026-11-10T16:30:56.550244+05:30",
+  "generated_at": "2026-11-10T16:34:36.935880+05:30",
   "method": "Symbol + material category presence; NOT event-ID or issuer ISIN reconciliation",
   "category_counts": {
-    "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT": 7,
+    "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT": 8,
     "MEDIA_ONLY_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS": 5,
-    "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS": 16
+    "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS": 15
   },
   "groups": [
     {
@@ -201,8 +201,13 @@
       "event_category": "acquisition",
       "media_count": 0,
       "nse_count": 1,
-      "bse_count": 0,
+      "bse_count": 1,
       "filing_examples": [
+        {
+          "headline": "Inventurus Knowledge Solutions Ltd (544309)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/47d9e9f6-99c9-4715-8a80-f4e5ab18ffaa.pdf",
+          "published_at": "2026-11-10T16:32:09+05:30"
+        },
         {
           "headline": "Inventurus Knowledge Solutions Limited",
           "url": "https://nsearchives.nseindia.com/corporate/IKS2006_10112026162853_FINALProjectTurboAcquistionSEDisclosure_10Nov2026.pdf",
@@ -210,8 +215,9 @@
         }
       ],
       "media_examples": [],
-      "state": "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "state": "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT",
       "exchanges_seen": [
+        "BSE",
         "NSE"
       ]
     },
@@ -747,9 +753,9 @@
       "status_a": "OK",
       "status_b": "OK",
       "comparison_status": "SNAPSHOT_OVERLAP_ONLY",
-      "feed_a_unique_matched_urls": 147,
-      "feed_b_unique_matched_urls": 147,
-      "both_feeds_same_url": 147,
+      "feed_a_unique_matched_urls": 149,
+      "feed_b_unique_matched_urls": 149,
+      "both_feeds_same_url": 149,
       "only_feed_a_count": 0,
       "only_feed_b_count": 0,
       "only_feed_a_examples": [],
@@ -762,9 +768,9 @@
       "status_a": "OK",
       "status_b": "OK",
       "comparison_status": "SNAPSHOT_OVERLAP_ONLY",
-      "feed_a_unique_matched_urls": 101,
-      "feed_b_unique_matched_urls": 101,
-      "both_feeds_same_url": 101,
+      "feed_a_unique_matched_urls": 102,
+      "feed_b_unique_matched_urls": 102,
+      "both_feeds_same_url": 102,
       "only_feed_a_count": 0,
       "only_feed_b_count": 0,
       "only_feed_a_examples": [],
