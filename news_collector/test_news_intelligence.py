@@ -17,7 +17,7 @@ from news_collector.db_store import (archive_batches, article_revisions, article
                                      morning_reports, raw_documents, runs, source_checks,
                                      source_cursors, sync_archive_batch)
 from news_collector.engine import IST
-from news_collector.morning import review_candidates, run, select_candidates
+from news_collector.morning import make_report, review_candidates, run, select_candidates
 from news_collector.headline_fallback import fill_from_headlines, headline_direction
 
 FEED = {"provider": "NSE", "kind": "rss", "authority": "official",
@@ -525,20 +525,26 @@ class NewsIntelligenceTests(unittest.TestCase):
         rows = []
         for side, metric in (("LONG", "net profit rises"), ("SHORT", "net profit falls")):
             for index in range(6):
-                symbol = f"{side}{index}"
+                symbol = "360ONE" if (side, index) == ("SHORT", 0) else f"{side}{index}"
                 rows.append({
                     "verified_origin": True, "nifty_symbols": [symbol],
-                    "headline": f"{symbol} quarterly {metric} 20 percent",
+                    "headline": ("360ONE cuts profit guidance" if symbol == "360ONE"
+                                 else f"{symbol} quarterly {metric} 20 percent"),
                     "published_at": at(8, 30 + index).isoformat(),
                     "url": f"https://example.com/{symbol}",
                 })
-        reviewed = {"symbol": "LONG5", "side": "LONG", "rank": 1}
+        reviewed = fill_from_headlines({"items": [rows[5]], "recent_coverage": True}, [])[0]
         output = fill_from_headlines({"items": rows, "recent_coverage": False, "recent_universe": True}, [reviewed])
         self.assertEqual(output[0], reviewed)
         self.assertEqual(len({row["symbol"] for row in output}), 10)
         for side in ("LONG", "SHORT"):
             self.assertEqual([row["rank"] for row in output if row["side"] == side],
                              [1, 2, 3, 4, 5])
+
+        report = make_report(at(9, 0).date().isoformat(), at(9, 0), at(9, 5),
+                             status="READY", reason="Verified fallback", signals=output)
+        self.assertEqual(report["status"], "READY")
+        self.assertIn("360ONE", {row["symbol"] for row in report["signals"]})
 
     def test_fallback_rejects_unknown_and_conflicting_news(self):
         row = {"verified_origin": True, "nifty_symbols": ["KNOWN"],
