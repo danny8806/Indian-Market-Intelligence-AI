@@ -6,19 +6,31 @@ Other CLIs get staggered, independent assignments. The intake normalizes their
 results and checks the original publication or exchange feed. It stores the
 discoverer's identity separately from the original publisher.
 
-On regular NSE sessions, Codex reviews the combined database at 08:00, 08:30,
-08:55 and 09:00 IST. Routine Codex discovery yields its 08:00, 08:30 and 09:00
-slots to this review and resumes at 09:30. On closed sessions, routine
-discovery keeps its half-hour schedule. Python polling continues throughout.
-A provider quota can still block the reserved local calls.
+The morning research job reviews the combined database at 08:00, 08:30 and
+08:55 IST. On regular NSE sessions, routine Codex discovery yields its 08:00,
+08:30 and 09:00 slots to this review and resumes at 09:30; Python polling
+continues throughout. At 09:00 IST the job freezes the exact evidence snapshot
+and closes the analyst window. From 09:00 to 09:12 a separate critic reviews
+the shortlist using only the frozen pre-09:00 snapshot; it cannot add symbols
+or evidence.
+The critic is provider-independent when `NEWS_CRITIC_BASE_URL` and
+`NEWS_CRITIC_MODEL` point at a different OpenAI-compatible endpoint. Otherwise
+the Codex CLI is used as a distinct no-tools review call and the audit records
+that the analyst and critic share a provider.
 
-The analyst and critic run before the 09:05 cutoff. The critic is
-provider-independent if a separate compatible endpoint is configured. At
-09:05 the lock uses verified evidence observed since 15:00 on the previous
-regular NSE session. Reviewed picks with changed evidence are dropped. The
-lock fills available slots from current verified directional news, up to
-five LONG and five SHORT. It makes no model calls. The 09:10 retry is
-idempotent and the hard deadline is 09:12. The saved report is research-only.
+If the critic is quota-blocked or times out, the 09:05 and 09:10 invocations
+retry. By 09:12 the report is finalized from verified directional headlines, or
+NO_TRADE/UNAVAILABLE if nothing qualifies. Its evidence window opens at 15:00
+IST on the preceding regular NSE session and ends just before 09:00 IST on the
+current session. Evidence must be observed and committed before the cutoff; a
+draft that started before 09:00 may finish afterwards, but any evidence ID not
+present in the frozen snapshot is rejected. The archive continues throughout
+the day. The job compares positive, negative and conflicting evidence and
+reviews recent source outcomes. It returns up to five LONG and five SHORT
+research candidates, fewer if evidence is weak, or NO_TRADE or UNAVAILABLE. It
+stores the report with execution disabled. More than 400 verified records
+exceeds the bounded morning review capacity and returns UNAVAILABLE rather than
+silently ranking a truncated evidence set.
 
 ## Assigned searches
 
