@@ -2,9 +2,14 @@
 
 **Date:** 2026-11-10, Asia/Kolkata. **Planned working session:** morning of 2026-11-11. **Status:** PLANNED / NOT DEPLOYED. Saving this document is **not** permission to enable real-money orders.
 
+**UPDATED DIRECTION (2026-11-10): EVERY enabled live-search AI CLI, including Codex, independently FETCHES news first. The FINAL stock selection is made by a distinct Codex FINAL invocation using ALL agents' merged, verified, as-of news.**
+Canonical specification: [ALL-CLI-NEWS-FETCHERS-CODEX-FINAL.md](ALL-CLI-NEWS-FETCHERS-CODEX-FINAL.md). Separate role prompts: [CODEX-DUAL-ROLE-PROMPTS.md](CODEX-DUAL-ROLE-PROMPTS.md).
+
 ## 1. Project and direct links
 
 - **Main repository (source code):** https://github.com/danny8806/Indian-Market-Intelligence-AI
+- **All-CLI independent fetchers + Codex final decision:** https://github.com/danny8806/Indian-Market-Intelligence-AI/blob/main/docs/automation/ALL-CLI-NEWS-FETCHERS-CODEX-FINAL.md
+- **Two Codex role prompts:** https://github.com/danny8806/Indian-Market-Intelligence-AI/blob/main/docs/automation/CODEX-DUAL-ROLE-PROMPTS.md
 - **Main README:** https://github.com/danny8806/Indian-Market-Intelligence-AI/blob/main/README.md
 - **Complete tool inventory + free/limited-free notes + morning steps:** https://github.com/danny8806/Indian-Market-Intelligence-AI/blob/main/docs/automation/FREE-TOOLS-NEWS-COLLECTOR-MORNING-PLAN.md
 - **Multi-agent pipeline design:** https://github.com/danny8806/Indian-Market-Intelligence-AI/blob/main/docs/automation/multi-agent-news-pipeline.md
