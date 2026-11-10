@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-10T05:36:14.278841+05:30",
+  "as_of": "2026-11-10T07:16:26.869802+05:30",
   "candidates": [
     {
       "articles": 4,
@@ -1307,6 +1307,33 @@
         "yoy_metrics_with_direction": 0
       },
       "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-10T07:16:00.137792+05:30",
+      "headline_samples": [
+        "Q2 Earnings Scorecard: Which sectors outperformed and which fell behind?"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 0,
+      "review_priority": 0,
+      "source_urls": [
+        "https://economictimes.indiatimes.com/markets/stocks/earnings/corporate-india-keeps-bottom-line-strong-with-price-hikes-and-premiumisation-as-costs-rise/articleshow/135696251.cms"
+      ],
+      "symbol": "BAJAJ-AUTO"
+    },
+    {
+      "articles": 1,
+      "categories": [
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
       "first_seen_at": "2026-11-10T02:35:36.815607+05:30",
       "headline_samples": [
         "Sonia Gandhi Recalls 'Indira's Tears' Over Op Blue Star, Akali Dal Hits Back"
@@ -1496,6 +1523,33 @@
         "yoy_metrics_with_direction": 0
       },
       "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-10T07:16:00.137792+05:30",
+      "headline_samples": [
+        "Foreign investors keep faith in 83 stocks despite prolonged India selloff"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 0,
+      "review_priority": 0,
+      "source_urls": [
+        "https://economictimes.indiatimes.com/markets/stocks/news/fpis-keep-faith-in-83-stocks-despite-28-billion-selloff/articleshow/135696068.cms"
+      ],
+      "symbol": "LUPIN"
+    },
+    {
+      "articles": 1,
+      "categories": [
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
       "first_seen_at": "2026-11-10T02:35:36.815607+05:30",
       "headline_samples": [
         "FMCG ad spending accelerates as macro pressures ease"
@@ -1626,8 +1680,8 @@
     "Preview created after cutoff is unsuitable for historical model evaluation.",
     "Premarket frozen snapshot includes collector_last_poll_at; intervening minutes may contain uncollected news."
   ],
-  "collector_last_poll_at": "2026-11-10T05:35:46.901971+05:30",
-  "company_count": 53,
+  "collector_last_poll_at": "2026-11-10T07:16:00.137792+05:30",
+  "company_count": 55,
   "cutoff_exclusive": "2026-11-11T09:00:00+05:30",
   "data_mode": "PRE_CUTOFF_PREVIEW_NOT_FROZEN",
   "doc_evidence_register": [
@@ -3138,7 +3192,7 @@
   "news_window_start": "2026-11-09T15:00:00+05:30",
   "schema_version": "research-candidates/1.0",
   "session_date": "2026-11-11",
-  "source_failures_last_poll": 12,
+  "source_failures_last_poll": 11,
   "training_eligible": false,
   "universe_status": "OFFICIAL_FETCH:https://www.niftyindices.com/IndexConstituent/ind_nifty500list.csv"
 }

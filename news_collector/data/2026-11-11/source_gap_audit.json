@@ -1,6 +1,6 @@
 {
   "session": "2026-11-11",
-  "generated_at": "2026-11-10T05:35:46.901971+05:30",
+  "generated_at": "2026-11-10T07:16:00.137792+05:30",
   "method": "Symbol + material category presence; NOT event-ID or issuer ISIN reconciliation",
   "category_counts": {
     "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT": 4,
@@ -311,7 +311,7 @@
     {
       "source": "Moneycontrol RSS",
       "status": "ERROR",
-      "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.moneycontrol.com/rss/latestnews.xml"
+      "error": "ParseError: not well-formed (invalid token): line 6, column 305"
     },
     {
       "source": "Financial Express legacy RSS",
@@ -342,11 +342,6 @@
       "source": "NDTV Profit markets",
       "status": "ERROR",
       "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.ndtvprofit.com/markets"
-    },
-    {
-      "source": "Moneycontrol stocks",
-      "status": "ERROR",
-      "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.moneycontrol.com/news/business/stocks/"
     },
     {
       "source": "Financial Express markets",
@@ -436,16 +431,8 @@
       "feed_a": "BSE announcements RSS",
       "feed_b": "BSE latest announcements alternate",
       "status_a": "OK",
-      "status_b": "OK",
-      "comparison_status": "SNAPSHOT_OVERLAP_ONLY",
-      "feed_a_unique_matched_urls": 40,
-      "feed_b_unique_matched_urls": 40,
-      "both_feeds_same_url": 40,
-      "only_feed_a_count": 0,
-      "only_feed_b_count": 0,
-      "only_feed_a_examples": [],
-      "only_feed_b_examples": [],
-      "warning": "URL-level overlap is NOT event-level completeness; feed length, timing and availability differ."
+      "status_b": "EMPTY",
+      "comparison_status": "UNAVAILABLE_SOURCE_FAILURE_OR_EMPTY"
     }
   ]
 }
