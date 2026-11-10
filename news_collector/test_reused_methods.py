@@ -66,6 +66,30 @@ class ReusedSourceTests(unittest.TestCase):
                             sleep=lambda _: self.fail("Must not retry 403"))
         self.assertEqual(len(calls), 1)
 
+    def test_retry_after_is_respected_within_the_worker_budget(self):
+        cases = [
+            (429, "2", [2]),
+            (429, "60", []),
+            (429, "Wed, 21 Oct 2099 07:28:00 GMT", []),
+            (429, None, []),
+            (429, "invalid", []),
+            (503, "120", []),
+        ]
+        for status, header, expected_delays in cases:
+            with self.subTest(status=status, header=header):
+                response = requests.Response()
+                response.status_code = status
+                if header is not None:
+                    response.headers["Retry-After"] = header
+                delays = []
+                with patch("news_collector.feed_resilience.requests.get") as get:
+                    get.side_effect = requests.HTTPError(response=response)
+                    with self.assertRaises(requests.HTTPError):
+                        read_with_retry("https://example.org", get, max_attempts=2,
+                                        sleep=delays.append)
+                self.assertEqual(delays, expected_delays)
+                self.assertEqual(get.call_count, len(expected_delays) + 1)
+
     def test_strict_issuer_matching_bank_containment(self):
         companies = {"BANKINDIA": "Bank of India",
                      "UNIONBANK": "Union Bank of India"}

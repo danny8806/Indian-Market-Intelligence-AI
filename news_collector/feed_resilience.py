@@ -3,6 +3,8 @@ Indian-Market-Intelligence feed collector. No access-control bypass.
 """
 from __future__ import annotations
 
+from datetime import datetime, timezone
+from email.utils import parsedate_to_datetime
 import re
 import time
 import xml.etree.ElementTree as ET
@@ -63,6 +65,19 @@ def rss_root(raw: bytes, *, allow_truncated: bool = False) -> ET.Element:
         return root
 
 
+def _retry_after(value: str) -> float | None:
+    value = value.strip()
+    if value.isascii() and value.isdecimal():
+        return float(value)
+    try:
+        until = parsedate_to_datetime(value)
+    except (TypeError, ValueError, OverflowError):
+        return None
+    if until.tzinfo is None:
+        until = until.replace(tzinfo=timezone.utc)
+    return max(0, (until - datetime.now(timezone.utc)).total_seconds())
+
+
 def read_with_retry(url: str, read, *, max_attempts: int = 1, sleep=time.sleep):
     """Retry only network failures and 408/429/5xx HTTP errors, max three tries."""
     if isinstance(max_attempts, bool) or not isinstance(max_attempts, int) or not 1 <= max_attempts <= 3:
@@ -71,10 +86,20 @@ def read_with_retry(url: str, read, *, max_attempts: int = 1, sleep=time.sleep):
         try:
             return read(url)
         except (requests.Timeout, requests.ConnectionError, requests.HTTPError) as exc:
-            status = getattr(getattr(exc, "response", None), "status_code", None)
+            response = getattr(exc, "response", None)
+            status = getattr(response, "status_code", None)
             if isinstance(exc, requests.HTTPError) and status not in RETRYABLE_STATUS:
                 raise
             if attempt + 1 == max_attempts:
                 raise
-            sleep(min(2 ** attempt, 3))
+            delay = min(2 ** attempt, 3)
+            if status in {429, 503}:
+                retry_after = _retry_after(response.headers.get("Retry-After", ""))
+                if retry_after is None and status == 429:
+                    raise
+                if retry_after is not None:
+                    delay = max(delay, retry_after)
+                if delay > 3:
+                    raise
+            sleep(delay)
     raise AssertionError("unreachable")
