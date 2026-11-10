@@ -17,6 +17,8 @@ of delivery to the live desk.
 
 ## News collection — free tools and morning rollout (research only)
 
+**Complete source, crawler, model and MCP operating manual:** [Sources, tools, AI roles and implementation workflow](docs/automation/COMPLETE-SOURCES-TOOLS-MODELS-AI-OPERATING-PLAN.md).
+
 **Other AI / Codex implementation handoff:** [START HERE — complete project/code links and step-by-step implementation](docs/automation/START-HERE-OTHER-AI-HANDOFF.md).
 
 **Next setup session (11 Nov 2026 IST):** [Free tools catalog, web/MCP/browser methods and VPS rollout checklist](docs/automation/FREE-TOOLS-NEWS-COLLECTOR-MORNING-PLAN.md).
