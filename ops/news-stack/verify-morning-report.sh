@@ -65,7 +65,8 @@ from news_morning_reports where session_date='$DAY';"
 
 echo "--- draft ---"
 "${PSQL[@]}" "select 'draft|' || status || '|' || to_char(completed_at at time zone 'Asia/Kolkata','YYYY-MM-DD HH24:MI:SS') ||
-  '|signals=' || coalesce(json_array_length(signals)::text,'0')
+  '|signals=' || coalesce((case json_typeof(signals) when 'array' then json_array_length(signals)
+      when 'object' then json_array_length(signals->'reviewed') end)::text,'0')
 from news_morning_drafts where session_date='$DAY';"
 
 echo "--- source health (latest check per source, not a cutoff snapshot) ---"

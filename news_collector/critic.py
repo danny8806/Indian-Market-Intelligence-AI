@@ -56,7 +56,7 @@ def _run_compatible(prompt: str, *, timeout: int) -> tuple[str, dict | None, dic
         return "NOT_CONFIGURED", None, audit
     started = time.monotonic()
     try:
-        client = OpenAI(base_url=base, api_key=key or "not-required", timeout=timeout)
+        client = OpenAI(base_url=base, api_key=key or "not-required", timeout=timeout, max_retries=0)
         response = client.chat.completions.create(
             model=model,
             messages=[{"role": "user", "content": prompt}],

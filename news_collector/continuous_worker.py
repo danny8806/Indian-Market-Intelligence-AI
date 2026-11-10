@@ -14,7 +14,7 @@ from datetime import datetime
 from pathlib import Path
 
 from news_collector.db_store import engine_for_url, sync_session
-from news_collector.engine import IST, ROOT, default_session, run as collect_news
+from news_collector.engine import IST, ROOT, default_session, regular_market_day, run as collect_news
 from news_collector.openai_web_discovery import run as collect_openai_links
 from news_collector.github_inbox_pull import pull_public_inbox
 from news_collector.chatgpt_inbox_import import import_inbox
@@ -93,6 +93,11 @@ def model_slot(now: datetime, budget: int) -> int | None:
 
 
 def codex_slot(now: datetime, budget: int) -> int | None:
+    """Reserve Codex for morning research on NSE trading days."""
+    now = now.astimezone(IST)
+    minute = now.hour * 60 + now.minute
+    if 8 * 60 <= minute < 9 * 60 + 30 and regular_market_day(now.date()):
+        return None
     return model_slot(now, budget)
 
 

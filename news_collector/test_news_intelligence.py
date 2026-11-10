@@ -185,11 +185,11 @@ class NewsIntelligenceTests(unittest.TestCase):
                  "news_summary": "Thermax announced higher profits", "evidence_ids": [identity]}
             ]}
 
-        draft = run(self.db, clock=lambda: at(8, 59), analyst=analyst)
+        draft = run(self.db, clock=lambda: at(8, 59), analyst=analyst, critic=critic)
         self.assertEqual(draft, {"status": "DRAFT_SAVED", "draft_status": "READY", "signals": 1})
         report = run(self.db, clock=lambda: at(9, 5), analyst=analyst, critic=critic)
         self.assertEqual(report["status"], "READY", report["reason"])
-        self.assertEqual(report["news_cutoff_at"], at(9, 0).isoformat())
+        self.assertEqual(report["news_cutoff_at"], at(9, 5).isoformat())
         self.assertFalse(report["execution_enabled"])
         self.assertEqual(len(report["signals"]), 1)
         self.assertEqual(run(self.db, clock=lambda: at(9, 8), analyst=analyst, critic=critic), report)
@@ -372,14 +372,15 @@ class NewsIntelligenceTests(unittest.TestCase):
 
         with patch("news_collector.morning.select_candidates",
                    return_value=("READY", "Shortlist", shortlist)) as call:
-            self.assertEqual(run(self.db, clock=lambda: at(8, 55))["status"], "DRAFT_SAVED")
+            self.assertEqual(run(self.db, clock=lambda: at(8, 55),
+                                 critic=echo_critic)["status"], "DRAFT_SAVED")
         call.assert_called_once()
-        extra = record(at(8, 58), at(8, 57), name="last-minute",
+        extra = record(at(9, 2), at(9, 1), name="last-minute",
                        headline="Other net profit rises 20 percent")
         extra.update(symbols=["OTHER"], nifty_symbols=["OTHER"])
-        sync_archive_batch(self.db, batch("b", at(8, 59), extra))
+        sync_archive_batch(self.db, batch("b", at(9, 3), extra))
         with patch("news_collector.morning.select_candidates") as call:
-            report = run(self.db, clock=lambda: at(9, 5), critic=echo_critic)
+            report = run(self.db, clock=lambda: at(9, 5), critic=call)
             call.assert_not_called()
         self.assertEqual(report["signals"][0]["symbol"], "THERMAX")
         self.assertEqual(report["signals"][0]["rank"], 1)
@@ -392,7 +393,7 @@ class NewsIntelligenceTests(unittest.TestCase):
         self.assertFalse(frozen["review_audit"]["critic"]["independent"])
         self.assertIn("critic=echo_critic:OK", report["reason"])
 
-    def test_critic_can_reject_stale_pick_and_fallback_uses_current_evidence(self):
+    def test_final_lock_rejects_stale_pick_and_fallback_uses_current_evidence(self):
         early = record(at(8, 40), at(8, 35))
         sync_archive_batch(self.db, batch("a", at(8, 45), early))
         with self.db.connect() as conn:
@@ -404,19 +405,20 @@ class NewsIntelligenceTests(unittest.TestCase):
         }]
         with patch("news_collector.morning.select_candidates",
                    return_value=("READY", "Shortlist", shortlist)):
-            run(self.db, clock=lambda: at(8, 55))
-        contrary = record(at(8, 58), at(8, 57), name="contrary",
+            run(self.db, clock=lambda: at(8, 55),
+                critic=lambda *_a, **_k: ("OK", {"selections": shortlist}))
+        contrary = record(at(9, 2), at(9, 1), name="contrary",
                           headline="Thermax Limited net profit falls 25 percent")
-        sync_archive_batch(self.db, batch("b", at(8, 59), contrary))
+        sync_archive_batch(self.db, batch("b", at(9, 3), contrary))
         with patch("news_collector.morning.select_candidates") as call:
             report = run(self.db, clock=lambda: at(9, 5),
-                         critic=lambda *_a, **_k: ("OK", {"selections": []}))
+                         critic=call)
             call.assert_not_called()
         self.assertEqual([(row["symbol"], row["side"]) for row in report["signals"]],
                          [("THERMAX", "SHORT")])
         self.assertIn("fallback", report["signals"][0]["reason"])
 
-    def test_draft_started_before_cutoff_can_finish_after_cutoff(self):
+    def test_draft_and_critic_finish_before_cutoff(self):
         news = record(at(8, 51), at(8, 50))
         sync_archive_batch(self.db, batch("a", at(8, 53), news))
         with self.db.connect() as conn:
@@ -428,14 +430,14 @@ class NewsIntelligenceTests(unittest.TestCase):
             "news_summary": "Pre-cutoff evidence supported the candidate",
             "evidence_ids": [first_id],
         }]
-        clock = iter([at(8, 55), at(9, 2)]).__next__
-        result = run(self.db, clock=clock,
-                     analyst=lambda *_a, **_k: ("OK", {"selections": shortlist}))
+        clock = iter([at(9, 0), at(9, 2), at(9, 4)]).__next__
+        echo = lambda *_a, **_k: ("OK", {"selections": shortlist})
+        result = run(self.db, clock=clock, analyst=echo, critic=echo)
         self.assertEqual(result, {"status": "DRAFT_SAVED", "draft_status": "READY", "signals": 1})
         report = run(self.db, clock=lambda: at(9, 10),
                      critic=lambda *_a, **_k: ("OK", {"selections": shortlist}))
         self.assertEqual(report["status"], "READY", report["reason"])
-        self.assertEqual(report["news_cutoff_at"], at(9, 0).isoformat())
+        self.assertEqual(report["news_cutoff_at"], at(9, 5).isoformat())
 
     def test_post_cutoff_evidence_cannot_enter_review(self):
         pre = record(at(8, 55), at(8, 50))
@@ -454,13 +456,16 @@ class NewsIntelligenceTests(unittest.TestCase):
         self.assertEqual(selected, [])
         self.assertEqual(audit["status"], "REJECTED_ALL")
 
-    def test_codex_discovery_stays_on_half_hour_slots(self):
-        self.assertEqual(codex_slot(at(8, 0), 48), 16)
-        self.assertIsNone(codex_slot(at(8, 10), 48))
-        self.assertIsNone(codex_slot(at(8, 20), 48))
-        self.assertEqual(codex_slot(at(8, 30), 48), 17)
-        self.assertEqual(codex_slot(at(9, 0), 48), 18)
-        self.assertIsNone(codex_slot(at(8, 30), 0))
+    def test_codex_discovery_stays_on_half_hour_slots_outside_reserved_review(self):
+        self.assertEqual(codex_slot(at(7, 0), 48), 14)
+        self.assertIsNone(codex_slot(at(7, 10), 48))
+        self.assertIsNone(codex_slot(at(7, 20), 48))
+        self.assertEqual(codex_slot(at(7, 30), 48), 15)
+        for hour, minute in [(8, 0), (8, 30), (9, 0)]:
+            self.assertIsNone(codex_slot(at(hour, minute), 48))
+        self.assertEqual(codex_slot(at(9, 30), 48), 19)
+        self.assertEqual(codex_slot(at(8, 0, day=10), 48), 16)
+        self.assertIsNone(codex_slot(at(9, 30), 0))
 
     def test_finalization_locks_only_once_and_excludes_post_cutoff_verification(self):
         news = record(at(8, 51), at(8, 50), headline="Thermax Limited net profit rises")
@@ -485,14 +490,24 @@ class NewsIntelligenceTests(unittest.TestCase):
             call.assert_not_called()
             self.assertEqual(run(self.db, clock=lambda: at(8, 59))["status"], "DRAFT_SAVED")
 
-    def test_nine_am_freezes_evidence_and_waits_for_late_draft(self):
-        sync_archive_batch(self.db, batch("a", at(8, 58), record(at(8, 57), at(8, 56))))
-        self.assertEqual(run(self.db, clock=lambda: at(9, 0)),
-                         {"status": "EVIDENCE_FROZEN_AWAITING_DRAFT"})
+    def test_nine_am_reviews_but_freezes_only_at_cutoff(self):
+        news = record(at(8, 57), at(8, 56), headline="Thermax Limited net profit rises")
+        sync_archive_batch(self.db, batch("a", at(8, 58), news))
+        with patch("news_collector.morning.select_candidates",
+                   return_value=("NO_TRADE", "No qualified stock", [])) as call:
+            self.assertEqual(run(self.db, clock=lambda: at(9, 0))["status"], "DRAFT_SAVED")
+            call.assert_called_once()
+        with self.db.connect() as conn:
+            self.assertIsNone(conn.execute(select(morning_reports)).mappings().first())
+            expected = conn.execute(select(article_revisions.c.id)).scalar_one()
+        with patch("news_collector.morning.select_candidates") as analyst, \
+             patch("news_collector.morning.review_candidates") as critic:
+            report = run(self.db, clock=lambda: at(9, 5))
+            analyst.assert_not_called()
+            critic.assert_not_called()
+        self.assertEqual(report["status"], "READY")
         with self.db.connect() as conn:
             frozen = conn.execute(select(morning_reports)).mappings().one()
-            expected = conn.execute(select(article_revisions.c.id)).scalar_one()
-        self.assertIsNone(frozen["report"])
         self.assertEqual(len(frozen["evidence"]["items"]), 1)
         self.assertEqual(frozen["evidence"]["items"][0]["evidence_id"], expected)
 

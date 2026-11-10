@@ -9,7 +9,7 @@ from zoneinfo import ZoneInfo
 from sqlalchemy import create_engine
 
 from news_collector.continuous_worker import (
-    collect_and_store, poll_interval_seconds,
+    _claim_slot, codex_slot, collect_and_store, poll_interval_seconds,
 )
 
 IST = ZoneInfo("Asia/Kolkata")
@@ -23,6 +23,17 @@ class WorkerTests(unittest.TestCase):
             datetime(2026, 11, 10, 8, 30, tzinfo=IST)), 600)
         self.assertEqual(poll_interval_seconds(
             datetime(2026, 11, 10, 11, tzinfo=IST)), 600)
+
+    def test_quota_attempt_is_not_repeated_until_next_half_hour(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            first = datetime(2026, 11, 11, 15, 0, tzinfo=IST)
+            self.assertTrue(_claim_slot(root, "codex", first, codex_slot(first, 48)))
+            self.assertFalse(_claim_slot(root, "codex", first, codex_slot(first, 48)))
+            for minute in (10, 20):
+                self.assertIsNone(codex_slot(first.replace(minute=minute), 48))
+            following = first.replace(minute=30)
+            self.assertTrue(_claim_slot(root, "codex", following, codex_slot(following, 48)))
 
     def test_primary_data_persists_even_if_optional_ai_fails(self):
         with tempfile.TemporaryDirectory() as tmp:
