@@ -1,10 +1,10 @@
 {
   "session": "2026-11-11",
-  "generated_at": "2026-11-10T07:16:00.137792+05:30",
+  "generated_at": "2026-11-10T09:47:54.774719+05:30",
   "method": "Symbol + material category presence; NOT event-ID or issuer ISIN reconciliation",
   "category_counts": {
     "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT": 4,
-    "MEDIA_ONLY_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS": 2,
+    "MEDIA_ONLY_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS": 5,
     "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS": 7
   },
   "groups": [
@@ -28,6 +28,23 @@
       ]
     },
     {
+      "symbol": "AVANTIFEED",
+      "event_category": "financial_results",
+      "media_count": 1,
+      "nse_count": 0,
+      "bse_count": 0,
+      "filing_examples": [],
+      "media_examples": [
+        {
+          "headline": "Q2 Results Today Live: Kalyan Jewellers, MRF, Cochin Shipyard, Avanti Feeds, Titagarh Rail Systems, MMTC to announce Q2 results",
+          "url": "https://www.thehindubusinessline.com/markets/q2-results-today-live-updates-kalyan-jewellers-mrf-cochin-shipyard-avanti-feeds-titagarh-rail-systems-mntc-company-results-10-november-2026/article71684906.ece",
+          "published_at": "2026-11-10T09:22:58+05:30"
+        }
+      ],
+      "state": "MEDIA_ONLY_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": []
+    },
+    {
       "symbol": "BATAINDIA",
       "event_category": "regulatory",
       "media_count": 0,
@@ -45,6 +62,23 @@
       "exchanges_seen": [
         "BSE"
       ]
+    },
+    {
+      "symbol": "COCHINSHIP",
+      "event_category": "financial_results",
+      "media_count": 1,
+      "nse_count": 0,
+      "bse_count": 0,
+      "filing_examples": [],
+      "media_examples": [
+        {
+          "headline": "Q2 Results Today Live: Kalyan Jewellers, MRF, Cochin Shipyard, Avanti Feeds, Titagarh Rail Systems, MMTC to announce Q2 results",
+          "url": "https://www.thehindubusinessline.com/markets/q2-results-today-live-updates-kalyan-jewellers-mrf-cochin-shipyard-avanti-feeds-titagarh-rail-systems-mntc-company-results-10-november-2026/article71684906.ece",
+          "published_at": "2026-11-10T09:22:58+05:30"
+        }
+      ],
+      "state": "MEDIA_ONLY_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": []
     },
     {
       "symbol": "GESHIP",
@@ -228,6 +262,23 @@
       "exchanges_seen": []
     },
     {
+      "symbol": "TITAGARH",
+      "event_category": "financial_results",
+      "media_count": 1,
+      "nse_count": 0,
+      "bse_count": 0,
+      "filing_examples": [],
+      "media_examples": [
+        {
+          "headline": "Q2 Results Today Live: Kalyan Jewellers, MRF, Cochin Shipyard, Avanti Feeds, Titagarh Rail Systems, MMTC to announce Q2 results",
+          "url": "https://www.thehindubusinessline.com/markets/q2-results-today-live-updates-kalyan-jewellers-mrf-cochin-shipyard-avanti-feeds-titagarh-rail-systems-mntc-company-results-10-november-2026/article71684906.ece",
+          "published_at": "2026-11-10T09:22:58+05:30"
+        }
+      ],
+      "state": "MEDIA_ONLY_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": []
+    },
+    {
       "symbol": "UNIONBANK",
       "event_category": "regulatory",
       "media_count": 0,
@@ -307,11 +358,6 @@
       "source": "Mint industry RSS",
       "status": "ERROR",
       "error": "HTTPError: 404 Client Error: Not Found for url: https://www.livemint.com/rss/industryRSS"
-    },
-    {
-      "source": "Moneycontrol RSS",
-      "status": "ERROR",
-      "error": "ParseError: not well-formed (invalid token): line 6, column 305"
     },
     {
       "source": "Financial Express legacy RSS",
@@ -418,9 +464,9 @@
       "status_a": "OK",
       "status_b": "OK",
       "comparison_status": "SNAPSHOT_OVERLAP_ONLY",
-      "feed_a_unique_matched_urls": 58,
-      "feed_b_unique_matched_urls": 58,
-      "both_feeds_same_url": 58,
+      "feed_a_unique_matched_urls": 60,
+      "feed_b_unique_matched_urls": 60,
+      "both_feeds_same_url": 60,
       "only_feed_a_count": 0,
       "only_feed_b_count": 0,
       "only_feed_a_examples": [],
@@ -431,8 +477,16 @@
       "feed_a": "BSE announcements RSS",
       "feed_b": "BSE latest announcements alternate",
       "status_a": "OK",
-      "status_b": "EMPTY",
-      "comparison_status": "UNAVAILABLE_SOURCE_FAILURE_OR_EMPTY"
+      "status_b": "OK",
+      "comparison_status": "SNAPSHOT_OVERLAP_ONLY",
+      "feed_a_unique_matched_urls": 41,
+      "feed_b_unique_matched_urls": 41,
+      "both_feeds_same_url": 41,
+      "only_feed_a_count": 0,
+      "only_feed_b_count": 0,
+      "only_feed_a_examples": [],
+      "only_feed_b_examples": [],
+      "warning": "URL-level overlap is NOT event-level completeness; feed length, timing and availability differ."
     }
   ]
 }

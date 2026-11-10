@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-10T07:16:26.869802+05:30",
+  "as_of": "2026-11-10T09:48:20.885983+05:30",
   "candidates": [
     {
       "articles": 4,
@@ -107,6 +107,42 @@
         "https://nsearchives.nseindia.com/corporate/xbrl/SAIIM_2906_WebXMLFile_20261109_163424932.xml"
       ],
       "symbol": "OIL"
+    },
+    {
+      "articles": 5,
+      "categories": [
+        "financial_results",
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-09T16:51:11.327151+05:30",
+      "headline_samples": [
+        "Cochin Shipyard Ltd (540678)",
+        "Cochin Shipyard Ltd (540678)",
+        "Cochin Shipyard Limited",
+        "Cochin Shipyard Limited",
+        "Q2 Results Today Live: Kalyan Jewellers, MRF, Cochin Shipyard, Avanti Feeds, Titagarh Rail Systems, MMTC to announce Q2 results"
+      ],
+      "material_event_count": 1,
+      "not_a_trade_signal": true,
+      "official_filing_count": 4,
+      "review_priority": 11,
+      "source_urls": [
+        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/7fcc8236-e719-458b-ba78-08723f3f54d9.pdf",
+        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/b1267199-f12a-4855-bf32-085e5bd25f15.pdf",
+        "https://nsearchives.nseindia.com/corporate/Aswi4739_09112026164622_SE_Intimation.pdf",
+        "https://nsearchives.nseindia.com/corporate/Aswi4739_09112026163408_SE_Intimation_Results_Sgd.pdf",
+        "https://www.thehindubusinessline.com/markets/q2-results-today-live-updates-kalyan-jewellers-mrf-cochin-shipyard-avanti-feeds-titagarh-rail-systems-mntc-company-results-10-november-2026/article71684906.ece"
+      ],
+      "symbol": "COCHINSHIP"
     },
     {
       "articles": 5,
@@ -349,39 +385,6 @@
         "https://nsearchives.nseindia.com/corporate/xbrl/SAIIM_19468_WebXMLFile_20261109_165524265.xml"
       ],
       "symbol": "APTUS"
-    },
-    {
-      "articles": 4,
-      "categories": [
-        "other"
-      ],
-      "evidence_summary": {
-        "conflicting_metrics": [],
-        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
-        "negative_metrics": [],
-        "not_a_price_prediction": true,
-        "positive_metrics": [],
-        "yoy_metrics_with_direction": 0
-      },
-      "explicit_financial_facts": [],
-      "first_seen_at": "2026-11-09T16:51:11.327151+05:30",
-      "headline_samples": [
-        "Cochin Shipyard Ltd (540678)",
-        "Cochin Shipyard Ltd (540678)",
-        "Cochin Shipyard Limited",
-        "Cochin Shipyard Limited"
-      ],
-      "material_event_count": 0,
-      "not_a_trade_signal": true,
-      "official_filing_count": 4,
-      "review_priority": 8,
-      "source_urls": [
-        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/7fcc8236-e719-458b-ba78-08723f3f54d9.pdf",
-        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/b1267199-f12a-4855-bf32-085e5bd25f15.pdf",
-        "https://nsearchives.nseindia.com/corporate/Aswi4739_09112026164622_SE_Intimation.pdf",
-        "https://nsearchives.nseindia.com/corporate/Aswi4739_09112026163408_SE_Intimation_Results_Sgd.pdf"
-      ],
-      "symbol": "COCHINSHIP"
     },
     {
       "articles": 8,
@@ -720,6 +723,37 @@
     {
       "articles": 3,
       "categories": [
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-10T09:47:54.774719+05:30",
+      "headline_samples": [
+        "RBL Bank Limited",
+        "RBL Bank Limited",
+        "RBL Bank Ltd (540065)"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 3,
+      "review_priority": 6,
+      "source_urls": [
+        "https://nsearchives.nseindia.com/corporate/RBLBANK_10112026084759_IntimationofESOPAllotment_09112026_Signed.pdf",
+        "https://nsearchives.nseindia.com/corporate/xbrl/ALTERATION_OF_CAPITAL_AND_FUND_RAISING_14160_WebXMLFile_20261110_085658910.xml",
+        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/4bfc4dea-43bd-4dca-b1fa-1d62246bd887.pdf"
+      ],
+      "symbol": "RBLBANK"
+    },
+    {
+      "articles": 3,
+      "categories": [
         "analyst_meetings",
         "other"
       ],
@@ -844,7 +878,7 @@
       "symbol": "DMART"
     },
     {
-      "articles": 2,
+      "articles": 3,
       "categories": [
         "other"
       ],
@@ -860,6 +894,7 @@
       "first_seen_at": "2026-11-09T16:51:11.327151+05:30",
       "headline_samples": [
         "IIFL FINANCE Ltd (940949)",
+        "Blackstone set to become key investor in IIFL Finance with 15% stake",
         "IIFL Finance Limited"
       ],
       "material_event_count": 0,
@@ -868,6 +903,7 @@
       "review_priority": 4,
       "source_urls": [
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/28034a94-4d37-4bc6-8443-e18fb9802097.pdf",
+        "https://www.business-standard.com/companies/news/blackstone-set-to-become-key-investor-in-iifl-finance-with-15-stake-126111000088_1.html",
         "https://nsearchives.nseindia.com/content/debt/WDM/IIFL_09112026160709_InterestPayment.pdf"
       ],
       "symbol": "IIFL"
@@ -968,6 +1004,33 @@
     {
       "articles": 1,
       "categories": [
+        "financial_results"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-10T09:47:54.774719+05:30",
+      "headline_samples": [
+        "Q2 Results Today Live: Kalyan Jewellers, MRF, Cochin Shipyard, Avanti Feeds, Titagarh Rail Systems, MMTC to announce Q2 results"
+      ],
+      "material_event_count": 1,
+      "not_a_trade_signal": true,
+      "official_filing_count": 0,
+      "review_priority": 3,
+      "source_urls": [
+        "https://www.thehindubusinessline.com/markets/q2-results-today-live-updates-kalyan-jewellers-mrf-cochin-shipyard-avanti-feeds-titagarh-rail-systems-mntc-company-results-10-november-2026/article71684906.ece"
+      ],
+      "symbol": "AVANTIFEED"
+    },
+    {
+      "articles": 1,
+      "categories": [
         "regulatory"
       ],
       "evidence_summary": {
@@ -991,6 +1054,33 @@
         "https://www.business-standard.com/markets/news/strong-q2-future-prospects-keep-street-bullish-on-tata-steel-stock-126110901188_1.html"
       ],
       "symbol": "TATASTEEL"
+    },
+    {
+      "articles": 1,
+      "categories": [
+        "financial_results"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-10T09:47:54.774719+05:30",
+      "headline_samples": [
+        "Q2 Results Today Live: Kalyan Jewellers, MRF, Cochin Shipyard, Avanti Feeds, Titagarh Rail Systems, MMTC to announce Q2 results"
+      ],
+      "material_event_count": 1,
+      "not_a_trade_signal": true,
+      "official_filing_count": 0,
+      "review_priority": 3,
+      "source_urls": [
+        "https://www.thehindubusinessline.com/markets/q2-results-today-live-updates-kalyan-jewellers-mrf-cochin-shipyard-avanti-feeds-titagarh-rail-systems-mntc-company-results-10-november-2026/article71684906.ece"
+      ],
+      "symbol": "TITAGARH"
     },
     {
       "articles": 1,
@@ -1074,7 +1164,7 @@
       "symbol": "AUROPHARMA"
     },
     {
-      "articles": 3,
+      "articles": 5,
       "categories": [
         "other"
       ],
@@ -1091,6 +1181,8 @@
       "headline_samples": [
         "Small Industries Development Bank of India",
         "RBI's $239 bn forward dollar position to limit rupee gains: Report",
+        "RBI said to query bank valuations of some bond derivative trades",
+        "Rupee among Asia's top performing currencies as AI trade cools",
         "RBI's $239 bn forward dollar position to limit rupee gains despite FPI inflows: Report"
       ],
       "material_event_count": 0,
@@ -1100,6 +1192,8 @@
       "source_urls": [
         "https://nsearchives.nseindia.com/content/debt/WDM/SIDBI_2_09112026155620_NSE_Letter09112026s.pdf",
         "https://www.business-standard.com/finance/news/rbi-s-239-bn-forward-dollar-position-to-limit-rupee-gains-report-126110900571_1.html",
+        "https://economictimes.indiatimes.com/markets/bonds/rbi-said-to-query-bank-valuations-of-some-bond-derivative-trades/articleshow/135696624.cms",
+        "https://economictimes.indiatimes.com/markets/forex/rupee-among-asias-top-3-as-india-turns-ai-hedge/articleshow/135696371.cms",
         "https://economictimes.indiatimes.com/markets/forex/rbis-usd-239-bn-forward-dollar-position-to-limit-rupee-gains-despite-fpi-inflows-report/articleshow/135678171.cms"
       ],
       "symbol": "BANKINDIA"
@@ -1680,8 +1774,8 @@
     "Preview created after cutoff is unsuitable for historical model evaluation.",
     "Premarket frozen snapshot includes collector_last_poll_at; intervening minutes may contain uncollected news."
   ],
-  "collector_last_poll_at": "2026-11-10T07:16:00.137792+05:30",
-  "company_count": 55,
+  "collector_last_poll_at": "2026-11-10T09:47:54.774719+05:30",
+  "company_count": 58,
   "cutoff_exclusive": "2026-11-11T09:00:00+05:30",
   "data_mode": "PRE_CUTOFF_PREVIEW_NOT_FROZEN",
   "doc_evidence_register": [
@@ -1749,6 +1843,19 @@
         "TCS"
       ],
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/c0a1bde0-4d57-46c0-ac73-940d5ff093d7.pdf"
+    },
+    {
+      "document_sha256": "1d4168fd58b3201144d7ec0b5d3700966a748c27599ec8ad5f07d9ad5469da1e",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T09:47:54.774719+05:30",
+      "id": "09cbae1efa5b195872ac2996",
+      "parsed_at": "2026-11-10T09:48:20.265862+05:30",
+      "published_at": "2026-11-10T08:48:25+05:30",
+      "symbols": [
+        "RBLBANK"
+      ],
+      "url": "https://nsearchives.nseindia.com/corporate/RBLBANK_10112026084759_IntimationofESOPAllotment_09112026_Signed.pdf"
     },
     {
       "document_sha256": "b8006a81e3edd4993f248b1061eef01ebc14eadc2583b953170a62a241f075bb",
@@ -2005,6 +2112,19 @@
         "BHEL"
       ],
       "url": "https://nsearchives.nseindia.com/corporate/BHEL_09112026170052_HYDfine09112026.pdf"
+    },
+    {
+      "document_sha256": "1d4168fd58b3201144d7ec0b5d3700966a748c27599ec8ad5f07d9ad5469da1e",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T09:47:54.774719+05:30",
+      "id": "6866be744f99d1212156c30b",
+      "parsed_at": "2026-11-10T09:48:20.266420+05:30",
+      "published_at": "2026-11-10T08:53:59+05:30",
+      "symbols": [
+        "RBLBANK"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/4bfc4dea-43bd-4dca-b1fa-1d62246bd887.pdf"
     },
     {
       "document_sha256": "429228cbf9ed10297842bf5a2ddc85e6a8dfe85b1527321aab0594b141626fe7",
@@ -2683,7 +2803,7 @@
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/647209bb-3305-4ef9-9d5e-ab98f54d50d5.pdf"
     }
   ],
-  "documents_with_eligible_text": 75,
+  "documents_with_eligible_text": 77,
   "execution_enabled": false,
   "frozen_universe_membership": {
     "360ONE": "360 ONE WAM Ltd.",
@@ -3192,7 +3312,7 @@
   "news_window_start": "2026-11-09T15:00:00+05:30",
   "schema_version": "research-candidates/1.0",
   "session_date": "2026-11-11",
-  "source_failures_last_poll": 11,
+  "source_failures_last_poll": 10,
   "training_eligible": false,
   "universe_status": "OFFICIAL_FETCH:https://www.niftyindices.com/IndexConstituent/ind_nifty500list.csv"
 }
