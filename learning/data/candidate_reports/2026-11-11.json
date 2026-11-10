@@ -1,0 +1,10 @@
+{
+  "candidate_count": 0,
+  "errors": {},
+  "note": "Research labeling only; theoretical open-to-close price movement, not executable P&L.",
+  "price_source": "NSE EOD Full Bhavcopy; corporate actions NOT verified",
+  "priced": 0,
+  "reason": "Session has not completed; never use intraday prices as EOD labels.",
+  "session": "2026-11-11",
+  "status": "UNAVAILABLE"
+}
