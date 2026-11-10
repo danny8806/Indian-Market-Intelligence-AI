@@ -1,6 +1,6 @@
 {
   "session": "2026-11-11",
-  "generated_at": "2026-11-11T03:07:01.448562+05:30",
+  "generated_at": "2026-11-11T05:13:08.869185+05:30",
   "method": "Symbol + material category presence; NOT event-ID or issuer ISIN reconciliation",
   "category_counts": {
     "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT": 11,
@@ -949,9 +949,17 @@
     {
       "feed_a": "BSE announcements RSS",
       "feed_b": "BSE latest announcements alternate",
-      "status_a": "EMPTY",
-      "status_b": "EMPTY",
-      "comparison_status": "UNAVAILABLE_SOURCE_FAILURE_OR_EMPTY"
+      "status_a": "OK",
+      "status_b": "OK",
+      "comparison_status": "SNAPSHOT_OVERLAP_ONLY",
+      "feed_a_unique_matched_urls": 167,
+      "feed_b_unique_matched_urls": 167,
+      "both_feeds_same_url": 167,
+      "only_feed_a_count": 0,
+      "only_feed_b_count": 0,
+      "only_feed_a_examples": [],
+      "only_feed_b_examples": [],
+      "warning": "URL-level overlap is NOT event-level completeness; feed length, timing and availability differ."
     }
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-11T03:07:41.939057+05:30",
+  "as_of": "2026-11-11T05:13:40.505504+05:30",
   "candidates": [
     {
       "articles": 8,
@@ -4335,7 +4335,7 @@
     "Preview created after cutoff is unsuitable for historical model evaluation.",
     "Premarket frozen snapshot includes collector_last_poll_at; intervening minutes may contain uncollected news."
   ],
-  "collector_last_poll_at": "2026-11-11T03:07:01.448562+05:30",
+  "collector_last_poll_at": "2026-11-11T05:13:08.869185+05:30",
   "company_count": 129,
   "cutoff_exclusive": "2026-11-11T09:00:00+05:30",
   "data_mode": "PRE_CUTOFF_PREVIEW_NOT_FROZEN",
@@ -4568,6 +4568,19 @@
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/ec48598e-3879-45f7-934a-2132e527fa84.pdf"
     },
     {
+      "document_sha256": "a5fb35eba8a9e57e2a466d5ff72c92d1daba104e7a8b7a654155151aae48a326",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T23:45:49.158430+05:30",
+      "id": "0c14343ab4b227f8811002b9",
+      "parsed_at": "2026-11-11T05:13:38.471999+05:30",
+      "published_at": "2026-11-10T23:18:22+05:30",
+      "symbols": [
+        "CGCL"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/bf1f6206-9204-470f-9471-057ed04ee94b.pdf"
+    },
+    {
       "document_sha256": "ec60bb32905f3956d7d885244ddaa8b8c4f0bcffd9f62849aef7b56b0f4e8872",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -4592,6 +4605,19 @@
         "IKS"
       ],
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/47d9e9f6-99c9-4715-8a80-f4e5ab18ffaa.pdf"
+    },
+    {
+      "document_sha256": "a5fb35eba8a9e57e2a466d5ff72c92d1daba104e7a8b7a654155151aae48a326",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T23:45:49.158430+05:30",
+      "id": "0cfc455086075d2faac3e5b5",
+      "parsed_at": "2026-11-11T05:13:38.470648+05:30",
+      "published_at": "2026-11-10T23:10:52+05:30",
+      "symbols": [
+        "CGCL"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/6338c7c8-ad30-4a34-a678-ea7c8bb7a543.pdf"
     },
     {
       "document_sha256": "235df50ab0da389f70b36e0bbc6c3a635b17d6feefb2b6af16c4330437e78669",
@@ -4893,6 +4919,19 @@
       "url": "https://nsearchives.nseindia.com/corporate/RITES_10112026183730_intimation_rh_change_10112026.pdf"
     },
     {
+      "document_sha256": "a5fb35eba8a9e57e2a466d5ff72c92d1daba104e7a8b7a654155151aae48a326",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T23:45:49.158430+05:30",
+      "id": "1f1a679e059cce38c71b34e3",
+      "parsed_at": "2026-11-11T05:13:39.506668+05:30",
+      "published_at": "2026-11-10T23:33:11+05:30",
+      "symbols": [
+        "CGCL"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/9b0e8464-2b75-40f8-994a-4236197364ec.pdf"
+    },
+    {
       "document_sha256": "f8529e0b841f49c13d8e26f709083fd23c785c39c80b39a7c31e522fa0a3d13d",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -5073,6 +5112,19 @@
       "url": "https://nsearchives.nseindia.com/corporate/MEESHO_10112026210212_MLinvestormeet10112026.pdf"
     },
     {
+      "document_sha256": "a5fb35eba8a9e57e2a466d5ff72c92d1daba104e7a8b7a654155151aae48a326",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T23:45:49.158430+05:30",
+      "id": "2ba88b7850bb829912e9c74e",
+      "parsed_at": "2026-11-11T05:13:39.276748+05:30",
+      "published_at": "2026-11-10T23:28:54+05:30",
+      "symbols": [
+        "CGCL"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/71471b1f-466e-4f03-be17-2c3dcab71476.pdf"
+    },
+    {
       "document_sha256": "cd168fe1152c1f8cec06e6bf829915b7826d33009f5e9745e65e54f29754f72a",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -5110,6 +5162,19 @@
         "DMART"
       ],
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/cd354e96-8ec1-4953-a1f5-463fb3f9e419.pdf"
+    },
+    {
+      "document_sha256": "a5fb35eba8a9e57e2a466d5ff72c92d1daba104e7a8b7a654155151aae48a326",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T23:45:49.158430+05:30",
+      "id": "2dab532635da267c5ca70197",
+      "parsed_at": "2026-11-11T05:13:38.936320+05:30",
+      "published_at": "2026-11-10T23:27:52+05:30",
+      "symbols": [
+        "CGCL"
+      ],
+      "url": "https://nsearchives.nseindia.com/corporate/CGCL_10112026231628_SEIntimation_Investormeetings.pdf"
     },
     {
       "document_sha256": "d8e9b744f10851213a7907a57f9445a7eb0e3d2d51f44c40fe5fb52269875cbd",
@@ -5463,6 +5528,19 @@
       "url": "https://nsearchives.nseindia.com/corporate/ECLERX_10112026124625_BSENSEInvMeetOysterRockCapitalLLP10112026.pdf"
     },
     {
+      "document_sha256": "a5fb35eba8a9e57e2a466d5ff72c92d1daba104e7a8b7a654155151aae48a326",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T23:45:49.158430+05:30",
+      "id": "5621fd62ee4a9e68b7ba8bb6",
+      "parsed_at": "2026-11-11T05:13:38.820842+05:30",
+      "published_at": "2026-11-10T23:21:05+05:30",
+      "symbols": [
+        "CGCL"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/9ea36cdf-218b-4eac-a412-89fcac7b125a.pdf"
+    },
+    {
       "document_sha256": "f1a6b319bcce22c8f0d4276d2cd46e855b1d3187115a1d53f006995606dcc67a",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -5539,6 +5617,19 @@
         "ABCAPITAL"
       ],
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/e74b95c1-1514-4b10-ac47-10b5496a2e24.pdf"
+    },
+    {
+      "document_sha256": "a5fb35eba8a9e57e2a466d5ff72c92d1daba104e7a8b7a654155151aae48a326",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T23:45:49.158430+05:30",
+      "id": "5a78a780c06db77dfd160fbd",
+      "parsed_at": "2026-11-11T05:13:39.750960+05:30",
+      "published_at": "2026-11-10T23:36:29+05:30",
+      "symbols": [
+        "CGCL"
+      ],
+      "url": "https://nsearchives.nseindia.com/corporate/CGCL_10112026233306_SEIntimation_Investormeetings.pdf"
     },
     {
       "document_sha256": "5665be1a4ed6e569933f64cc768b69bc9eca6e75b463658a37e630864b72deef",
@@ -5893,6 +5984,19 @@
         "IIFL"
       ],
       "url": "https://nsearchives.nseindia.com/corporate/IIFL_10112026160856_SEIntimation_Final.pdf"
+    },
+    {
+      "document_sha256": "a5fb35eba8a9e57e2a466d5ff72c92d1daba104e7a8b7a654155151aae48a326",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T23:45:49.158430+05:30",
+      "id": "70cf4af1e9b6ecf74e225d6e",
+      "parsed_at": "2026-11-11T05:13:39.613029+05:30",
+      "published_at": "2026-11-10T23:34:53+05:30",
+      "symbols": [
+        "CGCL"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/92445ace-246f-465c-aa10-8f2051368ff1.pdf"
     },
     {
       "document_sha256": "a7d8a1ec36306916bf4b51353095f43b7facb98156885e21bb7bb05884b1841a",
@@ -6662,6 +6766,19 @@
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/6f87cc37-9152-4c4e-a783-676b4128569d.pdf"
     },
     {
+      "document_sha256": "a5fb35eba8a9e57e2a466d5ff72c92d1daba104e7a8b7a654155151aae48a326",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T23:45:49.158430+05:30",
+      "id": "9eea79e6aa8439fbe137fc2a",
+      "parsed_at": "2026-11-11T05:13:38.471280+05:30",
+      "published_at": "2026-11-10T23:13:57+05:30",
+      "symbols": [
+        "CGCL"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/aa519b98-70e0-42d5-bbc5-ac90fa4460d5.pdf"
+    },
+    {
       "document_sha256": "931c0e1d454ce399b7949e2a19e3702d677784b1546d550bc8f8e6af4f950cdb",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -6792,6 +6909,19 @@
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/09259200-c849-4878-8fa7-69c099c7725a.pdf"
     },
     {
+      "document_sha256": "a5fb35eba8a9e57e2a466d5ff72c92d1daba104e7a8b7a654155151aae48a326",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T23:45:49.158430+05:30",
+      "id": "a9fc58202e450d067f2d5bc5",
+      "parsed_at": "2026-11-11T05:13:39.181247+05:30",
+      "published_at": "2026-11-10T23:28:05+05:30",
+      "symbols": [
+        "CGCL"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/18259f37-c5d2-4497-a837-ef703dd89321.pdf"
+    },
+    {
       "document_sha256": "13c2cb9226d885279c118e986796b8cd24650426d933b2e1d41ac6b7c9e49a7f",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -6855,6 +6985,19 @@
         "TITAGARH"
       ],
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/00225ed9-4021-43e8-8398-3a9c6a0f11a5.pdf"
+    },
+    {
+      "document_sha256": "a5fb35eba8a9e57e2a466d5ff72c92d1daba104e7a8b7a654155151aae48a326",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T23:45:49.158430+05:30",
+      "id": "adb1f448f46523b614a9c188",
+      "parsed_at": "2026-11-11T05:13:39.837406+05:30",
+      "published_at": "2026-11-10T23:36:29+05:30",
+      "symbols": [
+        "CGCL"
+      ],
+      "url": "https://nsearchives.nseindia.com/corporate/CGCL_10112026233159_SEIntimation_Investormeetings.pdf"
     },
     {
       "document_sha256": "6658551c7abb58805fe2024271a930b5b61fd60143a74f4868451cb24b31855e",
@@ -6922,6 +7065,19 @@
       "url": "https://nsearchives.nseindia.com/corporate/MGL25_10112026143911_Investor_Meet10112026.pdf"
     },
     {
+      "document_sha256": "a5fb35eba8a9e57e2a466d5ff72c92d1daba104e7a8b7a654155151aae48a326",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T23:45:49.158430+05:30",
+      "id": "b25380ba957ceaafe8de99bf",
+      "parsed_at": "2026-11-11T05:13:39.838684+05:30",
+      "published_at": "2026-11-10T23:36:29+05:30",
+      "symbols": [
+        "CGCL"
+      ],
+      "url": "https://nsearchives.nseindia.com/corporate/CGCL_10112026233028_SEIntimation_Investormeetings.pdf"
+    },
+    {
       "document_sha256": "e9ccef0dfa40168082b555c69760cf165393cbdfd21ff94f38b551423cc6e61a",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -6933,6 +7089,19 @@
         "COCHINSHIP"
       ],
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/8bc3569a-01d8-46f4-a4e3-76ae43b3e6f2.pdf"
+    },
+    {
+      "document_sha256": "a5fb35eba8a9e57e2a466d5ff72c92d1daba104e7a8b7a654155151aae48a326",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T23:45:49.158430+05:30",
+      "id": "b45511af7f8e896ea7bcf21b",
+      "parsed_at": "2026-11-11T05:13:38.849861+05:30",
+      "published_at": "2026-11-10T23:24:45+05:30",
+      "symbols": [
+        "CGCL"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/cec2294b-1189-4f55-a666-a1fbe0bef2e0.pdf"
     },
     {
       "document_sha256": "1e421e96a796a782f35732732e24f55505f5bb059beeae54723e16dce64f3968",
@@ -7346,6 +7515,19 @@
       "url": "https://nsearchives.nseindia.com/corporate/Aswi4739_10112026144437_SE_Intimation_Sgd.pdf"
     },
     {
+      "document_sha256": "a5fb35eba8a9e57e2a466d5ff72c92d1daba104e7a8b7a654155151aae48a326",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T23:45:49.158430+05:30",
+      "id": "cec3288f94873cc8ca0fce16",
+      "parsed_at": "2026-11-11T05:13:39.087720+05:30",
+      "published_at": "2026-11-10T23:27:52+05:30",
+      "symbols": [
+        "CGCL"
+      ],
+      "url": "https://nsearchives.nseindia.com/corporate/CGCL_10112026231544_SEIntimation_Investormeetings.pdf"
+    },
+    {
       "document_sha256": "2d84c6408f6aaafdb692d7da44a02079caff2bd8fa06842d38df162529c002c9",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -7505,6 +7687,19 @@
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/f1adda02-5720-474e-8cd2-5632e9218b7d.pdf"
     },
     {
+      "document_sha256": "a5fb35eba8a9e57e2a466d5ff72c92d1daba104e7a8b7a654155151aae48a326",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T23:45:49.158430+05:30",
+      "id": "d39fb5f42745dd7ac923f03e",
+      "parsed_at": "2026-11-11T05:13:39.453394+05:30",
+      "published_at": "2026-11-10T23:30:33+05:30",
+      "symbols": [
+        "CGCL"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/ea93c10c-b18a-4350-ae64-dd841bd2d92f.pdf"
+    },
+    {
       "document_sha256": "83512f569bd2b228d90163aa1b70ec689bdbec11f7036a4c5dd93ca4d87714dd",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -7654,6 +7849,19 @@
         "TCS"
       ],
       "url": "https://nsearchives.nseindia.com/corporate/TCS_CORPCS_09112026171125_SEIntimation_signed.pdf"
+    },
+    {
+      "document_sha256": "a5fb35eba8a9e57e2a466d5ff72c92d1daba104e7a8b7a654155151aae48a326",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T23:45:49.158430+05:30",
+      "id": "d8eb9a0a4c300c8094980a1b",
+      "parsed_at": "2026-11-11T05:13:38.847878+05:30",
+      "published_at": "2026-11-10T23:23:06+05:30",
+      "symbols": [
+        "CGCL"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/4535772f-b03b-465e-aa1e-c8f7b602ceab.pdf"
     },
     {
       "document_sha256": "5665be1a4ed6e569933f64cc768b69bc9eca6e75b463658a37e630864b72deef",
@@ -8106,6 +8314,19 @@
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/f5572049-c08e-47f8-a0ed-4696a82f43d8.pdf"
     },
     {
+      "document_sha256": "a5fb35eba8a9e57e2a466d5ff72c92d1daba104e7a8b7a654155151aae48a326",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T23:45:49.158430+05:30",
+      "id": "f240434c2d9ba562d4eef4a7",
+      "parsed_at": "2026-11-11T05:13:39.477219+05:30",
+      "published_at": "2026-11-10T23:32:37+05:30",
+      "symbols": [
+        "CGCL"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/7cebce89-572c-4c1e-9597-28a391d375e2.pdf"
+    },
+    {
       "document_sha256": "268e2d5cec0ebfa9ac8880fb81c2952b3e2bfe899c155f5e8d0a612695c3fbc6",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -8169,6 +8390,45 @@
         "DABUR"
       ],
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/fb1c13ad-a722-44f3-963c-027b3cf3a093.pdf"
+    },
+    {
+      "document_sha256": "a5fb35eba8a9e57e2a466d5ff72c92d1daba104e7a8b7a654155151aae48a326",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T23:45:49.158430+05:30",
+      "id": "f602595fc3971d01631b9660",
+      "parsed_at": "2026-11-11T05:13:39.922452+05:30",
+      "published_at": "2026-11-10T23:36:53+05:30",
+      "symbols": [
+        "CGCL"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/b4404d28-0ed9-451d-885a-7e951c7ad979.pdf"
+    },
+    {
+      "document_sha256": "a5fb35eba8a9e57e2a466d5ff72c92d1daba104e7a8b7a654155151aae48a326",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T23:45:49.158430+05:30",
+      "id": "f649c942b32a25e62892c9a4",
+      "parsed_at": "2026-11-11T05:13:39.091496+05:30",
+      "published_at": "2026-11-10T23:27:52+05:30",
+      "symbols": [
+        "CGCL"
+      ],
+      "url": "https://nsearchives.nseindia.com/corporate/CGCL_10112026231851_SEIntimation_Investormeetings.pdf"
+    },
+    {
+      "document_sha256": "a5fb35eba8a9e57e2a466d5ff72c92d1daba104e7a8b7a654155151aae48a326",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T23:45:49.158430+05:30",
+      "id": "f779b75808366861323c0790",
+      "parsed_at": "2026-11-11T05:13:38.472458+05:30",
+      "published_at": "2026-11-10T23:19:40+05:30",
+      "symbols": [
+        "CGCL"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/35da47ca-fbf3-4bde-b335-d39fff209fbd.pdf"
     },
     {
       "document_sha256": "4ec478f8804f380b19fef0c866c637076044e1f6bf816891cb2b17f2f75a80b0",
@@ -8301,7 +8561,7 @@
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/647209bb-3305-4ef9-9d5e-ab98f54d50d5.pdf"
     }
   ],
-  "documents_with_eligible_text": 290,
+  "documents_with_eligible_text": 310,
   "execution_enabled": false,
   "frozen_universe_membership": {
     "360ONE": "360 ONE WAM Ltd.",
