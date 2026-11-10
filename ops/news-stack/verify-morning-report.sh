@@ -29,7 +29,7 @@ echo "--- report row ---"
 from news_morning_reports where session_date='$DAY';"
 
 echo "--- signals ---"
-"${PSQL[@]}" "select 'signal|' || s->>'side' || '|' || s->>'symbol' || '|rank=' || coalesce(s->>'rank','') ||
+"${PSQL[@]}" "select 'signal|' || coalesce(s->>'side','') || '|' || coalesce(s->>'symbol','') || '|rank=' || coalesce(s->>'rank','') ||
   '|first_available=' || coalesce(s->>'first_available_at','')
 from news_morning_reports, json_array_elements(report->'signals') s
 where session_date='$DAY' order by 1;"
