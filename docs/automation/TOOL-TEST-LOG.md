@@ -59,6 +59,15 @@ infrastructure merely because it appears in the catalog or in this file.
   blocked or registry-only for the reasons recorded in
   `news_collector/source_registry.json`.
 
+## Morning verifier dry run
+
+- Ran `verify-morning-report.sh 2026-11-11` against an empty report table on
+  2026-11-10 18:28 IST. The first run failed at the signal query because
+  `'signal|' || s->>'side'` parses as `('signal|' || s) ->> 'side'` in
+  PostgreSQL. The query now wraps each JSON extraction in `coalesce(...)`; the
+  fixed script exits 0 with zero rows and is deployed in ops-only release
+  `d2c8700`. The deployed Python tree is byte-identical to `69395c5`.
+
 ## AI-agent lanes
 
 | Lane | Current evidence | Status |
@@ -78,6 +87,9 @@ recorded retrieval event is not accepted as live evidence.
 - `docs/automation/evidence/codex-live-retrieval-2026-11-10.json` — Codex
   `VERIFIED` status, the two NSE URLs, full revision-lane history and the
   OpenCode `QUOTA_LIMIT` state, read back from PostgreSQL.
+- `docs/automation/evidence/morning-verifier-dry-run-2026-11-10.txt` — output
+  of the fixed 09:12 verifier against the empty 2026-11-11 report, including
+  zero signal/late-evidence counts and the active timer state.
 - `news_collector/source_registry.json` — per-endpoint access evidence and
   reasons for blocked or registry-only entries.
 - `docs/automation/FREE-TOOLS-NEWS-COLLECTOR-MORNING-PLAN.md` — full catalog

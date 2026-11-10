@@ -7,9 +7,11 @@ It records gaps instead of claiming they are already satisfied.
 The additive columns below were first deployed in release `974b806` on
 2026-11-10 16:41 IST; the one-time backfill updated 1,725 of 3,524 existing
 rows, the columns were added idempotently and no article ID was duplicated.
-Release `69395c5` is the current live release and adds write-once discovery
-provenance. Live database totals are recorded after the deployment check in
-this handoff and are not repeated here to avoid stale counts.
+Release `d2c8700` is the current live release (ops-only over `69395c5`, whose
+Python tree is byte-identical) and adds write-once discovery provenance plus a
+fixed 09:12 verifier query. Live database totals are recorded after the
+deployment check in this handoff and are not repeated here to avoid stale
+counts.
 
 | Required field | Current storage | Status |
 | --- | --- | --- |

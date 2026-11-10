@@ -1,0 +1,28 @@
+--- release and timers ---
+/home/jadhavdnyaneshwar701/market-news-db/releases/d2c8700bbc67dee8e7ed22c34ab9a1f150d140a8
+d2c8700bbc67dee8e7ed22c34ab9a1f150d140a8
+active
+active
+NextElapseUSecRealtime=Wed 2026-11-11 08:00:00 IST
+--- morning service activations ---
+Result=success
+ExecMainStartTimestamp=Tue 2026-11-10 11:56:34 IST
+ExecMainExitTimestamp=Tue 2026-11-10 11:56:36 IST
+--- report row ---
+rows|0
+--- signals ---
+long|0
+short|0
+--- cutoff checks ---
+late_signal|0
+late_source|0
+late_evidence|0
+unverified_origin|0
+--- critic audit ---
+--- draft ---
+--- source health (latest check per source, not a cutoff snapshot) ---
+checked|104|ok=73|failed=6|blocked=3
+--- report json (for offline schema validation) ---
+REPORT_JSON_BEGIN
+REPORT_JSON_END
+
