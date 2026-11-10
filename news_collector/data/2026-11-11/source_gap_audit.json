@@ -1,11 +1,11 @@
 {
   "session": "2026-11-11",
-  "generated_at": "2026-11-10T16:47:47.760687+05:30",
+  "generated_at": "2026-11-10T17:04:17.089674+05:30",
   "method": "Symbol + material category presence; NOT event-ID or issuer ISIN reconciliation",
   "category_counts": {
     "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT": 8,
-    "MEDIA_ONLY_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS": 5,
-    "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS": 15
+    "MEDIA_ONLY_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS": 4,
+    "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS": 16
   },
   "groups": [
     {
@@ -32,8 +32,14 @@
       "event_category": "financial_results",
       "media_count": 2,
       "nse_count": 0,
-      "bse_count": 0,
-      "filing_examples": [],
+      "bse_count": 1,
+      "filing_examples": [
+        {
+          "headline": "Avanti Feeds Ltd (512573)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/ac27c807-60b9-4c70-a46a-fc2ddb831bc0.pdf",
+          "published_at": "2026-11-10T16:58:15+05:30"
+        }
+      ],
       "media_examples": [
         {
           "headline": "Q2 Results Live: Hind Rectifiers Profit Falls 54%, MRF Profit Slips 28%; Kalyan Jewellers, Cochin Shipyard Also In Focus",
@@ -46,8 +52,10 @@
           "published_at": "2026-11-10T09:22:58+05:30"
         }
       ],
-      "state": "MEDIA_ONLY_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
-      "exchanges_seen": []
+      "state": "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": [
+        "BSE"
+      ]
     },
     {
       "symbol": "BAJAJFINSV",
@@ -742,11 +750,6 @@
       "source": "NewsAPI India stock discovery",
       "status": "SKIPPED_COST_GUARD",
       "error": "Opt-in required via ENABLE_PAID_NEWS_APIS"
-    },
-    {
-      "source": "PIB India releases Hindi",
-      "status": "ERROR",
-      "error": "ParseError: not well-formed (invalid token): line 8, column 766"
     }
   ],
   "limitations": [
@@ -763,9 +766,9 @@
       "status_a": "OK",
       "status_b": "OK",
       "comparison_status": "SNAPSHOT_OVERLAP_ONLY",
-      "feed_a_unique_matched_urls": 155,
-      "feed_b_unique_matched_urls": 155,
-      "both_feeds_same_url": 155,
+      "feed_a_unique_matched_urls": 161,
+      "feed_b_unique_matched_urls": 161,
+      "both_feeds_same_url": 161,
       "only_feed_a_count": 0,
       "only_feed_b_count": 0,
       "only_feed_a_examples": [],
@@ -778,9 +781,9 @@
       "status_a": "OK",
       "status_b": "OK",
       "comparison_status": "SNAPSHOT_OVERLAP_ONLY",
-      "feed_a_unique_matched_urls": 106,
-      "feed_b_unique_matched_urls": 106,
-      "both_feeds_same_url": 106,
+      "feed_a_unique_matched_urls": 110,
+      "feed_b_unique_matched_urls": 110,
+      "both_feeds_same_url": 110,
       "only_feed_a_count": 0,
       "only_feed_b_count": 0,
       "only_feed_a_examples": [],
