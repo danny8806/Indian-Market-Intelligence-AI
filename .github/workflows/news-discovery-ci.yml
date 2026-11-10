@@ -6,6 +6,9 @@ on:
     paths:
       - 'news_collector/**'
       - '.github/workflows/news-discovery-ci.yml'
+      - '.github/workflows/deploy-news-vps.yml'
+      - 'ops/news-stack/**'
+      - 'ops/deploy_news_vps.sh'
   workflow_dispatch:
 
 permissions:
@@ -14,7 +17,11 @@ permissions:
 jobs:
   test-news-collector:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 16
+    env:
+      NEWS_ADMIN_PASSWORD: test-admin-only-for-ci
+      NEWS_WRITER_PASSWORD: test-writer-only-for-ci
+      NEWS_READER_PASSWORD: test-reader-only-for-ci
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -24,3 +31,41 @@ jobs:
         run: python -m pip install -r news_collector/requirements.txt
       - name: Test news collector without external network or API keys
         run: python -m unittest discover -s news_collector -p 'test_*.py' -v
+      - name: Verify no syntax errors in isolated VPS stack
+        run: |
+          bash -n ops/deploy_news_vps.sh
+          bash -n ops/news-stack/activate-news-vps.sh
+          sh -n ops/news-stack/init-news-db.sh
+          sh -n ops/news-stack/start-news-worker.sh
+          python -m compileall -q news_collector
+          docker compose -p market-news-ci -f ops/news-stack/compose.yaml config -q
+      - name: Integration smoke-test real private PostgreSQL roles
+        run: |
+          docker compose -p market-news-ci -f ops/news-stack/compose.yaml up -d postgres
+          ok=0
+          for attempt in $(seq 1 45); do
+            roles="$(docker compose -p market-news-ci -f ops/news-stack/compose.yaml exec -T postgres \
+              psql -U news_admin -d market_news -Atqc \
+              "select count(*) from pg_roles where rolname in ('news_writer','news_reader')" 2>/dev/null || true)"
+            if [[ "$roles" == "2" ]]; then ok=1; break; fi
+            sleep 2
+          done
+          [[ "$ok" == "1" ]] || { echo "Postgres writer/reader roles were not initialized"; exit 4; }
+          echo "PASS: isolated database booted with separate writer and reader."
+      - name: Import archived NIFTY news into actual isolated PostgreSQL
+        run: |
+          docker compose -p market-news-ci -f ops/news-stack/compose.yaml build collector
+          docker compose -p market-news-ci -f ops/news-stack/compose.yaml run --rm --no-deps collector \
+            python -m news_collector.db_store --require-db --backfill-all
+          count="$(docker compose -p market-news-ci -f ops/news-stack/compose.yaml exec -T postgres \
+            psql -U news_admin -d market_news -Atqc 'select count(*) from news_articles;')"
+          [[ "$count" =~ ^[0-9]+$ && "$count" -gt 0 ]] || { echo "No rows imported"; exit 5; }
+          echo "PASS: archived news imported to PostgreSQL: $count distinct articles."
+          reader="$(docker compose -p market-news-ci -f ops/news-stack/compose.yaml exec -T \
+            -e PGPASSWORD="$NEWS_READER_PASSWORD" postgres \
+            psql -h 127.0.0.1 -U news_reader -d market_news -Atqc 'select count(*) from news_articles;')"
+          [[ "$reader" == "$count" ]] || { echo "News read-only role cannot read article records"; exit 6; }
+          echo "PASS: independent news_reader role can SELECT all archived records."
+      - name: Remove temporary database containers and test volumes
+        if: always()
+        run: docker compose -p market-news-ci -f ops/news-stack/compose.yaml down -v --remove-orphans || true

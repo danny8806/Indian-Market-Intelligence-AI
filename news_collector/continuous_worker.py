@@ -16,6 +16,8 @@ from pathlib import Path
 from news_collector.db_store import engine_for_url, sync_session
 from news_collector.engine import IST, ROOT, default_session, run as collect_news
 from news_collector.openai_web_discovery import run as collect_openai_links
+from news_collector.github_inbox_pull import pull_public_inbox
+from news_collector.chatgpt_inbox_import import import_inbox
 
 DATA_ROOT = ROOT / "data"
 _SHUTDOWN = False
@@ -27,11 +29,8 @@ def _stop(_signal, _frame):
 
 
 def poll_interval_seconds(clock: datetime) -> int:
-    """Poll faster in the Indian overnight pre-open window."""
-    local = clock.astimezone(IST)
-    minutes = local.hour * 60 + local.minute
-    # 15:00 to next 09:00 IST.
-    return 600 if (minutes >= 15 * 60 or minutes < 9 * 60) else 1800
+    """20-minute collection cadence around the clock, independent of ChatGPT limits."""
+    return 20 * 60
 
 
 def collect_and_store(engine, *, data_root: Path = DATA_ROOT,
@@ -41,6 +40,20 @@ def collect_and_store(engine, *, data_root: Path = DATA_ROOT,
     # The existing worker retrieves every configured public source. It writes
     # atomically to local JSONL before this database synchronization.
     result = collect_news(session, data_root)
+    inbox = {"status": "SKIPPED_GITHUB_INBOX_PULL"}
+    imported = {"status": "SKIPPED_GITHUB_INBOX_IMPORT"}
+    if os.environ.get("ENABLE_PUBLIC_GITHUB_INBOX_PULL", "").strip().lower() == "true":
+        try:
+            inbox = pull_public_inbox(data_root.parent)
+        except Exception as exc:
+            inbox = {"status": "GITHUB_INBOX_PULL_FAILED",
+                     "error_type": type(exc).__name__}
+        try:
+            imported = import_inbox(
+                root=data_root.parent, now=now, session=session)
+        except Exception as exc:
+            imported = {"status": "CHATGPT_INBOX_IMPORT_FAILED",
+                        "error_type": type(exc).__name__}
     ai = {}
     try:
         ai = collect_openai_links(session, data_root, now=now)
@@ -50,10 +63,23 @@ def collect_and_store(engine, *, data_root: Path = DATA_ROOT,
         ai = {"status": "OPENAI_DISCOVERY_FAILED",
               "error_type": type(exc).__name__}
     db = sync_session(engine, data_root, session)
+    now_saved = datetime.now(IST)
+    marker = data_root / "last_successful_db_sync.json"
+    tmp = marker.with_suffix(".tmp")
+    tmp.write_text(json.dumps({
+        "sync_completed_at": now_saved.isoformat(), "session": session,
+        "source_count": result["sources_configured"],
+        "sources_with_items": result["sources_with_items"],
+        "sources_failed": result["sources_failed"],
+        "db_status": db["status"], "github_pull": inbox["status"],
+        "inbox_import": imported["status"],
+    }, sort_keys=True) + "\n", encoding="utf-8")
+    tmp.replace(marker)
     return {"session_date": session, "source_count": result["sources_configured"],
             "sources_with_items": result["sources_with_items"],
             "sources_failed": result["sources_failed"],
-            "database": db["status"], "openai": ai.get("status")}
+            "database": db["status"], "openai": ai.get("status"),
+            "github_pull": inbox["status"], "inbox_import": imported["status"]}
 
 
 def main():

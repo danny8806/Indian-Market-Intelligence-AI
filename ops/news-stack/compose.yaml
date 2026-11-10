@@ -1,0 +1,60 @@
+# Private, research-only news infrastructure.
+# Neither PostgreSQL nor the collector exposes a host port.
+name: market-news-db
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: market_news
+      POSTGRES_USER: news_admin
+      POSTGRES_PASSWORD: ${NEWS_ADMIN_PASSWORD:?Set server-only database admin password}
+      NEWS_WRITER_PASSWORD: ${NEWS_WRITER_PASSWORD:?Set server-only news writer password}
+      NEWS_READER_PASSWORD: ${NEWS_READER_PASSWORD:?Set server-only news reader password}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init-news-db.sh:/docker-entrypoint-initdb.d/10-init-news-db.sh:ro
+    networks: [news_private]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U news_admin -d market_news"]
+      interval: 15s
+      timeout: 5s
+      retries: 12
+
+  collector:
+    build:
+      context: ../..
+      dockerfile: ops/news-stack/Dockerfile
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      NEWS_DATABASE_URL: "postgresql+psycopg://news_writer:${NEWS_WRITER_PASSWORD}@postgres:5432/market_news"
+      ENABLE_OPENAI_WEB_RESEARCH: "false"
+      ENABLE_PAID_NEWS_APIS: "false"
+      ENABLE_PUBLIC_GITHUB_INBOX_PULL: "true"
+      SERPER_API_KEY: ""
+      TZ: Asia/Kolkata
+    volumes:
+      - news_archive:/app/news_collector/data
+      - github_inbox:/app/news_collector/chatgpt_inbox
+    networks: [news_private, news_egress]
+    healthcheck:
+      test: ["CMD", "python", "-m", "news_collector.healthcheck"]
+      start_period: 5m
+      interval: 1m
+      timeout: 5s
+      retries: 3
+
+networks:
+  news_private:
+    name: market-news-private
+    internal: true
+  news_egress: {}
+
+volumes:
+  postgres_data: {}
+  news_archive: {}
+  github_inbox: {}

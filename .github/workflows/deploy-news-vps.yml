@@ -1,0 +1,70 @@
+name: Deploy isolated news PostgreSQL and 20-minute collector to VPS
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'ops/deploy_news_vps.sh'
+      - 'ops/news-stack/**'
+      - 'news_collector/*.py'
+      - 'news_collector/*.json'
+      - 'news_collector/requirements.txt'
+      - '.github/workflows/deploy-news-vps.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: market-news-db-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy-research-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install research-only collector dependencies
+        run: python -m pip install -r news_collector/requirements.txt
+      - name: Run all offline research and database unit tests
+        run: python -m unittest discover -s news_collector -p 'test_*.py' -v
+      - name: Validate pinned SSH deployment and Docker startup scripts
+        run: |
+          bash -n ops/deploy_news_vps.sh
+          bash -n ops/news-stack/activate-news-vps.sh
+          sh -n ops/news-stack/init-news-db.sh
+          sh -n ops/news-stack/start-news-worker.sh
+          python -m compileall -q news_collector
+      - name: Validate isolated Docker compose configuration
+        env:
+          NEWS_ADMIN_PASSWORD: dummy-admin-pass-ci
+          NEWS_WRITER_PASSWORD: dummy-writer-pass-ci
+          NEWS_READER_PASSWORD: dummy-reader-pass-ci
+        run: |
+          docker compose -p market-news-db -f ops/news-stack/compose.yaml config -q
+      - name: Require approved VPS SSH secrets
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+          VPS_SSH_PRIVATE_KEY: ${{ secrets.VPS_SSH_PRIVATE_KEY }}
+          VPS_SSH_KNOWN_HOSTS: ${{ secrets.VPS_SSH_KNOWN_HOSTS }}
+        run: |
+          if [[ -z "$VPS_HOST" || -z "$VPS_USER" || -z "$VPS_SSH_PRIVATE_KEY" || -z "$VPS_SSH_KNOWN_HOSTS" ]]; then
+            echo "NOT DEPLOYED: approved VPS_HOST, VPS_USER, VPS_SSH_PRIVATE_KEY or VPS_SSH_KNOWN_HOSTS secret missing." >&2
+            echo "Research-only cloud collector continues independently. VPS PostgreSQL is NOT verified live." >> "$GITHUB_STEP_SUMMARY"
+            exit 3
+          fi
+      - name: Deploy news-only PostgreSQL and worker; verify SQL data
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+          VPS_SSH_PRIVATE_KEY: ${{ secrets.VPS_SSH_PRIVATE_KEY }}
+          VPS_SSH_KNOWN_HOSTS: ${{ secrets.VPS_SSH_KNOWN_HOSTS }}
+        run: |
+          bash ops/deploy_news_vps.sh
+          echo "Private VPS PostgreSQL and 20-minute news collector health checks succeeded." >> "$GITHUB_STEP_SUMMARY"
+          echo "No OpenAI API key or trading execution used." >> "$GITHUB_STEP_SUMMARY"

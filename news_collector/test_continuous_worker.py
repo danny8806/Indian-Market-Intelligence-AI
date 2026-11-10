@@ -18,11 +18,11 @@ IST = ZoneInfo("Asia/Kolkata")
 class WorkerTests(unittest.TestCase):
     def test_overnight_and_daytime_cadence(self):
         self.assertEqual(poll_interval_seconds(
-            datetime(2026, 11, 9, 16, tzinfo=IST)), 600)
+            datetime(2026, 11, 9, 16, tzinfo=IST)), 1200)
         self.assertEqual(poll_interval_seconds(
-            datetime(2026, 11, 10, 8, 30, tzinfo=IST)), 600)
+            datetime(2026, 11, 10, 8, 30, tzinfo=IST)), 1200)
         self.assertEqual(poll_interval_seconds(
-            datetime(2026, 11, 10, 11, tzinfo=IST)), 1800)
+            datetime(2026, 11, 10, 11, tzinfo=IST)), 1200)
 
     def test_primary_data_persists_even_if_optional_ai_fails(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -60,6 +60,7 @@ class WorkerTests(unittest.TestCase):
                     result = collect_and_store(
                         db, data_root=root, now=datetime(2026, 11, 10, 4, 30, tzinfo=IST))
             self.assertEqual(result["database"], "DATABASE_SYNC_OK")
+            self.assertTrue((root / "last_successful_db_sync.json").exists())
             self.assertEqual(result["openai"], "OPENAI_DISCOVERY_FAILED")
             with db.connect() as conn:
                 self.assertEqual(len(conn.execute(select(articles)).all()), 1)
