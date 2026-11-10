@@ -218,24 +218,49 @@ class NewsIntelligenceTests(unittest.TestCase):
         self.assertIn('"evidence-100"', calls[2])
         self.assertIn("QUOTA_LIMIT", calls[2])
 
-    def test_finalization_reranks_when_verified_evidence_changes(self):
+    def test_finalization_reuses_only_reviewed_symbols_with_unchanged_evidence(self):
         early = record(at(8, 40), at(8, 35))
         sync_archive_batch(self.db, batch("a", at(8, 45), early))
-
-        def analyst(_prompt, _schema, **_options):
-            return "OK", {"selections": []}
-
-        draft = run(self.db, clock=lambda: at(8, 55), analyst=analyst)
-        self.assertEqual(draft["draft_status"], "NO_TRADE")
-        extra = record(at(9, 3), at(9, 2), name="last-minute")
-        sync_archive_batch(self.db, batch("b", at(9, 4), extra))
+        candidate = {
+            "symbol": "THERMAX", "side": "LONG", "rank": 1,
+            "reason": "Completed analyst review supports the candidate",
+            "news_summary": "Existing verified report supported the candidate",
+            "first_available_at": early["published_at"],
+            "sources": [{"url": early["url"], "title": early["headline"],
+                         "published_at": early["published_at"]}],
+        }
         with patch("news_collector.morning.select_candidates",
-                   return_value=("NO_TRADE", "No qualified stock", [])) as call:
+                   return_value=("READY", "Reviewed", [candidate])) as call:
+            self.assertEqual(run(self.db, clock=lambda: at(8, 55))["status"], "DRAFT_SAVED")
+        call.assert_called_once()
+        extra = record(at(9, 3), at(9, 2), name="last-minute",
+                       headline="Other net profit rises 20 percent")
+        extra.update(symbols=["OTHER"], nifty_symbols=["OTHER"])
+        sync_archive_batch(self.db, batch("b", at(9, 4), extra))
+        with patch("news_collector.morning.select_candidates") as call:
             report = run(self.db, clock=lambda: at(9, 5))
-            self.assertTrue(any("last-minute.pdf" in item["url"]
-                                for item in call.call_args.args[0]["items"]))
-        self.assertEqual(report["status"], "NO_TRADE")
-        self.assertEqual(report["signals"], [])
+            call.assert_not_called()
+        self.assertEqual(report["signals"][0], candidate)
+        self.assertEqual(report["signals"][1]["symbol"], "OTHER")
+        self.assertEqual(report["signals"][1]["rank"], 2)
+        self.assertNotIn("_reviewed_evidence", report["signals"][0])
+
+    def test_changed_reviewed_symbol_uses_current_evidence_instead_of_stale_pick(self):
+        early = record(at(8, 40), at(8, 35))
+        sync_archive_batch(self.db, batch("a", at(8, 45), early))
+        candidate = {"symbol": "THERMAX", "side": "LONG", "rank": 1}
+        with patch("news_collector.morning.select_candidates",
+                   return_value=("READY", "Reviewed", [candidate])):
+            run(self.db, clock=lambda: at(8, 55))
+        contrary = record(at(9, 3), at(9, 2), name="contrary",
+                          headline="Thermax Limited net profit falls 25 percent")
+        sync_archive_batch(self.db, batch("b", at(9, 4), contrary))
+        with patch("news_collector.morning.select_candidates") as call:
+            report = run(self.db, clock=lambda: at(9, 5))
+            call.assert_not_called()
+        self.assertEqual([(row["symbol"], row["side"]) for row in report["signals"]],
+                         [("THERMAX", "SHORT")])
+        self.assertIn("fallback", report["signals"][0]["reason"])
 
     def test_late_draft_cannot_become_locked_watchlist(self):
         sync_archive_batch(self.db, batch("a", at(8, 53), record(at(8, 51), at(8, 50))))
@@ -253,19 +278,17 @@ class NewsIntelligenceTests(unittest.TestCase):
         self.assertEqual(codex_slot(at(9, 0), 48), 18)
         self.assertIsNone(codex_slot(at(8, 30), 0))
 
-    def test_finalization_retry_uses_same_cutoff_and_locks_only_once(self):
-        sync_archive_batch(self.db, batch("a", at(8, 53), record(at(8, 51), at(8, 50))))
-        with patch("news_collector.morning.select_candidates",
-                   return_value=("UNAVAILABLE", "Temporary quota issue", [])):
-            result = run(self.db, clock=lambda: at(9, 5))
-        self.assertEqual(result["status"], "REVIEW_PENDING")
-        late = record(at(9, 6), at(9, 4), name="post-cutoff-verification")
+    def test_finalization_locks_only_once_and_excludes_post_cutoff_verification(self):
+        news = record(at(8, 51), at(8, 50), headline="Thermax Limited net profit rises")
+        late = record(at(9, 6), at(9, 4), name="post-cutoff-verification",
+                      headline="Thermax Limited net profit falls")
+        sync_archive_batch(self.db, batch("a", at(8, 53), news))
         sync_archive_batch(self.db, batch("b", at(9, 7), late))
-        with patch("news_collector.morning.select_candidates",
-                   return_value=("NO_TRADE", "No qualified stock", [])) as call:
-            report = run(self.db, clock=lambda: at(9, 8))
-            self.assertEqual(len(call.call_args.args[0]["items"]), 1)
-        self.assertEqual(report["generated_at"], at(9, 8).isoformat())
+        with patch("news_collector.morning.select_candidates") as call:
+            report = run(self.db, clock=lambda: at(9, 5))
+            call.assert_not_called()
+        self.assertEqual(report["signals"][0]["side"], "LONG")
+        self.assertEqual(report["generated_at"], at(9, 5).isoformat())
         self.assertEqual(run(self.db, clock=lambda: at(9, 10)), report)
         self.assertEqual(run(self.db, clock=lambda: at(9, 12))["status"],
                          "OUTSIDE_RESEARCH_WINDOW")
@@ -278,12 +301,10 @@ class NewsIntelligenceTests(unittest.TestCase):
             call.assert_not_called()
             self.assertEqual(run(self.db, clock=lambda: at(9, 0))["status"], "DRAFT_SAVED")
 
-    def test_analysis_finishing_at_hard_deadline_cannot_lock(self):
+    def test_finalization_reaching_hard_deadline_cannot_lock(self):
         sync_archive_batch(self.db, batch("a", at(9, 4), record(at(9, 3), at(9, 2))))
         clock = iter([at(9, 8), at(9, 12)]).__next__
-        with patch("news_collector.morning.select_candidates",
-                   return_value=("NO_TRADE", "No qualified stock", [])):
-            self.assertEqual(run(self.db, clock=clock), {"status": "FINALIZATION_DEADLINE_ELAPSED"})
+        self.assertEqual(run(self.db, clock=clock), {"status": "FINALIZATION_DEADLINE_ELAPSED"})
 
 
     def test_headline_fallback_fills_five_each_without_repeating_symbols(self):
@@ -323,9 +344,8 @@ class NewsIntelligenceTests(unittest.TestCase):
         sync_archive_batch(self.db, batch("a", at(8, 59), news))
         with patch("news_collector.morning.select_candidates",
                    return_value=("UNAVAILABLE", "Temporary quota issue", [])):
-            pending = run(self.db, clock=lambda: at(9, 5))
-        self.assertEqual(pending["status"], "REVIEW_PENDING")
-        report = run(self.db, clock=lambda: at(9, 10))
+            run(self.db, clock=lambda: at(9, 0))
+        report = run(self.db, clock=lambda: at(9, 5))
         self.assertEqual(report["status"], "READY", report["reason"])
         self.assertEqual(report["signals"][0]["symbol"], "THERMAX")
         self.assertIn("fallback", report["signals"][0]["reason"])

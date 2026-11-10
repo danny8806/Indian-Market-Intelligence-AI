@@ -19,13 +19,13 @@ with execution_enabled=false. The news service has no broker or bridge credentia
 - market-news-morning.timer starts research at 08:00 IST on weekdays and
   refreshes at 08:30, 08:55 and 09:00. At 09:05 the job freezes the news
   evidence from 15:00 on the previous regular NSE session.
-  It reuses a matching completed draft or ranks the frozen evidence in the
-  finalization window. Verified, explicitly directional headlines and publisher excerpts can fill
-  open slots in a reviewed watchlist. If the review is unavailable, the 09:10
-  job uses the same headline fallback. It targets five LONG and five SHORT
-  using distinct verified NIFTY 500 symbols. Ambiguous, speculative or
-  conflicting headlines leave slots open. The 09:12 deadline prevents
-  publishing a late result. One final research
+  The 09:05 lock uses a completed draft and keeps reviewed symbols whose
+  evidence matches the cutoff snapshot. Verified, explicitly directional
+  headlines and publisher excerpts fill open slots, including when no draft
+  is ready. The lock runs without waiting for an AI call and targets five
+  LONG and five SHORT distinct verified NIFTY 500 symbols. Ambiguous or
+  conflicting headlines leave slots open. The 09:10 timer retries a missed
+  lock, and the 09:12 deadline rejects late results. One final research
   watchlist is persisted in news_morning_reports. Update the bundled 2026
   calendar before running morning research in the following year.
 
