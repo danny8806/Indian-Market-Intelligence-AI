@@ -1,6 +1,6 @@
 {
   "session": "2026-11-11",
-  "generated_at": "2026-11-10T16:34:36.935880+05:30",
+  "generated_at": "2026-11-10T16:47:47.760687+05:30",
   "method": "Symbol + material category presence; NOT event-ID or issuer ISIN reconciliation",
   "category_counts": {
     "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT": 8,
@@ -200,13 +200,18 @@
       "symbol": "IKS",
       "event_category": "acquisition",
       "media_count": 0,
-      "nse_count": 1,
+      "nse_count": 2,
       "bse_count": 1,
       "filing_examples": [
         {
           "headline": "Inventurus Knowledge Solutions Ltd (544309)",
           "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/47d9e9f6-99c9-4715-8a80-f4e5ab18ffaa.pdf",
           "published_at": "2026-11-10T16:32:09+05:30"
+        },
+        {
+          "headline": "Inventurus Knowledge Solutions Limited",
+          "url": "https://nsearchives.nseindia.com/corporate/xbrl/REG30_Restructuring_24260_WebXMLFile_20261110_163437176.xml",
+          "published_at": "2026-11-10T16:34:38+05:30"
         },
         {
           "headline": "Inventurus Knowledge Solutions Limited",
@@ -737,6 +742,11 @@
       "source": "NewsAPI India stock discovery",
       "status": "SKIPPED_COST_GUARD",
       "error": "Opt-in required via ENABLE_PAID_NEWS_APIS"
+    },
+    {
+      "source": "PIB India releases Hindi",
+      "status": "ERROR",
+      "error": "ParseError: not well-formed (invalid token): line 8, column 766"
     }
   ],
   "limitations": [
@@ -753,9 +763,9 @@
       "status_a": "OK",
       "status_b": "OK",
       "comparison_status": "SNAPSHOT_OVERLAP_ONLY",
-      "feed_a_unique_matched_urls": 149,
-      "feed_b_unique_matched_urls": 149,
-      "both_feeds_same_url": 149,
+      "feed_a_unique_matched_urls": 155,
+      "feed_b_unique_matched_urls": 155,
+      "both_feeds_same_url": 155,
       "only_feed_a_count": 0,
       "only_feed_b_count": 0,
       "only_feed_a_examples": [],
@@ -768,9 +778,9 @@
       "status_a": "OK",
       "status_b": "OK",
       "comparison_status": "SNAPSHOT_OVERLAP_ONLY",
-      "feed_a_unique_matched_urls": 102,
-      "feed_b_unique_matched_urls": 102,
-      "both_feeds_same_url": 102,
+      "feed_a_unique_matched_urls": 106,
+      "feed_b_unique_matched_urls": 106,
+      "both_feeds_same_url": 106,
       "only_feed_a_count": 0,
       "only_feed_b_count": 0,
       "only_feed_a_examples": [],
