@@ -25,6 +25,7 @@ from zoneinfo import ZoneInfo
 
 import requests
 from bs4 import BeautifulSoup
+from news_collector.broker_sources import allowed_by_robots, listing_items
 from news_collector.matching import match_issuers
 from news_collector.feed_resilience import rss_root, read_with_retry
 from news_collector.provider_discovery import (
@@ -262,6 +263,10 @@ def fetch_one(source: dict) -> tuple[dict, list[dict]]:
         if not provider_has_key(source):
             return ({**base, "status": "SKIPPED_NO_KEY", "error": "Provider key not configured"}, [])
     try:
+        if source["kind"] == "broker_html":
+            allowed, reason = allowed_by_robots(source["url"], USER_AGENT)
+            if not allowed:
+                return ({**base, "status": "BLOCKED_ROBOTS", "error": reason}, [])
         raw = (fetch_search_index(source) if source["kind"] == "indexed_search"
                else fetch_provider_news(source) if source["kind"] == "provider_api"
                else read_with_retry(source["url"], fetch_bytes,
@@ -270,6 +275,8 @@ def fetch_one(source: dict) -> tuple[dict, list[dict]]:
             items = rss_items(raw, source)
         elif source["kind"] == "html":
             items = html_items(raw, source)
+        elif source["kind"] == "broker_html":
+            items = listing_items(raw, source)
         elif source["kind"] == "api":
             items = api_items(raw, source)
         elif source["kind"] == "indexed_search":

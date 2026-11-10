@@ -94,6 +94,9 @@ def observation(item: dict, source: dict, observed: datetime, universe: dict,
     code = item.get("scrip_code", "")
     if source["provider"] == "BSE" and re.fullmatch(r"[0-9]{6}", code):
         row["symbols"] = sorted({*row["symbols"], f"BSE:{code}"})
+    if item.get("shared_broker_link"):
+        row["id"] = hashlib.sha256(
+            f'{row["url"]}:{row["headline"]}'.encode()).hexdigest()[:24]
     row["discoverer"] = discoverer
     row["nifty_symbols"] = sorted(set(row["symbols"]) & nifty.keys())
     row["verified_origin"] = bool(
@@ -124,7 +127,7 @@ def collect_batch(root: Path, *, clock=lambda: datetime.now(IST), config=ROOT / 
             for item in items:
                 row = observation(item, source, observed, universe, nifty if verified else {},
                                   discoverer="python")
-                if row and (row["published_at"] or row["symbols"]):
+                if row and (row["published_at"] or row["symbols"] or source["kind"] == "broker_html"):
                     rows.append(row)
     return {
         "batch_id": uuid4().hex,
@@ -133,6 +136,7 @@ def collect_batch(root: Path, *, clock=lambda: datetime.now(IST), config=ROOT / 
         "sources_configured": len(checks),
         "sources_with_items": sum(check["status"] == "OK" for check in checks),
         "sources_failed": sum(check["status"] == "ERROR" for check in checks),
+        "sources_blocked": sum(check["status"] == "BLOCKED_ROBOTS" for check in checks),
         "sources": checks,
         "records": rows,
         "nifty_count": len(nifty) if verified else 0,

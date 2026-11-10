@@ -121,7 +121,8 @@ def collect_archive(engine, root: Path, *, clock=lambda: datetime.now(IST)) -> d
         "db_status": "DATABASE_SYNC_OK", "sync_completed_at": clock().isoformat(),
         "session": batch["session"], "source_count": batch["sources_configured"],
         "sources_with_items": batch["sources_with_items"],
-        "sources_failed": batch["sources_failed"], "codex": codex_status,
+        "sources_failed": batch["sources_failed"], "sources_blocked": batch["sources_blocked"],
+        "codex": codex_status,
         "observations": len(batch["records"]), "batches_committed": saved,
         "pending_batches": sum(1 for _ in (root / "pending_batches").glob("*.json")),
     }

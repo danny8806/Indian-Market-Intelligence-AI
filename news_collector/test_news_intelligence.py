@@ -1,4 +1,3 @@
-import sqlite3
 from datetime import datetime
 from pathlib import Path
 from tempfile import TemporaryDirectory
@@ -8,11 +7,11 @@ from unittest.mock import patch
 from sqlalchemy import create_engine, select
 
 from news_collector.archive import observation, replay, stage
+from news_collector.broker_sources import listing_items
 from news_collector.codex_research import allowed_url
 from news_collector.db_store import article_revisions, articles, sync_archive_batch
 from news_collector.engine import IST
 from news_collector.morning import run
-from news_collector.trade_archive import sync_option_trades, trades
 
 FEED = {"provider": "NSE", "kind": "rss", "authority": "official",
         "url": "https://nsearchives.nseindia.com/feed.xml", "name": "NSE filings"}
@@ -109,22 +108,32 @@ class NewsIntelligenceTests(unittest.TestCase):
         self.assertFalse(allowed_url("https://www.nseindia.com@local/filing", known))
         self.assertFalse(allowed_url("https://www.nseindia.com:444/filing", known))
 
-    def test_trade_copy_keeps_updates_and_original_database(self):
-        with TemporaryDirectory() as folder:
-            file = Path(folder) / "options.db"
-            with sqlite3.connect(file) as source:
-                source.execute("CREATE TABLE option_trades(trade_id TEXT, underlying TEXT, "
-                               "status TEXT, entry_time TEXT, exit_time TEXT, exit_pnl REAL)")
-                source.execute("INSERT INTO option_trades VALUES "
-                               "('one','CRUDEOIL','OPEN','2026-11-11',NULL,NULL)")
-            source.close()
-            self.assertEqual(sync_option_trades(file, self.db), 1)
-            with sqlite3.connect(file) as source:
-                source.execute("UPDATE option_trades SET status='CLOSED', exit_pnl=10")
-            source.close()
-            self.assertEqual(sync_option_trades(file, self.db), 1)
-            with self.db.connect() as conn:
-                conn = conn.execution_options(schema_translate_map={"trade_archive": None})
-                stored = conn.execute(select(trades)).mappings().one()
-            self.assertEqual(stored["status"], "CLOSED")
-            self.assertEqual(stored["details"]["exit_pnl"], 10)
+    def test_broker_discovery_excludes_navigation_and_external_links(self):
+        source = {
+            "url": "https://broker.example/market-news", "provider": "BROKER",
+            "authority": "secondary", "kind": "broker_html", "name": "Broker",
+            "article_path": r"/stocks/[^/]+/news", "shared_link": True,
+            "headline_selector": "p",
+        }
+        html = b"""<a href="/about"><p>Broker Navigation and Account</p></a>
+        <a href="https://elsewhere.example/stocks/thermax/news"><p>Not from broker</p></a>
+        <a href="/stocks/thermax/news"><p>Thermax Limited raised its outlook</p><i>2 hours ago</i></a>
+        <a href="/stocks/thermax/news"><p>Thermax Limited announced earnings</p><i>today</i></a>"""
+        items = listing_items(html, source)
+        self.assertEqual(len(items), 2)
+        rows = [observation(item, source, at(8, 55), NIFTY, NIFTY,
+                            discoverer="python") for item in items]
+        self.assertNotEqual(rows[0]["id"], rows[1]["id"])
+        self.assertTrue(all(row["published_at"] is None and not row["verified_origin"]
+                            for row in rows))
+
+    def test_disallowed_broker_listing_is_never_fetched(self):
+        from news_collector.engine import fetch_one
+
+        source = {**FEED, "kind": "broker_html"}
+        with patch("news_collector.engine.allowed_by_robots", return_value=(False, "restricted")):
+            with patch("news_collector.engine.read_with_retry") as fetch:
+                stats, items = fetch_one(source)
+        self.assertEqual(stats["status"], "BLOCKED_ROBOTS")
+        self.assertEqual(items, [])
+        fetch.assert_not_called()

@@ -59,7 +59,8 @@
       "kind": "rss",
       "provider": "MEDIA",
       "authority": "secondary",
-      "enabled": true
+      "enabled": true,
+      "timestamp_provenance": "discovery"
     },
     {
       "name": "Mint markets RSS",
@@ -778,6 +779,99 @@
       "enabled": true,
       "timestamp_provenance": "discovery",
       "source_website": "businesstoday.in"
+    },
+    {
+      "name": "Upstox Stock News",
+      "url": "https://upstox.com/news/market-news/stocks/",
+      "kind": "broker_html",
+      "provider": "BROKER",
+      "authority": "secondary",
+      "article_path": "/news/.+/article-\\d+/?",
+      "fallback_slug": true
+    },
+    {
+      "name": "Dhan Blog News",
+      "url": "https://dhan.co/blog/news/",
+      "kind": "broker_html",
+      "provider": "BROKER",
+      "authority": "secondary",
+      "article_path": "/blog/news/[^/]+/?"
+    },
+    {
+      "name": "Groww Stocks in News",
+      "url": "https://groww.in/market-news/stocks",
+      "kind": "broker_html",
+      "provider": "BROKER",
+      "authority": "secondary",
+      "article_path": "/stocks/[^/]+/market-news/?",
+      "headline_selector": "[class*='stockNewsCard_newsCardDescription']",
+      "shared_link": true
+    },
+    {
+      "name": "Mirae Asset Sharekhan Market News",
+      "url": "https://www.sharekhan.com/news/market",
+      "kind": "broker_html",
+      "provider": "BROKER",
+      "authority": "secondary",
+      "article_path": "/news/market/details/.+"
+    },
+    {
+      "name": "Kotak Neo Public Research",
+      "url": "https://www.kotakneo.com/fundamental-research-report/",
+      "kind": "broker_html",
+      "provider": "BROKER",
+      "authority": "secondary",
+      "article_path": "/uploads/(?:Morning_Insight|Market_Morning|Market_Strategy)[^/]*\\.pdf"
+    },
+    {
+      "name": "Motilal Oswal Public Research",
+      "url": "https://www.motilaloswal.com/stock-research",
+      "kind": "broker_html",
+      "provider": "BROKER",
+      "authority": "secondary",
+      "article_path": "/(?:site/rreports|[^/]+/research)/[^/]+\\.pdf"
+    },
+    {
+      "name": "Angel One Stock News",
+      "url": "https://www.angelone.in/news/stocks",
+      "kind": "broker_html",
+      "provider": "BROKER",
+      "authority": "secondary",
+      "article_path": "/news/stocks/[^/]+/?"
+    },
+    {
+      "name": "ICICI Direct Market News",
+      "url": "https://www.icicidirect.com/share-market-today/news",
+      "kind": "broker_html",
+      "provider": "BROKER",
+      "authority": "secondary",
+      "article_path": "/share-market-today/news/[^/]+/?"
+    },
+    {
+      "name": "5paisa Stock News",
+      "url": "https://www.5paisa.com/news/stocks",
+      "kind": "broker_html",
+      "provider": "BROKER",
+      "authority": "secondary",
+      "article_path": "/news/(?!stocks/?$)[^/]+/?"
+    },
+    {
+      "name": "HDFC Securities News",
+      "url": "https://www.hdfcsec.com/proterminal-page-news-and-sentiments",
+      "kind": "broker_html",
+      "provider": "BROKER",
+      "authority": "secondary",
+      "article_path": "/(?:market-news|research)/[^/]+/?"
+    },
+    {
+      "name": "Dhan Live Stock News",
+      "url": "https://dhan.co/stock-market-live/",
+      "kind": "broker_html",
+      "provider": "BROKER",
+      "authority": "secondary",
+      "card_selector": "div.w-full:has(> div > p[id^='marketnewsdivweb'])",
+      "headline_selector": "div:first-child p",
+      "summary_selector": "p[id^='marketnewsdivweb']"
     }
   ]
 }

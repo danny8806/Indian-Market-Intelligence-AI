@@ -62,19 +62,7 @@ done
 run_compose exec -T postgres pg_isready -U news_admin -d market_news >/dev/null || {
   echo "BLOCKED: private PostgreSQL did not become ready"; exit 4;
 }
-if ! grep -q '^TRADE_ARCHIVE_PASSWORD=' "$ENV"; then
-  printf 'TRADE_ARCHIVE_PASSWORD=%s\n' "$(openssl rand -hex 32)" >> "$ENV"
-fi
-{
-  sed -n 's/^TRADE_ARCHIVE_PASSWORD=//p' "$ENV"
-  cat "$RELEASE/ops/news-stack/init-trade-archive.sql"
-} | run_compose exec -T postgres sh -ec '
-  IFS= read -r TRADE_ARCHIVE_PASSWORD
-  export TRADE_ARCHIVE_PASSWORD
-  exec psql -U news_admin -d market_news -q -v ON_ERROR_STOP=1
-'
 run_compose build collector
-bash "$RELEASE/ops/news-stack/archive-option-trades.sh"
 
 # Stop only the previous persistent collector in this Compose project. If the
 # first one-shot fails, restart that exact previous container.
@@ -95,12 +83,12 @@ echo "DB VERIFIED: news_articles count=$ARTICLES"
 
 # Install the units before switching the stable release pointer. Keep prior
 # releases and all volumes so rollback does not require restoring a database.
-for unit in market-news-{collect,morning,trades}.{service,timer}; do
+for unit in market-news-{collect,morning}.{service,timer}; do
   "${SYSTEM_INSTALL[@]}" -m 644 "$RELEASE/ops/news-stack/$unit" "/etc/systemd/system/$unit"
 done
 ln -sfn "$RELEASE" "$BASE/current.new"
 mv -Tf "$BASE/current.new" "$BASE/current"
 "${SYSTEMCTL[@]}" daemon-reload
-"${SYSTEMCTL[@]}" enable --now market-news-collect.timer market-news-morning.timer market-news-trades.timer
-"${SYSTEMCTL[@]}" is-active market-news-collect.timer market-news-morning.timer market-news-trades.timer
+"${SYSTEMCTL[@]}" enable --now market-news-collect.timer market-news-morning.timer
+"${SYSTEMCTL[@]}" is-active market-news-collect.timer market-news-morning.timer
 printf '%s\n' "$SHA" > "$BASE/last_verified_news_commit"
