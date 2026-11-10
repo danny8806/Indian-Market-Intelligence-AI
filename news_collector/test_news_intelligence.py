@@ -10,7 +10,7 @@ from sqlalchemy import create_engine, select
 from news_collector.agent_intake import assignment, ingest_inbox, validate_report
 from news_collector.archive import observation, replay, stage
 from news_collector.broker_sources import listing_items
-from news_collector.codex_research import allowed_url
+from news_collector.codex_research import allowed_url, publisher_article
 from news_collector.continuous_worker import codex_slot
 from news_collector.db_store import archive_batches, article_revisions, articles, sync_archive_batch
 from news_collector.engine import IST
@@ -330,3 +330,35 @@ class NewsIntelligenceTests(unittest.TestCase):
         self.assertEqual(report["signals"][0]["symbol"], "THERMAX")
         self.assertIn("fallback", report["signals"][0]["reason"])
         self.assertFalse(report["execution_enabled"])
+
+
+    def test_fallback_can_use_explicit_direction_in_verified_excerpt(self):
+        row = {"verified_origin": True, "nifty_symbols": ["KNOWN"],
+               "headline": "Known company files quarterly results",
+               "summary": "Profit after tax (PAT) of 21.97 crore in Q2 FY27 as against "
+                          "49.19 crore in Q2 FY26, a reduction of 55.3 per cent year-on-year.",
+               "published_at": at(8, 52).isoformat(), "url": "https://example.com/news"}
+        snapshot = {"items": [row], "recent_coverage": True}
+        output = fill_from_headlines(snapshot, [])
+        self.assertEqual(output[0]["side"], "SHORT")
+        self.assertEqual(output[0]["news_summary"], row["summary"])
+        row["headline"] = "Known net profit rises"
+        self.assertEqual(fill_from_headlines(snapshot, []), [])
+
+    def test_publisher_structured_data_uses_only_matching_original_publication(self):
+        page = b"""
+            <script type="application/ld+json">{"@graph":[
+              {"@type":"NewsArticle","url":"https://example.com/other",
+               "headline":"Unrelated headline","datePublished":"2026-11-11T08:45:00+05:30"},
+              {"@type":"NewsArticle","mainEntityOfPage":{"@id":"https://example.com/actual"},
+               "headline":"Company net profit rises","datePublished":"2026-11-11T08:30:00+05:30",
+               "dateModified":"2026-11-11T08:55:00+05:30"}]}</script>
+        """
+        from unittest.mock import MagicMock
+        with patch("news_collector.codex_research.requests.get") as get:
+            response = MagicMock(status_code=200, headers={"Content-Type": "text/html"})
+            response.iter_content.return_value = [page]
+            get.return_value.__enter__.return_value = response
+            article = publisher_article("https://example.com/actual")
+        self.assertEqual(article["headline"], "Company net profit rises")
+        self.assertEqual(article["raw_time"], "2026-11-11T08:30:00+05:30")

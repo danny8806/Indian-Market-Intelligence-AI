@@ -245,7 +245,8 @@
       "kind": "html",
       "provider": "MEDIA",
       "authority": "secondary",
-      "enabled": true
+      "enabled": true,
+      "verify_article": true
     },
     {
       "name": "Business Standard markets",
@@ -253,7 +254,8 @@
       "kind": "html",
       "provider": "MEDIA",
       "authority": "secondary",
-      "enabled": true
+      "enabled": true,
+      "verify_article": true
     },
     {
       "name": "Financial Express markets",
@@ -269,7 +271,8 @@
       "kind": "html",
       "provider": "MEDIA",
       "authority": "secondary",
-      "enabled": true
+      "enabled": true,
+      "verify_article": true
     },
     {
       "name": "Economic Times markets web",
@@ -277,7 +280,8 @@
       "kind": "html",
       "provider": "MEDIA",
       "authority": "secondary",
-      "enabled": true
+      "enabled": true,
+      "verify_article": true
     },
     {
       "name": "CNBC TV18 markets web",
@@ -285,7 +289,8 @@
       "kind": "html",
       "provider": "MEDIA",
       "authority": "secondary",
-      "enabled": true
+      "enabled": true,
+      "verify_article": true
     },
     {
       "name": "Hindu BusinessLine markets",
@@ -293,7 +298,8 @@
       "kind": "html",
       "provider": "MEDIA",
       "authority": "secondary",
-      "enabled": true
+      "enabled": true,
+      "verify_article": true
     },
     {
       "name": "NSE announcements archive mirror",

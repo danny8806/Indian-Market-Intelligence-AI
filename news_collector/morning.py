@@ -235,7 +235,7 @@ def finalize_watchlist(engine, now, start, cutoff, *, clock, analyst):
     if len(filled) > len(signals):
         count = len(filled) - len(signals)
         status, signals = "READY", filled
-        reason = f"Watchlist includes {count} candidate(s) from verified headline fallback"
+        reason = f"Watchlist includes {count} candidate(s) from verified stock-news fallback"
     with engine.begin() as conn:
         lock_morning(conn)
         locked_at = clock().astimezone(IST)

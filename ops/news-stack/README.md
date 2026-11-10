@@ -13,12 +13,14 @@ with execution_enabled=false. The news service has no broker or bridge credentia
   configured original publisher metadata or the original exchange feed. Its
   default budget is 48 discovery slots per IST day, at :00 and :30. Set
   NEWS_CODEX_DAILY_CALLS from 0 to 48 to cap usage. Missing authentication
-  or retrieval failure is reported per attempt.
+  or retrieval failure is reported per attempt. The 08:40 and 08:50 Python
+  passes also verify a bounded sample of individual public publisher pages
+  using original publication metadata, subject to their access rules.
 - market-news-morning.timer starts research at 08:00 IST on weekdays and
   refreshes at 08:30, 08:55 and 09:00. At 09:05 the job freezes the news
   evidence from 15:00 on the previous regular NSE session.
   It reuses a matching completed draft or ranks the frozen evidence in the
-  finalization window. Verified, explicitly directional headlines can fill
+  finalization window. Verified, explicitly directional headlines and publisher excerpts can fill
   open slots in a reviewed watchlist. If the review is unavailable, the 09:10
   job uses the same headline fallback. It targets five LONG and five SHORT
   using distinct verified NIFTY 500 symbols. Ambiguous, speculative or

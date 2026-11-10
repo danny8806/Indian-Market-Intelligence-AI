@@ -1,6 +1,6 @@
 """Collect around the clock without using the morning research window as a filter."""
 from concurrent.futures import ThreadPoolExecutor
-from datetime import datetime, timedelta
+from datetime import datetime, time, timedelta
 import csv
 import hashlib
 import io
@@ -8,12 +8,14 @@ import json
 import os
 import re
 from pathlib import Path
+from urllib.parse import urlsplit
 from uuid import uuid4
 
 import requests
 
 from news_collector.engine import (
-    IST, ROOT, build_record, fetch_bytes, fetch_one, get_universe, parse_universe_csv,
+    IST, ROOT, USER_AGENT, build_record, fetch_bytes, fetch_one, get_universe, parse_universe_csv,
+    regular_market_day,
 )
 
 NSE_MASTER = "https://archives.nseindia.com/content/equities/EQUITY_L.csv"
@@ -111,11 +113,32 @@ def observation(item: dict, source: dict, observed: datetime, universe: dict,
     return row
 
 
+def verify_publisher_lead(source, lead, universe, nifty, *, clock):
+    from news_collector.broker_sources import allowed_by_robots
+    from news_collector.codex_research import allowed_url, publisher_article
+
+    url = lead["url"]
+    if not allowed_url(url, {urlsplit(source["url"]).hostname}):
+        return None
+    try:
+        allowed, _ = allowed_by_robots(url, USER_AGENT)
+        original = publisher_article(url) if allowed else None
+    except (requests.RequestException, ValueError):
+        return None
+    if original is None:
+        return None
+    row = observation(original, source, clock(), universe, nifty, discoverer="publisher")
+    return row if row and row["verified_origin"] and len(row["nifty_symbols"]) == 1 else None
+
+
 def collect_batch(root: Path, *, clock=lambda: datetime.now(IST), config=ROOT / "sources.json"):
     started = clock()
     nifty, universe, verified = load_universes(root, started)
     sources = json.loads(config.read_text(encoding="utf-8"))["sources"]
-    rows, checks = [], []
+    rows, checks, publisher_leads = [], [], []
+    preopen = started.astimezone(IST)
+    verify_publishers = (verified and time(8, 40) <= preopen.time() < time(9)
+                         and regular_market_day(preopen.date()))
 
     def retrieve(source):
         stats, items = fetch_one(source)
@@ -124,11 +147,25 @@ def collect_batch(root: Path, *, clock=lambda: datetime.now(IST), config=ROOT / 
     with ThreadPoolExecutor(max_workers=4) as pool:
         for source, (stats, items, observed) in zip(sources, pool.map(retrieve, sources)):
             checks.append(stats)
+            source_leads = []
             for item in items:
                 row = observation(item, source, observed, universe, nifty if verified else {},
                                   discoverer="python")
                 if row and (row["published_at"] or row["symbols"] or source["kind"] == "broker_html"):
                     rows.append(row)
+                if (verify_publishers and source.get("verify_article") and row
+                        and len(row["nifty_symbols"]) == 1 and len(source_leads) < 2):
+                    source_leads.append((source, row))
+            publisher_leads.extend(source_leads)
+    verified_urls = {row["url"] for row in rows if row["verified_origin"]}
+    pending_urls = {lead["url"]: (source, lead) for source, lead in publisher_leads
+                    if lead["url"] not in verified_urls}
+    if pending_urls:
+        with ThreadPoolExecutor(max_workers=4) as pool:
+            def verify(item):
+                return verify_publisher_lead(*item, universe, nifty, clock=clock)
+
+            rows.extend(row for row in pool.map(verify, pending_urls.values()) if row is not None)
     return {
         "batch_id": uuid4().hex,
         "session": started.astimezone(IST).date().isoformat(),
@@ -138,6 +175,7 @@ def collect_batch(root: Path, *, clock=lambda: datetime.now(IST), config=ROOT / 
         "sources_failed": sum(check["status"] == "ERROR" for check in checks),
         "sources_blocked": sum(check["status"] == "BLOCKED_ROBOTS" for check in checks),
         "sources": checks,
+        "publisher_checks": len(pending_urls),
         "records": rows,
         "nifty_count": len(nifty) if verified else 0,
         "nifty_membership_verified": verified,

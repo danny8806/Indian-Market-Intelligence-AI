@@ -11,6 +11,7 @@ from bs4 import BeautifulSoup
 import requests
 
 from news_collector.archive import observation
+from news_collector.broker_sources import allowed_by_robots
 from news_collector.engine import IST, ROOT, USER_AGENT, canonical_url, fetch_one
 
 LINKS_SCHEMA = {
@@ -105,9 +106,45 @@ def publisher_article(url: str) -> dict | None:
 
     title = meta("og:title")
     published = meta("article:published_time", "datePublished")
-    if title and published:
+    summary = meta("og:description", "description")
+    if not (title and published):
+        for script in soup.find_all("script", attrs={"type": "application/ld+json"}):
+            try:
+                payload = json.loads(script.get_text())
+            except (TypeError, ValueError):
+                continue
+            if isinstance(payload, dict):
+                graph = payload.get("@graph")
+                nodes = [payload, *(graph if isinstance(graph, list) else [])]
+            else:
+                nodes = payload if isinstance(payload, list) else []
+            for node in nodes:
+                if not isinstance(node, dict):
+                    continue
+                types = node.get("@type", [])
+                if isinstance(types, str):
+                    types = [types]
+                if not isinstance(types, list) or not any(
+                    kind in types for kind in ("NewsArticle", "Article", "ReportageNewsArticle")
+                ):
+                    continue
+                node_url = node.get("url") or node.get("mainEntityOfPage") or ""
+                if isinstance(node_url, dict):
+                    node_url = node_url.get("@id", "")
+                node_title = node.get("headline")
+                node_time = node.get("datePublished")
+                if (not isinstance(node_title, str) or not isinstance(node_time, str)
+                        or not node_title.strip() or not node_time.strip()):
+                    continue
+                if (isinstance(node_url, str) and canonical_url(node_url) == canonical_url(url)
+                        or title and node_title.strip().casefold() == title.strip().casefold()):
+                    description = node.get("description")
+                    return {"url": url, "headline": node_title, "raw_time": node_time,
+                            "summary": summary or (description if isinstance(description, str) else ""),
+                            "origin_verified": True}
+    elif title and published:
         return {"url": url, "headline": title, "raw_time": published,
-                "summary": meta("og:description", "description"), "origin_verified": True}
+                "summary": summary, "origin_verified": True}
     return None
 
 
@@ -116,8 +153,8 @@ def verify_links(urls, nifty, universe, *, clock, discoverer, sources=None):
         sources = json.loads((ROOT / "sources.json").read_text(encoding="utf-8"))["sources"]
     known_hosts = {}
     for source in sources:
-        if (source["kind"] == "rss" and source.get("enabled", True)
-                and source.get("timestamp_provenance") != "discovery"):
+        original_rss = source["kind"] == "rss" and source.get("timestamp_provenance") != "discovery"
+        if source.get("enabled", True) and (original_rss or source.get("verify_article")):
             host = urlsplit(source["url"]).hostname
             known_hosts[host] = source
             if host and host.startswith("www."):
@@ -147,7 +184,8 @@ def verify_links(urls, nifty, universe, *, clock, discoverer, sources=None):
                     }
                 item, source = filings[source["provider"]].get(url, (None, source))
             else:
-                item = publisher_article(url)
+                allowed, _ = allowed_by_robots(url, USER_AGENT)
+                item = publisher_article(url) if allowed else None
         except (requests.RequestException, ValueError):
             continue
         if item:
