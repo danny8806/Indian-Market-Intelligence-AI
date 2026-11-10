@@ -4,9 +4,10 @@ Audit date: 2026-11-10 IST. This maps the required data-record fields from
 `START-HERE-OTHER-AI-HANDOFF.md` section 4/9 to the current implementation.
 It records gaps instead of claiming they are already satisfied.
 
-The additive columns below are implemented and tested locally; they are applied
-by the next deployed release. The running release reads `eb918db` until that
-follow-up deployment is verified.
+The additive columns below were deployed in release `974b806` on 2026-11-10
+16:41 IST. The one-time backfill updated 1,725 of 3,524 existing rows; columns
+were added idempotently and no article ID was duplicated. The running release
+reads `974b806`.
 
 | Required field | Current storage | Status |
 | --- | --- | --- |
