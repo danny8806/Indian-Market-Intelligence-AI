@@ -16,7 +16,9 @@ from pathlib import Path
 
 from sqlalchemy import (JSON, Boolean, Column, DateTime, ForeignKey, Index, Integer,
                         MetaData, String, Table, Text, create_engine, insert,
-                        select, text, update)
+                        inspect as sqlalchemy_inspect, select, text, update)
+
+from news_collector.classification import classify_event
 
 metadata = MetaData()
 articles = Table(
@@ -36,6 +38,14 @@ articles = Table(
     Column("providers", JSON, nullable=False),
     Column("authorities", JSON, nullable=False),
     Column("provider_reported_time_unverified", Text, nullable=False),
+    Column("category", String(40), nullable=False, server_default="other"),
+    Column("sentiment", String(16), nullable=False, server_default="UNCLEAR"),
+    Column("sentiment_score", Integer, nullable=False, server_default="0"),
+    Column("discoverer", String(40), nullable=False, server_default=""),
+    Column("company_name", String(255), nullable=False, server_default=""),
+    Column("isin", String(12), nullable=False, server_default=""),
+    Column("verification_method", String(80), nullable=False, server_default=""),
+    Column("financial_figures", JSON),
 )
 Index("ix_news_articles_published", articles.c.published_at)
 Index("ix_news_articles_first_seen", articles.c.first_seen_at)
@@ -132,6 +142,34 @@ morning_drafts = Table(
     Column("signals", JSON, nullable=False),
 )
 
+# Additive columns introduced after the first deployed schema. create_all does
+# not alter an existing table, so every writer applies this idempotent upgrade
+# before inserting a batch. Nullable JSON columns stay nullable on purpose.
+ARTICLE_COLUMN_UPGRADES = {
+    "category": "VARCHAR(40) NOT NULL DEFAULT 'other'",
+    "sentiment": "VARCHAR(16) NOT NULL DEFAULT 'UNCLEAR'",
+    "sentiment_score": "INTEGER NOT NULL DEFAULT 0",
+    "discoverer": "VARCHAR(40) NOT NULL DEFAULT ''",
+    "company_name": "VARCHAR(255) NOT NULL DEFAULT ''",
+    "isin": "VARCHAR(12) NOT NULL DEFAULT ''",
+    "verification_method": "VARCHAR(80) NOT NULL DEFAULT ''",
+    "financial_figures": "JSON",
+}
+
+
+def ensure_article_columns(conn) -> list[str]:
+    """Apply the additive article-column migration and return added names."""
+    existing = {column["name"] for column in
+                sqlalchemy_inspect(conn).get_columns("news_articles")}
+    added = []
+    for name, ddl in ARTICLE_COLUMN_UPGRADES.items():
+        if name in existing:
+            continue
+        conn.execute(text(f"ALTER TABLE news_articles ADD COLUMN {name} {ddl}"))
+        added.append(name)
+    return added
+
+
 
 def aware(value: str | None) -> datetime | None:
     if not value:
@@ -218,6 +256,12 @@ def _insert_or_update(connection, incoming: dict, kind: str, checked_at: datetim
         authorities=sorted(set(incoming.get("authorities") or [])),
         provider_reported_time_unverified=str(
             incoming.get("provider_reported_time_unverified") or "")[:80],
+        category="other", sentiment="UNCLEAR", sentiment_score=0,
+        discoverer=str(incoming.get("discoverer") or "")[:40],
+        company_name=str(incoming.get("company_name") or "")[:255],
+        isin=str(incoming.get("isin") or "")[:12],
+        verification_method=str(incoming.get("verification_method") or "")[:80],
+        financial_figures=incoming.get("financial_figures") or None,
     )
     old = connection.execute(select(articles).where(articles.c.id == identity)).mappings().first()
     if old:
@@ -234,6 +278,14 @@ def _insert_or_update(connection, incoming: dict, kind: str, checked_at: datetim
         row["last_seen_at"] = _newest(old["last_seen_at"], last)
         for field in ("symbols", "sources", "providers", "authorities"):
             row[field] = _unique(old[field], row[field])
+        for field in ("discoverer", "company_name", "isin", "verification_method"):
+            if not row[field]:
+                row[field] = old[field]
+        if row["financial_figures"] is None:
+            row["financial_figures"] = old["financial_figures"]
+    category, sentiment, score = classify_event(row["headline"], row["summary"])
+    row.update(category=category, sentiment=sentiment, sentiment_score=score)
+    if old:
         connection.execute(update(articles).where(articles.c.id == identity).values(**row))
     else:
         connection.execute(insert(articles).values(id=identity, **row))
@@ -263,6 +315,7 @@ def sync_session(connection_engine, data_dir: Path, session_date: str) -> dict:
     saved_at = datetime.now(timezone.utc)
     with connection_engine.begin() as conn:
         metadata.create_all(conn)
+        ensure_article_columns(conn)
         for kind, items in records:
             for item in items:
                 _insert_or_update(conn, item, kind, saved_at)
@@ -306,14 +359,17 @@ def sync_archive_batch(engine, batch: dict) -> bool:
         if conn.dialect.name == "postgresql":
             conn.execute(text("SELECT pg_advisory_xact_lock(73518416)"))
         metadata.create_all(conn)
+        ensure_article_columns(conn)
         if conn.execute(select(archive_batches.c.batch_id).where(
                 archive_batches.c.batch_id == batch["batch_id"])).first():
             return False
         for item in batch["records"]:
             _insert_or_update(conn, item, item["kind"], checked)
             fields = ("url", "headline", "summary", "published_at", "symbols",
-                      "nifty_symbols", "sources", "providers", "verified_origin", "discoverer")
-            evidence = {key: item[key] for key in fields}
+                      "nifty_symbols", "sources", "providers", "verified_origin",
+                      "discoverer", "category", "sentiment", "sentiment_score",
+                      "company_name", "isin", "verification_method")
+            evidence = {key: item.get(key) for key in fields}
             identity = hashlib.sha256(json.dumps(
                 [item["id"], evidence], sort_keys=True).encode()).hexdigest()
             seen = aware(item["first_seen_at"])
@@ -427,6 +483,46 @@ def prune_raw_documents(engine, *, days: int = 30) -> int:
         return int(result.rowcount or 0)
 
 
+def backfill_article_fields(engine) -> dict:
+    """Populate classification/discoverer columns for rows written by old releases."""
+    scanned = updated = 0
+    with engine.begin() as conn:
+        metadata.create_all(conn)
+        added = ensure_article_columns(conn)
+        discoverers: dict[str, str] = {}
+        for article_id, evidence in conn.execute(select(
+                article_revisions.c.article_id, article_revisions.c.evidence)):
+            if isinstance(evidence, str):
+                try:
+                    evidence = json.loads(evidence)
+                except ValueError:
+                    evidence = {}
+            value = str((evidence or {}).get("discoverer") or "")[:40]
+            if value and article_id not in discoverers:
+                discoverers[article_id] = value
+        rows = conn.execute(select(
+            articles.c.id, articles.c.headline, articles.c.summary, articles.c.category,
+            articles.c.sentiment, articles.c.sentiment_score, articles.c.published_at,
+            articles.c.verification_method, articles.c.discoverer)).mappings().all()
+        for row in rows:
+            scanned += 1
+            category, sentiment, score = classify_event(row["headline"], row["summary"])
+            discoverer = row["discoverer"] or discoverers.get(row["id"], "")
+            verification = row["verification_method"] or (
+                "source_feed_timestamp" if row["published_at"]
+                else "unverified_no_publication_time")
+            if (category, sentiment, score, discoverer, verification) != (
+                    row["category"], row["sentiment"], row["sentiment_score"],
+                    row["discoverer"], row["verification_method"]):
+                conn.execute(update(articles).where(articles.c.id == row["id"]).values(
+                    category=category, sentiment=sentiment, sentiment_score=score,
+                    discoverer=discoverer, verification_method=verification))
+                updated += 1
+    return {"status": "FIELDS_BACKFILLED", "scanned": scanned, "updated": updated,
+            "columns_added": added}
+
+
+
 def main() -> None:
     from news_collector.engine import ROOT, IST, default_session
     parser = argparse.ArgumentParser()
@@ -435,6 +531,8 @@ def main() -> None:
     parser.add_argument("--require-db", action="store_true")
     parser.add_argument("--backfill-all", action="store_true",
                         help="Import existing saved session archives one time")
+    parser.add_argument("--backfill-fields", action="store_true",
+                        help="Fill category/sentiment/discoverer for existing DB rows")
     args = parser.parse_args()
     url = os.getenv("NEWS_DATABASE_URL", "")
     if not url:
@@ -443,6 +541,9 @@ def main() -> None:
         print(json.dumps({"status": "SKIPPED_NO_DB", "reason": "NEWS_DATABASE_URL not configured"}))
         return
     engine = engine_for_url(url)
+    if args.backfill_fields:
+        print(json.dumps(backfill_article_fields(engine)))
+        return
     if args.backfill_all:
         sessions = sorted(p.name for p in args.data_dir.iterdir()
                           if p.is_dir() and (p / "coverage.json").is_file())

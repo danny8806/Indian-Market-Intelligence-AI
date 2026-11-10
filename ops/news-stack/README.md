@@ -16,6 +16,11 @@ A registry status is evidence of access, not proof of complete coverage.
   collector uses four HTTP workers and a shared lock. It commits staged batches
   transactionally to news_articles, news_article_revisions and news_archive_batches.
   A failed database write leaves the batch queued on the archive volume for replay.
+- Each writer applies an idempotent additive upgrade for `news_articles.category`,
+  `sentiment`, `sentiment_score`, `discoverer`, `company_name`, `isin`,
+  `verification_method` and `financial_figures`. Existing rows stay readable.
+  `python -m news_collector.db_store --backfill-fields` recomputes the
+  deterministic category/sentiment and recovers `discoverer` from revision evidence.
 - Codex discovery searches independently, then verifies returned links against
   configured original publisher metadata or the original exchange feed. Its
   default budget is 48 discovery slots per IST day, at :00 and :30. Set

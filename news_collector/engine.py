@@ -398,6 +398,8 @@ def build_record(item: dict, source: dict, universe: dict[str, str],
                     "first_seen_at": fetched_at.isoformat(), "last_seen_at": fetched_at.isoformat(),
                     "publication_time_status": "VERIFIED_FORMAT" if timestamp else "UNVERIFIED",
                     "provider_reported_time_unverified": item.get("provider_reported_time", ""),
+                    "isin": str(item.get("isin") or "")[:12],
+                    "financial_figures": item.get("financial_figures") or None,
                     "symbols": symbols,
                     "sources": [source["name"]], "providers": [source["provider"]],
                     "authorities": [source["authority"]]}

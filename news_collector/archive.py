@@ -104,9 +104,22 @@ def observation(item: dict, source: dict, observed: datetime, universe: dict,
             f'{row["url"]}:{row["headline"]}'.encode()).hexdigest()[:24]
     row["discoverer"] = discoverer
     row["nifty_symbols"] = sorted(set(row["symbols"]) & nifty.keys())
+    row["company_name"] = (universe.get(row["symbols"][0], "")
+                           if len(row["symbols"]) == 1 else "")
     row["verified_origin"] = bool(
         row["published_at"] and (item.get("origin_verified") or
             (item.get("original_time") and trusted_origin(source, row["url"]))))
+    row["verification_method"] = (
+        "official_exchange_feed_timestamp"
+        if row["published_at"] and source["provider"] in {"NSE", "BSE"}
+        else "verified_publisher_page_timestamp"
+        if row["published_at"] and row["verified_origin"]
+        else "source_feed_timestamp"
+        if row["published_at"]
+        else "unverified_no_publication_time")
+    from news_collector.classification import classify_event
+    row["category"], row["sentiment"], row["sentiment_score"] = classify_event(
+        row["headline"], row["summary"])
     if not row["published_at"]:
         row["kind"] = "discovery_only"
     elif row["symbols"]:

@@ -235,6 +235,17 @@ they must NOT be relied on for 9 AM trading selection.
   `undated_candidates.jsonl` contains discovery leads not eligible for trades;
   `macro_context.jsonl` contains unmatched regulator/macro items with feed
   time, not direct stock signals.
+- Archived rows carry a deterministic `category` (`financial_results`,
+  `orders_contracts`, `regulatory`, `fundraising`, `acquisition`, `management`,
+  `analyst_meetings`, `corporate_actions`, `other`), a headline-only `sentiment`
+  (`BULLISH`, `BEARISH`, `MIXED`, `UNCLEAR`) and a directional strength score.
+  These are keyword readings, not model predictions. Speculative or conflicting
+  headlines remain `UNCLEAR`/`MIXED` instead of being forced into a direction.
+- `company_name`, `isin` and `financial_figures` are stored when the source
+  supplies or the resolver can prove them. A missing value stays empty/null; it
+  is never guessed. `verification_method` records whether the publication time
+  came from an official exchange feed, a verified publisher page or an
+  unverified source field.
 - Inspect `coverage.json` and `source_gap_audit.json` after each run; a
   200/OK response is not proof a source delivered all available documents.
 
