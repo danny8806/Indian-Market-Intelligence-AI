@@ -14,6 +14,7 @@ from news_collector.db_store import (
 from news_collector.engine import IST, ROOT, regular_market_day, window_for
 from news_collector.headline_fallback import fill_from_headlines
 
+CUTOFF_MINUTES = 5
 REVIEW_DEADLINE_MINUTES = 12
 
 SELECTIONS = {
@@ -89,11 +90,7 @@ def evidence_hash(snapshot):
 
 
 def select_candidates(snapshot, *, analyst=run_codex):
-    """Ask the analyst for a shortlist using only frozen pre-cutoff evidence.
-
-    The independent critic runs later, in ``finalize_watchlist``, so its review
-    can happen after 09:00 without reading any post-cutoff evidence.
-    """
+    """Ask the analyst for a shortlist using only evidence already collected."""
     if not snapshot["recent_coverage"]:
         return "UNAVAILABLE", "No successful recent source batch and NIFTY 500 snapshot", []
     if not snapshot["items"]:
@@ -207,13 +204,16 @@ def make_report(day, cutoff, generated, *, status, reason, signals):
     return report
 
 
-def prepare_draft(engine, now, start, cutoff, *, clock, analyst):
-    """Run the analyst before the cutoff and persist its shortlist.
+def evidence_by_symbol(snapshot):
+    result = {}
+    for row in snapshot["items"]:
+        for symbol in row["nifty_symbols"]:
+            result.setdefault(symbol, set()).add(row["evidence_id"])
+    return {symbol: sorted(ids) for symbol, ids in result.items()}
 
-    Evidence is read at the start time, which is always before the 09:00
-    cutoff. The model call may finish after 09:00; the frozen snapshot check in
-    finalize_watchlist still rejects any evidence observed after the cutoff.
-    """
+
+def prepare_draft(engine, now, start, cutoff, *, clock, analyst, critic):
+    """Run both reviews before the evidence cutoff and save supported picks."""
     day = cutoff.date().isoformat()
     with engine.begin() as conn:
         lock_morning(conn)
@@ -221,26 +221,47 @@ def prepare_draft(engine, now, start, cutoff, *, clock, analyst):
         digest = evidence_hash(snapshot)
         key = ((morning_drafts.c.session_date == day)
                & (morning_drafts.c.evidence_sha256 == digest))
-        existing = conn.execute(select(morning_drafts.c.status).where(key)).scalar_one_or_none()
-        if existing in {"READY", "NO_TRADE"}:
-            return {"status": "DRAFT_REUSED", "draft_status": existing}
-    status, reason, signals = select_candidates(snapshot, analyst=analyst)
+        existing = conn.execute(select(morning_drafts.c.status, morning_drafts.c.signals)
+                                .where(key)).first()
+        if existing and existing.status in {"READY", "NO_TRADE"} and isinstance(existing.signals, dict):
+            return {"status": "DRAFT_REUSED", "draft_status": existing.status}
+    status, reason, shortlist = select_candidates(snapshot, analyst=analyst)
+    reviewed = []
+    audit = {"provider": "", "model": "", "independent": False, "status": "SKIPPED"}
+    if status == "READY":
+        remaining = int((cutoff - clock().astimezone(IST)).total_seconds()) - 5
+        if remaining < 20:
+            status, reason = "UNAVAILABLE", "Insufficient time for review before cutoff"
+            audit["status"] = "DEADLINE"
+        else:
+            try:
+                status, reason, reviewed, audit = review_candidates(
+                    snapshot, shortlist, critic=critic, timeout=min(90, remaining))
+            except Exception as exc:
+                status, reason = "UNAVAILABLE", f"Critic raised {type(exc).__name__}"
+                audit.update(status="CLI_ERROR", error=type(exc).__name__)
     completed = clock().astimezone(IST)
+    if completed >= cutoff:
+        return {"status": "DRAFT_DEADLINE_ELAPSED"}
+    by_symbol = evidence_by_symbol(snapshot)
+    signals = {"reviewed": reviewed, "critic": audit,
+               "symbol_evidence": {pick["symbol"]: by_symbol[pick["symbol"]] for pick in reviewed}}
     fields = dict(completed_at=completed.astimezone(timezone.utc),
                   status=status, reason=reason, signals=signals)
     with engine.begin() as conn:
         lock_morning(conn)
-        existing = conn.execute(select(morning_drafts.c.status).where(key)).scalar_one_or_none()
+        existing = conn.execute(select(morning_drafts.c.status, morning_drafts.c.signals)
+                                .where(key)).first()
         if existing is None:
             conn.execute(insert(morning_drafts).values(session_date=day, evidence_sha256=digest,
                                                        **fields))
-        elif existing == "UNAVAILABLE":
+        elif existing.status == "UNAVAILABLE" or not isinstance(existing.signals, dict):
             conn.execute(update(morning_drafts).where(key).values(**fields))
-    return {"status": "DRAFT_SAVED", "draft_status": status, "signals": len(signals)}
+    return {"status": "DRAFT_SAVED", "draft_status": status, "signals": len(reviewed)}
 
 
 def freeze_evidence(engine, day, start, cutoff, now):
-    """Persist the exact pre-09:00 snapshot once; later calls reuse it."""
+    """Persist the exact pre-cutoff snapshot once; later calls reuse it."""
     key = morning_reports.c.session_date == day
     with engine.begin() as conn:
         lock_morning(conn)
@@ -254,52 +275,37 @@ def freeze_evidence(engine, day, start, cutoff, now):
         return snapshot, None
 
 
-def finalize_watchlist(engine, now, start, cutoff, *, clock, critic=None):
+def finalize_watchlist(engine, now, start, cutoff, *, clock):
     day = cutoff.date().isoformat()
-    deadline = cutoff + timedelta(minutes=REVIEW_DEADLINE_MINUTES)
+    deadline = cutoff + timedelta(minutes=REVIEW_DEADLINE_MINUTES - CUTOFF_MINUTES)
     key = morning_reports.c.session_date == day
     snapshot, report = freeze_evidence(engine, day, start, cutoff, now)
     if report is not None:
         return report
     with engine.begin() as conn:
         lock_morning(conn)
-        draft = conn.execute(select(morning_drafts).where(
+        drafts = conn.execute(select(morning_drafts).where(
             morning_drafts.c.session_date == day,
-            morning_drafts.c.status.in_(("READY", "NO_TRADE")),
-        ).order_by(morning_drafts.c.completed_at.desc()).limit(1)).mappings().first()
-    if draft is None and now < cutoff + timedelta(minutes=2):
-        # The 08:55 analyst may still be finishing. Freeze the snapshot now and
-        # let the 09:05 invocation review it or use the fallback.
-        return {"status": "EVIDENCE_FROZEN_AWAITING_DRAFT"}
-    digest = evidence_hash(snapshot)
-    reviewed = []
-    audit = {"critic": {"provider": "", "model": "", "independent": False,
-                        "status": "SKIPPED"},
+            morning_drafts.c.completed_at < cutoff.astimezone(timezone.utc),
+        ).order_by(morning_drafts.c.completed_at.desc())).mappings().all()
+    eligible_drafts = [row for row in drafts if isinstance(row["signals"], dict)]
+    draft = next((row for row in eligible_drafts if row["status"] in {"READY", "NO_TRADE"}),
+                 eligible_drafts[0] if eligible_drafts else None)
+    audit = {"critic": {"provider": "", "model": "", "independent": False, "status": "SKIPPED"},
              "draft_evidence_sha256": draft["evidence_sha256"] if draft else None,
-             "frozen_evidence_sha256": digest}
-    if draft is not None and draft["status"] == "READY":
-        remaining = (deadline - clock().astimezone(IST)).total_seconds()
-        if remaining < 20:
-            audit["critic"]["status"] = "DEADLINE"
-        else:
-            try:
-                status, reason, reviewed, critic_audit = review_candidates(
-                    snapshot, draft["signals"], critic=critic,
-                    timeout=min(90, max(20, int(remaining) - 5)))
-            except Exception as exc:
-                critic_audit = {"provider": "unknown", "model": "",
-                                "independent": False, "status": "CLI_ERROR",
-                                "error": type(exc).__name__}
-                status, reason, reviewed = (
-                    "UNAVAILABLE", f"Critic raised {type(exc).__name__}", [])
-            audit.update({"critic": critic_audit, "review_status": status,
-                          "review_reason": reason})
-    critic_status = audit["critic"].get("status", "SKIPPED")
-    transient = {"QUOTA_LIMIT", "TIMEOUT", "CLI_ERROR", "PROVIDER_ERROR"}
-    if (not reviewed and critic_status in transient
-            and now < cutoff + timedelta(minutes=5)):
-        # Leave the frozen snapshot in place and let the 09:05 invocation retry.
-        return {"status": "AWAITING_CRITIC_RETRY", "critic": critic_status}
+             "frozen_evidence_sha256": evidence_hash(snapshot)}
+    reviewed = []
+    if draft is not None:
+        review = draft["signals"]
+        audit.update(critic=review["critic"], review_status=draft["status"], review_reason=draft["reason"])
+        by_symbol = evidence_by_symbol(snapshot)
+        reviewed = [dict(pick) for pick in review["reviewed"]
+                    if by_symbol.get(pick["symbol"]) == review["symbol_evidence"].get(pick["symbol"])]
+        ranks = {"LONG": 0, "SHORT": 0}
+        for pick in reviewed:
+            ranks[pick["side"]] += 1
+            pick["rank"] = ranks[pick["side"]]
+    critic_status = audit["critic"]["status"]
     signals = fill_from_headlines(snapshot, reviewed)
     added = len(signals) - len(reviewed)
     critic_label = audit["critic"].get("provider") or "none"
@@ -310,7 +316,7 @@ def finalize_watchlist(engine, now, start, cutoff, *, clock, critic=None):
             reason = (f"{len(reviewed)} critic-approved and {added} verified fallback "
                       "candidate(s)")
         elif reviewed:
-            reason = "Independent critic reviewed the frozen pre-09:00 evidence"
+            reason = "Independent critic reviewed the surviving verified evidence"
         else:
             reason = "Watchlist built from verified stock-news fallback"
             if draft is not None and draft["status"] == "READY":
@@ -351,11 +357,11 @@ def run(engine, *, clock=lambda: datetime.now(IST), analyst=run_codex, critic=No
     if not regular_market_day(now.date()):
         return {"status": "CLOSED"}
     start, opening_research = window_for(now.date().isoformat())
-    cutoff = opening_research
-    if opening_research - timedelta(hours=1) <= now < cutoff:
-        return prepare_draft(engine, now, start, cutoff, clock=clock, analyst=analyst)
-    if cutoff <= now < cutoff + timedelta(minutes=REVIEW_DEADLINE_MINUTES):
-        return finalize_watchlist(engine, now, start, cutoff, clock=clock, critic=critic)
+    cutoff = opening_research + timedelta(minutes=CUTOFF_MINUTES)
+    if opening_research - timedelta(hours=1) <= now < opening_research + timedelta(minutes=1):
+        return prepare_draft(engine, now, start, cutoff, clock=clock, analyst=analyst, critic=critic)
+    if cutoff <= now < opening_research + timedelta(minutes=REVIEW_DEADLINE_MINUTES):
+        return finalize_watchlist(engine, now, start, cutoff, clock=clock)
     return {"status": "OUTSIDE_RESEARCH_WINDOW"}
 
 
