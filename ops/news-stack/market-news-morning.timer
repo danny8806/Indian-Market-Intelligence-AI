@@ -1,0 +1,10 @@
+[Unit]
+Description=Build a research-only report at 09:00 IST
+
+[Timer]
+OnCalendar=Mon..Fri *-*-* 09:00:00 Asia/Kolkata
+AccuracySec=1s
+Persistent=false
+
+[Install]
+WantedBy=timers.target

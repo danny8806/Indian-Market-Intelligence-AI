@@ -19,7 +19,7 @@ def healthy(marker: Path = MARKER, *, now: datetime | None = None) -> bool:
             return False
         current = now or datetime.now(timezone.utc)
         age = (current - checked).total_seconds()
-        return -120 <= age <= 80 * 60
+        return -120 <= age <= 25 * 60
     except (ValueError, KeyError, OSError, TypeError):
         return False
 

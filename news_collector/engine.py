@@ -205,6 +205,7 @@ def rss_items(raw: bytes, source: dict) -> list[dict]:
             "headline": headline[:550],
             "summary": BeautifulSoup(fields.get("description", ""), "html.parser").get_text(" ", strip=True)[:1800],
             "url": url,
+            "original_time": bool(fields.get("pubdate") or fields.get("published") or fields.get("date")),
             "raw_time": ("" if source.get("timestamp_provenance") == "discovery"
                          else fields.get("pubdate") or fields.get("published") or fields.get("updated") or fields.get("date") or ""),
         })

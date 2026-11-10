@@ -8,14 +8,15 @@ NEWS_DATABASE_URL to write outside a local test.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 from datetime import datetime, timezone
 from pathlib import Path
 
-from sqlalchemy import (JSON, Column, DateTime, ForeignKey, Index, Integer,
+from sqlalchemy import (JSON, Boolean, Column, DateTime, ForeignKey, Index, Integer,
                         MetaData, String, Table, Text, create_engine, insert,
-                        select, update)
+                        select, text, update)
 
 metadata = MetaData()
 articles = Table(
@@ -68,6 +69,32 @@ runs = Table(
     Column("total_articles_in_archive", Integer, nullable=False),
 )
 Index("ix_news_runs_session", runs.c.session_date, runs.c.checked_at)
+
+archive_batches = Table(
+    "news_archive_batches", metadata,
+    Column("batch_id", String(32), primary_key=True),
+    Column("checked_at", DateTime(timezone=True), nullable=False),
+    Column("coverage", JSON, nullable=False),
+)
+article_revisions = Table(
+    "news_article_revisions", metadata,
+    Column("id", String(64), primary_key=True),
+    Column("article_id", String(64), ForeignKey("news_articles.id"), nullable=False),
+    Column("observed_at", DateTime(timezone=True), nullable=False),
+    Column("published_at", DateTime(timezone=True)),
+    Column("verified_origin", Boolean, nullable=False),
+    Column("evidence", JSON, nullable=False),
+)
+Index("ix_news_revisions_cutoff", article_revisions.c.verified_origin,
+      article_revisions.c.published_at, article_revisions.c.observed_at)
+morning_reports = Table(
+    "news_morning_reports", metadata,
+    Column("session_date", String(10), primary_key=True),
+    Column("frozen_at", DateTime(timezone=True), nullable=False),
+    Column("evidence", JSON, nullable=False),
+    Column("report", JSON),
+)
+
 
 
 def aware(value: str | None) -> datetime | None:
@@ -232,6 +259,42 @@ def sync_session(connection_engine, data_dir: Path, session_date: str) -> dict:
         "sources_checked": len(coverage.get("sources", [])),
         "source_status_is_not_complete_coverage": True,
     }
+
+
+def sync_archive_batch(engine, batch: dict) -> bool:
+    """Commit one durable spool batch once, including its evidence and source checks."""
+    checked = aware(batch["generated_at"])
+    if checked is None:
+        raise ValueError("Archive batch needs a timestamp")
+    with engine.begin() as conn:
+        if conn.dialect.name == "postgresql":
+            conn.execute(text("SELECT pg_advisory_xact_lock(73518416)"))
+        metadata.create_all(conn)
+        if conn.execute(select(archive_batches.c.batch_id).where(
+                archive_batches.c.batch_id == batch["batch_id"])).first():
+            return False
+        for item in batch["records"]:
+            _insert_or_update(conn, item, item["kind"], checked)
+            fields = ("url", "headline", "summary", "published_at", "symbols",
+                      "nifty_symbols", "sources", "providers", "verified_origin", "discoverer")
+            evidence = {key: item[key] for key in fields}
+            identity = hashlib.sha256(json.dumps(
+                [item["id"], evidence], sort_keys=True).encode()).hexdigest()
+            seen = aware(item["first_seen_at"])
+            old = conn.execute(select(article_revisions.c.observed_at).where(
+                article_revisions.c.id == identity)).scalar_one_or_none()
+            if old is None:
+                conn.execute(insert(article_revisions).values(
+                    id=identity, article_id=item["id"], observed_at=seen,
+                    published_at=aware(item["published_at"]),
+                    verified_origin=item["verified_origin"], evidence=evidence))
+            elif seen < _normalize_sqlite_time(old):
+                conn.execute(update(article_revisions).where(
+                    article_revisions.c.id == identity).values(observed_at=seen))
+        coverage = {key: value for key, value in batch.items() if key != "records"}
+        conn.execute(insert(archive_batches).values(
+            batch_id=batch["batch_id"], checked_at=checked, coverage=coverage))
+    return True
 
 
 def main() -> None:

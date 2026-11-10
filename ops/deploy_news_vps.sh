@@ -30,7 +30,7 @@ SCP=(-i "$WORK/key" -o IdentitiesOnly=yes -o BatchMode=yes
 # Only research news code and isolated PostgreSQL config; no live trading.
 tar -czf "$WORK/news-release.tgz" \
     --exclude='*/__pycache__' --exclude='*.pyc' --exclude='.env' \
-    news_collector ops/news-stack
+    news_collector ops/news-stack schema/stock-signals.schema.json
 
 REMOTE="$USER_NAME@$HOST"
 REMOTE_TAR="/tmp/market-news-release-$SHA.tgz"

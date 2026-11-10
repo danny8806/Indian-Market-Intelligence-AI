@@ -17,6 +17,7 @@ NON_DISTINCTIVE = {"india", "indian", "group", "financial", "services",
                    "bank", "enterprises", "limited", "holdings", "corporation"}
 
 
+@lru_cache(maxsize=8192)
 def normalized(text: str) -> str:
     text = (text or "").casefold().replace("&", " and ")
     text = re.sub(r"[^a-z0-9]+", " ", text)
@@ -35,7 +36,7 @@ def safe_needle(phrase: str) -> bool:
 
 
 def bounded_phrase(haystack: str, needle: str) -> bool:
-    return bool(re.search(r"(?<![a-z0-9])" + re.escape(needle) + r"(?![a-z0-9])", haystack))
+    return f" {needle} " in f" {haystack} "
 
 
 def match_issuers(title: str, summary: str, universe: dict[str, str],

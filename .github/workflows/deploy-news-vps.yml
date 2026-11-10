@@ -1,15 +1,6 @@
-name: Deploy isolated news PostgreSQL and 20-minute collector to VPS
+name: Deploy isolated news PostgreSQL and 10-minute collector to VPS
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'ops/deploy_news_vps.sh'
-      - 'ops/news-stack/**'
-      - 'news_collector/*.py'
-      - 'news_collector/*.json'
-      - 'news_collector/requirements.txt'
-      - '.github/workflows/deploy-news-vps.yml'
   workflow_dispatch:
 
 permissions:
@@ -36,6 +27,7 @@ jobs:
         run: |
           bash -n ops/deploy_news_vps.sh
           bash -n ops/news-stack/activate-news-vps.sh
+          bash -n ops/news-stack/run-news-job.sh
           sh -n ops/news-stack/init-news-db.sh
           sh -n ops/news-stack/start-news-worker.sh
           python -m compileall -q news_collector

@@ -18,11 +18,11 @@ IST = ZoneInfo("Asia/Kolkata")
 class WorkerTests(unittest.TestCase):
     def test_overnight_and_daytime_cadence(self):
         self.assertEqual(poll_interval_seconds(
-            datetime(2026, 11, 9, 16, tzinfo=IST)), 1200)
+            datetime(2026, 11, 9, 16, tzinfo=IST)), 600)
         self.assertEqual(poll_interval_seconds(
-            datetime(2026, 11, 10, 8, 30, tzinfo=IST)), 1200)
+            datetime(2026, 11, 10, 8, 30, tzinfo=IST)), 600)
         self.assertEqual(poll_interval_seconds(
-            datetime(2026, 11, 10, 11, tzinfo=IST)), 1200)
+            datetime(2026, 11, 10, 11, tzinfo=IST)), 600)
 
     def test_primary_data_persists_even_if_optional_ai_fails(self):
         with tempfile.TemporaryDirectory() as tmp:

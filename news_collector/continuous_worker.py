@@ -29,8 +29,8 @@ def _stop(_signal, _frame):
 
 
 def poll_interval_seconds(clock: datetime) -> int:
-    """20-minute collection cadence around the clock, independent of ChatGPT limits."""
-    return 20 * 60
+    """Ten-minute collection cadence around the clock."""
+    return 10 * 60
 
 
 def collect_and_store(engine, *, data_root: Path = DATA_ROOT,
@@ -82,15 +82,85 @@ def collect_and_store(engine, *, data_root: Path = DATA_ROOT,
             "github_pull": inbox["status"], "inbox_import": imported["status"]}
 
 
+def collect_archive(engine, root: Path, *, clock=lambda: datetime.now(IST)) -> dict:
+    from news_collector.archive import collect_batch, replay, stage
+    from news_collector.codex_research import discover
+    from uuid import uuid4
+
+    batch, nifty, universe = collect_batch(root, clock=clock)
+    stage(root, batch)
+    now = clock().astimezone(IST)
+    daily_slots = 144
+    try:
+        budget = max(0, min(daily_slots, int(os.getenv("NEWS_CODEX_DAILY_CALLS", "24"))))
+    except ValueError:
+        budget = 0
+    slot = (now.hour * 60 + now.minute) // 10
+    codex_status = "SKIPPED_BUDGET"
+    if slot != 54 and slot * budget // daily_slots > (slot - 1) * budget // daily_slots:
+        # Persist attempted slot before calling, so a service retry cannot spend twice.
+        ledger = root / "last_codex_slot"
+        slot_id = f"{now.date()}:{slot}"
+        if not ledger.is_file() or ledger.read_text(encoding="utf-8") != slot_id:
+            temporary = ledger.with_suffix(".tmp")
+            temporary.write_text(slot_id, encoding="utf-8")
+            temporary.replace(ledger)
+            try:
+                codex_status, rows = discover(now, nifty, universe, clock=clock)
+            except Exception as exc:
+                codex_status, rows = f"DISCOVERY_FAILED_{type(exc).__name__}", []
+            stage(root, {
+                "batch_id": uuid4().hex, "session": now.date().isoformat(),
+                "generated_at": clock().isoformat(), "records": rows,
+                "sources_configured": 1, "sources_with_items": 0, "sources_failed": 0,
+                "sources": [{"source": "Codex CLI", "status": codex_status,
+                             "fetched_items": len(rows)}],
+            })
+    saved = replay(engine, root)
+    result = {
+        "db_status": "DATABASE_SYNC_OK", "sync_completed_at": clock().isoformat(),
+        "session": batch["session"], "source_count": batch["sources_configured"],
+        "sources_with_items": batch["sources_with_items"],
+        "sources_failed": batch["sources_failed"], "codex": codex_status,
+        "observations": len(batch["records"]), "batches_committed": saved,
+        "pending_batches": sum(1 for _ in (root / "pending_batches").glob("*.json")),
+    }
+    marker = root / "last_successful_db_sync.json"
+    temp = marker.with_suffix(".tmp")
+    temp.write_text(json.dumps(result) + "\n", encoding="utf-8")
+    temp.replace(marker)
+    return result
+
+
+def archive_once(engine, root: Path) -> dict:
+    # The archive runs on the Ubuntu VPS. flock also covers concurrent
+    # operator invocations against the same Docker volume.
+    import fcntl
+
+    root.mkdir(parents=True, exist_ok=True)
+    with (root / "archive.lock").open("a", encoding="utf-8") as lock:
+        try:
+            fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except BlockingIOError:
+            return {"status": "SKIPPED_ALREADY_RUNNING"}
+        return collect_archive(engine, root)
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--once", action="store_true")
+    parser.add_argument("--archive", action="store_true")
     parser.add_argument("--data-dir", type=Path, default=DATA_ROOT)
     args = parser.parse_args()
     url = os.getenv("NEWS_DATABASE_URL")
     if not url:
         raise SystemExit("NEWS_DATABASE_URL must be configured for continuous polling")
     db = engine_for_url(url)
+    if args.archive:
+        if not args.once:
+            parser.error("--archive requires --once and an external scheduler")
+        print(json.dumps(archive_once(db, args.data_dir)))
+        return
     if args.once:
         print(json.dumps(collect_and_store(db, data_root=args.data_dir)))
         return

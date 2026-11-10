@@ -1,0 +1,11 @@
+[Unit]
+Description=Freeze and independently review premarket news evidence
+Requires=docker.service
+After=docker.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/bash /home/jadhavdnyaneshwar701/market-news-db/current/ops/news-stack/run-news-job.sh morning
+TimeoutStartSec=4min
+
+ExecStopPost=-/usr/bin/docker stop -t 5 market-news-morning-job
