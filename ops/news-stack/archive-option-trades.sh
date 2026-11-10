@@ -19,6 +19,9 @@ source, backup = map(Path, sys.argv[1:])
 with closing(sqlite3.connect(source.as_uri() + "?mode=ro", uri=True, timeout=10)) as db:
     with closing(sqlite3.connect(backup)) as copy:
         db.backup(copy)
+        mode, = copy.execute("PRAGMA journal_mode=DELETE").fetchone()
+        if mode != "delete":
+            raise RuntimeError("Option backup must be a standalone SQLite file")
 PY
 chmod 644 "$TEMP_DB/trades.db"
 IMAGE=market-news-db-collector

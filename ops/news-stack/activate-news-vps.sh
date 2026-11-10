@@ -74,6 +74,7 @@ fi
   exec psql -U news_admin -d market_news -q -v ON_ERROR_STOP=1
 '
 run_compose build collector
+bash "$RELEASE/ops/news-stack/archive-option-trades.sh"
 
 # Stop only the previous persistent collector in this Compose project. If the
 # first one-shot fails, restart that exact previous container.
@@ -97,7 +98,6 @@ echo "DB VERIFIED: news_articles count=$ARTICLES"
 for unit in market-news-{collect,morning,trades}.{service,timer}; do
   "${SYSTEM_INSTALL[@]}" -m 644 "$RELEASE/ops/news-stack/$unit" "/etc/systemd/system/$unit"
 done
-bash "$RELEASE/ops/news-stack/archive-option-trades.sh"
 ln -sfn "$RELEASE" "$BASE/current.new"
 mv -Tf "$BASE/current.new" "$BASE/current"
 "${SYSTEMCTL[@]}" daemon-reload
