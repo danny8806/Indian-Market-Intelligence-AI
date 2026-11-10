@@ -1,11 +1,11 @@
 {
   "session": "2026-11-11",
-  "generated_at": "2026-11-10T21:15:46.460118+05:30",
+  "generated_at": "2026-11-10T23:45:49.158430+05:30",
   "method": "Symbol + material category presence; NOT event-ID or issuer ISIN reconciliation",
   "category_counts": {
     "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT": 11,
-    "MEDIA_ONLY_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS": 2,
-    "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS": 19
+    "MEDIA_ONLY_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS": 3,
+    "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS": 20
   },
   "groups": [
     {
@@ -284,6 +284,25 @@
       ]
     },
     {
+      "symbol": "JINDALSTEL",
+      "event_category": "regulatory",
+      "media_count": 0,
+      "nse_count": 0,
+      "bse_count": 1,
+      "filing_examples": [
+        {
+          "headline": "Jindal Steel Ltd (532286)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/80a9e073-1ad5-40ea-8599-437721bf457b.pdf",
+          "published_at": "2026-11-10T22:05:05+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": [
+        "BSE"
+      ]
+    },
+    {
       "symbol": "JWL",
       "event_category": "financial_results",
       "media_count": 0,
@@ -534,6 +553,23 @@
       "exchanges_seen": [
         "BSE"
       ]
+    },
+    {
+      "symbol": "PWL",
+      "event_category": "acquisition",
+      "media_count": 1,
+      "nse_count": 0,
+      "bse_count": 0,
+      "filing_examples": [],
+      "media_examples": [
+        {
+          "headline": "PhysicsWallah to deploy up to ₹200 cr for acquisitions this yr: Maheshwari",
+          "url": "https://www.business-standard.com/companies/news/physicswallah-to-deploy-up-to-200-cr-for-acquisitions-this-yr-maheshwari-126111000604_1.html",
+          "published_at": "2026-11-10T22:00:27+05:30"
+        }
+      ],
+      "state": "MEDIA_ONLY_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": []
     },
     {
       "symbol": "RADICO",
@@ -787,6 +823,11 @@
       "error": "HTTPError: 404 Client Error: Not Found for url: https://www.livemint.com/rss/industryRSS"
     },
     {
+      "source": "Moneycontrol RSS",
+      "status": "ERROR",
+      "error": "ParseError: not well-formed (invalid token): line 6, column 305"
+    },
+    {
       "source": "Financial Express legacy RSS",
       "status": "ERROR",
       "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.financialexpress.com/feed/"
@@ -875,11 +916,6 @@
       "source": "NewsAPI India stock discovery",
       "status": "SKIPPED_COST_GUARD",
       "error": "Opt-in required via ENABLE_PAID_NEWS_APIS"
-    },
-    {
-      "source": "PIB India releases Hindi",
-      "status": "ERROR",
-      "error": "ParseError: not well-formed (invalid token): line 8, column 766"
     }
   ],
   "limitations": [
@@ -896,9 +932,9 @@
       "status_a": "OK",
       "status_b": "OK",
       "comparison_status": "SNAPSHOT_OVERLAP_ONLY",
-      "feed_a_unique_matched_urls": 208,
-      "feed_b_unique_matched_urls": 208,
-      "both_feeds_same_url": 208,
+      "feed_a_unique_matched_urls": 226,
+      "feed_b_unique_matched_urls": 226,
+      "both_feeds_same_url": 226,
       "only_feed_a_count": 0,
       "only_feed_b_count": 0,
       "only_feed_a_examples": [],
@@ -908,9 +944,17 @@
     {
       "feed_a": "BSE announcements RSS",
       "feed_b": "BSE latest announcements alternate",
-      "status_a": "EMPTY",
+      "status_a": "OK",
       "status_b": "OK",
-      "comparison_status": "UNAVAILABLE_SOURCE_FAILURE_OR_EMPTY"
+      "comparison_status": "SNAPSHOT_OVERLAP_ONLY",
+      "feed_a_unique_matched_urls": 166,
+      "feed_b_unique_matched_urls": 166,
+      "both_feeds_same_url": 166,
+      "only_feed_a_count": 0,
+      "only_feed_b_count": 0,
+      "only_feed_a_examples": [],
+      "only_feed_b_examples": [],
+      "warning": "URL-level overlap is NOT event-level completeness; feed length, timing and availability differ."
     }
   ]
 }
