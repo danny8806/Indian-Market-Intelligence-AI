@@ -287,6 +287,7 @@
       "kind": "html",
       "provider": "MEDIA",
       "authority": "secondary",
+      "verify_article": true,
       "enabled": true
     },
     {

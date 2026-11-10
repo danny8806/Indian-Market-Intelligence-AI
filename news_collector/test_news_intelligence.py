@@ -255,6 +255,22 @@ class NewsIntelligenceTests(unittest.TestCase):
         self.assertEqual(items[0]["summary"], "Revenue changed.")
         self.assertTrue(items[0]["shared_broker_link"])
 
+    def test_news18_listing_uses_publisher_timestamp_verification(self):
+        from news_collector.engine import ROOT
+
+        sources = json.loads((ROOT / "sources.json").read_text(encoding="utf-8"))["sources"]
+        news18 = next(source for source in sources if source["name"] == "News18 Business")
+        self.assertEqual(news18["kind"], "html")
+        self.assertTrue(news18["verify_article"])
+
+    def test_only_listing_sources_may_fetch_publisher_articles(self):
+        from news_collector.engine import ROOT
+
+        sources = json.loads((ROOT / "sources.json").read_text(encoding="utf-8"))["sources"]
+        for source in sources:
+            if source.get("verify_article"):
+                self.assertIn(source["kind"], {"html", "broker_html"}, source["name"])
+
     def test_every_external_provider_has_a_valid_schedule(self):
         now = at(8, 50)
         for provider in ASSIGNMENTS:
