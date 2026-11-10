@@ -1,11 +1,11 @@
 {
   "session": "2026-11-11",
-  "generated_at": "2026-11-10T14:19:20.491516+05:30",
+  "generated_at": "2026-11-10T16:30:56.550244+05:30",
   "method": "Symbol + material category presence; NOT event-ID or issuer ISIN reconciliation",
   "category_counts": {
     "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT": 7,
-    "MEDIA_ONLY_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS": 6,
-    "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS": 12
+    "MEDIA_ONLY_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS": 5,
+    "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS": 16
   },
   "groups": [
     {
@@ -50,6 +50,25 @@
       "exchanges_seen": []
     },
     {
+      "symbol": "BAJAJFINSV",
+      "event_category": "financial_results",
+      "media_count": 0,
+      "nse_count": 0,
+      "bse_count": 1,
+      "filing_examples": [
+        {
+          "headline": "Bajaj Finserv Ltd (532978)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/c6ac92b0-3975-427e-acd9-06186b0138fc.pdf",
+          "published_at": "2026-11-10T16:09:39+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": [
+        "BSE"
+      ]
+    },
+    {
       "symbol": "BATAINDIA",
       "event_category": "regulatory",
       "media_count": 0,
@@ -90,24 +109,32 @@
     {
       "symbol": "COCHINSHIP",
       "event_category": "financial_results",
-      "media_count": 2,
-      "nse_count": 0,
+      "media_count": 3,
+      "nse_count": 1,
       "bse_count": 0,
-      "filing_examples": [],
+      "filing_examples": [
+        {
+          "headline": "Cochin Shipyard Limited",
+          "url": "https://nsearchives.nseindia.com/corporate/Aswi4739_10112026142305_SE_Intimation_Sgd.pdf",
+          "published_at": "2026-11-10T14:27:05+05:30"
+        }
+      ],
       "media_examples": [
+        {
+          "headline": "Cochin Shipyard Q2 Results: Net Profit Falls 50% To Rs 54 Crore As Margins Contract, Revenue Up 11.7%",
+          "url": "https://www.ndtvprofit.com/business/cochin-shipyard-q2-results-net-profit-falls-50-to-rs-53-8-crore-as-margins-contract-revenue-rises-11-7-12307427",
+          "published_at": "2026-11-10T15:23:46+05:30"
+        },
         {
           "headline": "Q2 Results Live: Hind Rectifiers Profit Falls 54%, MRF Profit Slips 28%; Kalyan Jewellers, Cochin Shipyard Also In Focus",
           "url": "https://www.ndtvprofit.com/markets/q2-results-live-updates-november-10-kalyan-jewellers-mrf-cochin-shipyard-among-44-companies-to-announce-earnings-today-12306507",
           "published_at": "2026-11-10T12:41:37+05:30"
-        },
-        {
-          "headline": "Q2 Results Today Live: Kalyan Jewellers, MRF, Cochin Shipyard, Avanti Feeds, Titagarh Rail Systems, MMTC to announce Q2 results",
-          "url": "https://www.thehindubusinessline.com/markets/q2-results-today-live-updates-kalyan-jewellers-mrf-cochin-shipyard-avanti-feeds-titagarh-rail-systems-mntc-company-results-10-november-2026/article71684906.ece",
-          "published_at": "2026-11-10T09:22:58+05:30"
         }
       ],
-      "state": "MEDIA_ONLY_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
-      "exchanges_seen": []
+      "state": "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": [
+        "NSE"
+      ]
     },
     {
       "symbol": "DATAPATTNS",
@@ -168,6 +195,25 @@
       ],
       "state": "MEDIA_ONLY_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
       "exchanges_seen": []
+    },
+    {
+      "symbol": "IKS",
+      "event_category": "acquisition",
+      "media_count": 0,
+      "nse_count": 1,
+      "bse_count": 0,
+      "filing_examples": [
+        {
+          "headline": "Inventurus Knowledge Solutions Limited",
+          "url": "https://nsearchives.nseindia.com/corporate/IKS2006_10112026162853_FINALProjectTurboAcquistionSEDisclosure_10Nov2026.pdf",
+          "published_at": "2026-11-10T16:29:20+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": [
+        "NSE"
+      ]
     },
     {
       "symbol": "JWL",
@@ -356,6 +402,25 @@
           "headline": "Piramal Finance Ltd (544597)",
           "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/3b82ad9d-9402-4fe3-a95d-9b9df07b821a.pdf",
           "published_at": "2026-11-10T11:54:29+05:30"
+        }
+      ],
+      "media_examples": [],
+      "state": "SINGLE_EXCHANGE_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS",
+      "exchanges_seen": [
+        "BSE"
+      ]
+    },
+    {
+      "symbol": "PNB",
+      "event_category": "regulatory",
+      "media_count": 0,
+      "nse_count": 0,
+      "bse_count": 1,
+      "filing_examples": [
+        {
+          "headline": "Punjab National Bank (532461)",
+          "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/f5572049-c08e-47f8-a0ed-4696a82f43d8.pdf",
+          "published_at": "2026-11-10T15:48:40+05:30"
         }
       ],
       "media_examples": [],
@@ -666,11 +731,6 @@
       "source": "NewsAPI India stock discovery",
       "status": "SKIPPED_COST_GUARD",
       "error": "Opt-in required via ENABLE_PAID_NEWS_APIS"
-    },
-    {
-      "source": "PIB India releases Hindi",
-      "status": "ERROR",
-      "error": "ParseError: not well-formed (invalid token): line 8, column 766"
     }
   ],
   "limitations": [
@@ -687,9 +747,9 @@
       "status_a": "OK",
       "status_b": "OK",
       "comparison_status": "SNAPSHOT_OVERLAP_ONLY",
-      "feed_a_unique_matched_urls": 100,
-      "feed_b_unique_matched_urls": 100,
-      "both_feeds_same_url": 100,
+      "feed_a_unique_matched_urls": 147,
+      "feed_b_unique_matched_urls": 147,
+      "both_feeds_same_url": 147,
       "only_feed_a_count": 0,
       "only_feed_b_count": 0,
       "only_feed_a_examples": [],
@@ -699,9 +759,17 @@
     {
       "feed_a": "BSE announcements RSS",
       "feed_b": "BSE latest announcements alternate",
-      "status_a": "EMPTY",
+      "status_a": "OK",
       "status_b": "OK",
-      "comparison_status": "UNAVAILABLE_SOURCE_FAILURE_OR_EMPTY"
+      "comparison_status": "SNAPSHOT_OVERLAP_ONLY",
+      "feed_a_unique_matched_urls": 101,
+      "feed_b_unique_matched_urls": 101,
+      "both_feeds_same_url": 101,
+      "only_feed_a_count": 0,
+      "only_feed_b_count": 0,
+      "only_feed_a_examples": [],
+      "only_feed_b_examples": [],
+      "warning": "URL-level overlap is NOT event-level completeness; feed length, timing and availability differ."
     }
   ]
 }
