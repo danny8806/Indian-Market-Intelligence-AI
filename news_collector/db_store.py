@@ -25,7 +25,7 @@ articles = Table(
     Column("headline", Text, nullable=False),
     Column("summary", Text, nullable=False),
     Column("record_kind", String(32), nullable=False),
-    Column("time_status", String(40), nullable=False),
+    Column("time_status", String(80), nullable=False),
     Column("published_at", DateTime(timezone=True)),
     Column("first_seen_at", DateTime(timezone=True), nullable=False),
     Column("last_seen_at", DateTime(timezone=True), nullable=False),
