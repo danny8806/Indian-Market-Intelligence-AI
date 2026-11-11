@@ -1,6 +1,6 @@
 {
   "session": "2026-11-11",
-  "generated_at": "2026-11-11T06:58:57.514436+05:30",
+  "generated_at": "2026-11-11T07:42:30.469091+05:30",
   "method": "Symbol + material category presence; NOT event-ID or issuer ISIN reconciliation",
   "category_counts": {
     "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT": 11,
@@ -823,14 +823,14 @@
       "error": "HTTPError: 404 Client Error: Not Found for url: https://www.livemint.com/rss/industryRSS"
     },
     {
-      "source": "Moneycontrol RSS",
-      "status": "ERROR",
-      "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.moneycontrol.com/rss/latestnews.xml"
-    },
-    {
       "source": "Financial Express legacy RSS",
       "status": "ERROR",
       "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.financialexpress.com/feed/"
+    },
+    {
+      "source": "Google News RSS",
+      "status": "ERROR",
+      "error": "HTTPError: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=India+NSE+BSE+results+orders+when%3A1d&hl=en-IN&gl=IN&ceid=IN%3Aen"
     },
     {
       "source": "GDELT DOC API",
@@ -858,11 +858,6 @@
       "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.ndtvprofit.com/markets"
     },
     {
-      "source": "Moneycontrol stocks",
-      "status": "ERROR",
-      "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.moneycontrol.com/news/business/stocks/"
-    },
-    {
       "source": "Financial Express markets",
       "status": "ERROR",
       "error": "HTTPError: 403 Client Error: Forbidden for url: https://www.financialexpress.com/market/"
@@ -886,6 +881,21 @@
       "source": "ResultKal indexed discovery",
       "status": "SKIPPED_NO_KEY",
       "error": "SERPER_API_KEY not configured"
+    },
+    {
+      "source": "Google News indexed — ALFA Finder",
+      "status": "ERROR",
+      "error": "HTTPError: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=site%3Anews.alfafinder.com%20when%3A7d&hl=en-IN&gl=IN&ceid=IN%3Aen"
+    },
+    {
+      "source": "Google News indexed — PatternsRadar",
+      "status": "ERROR",
+      "error": "HTTPError: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=site%3Apatternsradar.com%20when%3A7d&hl=en-IN&gl=IN&ceid=IN%3Aen"
+    },
+    {
+      "source": "Google News indexed — ResultKal",
+      "status": "ERROR",
+      "error": "HTTPError: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=site%3Aresultkal.com%20when%3A7d&hl=en-IN&gl=IN&ceid=IN%3Aen"
     },
     {
       "source": "Tavily Indian market discovery",
@@ -921,6 +931,31 @@
       "source": "NewsAPI India stock discovery",
       "status": "SKIPPED_COST_GUARD",
       "error": "Opt-in required via ENABLE_PAID_NEWS_APIS"
+    },
+    {
+      "source": "Google News discovery — Moneycontrol",
+      "status": "ERROR",
+      "error": "HTTPError: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=site%3Amoneycontrol.com%20India%20stocks%20results%20orders%20when%3A2d&hl=en-IN&gl=IN&ceid=IN%3"
+    },
+    {
+      "source": "Google News discovery — Reuters",
+      "status": "ERROR",
+      "error": "HTTPError: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=site%3Areuters.com%20India%20stocks%20results%20orders%20when%3A2d&hl=en-IN&gl=IN&ceid=IN%3Aen"
+    },
+    {
+      "source": "Google News discovery — Business Standard",
+      "status": "ERROR",
+      "error": "HTTPError: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=site%3Abusiness-standard.com%20India%20stocks%20results%20orders%20when%3A2d&hl=en-IN&gl=IN&ceid"
+    },
+    {
+      "source": "Google News discovery — Trendlyne",
+      "status": "ERROR",
+      "error": "HTTPError: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=site%3Atrendlyne.com%20India%20stocks%20results%20orders%20when%3A2d&hl=en-IN&gl=IN&ceid=IN%3Aen"
+    },
+    {
+      "source": "Google News discovery — Business Today",
+      "status": "ERROR",
+      "error": "HTTPError: 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=site%3Abusinesstoday.in%20India%20stocks%20results%20orders%20when%3A2d&hl=en-IN&gl=IN&ceid=IN%3"
     }
   ],
   "limitations": [

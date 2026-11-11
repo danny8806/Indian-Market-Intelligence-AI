@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-11T06:59:27.358892+05:30",
+  "as_of": "2026-11-11T07:42:52.418539+05:30",
   "candidates": [
     {
       "articles": 8,
@@ -4408,6 +4408,33 @@
         "yoy_metrics_with_direction": 0
       },
       "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-11T07:42:30.469091+05:30",
+      "headline_samples": [
+        "PB Fintech: Retailers buy, FPIs turn wary in Q2; who got right end of deal?"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 0,
+      "review_priority": 0,
+      "source_urls": [
+        "https://www.business-standard.com/markets/news/pb-fintech-retailers-buy-fpis-turn-wary-in-q2-who-got-right-end-of-deal-126111100075_1.html"
+      ],
+      "symbol": "POLICYBZR"
+    },
+    {
+      "articles": 1,
+      "categories": [
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
       "first_seen_at": "2026-11-10T02:35:36.815607+05:30",
       "headline_samples": [
         "Buy, Sell Or Hold: Divi's Labs, Tata Power, Kalyan Jewellers, Reliance Industries, L&T And Shriram Finance — Ask Profit"
@@ -4621,8 +4648,8 @@
     "Preview created after cutoff is unsuitable for historical model evaluation.",
     "Premarket frozen snapshot includes collector_last_poll_at; intervening minutes may contain uncollected news."
   ],
-  "collector_last_poll_at": "2026-11-11T06:58:57.514436+05:30",
-  "company_count": 138,
+  "collector_last_poll_at": "2026-11-11T07:42:30.469091+05:30",
+  "company_count": 139,
   "cutoff_exclusive": "2026-11-11T09:00:00+05:30",
   "data_mode": "PRE_CUTOFF_PREVIEW_NOT_FROZEN",
   "doc_evidence_register": [
@@ -9408,7 +9435,7 @@
   "news_window_start": "2026-11-09T15:00:00+05:30",
   "schema_version": "research-candidates/1.0",
   "session_date": "2026-11-11",
-  "source_failures_last_poll": 12,
+  "source_failures_last_poll": 19,
   "training_eligible": false,
   "universe_status": "OFFICIAL_FETCH:https://www.niftyindices.com/IndexConstituent/ind_nifty500list.csv"
 }

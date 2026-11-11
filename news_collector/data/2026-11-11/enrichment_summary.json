@@ -1,10 +1,10 @@
 {
   "session": "2026-11-11",
-  "checked_at": "2026-11-11T06:59:27.226157+05:30",
+  "checked_at": "2026-11-11T07:42:52.246756+05:30",
   "pdf_candidates_total": 327,
   "pdf_candidates_seen_before_cutoff": 327,
   "pdf_candidates_late_discovery_or_unknown": 0,
-  "attempted_this_poll": 4,
+  "attempted_this_poll": 0,
   "completed_document_records": 327,
   "status_counts": {
     "EXTRACTED": 314,
