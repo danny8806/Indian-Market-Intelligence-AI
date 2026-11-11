@@ -1,15 +1,8 @@
 name: Grade frozen NIFTY 500 news candidates after close (research only)
 
+# Retired automatic path: the VPS is the sole production scheduler.
 on:
-  schedule:
-    # 18:20 IST on weekdays (12:50 UTC), after regular NSE cash close.
-    - cron: '50 12 * * 1-5'
   workflow_dispatch:
-    inputs:
-      session_date:
-        description: 'YYYY-MM-DD completed NSE session (blank = today IST)'
-        required: false
-        type: string
 
 permissions:
   contents: write
