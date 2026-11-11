@@ -71,6 +71,14 @@ def parse_timestamp(value: str, *, exchange: str = "") -> datetime | None:
             return t.astimezone(IST)
     except ValueError:
         pass
+    # Only parse fully stated date+clock+zone strings. Never fill a missing
+    # year, clock or timezone from the fetch time.
+    if (re.search(r'\b20\d{2}\b',val) and re.search(r'\d{1,2}:\d{2}',val)
+            and re.search(r'\b(?:IST|UTC|GMT)\b|[+-]\d{2}:?\d{2}\s*$',val)):
+        import dateparser
+        parsed=dateparser.parse(re.sub(r'\bIST\b','+0530',val),settings={
+            'STRICT_PARSING':True,'RETURN_AS_TIMEZONE_AWARE':True})
+        if parsed is not None and parsed.tzinfo is not None:return parsed.astimezone(IST)
     if exchange in {"NSE", "BSE"}:
         for pattern in ("%d-%b-%Y %H:%M:%S", "%d-%b-%Y %H:%M"):
             try:
@@ -382,7 +390,8 @@ def fetch_one(source: dict, *, raw_sink=None) -> tuple[dict, list[dict]]:
                 return ({**base, "status": "BLOCKED_ROBOTS", "error": reason}, [])
         raw = (fetch_search_index(source) if source["kind"] == "indexed_search"
                else fetch_provider_news(source) if source["kind"] == "provider_api"
-               else read_with_retry(source["url"], fetch_bytes,
+               else read_with_retry(source["url"],
+                                    (lambda url: __import__('news_collector.transports',fromlist=['fetch']).fetch(url,source['transport'])) if source.get('transport') else fetch_bytes,
                                     max_attempts=source.get("max_attempts", 1)))
         if raw_sink is not None:
             try:
@@ -408,6 +417,11 @@ def fetch_one(source: dict, *, raw_sink=None) -> tuple[dict, list[dict]]:
             items = provider_api_items(raw, source)
         else:
             raise ValueError("Unsupported source kind")
+        if source.get('kind') in {'html','broker_html','html_table','rss'}:
+            try:
+                from news_collector.tool_router import enqueue_source
+                enqueue_source(Path(os.getenv('NEWS_ARCHIVE_DIR',str(ROOT/'data'))),source,raw,items)
+            except (OSError,ValueError):pass
         base.update(status="OK" if items else "EMPTY", fetched_items=len(items), bytes=len(raw))
         return (base, items)
     except Exception as e:

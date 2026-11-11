@@ -97,7 +97,7 @@ def codex_slot(now: datetime, budget: int) -> int | None:
     """Reserve Codex for morning research on NSE trading days."""
     now = now.astimezone(IST)
     minute = now.hour * 60 + now.minute
-    if 8 * 60 <= minute < 9 * 60 + 30 and regular_market_day(now.date()):
+    if 8 * 60 + 55 <= minute < 9 * 60 + 30 and regular_market_day(now.date()):
         return None
     return model_slot(now, budget)
 
@@ -131,7 +131,7 @@ def collect_archive(engine, root: Path, *, clock=lambda: datetime.now(IST)) -> d
     batch, nifty, universe = collect_batch(root, clock=clock)
     inbox = Path(os.getenv("NEWS_AGENT_INBOX", str(root / "agent_inbox")))
     batch["agent_lanes"] = lane_statuses(inbox)
-    stage(root, batch)
+    primary_spool=stage(root, batch)
     prune_marker = root / "last_raw_prune"
     if not prune_marker.is_file() or prune_marker.read_text(encoding="utf-8") != started.date().isoformat():
         try:
@@ -148,6 +148,20 @@ def collect_archive(engine, root: Path, *, clock=lambda: datetime.now(IST)) -> d
         temporary.replace(prune_marker)
     # Commit primary sources before optional CLI calls can run out of time.
     saved = replay(engine, root, deadline=deadline)
+    # Native enrichment has its own bounded queue and cannot prevent the
+    # primary-source commit above. Task failures remain visible in the marker.
+    tool_audit={'status':'NO_BUDGET'}
+    if not primary_spool.exists() and time.monotonic()<deadline-100:
+        try:
+            from news_collector.tool_router import process,index_committed
+            tool_rows,tool_audit=process(root,clock=clock,budget=min(40,int(deadline-time.monotonic()-100)))
+            if tool_rows:
+                stage(root,{'batch_id':uuid4().hex,'session':batch['session'],
+                    'generated_at':clock().isoformat(),'records':tool_rows,'sources_configured':1,
+                    'sources_with_items':1,'sources_failed':0,'sources':[]})
+                saved+=replay(engine,root,deadline=deadline)
+            tool_audit['archive_index']=index_committed(root,batch['records'])
+        except Exception as exc:tool_audit={'status':'OPTIONAL_TOOL_FAILED','error_type':type(exc).__name__}
     now = clock().astimezone(IST)
     try:
         opencode_budget = int(os.getenv("NEWS_OPENCODE_DAILY_CALLS", "48"))
@@ -164,7 +178,7 @@ def collect_archive(engine, root: Path, *, clock=lambda: datetime.now(IST)) -> d
         try:
             opencode_status, rows, opencode_audit = discover_opencode(
                 now, nifty, universe, clock=clock, slot=opencode_slot,
-                accessible_urls=accessible_urls)
+                accessible_urls=accessible_urls,timeout=45)
         except Exception as exc:
             opencode_status, rows, opencode_audit = (
                 f"DISCOVERY_FAILED_{type(exc).__name__}", [], {})
@@ -197,7 +211,8 @@ def collect_archive(engine, root: Path, *, clock=lambda: datetime.now(IST)) -> d
     codex_status = "SKIPPED_BUDGET"
     if slot is not None and _claim_slot(root, "codex", started, slot):
         try:
-            codex_status, rows = discover_codex(now, nifty, universe, clock=clock)
+            codex_status, rows = discover_codex(now, nifty, universe, clock=clock,
+                slot=slot,coverage_root=root,timeout=max(20,min(105,int(deadline-time.monotonic()-10))))
         except Exception as exc:
             codex_status, rows = f"DISCOVERY_FAILED_{type(exc).__name__}", []
         stage(root, {
@@ -213,17 +228,19 @@ def collect_archive(engine, root: Path, *, clock=lambda: datetime.now(IST)) -> d
     except (OSError, ValueError) as exc:
         external_status = {"status": f"INTAKE_FAILED_{type(exc).__name__}"}
     saved += replay(engine, root, deadline=deadline)
+    pending=sum(1 for _ in (root/'pending_batches').glob('*.json'))
     result = {
-        "db_status": "DATABASE_SYNC_OK", "sync_completed_at": clock().isoformat(),
+        "db_status": "DATABASE_SYNC_OK" if not pending else "DATABASE_SYNC_PENDING", "sync_completed_at": clock().isoformat(),
         "session": batch["session"], "source_count": batch["sources_configured"],
         "sources_with_items": batch["sources_with_items"],
         "sources_failed": batch["sources_failed"], "sources_blocked": batch["sources_blocked"],
         "opencode": opencode_status,
         "opencode_sources": len(opencode_audit.get("source_batch", [])),
         "codex": codex_status,
+        "native_tools":tool_audit,
         "observations": len(batch["records"]), "batches_committed": saved,
         "external_cli": external_status,
-        "pending_batches": sum(1 for _ in (root / "pending_batches").glob("*.json")),
+        "pending_batches": pending,
     }
     marker = root / "last_successful_db_sync.json"
     temp = marker.with_suffix(".tmp")

@@ -8,7 +8,8 @@
       "provider": "NSE",
       "authority": "official",
       "enabled": true,
-      "recover_truncated_rss": true
+      "recover_truncated_rss": true,
+      "transport": "httpx"
     },
     {
       "name": "NSE financial results RSS",
@@ -17,7 +18,8 @@
       "provider": "NSE",
       "authority": "official",
       "enabled": true,
-      "recover_truncated_rss": true
+      "recover_truncated_rss": true,
+      "transport": "wget"
     },
     {
       "name": "NSE board meetings RSS",
@@ -51,7 +53,8 @@
       "kind": "rss",
       "provider": "SEBI",
       "authority": "official",
-      "enabled": true
+      "enabled": true,
+      "transport": "aiohttp"
     },
     {
       "name": "NSE insider trading RSS",
@@ -513,7 +516,8 @@
       "max_attempts": 2,
       "timestamp_provenance": "publisher",
       "terms_url": "https://www.rbi.org.in/Scripts/rss.aspx",
-      "origin_project": "Indian-Market-Intelligence"
+      "origin_project": "Indian-Market-Intelligence",
+      "transport": "curl"
     },
     {
       "name": "RBI official notifications",

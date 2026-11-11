@@ -145,7 +145,7 @@ def verify_publisher_lead(source, lead, universe, nifty, *, clock):
     if original is None:
         return None
     row = observation(original, source, clock(), universe, nifty, discoverer="publisher")
-    return row if row and row["verified_origin"] and len(row["nifty_symbols"]) == 1 else None
+    return row if row and row['published_at'] and row['nifty_symbols'] else None
 
 
 def collect_batch(root: Path, *, clock=lambda: datetime.now(IST), config=ROOT / "sources.json"):
@@ -199,14 +199,14 @@ def collect_batch(root: Path, *, clock=lambda: datetime.now(IST), config=ROOT / 
         stats["item_count"] = len(items)
         return stats, items, clock()
 
-    with ThreadPoolExecutor(max_workers=4) as pool:
+    with ThreadPoolExecutor(max_workers=2) as pool:
         for source, (stats, items, observed) in zip(sources, pool.map(retrieve, sources)):
             checks.append(stats)
             source_leads = []
             for item in items:
                 row = observation(item, source, observed, universe, nifty if verified else {},
                                   discoverer="python")
-                if row and (row["published_at"] or row["symbols"] or source["kind"] in {"broker_html", "broker_json"}):
+                if row:
                     rows.append(row)
                 if row and row["published_at"]:
                     current = stats.get("latest_item_at")

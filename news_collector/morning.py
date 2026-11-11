@@ -51,7 +51,7 @@ def read_evidence(conn, start, as_of, *, require_verified_origin=True):
     ).order_by(article_revisions.c.observed_at.desc(), article_revisions.c.id)).mappings()
     for row in revisions:
         data = row["evidence"]
-        if not data["nifty_symbols"] or row["article_id"] in seen:
+        if (require_verified_origin and not data["nifty_symbols"]) or row["article_id"] in seen:
             continue
         seen.add(row["article_id"])
         evidence.append({**data, "evidence_id": row["id"],

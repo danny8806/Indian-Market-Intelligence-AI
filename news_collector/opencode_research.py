@@ -444,7 +444,7 @@ def _cli_version(cli: str) -> str:
 
 def discover(now: datetime, nifty: dict, universe: dict, *, clock, sources=None,
              slot: int = 0, batch_size: int | None = None,
-             accessible_urls: set[str] | None = None) -> tuple[str, list[dict], dict]:
+             accessible_urls: set[str] | None = None,timeout: int = 120) -> tuple[str, list[dict], dict]:
     """Fetch a rotating batch of configured sources and verify returned articles."""
     if sources is None:
         sources = json.loads((ROOT / "sources.json").read_text(encoding="utf-8"))["sources"]
@@ -472,7 +472,7 @@ def discover(now: datetime, nifty: dict, universe: dict, *, clock, sources=None,
         + "\n".join(f"- {source['name']} [{source['provider']}]: {source['url']}"
                     for source in batch)
     )
-    status, payload, audit = run_opencode(prompt, sources=batch)
+    status, payload, audit = run_opencode(prompt, sources=batch,timeout=timeout)
     audit["source_batch"] = [{"name": source["name"], "url": source["url"],
                               "provider": source["provider"], "kind": source["kind"]}
                              for source in batch]
