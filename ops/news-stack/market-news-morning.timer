@@ -1,5 +1,5 @@
 [Unit]
-Description=Sole VPS Codex FINAL selection from frozen 09:00 evidence
+Description=Codex FINAL actual-cutoff attempts at 09:00 09:05 and 09:10
 
 [Timer]
 OnCalendar=Mon..Fri *-*-* 09:00,05,10:00 Asia/Kolkata

@@ -9,6 +9,25 @@ from news_collector.tool_worker import allowed_target,article,run
 
 class ApprovedToolTests(unittest.TestCase):
     source={'name':'Publisher','url':'https://publisher.example/news','kind':'html','provider':'MEDIA','authority':'media'}
+    def test_codex_mcp_gets_only_explicit_private_search_configuration(self):
+        import os,tomllib
+        from types import SimpleNamespace
+        from news_collector.codex_research import _run_codex,FETCH_CONTEXT
+        with tempfile.TemporaryDirectory() as f:
+            root=Path(f);(root/'auth.json').write_text('{}')
+            captured={}
+            def execute(command,**kw):
+                captured.update(command=command,env=kw['env'])
+                Path(command[command.index('--output-last-message')+1]).write_text('{}')
+                return SimpleNamespace(returncode=0,stderr='',stdout=json.dumps({'type':'item.completed','item':{'type':'mcp_tool_call','server':'news_reader','tool':'read_source','status':'completed'}}))
+            token=FETCH_CONTEXT.set((root/'assignment',root/'spool'))
+            try:
+                with patch.dict(os.environ,{'NEWS_CODEX_HOME':f,'NEWS_SEARXNG_URL':'http://news-search:8080','NEWS_DATABASE_URL':'secret-test-value','KOTAK_NEO_MPIN':'secret-test-value'}),patch('news_collector.codex_research.shutil.which',return_value='/usr/bin/tool'),patch('news_collector.codex_research.subprocess.run',side_effect=execute):
+                    self.assertEqual(_run_codex('prompt',{},search=True,timeout=10)[0],'OK')
+            finally:FETCH_CONTEXT.reset(token)
+            config=next(x for x in captured['command'] if x.startswith('mcp_servers.news_reader='))
+            self.assertEqual(tomllib.loads(config)['mcp_servers']['news_reader']['env'],{'NEWS_SEARXNG_URL':'http://news-search:8080'})
+            self.assertNotIn('NEWS_DATABASE_URL',captured['env']);self.assertNotIn('KOTAK_NEO_MPIN',captured['env'])
     def test_reader_saves_every_original_item_and_reads_independently_once(self):
         calls=[]
         items=[{'headline':f'actual fetched item {i}','url':f'https://publisher.example/{i}','raw_time':'2026-11-11T08:00:00+05:30'} for i in range(60)]

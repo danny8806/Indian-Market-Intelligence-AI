@@ -1,5 +1,5 @@
 [Unit]
-Description=Freeze and independently review premarket news evidence
+Description=Codex FINAL selects stocks from dated source news
 Requires=docker.service
 After=docker.service
 

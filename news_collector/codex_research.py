@@ -77,6 +77,11 @@ def _run_codex(prompt: str, schema: dict, *, search: bool, timeout: int):
             assignment,spool=context
             config='{command="'+shutil.which('python')+'",args='+json.dumps([
                 str(ROOT/'source_gateway.py'),'--assignment',str(assignment),'--spool',str(spool)])+',enabled_tools=["read_source"],startup_timeout_sec=20,tool_timeout_sec=35}'
+            # Codex deliberately does not forward arbitrary environment variables
+            # to MCP children. This one unauthenticated private helper is safe to
+            # name explicitly; never forward DB, broker or provider credentials.
+            if env.get('NEWS_SEARXNG_URL')=='http://news-search:8080':
+                config=config[:-1]+',env={NEWS_SEARXNG_URL="http://news-search:8080"}}'
             command[command.index('exec'):command.index('exec')]=['-c','mcp_servers.news_reader='+config]
         try:
             result = subprocess.run(command, input=prompt, capture_output=True, text=True,

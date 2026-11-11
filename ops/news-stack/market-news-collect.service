@@ -1,5 +1,5 @@
 [Unit]
-Description=Collect verified market news into private PostgreSQL
+Description=Collect source news into private PostgreSQL
 Requires=docker.service
 After=docker.service network-online.target
 Wants=network-online.target

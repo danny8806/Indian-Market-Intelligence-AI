@@ -75,6 +75,7 @@ def process(root,*,clock=lambda:datetime.now(IST),budget=40):
                 if row:records.append(row)
             check={'task':task['id'],'kind':task['kind'],'source':task['source']['name'],
                    'status':output.get('status'),'tools':output.get('tools',[]),'items':len(output.get('items',[]))}
+            if output.get('error_type'):check['error_type']=str(output['error_type'])[:80]
         except Exception as exc:
             check={'task':task['id'],'kind':task['kind'],'source':task['source']['name'],
                    'status':'TOOL_FAILED','error_type':type(exc).__name__}
