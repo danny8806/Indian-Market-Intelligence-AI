@@ -1,12 +1,9 @@
-# Private, research-only news infrastructure.
-# Neither PostgreSQL nor the collector exposes a host port.
 name: market-news-db
-
 services:
   postgres:
     image: postgres:16-alpine
     restart: unless-stopped
-    cpus: 0.50
+    cpus: 0.5
     mem_limit: 768m
     environment:
       POSTGRES_DB: market_news
@@ -15,31 +12,34 @@ services:
       NEWS_WRITER_PASSWORD: ${NEWS_WRITER_PASSWORD:?Set server-only news writer password}
       NEWS_READER_PASSWORD: ${NEWS_READER_PASSWORD:?Set server-only news reader password}
     volumes:
-      - postgres_data:/var/lib/postgresql/data
-      - ./init-news-db.sh:/docker-entrypoint-initdb.d/10-init-news-db.sh:ro
-    networks: [news_private]
+    - postgres_data:/var/lib/postgresql/data
+    - ./init-news-db.sh:/docker-entrypoint-initdb.d/10-init-news-db.sh:ro
+    networks:
+    - news_private
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U news_admin -d market_news"]
+      test:
+      - CMD-SHELL
+      - pg_isready -U news_admin -d market_news
       interval: 15s
       timeout: 5s
       retries: 12
-
   collector:
-    image: market-news-db-collector:vps-final-20261111-2
+    image: market-news-db-collector:search-tools-20261111
     build:
       context: ../..
       dockerfile: ops/news-stack/Dockerfile
-    profiles: [jobs]
+    profiles:
+    - jobs
     cpus: 1.0
     mem_limit: 1g
     depends_on:
       postgres:
         condition: service_healthy
     environment:
-      NEWS_DATABASE_URL: "postgresql+psycopg://news_writer:${NEWS_WRITER_PASSWORD}@postgres:5432/market_news"
-      ENABLE_OPENAI_WEB_RESEARCH: "false"
-      ENABLE_PAID_NEWS_APIS: "false"
-      ENABLE_PUBLIC_GITHUB_INBOX_PULL: "false"
+      NEWS_DATABASE_URL: postgresql+psycopg://news_writer:${NEWS_WRITER_PASSWORD}@postgres:5432/market_news
+      ENABLE_OPENAI_WEB_RESEARCH: 'false'
+      ENABLE_PAID_NEWS_APIS: 'false'
+      ENABLE_PUBLIC_GITHUB_INBOX_PULL: 'false'
       NEWS_AGENT_INBOX: /app/cli-inbox
       NEWS_CODEX_HOME: /home/newsbot/.news-codex
       CODEX_HOME: /home/newsbot/.news-codex
@@ -51,26 +51,40 @@ services:
       NEWS_CRITIC_MODEL: ${NEWS_CRITIC_MODEL:-}
       NEWS_CRITIC_API_KEY: ${NEWS_CRITIC_API_KEY:-}
       NEWS_RAW_RETENTION_DAYS: ${NEWS_RAW_RETENTION_DAYS:-30}
-      SERPER_API_KEY: ""
+      SERPER_API_KEY: ''
       TZ: Asia/Kolkata
+      NEWS_SEARXNG_URL: ${NEWS_SEARXNG_URL:-}
     volumes:
-      - news_archive:/app/news_collector/data
-      - codex_auth:/home/newsbot/.news-codex
-      - cli_inbox:/app/cli-inbox
-    networks: [news_private, news_egress]
+    - news_archive:/app/news_collector/data
+    - codex_auth:/home/newsbot/.news-codex
+    - cli_inbox:/app/cli-inbox
+    networks: &id001
+    - news_private
+    - news_egress
     logging:
       options:
         max-size: 10m
         max-file: '3'
-
+  news-search:
+    image: searxng/searxng@sha256:71a410e383ea1c1f973a0c38e566757c1f0c5f3976a33be2c70918fcd93bdcc7
+    container_name: market-news-private-search
+    user: 0:0
+    restart: unless-stopped
+    cpus: 0.3
+    mem_limit: 512m
+    volumes:
+    - /home/jadhavdnyaneshwar701/market-news-db/config/search-helper.yml:/etc/searxng/settings.yml:ro
+    expose:
+    - '8080'
+    networks: *id001
 networks:
   news_private:
     name: market-news-private
     internal: true
   news_egress: {}
-
 volumes:
   postgres_data: {}
   news_archive: {}
   codex_auth: {}
   cli_inbox: {}
+

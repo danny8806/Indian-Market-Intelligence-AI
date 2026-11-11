@@ -88,10 +88,13 @@ def extract_pdf_text(data: bytes, *, pages: int = PDF_MAX_PAGES) -> dict:
     for p in range(selected):
         try:
             raw = reader.pages[p].extract_text(extraction_mode="plain") or ""
-            page_text.append(raw)
         except Exception:
-            page_text.append("")
+            raw = ""
             errors += 1
+        if not raw.strip():
+            from news_collector.tool_capabilities import fallback_pdf_page
+            raw = fallback_pdf_page(data, p)
+        page_text.append(raw)
     joined = "\n".join(page_text)
     truncated = len(joined) > PDF_MAX_TEXT
     joined = joined[:PDF_MAX_TEXT]
@@ -200,7 +203,7 @@ def enrich(session_date: str, *, base: Path = ROOT / "data", max_docs: int = 20,
         "status_counts": dict(sorted(last.items())),
         "unattempted_or_retryable": max(0, len(to_fetch) - len(chosen)),
         "source_gap_groups": gaps["category_counts"],
-        "note": ("Official publicly available PDF text extracted by pypdf. Only a bounded excerpt "
+        "note": ("Official publicly available PDF text extracted by pypdf with bounded alternate page extractors. Only a bounded excerpt "
                  "and context lines are stored. No OCR on scanned documents, no AI classification, "
                  "no inference of price direction. PDF retrieval after 09:00 is not proof that "
                  "its contents were known to the prediction system before 09:00."),

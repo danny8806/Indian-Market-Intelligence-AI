@@ -41,6 +41,9 @@ def article_summary(raw: bytes, existing: str) -> str:
                                    include_comments=False, include_tables=False,
                                    include_links=False, include_images=False)
     except Exception:
-        return ''  # Optional text extraction never blocks a dated publisher record.
-    return ' '.join((text or '').split())[:1800]
-
+        text = ''
+    text = ' '.join((text or '').split())[:1800]
+    if text:
+        return text
+    from news_collector.tool_capabilities import fallback_article_text
+    return fallback_article_text(raw)

@@ -19,13 +19,26 @@ FROM python:3.11-slim-bookworm
 ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
 WORKDIR /app
 COPY --from=codex-cli /usr/local/bin/node /usr/local/bin/node
+COPY --from=codex-cli /usr/local/lib/node_modules/npm /usr/local/lib/node_modules/npm
 COPY --from=codex-cli /usr/local/lib/node_modules/@openai /usr/local/lib/node_modules/@openai
 RUN ln -s /usr/local/lib/node_modules/@openai/codex/bin/codex.js /usr/local/bin/codex
 COPY --from=opencode-cli /usr/local/bin/opencode /usr/local/bin/opencode
+RUN ln -s /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm \
+    && ln -s /usr/local/lib/node_modules/npm/bin/npx-cli.js /usr/local/bin/npx \
+    && apt-get update \
+    && apt-get install -y --no-install-recommends curl wget ca-certificates git libatomic1 chromium chromium-driver tesseract-ocr ocrmypdf default-jre-headless httrack newsboat \
+    && rm -rf /var/lib/apt/lists/*
 
 COPY news_collector/requirements.txt /tmp/news-requirements.txt
+COPY news_collector/requirements-tools.txt /tmp/news-tools-requirements.txt
 RUN python -m pip install --no-cache-dir -r /tmp/news-requirements.txt \
+    -r /tmp/news-tools-requirements.txt \
     && useradd --uid 10001 --create-home --shell /usr/sbin/nologin newsbot
+ENV PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 PUPPETEER_SKIP_DOWNLOAD=true NODE_PATH=/opt/news-tools/node_modules CRAWLEE_STORAGE_DIR=/tmp/news-crawlee-storage
+RUN npm install --prefix /opt/news-tools --no-audit --no-fund puppeteer-core @playwright/mcp crawlee \
+    && ln -s /opt/news-tools/node_modules/.bin/playwright-mcp /usr/local/bin/playwright-mcp \
+    && python -m pip check
+RUN python -c "import urllib.request,hashlib,pathlib;u='https://github.com/lightpanda-io/browser/releases/download/nightly/lightpanda-x86_64-linux';b=urllib.request.urlopen(u,timeout=60).read();assert hashlib.sha256(b).hexdigest()=='08c9dd591e82655ccdd3e490e8b2317b85918dbe3eb073056e4787b41ed19b18';p=pathlib.Path('/usr/local/bin/lightpanda');p.write_bytes(b);p.chmod(0o555)"
 
 COPY --chown=newsbot:newsbot schema/stock-signals.schema.json /app/schema/stock-signals.schema.json
 COPY --chown=newsbot:newsbot news_collector/ /app/news_collector/

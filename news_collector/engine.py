@@ -31,7 +31,7 @@ from news_collector.feed_resilience import rss_root, read_with_retry
 from news_collector.provider_discovery import (
     fetch_provider_news, provider_api_items, provider_has_key,
 )
-from news_collector.index_discovery import fetch_search_index, search_index_items
+from news_collector.index_discovery import fetch_search_index, search_index_items, search_index_available
 
 IST = ZoneInfo("Asia/Kolkata")
 ROOT = Path(__file__).resolve().parent
@@ -368,8 +368,8 @@ def fetch_one(source: dict, *, raw_sink=None) -> tuple[dict, list[dict]]:
             "undated_items": 0, "out_of_window": 0}
     if not source.get("enabled", True):
         return ({**base, "status": "DISABLED"}, [])
-    if source["kind"] == "indexed_search" and not os.environ.get("SERPER_API_KEY", "").strip():
-        return ({**base, "status": "SKIPPED_NO_KEY", "error": "SERPER_API_KEY not configured"}, [])
+    if source["kind"] == "indexed_search" and not search_index_available():
+        return ({**base, "status": "SKIPPED_NO_KEY", "error": "Indexed-search backend not configured"}, [])
     if source["kind"] == "provider_api":
         if os.environ.get("ENABLE_PAID_NEWS_APIS", "").lower().strip() != "true":
             return ({**base, "status": "SKIPPED_COST_GUARD", "error": "Opt-in required via ENABLE_PAID_NEWS_APIS"}, [])
