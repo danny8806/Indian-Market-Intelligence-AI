@@ -193,6 +193,9 @@ def rss_items(raw: bytes, source: dict) -> list[dict]:
     root = rss_root(raw, allow_truncated=bool(source.get("recover_truncated_rss", False)))
     if local_name(root.tag) not in {"rss", "rdf", "feed"}:
         raise ValueError("Not RSS/Atom XML")
+    if local_name(root.tag) == "feed":
+        from news_collector.tool_extractors import atom_items
+        return atom_items(raw, source, MAX_ITEMS)
     found = []
     for entry in root.iter():
         if local_name(entry.tag) not in {"item", "entry"}:

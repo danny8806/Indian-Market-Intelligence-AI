@@ -14,6 +14,7 @@ import requests
 from news_collector.archive import observation
 from news_collector.broker_sources import allowed_by_robots
 from news_collector.engine import IST, ROOT, USER_AGENT, canonical_url, fetch_one
+from news_collector.tool_extractors import article_summary
 
 LINKS_SCHEMA = {
     "type": "object", "additionalProperties": False, "required": ["urls"],
@@ -163,11 +164,11 @@ def publisher_article(url: str) -> dict | None:
                         or title and node_title.strip().casefold() == title.strip().casefold()):
                     description = node.get("description")
                     return {"url": url, "headline": node_title, "raw_time": node_time,
-                            "summary": summary or (description if isinstance(description, str) else ""),
+                            "summary": article_summary(bytes(data), summary or (description if isinstance(description, str) else "")),
                             "origin_verified": True}
     elif title and published:
         return {"url": url, "headline": title, "raw_time": published,
-                "summary": summary, "origin_verified": True}
+                "summary": article_summary(bytes(data), summary), "origin_verified": True}
     return None
 
 
