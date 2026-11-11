@@ -1,100 +1,15 @@
-# Indian Market Intelligence AI — Live Kotak Desk
+# VPS news and Kotak dashboard
 
-**Current plan:** [ChatGPT schedule to live Kotak desk](docs/plan/00-current-live-plan.md). It records the verified implementation and remaining work as of 5 November 2026. The sections below describing GitHub signal files are retained as legacy research-feed documentation and do not define the live desk's delivery path.
+**The sole current plan is [MAIN_PLAN.md](MAIN_PLAN.md). Read it before changing this project.**
 
-The production `live_desk` reads daily research reports from its own authenticated
-`POST /api/v1/signals/incoming` receiver and persistent signal database. GitHub
-is used for source and deployment only; the legacy `signals/` files and
-`publish-signals.yml` workflow are not the live desk's daily transport. A
-ChatGPT scheduled task has not yet been verified to POST to this API. The VPS
-monitoring deployment is running privately on loopback; it is not trading-ready.
-Real order submission remains disabled in the committed Compose configuration.
+VPS scheduler → Python/Codex/OpenCode news collection → private news DB → Codex FINAL → internal dashboard intake → 09:15 executable stock-list lock.
 
-See [live_desk/README.md](live_desk/README.md) and [ops/README.md](ops/README.md)
-for the live application and deployment procedure. The signal-feed description
-below documents the older research feed and must not be interpreted as proof
-of delivery to the live desk.
+Everything in the runtime news path runs on the existing VPS. GitHub hosts source and explicit code maintenance/deployment; local Codex and GitHub schedules are not production news publishers. Historical reports describe past states and do not override the current plan.
 
-## News collection — free tools and morning rollout (research only)
+- News source configuration: `news_collector/sources.json` and `source_registry.json` in the deployed news service.
+- Final selector: `news_collector.vps_final`.
+- Internal dashboard intake: `live_desk.news_intake`.
+- Dashboard and broker service: `live_desk/`.
+- Existing report schema: `schema/stock-signals.schema.json`.
 
-**Blocked-source handling and additional open-source research agents:** [Access-resilience and agents playbook](docs/automation/OPEN-SOURCE-AGENTS-SOURCE-ACCESS-RESILIENCE.md).
-
-**Expanded open-source agents, RSS, crawlers, browsers and news-fetching tools:** [Master catalog (100+ options)](docs/automation/EXTENDED-OPEN-SOURCE-NEWS-FETCHING-TOOLS-CATALOG.md).
-
-**Complete source, crawler, model and MCP operating manual:** [Sources, tools, AI roles and implementation workflow](docs/automation/COMPLETE-SOURCES-TOOLS-MODELS-AI-OPERATING-PLAN.md).
-
-**Other AI / Codex implementation handoff:** [START HERE — complete project/code links and step-by-step implementation](docs/automation/START-HERE-OTHER-AI-HANDOFF.md).
-
-**Next setup session (11 Nov 2026 IST):** [Free tools catalog, web/MCP/browser methods and VPS rollout checklist](docs/automation/FREE-TOOLS-NEWS-COLLECTOR-MORNING-PLAN.md).
-
-Related design documents:
-- [Multi-agent AI CLI + Python news pipeline](docs/automation/multi-agent-news-pipeline.md)
-- [Codex independent news-fetching agent (10-minute requirements)](docs/automation/codex-news-collector-10min.md)
-
-These are **implementation plans, not deployed automations**. Start with official NSE/BSE sources and verified timestamps; run Python collection every 10 minutes once tested, add independently searching Codex/Gemini agents with quota limits, store the results in a separate news database, and keep broker orders disabled. Tools, search plans and optional provider free tiers are documented in the rollout checklist.
-
-## Live Kotak Neo Dashboard (no simulated execution)
-
-The new [**live-only Kotak Neo trading dashboard**](live_desk/README.md) consumes this repository's exact v1.0 news-signal contract through the authenticated **direct HTTPS API bridge**, uses read-only Dhan market data for fresh market prices, and shows actual Kotak Neo broker orders, positions and reported fills. There is no local stock-prediction model, no paper trading engine and no synthetic order P&L in the live package.
-
-**Important:** The monitoring service is deployed privately, but it is not a trading-ready service. The committed Docker configuration keeps `LIVE_ORDERS_ALLOWED=NO`. Real-money execution requires Kotak/Dhan account credentials, current NSE instrument mappings, Dhan 09:15 bar timestamps, risk controls, broker order reconciliation, network loss behavior, public HTTPS delivery and a verified ChatGPT task.
-
-Use `python -m live_desk.app` after installing `requirements-live.txt` and configuring a private environment; see [live_desk/README.md](live_desk/README.md). The existing signal validation and research workflow remain independent of broker execution.
-
-
-> **Direct API integration available:** Use [bridge/README.md](bridge/README.md) to send complete research-signal JSON over authenticated HTTPS directly to your dashboard's FastAPI receiver. GitHub is only a source-code host in this mode; no signal-file polling is needed. The bridge receiver/sender and CI tests are implemented, but no public deployment or automatic ChatGPT-to-API delivery has yet been verified.
-
-
-Machine-readable daily **research watchlist**, published for use by a dashboard. This project **does not place orders**.
-
-## Feed
-- Latest: [signals/latest.json](signals/latest.json)
-- Raw URL: https://raw.githubusercontent.com/danny8806/Indian-Market-Intelligence-AI/main/signals/latest.json
-- Schema: [schema/stock-signals.schema.json](schema/stock-signals.schema.json)
-- Sample input (fictional): [examples/signals.sample.json](examples/signals.sample.json)
-
-The file contains up to five LONG and five SHORT candidates ranked by news significance and estimated **next-session open-to-close** impact. A selection is not a trade instruction. All signals include source references, event timestamps, and a fixed 09:00 IST research cutoff.
-
-**Safety controls:** `status` must equal `READY`, `execution_enabled` is permanently `false`, today's `session_date` and `news_cutoff_at` must match, and each candidate must have a source before a dashboard displays it as actionable research. **Do not connect this JSON directly to a broker order endpoint.** Intraday shorting eligibility, position sizing, max loss, confirmation, and human/broker risk gates belong in a separate system.
-
-## Scheduled flow
-1. Existing ChatGPT task researches news from the previous trading day's 15:00 IST until 09:00 IST and produces a verified JSON report.
-2. **Delivery bridge required:** that task must write `signals/incoming/YYYY-MM-DD.json` with its GitHub connector, or an external publisher must POST the verified payload via the GitHub Contents API. Connecting ChatGPT task delivery to GitHub is separate from installing this repository workflow; do not assume a report has been delivered just because a schedule exists.
-3. GitHub Actions validates a newly committed incoming report (push trigger) and writes both `signals/archive/YYYY-MM-DD.json` and `signals/latest.json`.
-4. A scheduled GitHub Actions fallback runs at **09:10 IST on weekdays** and writes status `UNAVAILABLE` if no verified report has arrived. GitHub scheduled runs can be delayed or missed; dashboards must independently check freshness.
-5. The example Python dashboard reader rejects missing, stale, unavailable, or unsafe signals.
-
-### Repository publish automation
-[.github/workflows/publish-signals.yml](.github/workflows/publish-signals.yml) runs when an incoming file is pushed, when manually dispatched, and at the fallback time. It deliberately never manufactures bullish/bearish candidates.
-
-### Dashboard example
-```python
-python dashboard/read_signals.py
-```
-No dependencies except Python 3.11+ standard library. This prints a JSON research watchlist if today's report is fresh, or an explicit reason to reject it.
-
-### Manual test
-Publish the fictional sample through the publisher with a real intended session date only in a test branch; **never** copy fictional stocks into the live incoming directory. For a validation-only test:
-```python
-python scripts/validate_signals.py --allow-sample examples/signals.sample.json
-```
-
-### External publisher
-Create `signals/incoming/YYYY-MM-DD.json` on `main` via GitHub Contents API using a token limited to this repository's Contents write permission. Protect that token in a secret manager. Do not put it in a dashboard, frontend or JSON. The publish workflow validates the payload; it must contain real source-backed candidates or use `UNAVAILABLE` / `NO_TRADE`.
-
-## Format
-`schema_version: "1.0"`, `market: "NSE"`, `timezone: "Asia/Kolkata"`, `session_date: YYYY-MM-DD`, `news_cutoff_at: ISO-8601 09:00 IST`, `generated_at: ISO-8601`, `status: READY | NO_TRADE | UNAVAILABLE`, `execution_enabled: false`, `signals: []`.
-
-Each candidate has `symbol`, `side` (`LONG` or `SHORT`), `rank` (1–5 for its side), `reason`, `sources` with URL and publication time, and optional `confidence` (null unless defensible). Only use information available by cutoff. Output can contain fewer than five positions per side.
-
-This is an integration scaffold. Automatic delivery from ChatGPT depends on the scheduled task's GitHub tool access and successful connector writes; check GitHub Actions logs and the latest file before relying on the feed.
-
-## Direct signal API bridge
-
-`bridge/app.py` adds a second delivery route while preserving the exact v1.0 JSON contract. It accepts `POST /api/v1/signals/incoming` with `Authorization: Bearer <SIGNAL_BRIDGE_TOKEN>`, `Idempotency-Key: <unique-session-key>` and `Content-Type: application/json`. The body is the full report object, not a list of tickers. It checks the existing validator, current IST session, 09:00 cutoff, and a 09:14 IST arrival deadline for `READY`. It stores the original validated payload once per session. Identical retries return `DUPLICATE`; conflicting content returns HTTP 409. `GET /api/v1/signals/latest` and `/api/v1/signals/status` require the same bearer token and return only today's report. `/api/v1/health` is unauthenticated and contains no signal data.
-
-Install `requirements-bridge.txt`, configure `SIGNAL_DATABASE_URL` and a random 32+ character `SIGNAL_BRIDGE_TOKEN` in a secret manager, then run `python -m bridge.app`. The default bind address is `127.0.0.1:8000`. To receive requests from a cloud ChatGPT scheduled task, deploy behind HTTPS, authentication, rate limits and a stable hostname. A local-only address cannot be reached by a cloud task. Never paste the bearer token into a public repository, signal JSON, or frontend.
-
-The ChatGPT schedule must produce the same v1.0 payload, then use an available authorized HTTP action to POST it. The schedule's ability to perform that POST has **not** been verified. If its tools cannot call this endpoint, keep the existing GitHub incoming-file delivery and let a separate trusted integration service relay the validated report. Check the task's actual run and the bridge's `ACCEPTED` response; a scheduled run by itself is not proof of delivery. See [official OpenAI Scheduled tasks documentation](https://learn.chatgpt.com/docs/automations) for task execution boundaries.
-
-The bridge does not place orders. The new `live/orb.py` calls Dhan's one-minute intraday endpoint for the 09:15 candle; its epoch timestamp convention must be audited against a real response before use. `live/kotak_orders.py` holds the Kotak Neo live order boundary and requires an external risk approval, exact mapped `pTrdSymbol`, whole-share quantity and unique tag. Account authentication, live price feed, order reconciliation and a complete execution service remain to be built. No paper trade or simulated market feed is used by these modules.
+See MAIN_PLAN.md for clocks, direct-source news policy, exact mechanical gates, model quota handling, private database isolation and test requirements. Never print credentials or place live orders as a connectivity test.
