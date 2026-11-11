@@ -178,7 +178,7 @@ def collect_batch(root: Path, *, clock=lambda: datetime.now(IST), config=ROOT / 
                     output.write(content)
                 os.replace(temporary, path)
             content_type = {"rss": "application/xml", "html": "text/html",
-                            "broker_html": "text/html", "api": "application/json",
+                            "broker_html": "text/html", "broker_json": "application/json", "api": "application/json",
                             "indexed_search": "application/json",
                             "provider_api": "application/json"}.get(source["kind"], "")
             raw_documents.append({
@@ -206,7 +206,7 @@ def collect_batch(root: Path, *, clock=lambda: datetime.now(IST), config=ROOT / 
             for item in items:
                 row = observation(item, source, observed, universe, nifty if verified else {},
                                   discoverer="python")
-                if row and (row["published_at"] or row["symbols"] or source["kind"] == "broker_html"):
+                if row and (row["published_at"] or row["symbols"] or source["kind"] in {"broker_html", "broker_json"}):
                     rows.append(row)
                 if row and row["published_at"]:
                     current = stats.get("latest_item_at")

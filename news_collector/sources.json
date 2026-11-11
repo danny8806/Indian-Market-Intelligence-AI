@@ -882,11 +882,12 @@
     },
     {
       "name": "Kotak Neo Public Research",
-      "url": "https://www.kotakneo.com/fundamental-research-report/",
+      "url": "https://www.kotakneo.com/fundamental-research-report/morning-insights/",
       "kind": "broker_html",
       "provider": "BROKER",
       "authority": "secondary",
-      "article_path": "/uploads/(?:Morning_Insight|Market_Morning|Market_Strategy)[^/]*\\.pdf"
+      "article_path": "/uploads/(?:Morning_Insight|Market_Morning|Market_Strategy)[^/]*\\.pdf",
+      "fallback_slug": true
     },
     {
       "name": "Kotak Neo Market News",
@@ -899,11 +900,14 @@
     },
     {
       "name": "Motilal Oswal Public Research",
-      "url": "https://www.motilaloswal.com/stock-research",
-      "kind": "broker_html",
+      "url": "https://www.motilaloswal.com/spreadsheets/research-report.json",
+      "kind": "broker_json",
       "provider": "BROKER",
       "authority": "secondary",
-      "article_path": "/(?:site/rreports|[^/]+/research)/[^/]+\\.pdf"
+      "article_path": "/ResearchReport/\\d{8}/(?:Company|Sector)/\\d+\\.pdf",
+      "document_hosts": [
+        "d3dcs14qkauvac.cloudfront.net"
+      ]
     },
     {
       "name": "Angel One Stock News",
@@ -923,7 +927,7 @@
     },
     {
       "name": "5paisa Stock News",
-      "url": "https://www.5paisa.com/news/stocks",
+      "url": "https://www.5paisa.com/news",
       "kind": "broker_html",
       "provider": "BROKER",
       "authority": "secondary",

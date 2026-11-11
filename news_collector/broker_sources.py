@@ -1,4 +1,5 @@
 """Collect public broker headlines as leads with explicit article path rules."""
+import json
 import re
 from urllib.parse import urljoin, urlsplit
 from urllib.robotparser import RobotFileParser
@@ -59,7 +60,9 @@ def listing_items(raw: bytes, source: dict) -> list[dict]:
             continue
         title = title_node.get_text(" ", strip=True)
         if len(title) < 15 and source.get("fallback_slug"):
-            title = parsed.path.rstrip("/").split("/")[-2].replace("-", " ")
+            # Use the actual filename/slug, not its parent directory (e.g. uploads).
+            title = re.sub(r"[._-]+", " ", parsed.path.rstrip("/").rsplit("/", 1)[-1])
+            title = re.sub(r"\bpdf$", "", title, flags=re.I).strip()
         if len(title) < 15:
             continue
         key = (parsed.path, title) if source.get("shared_link") else parsed.path
@@ -71,5 +74,32 @@ def listing_items(raw: bytes, source: dict) -> list[dict]:
             "shared_broker_link": bool(source.get("shared_link")),
         })
         if len(result) == 100:
+            break
+    return result
+
+
+def research_json_items(raw: bytes, source: dict) -> list[dict]:
+    """Parse the broker's publicly linked research index; unknown times stay unknown."""
+    data = json.loads(raw)
+    if not isinstance(data, dict) or not isinstance(data.get('data'), list):
+        raise ValueError('Unexpected public research index schema')
+    hosts = set(source.get('document_hosts', []))
+    path_rule = re.compile(source['article_path'], re.I)
+    result, seen = [], set()
+    for row in data['data'][:500]:
+        if not isinstance(row, dict):
+            continue
+        url = str(row.get('pdfFileName') or '').strip()
+        parsed = urlsplit(url)
+        headline = ' '.join(str(row.get('reportTitle') or '').split())
+        if (parsed.scheme != 'https' or parsed.hostname not in hosts or parsed.username
+                or parsed.password or parsed.query or parsed.fragment
+                or not path_rule.fullmatch(parsed.path) or len(headline)<15 or url in seen):
+            continue
+        seen.add(url)
+        result.append({'url':url,'headline':headline[:550],
+                       'summary':str(row.get('description') or '')[:1800],
+                       'raw_time':'','source_date_label':str(row.get('reportDate') or '')[:80]})
+        if len(result)>=100:
             break
     return result
