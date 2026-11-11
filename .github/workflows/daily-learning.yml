@@ -1,15 +1,8 @@
 name: Research learning audit (no trading)
 
+# Retired automatic path: the VPS is the sole production scheduler.
 on:
   workflow_dispatch:
-    inputs:
-      session_date:
-        description: 'YYYY-MM-DD to audit (empty = today IST)'
-        required: false
-        type: string
-  schedule:
-    # Approximately 18:10 IST, Mon-Fri, after the NSE cash market closes (12:40 UTC).
-    - cron: '40 12 * * 1-5'
 
 permissions:
   contents: write
