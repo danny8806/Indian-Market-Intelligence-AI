@@ -78,7 +78,15 @@ class OpenCodeResearchTests(unittest.TestCase):
         self.assertEqual(run.call_args.kwargs["sources"], [allowed])
         self.assertNotIn(blocked["url"], run.call_args.args[0])
 
-    def test_preflight_maps_free_quota_to_retryable_limit(self):
+    def test_free_model_does_not_make_a_raw_inference_probe(self):
+        with patch("news_collector.opencode_research.requests.post") as post:
+            result = oc._preflight("opencode/deepseek-v4.1-flash-free")
+        post.assert_not_called()
+        self.assertEqual(result["status"], "OK")
+        self.assertTrue(result["skipped"])
+        self.assertEqual(result["reason"], "FREE_MODEL_REQUIRES_CLI")
+
+    def test_paid_endpoint_preflight_preserves_provider_retry_after(self):
         class Response:
             status_code = 429
             headers = {"Retry-After": "120"}
@@ -87,7 +95,7 @@ class OpenCodeResearchTests(unittest.TestCase):
 
         with patch("news_collector.opencode_research.requests.post",
                    return_value=Response()):
-            result = oc._preflight("opencode/deepseek-v4.1-flash-free")
+            result = oc._preflight("opencode/deepseek-v4.1-flash")
         self.assertEqual(result["status"], "QUOTA_LIMIT")
         self.assertEqual(result["retry_after_seconds"], 120)
         self.assertIn("quota_reset_at", result)

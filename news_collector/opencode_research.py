@@ -123,6 +123,12 @@ def _preflight(model: str, *, timeout: float = 20) -> dict:
     slot open for minutes. A one-token request to the same free endpoint lets
     the collector record an honest quota block instead.
     """
+    if model.startswith("opencode/") and _model_id(model).endswith("-free"):
+        # Free hosted models are supported only through the real OpenCode CLI.
+        # A generic HTTP probe can be denied even when that CLI is entitled.
+        # Do not let such a probe consume allowance or prevent the real call.
+        return {"status": "OK", "skipped": True,
+                "reason": "FREE_MODEL_REQUIRES_CLI"}
     if not model.startswith("opencode/"):
         return {"status": "OK", "skipped": True}
     key = api_key()

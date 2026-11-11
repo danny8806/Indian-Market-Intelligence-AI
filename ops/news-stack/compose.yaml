@@ -24,7 +24,7 @@ services:
       timeout: 5s
       retries: 12
   collector:
-    image: market-news-db-collector:search-tools-20261111
+    image: market-news-db-collector:opencode-cli-check-20261111
     build:
       context: ../..
       dockerfile: ops/news-stack/Dockerfile
