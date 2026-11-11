@@ -1,13 +1,7 @@
 name: Publish verified research watchlist
 
+# Retired automatic path: the VPS is the sole production scheduler.
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'signals/incoming/*.json'
-  schedule:
-    # 09:10 Asia/Kolkata, weekdays (03:40 UTC).
-    - cron: '40 3 * * 1-5'
   workflow_dispatch:
 
 permissions:
