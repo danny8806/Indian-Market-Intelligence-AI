@@ -1,15 +1,7 @@
 name: Deploy isolated news PostgreSQL and 20-minute collector to VPS
 
+# Explicit deployments only; runtime scheduling belongs to the VPS.
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'ops/deploy_news_vps.sh'
-      - 'ops/news-stack/**'
-      - 'news_collector/*.py'
-      - 'news_collector/*.json'
-      - 'news_collector/requirements.txt'
-      - '.github/workflows/deploy-news-vps.yml'
   workflow_dispatch:
 
 permissions:
