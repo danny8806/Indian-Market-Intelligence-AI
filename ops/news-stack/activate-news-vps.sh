@@ -16,6 +16,14 @@ COMPOSE="$RELEASE/ops/news-stack/compose.yaml"
 
 command -v docker >/dev/null || { echo "BLOCKED: Docker missing"; exit 3; }
 docker compose version >/dev/null || { echo "BLOCKED: Compose missing"; exit 3; }
+command -v systemctl >/dev/null || { echo "BLOCKED: systemd missing"; exit 3; }
+SYSTEM_INSTALL=(install)
+SYSTEMCTL=(systemctl)
+if [[ "$EUID" != 0 ]]; then
+  sudo -n true || { echo "BLOCKED: approved sudo required to install systemd units"; exit 3; }
+  SYSTEM_INSTALL=(sudo -n install)
+  SYSTEMCTL=(sudo -n systemctl)
+fi
 command -v openssl >/dev/null || { echo "BLOCKED: openssl missing"; exit 3; }
 [[ -f "$COMPOSE" && -f "$RELEASE/news_collector/engine.py" ]] || {
   echo "BLOCKED: required research-only release files missing"; exit 3;
@@ -43,7 +51,7 @@ run_compose() {
 }
 
 run_compose config -q
-echo "Building isolated market-news Postgres and 20-minute research collector..."
+echo "Building isolated PostgreSQL and ten-minute news collector..."
 run_compose up -d --build --no-deps postgres
 for attempt in $(seq 1 60); do
   if run_compose exec -T postgres pg_isready -U news_admin -d market_news >/dev/null 2>&1; then
@@ -54,30 +62,35 @@ done
 run_compose exec -T postgres pg_isready -U news_admin -d market_news >/dev/null || {
   echo "BLOCKED: private PostgreSQL did not become ready"; exit 4;
 }
-run_compose up -d --build --no-deps collector
+run_compose build collector
+run_compose run --rm --no-deps -T --entrypoint python collector \
+  -m news_collector.source_registry --check
 
-# Real E2E signal: collector's SQL-backed sync heartbeat must be fresh.
-verified=0
-for attempt in $(seq 1 100); do
-  if run_compose exec -T collector python -m news_collector.healthcheck >/dev/null 2>&1; then
-    verified=1
-    break
-  fi
-  sleep 5
-done
-[[ "$verified" == "1" ]] || {
-  echo "BLOCKED: collector failed to persist its news batch to PostgreSQL"; exit 5;
-}
-TABLES="$(run_compose exec -T postgres psql -U news_admin -d market_news -Atqc \
-  "select count(*) from information_schema.tables where table_schema='public' and table_name in ('news_articles','news_ingest_runs','news_source_checks','news_article_symbols');")"
-[[ "$TABLES" == "4" ]] || {
-  echo "BLOCKED: news database tables incomplete"; exit 6;
-}
+# Stop only the previous persistent collector in this Compose project. If the
+# first one-shot fails, restart that exact previous container.
+OLD_COLLECTOR="$(docker ps --filter label=com.docker.compose.project=market-news-db \
+  --filter label=com.docker.compose.service=collector \
+  --filter label=com.docker.compose.oneoff=False --format '{{.ID}}')"
+[[ "$OLD_COLLECTOR" != *$'\n'* ]] || { echo "BLOCKED: multiple prior collectors"; exit 5; }
+if [[ -n "$OLD_COLLECTOR" ]]; then docker stop "$OLD_COLLECTOR"; fi
+if ! run_compose run --rm --no-deps -T collector --archive --once; then
+  if [[ -n "$OLD_COLLECTOR" ]]; then docker start "$OLD_COLLECTOR"; fi
+  echo "BLOCKED: PostgreSQL collection smoke test failed"
+  exit 5
+fi
+run_compose run --rm --no-deps -T --entrypoint python collector -m news_collector.healthcheck
 ARTICLES="$(run_compose exec -T postgres psql -U news_admin -d market_news -Atqc \
   "select count(*) from news_articles;")"
-echo "DB VERIFIED: 4 tables present; news_articles count=$ARTICLES"
-echo "COLLECTOR VERIFIED: private 20-minute research-only worker, no OpenAI API calls."
-echo "DATABASE IS PRIVATE: no host listener or public PostgreSQL port configured."
+echo "DB VERIFIED: news_articles count=$ARTICLES"
+
+# Install the units before switching the stable release pointer. Keep prior
+# releases and all volumes so rollback does not require restoring a database.
+for unit in market-news-{collect,morning}.{service,timer}; do
+  "${SYSTEM_INSTALL[@]}" -m 644 "$RELEASE/ops/news-stack/$unit" "/etc/systemd/system/$unit"
+done
 ln -sfn "$RELEASE" "$BASE/current.new"
 mv -Tf "$BASE/current.new" "$BASE/current"
+"${SYSTEMCTL[@]}" daemon-reload
+"${SYSTEMCTL[@]}" enable --now market-news-collect.timer market-news-morning.timer
+"${SYSTEMCTL[@]}" is-active market-news-collect.timer market-news-morning.timer
 printf '%s\n' "$SHA" > "$BASE/last_verified_news_commit"

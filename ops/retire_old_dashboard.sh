@@ -54,4 +54,4 @@ docker compose --project-name sniper-paper-desk --project-directory "$OLD_BASE" 
 new_health
 trap - ERR
 echo 'CUTOVER COMPLETE: old paper Compose project is down; new live desk remains healthy on localhost:8010.'
-echo 'Old bind-mounted data, .env and images were preserved. Live orders remain disabled.'
+echo 'Old bind-mounted data, .env and images were preserved. The new live service remains disarmed.'

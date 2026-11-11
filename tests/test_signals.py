@@ -29,6 +29,27 @@ SAMPLE = {
 
 
 class SignalsTest(unittest.TestCase):
+    def test_ten_research_candidates_are_supported(self):
+        payload=copy.deepcopy(SAMPLE)
+        payload["sample"]=True
+        payload["signals"]=[]
+        for side,prefix in (("LONG","LONG"),("SHORT","SHORT")):
+            for rank in range(1,6):
+                item=copy.deepcopy(SAMPLE["signals"][0])
+                item.update(symbol=f"{prefix}{rank}",side=side,rank=rank)
+                payload["signals"].append(item)
+        validate(payload,allow_sample=True)
+
+    def test_digit_leading_nse_symbol_still_requires_universe_membership(self):
+        payload = copy.deepcopy(SAMPLE)
+        payload["signals"][0]["symbol"] = "360ONE"
+        validate(payload, allow_sample=True, allowed_symbols={"360ONE"})
+        with self.assertRaisesRegex(ValueError, "outside the current official Nifty 500"):
+            validate(payload, allow_sample=True, allowed_symbols={"TCS"})
+        payload["signals"][0]["symbol"] = "360123"
+        with self.assertRaisesRegex(ValueError, "Invalid NSE symbol"):
+            validate(payload, allow_sample=True)
+
     def test_sample_valid_only_in_explicit_example_mode(self):
         validate(copy.deepcopy(SAMPLE), allow_sample=True)
         with self.assertRaisesRegex(ValueError, 'Example/sample'):
@@ -53,6 +74,13 @@ class SignalsTest(unittest.TestCase):
         payload['signals'].append(second)
         with self.assertRaisesRegex(ValueError, 'Duplicate symbol'):
             validate(payload, allow_sample=True)
+
+    def test_configured_nifty500_universe_blocks_outside_symbols(self):
+        payload = copy.deepcopy(SAMPLE)
+        with self.assertRaisesRegex(ValueError, 'outside the current official Nifty 500'):
+            validate(payload, allow_sample=True, allowed_symbols={'RELIANCE', 'TCS'})
+        payload['signals'][0]['symbol'] = 'TCS'
+        validate(payload, allow_sample=True, allowed_symbols={'RELIANCE', 'TCS'})
 
     def test_bootstrap_is_unavailable(self):
         payload = {

@@ -1,0 +1,10 @@
+[Unit]
+Description=Sole VPS Codex FINAL selection from frozen 09:00 evidence
+
+[Timer]
+OnCalendar=Mon..Fri *-*-* 09:00,05,10:00 Asia/Kolkata
+AccuracySec=1s
+Persistent=false
+
+[Install]
+WantedBy=timers.target

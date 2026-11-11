@@ -6,6 +6,8 @@ services:
   postgres:
     image: postgres:16-alpine
     restart: unless-stopped
+    cpus: 0.50
+    mem_limit: 768m
     environment:
       POSTGRES_DB: market_news
       POSTGRES_USER: news_admin
@@ -23,10 +25,13 @@ services:
       retries: 12
 
   collector:
+    image: market-news-db-collector:vps-final-20261111-2
     build:
       context: ../..
       dockerfile: ops/news-stack/Dockerfile
-    restart: unless-stopped
+    profiles: [jobs]
+    cpus: 1.0
+    mem_limit: 1g
     depends_on:
       postgres:
         condition: service_healthy
@@ -34,19 +39,29 @@ services:
       NEWS_DATABASE_URL: "postgresql+psycopg://news_writer:${NEWS_WRITER_PASSWORD}@postgres:5432/market_news"
       ENABLE_OPENAI_WEB_RESEARCH: "false"
       ENABLE_PAID_NEWS_APIS: "false"
-      ENABLE_PUBLIC_GITHUB_INBOX_PULL: "true"
+      ENABLE_PUBLIC_GITHUB_INBOX_PULL: "false"
+      NEWS_AGENT_INBOX: /app/cli-inbox
+      NEWS_CODEX_HOME: /home/newsbot/.news-codex
+      CODEX_HOME: /home/newsbot/.news-codex
+      NEWS_CODEX_DAILY_CALLS: ${NEWS_CODEX_DAILY_CALLS:-48}
+      NEWS_OPENCODE_DAILY_CALLS: ${NEWS_OPENCODE_DAILY_CALLS:-48}
+      NEWS_OPENCODE_SOURCES_PER_RUN: ${NEWS_OPENCODE_SOURCES_PER_RUN:-12}
+      NEWS_OPENCODE_MODEL: ${NEWS_OPENCODE_MODEL:-opencode/deepseek-v4.1-flash-free}
+      NEWS_CRITIC_BASE_URL: ${NEWS_CRITIC_BASE_URL:-}
+      NEWS_CRITIC_MODEL: ${NEWS_CRITIC_MODEL:-}
+      NEWS_CRITIC_API_KEY: ${NEWS_CRITIC_API_KEY:-}
+      NEWS_RAW_RETENTION_DAYS: ${NEWS_RAW_RETENTION_DAYS:-30}
       SERPER_API_KEY: ""
       TZ: Asia/Kolkata
     volumes:
       - news_archive:/app/news_collector/data
-      - github_inbox:/app/news_collector/chatgpt_inbox
+      - codex_auth:/home/newsbot/.news-codex
+      - cli_inbox:/app/cli-inbox
     networks: [news_private, news_egress]
-    healthcheck:
-      test: ["CMD", "python", "-m", "news_collector.healthcheck"]
-      start_period: 5m
-      interval: 1m
-      timeout: 5s
-      retries: 3
+    logging:
+      options:
+        max-size: 10m
+        max-file: '3'
 
 networks:
   news_private:
@@ -57,4 +72,5 @@ networks:
 volumes:
   postgres_data: {}
   news_archive: {}
-  github_inbox: {}
+  codex_auth: {}
+  cli_inbox: {}

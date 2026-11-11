@@ -1,0 +1,12 @@
+[Unit]
+Description=Collect verified market news into private PostgreSQL
+Requires=docker.service
+After=docker.service network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/bash /home/jadhavdnyaneshwar701/market-news-db/current/ops/news-stack/run-news-job.sh collect
+TimeoutStartSec=8min
+
+ExecStopPost=-/usr/bin/bash -c 'if /usr/bin/docker container inspect market-news-collect-job >/dev/null 2>&1; then /usr/bin/docker stop -t 5 market-news-collect-job; fi'

@@ -54,16 +54,107 @@
       "enabled": true
     },
     {
+      "name": "NSE insider trading RSS",
+      "url": "https://nsearchives.nseindia.com/content/RSS/InsiderTrading.xml",
+      "kind": "rss",
+      "provider": "NSE",
+      "authority": "official",
+      "enabled": true,
+      "recover_truncated_rss": true
+    },
+    {
+      "name": "NSE circulars RSS",
+      "url": "https://nsearchives.nseindia.com/content/RSS/Circulars.xml",
+      "kind": "rss",
+      "provider": "NSE",
+      "authority": "official",
+      "enabled": true,
+      "recover_truncated_rss": true
+    },
+    {
+      "name": "NSE SAST regulation 29 RSS",
+      "url": "https://nsearchives.nseindia.com/content/RSS/Sast_Regulation29.xml",
+      "kind": "rss",
+      "provider": "NSE",
+      "authority": "official",
+      "enabled": true,
+      "recover_truncated_rss": true
+    },
+    {
+      "name": "NSE SAST regulation 31 RSS",
+      "url": "https://nsearchives.nseindia.com/content/RSS/Sast_Regulation31.xml",
+      "kind": "rss",
+      "provider": "NSE",
+      "authority": "official",
+      "enabled": true,
+      "recover_truncated_rss": true
+    },
+    {
+      "name": "NSE voting results RSS",
+      "url": "https://nsearchives.nseindia.com/content/RSS/Voting_Results.xml",
+      "kind": "rss",
+      "provider": "NSE",
+      "authority": "official",
+      "enabled": true,
+      "recover_truncated_rss": true
+    },
+    {
+      "name": "NSE daily buyback RSS",
+      "url": "https://nsearchives.nseindia.com/content/RSS/Daily_Buyback.xml",
+      "kind": "rss",
+      "provider": "NSE",
+      "authority": "official",
+      "enabled": true,
+      "recover_truncated_rss": true
+    },
+    {
+      "name": "NSE related party transactions RSS",
+      "url": "https://nsearchives.nseindia.com/content/RSS/Related_Party_Trans.xml",
+      "kind": "rss",
+      "provider": "NSE",
+      "authority": "official",
+      "enabled": true,
+      "recover_truncated_rss": true
+    },
+    {
+      "name": "NSE investor complaints RSS",
+      "url": "https://nsearchives.nseindia.com/content/RSS/Investor_Complaints.xml",
+      "kind": "rss",
+      "provider": "NSE",
+      "authority": "official",
+      "enabled": true,
+      "recover_truncated_rss": true
+    },
+    {
+      "name": "NSE unitholding patterns RSS",
+      "url": "https://nsearchives.nseindia.com/content/RSS/Unitholding_Patterns.xml",
+      "kind": "rss",
+      "provider": "NSE",
+      "authority": "official",
+      "enabled": true,
+      "recover_truncated_rss": true
+    },
+    {
+      "name": "NSE statement of deviation RSS",
+      "url": "https://nsearchives.nseindia.com/content/RSS/Statement_Of_Deviation.xml",
+      "kind": "rss",
+      "provider": "NSE",
+      "authority": "official",
+      "enabled": true,
+      "recover_truncated_rss": true
+    },
+    {
       "name": "Zerodha Pulse RSS",
       "url": "https://pulse.zerodha.com/feed.php?n=100",
       "kind": "rss",
       "provider": "MEDIA",
       "authority": "secondary",
-      "enabled": true
+      "enabled": true,
+      "timestamp_provenance": "discovery"
     },
     {
       "name": "Mint markets RSS",
-      "url": "https://www.livemint.com/rss/marketsRSS",
+      "url": "https://www.livemint.com/rss/markets",
       "kind": "rss",
       "provider": "MEDIA",
       "authority": "secondary",
@@ -71,7 +162,7 @@
     },
     {
       "name": "Mint companies RSS",
-      "url": "https://www.livemint.com/rss/companiesRSS",
+      "url": "https://www.livemint.com/rss/companies",
       "kind": "rss",
       "provider": "MEDIA",
       "authority": "secondary",
@@ -79,7 +170,7 @@
     },
     {
       "name": "Mint industry RSS",
-      "url": "https://www.livemint.com/rss/industryRSS",
+      "url": "https://www.livemint.com/rss/industry",
       "kind": "rss",
       "provider": "MEDIA",
       "authority": "secondary",
@@ -167,14 +258,6 @@
       "enabled": true
     },
     {
-      "name": "NSE announcements web",
-      "url": "https://www.nseindia.com/companies-listing/corporate-filings-announcements",
-      "kind": "html",
-      "provider": "NSE",
-      "authority": "official",
-      "enabled": true
-    },
-    {
       "name": "Business Standard BSE filings",
       "url": "https://www.business-standard.com/markets/bse-announcement",
       "kind": "html",
@@ -204,30 +287,7 @@
       "kind": "html",
       "provider": "MEDIA",
       "authority": "secondary",
-      "enabled": true
-    },
-    {
-      "name": "BSE announcements web",
-      "url": "https://www.bseindia.com/corporates/ann.html",
-      "kind": "html",
-      "provider": "BSE",
-      "authority": "official",
-      "enabled": true
-    },
-    {
-      "name": "RBI releases",
-      "url": "https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx",
-      "kind": "html",
-      "provider": "RBI",
-      "authority": "official",
-      "enabled": true
-    },
-    {
-      "name": "SEBI releases web",
-      "url": "https://www.sebi.gov.in/media/press-releases.html",
-      "kind": "html",
-      "provider": "SEBI",
-      "authority": "official",
+      "verify_article": true,
       "enabled": true
     },
     {
@@ -244,7 +304,8 @@
       "kind": "html",
       "provider": "MEDIA",
       "authority": "secondary",
-      "enabled": true
+      "enabled": true,
+      "verify_article": true
     },
     {
       "name": "Business Standard markets",
@@ -252,7 +313,8 @@
       "kind": "html",
       "provider": "MEDIA",
       "authority": "secondary",
-      "enabled": true
+      "enabled": true,
+      "verify_article": true
     },
     {
       "name": "Financial Express markets",
@@ -268,7 +330,8 @@
       "kind": "html",
       "provider": "MEDIA",
       "authority": "secondary",
-      "enabled": true
+      "enabled": true,
+      "verify_article": true
     },
     {
       "name": "Economic Times markets web",
@@ -276,7 +339,8 @@
       "kind": "html",
       "provider": "MEDIA",
       "authority": "secondary",
-      "enabled": true
+      "enabled": true,
+      "verify_article": true
     },
     {
       "name": "CNBC TV18 markets web",
@@ -284,7 +348,8 @@
       "kind": "html",
       "provider": "MEDIA",
       "authority": "secondary",
-      "enabled": true
+      "enabled": true,
+      "verify_article": true
     },
     {
       "name": "Hindu BusinessLine markets",
@@ -292,7 +357,8 @@
       "kind": "html",
       "provider": "MEDIA",
       "authority": "secondary",
-      "enabled": true
+      "enabled": true,
+      "verify_article": true
     },
     {
       "name": "NSE announcements archive mirror",
@@ -778,6 +844,108 @@
       "enabled": true,
       "timestamp_provenance": "discovery",
       "source_website": "businesstoday.in"
+    },
+    {
+      "name": "Upstox Stock News",
+      "url": "https://upstox.com/news/market-news/stocks/",
+      "kind": "broker_html",
+      "provider": "BROKER",
+      "authority": "secondary",
+      "article_path": "/news/.+/article-\\d+/?",
+      "fallback_slug": true
+    },
+    {
+      "name": "Dhan Blog News",
+      "url": "https://dhan.co/blog/news/",
+      "kind": "broker_html",
+      "provider": "BROKER",
+      "authority": "secondary",
+      "article_path": "/blog/news/[^/]+/?"
+    },
+    {
+      "name": "Groww Stocks in News",
+      "url": "https://groww.in/market-news/stocks",
+      "kind": "broker_html",
+      "provider": "BROKER",
+      "authority": "secondary",
+      "article_path": "/stocks/[^/]+/market-news/?",
+      "headline_selector": "[class*='stockNewsCard_newsCardDescription']",
+      "shared_link": true
+    },
+    {
+      "name": "Mirae Asset Sharekhan Market News",
+      "url": "https://www.sharekhan.com/news/market",
+      "kind": "broker_html",
+      "provider": "BROKER",
+      "authority": "secondary",
+      "article_path": "/news/market/details/.+"
+    },
+    {
+      "name": "Kotak Neo Public Research",
+      "url": "https://www.kotakneo.com/fundamental-research-report/",
+      "kind": "broker_html",
+      "provider": "BROKER",
+      "authority": "secondary",
+      "article_path": "/uploads/(?:Morning_Insight|Market_Morning|Market_Strategy)[^/]*\\.pdf"
+    },
+    {
+      "name": "Kotak Neo Market News",
+      "url": "https://www.kotakneo.com/news/market-news/",
+      "kind": "broker_html",
+      "provider": "BROKER",
+      "authority": "secondary",
+      "article_path": "/news/market-news/[^/]+/?",
+      "verify_article": true
+    },
+    {
+      "name": "Motilal Oswal Public Research",
+      "url": "https://www.motilaloswal.com/stock-research",
+      "kind": "broker_html",
+      "provider": "BROKER",
+      "authority": "secondary",
+      "article_path": "/(?:site/rreports|[^/]+/research)/[^/]+\\.pdf"
+    },
+    {
+      "name": "Angel One Stock News",
+      "url": "https://www.angelone.in/news/stocks",
+      "kind": "broker_html",
+      "provider": "BROKER",
+      "authority": "secondary",
+      "article_path": "/news/stocks/[^/]+/?"
+    },
+    {
+      "name": "ICICI Direct Market News",
+      "url": "https://www.icicidirect.com/share-market-today/news",
+      "kind": "broker_html",
+      "provider": "BROKER",
+      "authority": "secondary",
+      "article_path": "/share-market-today/news/[^/]+/?"
+    },
+    {
+      "name": "5paisa Stock News",
+      "url": "https://www.5paisa.com/news/stocks",
+      "kind": "broker_html",
+      "provider": "BROKER",
+      "authority": "secondary",
+      "article_path": "/news/(?!stocks/?$)[^/]+/?"
+    },
+    {
+      "name": "HDFC Securities News",
+      "url": "https://www.hdfcsec.com/proterminal-page-news-and-sentiments",
+      "kind": "broker_html",
+      "provider": "BROKER",
+      "authority": "secondary",
+      "article_path": "/(?:market-news|research)/[^/]+/?"
+    },
+    {
+      "name": "Dhan Live Stock News",
+      "url": "https://dhan.co/stock-market-live/",
+      "kind": "broker_html",
+      "provider": "BROKER",
+      "authority": "secondary",
+      "card_selector": "div.w-full",
+      "headline_selector": ":scope > div:first-child p",
+      "summary_selector": ":scope > div > p[id^='marketnewsdivweb']"
     }
   ]
 }

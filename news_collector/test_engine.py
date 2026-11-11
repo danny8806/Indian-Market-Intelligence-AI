@@ -7,9 +7,9 @@ from unittest.mock import patch
 from zoneinfo import ZoneInfo
 
 from news_collector.engine import (
-    build_record, canonical_url, default_session, html_items, merge_record,
-    norm_name, parse_timestamp, parse_universe_csv, rss_items, run, universe_match,
-    window_for,
+    build_record, canonical_url, default_session, html_items, html_table_items,
+    merge_record, norm_name, parse_timestamp, parse_universe_csv, rss_items, run,
+    universe_match, window_for,
 )
 IST = ZoneInfo("Asia/Kolkata")
 UNIVERSE = {f"SYM{i:03d}": f"Example Company {i:03d} Limited" for i in range(500)}
@@ -32,6 +32,36 @@ class CollectorUnitTests(unittest.TestCase):
         self.assertEqual(parse_timestamp("05-Nov-2026 18:02:00", exchange="NSE").hour, 18)
         self.assertEqual(parse_timestamp("05-Nov-2026 18:02:00", exchange="BSE").hour, 18)
         self.assertIsNone(parse_timestamp("05-Nov-2026 18:02:00", exchange="MEDIA"))
+
+    def test_official_ist_minute_precision(self):
+        parsed = parse_timestamp("03-Nov-2026 12:54", exchange="NSE")
+        self.assertEqual(parsed.isoformat(), "2026-11-03T12:54:00+05:30")
+        self.assertIsNone(parse_timestamp("03-Nov-2026", exchange="NSE"))
+
+    def test_official_html_table_uses_own_timestamp_column(self):
+        raw = b"""<table id="metaTable"><thead><tr><th>Number</th><th>Description</th>
+        <th>CRT DT</th><th>Attachment</th></tr></thead><tbody>
+        <tr><td>47</td><td>Export policy amendment</td><td>09/11/2026 16:09:03</td>
+        <td><a href="/47.pdf">Download</a></td></tr>
+        <tr><td>46</td><td>Date-only row</td><td>09/11/2026</td>
+        <td><a href="/46.pdf">Download</a></td></tr></tbody></table>"""
+        source = {**sample_source(provider="DGFT", kind="html_table"),
+                  "url": "https://www.dgft.gov.in/CP/?opt=notification",
+                  "table_selector": "#metaTable", "headline_columns": ["Number", "Description"],
+                  "url_column": "Attachment", "timestamp_column": "CRT DT",
+                  "timestamp_format": "%d/%m/%Y %H:%M:%S"}
+        items = html_table_items(raw, source)
+        self.assertEqual(len(items), 2)
+        self.assertEqual(items[0]["headline"], "47 - Export policy amendment")
+        self.assertEqual(items[0]["raw_time"], "2026-11-09T16:09:03+05:30")
+        self.assertEqual(items[1]["raw_time"], "")
+        begin, end = window_for("2026-11-11")
+        status, row = build_record(items[0], source, UNIVERSE, begin, end, begin)
+        self.assertEqual(status, "IN_WINDOW")
+        self.assertEqual(row["published_at"], "2026-11-09T16:09:03+05:30")
+        state, missing = build_record(items[1], source, UNIVERSE, begin, end, begin)
+        self.assertEqual(state, "UNVERIFIED_TIMESTAMP")
+        self.assertIsNone(missing["published_at"])
 
     def test_rfc_utc_ist_and_missing_clock(self):
         self.assertEqual(parse_timestamp("Thu, 05 Nov 2026 18:02:00 +0530").hour, 18)
@@ -96,6 +126,21 @@ class CollectorUnitTests(unittest.TestCase):
         items = html_items(raw, sample_source(kind="html"))
         self.assertEqual(len(items), 1)
         self.assertEqual(items[0]["raw_time"], "")
+
+    def test_vetted_listing_recovers_plain_article_cards_only(self):
+        raw = b"""<html><nav><a href="/news/category">Markets and economy section</a></nav>
+        <div class="card"><a href="/news/thermax-quarterly-results-2026-11-10.html">
+        Thermax quarterly results beat estimates on strong order inflow</a></div>
+        <div class="card"><a href="https://evil.example/news/fake-story-2026-11-10.html">
+        Fake external story with enough words to pass length filter</a></div></html>"""
+        source = {**sample_source(provider="MEDIA", kind="html"),
+                  "url": "https://example.org/markets", "verify_article": True}
+        items = html_items(raw, source)
+        self.assertEqual(len(items), 1)
+        self.assertEqual(items[0]["url"],
+                         "https://example.org/news/thermax-quarterly-results-2026-11-10.html")
+        self.assertEqual(items[0]["raw_time"], "")
+        self.assertEqual(html_items(raw, {**source, "verify_article": False}), [])
 
     def test_event_url_dedupe(self):
         rows = {}

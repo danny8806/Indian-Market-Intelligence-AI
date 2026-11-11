@@ -7,4 +7,4 @@ if [ ! -e "$marker" ]; then
     python -m news_collector.db_store --require-db --backfill-all
     : > "$marker"
 fi
-exec python -m news_collector.continuous_worker
+exec python -m news_collector.continuous_worker "$@"

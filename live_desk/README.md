@@ -1,109 +1,218 @@
-# Kotak Neo — Live News Trading Terminal
+# Current plan notice
 
-**LIVE-ONLY service.** This package contains **no paper execution engine, no simulated fills, no model-generated trades, and no synthetic portfolio history**. Kotak Neo's order, trade and position reports are the authoritative source for executed activity.
+Read [MAIN_PLAN.md](../MAIN_PLAN.md) first. It is the sole current architecture. The external HTTP signal bridge, the local 09:02 publisher and the GitHub news schedule are retired and must not be restored.
 
-## Project layout
+# Kotak Live Dashboard
 
-| Path | Role |
-|---|---|
-| `live_desk/app.py` | Authenticated FastAPI terminal + direct JSON signal receiver |
-| `live_desk/supervisor.py` | Broker login, research intake, Dhan feed, monitoring and risk gates |
-| `live_desk/kotak_gateway.py` | Kotak Neo v3 login, MIS market-order boundary and reconciliation |
-| `live_desk/ledger.py` | Durable broker order intent lifecycle (not a simulated trade ledger) |
-| `live_desk/runtime.py` | Fresh-tick 09:15 one-minute ORB breakout coordinator |
-| `live_desk/dhan_data.py`, `ticker.py` | Read-only Dhan NSE data and live tick stream |
-| `live_desk/broker_view.py` | Sanitize real Kotak Neo orders, positions and fills |
-| `live_desk/static/` | Secure live-only browser dashboard |
-| `live_desk/policy.json` | Read-only risk configuration; timestamp mode deliberately unset |
-| `tests/test_live_kotak_terminal.py` | Broker API boundary and fail-closed mock tests |
+The live dashboard maps research symbols to Dhan NSE EQ IDs, reads each 09:15
+one-minute opening candle, and monitors Dhan ticks for a directional ORB break.
+If Kotak credentials are absent, Dhan mapping and ORB monitoring still run
+read-only; Kotak mapping, order readiness and live order submission stay blocked.
 
-## Source of trading signals
+## Internal daily path
 
-The existing direct API bridge accepts a validated daily research JSON through:
+1. The VPS collector writes source records to the private news database every ten
+   minutes, 24/7. The Codex FINAL job runs at 09:00 with retries at 09:05 and 09:10
+   on regular NSE sessions and writes one immutable `news_morning_reports` row
+   tagged `pipeline_version=vps-codex-final-v1`.
+2. `live_desk/news_intake.py` runs inside the dashboard process and reads that row
+   with a SELECT-only news database account over the Docker private network. It
+   makes no HTTP request and holds no write grant on the news database.
+3. The intake re-validates the schema, session date, cutoff and deadline, then
+   calls `bridge.app.ingest_report` as an internal Python function. The shared
+   function keeps the universe check, daily transaction lock, cumulative
+   five-per-side cap, conflict detection, idempotency and server receipt time.
+4. Only a `READY` report produced by `vps-codex-final-v1`, received strictly
+   before 09:15 IST, is executable. The executable watchlist freezes at 09:15.
+   Later or unverified reports stay visible as research-only and never change
+   that session's trading list.
 
-`POST /api/v1/signals/incoming`
+Signal intake is restricted to the official Nifty 500 constituent snapshot in
+`nifty500_universe.json`. Refresh it with
+`python scripts/refresh_nifty500_universe.py`; the 45-day freshness limit fails
+closed. The operational trading set keeps standard NSE `EQ` rows with Indian
+`INE` equity ISINs; REIT units, trade-to-trade series and placeholder rows remain
+in the audit but are excluded from eligible trading symbols.
 
-Only a current-session `READY` report received after 09:00 IST and before 09:14 IST is eligible for the research intake. The report selects up to five LONG and five SHORT symbols. This report is **not itself an order instruction**. No trained prediction-model artifacts or static stock lists are used.
+Provenance is stored on `signal_reports` and `signal_batches` and returned by the
+authenticated status API. A report with a null or legacy `pipeline_version` is
+displayed with `LEGACY_OR_UNVERIFIED_PRODUCER` and is never entry-eligible. The
+dashboard refuses to relabel an old report: only the producer writes the marker.
 
-A signal-producing service must POST the JSON to the deployed HTTPS endpoint using the bridge's Bearer token and Idempotency-Key. **The existing ChatGPT scheduled research task is not yet proven to call a custom HTTPS endpoint.** Do not treat research scheduling as proof that the dashboard received signals. The receiver only consumes reports actually delivered.
+The retired public write route `POST /api/v1/signals/incoming` returns `410` in
+internal mode. Dashboard login and read APIs remain. GitHub is not part of the
+daily signal path.
 
-## Live trading rule already ported from Sniper
+## Run locally
 
-- Evaluate the first completed 09:15 one-minute Dhan equity candle.
-- LONG: actual fresh tick crosses above that candle's high.
-- SHORT: actual fresh tick crosses below that candle's low.
-- Current config: entry cutoff 10:00 IST, exit time 15:15 IST.
-- At most 5 LONG and 5 SHORT, ₹1 lakh intended allocation each, ₹10 lakh gross cap.
-- No duplicate entry order per symbol per session.
-- Ledger persists each order intent before sending it to Kotak and reconciles with real order/trade reports.
-- Orders are market-order MIS using official `nse_cm` symbol mapping. Broker confirmation—not a Dhan tick—sets filled quantities and prices.
-- There is no stop-loss or daily-loss cutoff. Positions follow the configured 15:15 IST square-off. This is not a broker-native protective stop, so a feed outage, software crash or exchange gap can leave a real position exposed. Verify exit and recovery behavior before enabling unattended real-money trading.
+Use Python 3.11+ and install `requirements-live.txt`. Configure
+`SIGNAL_DATABASE_URL` and `LIVE_DATABASE_URL` to PostgreSQL, a private 32+
+character `SIGNAL_BRIDGE_TOKEN`, `DASHBOARD_PASSWORD` (12+ characters) and a
+separate 32+ character `DASHBOARD_SESSION_SECRET`. Keep `LIVE_ORDERS_ALLOWED=NO`.
+Then run:
 
-These are engineering defaults inherited from the source project's live logic, not independently verified profitable trading rules.
-
-## Install locally (read-only and disarmed by default)
-
-1. Use Python 3.11+.
-2. `python -m pip install -r requirements-live.txt`
-3. Set private environment values:
-
-```text
-SIGNAL_DATABASE_URL=sqlite:////absolute/private/path/signals.db
-SIGNAL_BRIDGE_TOKEN=<private random 32+ char token>
-DASHBOARD_PASSWORD=<unique long password>
-DASHBOARD_SESSION_SECRET=<different 32+ char secret>
-DASHBOARD_COOKIE_SECURE=false  # local HTTP development ONLY
-LIVE_KOTAK_LEDGER_DB=/absolute/private/path/live-orders.db
-LIVE_ORDERS_ALLOWED=NO
-KOTAK_NEO_CONSUMER_KEY=
-KOTAK_NEO_MOBILE_NUMBER=
-KOTAK_NEO_UCC=
-KOTAK_NEO_MPIN=
-KOTAK_NEO_TOTP_SECRET=
-DHAN_CLIENT_ID=
-DHAN_PIN=
-DHAN_TOTP_SECRET=
-LIVE_ARM_TOTP_SECRET=
+```powershell
+python -m live_desk.app
 ```
 
-4. Run `python -m live_desk.app`; open `http://127.0.0.1:8010` on the same computer.
-5. The API and UI share one server and database. The browser requires dashboard login. Signal ingestion requires a different token.
-6. Run `docker compose -f live_desk/compose.yaml up -d --build` to start the loopback-bound container. It is purposely not publicly exposed.
+Open `http://127.0.0.1:8010`. Docker Compose is `live_desk/compose.yaml`; it starts
+PostgreSQL 16 and binds the dashboard to `127.0.0.1:8010`, persisting signal and
+order data in a PostgreSQL volume. Set a private URL-safe `POSTGRES_PASSWORD` in
+`.env`; generate one with `openssl rand -hex 32`.
 
-For a cloud VPS: deploy behind HTTPS, use a managed secret store, persistent encrypted database and backups, stable clock, restricted network access, alerts, independent broker position reconciliation, and a single active supervisor process. Set `DASHBOARD_COOKIE_SECURE=true` in production and configure `DASHBOARD_PUBLIC_ORIGIN=https://your-domain.example` to validate cross-site request origin through a TLS reverse proxy. Never put Kotak MPIN/TOTP seeds into GitHub code, CI logs, ChatGPT or the browser.
+For a UI-only local run without the private news network, set
+`SIGNAL_INGEST_MODE=external`. That mode exists only for isolated development and
+is rejected by the production activation script.
 
-## Default safety locks
+For a prefix-stripping HTTPS proxy such as `/kotak-live/`, add `text/html` to its
+Nginx `sub_filter_types` when that location rewrites `/api/`, `/static/` and
+`/ws`; the HTML base URL must also be rewritten. Keep `DASHBOARD_BASE_PATH` empty
+when Nginx already rewrites upstream redirects and cookies. For a clean prefix
+proxy without Nginx rewrites, use
+[the Nginx path example](../ops/nginx.live-path.example.conf) and set
+`DASHBOARD_BASE_PATH=/kotak-live`. The app then prefixes browser API, static
+asset, login and WebSocket paths itself.
 
-**No real orders are enabled in the committed configuration.**
+## Health and verification
 
-- `LIVE_ORDERS_ALLOWED=NO` in Compose; real order arming is disabled.
-- `policy.json` has `dhan_candle_timestamp_mode: null`. Confirm the actual Dhan bar timestamp convention against an exchange-session response before changing to `start` or `end`.
-- Without authentic Kotak Neo and Dhan credentials, the service shows unavailable broker/data state.
-- Invalid/missing news, wrong-day tick data, stale broker books, unresolved symbols, insufficient funds, unknown order submissions, failed fill reconciliation and negative daily gross MTM risk block new orders.
-- Browser arming also requires authenticated login, a same-origin request, exact real-money acknowledgement phrase, and a separate six-digit operator TOTP. Arming never persists over a process restart or new trading day.
-- Real orders, even exits, must never be triggered by historical or fabricated prices. The supervisor validates broker-reported position quantities before selecting session exits.
-- Only a human-controlled, fully reviewed change to production configuration can lift the default execution lock, and only after account-specific risk and exit tests are complete.
+`GET /health` is unauthenticated liveness only and never contains credentials or
+database errors. It reports `news_intake.mode` and `news_intake.status` so a
+deployment can prove the internal handoff actually reached its database. A status
+of `STARTING` or `INTAKE_BLOCKED` means the dashboard is not production-ready even
+if the process is up.
 
-## API routes
+## Trading configuration
 
-| Endpoint | Access | Result |
-|---|---|---|
-| `POST /api/v1/signals/incoming` | Signal producer Bearer + idempotency | Immutable verified source JSON |
-| `GET /api/state` | Dashboard cookie | Live broker and signal snapshot |
-| `GET /api/live/positions` | Dashboard cookie | Actual Kotak positions only |
-| `GET /api/live/orders` | Dashboard cookie | Kotak order report only |
-| `GET /api/live/fills` | Dashboard cookie | Kotak trade report only |
-| `POST /api/live/arm` | Cookie, same-origin, exact phrase and operator TOTP | Requires separate live-trading authorization gate |
-| `POST /api/live/disarm` | Cookie + same-origin | Disables new entries; reconcile existing broker exposure |
-| `GET /health` | Liveness | Never guarantees broker or signal readiness |
-| `GET /ready` | Monitoring readiness | HTTP 503 when risk/data/broker checks are not satisfied |
+Private environment credentials are required for Kotak Neo and read-only Dhan
+market data. `live_desk/policy.json` sets defaults: the 09:15 opening candle,
+09:30 entry cutoff, 15:00 exit, up to five positions per side, ₹1 lakh per
+position and ₹10 lakh gross cap. The authenticated dashboard lets an operator
+customize per-stock allocation, maximum total/long/short positions (up to 10
+total), gross cap, entry cutoff up to 09:30 IST, and exit time while disarmed.
+These settings persist in the PostgreSQL live ledger, survive restarts and are
+locked while armed. PostgreSQL advisory locks serialize daily cap reservations
+across workers. The exit setting may be earlier than 15:00 but cannot be later.
+Legacy settings above 15:00 are capped at startup. Compose defaults to one share
+per entry, subject to the existing capital and position limits.
 
-The dashboard must not expose raw credentials. All browser-facing data uses sanitized broker reports, and source links render as safe HTTPS links.
+The policy sets `dhan_candle_timestamp_mode` to `end`, verified against returned
+Dhan 09:15 one-minute candle timestamps on 2026-11-05. Recheck it if Dhan changes
+its chart timestamp convention. Dhan access tokens are generated on startup and
+refreshed daily before expiry. India VIX is fetched read-only from the configured
+Dhan `IDX_I` security ID and shown as context; it never triggers an entry. Compose
+defaults `LIVE_ORDERS_ALLOWED` to `NO`; the service starts disarmed after every
+restart. Manual arming requires operator TOTP, exact acknowledgment, fresh feeds
+and broker checks.
 
-## Verification boundary
+There is no stop-loss or daily-loss cutoff. At 15:00 the supervisor checks the
+live Kotak position against persisted bot fills and can recover close-only work
+after a process restart. For an open or partial entry it requests cancellation
+and waits for Kotak's terminal order report before exiting filled shares; if
+confirmation or position matching fails it blocks the exit for manual
+resolution. The software square-off is not a broker-native protective order.
+Feed outages, process failure and gaps can still leave real positions exposed.
 
-GitHub CI checks Python tests using mocked broker data, browser JavaScript syntax, live FastAPI startup and a Docker image build. These tests **do not place actual Kotak orders**, do not use credentials, and do not establish profitability or intraday stop execution quality.
+## Main modules
 
-The **real scheduled ChatGPT → direct API delivery**, live Kotak session login, exact funds and symbol responses, actual Dhan 09:15 candles, partial-fill cases, disconnections and hosted VPS integration still need separate credentialed end-to-end verification.
+- `app.py`: authenticated dashboard, internal intake wiring and read APIs.
+- `news_intake.py`: SELECT-only news database handoff, strict final window.
+- `research_contract.py`: pipeline version, cutoff, deadline and lock constants.
+- `nse_calendar.py`: regular NSE session check (2026 holidays; extend yearly).
+- `supervisor.py`: session, feed, broker and readiness coordinator, executable
+  watchlist gate and research gate.
+- `runtime.py`, `strategy.py`, `orb.py`: ORB decisions and order lifecycle.
+- `dhan_data.py`, `dhan_instruments.py`, `ticker.py`: read-only data, mapping and
+  live prices.
+- `kotak_gateway.py`, `kotak_instruments.py`, `broker_view.py`: Kotak login,
+  orders, reconciliation and broker reports.
+- `ledger.py`: persistent order intents and state changes.
+- `analytics.py`: descriptive, broker-confirmed trade outcome summaries; it never
+  changes strategy or places orders.
+- `static/`: dashboard UI.
 
-Official SDK: https://github.com/Kotak-Neo/kotak-neo-python . Its v3 `limits()` method takes no arguments and returns limits across all exchanges.
+The authenticated **Trade journal** view and `GET /api/live/journal` retain
+entry/exit intents, state-change events and deduplicated Kotak fills in
+PostgreSQL. Fill history starts at deployment; it does not backfill older broker
+fills. Closed-trade gross P&L uses confirmed entry and exit average prices and
+quantities. Partial exits are shown separately with remaining quantity. Closed
+trade return uses confirmed entry notional; gross loss and drawdown are shown
+before fees. Fees, taxes and net performance stay unavailable unless
+authoritative broker charge data is added. Win rate and average win/loss are
+descriptive historical statistics, not a trained model or a promise of future
+results. The endpoint is bounded to the latest 5,000 records per record type.
+
+CI uses mocked broker responses; it does not establish live account behavior or
+profitability.
+
+## Production recovery and live dashboard
+
+`LIVE_FIXED_ENTRY_QUANTITY=1` explicitly selects exactly one share per qualifying
+entry, including stocks whose share price exceeds the allocation field. In this
+mode Kotak determines margin acceptance/rejection; the local cash-versus-gross-cap
+precheck does not block the batch. The gross exposure and position caps, fresh
+broker books/ticks, entry window, server permission and per-session arming still
+apply. An empty value retains allocation sizing and its funds check.
+`LIVE_ENTRY_QUANTITY_CAP=1` alone remains a maximum, not fixed sizing.
+
+With explicit server authorization, `LIVE_AUTO_TRADING=YES` together with
+`LIVE_ORDERS_ALLOWED=YES` and `LIVE_FIXED_ENTRY_QUANTITY=1` automatically enables
+entries after broker login, valid session signals, mappings, opening ranges,
+fresh ticks/books and recovery checks pass inside 09:16–09:30 IST. This mode
+requires no separate operator TOTP or dashboard login for daily execution.
+Broker login OTPs remain unchanged. Signing out or closing the dashboard does not
+stop automatic trading. **Stop new orders today** persists a daily pause in
+PostgreSQL, including across restarts. A health failure after activation also
+pauses automatic entries for the rest of that session. The next day's valid
+session evaluates readiness again. Old breakout events are never replayed and the
+15:00 square-off remains unchanged. Manual mode retains operator TOTP.
+
+Both broker sessions authenticate at application startup and refresh at 08:00 IST
+while the service is running. Startup before 08:00 does not skip that morning's
+refresh. Kotak refresh is single-flight, uses 60–300 second failure backoff and
+retries expired sessions after a cooldown. Authentication never arms orders. Dhan
+refresh also reconnects existing data sockets. The application must be running for
+its timers to execute; Compose restarts the service after a host/process restart.
+
+Dhan ticker messages can contain multiple packets. The terminal handles each
+packet and rejects duplicate security IDs before subscribing. The default
+`DHAN_TICK_TIMESTAMP_OFFSET_SECONDS=0` uses the packet epoch as supplied. Set
+`19800` only if a read-only feed capture verifies that the packet timestamps are
+consistently 5 hours 30 minutes ahead. This setting subtracts that offset from
+exchange trade time. Normal freshness checks still apply.
+
+Kotak's documented `5203 / No Data` response is accepted only as an empty
+positions/orders/trades book. Other response failures stay blocked. Account books
+refresh about every five seconds and expire after twenty seconds. Account
+positions outside the research watchlist receive a separate read-only Dhan ticker
+subscription. Open P&L is revalued on each snapshot using fresh exchange ticks;
+missing/stale ticks invalidate the unrealized value immediately. Closed positions
+retain broker-book realized P&L without a quote. Carry-forward positions with
+unverified cost basis show unavailable P&L. Gross P&L excludes fees; net after
+fees stays unavailable until authoritative charges exist. All broker-returned NSE
+EQ orders/fills are available without row truncation.
+
+The ticker callback performs no broker HTTP requests. Mappings are prepared before
+opening-range construction. Durable PostgreSQL reservations serialize exposure
+across workers, then separate HTTP workers submit orders. Kotak calls share
+per-process pacing (10 mutating requests/second and 20 report requests/second);
+deploy one active supervisor per broker account. Deployment pins the tested Kotak
+SDK version. The dashboard shows both authentication states, next refresh times,
+the blocked stage and stale-data status.
+
+Queued entries are rechecked for authorization, trading window and tick age before
+the durable send transition. A lost acknowledgement triggers bounded report-read
+retries and later reconciliation by the original unique tag. **An unknown
+submission is never sent again merely because the tag is temporarily absent.**
+Startup reconciles persisted unknown submissions even without a research report.
+Unresolved earlier sessions block new entries. At the 09:30 IST entry cutoff the
+service stops dispatching entries and requests cancellation of working bot
+entries. Any fill that races the cancellation is reconciled from the broker book.
+EOD square-off exits only confirmed remaining quantities, and completed exits are
+not sent again.
+
+Kotak requires a whitelisted VPS outbound IP for order APIs even when login and
+reports work. Verify this in the broker console before any authorized
+market-session acceptance test. See the
+[official IP and market-order guidance](https://github.com/Kotak-Neo/Kotak-Neo/blob/main/docs/static-ip-whitelisting.md).
+This service has no demo or paper execution route; simulated exchange responses
+exist only in the isolated tests.

@@ -25,6 +25,7 @@ from zoneinfo import ZoneInfo
 
 import requests
 from bs4 import BeautifulSoup
+from news_collector.broker_sources import allowed_by_robots, listing_items
 from news_collector.matching import match_issuers
 from news_collector.feed_resilience import rss_root, read_with_retry
 from news_collector.provider_discovery import (
@@ -38,9 +39,9 @@ MAX_BYTES = 14_000_000
 MAX_ITEMS = 18_000
 USER_AGENT = "IndianMarketResearchCollector/1.0 (public feeds; no login or bypass)"
 UNIVERSE_URLS = (
+    "https://archives.nseindia.com/content/indices/ind_nifty500list.csv",
     "https://www.niftyindices.com/IndexConstituent/ind_nifty500list.csv",
     "https://niftyindices.com/IndexConstituent/ind_nifty500list.csv",
-    "https://archives.nseindia.com/content/indices/ind_nifty500list.csv",
 )
 FINANCE_TERMS = re.compile(
     r"\b(results?|earnings|profit|loss|revenue|ebitda|margin|order|contract|"
@@ -71,10 +72,11 @@ def parse_timestamp(value: str, *, exchange: str = "") -> datetime | None:
     except ValueError:
         pass
     if exchange in {"NSE", "BSE"}:
-        try:
-            return datetime.strptime(val, "%d-%b-%Y %H:%M:%S").replace(tzinfo=IST)
-        except ValueError:
-            pass
+        for pattern in ("%d-%b-%Y %H:%M:%S", "%d-%b-%Y %H:%M"):
+            try:
+                return datetime.strptime(val, pattern).replace(tzinfo=IST)
+            except ValueError:
+                pass
     # A date without clock time is insufficient for 3 PM / 9 AM cutoff.
     return None
 
@@ -143,6 +145,7 @@ def parse_universe_csv(body: str) -> dict[str, str]:
 
 def fetch_bytes(url: str, *, timeout: int = 23) -> bytes:
     """Polite single GET, no authentication/bypass; never follow arbitrary link crawls."""
+    deadline = time.monotonic() + timeout
     with requests.get(url, headers={"User-Agent": USER_AGENT,
                                      "Accept": "application/xml, application/rss+xml, text/html, text/csv, application/json, */*"},
                       timeout=(7, timeout), stream=True) as response:
@@ -152,6 +155,11 @@ def fetch_bytes(url: str, *, timeout: int = 23) -> bytes:
             raise ValueError(f"Response too large: {length}")
         chunks, total = [], 0
         for chunk in response.iter_content(65536):
+            # The requests read timeout applies per socket read. Enforce one
+            # total wall-clock deadline so a slow-drip source cannot hold a
+            # collector worker past the job budget.
+            if time.monotonic() > deadline:
+                raise requests.Timeout(f"Total fetch time exceeded {timeout}s")
             total += len(chunk)
             if total > MAX_BYTES:
                 raise ValueError("Response exceeded size cap")
@@ -205,10 +213,60 @@ def rss_items(raw: bytes, source: dict) -> list[dict]:
             "headline": headline[:550],
             "summary": BeautifulSoup(fields.get("description", ""), "html.parser").get_text(" ", strip=True)[:1800],
             "url": url,
+            "scrip_code": fields.get("scripcode", ""),
+            "filing_id": fields.get("filingid", ""),
+            "original_time": bool(fields.get("pubdate") or fields.get("published") or fields.get("date")),
             "raw_time": ("" if source.get("timestamp_provenance") == "discovery"
                          else fields.get("pubdate") or fields.get("published") or fields.get("updated") or fields.get("date") or ""),
         })
         if len(found) >= MAX_ITEMS:
+            break
+    return found
+
+
+ARTICLE_PATH = re.compile(
+    r"/(?:news|markets/news|companies|industry|economy|earnings|stocks/news)/", re.I)
+NAV_HEADLINES = {
+    "read more", "view all", "click here", "sign in", "log in", "subscribe",
+    "download app", "follow us", "share", "next", "previous",
+}
+
+
+def _fallback_listing_items(soup: BeautifulSoup, source: dict) -> list[dict]:
+    """Recover plain article-card links on vetted listing pages.
+
+    Some publishers do not wrap cards in ``article``/heading elements. This
+    fallback is opt-in through ``verify_article`` because those same pages are
+    allowed to fetch the publisher article and prove its publication time.
+    Links without a real timestamp remain discovery-only and cannot become a
+    signal on their own.
+    """
+    source_host = (urllib.parse.urlsplit(source["url"]).hostname or "").removeprefix("www.")
+    found, seen = [], set()
+    for a in soup.select("a[href]")[:2000]:
+        headline = a.get_text(" ", strip=True)
+        words = headline.split()
+        if not 30 <= len(headline) <= 250 or len(words) < 5:
+            continue
+        if headline.casefold().strip(" .:") in NAV_HEADLINES:
+            continue
+        url = urllib.parse.urljoin(source["url"], a.get("href") or "")
+        parsed = urllib.parse.urlsplit(url)
+        host = (parsed.hostname or "").removeprefix("www.")
+        if (parsed.scheme not in {"http", "https"} or host != source_host
+                or not ARTICLE_PATH.search(parsed.path)):
+            continue
+        canonical = canonical_url(url)
+        if not canonical or canonical in seen or canonical == canonical_url(source["url"]):
+            continue
+        seen.add(canonical)
+        bucket = a.find_parent(["article", "li", "div"])
+        timestamp = bucket.find("time") if bucket else None
+        raw_time = timestamp.get("datetime", "") if timestamp else ""
+        summary = bucket.get_text(" ", strip=True)[:1800] if bucket else ""
+        found.append({"headline": headline, "summary": summary, "url": url,
+                      "raw_time": raw_time})
+        if len(found) >= 150:
             break
     return found
 
@@ -230,6 +288,62 @@ def html_items(raw: bytes, source: dict) -> list[dict]:
         found.append({"headline": headline, "summary": summary, "url": url, "raw_time": raw_time})
         if len(found) >= 150:
             break
+    if not found and source.get("verify_article"):
+        found = _fallback_listing_items(soup, source)
+    return found
+
+
+def html_table_items(raw: bytes, source: dict) -> list[dict]:
+    """Read a dated official HTML table using explicit column configuration.
+
+    The publication time must come from the table's own timestamp column. Date-only
+    values stay unverified and are never replaced with fetch time.
+    """
+    soup = BeautifulSoup(raw, "html.parser")
+    table = soup.select_one(source["table_selector"])
+    if table is None:
+        raise ValueError("Configured table not found")
+    headers = [th.get_text(" ", strip=True) for th in table.select("thead th")]
+    if not headers:
+        raise ValueError("Configured table has no header row")
+    positions = {name: index for index, name in enumerate(headers)}
+    headline_columns = source.get("headline_columns") or []
+    url_column = source.get("url_column", "")
+    timestamp_column = source.get("timestamp_column", "")
+    timestamp_format = source.get("timestamp_format", "")
+    summary_columns = source.get("summary_columns") or []
+    for column in [*headline_columns, url_column, timestamp_column]:
+        if column and column not in positions:
+            raise ValueError(f"Configured column missing: {column}")
+    found = []
+    for row in table.select("tbody tr"):
+        cells = row.find_all("td")
+        if len(cells) < len(headers):
+            continue
+
+        def value(column: str) -> str:
+            index = positions.get(column)
+            return cells[index].get_text(" ", strip=True) if index is not None else ""
+
+        headline = " - ".join(part for part in (value(column)
+                                                for column in headline_columns) if part)
+        link = cells[positions[url_column]].find("a", href=True) if url_column else None
+        url = urllib.parse.urljoin(source["url"], link["href"]) if link else ""
+        if not headline or not url:
+            continue
+        raw_time = ""
+        if timestamp_column and timestamp_format:
+            try:
+                raw_time = datetime.strptime(
+                    value(timestamp_column), timestamp_format).replace(tzinfo=IST).isoformat()
+            except ValueError:
+                raw_time = ""
+        summary = " | ".join(part for part in (value(column)
+                                               for column in summary_columns) if part)
+        found.append({"headline": headline[:550], "summary": summary[:1800],
+                      "url": url, "raw_time": raw_time})
+        if len(found) >= 150:
+            break
     return found
 
 
@@ -243,7 +357,7 @@ def api_items(raw: bytes, source: dict) -> list[dict]:
             for i in arr[:500] if isinstance(i, dict)]
 
 
-def fetch_one(source: dict) -> tuple[dict, list[dict]]:
+def fetch_one(source: dict, *, raw_sink=None) -> tuple[dict, list[dict]]:
     began = time.monotonic()
     base = {"source": source["name"], "kind": source["kind"], "authority": source["authority"],
             "provider": source["provider"], "url": source["url"], "status": "ERROR",
@@ -259,14 +373,28 @@ def fetch_one(source: dict) -> tuple[dict, list[dict]]:
         if not provider_has_key(source):
             return ({**base, "status": "SKIPPED_NO_KEY", "error": "Provider key not configured"}, [])
     try:
+        if source["kind"] in {"broker_html", "html_table"}:
+            allowed, reason = allowed_by_robots(source["url"], USER_AGENT)
+            if not allowed:
+                return ({**base, "status": "BLOCKED_ROBOTS", "error": reason}, [])
         raw = (fetch_search_index(source) if source["kind"] == "indexed_search"
                else fetch_provider_news(source) if source["kind"] == "provider_api"
                else read_with_retry(source["url"], fetch_bytes,
                                     max_attempts=source.get("max_attempts", 1)))
+        if raw_sink is not None:
+            try:
+                raw_sink(source, raw, base)
+            except Exception:
+                # Raw-document capture must never discard the parsed evidence.
+                pass
         if source["kind"] == "rss":
             items = rss_items(raw, source)
         elif source["kind"] == "html":
             items = html_items(raw, source)
+        elif source["kind"] == "html_table":
+            items = html_table_items(raw, source)
+        elif source["kind"] == "broker_html":
+            items = listing_items(raw, source)
         elif source["kind"] == "api":
             items = api_items(raw, source)
         elif source["kind"] == "indexed_search":
@@ -325,6 +453,8 @@ def build_record(item: dict, source: dict, universe: dict[str, str],
                     "first_seen_at": fetched_at.isoformat(), "last_seen_at": fetched_at.isoformat(),
                     "publication_time_status": "VERIFIED_FORMAT" if timestamp else "UNVERIFIED",
                     "provider_reported_time_unverified": item.get("provider_reported_time", ""),
+                    "isin": str(item.get("isin") or "")[:12],
+                    "financial_figures": item.get("financial_figures") or None,
                     "symbols": symbols,
                     "sources": [source["name"]], "providers": [source["provider"]],
                     "authorities": [source["authority"]]}

@@ -1,0 +1,1508 @@
+{
+  "schema": "market-news-source-registry/1.0",
+  "generated_at": "2026-11-10T16:26:00+05:30",
+  "timezone": "Asia/Kolkata",
+  "policy": {
+    "access": "Public unauthenticated endpoints only. No login, paywall, robots.txt, bot-detection, CAPTCHA, rate-limit or subscription bypass.",
+    "timestamps": "A fetch time is never substituted for a publication time. Date-only values remain unverified and cannot satisfy the 15:00 to 09:00 cutoff.",
+    "activation": "Only ACTIVE endpoints may appear as enabled sources.json poll sources. Blocked, not-found, unreachable and registry-only endpoints stay disabled and retain their access evidence.",
+    "scope": "Official exchanges, regulators, government departments and a partial evidence-based catalog of listed-issuer IR/press pages. Absence from this registry does not imply exhaustive coverage."
+  },
+  "organizations": [
+    {
+      "id": "nse",
+      "name": "National Stock Exchange of India",
+      "homepage": "https://www.nseindia.com/",
+      "endpoints": [
+        {
+          "id": "nse-announcements-rss",
+          "name": "NSE announcements RSS",
+          "url": "https://nsearchives.nseindia.com/content/RSS/Online_announcements.xml",
+          "kind": "rss",
+          "authority": "official",
+          "access_status": "ACTIVE",
+          "poll_source": "NSE announcements RSS",
+          "evidence": {
+            "checked_at": "2026-11-10T16:13:17+05:30",
+            "method": "vps_collector_run",
+            "last_status": "OK",
+            "http_status": null,
+            "items": 263,
+            "detail": "Enabled collector source returned parsed items."
+          },
+          "notes": "NSE official endpoint; timestamps parsed from the feed's own publication field."
+        },
+        {
+          "id": "nse-financial-results-rss",
+          "name": "NSE financial results RSS",
+          "url": "https://nsearchives.nseindia.com/content/RSS/Financial_Results.xml",
+          "kind": "rss",
+          "authority": "official",
+          "access_status": "ACTIVE",
+          "poll_source": "NSE financial results RSS",
+          "evidence": {
+            "checked_at": "2026-11-10T16:13:17+05:30",
+            "method": "vps_collector_run",
+            "last_status": "OK",
+            "http_status": null,
+            "items": 3,
+            "detail": "Enabled collector source returned parsed items."
+          },
+          "notes": "NSE official endpoint; timestamps parsed from the feed's own publication field."
+        },
+        {
+          "id": "nse-board-meetings-rss",
+          "name": "NSE board meetings RSS",
+          "url": "https://nsearchives.nseindia.com/content/RSS/Board_Meetings.xml",
+          "kind": "rss",
+          "authority": "official",
+          "access_status": "ACTIVE",
+          "poll_source": "NSE board meetings RSS",
+          "evidence": {
+            "checked_at": "2026-11-10T16:13:17+05:30",
+            "method": "vps_collector_run",
+            "last_status": "OK",
+            "http_status": null,
+            "items": 64,
+            "detail": "Enabled collector source returned parsed items."
+          },
+          "notes": "NSE official endpoint; timestamps parsed from the feed's own publication field."
+        },
+        {
+          "id": "nse-corporate-actions-rss",
+          "name": "NSE corporate actions RSS",
+          "url": "https://nsearchives.nseindia.com/content/RSS/Corporate_action.xml",
+          "kind": "rss",
+          "authority": "official",
+          "access_status": "ACTIVE",
+          "poll_source": "NSE corporate actions RSS",
+          "evidence": {
+            "checked_at": "2026-11-10T16:13:17+05:30",
+            "method": "vps_collector_run",
+            "last_status": "OK",
+            "http_status": null,
+            "items": 59,
+            "detail": "Enabled collector source returned parsed items."
+          },
+          "notes": "NSE official endpoint; timestamps parsed from the feed's own publication field."
+        },
+        {
+          "id": "nse-announcements-archive-mirror",
+          "name": "NSE announcements archive mirror",
+          "url": "https://archives.nseindia.com/content/RSS/Online_announcements.xml",
+          "kind": "rss",
+          "authority": "official",
+          "access_status": "ACTIVE",
+          "poll_source": "NSE announcements archive mirror",
+          "evidence": {
+            "checked_at": "2026-11-10T16:13:17+05:30",
+            "method": "vps_collector_run",
+            "last_status": "OK",
+            "http_status": null,
+            "items": 263,
+            "detail": "Enabled collector source returned parsed items."
+          },
+          "notes": "NSE official endpoint; timestamps parsed from the feed's own publication field."
+        },
+        {
+          "id": "nse-integrated-financial-filings",
+          "name": "NSE integrated financial filings",
+          "url": "https://nsearchives.nseindia.com/content/RSS/Integrated_Filing_Financials.xml",
+          "kind": "rss",
+          "authority": "official",
+          "access_status": "ACTIVE",
+          "poll_source": "NSE integrated financial filings",
+          "evidence": {
+            "checked_at": "2026-11-10T16:13:17+05:30",
+            "method": "vps_collector_run",
+            "last_status": "OK",
+            "http_status": null,
+            "items": 20,
+            "detail": "Enabled collector source returned parsed items."
+          },
+          "notes": "NSE official endpoint; timestamps parsed from the feed's own publication field."
+        },
+        {
+          "id": "nse-insider-trading-rss",
+          "name": "NSE insider trading RSS",
+          "url": "https://nsearchives.nseindia.com/content/RSS/InsiderTrading.xml",
+          "kind": "rss",
+          "authority": "official",
+          "access_status": "ACTIVE",
+          "poll_source": "NSE insider trading RSS",
+          "evidence": {
+            "checked_at": "2026-11-10T16:20:00+05:30",
+            "method": "collector_ua_http_get",
+            "last_status": "OK",
+            "http_status": 200,
+            "items": 16,
+            "detail": "Enabled collector source returned parsed items.",
+            "dated_items": 16
+          },
+          "notes": "NSE official endpoint; timestamps parsed from the feed's own publication field."
+        },
+        {
+          "id": "nse-circulars-rss",
+          "name": "NSE circulars RSS",
+          "url": "https://nsearchives.nseindia.com/content/RSS/Circulars.xml",
+          "kind": "rss",
+          "authority": "official",
+          "access_status": "ACTIVE",
+          "poll_source": "NSE circulars RSS",
+          "evidence": {
+            "checked_at": "2026-11-10T16:20:00+05:30",
+            "method": "collector_ua_http_get",
+            "last_status": "OK",
+            "http_status": 200,
+            "items": 24,
+            "detail": "Enabled collector source returned parsed items.",
+            "dated_items": 24
+          },
+          "notes": "NSE official endpoint; timestamps parsed from the feed's own publication field."
+        },
+        {
+          "id": "nse-sast-regulation-29-rss",
+          "name": "NSE SAST regulation 29 RSS",
+          "url": "https://nsearchives.nseindia.com/content/RSS/Sast_Regulation29.xml",
+          "kind": "rss",
+          "authority": "official",
+          "access_status": "ACTIVE",
+          "poll_source": "NSE SAST regulation 29 RSS",
+          "evidence": {
+            "checked_at": "2026-11-10T16:20:00+05:30",
+            "method": "collector_ua_http_get",
+            "last_status": "OK",
+            "http_status": 200,
+            "items": 20,
+            "detail": "Enabled collector source returned parsed items.",
+            "dated_items": 20
+          },
+          "notes": "NSE official endpoint; timestamps parsed from the feed's own publication field."
+        },
+        {
+          "id": "nse-sast-regulation-31-rss",
+          "name": "NSE SAST regulation 31 RSS",
+          "url": "https://nsearchives.nseindia.com/content/RSS/Sast_Regulation31.xml",
+          "kind": "rss",
+          "authority": "official",
+          "access_status": "ACTIVE",
+          "poll_source": "NSE SAST regulation 31 RSS",
+          "evidence": {
+            "checked_at": "2026-11-10T16:20:00+05:30",
+            "method": "collector_ua_http_get",
+            "last_status": "OK",
+            "http_status": 200,
+            "items": 20,
+            "detail": "Enabled collector source returned parsed items.",
+            "dated_items": 20
+          },
+          "notes": "NSE official endpoint; timestamps parsed from the feed's own publication field."
+        },
+        {
+          "id": "nse-voting-results-rss",
+          "name": "NSE voting results RSS",
+          "url": "https://nsearchives.nseindia.com/content/RSS/Voting_Results.xml",
+          "kind": "rss",
+          "authority": "official",
+          "access_status": "ACTIVE",
+          "poll_source": "NSE voting results RSS",
+          "evidence": {
+            "checked_at": "2026-11-10T16:20:00+05:30",
+            "method": "collector_ua_http_get",
+            "last_status": "OK",
+            "http_status": 200,
+            "items": 20,
+            "detail": "Enabled collector source returned parsed items.",
+            "dated_items": 20
+          },
+          "notes": "NSE official endpoint; timestamps parsed from the feed's own publication field."
+        },
+        {
+          "id": "nse-daily-buyback-rss",
+          "name": "NSE daily buyback RSS",
+          "url": "https://nsearchives.nseindia.com/content/RSS/Daily_Buyback.xml",
+          "kind": "rss",
+          "authority": "official",
+          "access_status": "ACTIVE",
+          "poll_source": "NSE daily buyback RSS",
+          "evidence": {
+            "checked_at": "2026-11-10T16:20:00+05:30",
+            "method": "collector_ua_http_get",
+            "last_status": "OK",
+            "http_status": 200,
+            "items": 20,
+            "detail": "Enabled collector source returned parsed items.",
+            "dated_items": 20
+          },
+          "notes": "NSE official endpoint; timestamps parsed from the feed's own publication field."
+        },
+        {
+          "id": "nse-related-party-transactions-rss",
+          "name": "NSE related party transactions RSS",
+          "url": "https://nsearchives.nseindia.com/content/RSS/Related_Party_Trans.xml",
+          "kind": "rss",
+          "authority": "official",
+          "access_status": "ACTIVE",
+          "poll_source": "NSE related party transactions RSS",
+          "evidence": {
+            "checked_at": "2026-11-10T16:20:00+05:30",
+            "method": "collector_ua_http_get",
+            "last_status": "OK",
+            "http_status": 200,
+            "items": 20,
+            "detail": "Enabled collector source returned parsed items.",
+            "dated_items": 20
+          },
+          "notes": "NSE official endpoint; timestamps parsed from the feed's own publication field."
+        },
+        {
+          "id": "nse-investor-complaints-rss",
+          "name": "NSE investor complaints RSS",
+          "url": "https://nsearchives.nseindia.com/content/RSS/Investor_Complaints.xml",
+          "kind": "rss",
+          "authority": "official",
+          "access_status": "ACTIVE",
+          "poll_source": "NSE investor complaints RSS",
+          "evidence": {
+            "checked_at": "2026-11-10T16:20:00+05:30",
+            "method": "collector_ua_http_get",
+            "last_status": "OK",
+            "http_status": 200,
+            "items": 20,
+            "detail": "Enabled collector source returned parsed items.",
+            "dated_items": 20
+          },
+          "notes": "NSE official endpoint; timestamps parsed from the feed's own publication field."
+        },
+        {
+          "id": "nse-unitholding-patterns-rss",
+          "name": "NSE unitholding patterns RSS",
+          "url": "https://nsearchives.nseindia.com/content/RSS/Unitholding_Patterns.xml",
+          "kind": "rss",
+          "authority": "official",
+          "access_status": "ACTIVE",
+          "poll_source": "NSE unitholding patterns RSS",
+          "evidence": {
+            "checked_at": "2026-11-10T16:20:00+05:30",
+            "method": "collector_ua_http_get",
+            "last_status": "OK",
+            "http_status": 200,
+            "items": 20,
+            "detail": "Enabled collector source returned parsed items.",
+            "dated_items": 20
+          },
+          "notes": "NSE official endpoint; timestamps parsed from the feed's own publication field."
+        },
+        {
+          "id": "nse-statement-of-deviation-rss",
+          "name": "NSE statement of deviation RSS",
+          "url": "https://nsearchives.nseindia.com/content/RSS/Statement_Of_Deviation.xml",
+          "kind": "rss",
+          "authority": "official",
+          "access_status": "ACTIVE",
+          "poll_source": "NSE statement of deviation RSS",
+          "evidence": {
+            "checked_at": "2026-11-10T16:20:00+05:30",
+            "method": "collector_ua_http_get",
+            "last_status": "OK",
+            "http_status": 200,
+            "items": 20,
+            "detail": "Enabled collector source returned parsed items.",
+            "dated_items": 20
+          },
+          "notes": "NSE official endpoint; timestamps parsed from the feed's own publication field."
+        },
+        {
+          "id": "nse-rss-index",
+          "name": "NSE RSS feed index",
+          "url": "https://www.nseindia.com/static/rss-feed",
+          "kind": "html",
+          "authority": "official",
+          "access_status": "REGISTRY_ONLY",
+          "poll_source": null,
+          "reason": "Discovery index used to enumerate official feeds; not an article feed.",
+          "evidence": {
+            "checked_at": "2026-11-10T16:20:00+05:30",
+            "method": "collector_ua_http_get",
+            "last_status": "REGISTRY_ONLY",
+            "http_status": 200,
+            "items": 0,
+            "detail": "HTTP 200; 322625 bytes; lists the official nsearchives RSS endpoints."
+          },
+          "notes": "NSE"
+        },
+        {
+          "id": "nse-annual-reports",
+          "name": "NSE annual reports RSS",
+          "url": "https://nsearchives.nseindia.com/content/RSS/Annual_Reports.xml",
+          "kind": "rss",
+          "authority": "official",
+          "access_status": "REGISTRY_ONLY",
+          "poll_source": null,
+          "reason": "Feed has no publication timestamp; date-only or absent values are insufficient for the 15:00/09:00 cutoff.",
+          "evidence": {
+            "checked_at": "2026-11-10T16:20:00+05:30",
+            "method": "collector_ua_http_get",
+            "last_status": "REGISTRY_ONLY",
+            "http_status": 200,
+            "items": 20,
+            "detail": "20 items, 0 dated in a collector-parser probe.",
+            "dated_items": 0
+          },
+          "notes": "NSE"
+        },
+        {
+          "id": "nse-brsr",
+          "name": "NSE BRSR RSS",
+          "url": "https://nsearchives.nseindia.com/content/RSS/brsr.xml",
+          "kind": "rss",
+          "authority": "official",
+          "access_status": "REGISTRY_ONLY",
+          "poll_source": null,
+          "reason": "Feed has no publication timestamp; cannot be verified against the cutoff.",
+          "evidence": {
+            "checked_at": "2026-11-10T16:20:00+05:30",
+            "method": "collector_ua_http_get",
+            "last_status": "REGISTRY_ONLY",
+            "http_status": 200,
+            "items": 20,
+            "detail": "20 items, 0 dated in a collector-parser probe.",
+            "dated_items": 0
+          },
+          "notes": "NSE"
+        },
+        {
+          "id": "nse-corporate-governance",
+          "name": "NSE corporate governance RSS",
+          "url": "https://nsearchives.nseindia.com/content/RSS/Corporate_Governance.xml",
+          "kind": "rss",
+          "authority": "official",
+          "access_status": "REGISTRY_ONLY",
+          "poll_source": null,
+          "reason": "Feed returned no items in the parser probe.",
+          "evidence": {
+            "checked_at": "2026-11-10T16:20:00+05:30",
+            "method": "collector_ua_http_get",
+            "last_status": "REGISTRY_ONLY",
+            "http_status": 200,
+            "items": 0,
+            "detail": "HTTP 200, 818 bytes, 0 items.",
+            "dated_items": 0
+          },
+          "notes": "NSE"
+        },
+        {
+          "id": "nse-shareholding-pattern",
+          "name": "NSE shareholding pattern RSS",
+          "url": "https://nsearchives.nseindia.com/content/RSS/Shareholding_Pattern.xml",
+          "kind": "rss",
+          "authority": "official",
+          "access_status": "REGISTRY_ONLY",
+          "poll_source": null,
+          "reason": "Feed returned no items in the parser probe.",
+          "evidence": {
+            "checked_at": "2026-11-10T16:20:00+05:30",
+            "method": "collector_ua_http_get",
+            "last_status": "REGISTRY_ONLY",
+            "http_status": 200,
+            "items": 0,
+            "detail": "HTTP 200, 841 bytes, 0 items.",
+            "dated_items": 0
+          },
+          "notes": "NSE"
+        },
+        {
+          "id": "nse-secretarial-compliance",
+          "name": "NSE secretarial compliance RSS",
+          "url": "https://nsearchives.nseindia.com/content/RSS/Secretarial_Compliance.xml",
+          "kind": "rss",
+          "authority": "official",
+          "access_status": "REGISTRY_ONLY",
+          "poll_source": null,
+          "reason": "Only 5 of 20 items had a parseable publication time; not enabled until the feed is consistent.",
+          "evidence": {
+            "checked_at": "2026-11-10T16:20:00+05:30",
+            "method": "collector_ua_http_get",
+            "last_status": "REGISTRY_ONLY",
+            "http_status": 200,
+            "items": 20,
+            "detail": "20 items, 5 dated in a collector-parser probe.",
+            "dated_items": 5
+          },
+          "notes": "NSE"
+        },
+        {
+          "id": "nse-offer-documents",
+          "name": "NSE offer documents RSS",
+          "url": "https://nsearchives.nseindia.com/content/RSS/Offer_Documents.xml",
+          "kind": "rss",
+          "authority": "official",
+          "access_status": "REGISTRY_ONLY",
+          "poll_source": null,
+          "reason": "Publication values are date-only, which is insufficient for the 15:00/09:00 cutoff.",
+          "evidence": {
+            "checked_at": "2026-11-10T16:20:00+05:30",
+            "method": "collector_ua_http_get",
+            "last_status": "REGISTRY_ONLY",
+            "http_status": 200,
+            "items": 16,
+            "detail": "16 items, 0 full timestamps in a collector-parser probe.",
+            "dated_items": 0
+          },
+          "notes": "NSE"
+        },
+        {
+          "id": "nse-share-transfers",
+          "name": "NSE share transfers RSS",
+          "url": "https://nsearchives.nseindia.com/content/RSS/Share_Transfers.xml",
+          "kind": "rss",
+          "authority": "official",
+          "access_status": "REGISTRY_ONLY",
+          "poll_source": null,
+          "reason": "Low-signal physical share-transfer notices; kept in the registry to conserve the ten-minute cycle budget.",
+          "evidence": {
+            "checked_at": "2026-11-10T16:20:00+05:30",
+            "method": "collector_ua_http_get",
+            "last_status": "REGISTRY_ONLY",
+            "http_status": 200,
+            "items": 11,
+            "detail": "11 items, all minute-precision dated.",
+            "dated_items": 11
+          },
+          "notes": "NSE"
+        }
+      ]
+    },
+    {
+      "id": "bse",
+      "name": "BSE Limited",
+      "homepage": "https://www.bseindia.com/",
+      "endpoints": [
+        {
+          "id": "bse-announcements-rss",
+          "name": "BSE announcements RSS",
+          "url": "https://www.bseindia.com/data/xml/announcements.xml",
+          "kind": "rss",
+          "authority": "official",
+          "access_status": "ACTIVE",
+          "poll_source": "BSE announcements RSS",
+          "evidence": {
+            "checked_at": "2026-11-10T16:13:17+05:30",
+            "method": "vps_collector_run",
+            "last_status": "OK",
+            "http_status": null,
+            "items": 1553,
+            "detail": "Enabled collector source returned parsed items."
+          },
+          "notes": "BSE official endpoint; timestamps parsed from the feed's own publication field."
+        },
+        {
+          "id": "bse-latest-announcements-alternate",
+          "name": "BSE latest announcements alternate",
+          "url": "https://www.bseindia.com/data/xml/announcements.aspx",
+          "kind": "rss",
+          "authority": "official",
+          "access_status": "ACTIVE",
+          "poll_source": "BSE latest announcements alternate",
+          "evidence": {
+            "checked_at": "2026-11-10T16:13:17+05:30",
+            "method": "vps_collector_run",
+            "last_status": "OK",
+            "http_status": null,
+            "items": 1555,
+            "detail": "Enabled collector source returned parsed items."
+          },
+          "notes": "BSE official endpoint; timestamps parsed from the feed's own publication field."
+        },
+        {
+          "id": "bse-financial-results",
+          "name": "BSE financial results",
+          "url": "https://www.bseindia.com/Data/XML/FinancialResultsFeed.aspx",
+          "kind": "rss",
+          "authority": "official",
+          "access_status": "ACTIVE",
+          "poll_source": "BSE financial results",
+          "evidence": {
+            "checked_at": "2026-11-10T16:13:17+05:30",
+            "method": "vps_collector_run",
+            "last_status": "OK",
+            "http_status": null,
+            "items": 17,
+            "detail": "Enabled collector source returned parsed items."
+          },
+          "notes": "BSE official endpoint; timestamps parsed from the feed's own publication field."
+        },
+        {
+          "id": "bse-board-meetings",
+          "name": "BSE board meetings",
+          "url": "https://beta.bseindia.com/Data/XML/BoardMeetingsFeed.xml",
+          "kind": "rss",
+          "authority": "official",
+          "access_status": "ACTIVE",
+          "poll_source": "BSE board meetings",
+          "evidence": {
+            "checked_at": "2026-11-10T16:13:17+05:30",
+            "method": "vps_collector_run",
+            "last_status": "OK",
+            "http_status": null,
+            "items": 48,
+            "detail": "Enabled collector source returned parsed items."
+          },
+          "notes": "BSE official endpoint; timestamps parsed from the feed's own publication field."
+        },
+        {
+          "id": "bse-corporate-actions",
+          "name": "BSE corporate actions",
+          "url": "https://www.bseindia.com/data/XML/CorpActionFeed.aspx",
+          "kind": "rss",
+          "authority": "official",
+          "access_status": "ACTIVE",
+          "poll_source": "BSE corporate actions",
+          "evidence": {
+            "checked_at": "2026-11-10T16:13:17+05:30",
+            "method": "vps_collector_run",
+            "last_status": "OK",
+            "http_status": null,
+            "items": 34,
+            "detail": "Enabled collector source returned parsed items."
+          },
+          "notes": "BSE official endpoint; timestamps parsed from the feed's own publication field."
+        },
+        {
+          "id": "bse-insider-trading",
+          "name": "BSE insider trading",
+          "url": "https://www.bseindia.com/Data/XML/InsiderTradingFeed.aspx",
+          "kind": "rss",
+          "authority": "official",
+          "access_status": "ACTIVE",
+          "poll_source": "BSE insider trading",
+          "evidence": {
+            "checked_at": "2026-11-10T16:13:17+05:30",
+            "method": "vps_collector_run",
+            "last_status": "OK",
+            "http_status": null,
+            "items": 6,
+            "detail": "Enabled collector source returned parsed items."
+          },
+          "notes": "BSE official endpoint; timestamps parsed from the feed's own publication field."
+        },
+        {
+          "id": "bse-announcements-web",
+          "name": "BSE announcements web",
+          "url": "https://www.bseindia.com/corporates/ann.html",
+          "kind": "html",
+          "authority": "official",
+          "access_status": "REGISTRY_ONLY",
+          "poll_source": null,
+          "reason": "HTML page returned no dated article links; the official RSS feeds are enabled instead.",
+          "evidence": {
+            "checked_at": "2026-11-10T16:20:00+05:30",
+            "method": "collector_ua_http_get",
+            "last_status": "REGISTRY_ONLY",
+            "http_status": 200,
+            "items": 0,
+            "detail": "Collector status EMPTY on 2026-11-10 16:13 IST."
+          },
+          "notes": "BSE"
+        }
+      ]
+    },
+    {
+      "id": "sebi",
+      "name": "Securities and Exchange Board of India",
+      "homepage": "https://www.sebi.gov.in/",
+      "endpoints": [
+        {
+          "id": "sebi-rss",
+          "name": "SEBI RSS",
+          "url": "https://www.sebi.gov.in/sebirss.xml",
+          "kind": "rss",
+          "authority": "official",
+          "access_status": "ACTIVE",
+          "poll_source": "SEBI RSS",
+          "evidence": {
+            "checked_at": "2026-11-10T16:13:17+05:30",
+            "method": "vps_collector_run",
+            "last_status": "OK",
+            "http_status": null,
+            "items": 30,
+            "detail": "Enabled collector source returned parsed items."
+          },
+          "notes": "SEBI official endpoint; timestamps parsed from the feed's own publication field."
+        },
+        {
+          "id": "sebi-press-web",
+          "name": "SEBI press releases web",
+          "url": "https://www.sebi.gov.in/media/press-releases.html",
+          "kind": "html",
+          "authority": "official",
+          "access_status": "NOT_FOUND",
+          "poll_source": null,
+          "reason": "HTTP 404; the official SEBI RSS feed is enabled instead.",
+          "evidence": {
+            "checked_at": "2026-11-10T16:20:00+05:30",
+            "method": "collector_ua_http_get",
+            "last_status": "NOT_FOUND",
+            "http_status": 404,
+            "items": 0,
+            "detail": "Collector status ERROR: HTTP 404 on 2026-11-10 16:13 IST."
+          },
+          "notes": "SEBI"
+        }
+      ]
+    },
+    {
+      "id": "rbi",
+      "name": "Reserve Bank of India",
+      "homepage": "https://www.rbi.org.in/",
+      "endpoints": [
+        {
+          "id": "rbi-official-press-releases",
+          "name": "RBI official press releases",
+          "url": "https://rbi.org.in/pressreleases_rss.xml",
+          "kind": "rss",
+          "authority": "official",
+          "access_status": "ACTIVE",
+          "poll_source": "RBI official press releases",
+          "evidence": {
+            "checked_at": "2026-11-10T16:13:17+05:30",
+            "method": "vps_collector_run",
+            "last_status": "OK",
+            "http_status": null,
+            "items": 10,
+            "detail": "Enabled collector source returned parsed items."
+          },
+          "notes": "RBI official endpoint; timestamps parsed from the feed's own publication field."
+        },
+        {
+          "id": "rbi-official-notifications",
+          "name": "RBI official notifications",
+          "url": "https://rbi.org.in/notifications_rss.xml",
+          "kind": "rss",
+          "authority": "official",
+          "access_status": "ACTIVE",
+          "poll_source": "RBI official notifications",
+          "evidence": {
+            "checked_at": "2026-11-10T16:13:17+05:30",
+            "method": "vps_collector_run",
+            "last_status": "OK",
+            "http_status": null,
+            "items": 10,
+            "detail": "Enabled collector source returned parsed items."
+          },
+          "notes": "RBI official endpoint; timestamps parsed from the feed's own publication field."
+        },
+        {
+          "id": "rbi-official-speeches",
+          "name": "RBI official speeches",
+          "url": "https://rbi.org.in/speeches_rss.xml",
+          "kind": "rss",
+          "authority": "official",
+          "access_status": "ACTIVE",
+          "poll_source": "RBI official speeches",
+          "evidence": {
+            "checked_at": "2026-11-10T16:13:17+05:30",
+            "method": "vps_collector_run",
+            "last_status": "OK",
+            "http_status": null,
+            "items": 10,
+            "detail": "Enabled collector source returned parsed items."
+          },
+          "notes": "RBI official endpoint; timestamps parsed from the feed's own publication field."
+        },
+        {
+          "id": "rbi-official-publications",
+          "name": "RBI official publications",
+          "url": "https://rbi.org.in/Publication_rss.xml",
+          "kind": "rss",
+          "authority": "official",
+          "access_status": "ACTIVE",
+          "poll_source": "RBI official publications",
+          "evidence": {
+            "checked_at": "2026-11-10T16:13:17+05:30",
+            "method": "vps_collector_run",
+            "last_status": "OK",
+            "http_status": null,
+            "items": 10,
+            "detail": "Enabled collector source returned parsed items."
+          },
+          "notes": "RBI official endpoint; timestamps parsed from the feed's own publication field."
+        },
+        {
+          "id": "rbi-releases-web",
+          "name": "RBI releases web",
+          "url": "https://www.rbi.org.in/Scripts/BS_PressReleaseDisplay.aspx",
+          "kind": "html",
+          "authority": "official",
+          "access_status": "REGISTRY_ONLY",
+          "poll_source": null,
+          "reason": "HTML page returned no dated article links; the official RSS feeds are enabled instead.",
+          "evidence": {
+            "checked_at": "2026-11-10T16:20:00+05:30",
+            "method": "collector_ua_http_get",
+            "last_status": "REGISTRY_ONLY",
+            "http_status": 200,
+            "items": 0,
+            "detail": "Collector status EMPTY on 2026-11-10 16:13 IST."
+          },
+          "notes": "RBI"
+        }
+      ]
+    },
+    {
+      "id": "mca",
+      "name": "Ministry of Corporate Affairs",
+      "homepage": "https://www.mca.gov.in/",
+      "endpoints": [
+        {
+          "id": "mca-home",
+          "name": "MCA home",
+          "url": "https://www.mca.gov.in/content/mca/global/en/home.html",
+          "kind": "html",
+          "authority": "official",
+          "access_status": "BLOCKED",
+          "poll_source": null,
+          "reason": "HTTP 403 Access Denied to the collector user agent; no bypass attempted.",
+          "evidence": {
+            "checked_at": "2026-11-10T16:20:00+05:30",
+            "method": "collector_ua_http_get",
+            "last_status": "BLOCKED",
+            "http_status": 403,
+            "items": 0,
+            "detail": "HTTP 403, 421-byte Access Denied page."
+          },
+          "notes": "MCA"
+        },
+        {
+          "id": "mca-notices",
+          "name": "MCA notices",
+          "url": "https://www.mca.gov.in/content/mca/global/en/notices.html",
+          "kind": "html",
+          "authority": "official",
+          "access_status": "BLOCKED",
+          "poll_source": null,
+          "reason": "HTTP 403 Access Denied to the collector user agent; no bypass attempted.",
+          "evidence": {
+            "checked_at": "2026-11-10T16:20:00+05:30",
+            "method": "collector_ua_http_get",
+            "last_status": "BLOCKED",
+            "http_status": 403,
+            "items": 0,
+            "detail": "HTTP 403, 424-byte Access Denied page."
+          },
+          "notes": "MCA"
+        }
+      ]
+    },
+    {
+      "id": "cci",
+      "name": "Competition Commission of India",
+      "homepage": "https://www.cci.gov.in/",
+      "endpoints": [
+        {
+          "id": "cci-home",
+          "name": "CCI home",
+          "url": "https://www.cci.gov.in/",
+          "kind": "html",
+          "authority": "official",
+          "access_status": "REGISTRY_ONLY",
+          "poll_source": null,
+          "reason": "Accessible, but orders are loaded through an interactive search form; no dated public list was parseable.",
+          "evidence": {
+            "checked_at": "2026-11-10T16:20:00+05:30",
+            "method": "collector_ua_http_get",
+            "last_status": "REGISTRY_ONLY",
+            "http_status": 200,
+            "items": 0,
+            "detail": "HTTP 200, 71182 bytes."
+          },
+          "notes": "CCI"
+        },
+        {
+          "id": "cci-orders",
+          "name": "CCI orders",
+          "url": "https://www.cci.gov.in/antitrust/orders",
+          "kind": "html",
+          "authority": "official",
+          "access_status": "REGISTRY_ONLY",
+          "poll_source": null,
+          "reason": "Accessible, but the orders table is populated by a CSRF-protected search form; only the site title parsed.",
+          "evidence": {
+            "checked_at": "2026-11-10T16:20:00+05:30",
+            "method": "collector_ua_http_get",
+            "last_status": "REGISTRY_ONLY",
+            "http_status": 200,
+            "items": 0,
+            "detail": "HTTP 200, 59903 bytes; 0 dated order rows."
+          },
+          "notes": "CCI"
+        }
+      ]
+    },
+    {
+      "id": "cdsco",
+      "name": "Central Drugs Standard Control Organisation",
+      "homepage": "https://cdsco.gov.in/",
+      "endpoints": [
+        {
+          "id": "cdsco-home",
+          "name": "CDSCO home",
+          "url": "https://cdsco.gov.in/opencms/opencms/en/Home/",
+          "kind": "html",
+          "authority": "official",
+          "access_status": "REGISTRY_ONLY",
+          "poll_source": null,
+          "reason": "Earlier connection failure; latest probe reached HTTP 200 but no dated article list.",
+          "evidence": {
+            "checked_at": "2026-11-10T16:20:00+05:30",
+            "method": "collector_ua_http_get",
+            "last_status": "REGISTRY_ONLY",
+            "http_status": 200,
+            "items": 0,
+            "detail": "Intermittent reachability: connection error earlier on 2026-11-10, HTTP 200 (97985 bytes) later."
+          },
+          "notes": "CDSCO"
+        },
+        {
+          "id": "cdsco-notifications",
+          "name": "CDSCO notifications",
+          "url": "https://cdsco.gov.in/opencms/opencms/en/Notifications/",
+          "kind": "html",
+          "authority": "official",
+          "access_status": "REGISTRY_ONLY",
+          "poll_source": null,
+          "reason": "Release dates are date-only (for example 2026-Sep-22), insufficient for the 15:00/09:00 cutoff.",
+          "evidence": {
+            "checked_at": "2026-11-10T16:20:00+05:30",
+            "method": "collector_ua_http_get",
+            "last_status": "REGISTRY_ONLY",
+            "http_status": 200,
+            "items": 253,
+            "detail": "HTTP 200; 253 table rows with date-only release dates.",
+            "dated_items": 0
+          },
+          "notes": "CDSCO"
+        }
+      ]
+    },
+    {
+      "id": "us-fda",
+      "name": "U.S. Food and Drug Administration",
+      "homepage": "https://www.fda.gov/",
+      "endpoints": [
+        {
+          "id": "fda-press",
+          "name": "US FDA press releases RSS",
+          "url": "https://www.fda.gov/about-fda/contact-fda/stay-informed/rss-feeds/press-releases/rss.xml",
+          "kind": "rss",
+          "authority": "official",
+          "access_status": "BLOCKED",
+          "poll_source": null,
+          "reason": "Collector user agent receives an abuse-detection 404; a browser-like agent returned 200, which is not authorization to bypass bot protection.",
+          "evidence": {
+            "checked_at": "2026-11-10T16:20:00+05:30",
+            "method": "collector_ua_http_get",
+            "last_status": "BLOCKED",
+            "http_status": 404,
+            "items": 0,
+            "detail": "Collector UA redirected to /apology_objects/abuse-detection-apology.html (404)."
+          },
+          "notes": "FDA"
+        },
+        {
+          "id": "fda-recalls",
+          "name": "US FDA recalls RSS",
+          "url": "https://www.fda.gov/about-fda/contact-fda/stay-informed/rss-feeds/recalls/rss.xml",
+          "kind": "rss",
+          "authority": "official",
+          "access_status": "BLOCKED",
+          "poll_source": null,
+          "reason": "Collector user agent receives an abuse-detection 404; no bypass attempted.",
+          "evidence": {
+            "checked_at": "2026-11-10T16:20:00+05:30",
+            "method": "collector_ua_http_get",
+            "last_status": "BLOCKED",
+            "http_status": 404,
+            "items": 0,
+            "detail": "Collector UA rejected by FDA abuse detection."
+          },
+          "notes": "FDA"
+        }
+      ]
+    },
+    {
+      "id": "mod",
+      "name": "Ministry of Defence",
+      "homepage": "https://mod.gov.in/",
+      "endpoints": [
+        {
+          "id": "mod-home",
+          "name": "MoD home",
+          "url": "https://mod.gov.in/",
+          "kind": "html",
+          "authority": "official",
+          "access_status": "REGISTRY_ONLY",
+          "poll_source": null,
+          "reason": "Accessible but no dated article list was parseable from the public page.",
+          "evidence": {
+            "checked_at": "2026-11-10T16:20:00+05:30",
+            "method": "collector_ua_http_get",
+            "last_status": "REGISTRY_ONLY",
+            "http_status": 200,
+            "items": 0,
+            "detail": "HTTP 200, 8127 bytes."
+          },
+          "notes": "MoD"
+        },
+        {
+          "id": "mod-press",
+          "name": "MoD press releases",
+          "url": "https://mod.gov.in/press-releases",
+          "kind": "html",
+          "authority": "official",
+          "access_status": "REGISTRY_ONLY",
+          "poll_source": null,
+          "reason": "Accessible but page contains no article/time elements or dated links; likely a JavaScript shell.",
+          "evidence": {
+            "checked_at": "2026-11-10T16:20:00+05:30",
+            "method": "collector_ua_http_get",
+            "last_status": "REGISTRY_ONLY",
+            "http_status": 200,
+            "items": 0,
+            "detail": "HTTP 200, 8679 bytes; 0 article and 0 time elements."
+          },
+          "notes": "MoD"
+        }
+      ]
+    },
+    {
+      "id": "dgft",
+      "name": "Directorate General of Foreign Trade",
+      "homepage": "https://www.dgft.gov.in/",
+      "endpoints": [
+        {
+          "id": "dgft-notifications",
+          "name": "DGFT notifications",
+          "url": "https://www.dgft.gov.in/CP/?opt=notification",
+          "kind": "html_table",
+          "authority": "official",
+          "access_status": "BLOCKED",
+          "poll_source": null,
+          "reason": "A local probe parsed 150 dated rows, but the VPS collector received HTTP 403; the endpoint is not enabled and no IP/header bypass is attempted.",
+          "evidence": {
+            "checked_at": "2026-11-10T16:25:00+05:30",
+            "method": "collector_ua_http_get",
+            "last_status": "BLOCKED",
+            "http_status": 403,
+            "items": 0,
+            "detail": "VPS pre-deployment probe returned HTTP 403 from the collector container. Kept for a future network/allowlist review."
+          },
+          "notes": "DGFT"
+        },
+        {
+          "id": "dgft-home",
+          "name": "DGFT home",
+          "url": "https://www.dgft.gov.in/",
+          "kind": "html",
+          "authority": "official",
+          "access_status": "REGISTRY_ONLY",
+          "poll_source": null,
+          "reason": "The home URL is a JavaScript shell; the notifications table is blocked from the VPS.",
+          "evidence": {
+            "checked_at": "2026-11-10T16:20:00+05:30",
+            "method": "collector_ua_http_get",
+            "last_status": "REGISTRY_ONLY",
+            "http_status": 200,
+            "items": 0,
+            "detail": "HTTP 200, 121-byte shell."
+          },
+          "notes": "DGFT"
+        }
+      ]
+    },
+    {
+      "id": "pib",
+      "name": "Press Information Bureau",
+      "homepage": "https://pib.gov.in/",
+      "endpoints": [
+        {
+          "id": "pib-india-press-releases-english",
+          "name": "PIB India press releases English",
+          "url": "https://pib.gov.in/RssMain.aspx?ModId=6&Lang=1&Regid=3&reg=3",
+          "kind": "rss",
+          "authority": "official",
+          "access_status": "ACTIVE",
+          "poll_source": "PIB India press releases English",
+          "evidence": {
+            "checked_at": "2026-11-10T16:13:17+05:30",
+            "method": "vps_collector_run",
+            "last_status": "OK",
+            "http_status": null,
+            "items": 20,
+            "detail": "Enabled collector source returned parsed items."
+          },
+          "notes": "PIB official endpoint; timestamps parsed from the feed's own publication field."
+        },
+        {
+          "id": "pib-india-releases-hindi",
+          "name": "PIB India releases Hindi",
+          "url": "https://pib.gov.in/RssMain.aspx?ModId=6&Lang=2&Regid=3&reg=3",
+          "kind": "rss",
+          "authority": "official",
+          "access_status": "ACTIVE",
+          "poll_source": "PIB India releases Hindi",
+          "evidence": {
+            "checked_at": "2026-11-10T16:13:17+05:30",
+            "method": "vps_collector_run",
+            "last_status": "OK",
+            "http_status": null,
+            "items": 20,
+            "detail": "Enabled collector source returned parsed items."
+          },
+          "notes": "PIB official endpoint; timestamps parsed from the feed's own publication field."
+        }
+      ]
+    },
+    {
+      "id": "trai",
+      "name": "Telecom Regulatory Authority of India",
+      "homepage": "https://www.trai.gov.in/",
+      "endpoints": [
+        {
+          "id": "trai-official-rss",
+          "name": "TRAI official RSS",
+          "url": "https://www.trai.gov.in/rss.xml",
+          "kind": "rss",
+          "authority": "official",
+          "access_status": "ACTIVE",
+          "poll_source": "TRAI official RSS",
+          "evidence": {
+            "checked_at": "2026-11-10T16:13:17+05:30",
+            "method": "vps_collector_run",
+            "last_status": "OK",
+            "http_status": null,
+            "items": 10,
+            "detail": "Enabled collector source returned parsed items."
+          },
+          "notes": "TRAI official endpoint; timestamps parsed from the feed's own publication field."
+        }
+      ]
+    },
+    {
+      "id": "federal-reserve",
+      "name": "Federal Reserve Board",
+      "homepage": "https://www.federalreserve.gov/",
+      "endpoints": [
+        {
+          "id": "federal-reserve-official-press-releases",
+          "name": "Federal Reserve official press releases",
+          "url": "https://www.federalreserve.gov/feeds/press_all.xml",
+          "kind": "rss",
+          "authority": "official",
+          "access_status": "ACTIVE",
+          "poll_source": "Federal Reserve official press releases",
+          "evidence": {
+            "checked_at": "2026-11-10T16:13:17+05:30",
+            "method": "vps_collector_run",
+            "last_status": "OK",
+            "http_status": null,
+            "items": 20,
+            "detail": "Enabled collector source returned parsed items."
+          },
+          "notes": "FED official endpoint; timestamps parsed from the feed's own publication field."
+        },
+        {
+          "id": "federal-reserve-speeches-and-testimony",
+          "name": "Federal Reserve speeches and testimony",
+          "url": "https://www.federalreserve.gov/feeds/speeches_and_testimony.xml",
+          "kind": "rss",
+          "authority": "official",
+          "access_status": "ACTIVE",
+          "poll_source": "Federal Reserve speeches and testimony",
+          "evidence": {
+            "checked_at": "2026-11-10T16:13:17+05:30",
+            "method": "vps_collector_run",
+            "last_status": "OK",
+            "http_status": null,
+            "items": 15,
+            "detail": "Enabled collector source returned parsed items."
+          },
+          "notes": "FED official endpoint; timestamps parsed from the feed's own publication field."
+        },
+        {
+          "id": "federal-reserve-board-meetings",
+          "name": "Federal Reserve board meetings",
+          "url": "https://www.federalreserve.gov/feeds/boardmeetings.xml",
+          "kind": "rss",
+          "authority": "official",
+          "access_status": "ACTIVE",
+          "poll_source": "Federal Reserve board meetings",
+          "evidence": {
+            "checked_at": "2026-11-10T16:13:17+05:30",
+            "method": "vps_collector_run",
+            "last_status": "OK",
+            "http_status": null,
+            "items": 15,
+            "detail": "Enabled collector source returned parsed items."
+          },
+          "notes": "FED official endpoint; timestamps parsed from the feed's own publication field."
+        }
+      ]
+    },
+    {
+      "id": "ecb",
+      "name": "European Central Bank",
+      "homepage": "https://www.ecb.europa.eu/",
+      "endpoints": [
+        {
+          "id": "european-central-bank-official-press",
+          "name": "European Central Bank official press",
+          "url": "https://www.ecb.europa.eu/rss/press.html",
+          "kind": "rss",
+          "authority": "official",
+          "access_status": "ACTIVE",
+          "poll_source": "European Central Bank official press",
+          "evidence": {
+            "checked_at": "2026-11-10T16:13:17+05:30",
+            "method": "vps_collector_run",
+            "last_status": "OK",
+            "http_status": null,
+            "items": 15,
+            "detail": "Enabled collector source returned parsed items."
+          },
+          "notes": "ECB official endpoint; timestamps parsed from the feed's own publication field."
+        }
+      ]
+    },
+    {
+      "id": "issuers",
+      "name": "Listed issuer IR and press-release pages (partial, evidence-based)",
+      "homepage": "https://www.nseindia.com/",
+      "endpoints": [
+        {
+          "id": "ir-hdfc-bank",
+          "name": "HDFC Bank investor relations",
+          "url": "https://www.hdfc.bank.in/about-us/investor-relations",
+          "kind": "html",
+          "authority": "issuer",
+          "access_status": "REGISTRY_ONLY",
+          "poll_source": null,
+          "reason": "HTTP 200 but the page is a navigation shell with no dated article list.",
+          "evidence": {
+            "checked_at": "2026-11-10T16:20:00+05:30",
+            "method": "collector_ua_http_get",
+            "last_status": "REGISTRY_ONLY",
+            "http_status": 200,
+            "items": 0,
+            "detail": "HTTP 200 but the page is a navigation shell with no dated article list."
+          },
+          "notes": "Issuer investor-relations or press-release page; not enabled without a dated list."
+        },
+        {
+          "id": "ir-icici-bank",
+          "name": "ICICI Bank investor relations",
+          "url": "https://www.icici.bank.in/about-us/invest-relations",
+          "kind": "html",
+          "authority": "issuer",
+          "access_status": "REGISTRY_ONLY",
+          "poll_source": null,
+          "reason": "HTTP 200 but no dated article list was parseable.",
+          "evidence": {
+            "checked_at": "2026-11-10T16:20:00+05:30",
+            "method": "collector_ua_http_get",
+            "last_status": "REGISTRY_ONLY",
+            "http_status": 200,
+            "items": 0,
+            "detail": "HTTP 200 but no dated article list was parseable."
+          },
+          "notes": "Issuer investor-relations or press-release page; not enabled without a dated list."
+        },
+        {
+          "id": "ir-sbi",
+          "name": "State Bank of India investor relations",
+          "url": "https://sbi.bank.in/web/investor-relations",
+          "kind": "html",
+          "authority": "issuer",
+          "access_status": "REGISTRY_ONLY",
+          "poll_source": null,
+          "reason": "HTTP 200 but the page exposes navigation and documents without per-item publication times.",
+          "evidence": {
+            "checked_at": "2026-11-10T16:20:00+05:30",
+            "method": "collector_ua_http_get",
+            "last_status": "REGISTRY_ONLY",
+            "http_status": 200,
+            "items": 25,
+            "detail": "HTTP 200 but the page exposes navigation and documents without per-item publication times."
+          },
+          "notes": "Issuer investor-relations or press-release page; not enabled without a dated list."
+        },
+        {
+          "id": "ir-airtel",
+          "name": "Bharti Airtel investor relations",
+          "url": "https://www.airtel.in/investor-relations",
+          "kind": "html",
+          "authority": "issuer",
+          "access_status": "REGISTRY_ONLY",
+          "poll_source": null,
+          "reason": "HTTP 200 but the page is a navigation shell with no dated article list.",
+          "evidence": {
+            "checked_at": "2026-11-10T16:20:00+05:30",
+            "method": "collector_ua_http_get",
+            "last_status": "REGISTRY_ONLY",
+            "http_status": 200,
+            "items": 0,
+            "detail": "HTTP 200 but the page is a navigation shell with no dated article list."
+          },
+          "notes": "Issuer investor-relations or press-release page; not enabled without a dated list."
+        },
+        {
+          "id": "press-airtel",
+          "name": "Bharti Airtel press releases",
+          "url": "https://www.airtel.in/press-release/",
+          "kind": "html",
+          "authority": "issuer",
+          "access_status": "REGISTRY_ONLY",
+          "poll_source": null,
+          "reason": "Press list is accessible, but URLs carry only a month (for example 10-2026); that is not an exact publication timestamp.",
+          "evidence": {
+            "checked_at": "2026-11-10T16:20:00+05:30",
+            "method": "collector_ua_http_get",
+            "last_status": "REGISTRY_ONLY",
+            "http_status": 200,
+            "items": 0,
+            "detail": "Press list is accessible, but URLs carry only a month (for example 10-2026); that is not an exact publication timestamp."
+          },
+          "notes": "Issuer investor-relations or press-release page; not enabled without a dated list."
+        },
+        {
+          "id": "ir-lt",
+          "name": "Larsen & Toubro investor relations",
+          "url": "https://investors.larsentoubro.com/",
+          "kind": "html",
+          "authority": "issuer",
+          "access_status": "REGISTRY_ONLY",
+          "poll_source": null,
+          "reason": "HTTP 200 but no dated article list was parseable.",
+          "evidence": {
+            "checked_at": "2026-11-10T16:20:00+05:30",
+            "method": "collector_ua_http_get",
+            "last_status": "REGISTRY_ONLY",
+            "http_status": 200,
+            "items": 0,
+            "detail": "HTTP 200 but no dated article list was parseable."
+          },
+          "notes": "Issuer investor-relations or press-release page; not enabled without a dated list."
+        },
+        {
+          "id": "ir-sun-pharma",
+          "name": "Sun Pharmaceutical investor relations",
+          "url": "https://sunpharma.com/investors/",
+          "kind": "html",
+          "authority": "issuer",
+          "access_status": "REGISTRY_ONLY",
+          "poll_source": null,
+          "reason": "HTTP 200 but the page links to documents without per-item publication times.",
+          "evidence": {
+            "checked_at": "2026-11-10T16:20:00+05:30",
+            "method": "collector_ua_http_get",
+            "last_status": "REGISTRY_ONLY",
+            "http_status": 200,
+            "items": 134,
+            "detail": "HTTP 200 but the page links to documents without per-item publication times."
+          },
+          "notes": "Issuer investor-relations or press-release page; not enabled without a dated list."
+        },
+        {
+          "id": "press-itc",
+          "name": "ITC press releases",
+          "url": "https://itcportal.com/media-centre/press-releases.html",
+          "kind": "html",
+          "authority": "issuer",
+          "access_status": "REGISTRY_ONLY",
+          "poll_source": null,
+          "reason": "HTTP 200 and dated releases exist, but the page has no machine-readable time element; not enabled until a verified per-item timestamp parser is tested.",
+          "evidence": {
+            "checked_at": "2026-11-10T16:20:00+05:30",
+            "method": "collector_ua_http_get",
+            "last_status": "REGISTRY_ONLY",
+            "http_status": 200,
+            "items": 0,
+            "detail": "HTTP 200 and dated releases exist, but the page has no machine-readable time element; not enabled until a verified per-item timestamp parser is tested."
+          },
+          "notes": "Issuer investor-relations or press-release page; not enabled without a dated list."
+        },
+        {
+          "id": "ir-ril",
+          "name": "Reliance Industries financial reporting",
+          "url": "https://www.ril.com/investors/financial-reporting",
+          "kind": "html",
+          "authority": "issuer",
+          "access_status": "REGISTRY_ONLY",
+          "poll_source": null,
+          "reason": "HTTP 200 but annual reports and presentations have no per-item publication timestamps.",
+          "evidence": {
+            "checked_at": "2026-11-10T16:20:00+05:30",
+            "method": "collector_ua_http_get",
+            "last_status": "REGISTRY_ONLY",
+            "http_status": 200,
+            "items": 0,
+            "detail": "HTTP 200 but annual reports and presentations have no per-item publication timestamps."
+          },
+          "notes": "Issuer investor-relations or press-release page; not enabled without a dated list."
+        },
+        {
+          "id": "ir-tcs",
+          "name": "TCS investor relations",
+          "url": "https://www.tcs.com/investor-relations",
+          "kind": "html",
+          "authority": "issuer",
+          "access_status": "BLOCKED",
+          "poll_source": null,
+          "reason": "HTTP 403 to the collector user agent; no bypass attempted.",
+          "evidence": {
+            "checked_at": "2026-11-10T16:20:00+05:30",
+            "method": "collector_ua_http_get",
+            "last_status": "BLOCKED",
+            "http_status": 403,
+            "items": 0,
+            "detail": "HTTP 403 to the collector user agent; no bypass attempted."
+          },
+          "notes": "Issuer investor-relations or press-release page; not enabled without a dated list."
+        },
+        {
+          "id": "ir-infosys",
+          "name": "Infosys investors",
+          "url": "https://www.infosys.com/investors.html",
+          "kind": "html",
+          "authority": "issuer",
+          "access_status": "BLOCKED",
+          "poll_source": null,
+          "reason": "HTTP 403 to the collector user agent; no bypass attempted.",
+          "evidence": {
+            "checked_at": "2026-11-10T16:20:00+05:30",
+            "method": "collector_ua_http_get",
+            "last_status": "BLOCKED",
+            "http_status": 403,
+            "items": 0,
+            "detail": "HTTP 403 to the collector user agent; no bypass attempted."
+          },
+          "notes": "Issuer investor-relations or press-release page; not enabled without a dated list."
+        },
+        {
+          "id": "press-tata-motors",
+          "name": "Tata Motors press releases",
+          "url": "https://www.tatamotors.com/media/press-releases/",
+          "kind": "html",
+          "authority": "issuer",
+          "access_status": "BLOCKED",
+          "poll_source": null,
+          "reason": "HTTP 403 with a 14-byte response; no bypass attempted.",
+          "evidence": {
+            "checked_at": "2026-11-10T16:20:00+05:30",
+            "method": "collector_ua_http_get",
+            "last_status": "BLOCKED",
+            "http_status": 403,
+            "items": 0,
+            "detail": "HTTP 403 with a 14-byte response; no bypass attempted."
+          },
+          "notes": "Issuer investor-relations or press-release page; not enabled without a dated list."
+        },
+        {
+          "id": "press-dr-reddys",
+          "name": "Dr Reddy's press releases",
+          "url": "https://www.drreddys.com/media/press-releases/",
+          "kind": "html",
+          "authority": "issuer",
+          "access_status": "BLOCKED",
+          "poll_source": null,
+          "reason": "HTTP 403 to the collector user agent; no bypass attempted.",
+          "evidence": {
+            "checked_at": "2026-11-10T16:20:00+05:30",
+            "method": "collector_ua_http_get",
+            "last_status": "BLOCKED",
+            "http_status": 403,
+            "items": 0,
+            "detail": "HTTP 403 to the collector user agent; no bypass attempted."
+          },
+          "notes": "Issuer investor-relations or press-release page; not enabled without a dated list."
+        },
+        {
+          "id": "press-hul",
+          "name": "Hindustan Unilever news",
+          "url": "https://www.hul.co.in/news/",
+          "kind": "html",
+          "authority": "issuer",
+          "access_status": "BLOCKED",
+          "poll_source": null,
+          "reason": "HTTP 403 to the collector user agent; no bypass attempted.",
+          "evidence": {
+            "checked_at": "2026-11-10T16:20:00+05:30",
+            "method": "collector_ua_http_get",
+            "last_status": "BLOCKED",
+            "http_status": 403,
+            "items": 0,
+            "detail": "HTTP 403 to the collector user agent; no bypass attempted."
+          },
+          "notes": "Issuer investor-relations or press-release page; not enabled without a dated list."
+        },
+        {
+          "id": "press-maruti",
+          "name": "Maruti Suzuki news",
+          "url": "https://www.marutisuzuki.com/corporate/news",
+          "kind": "html",
+          "authority": "issuer",
+          "access_status": "NOT_FOUND",
+          "poll_source": null,
+          "reason": "HTTP 404; no verified alternate endpoint recorded yet.",
+          "evidence": {
+            "checked_at": "2026-11-10T16:20:00+05:30",
+            "method": "collector_ua_http_get",
+            "last_status": "NOT_FOUND",
+            "http_status": 404,
+            "items": 0,
+            "detail": "HTTP 404; no verified alternate endpoint recorded yet."
+          },
+          "notes": "Issuer investor-relations or press-release page; not enabled without a dated list."
+        },
+        {
+          "id": "press-bajaj-finserv",
+          "name": "Bajaj Finserv press releases",
+          "url": "https://www.bajajfinserv.in/press-releases",
+          "kind": "html",
+          "authority": "issuer",
+          "access_status": "NOT_FOUND",
+          "poll_source": null,
+          "reason": "HTTP 404; no verified alternate endpoint recorded yet.",
+          "evidence": {
+            "checked_at": "2026-11-10T16:20:00+05:30",
+            "method": "collector_ua_http_get",
+            "last_status": "NOT_FOUND",
+            "http_status": 404,
+            "items": 0,
+            "detail": "HTTP 404; no verified alternate endpoint recorded yet."
+          },
+          "notes": "Issuer investor-relations or press-release page; not enabled without a dated list."
+        },
+        {
+          "id": "press-asian-paints",
+          "name": "Asian Paints press releases",
+          "url": "https://www.asianpaints.com/more/press-releases.html",
+          "kind": "html",
+          "authority": "issuer",
+          "access_status": "NOT_FOUND",
+          "poll_source": null,
+          "reason": "HTTP 404; no verified alternate endpoint recorded yet.",
+          "evidence": {
+            "checked_at": "2026-11-10T16:20:00+05:30",
+            "method": "collector_ua_http_get",
+            "last_status": "NOT_FOUND",
+            "http_status": 404,
+            "items": 0,
+            "detail": "HTTP 404; no verified alternate endpoint recorded yet."
+          },
+          "notes": "Issuer investor-relations or press-release page; not enabled without a dated list."
+        }
+      ]
+    }
+  ]
+}

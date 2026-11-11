@@ -5,16 +5,15 @@ broker connection, or trade placement is performed.
 """
 import copy
 import json
-import tempfile
 import unittest
 from datetime import datetime
-from pathlib import Path
-from urllib.error import HTTPError, URLError
+from urllib.error import HTTPError
 from zoneinfo import ZoneInfo
 
 from fastapi.testclient import TestClient
 from bridge.app import create_app
 from bridge.send import DeliveryError, deliver
+from postgres_test_db import create_test_database
 
 IST = ZoneInfo("Asia/Kolkata")
 NOW = datetime(2026, 11, 4, 9, 5, tzinfo=IST)
@@ -49,17 +48,18 @@ class FakeResponse:
 
 class DirectDeliveryTests(unittest.TestCase):
     def setUp(self):
-        self.temp = tempfile.TemporaryDirectory()
-        self.addCleanup(self.temp.cleanup)
-        db = Path(self.temp.name) / "bridge-test.db"
-        self.app = create_app(database_url=f"sqlite:///{db.as_posix()}",
-                              bearer_token=TOKEN, now_provider=lambda: NOW)
+        database_url, cleanup = create_test_database()
+        self.addCleanup(cleanup)
+        self.now = NOW
+        self.app = create_app(database_url=database_url,
+                              bearer_token=TOKEN, now_provider=lambda: self.now)
         self.addCleanup(self.app.state.engine.dispose)
         self.client = TestClient(self.app)
         self.report = no_trade_report()
         self.calls = 0
 
     def sender(self, *, token=TOKEN, payload=None, url=URL, now=NOW):
+        self.now = now
         def opener(request, timeout):
             self.calls += 1
             result = self.client.post(
@@ -124,7 +124,7 @@ class DirectDeliveryTests(unittest.TestCase):
             self.sender(payload=stale)
         self.assertEqual(self.calls, 0)
 
-    def test_ready_after_deadline_blocked(self):
+    def test_ready_after_opening_intake_is_accepted_before_entry_cutoff(self):
         ready = no_trade_report()
         ready["status"] = "READY"
         ready["signals"] = [{
@@ -137,9 +137,44 @@ class DirectDeliveryTests(unittest.TestCase):
                          "published_at": "2026-11-04T08:00:00+05:30"}]
         }]
         late = NOW.replace(hour=9, minute=15)
-        with self.assertRaises(DeliveryError):
-            self.sender(payload=ready, now=late)
-        self.assertEqual(self.calls, 0)
+        result = self.sender(payload=ready, now=late)
+        self.assertEqual(result["status"], "ACCEPTED")
+        self.assertEqual(self.calls, 1)
+
+    def test_ready_after_entry_cutoff_is_accepted_for_mapping_only(self):
+        ready = no_trade_report()
+        ready["status"] = "READY"
+        ready["signals"] = [{
+            "symbol": "TESTA", "side": "LONG", "rank": 1,
+            "reason": "Synthetic event, for direct delivery tests only.",
+            "news_summary": "Synthetic report, not real financial news.",
+            "first_available_at": "2026-11-04T08:00:00+05:30",
+            "sources": [{"url": "https://www.nseindia.com/companies-listing/corporate-filings-announcements",
+                         "title": "Test URL; no actual stock event",
+                         "published_at": "2026-11-04T08:00:00+05:30"}]
+        }]
+        late = NOW.replace(hour=15, minute=1)
+        result = self.sender(payload=ready, now=late)
+        self.assertEqual(result["status"], "ACCEPTED")
+        self.assertEqual(self.calls, 1)
+
+    def test_ready_before_open_is_accepted_for_off_session_mapping(self):
+        ready = no_trade_report()
+        ready["status"] = "READY"
+        ready["signals"] = [{
+            "symbol": "TESTA", "side": "LONG", "rank": 1,
+            "reason": "Synthetic event, for direct delivery tests only.",
+            "news_summary": "Synthetic report, not real financial news.",
+            "first_available_at": "2026-11-03T23:00:00+05:30",
+            "sources": [{"url": "https://www.nseindia.com/companies-listing/corporate-filings-announcements",
+                         "title": "Test URL; no actual stock event",
+                         "published_at": "2026-11-03T23:00:00+05:30"}]
+        }]
+        ready["news_cutoff_at"] = "2026-11-04T00:30:00+05:30"
+        ready["generated_at"] = "2026-11-04T00:30:00+05:30"
+        result = self.sender(payload=ready, now=NOW.replace(hour=0, minute=30))
+        self.assertEqual(result["status"], "ACCEPTED")
+        self.assertEqual(self.calls, 1)
 
     def test_missing_token_blocked(self):
         with self.assertRaises(DeliveryError):

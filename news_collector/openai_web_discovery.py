@@ -123,7 +123,9 @@ def run(session_date: str, data_root: Path = ROOT / "data",
         + " and " + min(now, end).isoformat()
         + ". Find source links rather than making forecasts. Focus on independent "
         "stories and official NSE/BSE disclosures. Cite source URLs for each "
-        "result. Do not invent publication times or assert that this is exhaustive."
+        "result. If access is blocked, look for an official filing or issuer "
+        "release for the same event. Do not invent publication times or assert "
+        "that this is exhaustive."
     )
     links = search_once(client, model=os.getenv("OPENAI_NEWS_MODEL", DEFAULT_MODEL),
                         prompt=prompt)
