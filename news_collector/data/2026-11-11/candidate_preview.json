@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-11T05:13:40.505504+05:30",
+  "as_of": "2026-11-11T06:59:27.358892+05:30",
   "candidates": [
     {
       "articles": 8,
@@ -44,7 +44,7 @@
       "symbol": "AVANTIFEED"
     },
     {
-      "articles": 22,
+      "articles": 23,
       "categories": [
         "corporate_actions",
         "financial_results",
@@ -70,7 +70,7 @@
         "Cochin Shipyard Limited",
         "Cochin Shipyard Limited"
       ],
-      "material_event_count": 5,
+      "material_event_count": 6,
       "not_a_trade_signal": true,
       "official_filing_count": 15,
       "review_priority": 20,
@@ -90,6 +90,7 @@
         "https://www.ndtvprofit.com/markets/q2-results-live-updates-november-10-kalyan-jewellers-mrf-cochin-shipyard-among-44-companies-to-announce-earnings-today-12306507",
         "https://www.ndtvprofit.com/markets/cochin-shipyard-dividend-psu-declares-interim-dividend-of-rs-3-share-check-record-date-12307550",
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/8bc3569a-01d8-46f4-a4e3-76ae43b3e6f2.pdf",
+        "https://economictimes.indiatimes.com/markets/stocks/earnings/cochin-shipyard-net-profit-falls-50-to-rs-54-crore-in-q2/articleshow/135721922.cms",
         "https://nsearchives.nseindia.com/corporate/xbrl/OUTCOME_15406_WebXMLFile_20261110_150745523.xml",
         "https://nsearchives.nseindia.com/corporate/Aswi4739_09112026164622_SE_Intimation.pdf",
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/2446a39a-71b5-4800-9c2c-66aea835bf73.pdf",
@@ -627,6 +628,41 @@
       "symbol": "EXIDEIND"
     },
     {
+      "articles": 4,
+      "categories": [
+        "corporate_actions",
+        "financial_results",
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-09T16:51:11.327151+05:30",
+      "headline_samples": [
+        "Great Eastern Shipping Company Ltd (500620)",
+        "Great Eastern Shipping Company Ltd (500620)",
+        "The Great Eastern Shipping Company Limited",
+        "Premier Energies Limited - Ex-Date: 11-Nov-2026"
+      ],
+      "material_event_count": 1,
+      "not_a_trade_signal": true,
+      "official_filing_count": 4,
+      "review_priority": 11,
+      "source_urls": [
+        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/0df3a77d-f7b9-4b1d-9311-4cfd0429207d.pdf",
+        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/b46c5c24-6d55-4309-bb85-890769efcb18.pdf",
+        "https://nsearchives.nseindia.com/corporate/GESHIP_09112026155159_investorpresentation_signed.pdf",
+        "https://www.nseindia.com/companies-listing/corporate-filings-actions"
+      ],
+      "symbol": "GESHIP"
+    },
+    {
       "articles": 7,
       "categories": [
         "financial_results",
@@ -934,39 +970,6 @@
     {
       "articles": 3,
       "categories": [
-        "corporate_actions",
-        "financial_results",
-        "other"
-      ],
-      "evidence_summary": {
-        "conflicting_metrics": [],
-        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
-        "negative_metrics": [],
-        "not_a_price_prediction": true,
-        "positive_metrics": [],
-        "yoy_metrics_with_direction": 0
-      },
-      "explicit_financial_facts": [],
-      "first_seen_at": "2026-11-09T16:51:11.327151+05:30",
-      "headline_samples": [
-        "Great Eastern Shipping Company Ltd (500620)",
-        "Great Eastern Shipping Company Ltd (500620)",
-        "The Great Eastern Shipping Company Limited"
-      ],
-      "material_event_count": 1,
-      "not_a_trade_signal": true,
-      "official_filing_count": 3,
-      "review_priority": 9,
-      "source_urls": [
-        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/0df3a77d-f7b9-4b1d-9311-4cfd0429207d.pdf",
-        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/b46c5c24-6d55-4309-bb85-890769efcb18.pdf",
-        "https://nsearchives.nseindia.com/corporate/GESHIP_09112026155159_investorpresentation_signed.pdf"
-      ],
-      "symbol": "GESHIP"
-    },
-    {
-      "articles": 3,
-      "categories": [
         "analyst_meetings",
         "financial_results"
       ],
@@ -1175,9 +1178,10 @@
       "symbol": "ADANIPOWER"
     },
     {
-      "articles": 7,
+      "articles": 8,
       "categories": [
         "analyst_meetings",
+        "corporate_actions",
         "other"
       ],
       "evidence_summary": {
@@ -1196,12 +1200,13 @@
         "Aptus Value Housing Finance India Limited",
         "Aptus Value Housing Finance India Limited",
         "Aptus Value Housing Finance India Ltd (543335)",
+        "Premier Energies Limited - Ex-Date: 11-Nov-2026",
         "Aptus Value Housing Finance India Limited",
         "Aptus Value Housing Finance India Limited"
       ],
       "material_event_count": 0,
       "not_a_trade_signal": true,
-      "official_filing_count": 7,
+      "official_filing_count": 8,
       "review_priority": 8,
       "source_urls": [
         "https://nsearchives.nseindia.com/corporate/xbrl/SAIIM_19468_WebXMLFile_20261109_165020625.xml",
@@ -1209,6 +1214,7 @@
         "https://nsearchives.nseindia.com/corporate/xbrl/SAIIM_19468_WebXMLFile_20261109_165551770.xml",
         "https://nsearchives.nseindia.com/corporate/APTUS_09112026165405_Aptus_Investor_Meeting_Intimation_11_November_2026_sd.pdf",
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/66b8e999-a691-4a16-9195-4b43d7dd8da0.pdf",
+        "https://www.nseindia.com/companies-listing/corporate-filings-actions",
         "https://nsearchives.nseindia.com/corporate/APTUS_10112026161613_SENotice_sd.pdf",
         "https://nsearchives.nseindia.com/corporate/xbrl/SAIIM_19468_WebXMLFile_20261109_165524265.xml"
       ],
@@ -1427,9 +1433,10 @@
       "symbol": "COLPAL"
     },
     {
-      "articles": 4,
+      "articles": 5,
       "categories": [
         "analyst_meetings",
+        "corporate_actions",
         "other"
       ],
       "evidence_summary": {
@@ -1446,16 +1453,18 @@
         "Container Corporation of India Limited",
         "Container Corporation of India Limited",
         "Container Corporation of India Limited",
+        "Premier Energies Limited - Ex-Date: 11-Nov-2026",
         "Container Corporation of India Ltd (531344)"
       ],
       "material_event_count": 0,
       "not_a_trade_signal": true,
-      "official_filing_count": 4,
+      "official_filing_count": 5,
       "review_priority": 8,
       "source_urls": [
         "https://nsearchives.nseindia.com/corporate/xbrl/SAIIM_1601_WebXMLFile_20261110_154311161.xml",
         "https://nsearchives.nseindia.com/corporate/xbrl/SAIIM_1601_WebXMLFile_20261110_154619662.xml",
         "https://nsearchives.nseindia.com/corporate/CONCOR_10112026154521_CONCOR_SE_10112026.pdf",
+        "https://www.nseindia.com/companies-listing/corporate-filings-actions",
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/0b53f182-e78d-4873-9add-813c78f9c892.pdf"
       ],
       "symbol": "CONCOR"
@@ -1539,6 +1548,41 @@
       "symbol": "DELHIVERY"
     },
     {
+      "articles": 4,
+      "categories": [
+        "analyst_meetings",
+        "corporate_actions",
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-10T21:15:46.460118+05:30",
+      "headline_samples": [
+        "Emami Limited",
+        "Emami Limited",
+        "Emami Ltd (531162)",
+        "Premier Energies Limited - Ex-Date: 11-Nov-2026"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 4,
+      "review_priority": 8,
+      "source_urls": [
+        "https://nsearchives.nseindia.com/corporate/xbrl/SAIIM_2417_WebXMLFile_20261110_184105321.xml",
+        "https://nsearchives.nseindia.com/corporate/EMAMILTD2_10112026180617_Investors_Concall_Transcript_Q2_FY_27_signed.pdf",
+        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/2c02c715-2d70-4925-9816-c846dedb45bd.pdf",
+        "https://www.nseindia.com/companies-listing/corporate-filings-actions"
+      ],
+      "symbol": "EMAMILTD"
+    },
+    {
       "articles": 8,
       "categories": [
         "analyst_meetings",
@@ -1581,7 +1625,7 @@
       "symbol": "GLENMARK"
     },
     {
-      "articles": 24,
+      "articles": 25,
       "categories": [
         "other"
       ],
@@ -1625,6 +1669,7 @@
         "https://www.thehindu.com/business/Industry/blackstone-to-buy-about-16-stake-in-indias-iifl-finance-for-535-million/article71687312.ece",
         "https://nsearchives.nseindia.com/corporate/IIFL_10112026161842_SEIntimation_Final.pdf",
         "https://nsearchives.nseindia.com/corporate/IIFL_10112026160231_SEIntimation_Final.pdf",
+        "https://economictimes.indiatimes.com/markets/stocks/news/blackstone-to-invest-rs-5000-crore-in-iifl-finance-for-16-stake-as-company-raises-rs-6414-crore/articleshow/135721960.cms",
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/94bc6232-8059-48de-9a7d-46c8610fd65d.pdf",
         "https://nsearchives.nseindia.com/corporate/IIFL_10112026160653_SEIntimation_Final.pdf",
         "https://www.thehindubusinessline.com/money-and-banking/iifl-financesboard-okays-6414-crcapital-raise-from-blackstone-pe-co-promoters-anchorage-capital/article71686148.ece",
@@ -1837,9 +1882,10 @@
       "symbol": "NUVAMA"
     },
     {
-      "articles": 4,
+      "articles": 5,
       "categories": [
-        "analyst_meetings"
+        "analyst_meetings",
+        "corporate_actions"
       ],
       "evidence_summary": {
         "conflicting_metrics": [],
@@ -1855,23 +1901,26 @@
         "Oil and Natural Gas Corporation Ltd (500312)",
         "Oil and Natural Gas Corporation Ltd (500312)",
         "Oil & Natural Gas Corporation Limited",
+        "Premier Energies Limited - Ex-Date: 11-Nov-2026",
         "Oil & Natural Gas Corporation Limited"
       ],
       "material_event_count": 0,
       "not_a_trade_signal": true,
-      "official_filing_count": 4,
+      "official_filing_count": 5,
       "review_priority": 8,
       "source_urls": [
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/43a1fda6-9b30-4025-8c7b-a19e9154edb6.pdf",
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/82864f24-bb17-4a65-9fb4-f50a9ca45513.pdf",
         "https://nsearchives.nseindia.com/corporate/ONGC_10112026205311_investormeet10112026.pdf",
+        "https://www.nseindia.com/companies-listing/corporate-filings-actions",
         "https://nsearchives.nseindia.com/corporate/ONGC_10112026205326_investormeet10112026.pdf"
       ],
       "symbol": "ONGC"
     },
     {
-      "articles": 4,
+      "articles": 5,
       "categories": [
+        "corporate_actions",
         "other"
       ],
       "evidence_summary": {
@@ -1888,19 +1937,56 @@
         "Premier Energies Limited",
         "Premier Energies Ltd (544238)",
         "Premier Energies Ltd (544238)",
+        "Premier Energies Limited - Ex-Date: 11-Nov-2026",
         "Premier Energies Limited"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 5,
+      "review_priority": 8,
+      "source_urls": [
+        "https://nsearchives.nseindia.com/corporate/PEL2024_10112026164612_SE_Intimation_-_Monitoring_Agency_Report.pdf",
+        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/fca0a7e9-4561-48a5-a2a9-fff6ad2a7a01.pdf",
+        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/65e191d7-5f33-48f5-8d5f-b9f54149ad8f.pdf",
+        "https://www.nseindia.com/companies-listing/corporate-filings-actions",
+        "https://nsearchives.nseindia.com/corporate/PEL2024_09112026161948_Shareholder_Communication.pdf"
+      ],
+      "symbol": "PREMIERENE"
+    },
+    {
+      "articles": 4,
+      "categories": [
+        "corporate_actions",
+        "management",
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-10T21:15:46.460118+05:30",
+      "headline_samples": [
+        "RITES Limited",
+        "RITES Limited",
+        "Premier Energies Limited - Ex-Date: 11-Nov-2026",
+        "RITES Ltd (541556)"
       ],
       "material_event_count": 0,
       "not_a_trade_signal": true,
       "official_filing_count": 4,
       "review_priority": 8,
       "source_urls": [
-        "https://nsearchives.nseindia.com/corporate/PEL2024_10112026164612_SE_Intimation_-_Monitoring_Agency_Report.pdf",
-        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/fca0a7e9-4561-48a5-a2a9-fff6ad2a7a01.pdf",
-        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/65e191d7-5f33-48f5-8d5f-b9f54149ad8f.pdf",
-        "https://nsearchives.nseindia.com/corporate/PEL2024_09112026161948_Shareholder_Communication.pdf"
+        "https://nsearchives.nseindia.com/corporate/RITES_10112026183730_intimation_rh_change_10112026.pdf",
+        "https://nsearchives.nseindia.com/corporate/xbrl/CIM_16350_WebXMLFile_20261110_185034002.xml",
+        "https://www.nseindia.com/companies-listing/corporate-filings-actions",
+        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/73553fa5-ff05-493d-a805-136cd327dfab.pdf"
       ],
-      "symbol": "PREMIERENE"
+      "symbol": "RITES"
     },
     {
       "articles": 4,
@@ -2294,38 +2380,6 @@
       "explicit_financial_facts": [],
       "first_seen_at": "2026-11-10T21:15:46.460118+05:30",
       "headline_samples": [
-        "Emami Limited",
-        "Emami Limited",
-        "Emami Ltd (531162)"
-      ],
-      "material_event_count": 0,
-      "not_a_trade_signal": true,
-      "official_filing_count": 3,
-      "review_priority": 6,
-      "source_urls": [
-        "https://nsearchives.nseindia.com/corporate/xbrl/SAIIM_2417_WebXMLFile_20261110_184105321.xml",
-        "https://nsearchives.nseindia.com/corporate/EMAMILTD2_10112026180617_Investors_Concall_Transcript_Q2_FY_27_signed.pdf",
-        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/2c02c715-2d70-4925-9816-c846dedb45bd.pdf"
-      ],
-      "symbol": "EMAMILTD"
-    },
-    {
-      "articles": 3,
-      "categories": [
-        "analyst_meetings",
-        "other"
-      ],
-      "evidence_summary": {
-        "conflicting_metrics": [],
-        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
-        "negative_metrics": [],
-        "not_a_price_prediction": true,
-        "positive_metrics": [],
-        "yoy_metrics_with_direction": 0
-      },
-      "explicit_financial_facts": [],
-      "first_seen_at": "2026-11-10T21:15:46.460118+05:30",
-      "headline_samples": [
         "Fortis Healthcare Limited",
         "Fortis Healthcare Ltd (532843)",
         "Fortis Healthcare Limited"
@@ -2401,6 +2455,102 @@
         "https://nsearchives.nseindia.com/corporate/xbrl/SAIIM_15574_WebXMLFile_20261110_190410775.xml"
       ],
       "symbol": "HDFCLIFE"
+    },
+    {
+      "articles": 3,
+      "categories": [
+        "analyst_meetings",
+        "corporate_actions"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-10T12:55:56.757300+05:30",
+      "headline_samples": [
+        "Housing & Urban Development Corporation Limited",
+        "Premier Energies Limited - Ex-Date: 11-Nov-2026",
+        "Housing & Urban Development Corporation Ltd (540530)"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 3,
+      "review_priority": 6,
+      "source_urls": [
+        "https://nsearchives.nseindia.com/corporate/HUDCO_10112026120452_SE_DISCLOSURE_TRANSCRIPT_6NOV.pdf",
+        "https://www.nseindia.com/companies-listing/corporate-filings-actions",
+        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/37fd524c-437e-4777-af8c-76b05ba573ff.pdf"
+      ],
+      "symbol": "HUDCO"
+    },
+    {
+      "articles": 3,
+      "categories": [
+        "corporate_actions",
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-10T12:55:56.757300+05:30",
+      "headline_samples": [
+        "IRB Infrastructure Developers Limited",
+        "IRB Infrastructure Developers Ltd (532947)",
+        "Premier Energies Limited - Ex-Date: 11-Nov-2026"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 3,
+      "review_priority": 6,
+      "source_urls": [
+        "https://nsearchives.nseindia.com/corporate/IRB_10112026122055_IRBIDL_disclosure_Toll_Revenue_October_2026_sd.pdf",
+        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/668424da-df0f-403d-8d7c-0599e6f9f145.pdf",
+        "https://www.nseindia.com/companies-listing/corporate-filings-actions"
+      ],
+      "symbol": "IRB"
+    },
+    {
+      "articles": 3,
+      "categories": [
+        "analyst_meetings",
+        "corporate_actions"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-10T16:30:56.550244+05:30",
+      "headline_samples": [
+        "Dr. Lal Path Labs Ltd.",
+        "Dr. Lal Path Labs Ltd.",
+        "Premier Energies Limited - Ex-Date: 11-Nov-2026"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 3,
+      "review_priority": 6,
+      "source_urls": [
+        "https://nsearchives.nseindia.com/corporate/LALPATHLAB_10112026145433_transcript.pdf",
+        "https://nsearchives.nseindia.com/corporate/xbrl/SAIIM_13310_WebXMLFile_20261110_151753164.xml",
+        "https://www.nseindia.com/companies-listing/corporate-filings-actions"
+      ],
+      "symbol": "LALPATHLAB"
     },
     {
       "articles": 3,
@@ -2566,6 +2716,39 @@
       "articles": 3,
       "categories": [
         "analyst_meetings",
+        "corporate_actions",
+        "other"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-10T16:30:56.550244+05:30",
+      "headline_samples": [
+        "Premier Energies Limited - Ex-Date: 11-Nov-2026",
+        "NBCC (India) Ltd (534309)",
+        "NBCC (India) Limited"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 3,
+      "review_priority": 6,
+      "source_urls": [
+        "https://www.nseindia.com/companies-listing/corporate-filings-actions",
+        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/ffb89fc1-4d3e-46c2-be1f-c041795264b4.pdf",
+        "https://nsearchives.nseindia.com/corporate/NBCC_10112026151830_Transcript_of_Conference_Call.pdf"
+      ],
+      "symbol": "NBCC"
+    },
+    {
+      "articles": 3,
+      "categories": [
+        "analyst_meetings",
         "other"
       ],
       "evidence_summary": {
@@ -2624,38 +2807,6 @@
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/4bfc4dea-43bd-4dca-b1fa-1d62246bd887.pdf"
       ],
       "symbol": "RBLBANK"
-    },
-    {
-      "articles": 3,
-      "categories": [
-        "management",
-        "other"
-      ],
-      "evidence_summary": {
-        "conflicting_metrics": [],
-        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
-        "negative_metrics": [],
-        "not_a_price_prediction": true,
-        "positive_metrics": [],
-        "yoy_metrics_with_direction": 0
-      },
-      "explicit_financial_facts": [],
-      "first_seen_at": "2026-11-10T21:15:46.460118+05:30",
-      "headline_samples": [
-        "RITES Limited",
-        "RITES Limited",
-        "RITES Ltd (541556)"
-      ],
-      "material_event_count": 0,
-      "not_a_trade_signal": true,
-      "official_filing_count": 3,
-      "review_priority": 6,
-      "source_urls": [
-        "https://nsearchives.nseindia.com/corporate/RITES_10112026183730_intimation_rh_change_10112026.pdf",
-        "https://nsearchives.nseindia.com/corporate/xbrl/CIM_16350_WebXMLFile_20261110_185034002.xml",
-        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/73553fa5-ff05-493d-a805-136cd327dfab.pdf"
-      ],
-      "symbol": "RITES"
     },
     {
       "articles": 3,
@@ -2816,6 +2967,36 @@
         "https://nsearchives.nseindia.com/corporate/ZEEL_10112026150253_SEIntimationInvestorconferenceNov26signed.pdf"
       ],
       "symbol": "ZEEL"
+    },
+    {
+      "articles": 2,
+      "categories": [
+        "analyst_meetings",
+        "corporate_actions"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-09T16:51:11.327151+05:30",
+      "headline_samples": [
+        "Aurobindo Pharma Limited",
+        "Premier Energies Limited - Ex-Date: 11-Nov-2026"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 2,
+      "review_priority": 4,
+      "source_urls": [
+        "https://nsearchives.nseindia.com/corporate/xbrl/SAIIM_934_WebXMLFile_20261109_150021060.xml",
+        "https://www.nseindia.com/companies-listing/corporate-filings-actions"
+      ],
+      "symbol": "AUROPHARMA"
     },
     {
       "articles": 4,
@@ -2998,35 +3179,6 @@
     {
       "articles": 2,
       "categories": [
-        "analyst_meetings"
-      ],
-      "evidence_summary": {
-        "conflicting_metrics": [],
-        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
-        "negative_metrics": [],
-        "not_a_price_prediction": true,
-        "positive_metrics": [],
-        "yoy_metrics_with_direction": 0
-      },
-      "explicit_financial_facts": [],
-      "first_seen_at": "2026-11-10T12:55:56.757300+05:30",
-      "headline_samples": [
-        "Housing & Urban Development Corporation Limited",
-        "Housing & Urban Development Corporation Ltd (540530)"
-      ],
-      "material_event_count": 0,
-      "not_a_trade_signal": true,
-      "official_filing_count": 2,
-      "review_priority": 4,
-      "source_urls": [
-        "https://nsearchives.nseindia.com/corporate/HUDCO_10112026120452_SE_DISCLOSURE_TRANSCRIPT_6NOV.pdf",
-        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/37fd524c-437e-4777-af8c-76b05ba573ff.pdf"
-      ],
-      "symbol": "HUDCO"
-    },
-    {
-      "articles": 2,
-      "categories": [
         "analyst_meetings",
         "other"
       ],
@@ -3057,6 +3209,7 @@
     {
       "articles": 2,
       "categories": [
+        "corporate_actions",
         "other"
       ],
       "evidence_summary": {
@@ -3068,20 +3221,20 @@
         "yoy_metrics_with_direction": 0
       },
       "explicit_financial_facts": [],
-      "first_seen_at": "2026-11-10T12:55:56.757300+05:30",
+      "first_seen_at": "2026-11-09T17:08:56.220071+05:30",
       "headline_samples": [
-        "IRB Infrastructure Developers Limited",
-        "IRB Infrastructure Developers Ltd (532947)"
+        "JM Financial Home Loans Ltd (978292)",
+        "Premier Energies Limited - Ex-Date: 11-Nov-2026"
       ],
       "material_event_count": 0,
       "not_a_trade_signal": true,
       "official_filing_count": 2,
       "review_priority": 4,
       "source_urls": [
-        "https://nsearchives.nseindia.com/corporate/IRB_10112026122055_IRBIDL_disclosure_Toll_Revenue_October_2026_sd.pdf",
-        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/668424da-df0f-403d-8d7c-0599e6f9f145.pdf"
+        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/6f87cc37-9152-4c4e-a783-676b4128569d.pdf",
+        "https://www.nseindia.com/companies-listing/corporate-filings-actions"
       ],
-      "symbol": "IRB"
+      "symbol": "JMFINANCIL"
     },
     {
       "articles": 2,
@@ -3111,35 +3264,6 @@
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/04408e86-768f-4913-b9c5-ec99a12893cd.pdf"
       ],
       "symbol": "JSL"
-    },
-    {
-      "articles": 2,
-      "categories": [
-        "analyst_meetings"
-      ],
-      "evidence_summary": {
-        "conflicting_metrics": [],
-        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
-        "negative_metrics": [],
-        "not_a_price_prediction": true,
-        "positive_metrics": [],
-        "yoy_metrics_with_direction": 0
-      },
-      "explicit_financial_facts": [],
-      "first_seen_at": "2026-11-10T16:30:56.550244+05:30",
-      "headline_samples": [
-        "Dr. Lal Path Labs Ltd.",
-        "Dr. Lal Path Labs Ltd."
-      ],
-      "material_event_count": 0,
-      "not_a_trade_signal": true,
-      "official_filing_count": 2,
-      "review_priority": 4,
-      "source_urls": [
-        "https://nsearchives.nseindia.com/corporate/LALPATHLAB_10112026145433_transcript.pdf",
-        "https://nsearchives.nseindia.com/corporate/xbrl/SAIIM_13310_WebXMLFile_20261110_151753164.xml"
-      ],
-      "symbol": "LALPATHLAB"
     },
     {
       "articles": 3,
@@ -3202,36 +3326,6 @@
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/300753f0-c822-4d6a-bb7f-9def483789bd.pdf"
       ],
       "symbol": "MTARTECH"
-    },
-    {
-      "articles": 2,
-      "categories": [
-        "analyst_meetings",
-        "other"
-      ],
-      "evidence_summary": {
-        "conflicting_metrics": [],
-        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
-        "negative_metrics": [],
-        "not_a_price_prediction": true,
-        "positive_metrics": [],
-        "yoy_metrics_with_direction": 0
-      },
-      "explicit_financial_facts": [],
-      "first_seen_at": "2026-11-10T16:30:56.550244+05:30",
-      "headline_samples": [
-        "NBCC (India) Ltd (534309)",
-        "NBCC (India) Limited"
-      ],
-      "material_event_count": 0,
-      "not_a_trade_signal": true,
-      "official_filing_count": 2,
-      "review_priority": 4,
-      "source_urls": [
-        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/ffb89fc1-4d3e-46c2-be1f-c041795264b4.pdf",
-        "https://nsearchives.nseindia.com/corporate/NBCC_10112026151830_Transcript_of_Conference_Call.pdf"
-      ],
-      "symbol": "NBCC"
     },
     {
       "articles": 2,
@@ -3470,6 +3564,33 @@
     {
       "articles": 1,
       "categories": [
+        "corporate_actions"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-11T06:58:57.514436+05:30",
+      "headline_samples": [
+        "Premier Energies Limited - Ex-Date: 11-Nov-2026"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 1,
+      "review_priority": 2,
+      "source_urls": [
+        "https://www.nseindia.com/companies-listing/corporate-filings-actions"
+      ],
+      "symbol": "ASTRAL"
+    },
+    {
+      "articles": 1,
+      "categories": [
         "other"
       ],
       "evidence_summary": {
@@ -3497,33 +3618,6 @@
     {
       "articles": 1,
       "categories": [
-        "analyst_meetings"
-      ],
-      "evidence_summary": {
-        "conflicting_metrics": [],
-        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
-        "negative_metrics": [],
-        "not_a_price_prediction": true,
-        "positive_metrics": [],
-        "yoy_metrics_with_direction": 0
-      },
-      "explicit_financial_facts": [],
-      "first_seen_at": "2026-11-09T16:51:11.327151+05:30",
-      "headline_samples": [
-        "Aurobindo Pharma Limited"
-      ],
-      "material_event_count": 0,
-      "not_a_trade_signal": true,
-      "official_filing_count": 1,
-      "review_priority": 2,
-      "source_urls": [
-        "https://nsearchives.nseindia.com/corporate/xbrl/SAIIM_934_WebXMLFile_20261109_150021060.xml"
-      ],
-      "symbol": "AUROPHARMA"
-    },
-    {
-      "articles": 1,
-      "categories": [
         "corporate_actions"
       ],
       "evidence_summary": {
@@ -3547,6 +3641,60 @@
         "https://www.bseindia.com/xml-data/corpfiling/AttachLive/dfc97fec-063c-4bad-88a7-32d67f8024be.pdf"
       ],
       "symbol": "BAJAJHFL"
+    },
+    {
+      "articles": 1,
+      "categories": [
+        "corporate_actions"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-11T06:58:57.514436+05:30",
+      "headline_samples": [
+        "Premier Energies Limited - Ex-Date: 11-Nov-2026"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 1,
+      "review_priority": 2,
+      "source_urls": [
+        "https://www.nseindia.com/companies-listing/corporate-filings-actions"
+      ],
+      "symbol": "BALKRISIND"
+    },
+    {
+      "articles": 1,
+      "categories": [
+        "corporate_actions"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-11T06:58:57.514436+05:30",
+      "headline_samples": [
+        "Premier Energies Limited - Ex-Date: 11-Nov-2026"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 1,
+      "review_priority": 2,
+      "source_urls": [
+        "https://www.nseindia.com/companies-listing/corporate-filings-actions"
+      ],
+      "symbol": "BALRAMCHIN"
     },
     {
       "articles": 8,
@@ -3592,6 +3740,60 @@
     {
       "articles": 1,
       "categories": [
+        "corporate_actions"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-11T06:58:57.514436+05:30",
+      "headline_samples": [
+        "Premier Energies Limited - Ex-Date: 11-Nov-2026"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 1,
+      "review_priority": 2,
+      "source_urls": [
+        "https://www.nseindia.com/companies-listing/corporate-filings-actions"
+      ],
+      "symbol": "CAMS"
+    },
+    {
+      "articles": 1,
+      "categories": [
+        "corporate_actions"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-11T06:58:57.514436+05:30",
+      "headline_samples": [
+        "Premier Energies Limited - Ex-Date: 11-Nov-2026"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 1,
+      "review_priority": 2,
+      "source_urls": [
+        "https://www.nseindia.com/companies-listing/corporate-filings-actions"
+      ],
+      "symbol": "CHAMBLFERT"
+    },
+    {
+      "articles": 1,
+      "categories": [
         "analyst_meetings"
       ],
       "evidence_summary": {
@@ -3619,6 +3821,34 @@
     {
       "articles": 1,
       "categories": [
+        "corporate_actions"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-11T06:58:57.514436+05:30",
+      "headline_samples": [
+        "Premier Energies Limited - Ex-Date: 11-Nov-2026"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 1,
+      "review_priority": 2,
+      "source_urls": [
+        "https://www.nseindia.com/companies-listing/corporate-filings-actions"
+      ],
+      "symbol": "GODFRYPHLP"
+    },
+    {
+      "articles": 2,
+      "categories": [
+        "corporate_actions",
         "other"
       ],
       "evidence_summary": {
@@ -3630,18 +3860,20 @@
         "yoy_metrics_with_direction": 0
       },
       "explicit_financial_facts": [],
-      "first_seen_at": "2026-11-09T17:08:56.220071+05:30",
+      "first_seen_at": "2026-11-10T02:35:36.815607+05:30",
       "headline_samples": [
-        "JM Financial Home Loans Ltd (978292)"
+        "HUL hikes prices of detergent brands Surf Excel, Rin, Wheel by up to 11%",
+        "Premier Energies Limited - Ex-Date: 11-Nov-2026"
       ],
       "material_event_count": 0,
       "not_a_trade_signal": true,
       "official_filing_count": 1,
       "review_priority": 2,
       "source_urls": [
-        "https://www.bseindia.com/xml-data/corpfiling/AttachLive/6f87cc37-9152-4c4e-a783-676b4128569d.pdf"
+        "https://www.business-standard.com/industry/news/hul-hikes-prices-of-detergent-brands-surf-excel-rin-wheel-by-up-to-11-126110901252_1.html",
+        "https://www.nseindia.com/companies-listing/corporate-filings-actions"
       ],
-      "symbol": "JMFINANCIL"
+      "symbol": "HINDUNILVR"
     },
     {
       "articles": 1,
@@ -3669,6 +3901,87 @@
         "https://nsearchives.nseindia.com/corporate/xbrl/REG30_PARA_B_2203_WebXMLFile_20261109_154125332.xml"
       ],
       "symbol": "LT"
+    },
+    {
+      "articles": 1,
+      "categories": [
+        "corporate_actions"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-11T06:58:57.514436+05:30",
+      "headline_samples": [
+        "Premier Energies Limited - Ex-Date: 11-Nov-2026"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 1,
+      "review_priority": 2,
+      "source_urls": [
+        "https://www.nseindia.com/companies-listing/corporate-filings-actions"
+      ],
+      "symbol": "NLCINDIA"
+    },
+    {
+      "articles": 1,
+      "categories": [
+        "corporate_actions"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-11T06:58:57.514436+05:30",
+      "headline_samples": [
+        "Premier Energies Limited - Ex-Date: 11-Nov-2026"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 1,
+      "review_priority": 2,
+      "source_urls": [
+        "https://www.nseindia.com/companies-listing/corporate-filings-actions"
+      ],
+      "symbol": "PFC"
+    },
+    {
+      "articles": 1,
+      "categories": [
+        "corporate_actions"
+      ],
+      "evidence_summary": {
+        "conflicting_metrics": [],
+        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
+        "negative_metrics": [],
+        "not_a_price_prediction": true,
+        "positive_metrics": [],
+        "yoy_metrics_with_direction": 0
+      },
+      "explicit_financial_facts": [],
+      "first_seen_at": "2026-11-11T06:58:57.514436+05:30",
+      "headline_samples": [
+        "Premier Energies Limited - Ex-Date: 11-Nov-2026"
+      ],
+      "material_event_count": 0,
+      "not_a_trade_signal": true,
+      "official_filing_count": 1,
+      "review_priority": 2,
+      "source_urls": [
+        "https://www.nseindia.com/companies-listing/corporate-filings-actions"
+      ],
+      "symbol": "SCI"
     },
     {
       "articles": 1,
@@ -3972,33 +4285,6 @@
         "https://www.thehindubusinessline.com/companies/force-motors-bets-3000-crore-on-vans-evs-as-traveller-and-urbania-demand-accelerates/article71685202.ece"
       ],
       "symbol": "FORCEMOT"
-    },
-    {
-      "articles": 1,
-      "categories": [
-        "other"
-      ],
-      "evidence_summary": {
-        "conflicting_metrics": [],
-        "label": "INSUFFICIENT_EXPLICIT_YOY_EVIDENCE",
-        "negative_metrics": [],
-        "not_a_price_prediction": true,
-        "positive_metrics": [],
-        "yoy_metrics_with_direction": 0
-      },
-      "explicit_financial_facts": [],
-      "first_seen_at": "2026-11-10T02:35:36.815607+05:30",
-      "headline_samples": [
-        "HUL hikes prices of detergent brands Surf Excel, Rin, Wheel by up to 11%"
-      ],
-      "material_event_count": 0,
-      "not_a_trade_signal": true,
-      "official_filing_count": 0,
-      "review_priority": 0,
-      "source_urls": [
-        "https://www.business-standard.com/industry/news/hul-hikes-prices-of-detergent-brands-surf-excel-rin-wheel-by-up-to-11-126110901252_1.html"
-      ],
-      "symbol": "HINDUNILVR"
     },
     {
       "articles": 1,
@@ -4335,8 +4621,8 @@
     "Preview created after cutoff is unsuitable for historical model evaluation.",
     "Premarket frozen snapshot includes collector_last_poll_at; intervening minutes may contain uncollected news."
   ],
-  "collector_last_poll_at": "2026-11-11T05:13:08.869185+05:30",
-  "company_count": 129,
+  "collector_last_poll_at": "2026-11-11T06:58:57.514436+05:30",
+  "company_count": 138,
   "cutoff_exclusive": "2026-11-11T09:00:00+05:30",
   "data_mode": "PRE_CUTOFF_PREVIEW_NOT_FROZEN",
   "doc_evidence_register": [
@@ -5424,6 +5710,19 @@
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/02407bad-1f72-408e-8eaf-883f6a4540c9.pdf"
     },
     {
+      "document_sha256": "a5fb35eba8a9e57e2a466d5ff72c92d1daba104e7a8b7a654155151aae48a326",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T23:45:49.158430+05:30",
+      "id": "473544971a738e6e5ecbc462",
+      "parsed_at": "2026-11-11T06:59:19.768645+05:30",
+      "published_at": "2026-11-10T23:40:55+05:30",
+      "symbols": [
+        "CGCL"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/b960ff80-9b06-4fcb-bc0b-1548f0c27e65.pdf"
+    },
+    {
       "document_sha256": "971f95a3c66d6fa9d7742d725ed4f9aa3ce2bd597f4df4c7b8e37cd8be775d4e",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -6218,6 +6517,19 @@
         "PIRAMALFIN"
       ],
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/cd1a8c4f-6062-4df7-a835-3f7eb456dffe.pdf"
+    },
+    {
+      "document_sha256": "a5fb35eba8a9e57e2a466d5ff72c92d1daba104e7a8b7a654155151aae48a326",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-10T23:45:49.158430+05:30",
+      "id": "83d131fc6a6a2d3e228aac9c",
+      "parsed_at": "2026-11-11T06:59:19.769035+05:30",
+      "published_at": "2026-11-10T23:43:36+05:30",
+      "symbols": [
+        "CGCL"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/e0e4c38b-cf2e-426e-85c2-a3af99c5f718.pdf"
     },
     {
       "document_sha256": "182dde6ff839cc91fe6da6bc22c4ff8533c5930b1ffd6fcaf1fd18390db310da",
@@ -7864,6 +8176,19 @@
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/4535772f-b03b-465e-aa1e-c8f7b602ceab.pdf"
     },
     {
+      "document_sha256": "3973ca227415c51eb7242cb5a9f6ca5d64d9dc126ce8a626d9abfa3587b6ee2a",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-11T03:07:01.448562+05:30",
+      "id": "da11e0fd6142684dbbc581f4",
+      "parsed_at": "2026-11-11T06:59:19.769573+05:30",
+      "published_at": "2026-11-11T02:35:39+05:30",
+      "symbols": [
+        "KIMS"
+      ],
+      "url": "https://nsearchives.nseindia.com/corporate/KIMS_11112026023357_Transcript_of_Investor_call_held_on_05112026_FINAL.pdf"
+    },
+    {
       "document_sha256": "5665be1a4ed6e569933f64cc768b69bc9eca6e75b463658a37e630864b72deef",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -8535,6 +8860,19 @@
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/753d2284-019a-4a3f-8bf6-b6c56194ae27.pdf"
     },
     {
+      "document_sha256": "3973ca227415c51eb7242cb5a9f6ca5d64d9dc126ce8a626d9abfa3587b6ee2a",
+      "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
+      "facts": [],
+      "first_seen_at": "2026-11-11T02:30:16.011523+05:30",
+      "id": "fcfa7d8e43ff831a204dca46",
+      "parsed_at": "2026-11-11T06:59:19.769322+05:30",
+      "published_at": "2026-11-11T02:27:21+05:30",
+      "symbols": [
+        "KIMS"
+      ],
+      "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/a7694acd-c72a-4334-b9b6-9ba2a886aab1.pdf"
+    },
+    {
       "document_sha256": "f1a6b319bcce22c8f0d4276d2cd46e855b1d3187115a1d53f006995606dcc67a",
       "extraction_status": "NO_EXPLICIT_COMPARABLE_FACTS",
       "facts": [],
@@ -8561,7 +8899,7 @@
       "url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/647209bb-3305-4ef9-9d5e-ab98f54d50d5.pdf"
     }
   ],
-  "documents_with_eligible_text": 310,
+  "documents_with_eligible_text": 314,
   "execution_enabled": false,
   "frozen_universe_membership": {
     "360ONE": "360 ONE WAM Ltd.",

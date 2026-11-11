@@ -1,6 +1,6 @@
 {
   "session": "2026-11-11",
-  "generated_at": "2026-11-11T05:13:08.869185+05:30",
+  "generated_at": "2026-11-11T06:58:57.514436+05:30",
   "method": "Symbol + material category presence; NOT event-ID or issuer ISIN reconciliation",
   "category_counts": {
     "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT": 11,
@@ -147,7 +147,7 @@
     {
       "symbol": "COCHINSHIP",
       "event_category": "financial_results",
-      "media_count": 4,
+      "media_count": 5,
       "nse_count": 1,
       "bse_count": 0,
       "filing_examples": [

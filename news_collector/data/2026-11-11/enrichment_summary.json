@@ -1,17 +1,17 @@
 {
   "session": "2026-11-11",
-  "checked_at": "2026-11-11T05:13:40.274878+05:30",
+  "checked_at": "2026-11-11T06:59:27.226157+05:30",
   "pdf_candidates_total": 327,
   "pdf_candidates_seen_before_cutoff": 327,
   "pdf_candidates_late_discovery_or_unknown": 0,
-  "attempted_this_poll": 20,
-  "completed_document_records": 323,
+  "attempted_this_poll": 4,
+  "completed_document_records": 327,
   "status_counts": {
-    "EXTRACTED": 310,
+    "EXTRACTED": 314,
     "NOT_PDF_OR_UNSAFE": 12,
     "NO_EXTRACTABLE_TEXT": 1
   },
-  "unattempted_or_retryable": 4,
+  "unattempted_or_retryable": 0,
   "source_gap_groups": {
     "BOTH_EXCHANGES_SAME_ISSUER_CATEGORY_NOT_CONFIRMED_SAME_EVENT": 11,
     "MEDIA_ONLY_CANDIDATE_REVIEW_NOT_CONFIRMED_MISS": 3,
