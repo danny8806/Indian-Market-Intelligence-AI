@@ -1,16 +1,8 @@
 name: Freeze research candidate pool before 09:00 IST (no orders)
 
+# Retired automatic path: the VPS is the sole production scheduler.
 on:
-  schedule:
-    # 08:55 and 08:58 IST, weekdays. Scheduled starts may be delayed.
-    - cron: '25 3 * * 1-5'
-    - cron: '28 3 * * 1-5'
   workflow_dispatch:
-    inputs:
-      session_date:
-        description: 'YYYY-MM-DD target regular cash session (blank = current IST)'
-        required: false
-        type: string
 
 permissions:
   contents: write
