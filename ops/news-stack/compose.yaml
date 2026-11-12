@@ -24,7 +24,7 @@ services:
       timeout: 5s
       retries: 12
   collector:
-    image: market-news-db-collector:approved-integration-final-20261111
+    image: market-news-db-collector:eq-universe-20261112
     build:
       context: ../..
       dockerfile: ops/news-stack/Dockerfile

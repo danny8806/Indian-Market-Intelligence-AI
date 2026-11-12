@@ -4,6 +4,7 @@ import hashlib
 import json
 import os
 import time
+import csv
 from pathlib import Path
 from jsonschema import Draft202012Validator
 from sqlalchemy import insert, select, update
@@ -62,6 +63,7 @@ def decision(snapshot, *, analyst=run_codex, timeout=150, _repair=None):
         if (symbol in taken or ranks[side]>=5 or not ids or not set(ids)<=by_id.keys()
             or any(by_id[key]['nifty_symbols'] and symbol not in by_id[key]['nifty_symbols'] for key in ids)
             or (not any(symbol in by_id[key]['nifty_symbols'] for key in ids) and symbol not in snapshot.get('current_nifty_symbols',[]))
+            or (snapshot.get('current_nifty_symbols') and symbol not in snapshot['current_nifty_symbols'])
             or len(pick['reason'].strip())<15 or len(pick['news_summary'].strip())<15):
             invalid.append({'symbol':symbol,'side':side,'issue':'duplicate, count, issuer/evidence identity or required text invalid'})
             continue
@@ -106,7 +108,7 @@ def run(engine,*,clock=lambda:datetime.now(IST),analyst=run_codex):
         history=(old['evidence'] or {}).get('attempt_history',[]) if old else []
         snapshot=read_evidence(conn,start,cutoff,require_verified_origin=False)
         from news_collector.engine import parse_universe_csv
-        try:snapshot['current_nifty_symbols']=sorted(parse_universe_csv((ROOT/'data/universe_snapshot.csv').read_text()))
+        try:snapshot['current_nifty_symbols']=sorted({r['Symbol'] for r in csv.DictReader((ROOT/'data/universe_snapshot.csv').open()) if r.get('Series')=='EQ' and r.get('ISIN Code','').startswith('INE')})
         except (OSError,ValueError):snapshot['current_nifty_symbols']=sorted({s for r in snapshot['items'] for s in r['nifty_symbols']})
         snapshot.update(pipeline_version=VERSION,window_start=start.isoformat(),decision_cutoff=cutoff.isoformat(),
                         source_policy='direct news content and stated publisher time; no corroboration or ready-made stock picks')

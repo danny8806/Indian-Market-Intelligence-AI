@@ -25,6 +25,10 @@ class SoleFinalTests(unittest.TestCase):
         self.assertEqual(decision(self.snapshot,analyst=lambda *a,**k:('QUOTA_LIMIT',None))[0],'UNAVAILABLE')
     def test_wrong_evidence_symbol_is_excluded(self):
         self.pick['symbol']='TCS';self.assertEqual(decision(self.snapshot,analyst=self.analyst)[0],'UNAVAILABLE')
+    def test_evidence_tag_cannot_override_current_executable_universe(self):
+        self.snapshot['current_nifty_symbols']=[p['symbol'] for p in self.picks if p['symbol']!='IIFL']
+        status,reason,signals=decision(self.snapshot,analyst=self.analyst)
+        self.assertEqual(status,'UNAVAILABLE');self.assertEqual(signals,[])
     def test_no_candidate_is_invented_when_output_empty(self):
         self.assertEqual(decision(self.snapshot,analyst=lambda *a,**k:('OK',{'selections':[]}))[0],'UNAVAILABLE')
 
