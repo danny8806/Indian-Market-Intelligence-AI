@@ -4,7 +4,7 @@ from unittest.mock import patch
 from sqlalchemy import create_engine, select
 from news_collector.db_store import metadata, morning_reports
 from news_collector.engine import IST
-from news_collector.vps_final import decision, run, VERSION
+from news_collector.vps_final import decision, run, VERSION, encode_news, NEWS_COLUMNS
 
 class SoleFinalTests(unittest.TestCase):
     def setUp(self):
@@ -39,6 +39,28 @@ class SoleFinalTests(unittest.TestCase):
         self.snapshot['items'] += [{**self.snapshot['items'][0],'evidence_id':f'extra{i}'} for i in range(450)]
         def analyst(prompt,*args,**kwargs):
             self.assertIn('extra449',prompt)
+            return self.analyst(prompt,*args,**kwargs)
+        self.assertEqual(decision(self.snapshot,analyst=analyst)[0],'READY')
+
+    def test_tabular_input_roundtrips_all_source_values_without_truncation(self):
+        import json
+        self.snapshot['items'][0]['summary']='Full publisher context: ₹50 crore — no truncation.\nSecond paragraph.'
+        self.snapshot['current_nifty_symbols']=['IIFL','TCS']
+        encoded=encode_news(self.snapshot);payload=json.loads(encoded)
+        restored=[dict(zip(payload['news_columns'],row)) for row in payload['news']]
+        expected=[{key:row.get(key) for key in NEWS_COLUMNS} for row in self.snapshot['items']]
+        self.assertEqual(restored,expected)
+        self.assertEqual(payload['current_nifty_symbols'],self.snapshot['current_nifty_symbols'])
+        old=json.dumps({'news':expected,'current_nifty_symbols':self.snapshot['current_nifty_symbols']},ensure_ascii=False)
+        self.assertLess(len(encoded.encode('utf-8')),len(old.encode('utf-8')))
+
+    def test_tabular_format_is_explained_to_the_only_selector(self):
+        import json
+        def analyst(prompt,*args,**kwargs):
+            self.assertIn('exact field order defined by news_columns',prompt)
+            data=json.loads(prompt.split('Frozen source records:\n',1)[1])
+            self.assertEqual(data['news'][0][0],'e1')
+            self.assertEqual(len(data['news']),len(self.snapshot['items']))
             return self.analyst(prompt,*args,**kwargs)
         self.assertEqual(decision(self.snapshot,analyst=analyst)[0],'READY')
 
