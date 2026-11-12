@@ -2,7 +2,7 @@
 import json
 import re
 from urllib.parse import urljoin, urlsplit
-from urllib.robotparser import RobotFileParser
+from protego import Protego
 
 from bs4 import BeautifulSoup
 import requests
@@ -22,12 +22,17 @@ def allowed_by_robots(url: str, user_agent: str) -> tuple[bool, str]:
             data.extend(chunk)
             if len(data) > 256000:
                 return False, "robots.txt exceeded the size limit"
-    parser = RobotFileParser()
-    parser.parse(data.decode("utf-8-sig", errors="replace").splitlines())
-    return parser.can_fetch(user_agent.split("/", 1)[0], url), "robots.txt path restriction"
+    # Match the actual crawler product token, not arbitrary substrings such as
+    # the unrelated bot "es" inside "Research". Preserve the request identity.
+    parser = Protego.parse(data.decode("utf-8-sig", errors="replace"))
+    allowed = parser.can_fetch(url, user_agent.split("/", 1)[0])
+    return allowed, "" if allowed else "robots.txt path restriction"
 
 
 def listing_items(raw: bytes, source: dict) -> list[dict]:
+    limit = source.get('max_items', 100)
+    if type(limit) is not int or not 1 <= limit <= 18000:
+        raise ValueError('Invalid public listing item limit')
     soup = BeautifulSoup(raw, "html.parser")
     if source.get("card_selector"):
         rows = {}
@@ -43,7 +48,7 @@ def listing_items(raw: bytes, source: dict) -> list[dict]:
                     "summary": summary.get_text(" ", strip=True)[:1800],
                     "raw_time": "", "shared_broker_link": True,
                 }
-                if len(rows) == 100:
+                if len(rows) == limit:
                     break
         return list(rows.values())
     path_rule = re.compile(source["article_path"], re.I)
@@ -73,7 +78,7 @@ def listing_items(raw: bytes, source: dict) -> list[dict]:
             "url": link, "headline": title[:550], "summary": "", "raw_time": "",
             "shared_broker_link": bool(source.get("shared_link")),
         })
-        if len(result) == 100:
+        if len(result) == limit:
             break
     return result
 

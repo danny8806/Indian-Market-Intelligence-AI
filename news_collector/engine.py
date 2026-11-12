@@ -198,7 +198,13 @@ def universe_match(title: str, summary: str, universe: dict[str, str]) -> list[s
 
 
 def rss_items(raw: bytes, source: dict) -> list[dict]:
-    root = rss_root(raw, allow_truncated=bool(source.get("recover_truncated_rss", False)))
+    try:
+        root = rss_root(raw, allow_truncated=bool(source.get("recover_truncated_rss", False)))
+    except ET.ParseError:
+        if not source.get("recover_malformed_rss", False):
+            raise
+        from news_collector.tool_extractors import complete_rss_items
+        return complete_rss_items(raw, source, MAX_ITEMS)
     if local_name(root.tag) not in {"rss", "rdf", "feed"}:
         raise ValueError("Not RSS/Atom XML")
     if local_name(root.tag) == "feed":
@@ -310,6 +316,9 @@ def html_table_items(raw: bytes, source: dict) -> list[dict]:
     The publication time must come from the table's own timestamp column. Date-only
     values stay unverified and are never replaced with fetch time.
     """
+    limit = source.get('max_items', 150)
+    if type(limit) is not int or not 1 <= limit <= MAX_ITEMS:
+        raise ValueError('Invalid public table item limit')
     soup = BeautifulSoup(raw, "html.parser")
     table = soup.select_one(source["table_selector"])
     if table is None:
@@ -353,7 +362,7 @@ def html_table_items(raw: bytes, source: dict) -> list[dict]:
                                                for column in summary_columns) if part)
         found.append({"headline": headline[:550], "summary": summary[:1800],
                       "url": url, "raw_time": raw_time})
-        if len(found) >= 150:
+        if len(found) >= limit:
             break
     return found
 

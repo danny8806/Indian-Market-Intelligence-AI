@@ -193,7 +193,8 @@
       "kind": "rss",
       "provider": "MEDIA",
       "authority": "secondary",
-      "enabled": true
+      "enabled": true,
+      "recover_malformed_rss": true
     },
     {
       "name": "Business Standard markets RSS",
@@ -448,26 +449,42 @@
     {
       "name": "PatternsRadar indexed discovery",
       "url": "https://patternsradar.com/market/corporate",
-      "kind": "indexed_search",
+      "kind": "html_table",
       "provider": "MEDIA",
       "authority": "secondary",
       "enabled": true,
       "search_query": "site:patternsradar.com/market/corporate NSE company announcement",
       "allowed_domains": [
-        "patternsradar.com"
-      ]
+        "patternsradar.com",
+        "nsearchives.nseindia.com",
+        "archives.nseindia.com"
+      ],
+      "table_selector": "#announcements table",
+      "headline_columns": [
+        "Symbol",
+        "Announcement"
+      ],
+      "summary_columns": [
+        "Time",
+        "Announcement"
+      ],
+      "url_column": "Source",
+      "max_items": 3000
     },
     {
       "name": "ResultKal indexed discovery",
       "url": "https://resultkal.com/results",
-      "kind": "indexed_search",
+      "kind": "broker_html",
       "provider": "MEDIA",
       "authority": "secondary",
       "enabled": true,
       "search_query": "site:resultkal.com/results NSE quarterly financial results",
       "allowed_domains": [
         "resultkal.com"
-      ]
+      ],
+      "article_path": "/r/[^/]+/?",
+      "verify_article": true,
+      "max_items": 3000
     },
     {
       "name": "Google News indexed — BazaarWatch",
@@ -919,7 +936,8 @@
       "kind": "broker_html",
       "provider": "BROKER",
       "authority": "secondary",
-      "article_path": "/news/stocks/[^/]+/?"
+      "article_path": "/news/stocks/[^/]+/?",
+      "verify_article": true
     },
     {
       "name": "ICICI Direct Market News",
@@ -927,7 +945,8 @@
       "kind": "broker_html",
       "provider": "BROKER",
       "authority": "secondary",
-      "article_path": "/share-market-today/news/[^/]+/?"
+      "article_path": "/share-market-today/news/[^/]+/[0-9]+/?",
+      "verify_article": true
     },
     {
       "name": "5paisa Stock News",

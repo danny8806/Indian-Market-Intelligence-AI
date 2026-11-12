@@ -1,7 +1,22 @@
 """Small deterministic extraction helpers; no network, model or stock selection."""
 import feedparser
+import re
 from bs4 import BeautifulSoup
 import trafilatura
+
+
+def complete_rss_items(raw: bytes, source: dict, limit: int) -> list[dict]:
+    """Opt-in tolerant decoding of complete RSS items; retain stated times only."""
+    prefix = raw[:4096].lstrip(b'\xef\xbb\xbf \t\r\n')
+    prefix = re.sub(rb'^<\?xml[^>]*\?>\s*', b'', prefix, flags=re.I)
+    opening = re.match(rb'<rss\b[^>]*>', prefix, flags=re.I)
+    if opening is None or re.search(rb'<!\s*(?:DOCTYPE|ENTITY)\b', raw, flags=re.I):
+        raise ValueError('Malformed-feed fallback requires plain RSS without entities')
+    items = re.findall(rb'<item(?:\s[^>]*)?>.*?</item\s*>', raw, flags=re.I | re.S)
+    if not items:
+        raise ValueError('Malformed RSS contains no complete items')
+    bounded = opening.group(0) + b'<channel>' + b''.join(items[:limit]) + b'</channel></rss>'
+    return atom_items(bounded, source, limit)
 
 
 def atom_items(raw: bytes, source: dict, limit: int) -> list[dict]:
