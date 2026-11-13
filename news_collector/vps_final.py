@@ -19,14 +19,14 @@ NEWS_COLUMNS = ('evidence_id','nifty_symbols','headline','summary','url','publis
 CLI_INPUT_MAX_CHARS = 1_048_576
 MODEL_INPUT_MAX_BYTES = 1_200_000
 
-def encode_news(snapshot):
+def encode_news(snapshot,*,compact=False):
     """Lossless tabular JSON: store repeated field names once, keep every value."""
     payload={'news_columns':NEWS_COLUMNS,
         'news':[[row.get(key) for key in NEWS_COLUMNS] for row in snapshot['items']],
         'current_nifty_symbols':snapshot.get('current_nifty_symbols',[])}
     def dump(value):return json.dumps(value,ensure_ascii=False,separators=(',',':'))
     original=dump(payload)
-    if len(original.encode())<=1_000_000:return original
+    if not compact and len(original.encode())<=1_000_000:return original
     # Opaque IDs are represented by row aliases; decision resolves them back to
     # the immutable original evidence IDs before issuer/schema validation.
     prefixes=[];prefix_index={}
@@ -112,19 +112,30 @@ def build_prompt(encoded, repair=None):
     return prompt
 
 def input_readiness(snapshot, repair=None):
+    from news_collector.news_chunks import CHUNK_THRESHOLD,MAX_TOTAL_BYTES,plan,chunk_prompt
     encoded=encode_news(snapshot)
     prompt=build_prompt(encoded,repair)
+    transport='inline'
+    manifest=None
+    if len(prompt)>CHUNK_THRESHOLD:
+        manifest,_=plan(snapshot);prompt=chunk_prompt(manifest,repair);transport='chunks'
     audit={'items':len(snapshot['items']),'encoded_bytes':len(encoded.encode('utf-8')),
            'prompt_characters':len(prompt),'cli_max_characters':CLI_INPUT_MAX_CHARS,
            'remaining_characters':CLI_INPUT_MAX_CHARS-len(prompt),
            'model_max_encoded_bytes':MODEL_INPUT_MAX_BYTES,
-           'evidence_id_format':json.loads(encoded).get('evidence_id_format','original')}
-    if len(encoded.encode('utf-8'))>MODEL_INPUT_MAX_BYTES:
+           'evidence_id_format':'row_alias_n_index' if manifest else json.loads(encoded).get('evidence_id_format','original'),
+           'transport':transport}
+    if manifest:audit.update(encoded_bytes=manifest['encoded_bytes'],chunk_manifest=manifest,model_max_encoded_bytes=MAX_TOTAL_BYTES)
+    audit['remaining_context_bytes']=audit['model_max_encoded_bytes']-audit['encoded_bytes']
+    if manifest and manifest['encoded_bytes']>MAX_TOTAL_BYTES:
+        audit.update(status='INPUT_TOO_LARGE',reason='Complete frozen chunks exceed bounded context budget; no records silently omitted')
+    elif not manifest and len(encoded.encode('utf-8'))>MODEL_INPUT_MAX_BYTES:
         audit.update(status='INPUT_TOO_LARGE',reason='Complete news input exceeds tested model context budget; no records silently omitted')
     elif len(prompt)>CLI_INPUT_MAX_CHARS:
         audit.update(status='INPUT_TOO_LARGE',reason='Complete prompt exceeds Codex CLI character budget; no records silently omitted')
     else:
-        audit.update(status='INPUT_NEAR_LIMIT' if len(prompt)>CLI_INPUT_MAX_CHARS*0.9 else 'INPUT_READY')
+        near=len(prompt)>CLI_INPUT_MAX_CHARS*0.9 or (manifest and manifest['encoded_bytes']>MAX_TOTAL_BYTES*0.9)
+        audit.update(status='INPUT_NEAR_LIMIT' if near else 'INPUT_READY')
     return prompt,audit
 
 def decision(snapshot, *, analyst=run_codex, timeout=150, _repair=None):
@@ -139,7 +150,13 @@ def decision(snapshot, *, analyst=run_codex, timeout=150, _repair=None):
     input_format=input_audit['evidence_id_format']
     if input_audit['status']=='INPUT_TOO_LARGE':
         return 'UNAVAILABLE',input_audit['reason'],[]
-    status, output=analyst(prompt,SELECTIONS,search=False,timeout=timeout)
+    if input_audit['transport']=='chunks':
+        from news_collector.news_chunks import run_chunked
+        cache_root=Path(os.getenv('NEWS_ARCHIVE_DIR',str(ROOT/'data')))/'news_chunks_v1'
+        status,output,chunk_audit=run_chunked(snapshot,SELECTIONS,analyst=analyst,timeout=timeout,repair=_repair,root=cache_root)
+        decision.last_input_audit={**input_audit,'chunk_read':chunk_audit}
+    else:
+        status, output=analyst(prompt,SELECTIONS,search=False,timeout=timeout)
     if status!='OK' or not Draft202012Validator(SELECTIONS).is_valid(output):
         return 'UNAVAILABLE',f'Codex FINAL unavailable or invalid ({status})',[]
     by_id={r['evidence_id']:r for r in items}
@@ -212,7 +229,9 @@ def run(engine,*,clock=lambda:datetime.now(IST),analyst=run_codex):
             conn.execute(update(morning_reports).where(key).values(evidence=snapshot,frozen_at=now.astimezone(timezone.utc)))
     remaining=int((deadline-clock().astimezone(IST)).total_seconds())-5
     if remaining<20:return {'status':'FINALIZATION_DEADLINE_ELAPSED'}
-    status,reason,signals=decision(snapshot,analyst=analyst,timeout=min(150,remaining))
+    # Existing service timeout is 240s; reserve startup/commit headroom while
+    # allowing larger all-news reads in the 09:00 and 09:05 attempts.
+    status,reason,signals=decision(snapshot,analyst=analyst,timeout=min(210,remaining))
     audit=getattr(analyst,'last_audit',{}) or {}
     # Persist the real application outcome even when the timer will retry.
     # A service exit alone does not prove that a stock report was produced.

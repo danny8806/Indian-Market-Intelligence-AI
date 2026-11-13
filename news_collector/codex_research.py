@@ -70,6 +70,8 @@ def _run_codex(prompt: str, schema: dict, *, search: bool, timeout: int):
             "--skip-git-repo-check", "--json", "--output-schema", str(schema_path),
             "--output-last-message", str(output), "-",
         ]
+        from news_collector.news_chunks import FROZEN_CONTEXT
+        frozen_context=FROZEN_CONTEXT.get() if not search else None
         context=FETCH_CONTEXT.get() if search else None
         if context:
             # A source-ID reader, with no shell/DB/broker access. The MCP child
@@ -83,6 +85,11 @@ def _run_codex(prompt: str, schema: dict, *, search: bool, timeout: int):
             if env.get('NEWS_SEARXNG_URL')=='http://news-search:8080':
                 config=config[:-1]+',env={NEWS_SEARXNG_URL="http://news-search:8080"}}'
             command[command.index('exec'):command.index('exec')]=['-c','mcp_servers.news_reader='+config]
+        if frozen_context:
+            assignment,spool=frozen_context
+            config='{command="'+shutil.which('python')+'",args='+json.dumps([
+                str(ROOT/'frozen_gateway.py'),'--assignment',str(assignment),'--spool',str(spool)])+',enabled_tools=["read_chunks"],supports_parallel_tool_calls=true,startup_timeout_sec=20,tool_timeout_sec=20,tools={read_chunks={output_token_limit=100000}}}'
+            command[command.index('exec'):command.index('exec')]=['-c','mcp_servers.frozen_news='+config]
         try:
             result = subprocess.run(command, input=prompt, capture_output=True, text=True,
                                     encoding="utf-8", errors="replace", cwd=work,
@@ -103,6 +110,7 @@ def _run_codex(prompt: str, schema: dict, *, search: bool, timeout: int):
             return "CLI_ERROR", None
         searched = False
         source_reads=0
+        frozen_reads=0
         for line in result.stdout.splitlines():
             try:
                 event = json.loads(line)
@@ -119,17 +127,23 @@ def _run_codex(prompt: str, schema: dict, *, search: bool, timeout: int):
                         }
             item = event.get("item", {})
             if item.get('type')=='mcp_tool_call':
-                if not context or item.get('server')!='news_reader' or item.get('tool')!='read_source':
+                fetch_allowed=context and item.get('server')=='news_reader' and item.get('tool')=='read_source'
+                frozen_allowed=frozen_context and item.get('server')=='frozen_news' and item.get('tool')=='read_chunks'
+                if not fetch_allowed and not frozen_allowed:
                     _run_codex.last_audit['unexpected_tool']={k:item.get(k) for k in ('type','server','tool')}
                     return 'UNEXPECTED_TOOL',None
-                if event.get('type')=='item.completed' and item.get('status')=='completed':source_reads+=1
+                if event.get('type')=='item.completed' and item.get('status')=='completed':
+                    if fetch_allowed:source_reads+=1
+                    if frozen_allowed:frozen_reads+=1
             if item.get("type") in {"command_execution", "file_change"}:
                 _run_codex.last_audit['unexpected_tool']={k:item.get(k) for k in ('type','server','tool')}
                 _run_codex.last_audit['mcp_startup_errors']=[line[:300] for line in result.stderr.splitlines() if 'mcp' in line.lower() and any(w in line.lower() for w in ('error','failed','startup'))][:3]
                 return "UNEXPECTED_TOOL", None
             if event.get("type") == "item.completed" and item.get("type") == "web_search":
+                if not search:return 'UNEXPECTED_TOOL',None
                 searched = True
         _run_codex.last_audit['source_tool_reads']=source_reads
+        _run_codex.last_audit['frozen_tool_reads']=frozen_reads
         if search and not searched and not source_reads:
             return "NO_LIVE_RETRIEVAL", None
         try:

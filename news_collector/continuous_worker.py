@@ -229,6 +229,17 @@ def collect_archive(engine, root: Path, *, clock=lambda: datetime.now(IST)) -> d
         external_status = {"status": f"INTAKE_FAILED_{type(exc).__name__}"}
     saved += replay(engine, root, deadline=deadline)
     pending=sum(1 for _ in (root/'pending_batches').glob('*.json'))
+    chunk_cache={'status':'RESERVED_FINAL_WINDOW'}
+    # Exact source preparation only. Never call a model or select stocks here.
+    minute=clock().hour*60+clock().minute
+    reserved=8*60+55<=minute<9*60+30 and regular_market_day(clock().date())
+    if not reserved and deadline-time.monotonic()>20:
+        try:
+            from news_collector.news_chunks import warm
+            chunk_cache=warm(engine,root/'news_chunks_v1',clock(),budget=min(12,int(deadline-time.monotonic()-8)))
+        except Exception as exc:chunk_cache={'status':'CACHE_FAILED','error_type':type(exc).__name__}
+        marker=root/'last_news_chunk_cache.json';temp=marker.with_suffix('.tmp')
+        temp.write_text(json.dumps(chunk_cache)+'\n',encoding='utf-8');temp.replace(marker)
     # Preview the real complete FINAL input before the reserved decision window.
     # No model call, source verification, stock selection or new scheduler.
     preflight={'status':'OUTSIDE_PREFLIGHT_WINDOW'}
@@ -254,6 +265,7 @@ def collect_archive(engine, root: Path, *, clock=lambda: datetime.now(IST)) -> d
         "external_cli": external_status,
         "pending_batches": pending,
         "final_input_preflight":preflight,
+        "news_chunk_cache":chunk_cache,
     }
     marker = root / "last_successful_db_sync.json"
     temp = marker.with_suffix(".tmp")
