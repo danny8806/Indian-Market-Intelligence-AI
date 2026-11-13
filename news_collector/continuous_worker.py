@@ -209,10 +209,10 @@ def collect_archive(engine, root: Path, *, clock=lambda: datetime.now(IST)) -> d
         budget = 0
     slot = codex_slot(started, budget)
     codex_status = "SKIPPED_BUDGET"
-    if slot is not None and _claim_slot(root, "codex", started, slot):
+    if slot is not None and time.monotonic()<deadline-30 and _claim_slot(root, "codex", started, slot):
         try:
             codex_status, rows = discover_codex(now, nifty, universe, clock=clock,
-                slot=slot,coverage_root=root,timeout=max(20,min(105,int(deadline-time.monotonic()-10))))
+                slot=slot,coverage_root=root,timeout=max(20,min(140,int(deadline-time.monotonic()-10))))
         except Exception as exc:
             codex_status, rows = f"DISCOVERY_FAILED_{type(exc).__name__}", []
         stage(root, {

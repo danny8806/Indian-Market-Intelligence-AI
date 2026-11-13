@@ -24,7 +24,7 @@ services:
       timeout: 5s
       retries: 12
   collector:
-    image: market-news-db-collector:eq-universe-20261112
+    image: market-news-db-collector:source-coverage-20261113
     build:
       context: ../..
       dockerfile: ops/news-stack/Dockerfile
@@ -87,5 +87,4 @@ volumes:
   news_archive: {}
   codex_auth: {}
   cli_inbox: {}
-
 

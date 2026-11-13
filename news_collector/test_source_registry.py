@@ -28,7 +28,10 @@ class SourceRegistryTests(unittest.TestCase):
         official_enabled = [source for source in self.sources
                             if source.get("authority") == "official"
                             and source.get("enabled", True)]
-        self.assertEqual(result["active_poll_sources"], len(official_enabled))
+        active = {row['poll_source'] for row in endpoints(self.registry) if row['access_status']=='ACTIVE'}
+        self.assertTrue({source['name'] for source in official_enabled} <= active)
+        self.assertEqual(result['active_poll_sources'], len(active))
+        self.assertTrue(active <= {source['name'] for source in self.sources if source.get('enabled',True)})
         self.assertGreaterEqual(result["organizations"], 15)
 
     def test_new_official_feeds_are_active_and_registered(self):

@@ -210,7 +210,8 @@
       "kind": "rss",
       "provider": "MEDIA",
       "authority": "secondary",
-      "enabled": true
+      "enabled": false,
+      "disabled_reason": "feed frozen at 2024-04-23; Moneycontrol stocks HTML and Google News discovery remain active"
     },
     {
       "name": "BusinessLine RSS",
@@ -973,6 +974,86 @@
       "card_selector": "div.w-full",
       "headline_selector": ":scope > div:first-child p",
       "summary_selector": ":scope > div > p[id^='marketnewsdivweb']"
+    },
+    {
+      "name": "Business Standard companies RSS",
+      "url": "https://www.business-standard.com/rss/companies-101.rss",
+      "provider": "BUSINESS_STANDARD",
+      "kind": "rss",
+      "authority": "media",
+      "enabled": true
+    },
+    {
+      "name": "Business Standard quarterly results RSS",
+      "url": "https://www.business-standard.com/rss/companies/quarterly-results-10103.rss",
+      "provider": "BUSINESS_STANDARD",
+      "kind": "rss",
+      "authority": "media",
+      "enabled": true
+    },
+    {
+      "name": "Business Standard economy RSS",
+      "url": "https://www.business-standard.com/rss/economy-102.rss",
+      "provider": "BUSINESS_STANDARD",
+      "kind": "rss",
+      "authority": "media",
+      "enabled": true
+    },
+    {
+      "name": "Business Standard industry RSS",
+      "url": "https://www.business-standard.com/rss/industry-217.rss",
+      "provider": "BUSINESS_STANDARD",
+      "kind": "rss",
+      "authority": "media",
+      "enabled": true
+    },
+    {
+      "name": "Economic Times stocks RSS",
+      "url": "https://economictimes.indiatimes.com/markets/stocks/rssfeeds/2146842.cms",
+      "provider": "ECONOMIC_TIMES",
+      "kind": "rss",
+      "authority": "media",
+      "enabled": true
+    },
+    {
+      "name": "Economic Times industry RSS",
+      "url": "https://economictimes.indiatimes.com/industry/rssfeeds/13352306.cms",
+      "provider": "ECONOMIC_TIMES",
+      "kind": "rss",
+      "authority": "media",
+      "enabled": true
+    },
+    {
+      "name": "Economic Times economy RSS",
+      "url": "https://economictimes.indiatimes.com/news/economy/rssfeeds/1373380680.cms",
+      "provider": "ECONOMIC_TIMES",
+      "kind": "rss",
+      "authority": "media",
+      "enabled": true
+    },
+    {
+      "name": "Economic Times banking finance RSS",
+      "url": "https://economictimes.indiatimes.com/industry/banking/finance/rssfeeds/13358259.cms",
+      "provider": "ECONOMIC_TIMES",
+      "kind": "rss",
+      "authority": "media",
+      "enabled": true
+    },
+    {
+      "name": "Economic Times energy RSS",
+      "url": "https://economictimes.indiatimes.com/industry/energy/rssfeeds/13358350.cms",
+      "provider": "ECONOMIC_TIMES",
+      "kind": "rss",
+      "authority": "media",
+      "enabled": true
+    },
+    {
+      "name": "Economic Times technology RSS",
+      "url": "https://economictimes.indiatimes.com/tech/rssfeeds/13357270.cms",
+      "provider": "ECONOMIC_TIMES",
+      "kind": "rss",
+      "authority": "media",
+      "enabled": true
     }
   ]
 }

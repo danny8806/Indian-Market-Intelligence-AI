@@ -1,12 +1,12 @@
 {
   "schema": "market-news-source-registry/1.0",
-  "generated_at": "2026-11-10T16:26:00+05:30",
+  "generated_at": "2026-11-13T14:24:24.553790+05:30",
   "timezone": "Asia/Kolkata",
   "policy": {
     "access": "Public unauthenticated endpoints only. No login, paywall, robots.txt, bot-detection, CAPTCHA, rate-limit or subscription bypass.",
     "timestamps": "A fetch time is never substituted for a publication time. Date-only values remain unverified and cannot satisfy the 15:00 to 09:00 cutoff.",
     "activation": "Only ACTIVE endpoints may appear as enabled sources.json poll sources. Blocked, not-found, unreachable and registry-only endpoints stay disabled and retain their access evidence.",
-    "scope": "Official exchanges, regulators, government departments and a partial evidence-based catalog of listed-issuer IR/press pages. Absence from this registry does not imply exhaustive coverage."
+    "scope": "Official exchanges, regulators, government departments and a partial evidence-based catalog of listed-issuer IR/press pages. Absence from this registry does not imply exhaustive coverage. Includes additional publisher RSS routes with recorded VPS access and timestamp evidence."
   },
   "organizations": [
     {
@@ -1501,6 +1501,180 @@
             "detail": "HTTP 404; no verified alternate endpoint recorded yet."
           },
           "notes": "Issuer investor-relations or press-release page; not enabled without a dated list."
+        }
+      ]
+    },
+    {
+      "id": "business-standard",
+      "name": "Business Standard",
+      "homepage": "https://www.business-standard.com/",
+      "endpoints": [
+        {
+          "id": "business-standard-companies-rss",
+          "name": "Business Standard companies RSS",
+          "url": "https://www.business-standard.com/rss/companies-101.rss",
+          "kind": "rss",
+          "authority": "media",
+          "access_status": "ACTIVE",
+          "poll_source": "Business Standard companies RSS",
+          "evidence": {
+            "checked_at": "2026-11-13T14:24:24.553790+05:30",
+            "method": "VPS production fetch_one diagnostic; actual publisher RSS bytes",
+            "items": 35,
+            "dated_items": 35,
+            "last_status": "OK"
+          }
+        },
+        {
+          "id": "business-standard-quarterly-results-rss",
+          "name": "Business Standard quarterly results RSS",
+          "url": "https://www.business-standard.com/rss/companies/quarterly-results-10103.rss",
+          "kind": "rss",
+          "authority": "media",
+          "access_status": "ACTIVE",
+          "poll_source": "Business Standard quarterly results RSS",
+          "evidence": {
+            "checked_at": "2026-11-13T14:24:24.553790+05:30",
+            "method": "VPS production fetch_one diagnostic; actual publisher RSS bytes",
+            "items": 35,
+            "dated_items": 35,
+            "last_status": "OK"
+          }
+        },
+        {
+          "id": "business-standard-economy-rss",
+          "name": "Business Standard economy RSS",
+          "url": "https://www.business-standard.com/rss/economy-102.rss",
+          "kind": "rss",
+          "authority": "media",
+          "access_status": "ACTIVE",
+          "poll_source": "Business Standard economy RSS",
+          "evidence": {
+            "checked_at": "2026-11-13T14:24:24.553790+05:30",
+            "method": "VPS production fetch_one diagnostic; actual publisher RSS bytes",
+            "items": 35,
+            "dated_items": 35,
+            "last_status": "OK"
+          }
+        },
+        {
+          "id": "business-standard-industry-rss",
+          "name": "Business Standard industry RSS",
+          "url": "https://www.business-standard.com/rss/industry-217.rss",
+          "kind": "rss",
+          "authority": "media",
+          "access_status": "ACTIVE",
+          "poll_source": "Business Standard industry RSS",
+          "evidence": {
+            "checked_at": "2026-11-13T14:24:24.553790+05:30",
+            "method": "VPS production fetch_one diagnostic; actual publisher RSS bytes",
+            "items": 35,
+            "dated_items": 35,
+            "last_status": "OK"
+          }
+        }
+      ]
+    },
+    {
+      "id": "economic-times",
+      "name": "Economic Times",
+      "homepage": "https://economictimes.indiatimes.com/",
+      "endpoints": [
+        {
+          "id": "economic-times-stocks-rss",
+          "name": "Economic Times stocks RSS",
+          "url": "https://economictimes.indiatimes.com/markets/stocks/rssfeeds/2146842.cms",
+          "kind": "rss",
+          "authority": "media",
+          "access_status": "ACTIVE",
+          "poll_source": "Economic Times stocks RSS",
+          "evidence": {
+            "checked_at": "2026-11-13T14:24:24.553790+05:30",
+            "method": "VPS production fetch_one diagnostic; actual publisher RSS bytes",
+            "items": 50,
+            "dated_items": 50,
+            "last_status": "OK"
+          }
+        },
+        {
+          "id": "economic-times-industry-rss",
+          "name": "Economic Times industry RSS",
+          "url": "https://economictimes.indiatimes.com/industry/rssfeeds/13352306.cms",
+          "kind": "rss",
+          "authority": "media",
+          "access_status": "ACTIVE",
+          "poll_source": "Economic Times industry RSS",
+          "evidence": {
+            "checked_at": "2026-11-13T14:24:24.553790+05:30",
+            "method": "VPS production fetch_one diagnostic; actual publisher RSS bytes",
+            "items": 50,
+            "dated_items": 50,
+            "last_status": "OK"
+          }
+        },
+        {
+          "id": "economic-times-economy-rss",
+          "name": "Economic Times economy RSS",
+          "url": "https://economictimes.indiatimes.com/news/economy/rssfeeds/1373380680.cms",
+          "kind": "rss",
+          "authority": "media",
+          "access_status": "ACTIVE",
+          "poll_source": "Economic Times economy RSS",
+          "evidence": {
+            "checked_at": "2026-11-13T14:24:24.553790+05:30",
+            "method": "VPS production fetch_one diagnostic; actual publisher RSS bytes",
+            "items": 50,
+            "dated_items": 50,
+            "last_status": "OK"
+          }
+        },
+        {
+          "id": "economic-times-banking-finance-rss",
+          "name": "Economic Times banking finance RSS",
+          "url": "https://economictimes.indiatimes.com/industry/banking/finance/rssfeeds/13358259.cms",
+          "kind": "rss",
+          "authority": "media",
+          "access_status": "ACTIVE",
+          "poll_source": "Economic Times banking finance RSS",
+          "evidence": {
+            "checked_at": "2026-11-13T14:24:24.553790+05:30",
+            "method": "VPS production fetch_one diagnostic; actual publisher RSS bytes",
+            "items": 50,
+            "dated_items": 50,
+            "last_status": "OK"
+          }
+        },
+        {
+          "id": "economic-times-energy-rss",
+          "name": "Economic Times energy RSS",
+          "url": "https://economictimes.indiatimes.com/industry/energy/rssfeeds/13358350.cms",
+          "kind": "rss",
+          "authority": "media",
+          "access_status": "ACTIVE",
+          "poll_source": "Economic Times energy RSS",
+          "evidence": {
+            "checked_at": "2026-11-13T14:24:24.553790+05:30",
+            "method": "VPS production fetch_one diagnostic; actual publisher RSS bytes",
+            "items": 50,
+            "dated_items": 50,
+            "last_status": "OK"
+          }
+        },
+        {
+          "id": "economic-times-technology-rss",
+          "name": "Economic Times technology RSS",
+          "url": "https://economictimes.indiatimes.com/tech/rssfeeds/13357270.cms",
+          "kind": "rss",
+          "authority": "media",
+          "access_status": "ACTIVE",
+          "poll_source": "Economic Times technology RSS",
+          "evidence": {
+            "checked_at": "2026-11-13T14:24:24.553790+05:30",
+            "method": "VPS production fetch_one diagnostic; actual publisher RSS bytes",
+            "items": 50,
+            "dated_items": 50,
+            "last_status": "OK"
+          }
         }
       ]
     }
