@@ -125,6 +125,7 @@ def input_readiness(snapshot, repair=None):
            'model_max_encoded_bytes':MODEL_INPUT_MAX_BYTES,
            'evidence_id_format':'row_alias_n_index' if manifest else json.loads(encoded).get('evidence_id_format','original'),
            'transport':transport}
+    audit['input_mode']=snapshot.get('input_mode','COMBINED_DATABASE')
     if manifest:audit.update(encoded_bytes=manifest['encoded_bytes'],chunk_manifest=manifest,model_max_encoded_bytes=MAX_TOTAL_BYTES)
     audit['remaining_context_bytes']=audit['model_max_encoded_bytes']-audit['encoded_bytes']
     if manifest and manifest['encoded_bytes']>MAX_TOTAL_BYTES:
@@ -144,7 +145,8 @@ def decision(snapshot, *, analyst=run_codex, timeout=150, _repair=None):
     decision.last_audit={}
     decision.last_input_audit={'items':len(items),'status':'NO_DATED_NEWS'}
     if not items:
-        return 'NO_TRADE', 'No timestamped stock news in the frozen window', []
+        return 'NO_TRADE', ('No eligible saved Codex-source news; no refetch or other-source fallback'
+            if snapshot.get('input_mode')=='CODEX_ONLY_CACHED' else 'No timestamped stock news in the frozen window'), []
     prompt,input_audit=input_readiness(snapshot,_repair)
     decision.last_input_audit=input_audit
     input_format=input_audit['evidence_id_format']
@@ -152,7 +154,8 @@ def decision(snapshot, *, analyst=run_codex, timeout=150, _repair=None):
         return 'UNAVAILABLE',input_audit['reason'],[]
     if input_audit['transport']=='chunks':
         from news_collector.news_chunks import run_chunked
-        cache_root=Path(os.getenv('NEWS_ARCHIVE_DIR',str(ROOT/'data')))/'news_chunks_v1'
+        cache_root=(None if snapshot.get('input_mode')=='CODEX_ONLY_CACHED' else
+                    Path(os.getenv('NEWS_ARCHIVE_DIR',str(ROOT/'data')))/'news_chunks_v1')
         status,output,chunk_audit=run_chunked(snapshot,SELECTIONS,analyst=analyst,timeout=timeout,repair=_repair,root=cache_root)
         decision.last_input_audit={**input_audit,'chunk_read':chunk_audit}
     else:
@@ -209,12 +212,25 @@ def run(engine,*,clock=lambda:datetime.now(IST),analyst=run_codex):
         old=conn.execute(select(morning_reports).where(key)).mappings().first()
         if old and old['report'] is not None:
             if (old['evidence'] or {}).get('pipeline_version')==VERSION:
-                return old['report']
+                if old['report'].get('status')=='READY':return old['report']
+                # A failed/empty result is not a finalized stock list. Preserve
+                # it completely and retry; never clear an accepted READY list.
+                pass
             # A legacy completed report is historical evidence. Never return
             # or relabel it as the new producer's output.
-            return {'status':'LEGACY_REPORT_PRESERVED','session_date':day}
+            else:return {'status':'LEGACY_REPORT_PRESERVED','session_date':day}
         history=(old['evidence'] or {}).get('attempt_history',[]) if old else []
-        snapshot=read_evidence(conn,start,cutoff,require_verified_origin=False)
+        if now>=scheduled:
+            from news_collector.codex_only import read_evidence as own_evidence
+            snapshot=own_evidence(conn,start,cutoff)
+        else:
+            snapshot=read_evidence(conn,start,cutoff,require_verified_origin=False)
+            snapshot['input_mode']='COMBINED_DATABASE'
+        rejected=list((old['evidence'] or {}).get('rejected_reports',[])) if old else []
+        if old and old['report'] is not None:
+            rejected.append({'report':old['report'],'sha256':hashlib.sha256(json.dumps(old['report'],sort_keys=True,separators=(',',':'),ensure_ascii=False).encode()).hexdigest(),
+                'reason':'No READY final; policy retries before the hard deadline'})
+        if rejected:snapshot['rejected_reports']=rejected
         from news_collector.engine import parse_universe_csv
         try:snapshot['current_nifty_symbols']=sorted({r['Symbol'] for r in csv.DictReader((ROOT/'data/universe_snapshot.csv').open()) if r.get('Series')=='EQ' and r.get('ISIN Code','').startswith('INE')})
         except (OSError,ValueError):snapshot['current_nifty_symbols']=sorted({s for r in snapshot['items'] for s in r['nifty_symbols']})
@@ -227,7 +243,7 @@ def run(engine,*,clock=lambda:datetime.now(IST),analyst=run_codex):
         if old is None:
             conn.execute(insert(morning_reports).values(session_date=day,frozen_at=now.astimezone(timezone.utc),evidence=snapshot,report=None))
         else:
-            conn.execute(update(morning_reports).where(key).values(evidence=snapshot,frozen_at=now.astimezone(timezone.utc)))
+            conn.execute(update(morning_reports).where(key).values(evidence=snapshot,report=None,frozen_at=now.astimezone(timezone.utc)))
     remaining=int((deadline-clock().astimezone(IST)).total_seconds())-5
     if remaining<20:return {'status':'FINALIZATION_DEADLINE_ELAPSED'}
     # Existing service timeout is 240s; reserve startup/commit headroom while
@@ -250,7 +266,7 @@ def run(engine,*,clock=lambda:datetime.now(IST),analyst=run_codex):
             snapshot=updated
     # Unpublished failures retry in the same service: every five minutes from
     # 08:00, then every minute after the 09:00 target through the 09:11 start.
-    if status=='UNAVAILABLE' and clock().astimezone(IST)<scheduled+timedelta(minutes=11):
+    if status in {'UNAVAILABLE','NO_TRADE'} and clock().astimezone(IST)<scheduled+timedelta(minutes=11):
         return {'status':'AWAITING_CODEX_RETRY','reason':reason,'selector_status':audit.get('status')}
     with engine.begin() as conn:
         lock_morning(conn)

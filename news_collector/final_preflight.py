@@ -18,6 +18,8 @@ def preview(engine,now):
     with engine.connect() as conn:
         if engine.dialect.name=='postgresql':conn.exec_driver_sql('SET TRANSACTION READ ONLY')
         snapshot=read_evidence(conn,start,now,require_verified_origin=False)
+        from news_collector.codex_only import read_evidence as own_evidence
+        own=own_evidence(conn,start,now)
     try:
         with (Path(ROOT)/'data/universe_snapshot.csv').open() as handle:
             snapshot['current_nifty_symbols']=sorted({r['Symbol'] for r in csv.DictReader(handle)
@@ -26,4 +28,6 @@ def preview(engine,now):
         snapshot['current_nifty_symbols']=sorted({s for r in snapshot['items'] for s in r['nifty_symbols']})
     _,audit=input_readiness(snapshot)
     return {**audit,'checked_at':now.isoformat(),'session_date':now.date().isoformat(),
-            'window_start':start.isoformat(),'selection_run':False,'news_verification':False}
+            'window_start':start.isoformat(),'selection_run':False,'news_verification':False,
+            'codex_only_saved_items':len(own['items']),'codex_only_origin_counts':own['codex_only_audit']['origin_counts'],
+            'fallback_new_fetches':0}

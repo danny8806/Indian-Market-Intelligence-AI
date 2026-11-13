@@ -94,6 +94,6 @@ class NewsChunkTests(unittest.TestCase):
   for minute,expected in [(0,210),(5,210),(10,115)]:
    db=create_engine('sqlite://');metadata.create_all(db);budgets=[]
    def analyst(*a,**kw):budgets.append(kw['timeout']);return 'QUOTA_LIMIT',None
-   with patch.object(final,'read_evidence',return_value=self.s):
+   with patch('news_collector.codex_only.read_evidence',return_value={**self.s,'input_mode':'CODEX_ONLY_CACHED'}):
     final.run(db,clock=lambda:datetime(2026,11,13,9,minute,tzinfo=IST),analyst=analyst)
    self.assertEqual(budgets,[expected]);db.dispose()

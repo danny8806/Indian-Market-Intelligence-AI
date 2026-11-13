@@ -44,7 +44,7 @@ class FinalPreventionTests(unittest.TestCase):
   db.dispose()
  def test_failed_attempt_reason_survives_before_retry(self):
   db=create_engine('sqlite://');metadata.create_all(db)
-  with patch.object(final,'read_evidence',return_value=self.s):
+  with patch('news_collector.codex_only.read_evidence',return_value={**self.s,'input_mode':'CODEX_ONLY_CACHED'}):
    result=final.run(db,clock=lambda:datetime(2026,11,13,9,0,tzinfo=IST),
     analyst=lambda *a,**k:('QUOTA_LIMIT',None))
   self.assertEqual(result['status'],'AWAITING_CODEX_RETRY')

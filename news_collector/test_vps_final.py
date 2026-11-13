@@ -16,6 +16,8 @@ class SoleFinalTests(unittest.TestCase):
                                  'url':f'https://example.com/news/{i}'} for i,symbol in enumerate(symbols)]
         self.picks=[{**self.pick,'symbol':symbol,'side':'LONG' if i<5 else 'SHORT','evidence_ids':[f'e{i+1}']} for i,symbol in enumerate(symbols)]
         self.picks[0]=self.pick
+        own=patch('news_collector.codex_only.read_evidence',side_effect=lambda *a,**k:{**self.snapshot,'input_mode':'CODEX_ONLY_CACHED'})
+        self.own_reader=own.start();self.addCleanup(own.stop)
     def analyst(self,*args,**kwargs):
         self.assertFalse(kwargs['search']);return 'OK',{'selections':self.picks}
     def test_direct_source_does_not_require_independent_verification(self):
@@ -84,7 +86,7 @@ class SoleFinalTests(unittest.TestCase):
             self.assertEqual(first['status'],'AWAITING_CODEX_RETRY')
             final=run(db,clock=lambda:datetime(2026,11,11,9,5,30,tzinfo=IST),analyst=self.analyst)
         self.assertEqual(final['news_cutoff_at'],'2026-11-11T09:05:30+05:30')
-        self.assertEqual(read.call_args.args[2],datetime(2026,11,11,9,5,30,tzinfo=IST))
+        self.assertEqual(self.own_reader.call_args.args[2],datetime(2026,11,11,9,5,30,tzinfo=IST))
         with db.connect() as c:history=c.execute(select(morning_reports.c.evidence)).scalar()['attempt_history']
         self.assertEqual(len(history),2);self.assertNotEqual(history[0]['sha256'],history[1]['sha256'])
         db.dispose()

@@ -144,6 +144,7 @@ def _run_codex(prompt: str, schema: dict, *, search: bool, timeout: int):
                 searched = True
         _run_codex.last_audit['source_tool_reads']=source_reads
         _run_codex.last_audit['frozen_tool_reads']=frozen_reads
+        _run_codex.last_audit['live_web_search_used']=searched
         if search and not searched and not source_reads:
             return "NO_LIVE_RETRIEVAL", None
         try:

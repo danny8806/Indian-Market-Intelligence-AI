@@ -16,12 +16,12 @@ class EarlyFinalWindowTests(unittest.TestCase):
    'published_at':'2026-11-12T18:00:00+05:30','observed_at':'2026-11-12T18:01:00+05:30','providers':['NSE']}
  def test_actual_0800_cutoff_and_retry_until_0911(self):
   s={'items':[self.base]}
-  with patch.object(final,'read_evidence',return_value=s) as read:
+  with patch.object(final,'read_evidence',return_value=s) as read,patch('news_collector.codex_only.read_evidence',return_value={**s,'input_mode':'CODEX_ONLY_CACHED'}) as own:
    for hour,minute in [(8,0),(8,5),(9,0),(9,1),(9,10)]:
     now=datetime(2026,11,13,hour,minute,tzinfo=IST)
     result=final.run(self.db,clock=lambda:now,analyst=lambda *a,**k:('QUOTA_LIMIT',None))
     self.assertEqual(result['status'],'AWAITING_CODEX_RETRY')
-    self.assertEqual(read.call_args.args[2],now)
+    self.assertEqual((own if hour>=9 else read).call_args.args[2],now)
   with self.db.connect() as c:row=c.execute(select(morning_reports)).mappings().one()
   self.assertIsNone(row['report']);self.assertEqual(len(row['evidence']['attempt_history']),5)
  def test_0759_and_0912_never_start_selection(self):
