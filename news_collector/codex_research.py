@@ -42,7 +42,7 @@ def _run_codex(prompt: str, schema: dict, *, search: bool, timeout: int):
     model = os.getenv('NEWS_CODEX_FETCH_MODEL' if search else 'NEWS_CODEX_FINAL_MODEL', 'gpt-6.1-sol')
     effort = 'medium' if search else 'high'
     _run_codex.last_audit = {"model": model, "model_evidence": "explicit_cli_pin",
-                           "reasoning_effort": effort}
+                           "reasoning_effort": effort,"input_characters":len(prompt)}
     home = os.getenv("NEWS_CODEX_HOME")
     executable = shutil.which("codex")
     if not home or not executable:
@@ -92,6 +92,12 @@ def _run_codex(prompt: str, schema: dict, *, search: bool, timeout: int):
         except OSError:
             return "CLI_ERROR", None
         if result.returncode or not output.is_file():
+            _run_codex.last_audit['cli_returncode']=result.returncode
+            failure=(result.stderr+'\n'+result.stdout).lower()
+            if 'input_too_large' in failure or 'input exceeds the maximum length' in failure:
+                return 'INPUT_TOO_LARGE',None
+            if 'context window' in failure and any(word in failure for word in ('exceed','too large','limit')):
+                return 'CONTEXT_LIMIT',None
             if "rate limit" in result.stderr.lower() or "usage limit" in result.stdout.lower():
                 return "QUOTA_LIMIT", None
             return "CLI_ERROR", None

@@ -16,6 +16,8 @@ from news_collector.morning import SELECTIONS, lock_morning, make_report, read_e
 
 VERSION = 'vps-codex-final-v1'
 NEWS_COLUMNS = ('evidence_id','nifty_symbols','headline','summary','url','published_at','observed_at','providers')
+CLI_INPUT_MAX_CHARS = 1_048_576
+MODEL_INPUT_MAX_BYTES = 1_200_000
 
 def encode_news(snapshot):
     """Lossless tabular JSON: store repeated field names once, keep every value."""
@@ -76,17 +78,8 @@ def decode_news(payload,snapshot):
                 row[4]=snapshot['items'][i]['url']
     return [dict(zip(payload['news_columns'],row)) for row in rows]
 
-def decision(snapshot, *, analyst=run_codex, timeout=150, _repair=None):
-    began=time.monotonic()
-    items = snapshot['items']
-    if not items:
-        return 'NO_TRADE', 'No timestamped stock news in the frozen window', []
-    encoded=encode_news(snapshot)
-    input_format=json.loads(encoded).get('evidence_id_format')
-    if len(encoded.encode('utf-8'))>1_200_000:
-        return 'UNAVAILABLE', 'Complete news input exceeds tested model context budget; no records silently omitted', []
-    if len(encoded)>1_040_000:
-        return 'UNAVAILABLE','Complete news input exceeds Codex CLI character budget; no records silently omitted',[]
+def build_prompt(encoded, repair=None):
+    """Build the actual CLI message, including all instructions and repairs."""
     prompt = (
         'You are CODEX FINAL, the sole stock selector. Select exactly five LONG/BUY and five SHORT/SELL distinct '
         'NIFTY 500 stocks directly from the supplied source content and publication timestamps. '
@@ -112,10 +105,40 @@ def decision(snapshot, *, analyst=run_codex, timeout=150, _repair=None):
         'All records are present; do not skip rows. Frozen source records:\n' +
         encoded
     )
-    if _repair is not None:
+    if repair is not None:
         prompt+='\nPrevious output needs correction of count/stock-ID/evidence-ID mechanics only; no extra news verification. '
         prompt+='Reconsider the complete supplied news and return exactly five BUY/LONG and five SELL/SHORT, all distinct. '
-        prompt+='Do not invent negative news or dates to fill a side. Prior output and invalid-output details:\n'+json.dumps(_repair,ensure_ascii=False)
+        prompt+='Do not invent negative news or dates to fill a side. Prior output and invalid-output details:\n'+json.dumps(repair,ensure_ascii=False)
+    return prompt
+
+def input_readiness(snapshot, repair=None):
+    encoded=encode_news(snapshot)
+    prompt=build_prompt(encoded,repair)
+    audit={'items':len(snapshot['items']),'encoded_bytes':len(encoded.encode('utf-8')),
+           'prompt_characters':len(prompt),'cli_max_characters':CLI_INPUT_MAX_CHARS,
+           'remaining_characters':CLI_INPUT_MAX_CHARS-len(prompt),
+           'model_max_encoded_bytes':MODEL_INPUT_MAX_BYTES,
+           'evidence_id_format':json.loads(encoded).get('evidence_id_format','original')}
+    if len(encoded.encode('utf-8'))>MODEL_INPUT_MAX_BYTES:
+        audit.update(status='INPUT_TOO_LARGE',reason='Complete news input exceeds tested model context budget; no records silently omitted')
+    elif len(prompt)>CLI_INPUT_MAX_CHARS:
+        audit.update(status='INPUT_TOO_LARGE',reason='Complete prompt exceeds Codex CLI character budget; no records silently omitted')
+    else:
+        audit.update(status='INPUT_NEAR_LIMIT' if len(prompt)>CLI_INPUT_MAX_CHARS*0.9 else 'INPUT_READY')
+    return prompt,audit
+
+def decision(snapshot, *, analyst=run_codex, timeout=150, _repair=None):
+    began=time.monotonic()
+    items = snapshot['items']
+    decision.last_audit={}
+    decision.last_input_audit={'items':len(items),'status':'NO_DATED_NEWS'}
+    if not items:
+        return 'NO_TRADE', 'No timestamped stock news in the frozen window', []
+    prompt,input_audit=input_readiness(snapshot,_repair)
+    decision.last_input_audit=input_audit
+    input_format=input_audit['evidence_id_format']
+    if input_audit['status']=='INPUT_TOO_LARGE':
+        return 'UNAVAILABLE',input_audit['reason'],[]
     status, output=analyst(prompt,SELECTIONS,search=False,timeout=timeout)
     if status!='OK' or not Draft202012Validator(SELECTIONS).is_valid(output):
         return 'UNAVAILABLE',f'Codex FINAL unavailable or invalid ({status})',[]
@@ -191,6 +214,20 @@ def run(engine,*,clock=lambda:datetime.now(IST),analyst=run_codex):
     if remaining<20:return {'status':'FINALIZATION_DEADLINE_ELAPSED'}
     status,reason,signals=decision(snapshot,analyst=analyst,timeout=min(150,remaining))
     audit=getattr(analyst,'last_audit',{}) or {}
+    # Persist the real application outcome even when the timer will retry.
+    # A service exit alone does not prove that a stock report was produced.
+    outcome={'status':status,'reason':reason,'selector_status':audit.get('status'),
+             'input':getattr(decision,'last_input_audit',{}),'cutoff':cutoff.isoformat()}
+    with engine.begin() as conn:
+        lock_morning(conn)
+        current=conn.execute(select(morning_reports).where(key)).mappings().one()
+        if current['report'] is None:
+            updated={**current['evidence'],'last_attempt_outcome':outcome}
+            attempts=[dict(a) for a in updated.get('attempt_history',[])]
+            if attempts and attempts[-1].get('cutoff')==cutoff.isoformat():attempts[-1]['outcome']=outcome
+            updated['attempt_history']=attempts
+            conn.execute(update(morning_reports).where(key).values(evidence=updated))
+            snapshot=updated
     # Provider failures are retried by the same 09:05 / 09:10 timer, not by a second model.
     if status=='UNAVAILABLE' and clock().astimezone(IST)<scheduled+timedelta(minutes=10):
         return {'status':'AWAITING_CODEX_RETRY','reason':reason,'selector_status':audit.get('status')}
@@ -222,7 +259,11 @@ def main():
         except BlockingIOError:
             print(json.dumps({'status':'SKIPPED_ALREADY_RUNNING'}));return
         engine=engine_for_url(os.environ['NEWS_DATABASE_URL'])
-        try:print(json.dumps(run(engine),ensure_ascii=False))
+        try:
+            result=run(engine)
+            print(json.dumps(result,ensure_ascii=False))
+            if result.get('status') in {'AWAITING_CODEX_RETRY','UNAVAILABLE','FINALIZATION_DEADLINE_ELAPSED'}:
+                raise SystemExit(2)
         finally:engine.dispose()
 
 if __name__=='__main__':main()

@@ -229,6 +229,18 @@ def collect_archive(engine, root: Path, *, clock=lambda: datetime.now(IST)) -> d
         external_status = {"status": f"INTAKE_FAILED_{type(exc).__name__}"}
     saved += replay(engine, root, deadline=deadline)
     pending=sum(1 for _ in (root/'pending_batches').glob('*.json'))
+    # Preview the real complete FINAL input before the reserved decision window.
+    # No model call, source verification, stock selection or new scheduler.
+    preflight={'status':'OUTSIDE_PREFLIGHT_WINDOW'}
+    from news_collector.final_preflight import due,preview
+    if due(clock()) and deadline-time.monotonic()>5:
+        try:
+            preflight=preview(engine,clock())
+        except Exception as exc:
+            preflight={'status':'PREFLIGHT_FAILED','error_type':type(exc).__name__}
+        marker=root/'last_final_preflight.json'
+        temp=marker.with_suffix('.tmp')
+        temp.write_text(json.dumps(preflight)+'\n',encoding='utf-8');temp.replace(marker)
     result = {
         "db_status": "DATABASE_SYNC_OK" if not pending else "DATABASE_SYNC_PENDING", "sync_completed_at": clock().isoformat(),
         "session": batch["session"], "source_count": batch["sources_configured"],
@@ -241,6 +253,7 @@ def collect_archive(engine, root: Path, *, clock=lambda: datetime.now(IST)) -> d
         "observations": len(batch["records"]), "batches_committed": saved,
         "external_cli": external_status,
         "pending_batches": pending,
+        "final_input_preflight":preflight,
     }
     marker = root / "last_successful_db_sync.json"
     temp = marker.with_suffix(".tmp")
