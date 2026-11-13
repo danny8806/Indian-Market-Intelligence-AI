@@ -1,8 +1,9 @@
 [Unit]
-Description=Codex FINAL actual-cutoff attempts at 09:00 09:05 and 09:10
+Description=Codex FINAL from 08:00, target 09:00, minute retries until 09:12
 
 [Timer]
-OnCalendar=Mon..Fri *-*-* 09:00,05,10:00 Asia/Kolkata
+OnCalendar=Mon..Fri *-*-* 08:00,05,10,15,20,25,30,35,40,45,50,55:00 Asia/Kolkata
+OnCalendar=Mon..Fri *-*-* 09:00,01,02,03,04,05,06,07,08,09,10,11:00 Asia/Kolkata
 AccuracySec=1s
 Persistent=false
 

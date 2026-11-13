@@ -6,7 +6,7 @@ from news_collector.engine import IST,ROOT,regular_market_day
 
 def heavy_allowed(now):
     local=now.astimezone(IST)
-    return not (regular_market_day(local.date()) and dtime(8,55)<=local.time()<dtime(9,30))
+    return not (regular_market_day(local.date()) and dtime(7,55)<=local.time()<dtime(9,30))
 
 def enqueue(root,source,kind,*,url=None,raw=None):
     folder=Path(root)/'tool_queue';folder.mkdir(parents=True,exist_ok=True)

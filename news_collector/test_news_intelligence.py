@@ -477,10 +477,11 @@ class NewsIntelligenceTests(unittest.TestCase):
         self.assertEqual(codex_slot(at(7, 30), 48), 15)
         for hour, minute in [(9, 0)]:
             self.assertIsNone(codex_slot(at(hour, minute), 48))
-        self.assertEqual(codex_slot(at(8,0),48),16)
-        self.assertEqual(codex_slot(at(8,30),48),17)
+        self.assertIsNone(codex_slot(at(8,0),48))
+        self.assertIsNone(codex_slot(at(8,30),48))
         self.assertEqual(codex_slot(at(9, 30), 48), 19)
-        self.assertEqual(codex_slot(at(8, 0, day=10), 48), 16)
+        # Collection remains available on a closed exchange day.
+        self.assertEqual(codex_slot(at(8, 0, day=10), 48),16)
         self.assertIsNone(codex_slot(at(9, 30), 0))
 
     def test_finalization_locks_only_once_and_excludes_post_cutoff_verification(self):

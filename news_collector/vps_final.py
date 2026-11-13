@@ -200,7 +200,8 @@ def run(engine,*,clock=lambda:datetime.now(IST),analyst=run_codex):
     if now.year!=2026:return {'status':'CALENDAR_UPDATE_REQUIRED'}
     if not regular_market_day(now.date()):return {'status':'CLOSED'}
     start,scheduled=window_for(now.date().isoformat()); deadline=scheduled+timedelta(minutes=12)
-    if not scheduled<=now<deadline:return {'status':'OUTSIDE_FINAL_WINDOW'}
+    first_attempt=scheduled.replace(hour=8,minute=0)
+    if not first_attempt<=now<deadline:return {'status':'OUTSIDE_FINAL_WINDOW'}
     cutoff=now
     day=now.date().isoformat(); key=morning_reports.c.session_date==day
     with engine.begin() as conn:
@@ -247,8 +248,9 @@ def run(engine,*,clock=lambda:datetime.now(IST),analyst=run_codex):
             updated['attempt_history']=attempts
             conn.execute(update(morning_reports).where(key).values(evidence=updated))
             snapshot=updated
-    # Provider failures are retried by the same 09:05 / 09:10 timer, not by a second model.
-    if status=='UNAVAILABLE' and clock().astimezone(IST)<scheduled+timedelta(minutes=10):
+    # Unpublished failures retry in the same service: every five minutes from
+    # 08:00, then every minute after the 09:00 target through the 09:11 start.
+    if status=='UNAVAILABLE' and clock().astimezone(IST)<scheduled+timedelta(minutes=11):
         return {'status':'AWAITING_CODEX_RETRY','reason':reason,'selector_status':audit.get('status')}
     with engine.begin() as conn:
         lock_morning(conn)

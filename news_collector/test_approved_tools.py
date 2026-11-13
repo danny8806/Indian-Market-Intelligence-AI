@@ -50,7 +50,7 @@ class ApprovedToolTests(unittest.TestCase):
             task=json.loads(tasks[0].read_text());self.assertEqual(Path(task['blob']).read_bytes(),b'new')
             self.assertEqual(task['next_at'],0)
     def test_morning_heavy_work_yields_while_collection_clock_can_continue(self):
-        for h,m,expected in [(8,54,True),(8,55,False),(9,0,False),(9,29,False),(9,30,True)]:
+        for h,m,expected in [(7,54,True),(7,55,False),(8,0,False),(8,30,False),(8,55,False),(9,0,False),(9,29,False),(9,30,True)]:
             self.assertEqual(heavy_allowed(datetime(2026,11,11,h,m,tzinfo=IST)),expected)
         self.assertTrue(heavy_allowed(datetime(2026,11,14,9,0,tzinfo=IST)))
     def test_browser_fallback_never_runs_after_robots_denial(self):

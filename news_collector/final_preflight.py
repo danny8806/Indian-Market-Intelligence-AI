@@ -6,7 +6,7 @@ from news_collector.vps_final import input_readiness
 
 def due(now):
     now=now.astimezone(IST)
-    return regular_market_day(now.date()) and time(8,0)<=now.time().replace(tzinfo=None)<time(8,55)
+    return regular_market_day(now.date()) and time(7,0)<=now.time().replace(tzinfo=None)<time(7,55)
 
 def preview(engine,now):
     """SELECT-only preview, with the same full news input and size calculation."""

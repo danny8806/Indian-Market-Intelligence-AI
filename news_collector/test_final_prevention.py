@@ -29,7 +29,9 @@ class FinalPreventionTests(unittest.TestCase):
     analyst=lambda *a,**k:self.fail('Oversized repair invoked'))
   self.assertEqual(status,'UNAVAILABLE');self.assertIn('CLI character',reason)
  def test_preflight_uses_existing_premarket_window(self):
-  self.assertTrue(preflight.due(datetime(2026,11,13,8,30,tzinfo=IST)))
+  self.assertTrue(preflight.due(datetime(2026,11,13,7,50,tzinfo=IST)))
+  self.assertFalse(preflight.due(datetime(2026,11,13,7,55,tzinfo=IST)))
+  self.assertFalse(preflight.due(datetime(2026,11,13,8,30,tzinfo=IST)))
   self.assertFalse(preflight.due(datetime(2026,11,13,8,55,tzinfo=IST)))
   self.assertFalse(preflight.due(datetime(2026,11,14,8,30,tzinfo=IST)))
  def test_preview_never_creates_report_or_calls_selector(self):

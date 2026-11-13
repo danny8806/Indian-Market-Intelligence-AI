@@ -97,7 +97,7 @@ def codex_slot(now: datetime, budget: int) -> int | None:
     """Reserve Codex for morning research on NSE trading days."""
     now = now.astimezone(IST)
     minute = now.hour * 60 + now.minute
-    if 8 * 60 + 55 <= minute < 9 * 60 + 30 and regular_market_day(now.date()):
+    if 7 * 60 + 55 <= minute < 9 * 60 + 30 and regular_market_day(now.date()):
         return None
     return model_slot(now, budget)
 
@@ -229,10 +229,11 @@ def collect_archive(engine, root: Path, *, clock=lambda: datetime.now(IST)) -> d
         external_status = {"status": f"INTAKE_FAILED_{type(exc).__name__}"}
     saved += replay(engine, root, deadline=deadline)
     pending=sum(1 for _ in (root/'pending_batches').glob('*.json'))
-    chunk_cache={'status':'RESERVED_FINAL_WINDOW'}
+    chunk_cache={'status':'NO_BUDGET'}
     # Exact source preparation only. Never call a model or select stocks here.
     minute=clock().hour*60+clock().minute
-    reserved=8*60+55<=minute<9*60+30 and regular_market_day(clock().date())
+    reserved=7*60+55<=minute<9*60+30 and regular_market_day(clock().date())
+    if reserved:chunk_cache={'status':'RESERVED_FINAL_WINDOW'}
     if not reserved and deadline-time.monotonic()>20:
         try:
             from news_collector.news_chunks import warm
